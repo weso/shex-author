@@ -20,35 +20,6 @@
 }
 
 
-.navbar {
-	margin-bottom: 0;1
-	&-brand {
-		line-height: 35px;
-		padding: 5px 15px;
-		vertical-align: middle;
-		a {
-			text-decoration: none;
-		}
-		img {
-			margin-left: 2px;
-			margin-right: 10px;
-		}
-	}
-	&-btn {
-		margin-left: 15px;
-	}
-	&-default {
-		background: #f8f9fa;
-		border-bottom: 1px solid #c8ccd1;
-		border-radius: 2px;
-	}
-	&-right {
-		margin-right: 0;
-	}
-	&-toggle {
-		z-index: 100;
-	}
-}
 
 
 .assistant{
@@ -106,10 +77,8 @@ label{
 }
 
 .deleteShapeButton{
-	background-color: transparent;
 	margin-left: 5px;
-	margin-bottom: 5px;
-	
+	margin-bottom: 5px;	
 }
 
 
@@ -164,7 +133,6 @@ label{
 }
 
 .values-container{
-	//margin-top: -15px;
 	margin-left:20px !important;
 }
 
@@ -172,7 +140,6 @@ label{
 	margin-left: 10px;
 	margin-bottom: 5px;
 }
-
 
 
 .valueType{

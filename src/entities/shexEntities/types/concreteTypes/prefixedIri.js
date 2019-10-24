@@ -19,7 +19,7 @@ class PrefixedIri extends Type{
 
     getHtml(){
        
-        let str = '<select class="col-sm-2 form-control '+this.getPrefixContex()+'"><input class="'+this.context+' form-control col-sm-2" context="text" value="replaceName">';
+        let str = '<select class="col-sm form-control '+this.getPrefixContex()+'"><input class="'+this.context+' form-control col-sm" context="text" value="replaceName">';
         return str.replace('replaceName',this.getValue());
     }
 

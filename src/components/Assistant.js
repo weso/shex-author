@@ -44,7 +44,9 @@ class Assistant extends Component {
                                 <option value="bnode">BNode</option>
                             </select>
 
-                            <div className="row col-lg" dangerouslySetInnerHTML={this.getType(shape)} />
+                            <div className="row col-sm-2" dangerouslySetInnerHTML={this.getType(shape)} />
+
+                            <button className="col-xs-10 deleteShapeButton mdc-icon-button material-icons btn-danger">delete</button>
                         </div>
                         <button className="btn-primary addPropButton col-xs-3">+ Triple</button>
                         
@@ -58,8 +60,19 @@ class Assistant extends Component {
                                             <option value="iriRef">IriRef</option>
                                             <option value="prefixedIri">Prefixed</option>
                                         </select>
+                            
+                                        <div className="row col-sm-4" dangerouslySetInnerHTML={this.getType(triple)} /> 
+                                    
+                                        <select className="col-sm-3  form-control tripleCardinality">
+                                            <option value="">Exactly one</option>
+                                            <option value="*">Zero or more</option>
+                                            <option value="+">One at least</option>
+                                            <option value="?">One or none</option>
+                                        </select>
 
-                                        <div className="row col-lg" dangerouslySetInnerHTML={this.getType(triple)} />                                    </div>
+                                        <button className="col-xs-10 deletePropButton mdc-icon-button material-icons btn-danger">delete</button>
+
+                                    </div>
                                 </div>
                             )}
                         </div>

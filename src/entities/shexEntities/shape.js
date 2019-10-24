@@ -18,7 +18,7 @@ class Shape {
 
 */
 
-constructor(id,type=new IrirRef(),triples = []) {
+constructor(id,type=new IrirRef('shapeName'),triples = []) {
       this.id = id;
       this.type = type;
       this.triples = triples;
