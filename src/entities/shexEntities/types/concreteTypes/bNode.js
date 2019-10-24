@@ -1,4 +1,4 @@
-import Type from '../type.js';
+let Type = require('../type.js');
 
 class BNode extends Type{
 
@@ -10,7 +10,7 @@ class BNode extends Type{
 
     getHtml(){
         let str = '<input class="'+this.context+' form-control col-sm-2" context="text" value="replaceName">';
-        if(this.getValue() === ''){
+        if(this.getValue() == ''){
             this.setValue('example')
         }
         return str.replace('replaceName',this.getValue());
@@ -30,4 +30,4 @@ class BNode extends Type{
 
 
 
-export default BNode;
+module.exports = BNode;

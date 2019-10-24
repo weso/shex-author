@@ -1,3 +1,4 @@
+let Shape = require('../shape.js');
 
 class InlineShape{
 
@@ -27,4 +28,4 @@ class InlineShape{
 
 }
 
-export default InlineShape;
+module.exports = InlineShape;

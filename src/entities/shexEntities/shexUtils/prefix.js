@@ -16,4 +16,4 @@ class Prefix {
 
 }
 
-export default Prefix;
+module.exports = Prefix;

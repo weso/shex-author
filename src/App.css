@@ -1,22 +1,219 @@
-.App {
-  text-align: center;
+.editor-nav{
+	background-color: #f8f9fa;
+	border: 1px solid grey;
+	margin-top: -1px;
 }
 
-.App-logo {
-  height: 40vmin;
+.navbar{
+	background-color: #222 !important;
+	color: white !important;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.btn-default{
+
+	color:#222 !important;
+	font-weight: bold !important;
 }
 
-.App-link {
-  color: #09d3ac;
+.dropdown{
+	margin: 0px !important;
+}
+
+
+.navbar {
+	margin-bottom: 0;1
+	&-brand {
+		line-height: 35px;
+		padding: 5px 15px;
+		vertical-align: middle;
+		a {
+			text-decoration: none;
+		}
+		img {
+			margin-left: 2px;
+			margin-right: 10px;
+		}
+	}
+	&-btn {
+		margin-left: 15px;
+	}
+	&-default {
+		background: #f8f9fa;
+		border-bottom: 1px solid #c8ccd1;
+		border-radius: 2px;
+	}
+	&-right {
+		margin-right: 0;
+	}
+	&-toggle {
+		z-index: 100;
+	}
+}
+
+
+.assistant{
+	border-right: 1px solid grey;
+	border-left: 1px solid grey;
+	border-bottom: 1px solid grey;
+	background-color: #fff;
+	margin-left: 1px;
+	margin-right: 20px;
+}
+
+html{
+
+	background-color: #eaf3ff;
+
+}
+
+.container-fluid{
+	background-color: #fff;
+}
+
+.CodeMirror{
+	height: 100% !important;
+	width: 100% !important;
+	font-size:1.5em !important;
+	min-height:273px;
+}
+
+
+
+.yashe{
+	height: 100% ;
+	width: 100% ;
+	margin-left: -15px !important;
+	margin-right: -14px;
+}
+
+
+.separator{
+	background-color: #eaf3ff;
+}
+
+
+
+label{
+	font-weight: bold;
+	margin-top: 10px;
+	margin-right:-50px; 
+}
+
+.addShapeButton{
+	margin-top: 10px;
+	margin-left: -10px;
+	margin-bottom: 15px;
+}
+
+.deleteShapeButton{
+	background-color: transparent;
+	margin-left: 5px;
+	margin-bottom: 5px;
+	
+}
+
+
+.deletePropButton{
+
+	margin-left: 5px;
+	margin-right: -5px;
+	margin-bottom: 5px;
+}
+
+.shapes-container{
+	margin-top: 10px;
+
+}
+
+.shapes-header{
+	background-color: #eaf3ff;
+}
+
+.triples-container{
+	margin-left:70px;
+	margin-right:30px;
+	background-color: #eaf3ff;
+}
+
+.addPropButton{
+	margin-top: 5px;
+	margin-left: -6px;
+}
+
+
+.shapes-labels{
+	background-color: #eaf3ff;
+}
+
+.tripleType{
+	margin-left: -25px;
+	margin-right:2px;
+}
+
+.tripleCardinality{
+	margin-right:2px;
+}
+
+.tripleName{
+	margin-right:2px;
+}
+
+.tripleLabel{
+	margin-left:25px;
+	margin-right:50px;
+}
+
+.values-container{
+	//margin-top: -15px;
+	margin-left:20px !important;
+}
+
+.deleteBtn{
+	margin-left: 10px;
+	margin-bottom: 5px;
+}
+
+
+
+.valueType{
+	margin-left: -25px;
+}
+
+
+.addValButton{
+	margin-left: 5px;
+}
+
+.deleteValBtn{
+	margin-left:5px;
+	margin-bottom: 5px;
+}
+
+.tripleRow{
+	
+	margin-bottom:10px;
+}
+
+.wikibaseRDFtoolTip{
+
+	line-height:20px !important;
+	max-height: 10% !important;
+	font-size: 20px !important;
+
+}
+
+.checkbox{
+	margin-left: 15px;
+}
+
+.valuesCol{
+	margin-bottom:10px;
+}
+
+.check{
+	margin-left: 3px;
+}
+
+.assistantBtn{
+	margin-left: 3px;
 }

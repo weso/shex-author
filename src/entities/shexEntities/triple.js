@@ -1,11 +1,13 @@
- import * as   TypesFactory  from './types/typesFactory.js';
- import * as   IrirRef  from './types/concreteTypes/iriRef.js';
- import * as   Primitive  from './types/concreteTypes/primitive.js';
- import * as   InlineShape  from './shexUtils/inlineShape.js';
+//let htmlUtils = require('../../utils/htmlUtils.js')
+//let TypesFactory = require('./types/typesFactory.js');
+let IrirRef = require('./types/concreteTypes/iriRef.js');
+//let Primitive = require('./types/concreteTypes/primitive.js');
+//let InlineShape = require('./shexUtils/inlineShape.js');
 
 class Triple {
 
 
+/*
     constructor(id,type=new IrirRef('tripleName'),value=new Primitive(),inlineShape=new InlineShape() ,cardinality='',showValues=false) {
         this.id = id;
         this.type = type;
@@ -14,6 +16,12 @@ class Triple {
         this.inlineShape = inlineShape;
         this.factory = new TypesFactory();
         this.showValues = showValues;
+      }
+      */
+
+    constructor(id,type=new IrirRef('tripleName')) {
+        this.id = id;
+        this.type = type;
       }
 
 
@@ -82,4 +90,4 @@ class Triple {
 
 }
 
-export default Triple;
+module.exports  = Triple;

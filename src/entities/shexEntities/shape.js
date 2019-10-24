@@ -1,9 +1,13 @@
- import * as  htmlUtils  from '../../utils/htmlUtils.js';
- import * as  TypesFactory  from './types/typesFactory.js';
- import * as  IrirRef  from './types/concreteTypes/iriRef.js';
+/*
+let htmlUtils = require('../../utils/htmlUtils.js');
+let TypesFactory = require('./types/typesFactory.js');
+*/
+let IrirRef = require('./types/concreteTypes/iriRef.js');
+let PrefixedIri = require('./types/concreteTypes/prefixedIri.js');
 
 class Shape {
 
+    /*
     constructor(id,type=new IrirRef('shapeName'),triples = []) {
       this.id = id;
       this.type = type;
@@ -12,6 +16,15 @@ class Shape {
       this.factory = new TypesFactory();
     }
 
+*/
+
+constructor(id,type=new IrirRef(),triples = []) {
+      this.id = id;
+      this.type = type;
+      this.triples = triples;
+      this.triplesCount = this.triples.length;
+     // this.factory = new TypesFactory();
+    }
 
     addTriple(triple){
         this.triples.push(triple);
@@ -20,7 +33,7 @@ class Shape {
 
     removeTriple(tripleId){
       this.triples = this.triples.filter(function( obj ) {
-        return obj.id !== tripleId
+        return obj.id != tripleId
       });
     }
 
@@ -49,7 +62,7 @@ class Shape {
 
 
      getHtml(){
-       return htmlUtils.getShapeHtml(this);
+      // return htmlUtils.getShapeHtml(this);
      }
 
 
@@ -69,4 +82,4 @@ class Shape {
 
   }
 
- export default Shape;
+  module.exports = Shape;

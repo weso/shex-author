@@ -1,4 +1,4 @@
-import Type from '../../type.js';
+let Type = require('../../type.js');
 
 class Literal extends Type{
 
@@ -23,4 +23,4 @@ class Literal extends Type{
 
 }
 
-export default Literal;
+module.exports = Literal;

@@ -1,4 +1,4 @@
-import Type from '../type.js';
+let Type = require('../type.js');
 
 class ShapeReference extends Type{
 
@@ -22,4 +22,4 @@ class ShapeReference extends Type{
 }
 
 
-export default ShapeReference;
+module.exports = ShapeReference;

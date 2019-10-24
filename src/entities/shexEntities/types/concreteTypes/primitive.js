@@ -1,5 +1,5 @@
-import Type from '../type.js';
-import $ from 'jquery';
+let Type = require('../type.js');
+
 //HAY QUE METER TODOS
 const PRIMITIVES = ['String','Integer','Date','Boolean'];
 
@@ -16,7 +16,7 @@ class Primitive extends Type{
             let value = PRIMITIVES[prim];
             let option = $( '<option>' ).text(value).attr( 'value', value.toLowerCase() );
             
-            if(value.toLowerCase() === this.value){
+            if(value.toLowerCase() ==this.value){
                 option.prop('selected', true);
             }
 
@@ -37,4 +37,4 @@ class Primitive extends Type{
 
 }
 
-export default Primitive;
+module.exports = Primitive;

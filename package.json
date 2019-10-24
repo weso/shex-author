@@ -1,5 +1,5 @@
 {
-  "name": "reactest",
+  "name": "my-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -29,7 +29,6 @@
     ]
   },
   "devDependencies": {
-    "jquery": "^3.4.1",
-    "yashe": "^1.1.15"
+    "yashe": "^1.1.17"
   }
 }

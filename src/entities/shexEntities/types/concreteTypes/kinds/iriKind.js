@@ -1,4 +1,4 @@
-import Type from '../../type.js';
+let Type = require('../../type.js');
 
 class IriKind extends Type{
 
@@ -23,4 +23,4 @@ class IriKind extends Type{
 
 }
 
-export default IriKind;
+module.exports = IriKind;

@@ -4,15 +4,9 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import $ from 'jquery';
-import drawUtils from './utils/drawUtils.js';
-import prefixUtils from './utils/prefixUtils.js';
-import inlineUtils from './utils/inlineUtils.js';
-import listenerUtils from './utils/listenerUtils.js';
-import assistantUtils from './utils/assistantUtils.js';
+import 'yashe/dist/yashe.min.css'
 
-import Editor from './entities/editor.js';
-
+let YASHE = require('yashe');
 
 
 ReactDOM.render(<App />, document.getElementById('root'));
