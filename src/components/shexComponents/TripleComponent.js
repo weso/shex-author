@@ -2,6 +2,7 @@
 import React,{Component} from 'react';
 
 import TripleTypeComp from './typesComponents/TripleTypeComp';
+import CardinalityComp from './cardComponents/CardinalityComp';
 
 class TripleComponent extends Component {
 
@@ -18,12 +19,7 @@ class TripleComponent extends Component {
                         
                         <TripleTypeComp triple={this.props.triple} />
                       
-                        <select className="col-sm-3  form-control tripleCardinality">
-                            <option value="">Exactly one</option>
-                            <option value="*">Zero or more</option>
-                            <option value="+">One at least</option>
-                            <option value="?">One or none</option>
-                        </select>
+                        <CardinalityComp triple={this.props.triple} />
 
                         <button className="col-xs-10 deletePropButton mdc-icon-button material-icons btn-danger">delete</button>
                         <div className="checkbox valuesCheck">

@@ -1,7 +1,6 @@
 
 import React,{Component} from 'react';
 
-let ShapeStore = require('../../../entities/shapeStore.js')
 
 class ShapeTypeComp extends Component {
 
@@ -17,8 +16,6 @@ class ShapeTypeComp extends Component {
         let type = event.target.value;
         this.shape.setType(type);
         this.forceUpdate();
-
-        console.log(ShapeStore.getInstance().getShapes());
 
     }
 

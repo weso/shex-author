@@ -1,7 +1,6 @@
 
 import React,{Component} from 'react';
 
-let ShapeStore = require('../../../entities/shapeStore.js')
 
 class TripleTypeComp extends Component {
 
@@ -18,8 +17,6 @@ class TripleTypeComp extends Component {
         let type = event.target.value;
         this.triple.setType(type);
         this.forceUpdate();
-
-        console.log(ShapeStore.getInstance().getShapes());
 
     }
 
