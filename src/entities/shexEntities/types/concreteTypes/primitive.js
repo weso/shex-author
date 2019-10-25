@@ -1,4 +1,5 @@
 let Type = require('../type.js');
+let $ = require('jquery');
 
 //HAY QUE METER TODOS
 const PRIMITIVES = ['String','Integer','Date','Boolean'];
@@ -19,10 +20,14 @@ class Primitive extends Type{
             if(value.toLowerCase() ==this.value){
                 option.prop('selected', true);
             }
-
             select.append(option);
         }
-        return select;
+        
+        let html = '<select class="col-sm form-control tripleValue">';
+        html+=select.html()
+        html+='</select>';
+
+        return html;
     }
 
     getTypeName(){
