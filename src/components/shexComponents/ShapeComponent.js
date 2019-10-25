@@ -21,9 +21,6 @@ class ShapeComponent extends Component {
          console.log(this.state.value)
     }
 
-    getType(shape){
-        return { __html: shape.type.getHtml()}
-    }
 
     
     render(){
@@ -31,7 +28,7 @@ class ShapeComponent extends Component {
                     <div className="row shapes-header">
                         <label className="col-sm-2">Shape </label>
                         
-                        <ShapeType type={this.shape.type} />
+                        <ShapeType type={this.shape.type} shape={this.shape} shapeId={this.shape.id} />
 
                         <button className="col-xs-10 deleteShapeButton mdc-icon-button material-icons btn-danger">delete</button>
                     </div>

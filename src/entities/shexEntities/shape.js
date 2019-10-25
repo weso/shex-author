@@ -1,29 +1,23 @@
 /*
 let htmlUtils = require('../../utils/htmlUtils.js');
-let TypesFactory = require('./types/typesFactory.js');
 */
+let TypesFactory = require('./types/typesFactory.js');
+
 let IrirRef = require('./types/concreteTypes/iriRef.js');
 let PrefixedIri = require('./types/concreteTypes/prefixedIri.js');
 
+
+
 class Shape {
 
-    /*
-    constructor(id,type=new IrirRef('shapeName'),triples = []) {
-      this.id = id;
-      this.type = type;
-      this.triples = triples;
-      this.triplesCount = this.triples.length;
-      this.factory = new TypesFactory();
-    }
 
-*/
 
 constructor(id,type=new IrirRef('shapeName'),triples = []) {
       this.id = id;
       this.type = type;
       this.triples = triples;
       this.triplesCount = this.triples.length;
-     // this.factory = new TypesFactory();
+      this.factory = new TypesFactory();
     }
 
     addTriple(triple){
