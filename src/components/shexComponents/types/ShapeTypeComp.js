@@ -2,20 +2,19 @@
 import React,{Component} from 'react';
 
 
-class TripleTypeComp extends Component {
+class ShapeTypeComp extends Component {
 
    
     constructor(props) {
         super(props);
-        this.triple = props.triple;
-
+        this.shape = props.shape;
         this.handleChange = this.handleChange.bind(this);
     }
 
     handleChange(event) {
    
         let type = event.target.value;
-        this.triple.setType(type);
+        this.shape.setType(type);
         this.forceUpdate();
 
     }
@@ -23,19 +22,19 @@ class TripleTypeComp extends Component {
 
 
 
-    getType(triple){
-        return { __html: this.triple.type.getHtml()}
+    getType(shape){
+        return { __html: this.shape.type.getHtml()}
     }
     
     render(){
         return <div className="row col-sm-6">
-                    <select className="col-sm form-control tripleType" 
-                            value={this.triple.type.getTypeName()} 
+                    <select className="col-sm form-control shapeType" 
+                            value={this.shape.type.getTypeName()} 
                             onChange={this.handleChange}>
 
-                                <option value="iriRef">IriRef</option>
-                                <option value="prefixedIri">Prefixed</option>
-                             
+                            <option value="iriRef">IriRef</option>
+                            <option value="prefixedIri">Prefixed</option>
+                            <option value="bnode">BNode</option>
                     </select>
 
                     <div className="row col-sm" 
@@ -48,5 +47,5 @@ class TripleTypeComp extends Component {
 
 }
 
-export default TripleTypeComp;
+export default ShapeTypeComp;
 

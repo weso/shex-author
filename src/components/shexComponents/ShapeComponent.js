@@ -2,7 +2,7 @@
 import React,{Component} from 'react';
 
 import TripleComponent from './TripleComponent';
-import ShapeTypeComp from './typesComponents/ShapeTypeComp';
+import ShapeTypeComp from './types/ShapeTypeComp';
 
 class ShapeComponent extends Component {
 

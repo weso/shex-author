@@ -1,16 +1,12 @@
 
 import React,{Component} from 'react';
 
-import TripleTypeComp from './typesComponents/TripleTypeComp';
-import CardinalityComp from './cardComponents/CardinalityComp';
+import TripleTypeComp from './types/TripleTypeComp';
+import CardinalityComp from './cardinality/CardinalityComp';
+
+import ValueComponent from './ValueComponent';
 
 class TripleComponent extends Component {
-
-
-    getValue(triple){
-        return { __html: triple.value.getHtml()}
-    }
-
 
     render(){
         return <div className="row tripleRow">
@@ -28,29 +24,8 @@ class TripleComponent extends Component {
                             </label>
                         </div>
                         
-                        <div className="col-12 valuesCol"  >
-                            <div className="row values-container">
-                                <div className="col-10 triplesVal ">
-                                    <div className="row">
-                                        <label className="col-3 valueLabel">Value</label>
-                                        <select className="col-3 form-control valueType">
-                                            <option value="primitive">Primitive</option>
-                                            <option value="shape">Shape</option>
-                                            <option value="iriRef">IriRef</option>
-                                            <option value="prefixedIri">Prefixed</option>
-                                            <option value="literal">Literal</option>
-                                            <option value="nonLiteral">NonLiteral</option>
-                                            <option value="iriKind">IRI</option>
-                                            <option value="bnodeKind">BNODE</option>
-                                        </select>
-
-                                        <div className="row col-sm-3" dangerouslySetInnerHTML={this.getValue(this.props.triple)} /> 
-                                        <select className="col-4 form-control valueInlineShape"/>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <ValueComponent triple={this.props.triple} />
+                       
                     </div>
                 </div>
                                    
