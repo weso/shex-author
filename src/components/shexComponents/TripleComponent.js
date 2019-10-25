@@ -39,7 +39,7 @@ class TripleComponent extends Component {
                             </label>
                         </div>
                         
-                        <div className="col-12 valuesCol" >
+                        <div className="col-12 valuesCol"  >
                             <div className="row values-container">
                                 <div className="col-10 triplesVal ">
                                     <div className="row">

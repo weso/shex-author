@@ -22,6 +22,28 @@ function Editor() {
                 textAreaRef.current, 
                 options)
          
+
+            y.on('humanEvent', function() {
+                /*
+                drawEditor();
+                updatePrefixes();
+                updateInlineShapes();
+                */
+                console.log('humanEvent');
+            });
+
+
+
+            y.on('blur', function() {
+                /*
+                if(!yashe.hasErrors(yashe)){
+                    updateAssistant();
+                }
+                */
+                console.log('blur');
+            });
+
+
             //y.setValue(props.value)
             y.refresh();
             setYashe(y);

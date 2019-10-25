@@ -9,7 +9,7 @@ class BNode extends Type{
 
 
     getHtml(){
-        let str = '<input class="'+this.context+' form-control col-sm-2" context="text" value="replaceName">';
+        let str = '<input class="'+this.context+' form-control col-sm" context="text" value="replaceName">';
         if(this.getValue() == ''){
             this.setValue('example')
         }
