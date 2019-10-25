@@ -1,13 +1,10 @@
 
 import React,{Component} from 'react';
 
+import TripleTypeComp from './typesComponents/TripleTypeComp';
 
 class TripleComponent extends Component {
 
-   
-    getType(triple){
-        return { __html: triple.type.getHtml()}
-    }
 
     getValue(triple){
         return { __html: triple.value.getHtml()}
@@ -18,13 +15,9 @@ class TripleComponent extends Component {
         return <div className="row tripleRow">
                     <div className="row triples-header">
                         <label className="col-sm-1 tripleLabel">Triple</label>                        
-                        <select className="col-sm-2 form-control tripleType">
-                            <option value="iriRef">IriRef</option>
-                            <option value="prefixedIri">Prefixed</option>
-                        </select>
-            
-                        <div className="row col-sm-4" dangerouslySetInnerHTML={this.getType(this.props.triple)} /> 
-                    
+                        
+                        <TripleTypeComp triple={this.props.triple} />
+                      
                         <select className="col-sm-3  form-control tripleCardinality">
                             <option value="">Exactly one</option>
                             <option value="*">Zero or more</option>

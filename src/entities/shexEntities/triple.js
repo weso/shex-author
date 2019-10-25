@@ -1,5 +1,5 @@
 //let htmlUtils = require('../../utils/htmlUtils.js')
-//let TypesFactory = require('./types/typesFactory.js');
+let TypesFactory = require('./types/typesFactory.js');
 let IrirRef = require('./types/concreteTypes/iriRef.js');
 let Primitive = require('./types/concreteTypes/primitive.js');
 let InlineShape = require('./shexUtils/inlineShape.js');
@@ -13,7 +13,7 @@ class Triple {
         this.value = value;
         this.cardinality = cardinality;
         this.inlineShape = inlineShape;
-        //this.factory = new TypesFactory();
+        this.factory = new TypesFactory();
         this.showValues = showValues;
       }
       
