@@ -6,7 +6,7 @@ import ShapeTypeComp from './types/ShapeTypeComp';
 
 class ShapeComponent extends Component {
 
-  
+
     render(){
         return <div className="shapes-container">
                     <div className="row shapes-header">

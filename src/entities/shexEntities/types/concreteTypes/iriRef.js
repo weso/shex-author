@@ -9,7 +9,7 @@ class IriRef extends Type{
 
 
     getHtml(){
-        return '<input class="'+this.context+' form-control col-sm" context="text" value="'+this.getValue()+'">';
+        return '<input class="'+this.context+' form-control col-sm" context="text" value="'+this.value+'">';
     }
 
     getTypeName(){

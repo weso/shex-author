@@ -6,11 +6,7 @@ let TypesFactory = require('./types/typesFactory.js');
 let IrirRef = require('./types/concreteTypes/iriRef.js');
 let PrefixedIri = require('./types/concreteTypes/prefixedIri.js');
 
-
-
 class Shape {
-
-
 
 constructor(id,type=new IrirRef('shapeName'),triples = []) {
       this.id = id;

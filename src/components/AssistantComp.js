@@ -7,7 +7,7 @@ import ShapeComponent from './shexComponents/ShapeComponent';
 
 
 
-class Assistant extends Component {
+class AssistantComp extends Component {
 
   
     render(){
@@ -24,5 +24,5 @@ class Assistant extends Component {
 
 }
 
-export default Assistant;
+export default AssistantComp;
 
