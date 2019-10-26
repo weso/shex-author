@@ -19,8 +19,11 @@ class AssistantComp extends Component {
    
 
     deleteShape = (shapeId) =>{
-        const newShapes = this.state.shapes.filter(shape => shape.id != shapeId);
-        this.setState({shapes:newShapes});
+        var response = window.confirm('Are you sure?');
+        if (response == true) {
+            const newShapes = this.state.shapes.filter(shape => shape.id != shapeId);
+            this.setState({shapes:newShapes});
+        }
     }
 
   
