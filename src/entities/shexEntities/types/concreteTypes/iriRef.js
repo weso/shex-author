@@ -1,4 +1,6 @@
 let Type = require('../type.js');
+let Editor = require('../../../editor.js')
+
 
 class IriRef extends Type{
 

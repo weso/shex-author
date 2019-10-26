@@ -24,7 +24,7 @@ class ShapeComponent extends Component {
         const newTriples = this.state.triples.filter( triple => triple.id != tripleId);
         this.shape.setTriples(newTriples);
         this.setState({triples:newTriples})
-        
+
     }
 
 
