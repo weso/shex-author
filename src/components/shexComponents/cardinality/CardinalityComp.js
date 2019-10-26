@@ -8,15 +8,21 @@ class CardinalityComp extends Component {
     constructor(props) {
         super(props);
         this.triple = props.triple;
-
         this.handleChange = this.handleChange.bind(this);
+
+        this.state = {
+
+            cardinality:this.triple.cardinality.toString()
+
+        }
+
     }
 
     handleChange(event) {
    
         let cardinality = event.target.value;
         this.triple.setCardinality(cardinality);
-        this.forceUpdate();
+        this.setState({cardinality:cardinality})
 
     }
 
@@ -24,7 +30,7 @@ class CardinalityComp extends Component {
     
     render(){
         return  <select className="col-sm-3  form-control tripleCardinality"
-                        value={this.triple.cardinality.toString()}
+                        value={this.state.cardinality}
                         onChange={this.handleChange}>
 
                             <option value="">Exactly one</option>
