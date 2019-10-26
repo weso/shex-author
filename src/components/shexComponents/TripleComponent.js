@@ -8,23 +8,35 @@ import ValueComponent from './ValueComponent';
 
 class TripleComponent extends Component {
 
+    constructor(props){
+        super(props);
+        this.deleteTriple = this.props.deleteTriple;
+        this.state = {
+            triple:this.props.triple
+        }
+    }
+
     render(){
         return <div className="row tripleRow">
                     <div className="row triples-header">
                         <label className="col-sm-1 tripleLabel">Triple</label>                        
                         
-                        <TripleTypeComp triple={this.props.triple} />
+                        <TripleTypeComp triple={this.state.triple} />
                       
-                        <CardinalityComp triple={this.props.triple} />
+                        <CardinalityComp triple={this.state.triple} />
 
-                        <button className="col-xs-10 deletePropButton mdc-icon-button material-icons btn-danger">delete</button>
+                        <button className="col-xs-10 deletePropButton mdc-icon-button material-icons btn-danger"
+                                onClick={this.deleteTriple.bind(this,this.state.triple.id)}>
+                                delete
+                        </button>
+
                         <div className="checkbox valuesCheck">
                             <label>Values 
                                 <input className="check" type="checkbox" value=""/>
                             </label>
                         </div>
                         
-                        <ValueComponent triple={this.props.triple} />
+                        <ValueComponent triple={this.state.triple} />
                        
                     </div>
                 </div>

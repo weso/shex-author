@@ -21,8 +21,23 @@ shape0.addTriple(new Triple(0,new IriRef('shapeName','name'),new Literal(),new I
 shape0.addTriple(new Triple(1,new PrefixedIri('tripleName')));
 shape0.addTriple(new Triple(2));
 
+/*
+let shape1 = new Shape(1,new IriRef('shapeName','User'));
+shape1.addTriple(new Triple(2));
+
+let shape2 = new Shape(2,new IriRef('shapeName','User'));
+shape2.addTriple(new Triple(0,new IriRef('shapeName','name'),new Literal(),new InlineShape(),'?',false));
+shape2.addTriple(new Triple(1,new PrefixedIri('tripleName')));
+shape2.addTriple(new Triple(2));
+
+
+ShapeStore.getInstance().addShape(shape1);
+ShapeStore.getInstance().addShape(shape2);
+
+*/
 
 ShapeStore.getInstance().addShape(shape0);
+
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

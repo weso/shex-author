@@ -45,6 +45,9 @@ constructor(id,type=new IrirRef('shapeName'),triples = []) {
         return this.triples;
      }
 
+    setTriples(triples){
+      this.triples = triples;
+    }
 
     setType(type){
         this.type = this.factory.createType(type,'shapeName');
