@@ -14,7 +14,10 @@ class ShapeComponent extends Component {
                         
                         <ShapeTypeComp shape={this.props.shape} />
 
-                        <button className="col-xs-10 deleteShapeButton mdc-icon-button material-icons btn-danger">delete</button>
+                        <button className="col-xs-10 deleteShapeButton mdc-icon-button material-icons btn-danger" 
+                                onClick={this.props.deleteShape.bind(this,this.props.shape.id)}>
+                                delete
+                        </button>
                     </div>
                     <button className="btn-primary addPropButton col-xs-3">+ Triple</button>
                     
