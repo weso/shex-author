@@ -47,7 +47,7 @@ class ValueTypeComp extends Component {
 
                     <div className="row col" 
                          dangerouslySetInnerHTML={this.getValue(this.triple.value)} /> 
-                </div>
+                    </div>
                                     
                                    
     }
