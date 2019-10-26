@@ -4,6 +4,9 @@ import React,{Component} from 'react';
 import TripleComponent from './TripleComponent';
 import ShapeTypeComp from './types/ShapeTypeComp';
 
+let Triple = require('../../entities/shexEntities/triple.js');
+let ShapeStore = require('../../entities/shapeStore.js');
+
 class ShapeComponent extends Component {
 
     constructor(props){
@@ -17,6 +20,22 @@ class ShapeComponent extends Component {
         }
 
     }
+
+
+    addTriple = () =>{
+
+        const id = this.shape.getTriplesCount();
+        const newTriple = new Triple(id);
+
+        this.setState({ 
+            triples: [...this.state.triples,newTriple]
+        });
+
+
+        this.shape.addTriple(newTriple);
+
+    }
+
 
 
     deleteTriple = (tripleId) =>{
@@ -42,7 +61,9 @@ class ShapeComponent extends Component {
                                 delete
                         </button>
                     </div>
-                    <button className="btn-primary addPropButton col-xs-3">+ Triple</button>
+                    <button className="btn-primary addPropButton col-xs-3"
+                            onClick={this.addTriple}>
+                            + Triple</button>
                     
                     <div className="triples-container col-xs">
                         {this.state.triples.map(triple =>
