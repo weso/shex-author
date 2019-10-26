@@ -9,14 +9,21 @@ class ShapeTypeComp extends Component {
         super(props);
         this.shape = props.shape;
         this.handleChange = this.handleChange.bind(this);
+
+        this.state = {
+
+            type:this.shape.type.getTypeName()
+
+        }
+
     }
 
     handleChange(event) {
    
         let type = event.target.value;
         this.shape.setType(type);
-        this.forceUpdate();
-
+        this.setState({type:type});
+     
     }
 
 
@@ -29,7 +36,7 @@ class ShapeTypeComp extends Component {
     render(){
         return <div className="row col-sm-6">
                     <select className="col-sm form-control shapeType" 
-                            value={this.shape.type.getTypeName()} 
+                            value={this.state.type} 
                             onChange={this.handleChange}>
 
                             <option value="iriRef">IriRef</option>

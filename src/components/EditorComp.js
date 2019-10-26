@@ -3,7 +3,10 @@ import 'yashe/dist/yashe.min.css';
 
 
 let YASHE = require('yashe');
+
 let Editor = require('../entities/editor.js');
+let ShapeStore = require('../entities/shapeStore.js');
+
 let tokenUtils = require('../utils/tokenUtils.js');
 
 
@@ -25,8 +28,11 @@ class EditorComp extends Component {
               //updateAssistant();
               let tokens = tokenUtils.getTokens();
               let defShapes = tokenUtils.getDefinedShapes(tokens);
-              //let shapeStore = ShapeStore.getInstance();
+              let shapeStore = ShapeStore.getInstance();
               let shapes = tokenUtils.getShapes(defShapes);
+
+              shapeStore.setShapes(shapes);
+              shapeStore.setShapesCount(shapes.length)
              
           }
       });

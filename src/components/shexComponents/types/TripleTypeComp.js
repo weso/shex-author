@@ -8,15 +8,20 @@ class TripleTypeComp extends Component {
     constructor(props) {
         super(props);
         this.triple = props.triple;
-
         this.handleChange = this.handleChange.bind(this);
+
+        this.state = {
+
+            type:this.triple.type.getTypeName()
+
+        }
     }
 
     handleChange(event) {
    
         let type = event.target.value;
         this.triple.setType(type);
-        this.forceUpdate();
+        this.setState({type:type})
 
     }
 
@@ -30,7 +35,7 @@ class TripleTypeComp extends Component {
     render(){
         return <div className="row col-sm-6">
                     <select className="col-sm form-control tripleType" 
-                            value={this.triple.type.getTypeName()} 
+                            value={this.state.type} 
                             onChange={this.handleChange}>
 
                             <option value="iriRef">IriRef</option>

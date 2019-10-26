@@ -4,9 +4,6 @@ import '../App.css';
 import ShapeComponent from './shexComponents/ShapeComponent';
 
 
-
-
-
 class AssistantComp extends Component {
 
   

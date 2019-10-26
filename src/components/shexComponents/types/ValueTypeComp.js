@@ -5,15 +5,21 @@ class ValueTypeComp extends Component {
     constructor(props) {
         super(props);
         this.triple = props.triple;
-
         this.handleChange = this.handleChange.bind(this);
+
+        this.state = {
+
+            type:this.triple.value.getTypeName()
+
+        }
+
     }
 
     handleChange(event) {
    
-        let type = event.target.value;
-        this.triple.setValue(type);
-        this.forceUpdate();
+        let value = event.target.value;
+        this.triple.setValue(value);
+        this.setState({value:value})
 
     }
 
@@ -26,7 +32,7 @@ class ValueTypeComp extends Component {
     render(){
         return  <div className="row col-6">
                     <select className="col form-control valueType"
-                                    value={this.triple.value.getTypeName()} 
+                                    value={this.state.value} 
                                     onChange={this.handleChange}>
 
                                     <option value="primitive">Primitive</option>
