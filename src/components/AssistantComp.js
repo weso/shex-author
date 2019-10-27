@@ -27,7 +27,9 @@ class AssistantComp extends Component {
                                     shape={shape}
                                     addTriple={this.props.addTriple}
                                     deleteShape={this.props.deleteShape}
-                                    deleteTriple={this.props.deleteTriple} 
+                                    deleteTriple={this.props.deleteTriple}
+                                    changeShapeType={this.props.changeShapeType}
+                                    changeShapeValue={this.props.changeShapeValue}
                                     />
 
                 )}

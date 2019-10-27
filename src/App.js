@@ -43,6 +43,22 @@ class App extends Component {
 
   }
 
+  changeShapeType = (shapeId,event) =>{
+
+      
+      const newShapes = this.state.shapes.filter(shape => {
+
+        if(shape.id == shapeId){
+          let type = event.target.value;
+          shape.setType(type);
+        }
+        return shape;
+    });
+
+    this.setState({shapes:newShapes});
+    Codemirror.signal(Editor.getInstance().getYashe(),'humanEvent',newShapes);
+  }
+
 
   deleteShape = (shapeId) =>{
     var response = window.confirm('Are you sure?');
@@ -95,6 +111,23 @@ class App extends Component {
   }
 
 
+  changeShapeValue = (shapeId,value) =>{
+
+    console.log(this.state)
+
+    const newShapes = this.state.shapes.filter(shape => {
+
+        if(shape.id == shapeId){
+          shape.type.setValue(value);
+        }
+        return shape;
+    });
+
+    this.setState({shapes:newShapes})
+    Codemirror.signal(Editor.getInstance().getYashe(),'humanEvent',newShapes);
+
+  }
+
 
 
   render(){
@@ -105,6 +138,8 @@ class App extends Component {
                                  addTriple={this.addTriple}
                                  deleteShape={this.deleteShape}
                                  deleteTriple={this.deleteTriple}
+                                 changeShapeType={this.changeShapeType}
+                                 changeShapeValue={this.changeShapeValue}
                                />
                   
                   <EditorComp shapes={this.state.shapes} 

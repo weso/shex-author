@@ -29,7 +29,6 @@ const Editor = (()=> {
         }
 
         this.draw = function(shapes){
-            console.log(shapes)
             let newContent = this.getPrefixes();
             shapes.forEach(element =>{
                 newContent += element.toString()

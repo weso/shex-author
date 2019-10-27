@@ -9,32 +9,16 @@ let ShapeStore = require('../../entities/shapeStore.js');
 
 class ShapeComponent extends Component {
 
-    constructor(props){
-        super(props);
-
-        
-        
-        /*
-        this.shape = this.props.shape;
-        this.state = {
-
-            triples:this.props.shape.triples
-
-        }
-        */
-
-    }
-
-
-
+   
     render(){
-        // <ShapeTypeComp shape={this.shape} />
-        //deleteTriple={this.deleteTriple}
+
         return <div className="shapes-container">
                     <div className="row shapes-header">
                         <label className="col-sm-2">Shape </label>
                         
-                       
+                       <ShapeTypeComp shape={this.props.shape}
+                                      changeShapeType={this.props.changeShapeType}
+                                      changeShapeValue={this.props.changeShapeValue} />
 
                         <button className="col-xs-10 deleteShapeButton mdc-icon-button material-icons btn-danger" 
                                 onClick={this.props.deleteShape.bind(this,this.props.shape.id)}>

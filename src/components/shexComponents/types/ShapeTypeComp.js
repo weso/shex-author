@@ -1,51 +1,46 @@
 
 import React,{Component} from 'react';
+import IriComp from './concrete/IriComp';
+import PrefixedComp from './concrete/PrefixedComp';
+import BNodeComp from './concrete/BNodeComp';
+
+let IriRef = require('../../../entities/shexEntities/types/concreteTypes/iriRef.js');
+let PrefixedIri = require('../../../entities/shexEntities/types/concreteTypes/prefixedIri.js');
+let BNode = require('../../../entities/shexEntities/types/concreteTypes/bNode.js');
 
 
 class ShapeTypeComp extends Component {
 
    
-    constructor(props) {
-        super(props);
-        this.shape = props.shape;
-        this.handleChange = this.handleChange.bind(this);
+    render(){
 
-        this.state = {
-
-            type:this.shape.type.getTypeName()
-
+        let typeComp;
+        let type = this.props.shape.type;
+        if(type instanceof IriRef){
+            type = <IriComp shape={this.props.shape}
+                            changeShapeValue={this.props.changeShapeValue}/>
+        }
+        if(type instanceof PrefixedIri){
+            type = <PrefixedComp shape={this.props.shape}
+                                changeShapeValue={this.props.changeShapeValue}/>
+        }
+        if(type instanceof BNode){
+            type = <BNodeComp shape={this.props.shape}
+                                changeShapeValue={this.props.changeShapeValue}/>
         }
 
-    }
 
-    handleChange(event) {
-   
-        let type = event.target.value;
-        this.shape.setType(type);
-        this.setState({type:type});
-     
-    }
-
-
-
-
-    getType(shape){
-        return { __html: this.shape.type.getHtml()}
-    }
-    
-    render(){
         return <div className="row col-sm-6">
                     <select className="col-sm form-control shapeType" 
-                            value={this.state.type} 
-                            onChange={this.handleChange}>
+                            value={this.props.shape.type.getTypeName()} 
+                            onChange={this.props.changeShapeType.bind(this,this.props.shape.id)}>
 
                             <option value="iriRef">IriRef</option>
                             <option value="prefixedIri">Prefixed</option>
                             <option value="bnode">BNode</option>
                     </select>
 
-                    <div className="row col-sm" 
-                        dangerouslySetInnerHTML={this.getType()} />
+                   {type}
                 
                 </div>
 
