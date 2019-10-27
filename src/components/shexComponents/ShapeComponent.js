@@ -11,64 +11,48 @@ class ShapeComponent extends Component {
 
     constructor(props){
         super(props);
-        this.deleteShape = this.props.deleteShape;
+
+        
+        
+        /*
         this.shape = this.props.shape;
         this.state = {
 
             triples:this.props.shape.triples
 
         }
+        */
 
     }
-
-
-    addTriple = () =>{
-
-        const id = this.shape.getTriplesCount();
-        const newTriple = new Triple(id);
-
-        this.setState({ 
-            triples: [...this.state.triples,newTriple]
-        });
-
-
-        this.shape.addTriple(newTriple);
-
-    }
-
-
-
-    deleteTriple = (tripleId) =>{
-    
-        const newTriples = this.state.triples.filter( triple => triple.id != tripleId);
-        this.shape.setTriples(newTriples);
-        this.setState({triples:newTriples})
-
-    }
-
 
 
 
     render(){
+        // <ShapeTypeComp shape={this.shape} />
+        //deleteTriple={this.deleteTriple}
         return <div className="shapes-container">
                     <div className="row shapes-header">
                         <label className="col-sm-2">Shape </label>
                         
-                        <ShapeTypeComp shape={this.shape} />
+                       
 
                         <button className="col-xs-10 deleteShapeButton mdc-icon-button material-icons btn-danger" 
-                                onClick={this.deleteShape.bind(this,this.shape.id)}>
+                                onClick={this.props.deleteShape.bind(this,this.props.shape.id)}>
                                 delete
                         </button>
                     </div>
                     <button className="btn-primary addPropButton col-xs-3"
-                            onClick={this.addTriple}>
+                            onClick={this.props.addTriple.bind(this,this.props.shape.id)}>
                             + Triple</button>
                     
                     <div className="triples-container col-xs">
-                        {this.state.triples.map(triple =>
+                        {this.props.shape.triples.map(triple =>
 
-                            <TripleComponent key={triple.id} triple={triple} deleteTriple={this.deleteTriple}/> 
+                            <TripleComponent key={triple.id}
+                                            shapeId={this.props.shape.id} 
+                                            triple={triple}
+                                            deleteTriple={this.props.deleteTriple} 
+                                            /> 
                             
                         )}
                     </div>

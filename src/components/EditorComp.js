@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import 'yashe/dist/yashe.min.css';
 
 
+
 let YASHE = require('yashe');
 
 let Editor = require('../entities/editor.js');
@@ -11,6 +12,13 @@ let tokenUtils = require('../utils/tokenUtils.js');
 
 
 class EditorComp extends Component {
+
+
+  constructor(props){
+    super(props);
+
+    this.replaceShapes = this.props.replaceShapes.bind(this);
+  }
 
   componentDidMount(){
     
@@ -26,6 +34,7 @@ class EditorComp extends Component {
       yashe.on('blur', function() {
           if(!yashe.hasErrors(yashe)){
               //updateAssistant();
+              
               let tokens = tokenUtils.getTokens();
               let defShapes = tokenUtils.getDefinedShapes(tokens);
               let shapeStore = ShapeStore.getInstance();
@@ -33,22 +42,61 @@ class EditorComp extends Component {
 
               shapeStore.setShapes(shapes);
               shapeStore.setShapesCount(shapes.length)
+             // cambia(shapes)
+
              
           }
       });
 
+
+      yashe.on('humanEvent', function(shapes) {
+          console.log(shapes)
+          //yashe.setValue(shapes[0].toString())
+         // shapes = null;
+          //Aquí hay que pintar bien
+      });
+
     
     Editor.getInstance().setYashe(yashe);
+    
+  }
+
+  
+
+  cambia(){
+
+    let yashe = Editor.getInstance().getYashe();
+
+    if(!yashe.hasErrors(yashe)){
+              //updateAssistant();
+              
+              let tokens = tokenUtils.getTokens();
+              let defShapes = tokenUtils.getDefinedShapes(tokens);
+              //let shapeStore = ShapeStore.getInstance();
+              let newShapes = tokenUtils.getShapes(defShapes);
+
+              //shapeStore.setShapes(shapes);
+              //shapeStore.setShapesCount(shapes.length)
+             // cambia(shapes)
+            
+              this.replaceShapes(newShapes);
+           //  this.setProps({shapes:newShapes});
+    
+    }
+  
 
   }
 
 
   render(){
-      return  <div id='showcase' className='col-lg show'></div>
-  
+      return  <div id='showcase' className='col-lg show'>
+      
+      <button onClick={this.cambia.bind(this)}>Imprime</button></div>
   }
     
 }
 
 
+
 export default EditorComp;
+

@@ -10,23 +10,22 @@ class TripleComponent extends Component {
 
     constructor(props){
         super(props);
-        this.deleteTriple = this.props.deleteTriple;
-        this.state = {
-            triple:this.props.triple
-        }
+        //this.deleteTriple = this.props.deleteTriple;
+   
     }
 
     render(){
+        // onClick={this.deleteTriple.bind(this,this.state.triple.id)}
         return <div className="row tripleRow">
                     <div className="row triples-header">
                         <label className="col-sm-1 tripleLabel">Triple</label>                        
                         
-                        <TripleTypeComp triple={this.state.triple} />
+                        <TripleTypeComp triple={this.props.triple} />
                       
-                        <CardinalityComp triple={this.state.triple} />
+                        <CardinalityComp triple={this.props.triple} />
 
                         <button className="col-xs-10 deletePropButton mdc-icon-button material-icons btn-danger"
-                                onClick={this.deleteTriple.bind(this,this.state.triple.id)}>
+                               onClick={this.props.deleteTriple.bind(this,this.props.shapeId,this.props.triple.id)}>
                                 delete
                         </button>
 
@@ -36,7 +35,7 @@ class TripleComponent extends Component {
                             </label>
                         </div>
                         
-                        <ValueComponent triple={this.state.triple} />
+                        <ValueComponent triple={this.props.triple} />
                        
                     </div>
                 </div>

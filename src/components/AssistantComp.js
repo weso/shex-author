@@ -2,12 +2,11 @@
 import React,{Component} from 'react';
 import '../App.css';
 import ShapeComponent from './shexComponents/ShapeComponent';
+import {connect} from 'react-redux';
 
-let Editor = require('../entities/editor.js');
-let ShapeStore = require('../entities/shapeStore.js');
 
-let Shape = require('../entities/shexEntities/shape.js');
 
+let Triple = require('../entities/shexEntities/triple.js');
 
 
 class AssistantComp extends Component {
@@ -15,49 +14,26 @@ class AssistantComp extends Component {
 
     constructor(props){
         super(props);
-      
-        this.state = {
-
-            shapes:ShapeStore.getInstance().getShapes()
-
-        }
+        this.addShape = this.props.addShape.bind(this);
     }
-   
-    addShape = () =>{
-
-        const id =  ShapeStore.getInstance().getShapeCount();
-        const newShape = new Shape(id);
-
-        this.setState({ 
-            shapes: [...this.state.shapes,newShape]
-        });
-
-        ShapeStore.getInstance().addShape(newShape);
-
-    }
-
-
-    deleteShape = (shapeId) =>{
-
-        var response = window.confirm('Are you sure?');
-        if (response == true) {
-            const newShapes = this.state.shapes.filter(shape => shape.id != shapeId);
-            this.setState({shapes:newShapes});
-            ShapeStore.getInstance().setShapes(newShapes);
-        }
-        
-    }
-
-
   
+
+   
     render(){
         return <div id='assistant-container' className="assistant col-lg-6" > 
-                {this.state.shapes.map(shape =>
+                {this.props.shapes.map(shape =>
                 
-                    <ShapeComponent key={shape.id} shape={shape} addShape={this.addShape} deleteShape={this.deleteShape}/>
+                    <ShapeComponent key={shape.id} 
+                                    shape={shape}
+                                    addTriple={this.props.addTriple}
+                                    deleteShape={this.props.deleteShape}
+                                    deleteTriple={this.props.deleteTriple} 
+                                    />
 
                 )}
-                 <button className="btn-primary addShapeButton col-xs-3"
+
+                <button id='addShapeButton' 
+                        className="btn-primary addShapeButton"
                         onClick={this.addShape}>
                         + Shape
                 </button>
@@ -67,5 +43,15 @@ class AssistantComp extends Component {
 
 }
 
-export default AssistantComp;
+/*
+const mapStateToProps = (state) =>{
+    return {
+        shapes:state.shapes
+    };
+}
 
+
+export default connect(mapStateToProps)(AssistantComp);
+
+*/
+export default AssistantComp;

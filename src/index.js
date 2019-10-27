@@ -16,12 +16,15 @@ let InlineShape = require('./entities/shexEntities/shexUtils/inlineShape.js');
 let ShapeStore = require('./entities/shapeStore.js');
 
 
+let shapes = [];
 
 let shape0 = new Shape(0,new IriRef('shapeName','User'));
 shape0.addTriple(new Triple(0,new IriRef('shapeName','name'),new Literal(),new InlineShape(),'?',false));
 shape0.addTriple(new Triple(1,new PrefixedIri('tripleName')));
 shape0.addTriple(new Triple(2));
 
+
+shapes.push(shape0);
 /*
 let shape1 = new Shape(1,new IriRef('shapeName','User'));
 shape1.addTriple(new Triple(2));
@@ -41,7 +44,7 @@ ShapeStore.getInstance().addShape(shape0);
 
 
 ReactDOM.render(<Nav />, document.getElementById('nav'));
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App shapes={shapes}/>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
