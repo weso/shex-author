@@ -50,17 +50,13 @@ class EditorComp extends Component {
 
 
       yashe.on('humanEvent', function(shapes) {
-          console.log(shapes)
-          //yashe.setValue(shapes[0].toString())
-         // shapes = null;
-          //Aquí hay que pintar bien
+          Editor.getInstance().draw(shapes);
       });
 
     
     Editor.getInstance().setYashe(yashe);
     
   }
-
   
 
   cambia(){

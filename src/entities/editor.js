@@ -17,8 +17,31 @@ const Editor = (()=> {
         }
 
 
+         this.getPrefixes = function () {
+                let yashe = Editor.getInstance().getYashe();
+                let definedPrefixes = yashe.getDefinedPrefixes();
+                let prefixes='';
+                for(let pre in definedPrefixes){
+                    prefixes+='PREFIX '+pre+':    <'+definedPrefixes[pre]+'>\n';
+                }
+                prefixes+='\n';
+                return prefixes;
+        }
+
+        this.draw = function(shapes){
+            console.log(shapes)
+            let newContent = this.getPrefixes();
+            shapes.forEach(element =>{
+                newContent += element.toString()
+            });
+            this.getYashe().setValue(newContent);
+        }
+
+
+
     }
 
+   
 
     let instance;
 

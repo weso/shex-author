@@ -10,19 +10,10 @@ import store from './redux/store';
 
 let Shape = require('./entities/shexEntities/shape.js');
 let Triple = require('./entities/shexEntities/triple.js');
-let PrefixedIri = require('./entities/shexEntities/types/concreteTypes/prefixedIri.js');
-let IriRef = require('./entities/shexEntities/types/concreteTypes/iriRef.js');
-let Literal = require('./entities/shexEntities/types/concreteTypes/kinds/literal.js');
-let InlineShape = require('./entities/shexEntities/shexUtils/inlineShape.js');
-let ShapeStore = require('./entities/shapeStore.js');
 
 let Editor = require('./entities/editor.js');
 
-
-
-
 let Codemirror = require('codemirror');
-
 
 
 class App extends Component {
@@ -32,85 +23,80 @@ class App extends Component {
     super(props)
  
     this.state = {
-
       shapes:this.props.shapes
-
     }
-
   }
 
 
   addShape = () =>{
 
-        const id = this.state.shapes.length;
-        const newShape = new Shape(id);
+      const id = this.state.shapes.length;
+      const newShape = new Shape(id);
+      let newShapes = this.state.shapes;
+      newShapes.push(newShape);
+      
+      this.setState({ 
+          shapes: newShapes
+      });
 
-        this.setState({ 
-            shapes: [...this.state.shapes,newShape]
-        });
-
-
-     // Codemirror.signal(Editor.getInstance().getYashe(),'humanEvent',this.state.shapes);
+      Codemirror.signal(Editor.getInstance().getYashe(),'humanEvent',newShapes);
 
   }
 
 
-    deleteShape = (shapeId) =>{
-        var response = window.confirm('Are you sure?');
-        if (response == true) {
-            const newShapes = this.state.shapes.filter(shape => shape.id != shapeId);
-            this.setState({shapes:newShapes});
-        }
-        
-       // Codemirror.signal(Editor.getInstance().getYashe(),'humanEvent',this.state.shapes);
-       
+  deleteShape = (shapeId) =>{
+    var response = window.confirm('Are you sure?');
+    if (response == true) {
+        const newShapes = this.state.shapes.filter(shape => shape.id != shapeId);
+        this.setState({shapes:newShapes});
+        Codemirror.signal(Editor.getInstance().getYashe(),'humanEvent',newShapes);
     }
+        
+  }
  
     
-     addTriple = (shapeId) =>{
+  addTriple = (shapeId) =>{
 
-        const newShapes = this.state.shapes.filter(shape => {
+    const newShapes = this.state.shapes.filter(shape => {
 
-            if(shape.id == shapeId){
-              const id = shape.getTriplesCount();
-              const newTriple = new Triple(id);
-              shape.addTriple(newTriple);
-            }
-            return shape;
-        });
+        if(shape.id == shapeId){
+          const id = shape.getTriplesCount();
+          const newTriple = new Triple(id);
+          shape.addTriple(newTriple);
+        }
+        return shape;
+    });
 
-       this.setState({shapes:newShapes});
+    this.setState({shapes:newShapes});
+    Codemirror.signal(Editor.getInstance().getYashe(),'humanEvent',newShapes);
 
-    }
-
-
-
-    deleteTriple = (shapeId,tripleId) =>{
-    
-        const newShapes = this.state.shapes.filter(shape => {
-
-            if(shape.id == shapeId){
-              const newTriples = shape.triples.filter( triple => triple.id != tripleId);
-              shape.setTriples(newTriples);
-            }
-            return shape;
-        });
-
-        this.setState({shapes:newShapes})
-
-    }
-
-    replaceShapes = (newShapes) =>{
-      this.setState({shapes:newShapes});
-    }
-
-
-
-  imprime(){
-
-    //console.log(this.shapes);
   }
+
+
+
+  deleteTriple = (shapeId,tripleId) =>{
   
+      const newShapes = this.state.shapes.filter(shape => {
+
+          if(shape.id == shapeId){
+            const newTriples = shape.triples.filter( triple => triple.id != tripleId);
+            shape.setTriples(newTriples);
+          }
+          return shape;
+      });
+
+      this.setState({shapes:newShapes})
+      Codemirror.signal(Editor.getInstance().getYashe(),'humanEvent',newShapes);
+
+  }
+
+  replaceShapes = (newShapes) =>{
+    this.setState({shapes:newShapes});
+  }
+
+
+
+
   render(){
 
       return <div className="row separator"> 
@@ -129,7 +115,6 @@ class App extends Component {
            
   }
     
-
 }
 
 
