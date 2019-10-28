@@ -6,7 +6,7 @@ import {ShapesContext} from '../../../../App';
 function IriComp (props) {
 
     const context = useContext(ShapesContext);
-    const {shape,type} = props;
+    const {shape,triple,type} = props;
 
     let initialValue=shape.type.value;
     if(type !='shape'){
@@ -21,7 +21,7 @@ function IriComp (props) {
           if(type == 'shape'){
             context.changeShapeValue(shape.id,e.target.value);
           }else{
-            //this.props.changeTripleValue(this.props.shape.id,this.props.triple.id,e.target.value);
+            context.changeTripleValue(shape.id,triple.id,e.target.value);
           }
           
     }

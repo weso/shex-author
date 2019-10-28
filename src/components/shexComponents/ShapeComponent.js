@@ -24,6 +24,11 @@ function ShapeComponent (props) {
                                 delete
                     </button>
             </div>
+
+            <button className="btn-primary addPropButton col-xs-3"
+                    onClick={()=>context.addTriple(shape.id)}>
+                    + Triple</button>
+
             <div className="triples-container col-xs">
                     {shape.triples.map(triple =>
 

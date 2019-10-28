@@ -40,7 +40,6 @@ function App() {
 
     const addShape = () =>{
 
-      console.log(shapes)
       const id = shapes.length;
       const newShape = new Shape(id);
 
@@ -48,6 +47,21 @@ function App() {
 
       let newShapes = shapes;
       newShapes.push(newShape)
+      //Codemirror.signal(Editor.getInstance().getYashe(),'humanEvent',newShapes);
+    }
+
+    const addTriple = (shapeId) =>{
+
+      const newShapes = shapes.filter(shape => {
+          if(shape.id == shapeId){
+            const id = shape.getTriplesCount();
+            const newTriple = new Triple(id);
+            shape.addTriple(newTriple);
+          }
+          return shape;
+      });
+
+      setShapes(newShapes);
       //Codemirror.signal(Editor.getInstance().getYashe(),'humanEvent',newShapes);
     }
 
@@ -59,6 +73,19 @@ function App() {
           //Codemirror.signal(Editor.getInstance().getYashe(),'humanEvent',newShapes);
       } 
     }
+
+    const deleteTriple = (shapeId,tripleId) =>{
+
+      const newShapes = shapes.filter(shape => {
+          if(shape.id == shapeId){
+            const newTriples = shape.triples.filter( triple => triple.id != tripleId);
+            shape.setTriples(newTriples);
+          }
+          return shape;
+      });
+      setShapes(newShapes);
+      //Codemirror.signal(Editor.getInstance().getYashe(),'humanEvent',newShapes);
+  }
 
     const changeShapeType = (shapeId,event) =>{
        const newShapes = shapes.filter(shape => {
@@ -83,6 +110,24 @@ function App() {
           setShapes(newShapes);
     }
 
+    const changeTripleValue = (shapeId,tripleId,value) =>{
+      const newShapes = shapes.filter(shape => {
+        if(shape.id == shapeId){
+          shape.triples.filter(triple =>{
+            if(triple.id==tripleId){
+                triple.type.setValue(value);            
+            }
+            return triple             
+          });
+        }
+        return shape;
+    });
+
+    setShapes(newShapes);
+    //Codemirror.signal(Editor.getInstance().getYashe(),'humanEvent',newShapes);
+    }
+
+
     const replaceShapes = (newShapes) =>{
       setShapes(newShapes);
     }
@@ -93,9 +138,12 @@ function App() {
                                     {
                                       shapes:shapes,
                                       addShape:addShape,
+                                      addTriple:addTriple,
                                       deleteShape:deleteShape,
+                                      deleteTriple:deleteTriple,
                                       changeShapeType:changeShapeType,
                                       changeShapeValue:changeShapeValue,
+                                      changeTripleValue:changeTripleValue,
                                       replaceShapes:replaceShapes
                                     }
                                   }>
