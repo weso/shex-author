@@ -46,8 +46,9 @@ function App() {
 
       setShapes([...shapes,newShape]);
 
-      //let newShapes = shapes;
-      //newShapes.push(newShape)
+      let newShapes = shapes;
+      newShapes.push(newShape)
+      //Codemirror.signal(Editor.getInstance().getYashe(),'humanEvent',newShapes);
     }
 
     const deleteShape = (shapeId) =>{
@@ -82,6 +83,10 @@ function App() {
           setShapes(newShapes);
     }
 
+    const replaceShapes = (newShapes) =>{
+      setShapes(newShapes);
+    }
+
     return (
             
             <ShapesContext.Provider value={
@@ -90,12 +95,14 @@ function App() {
                                       addShape:addShape,
                                       deleteShape:deleteShape,
                                       changeShapeType:changeShapeType,
-                                      changeShapeValue:changeShapeValue
+                                      changeShapeValue:changeShapeValue,
+                                      replaceShapes:replaceShapes
                                     }
                                   }>
 
                 <div className="row separator"> 
                     <AssistantComp />
+                    <EditorComp />
                     
                 </div>
             </ShapesContext.Provider>

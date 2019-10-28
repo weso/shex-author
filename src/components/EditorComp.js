@@ -1,25 +1,66 @@
-import React, {Component} from 'react';
+import React, {useState,useContext,useEffect,useRef} from 'react';
 import 'yashe/dist/yashe.min.css';
-
+import {ShapesContext} from '../App';
 
 
 let YASHE = require('yashe');
 
 let Editor = require('../entities/editor.js');
-let ShapeStore = require('../entities/shapeStore.js');
 
 let tokenUtils = require('../utils/tokenUtils.js');
 
 
-class EditorComp extends Component {
+function EditorComp() {
+
+  const [yashe,setYashe] = useState(null);
+  const textAreaRef = useRef(null);
+  const context = useContext(ShapesContext);
+
+  useEffect(() => {
+    
+        if (!yashe) {
+            const options = {
+                persistent:false,
+                lineNumbers: true,
+                viewportMargin: Infinity
+            }
+            
+            const y = YASHE.fromTextArea(
+                textAreaRef.current, 
+                options)
+
+             y.on('blur', function() {
+                if(!y.hasErrors(y)){
+
+                    let tokens = tokenUtils.getTokens();
+                    let defShapes = tokenUtils.getDefinedShapes(tokens);
+                    let newShapes = tokenUtils.getShapes(defShapes);
+              
+                 
+                    context.replaceShapes(newShapes);
+                }
+            });
+
+            y.on('humanEvent', function(shapes) {
+                Editor.getInstance().draw(shapes);
+            });
 
 
-  constructor(props){
-    super(props);
+            //y.setValue(value)
+            y.refresh();
+            setYashe(y);
 
-    this.replaceShapes = this.props.replaceShapes.bind(this);
-  }
+            Editor.getInstance().setYashe(y);
+        }
+    }, [yashe]
+    );
 
+    return  (<div className='col-lg show'>
+                <textarea ref={textAreaRef}/>
+            </div>            
+    );
+
+/*
   componentDidMount(){
     
     let yashe = YASHE(document.getElementById("showcase"),
@@ -53,14 +94,11 @@ class EditorComp extends Component {
     Editor.getInstance().setYashe(yashe);
     
   }
+
+  */
   
-
+ 
   
-
-
-  render(){
-      return  <div id='showcase' className='col-lg show'/>
-  }
     
 }
 
