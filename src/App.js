@@ -2,11 +2,8 @@ import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import { Provider } from 'react-redux';
-
 import EditorComp from './components/EditorComp';
 import AssistantComp from './components/AssistantComp';
-import store from './redux/store';
 
 let Shape = require('./entities/shexEntities/shape.js');
 let Triple = require('./entities/shexEntities/triple.js');
@@ -27,7 +24,6 @@ class App extends Component {
     }
   }
 
-
   addShape = () =>{
 
       const id = this.state.shapes.length;
@@ -45,7 +41,6 @@ class App extends Component {
 
   changeShapeType = (shapeId,event) =>{
 
-      
       const newShapes = this.state.shapes.filter(shape => {
 
         if(shape.id == shapeId){
@@ -89,6 +84,26 @@ class App extends Component {
   }
 
 
+  changeTripleType = (shapeId,tripleId,event) =>{
+
+     const newShapes = this.state.shapes.filter(shape => {
+        if(shape.id == shapeId){
+          shape.triples.filter(triple =>{
+              if(triple.id==tripleId){
+                 let type = event.target.value;
+                  triple.setType(type);                  
+              }
+              return triple             
+          });
+        }
+        return shape;
+    });
+
+    this.setState({shapes:newShapes});
+    Codemirror.signal(Editor.getInstance().getYashe(),'humanEvent',newShapes);
+
+  }
+
 
   deleteTriple = (shapeId,tripleId) =>{
   
@@ -113,12 +128,32 @@ class App extends Component {
 
   changeShapeValue = (shapeId,value) =>{
 
-    console.log(this.state)
 
     const newShapes = this.state.shapes.filter(shape => {
 
         if(shape.id == shapeId){
           shape.type.setValue(value);
+        }
+        return shape;
+    });
+
+    this.setState({shapes:newShapes})
+    Codemirror.signal(Editor.getInstance().getYashe(),'humanEvent',newShapes);
+
+  }
+
+   changeTripleValue = (shapeId,tripleId,value) =>{
+
+    const newShapes = this.state.shapes.filter(shape => {
+
+        if(shape.id == shapeId){
+          shape.triples.filter(triple =>{
+              if(triple.id==tripleId){
+                  triple.type.setValue(value);            
+              }
+              return triple             
+          });
+          
         }
         return shape;
     });
@@ -134,19 +169,21 @@ class App extends Component {
 
       return <div className="row separator"> 
                   <AssistantComp shapes={this.state.shapes}
-                                 addShape={this.addShape}
-                                 addTriple={this.addTriple}
-                                 deleteShape={this.deleteShape}
-                                 deleteTriple={this.deleteTriple}
-                                 changeShapeType={this.changeShapeType}
-                                 changeShapeValue={this.changeShapeValue}
-                               />
-                  
-                  <EditorComp shapes={this.state.shapes} 
-                              replaceShapes={this.replaceShapes}/>
-                  
-              </div>
-             
+                          addShape={this.addShape}
+                          addTriple={this.addTriple}
+                          deleteShape={this.deleteShape}
+                          deleteTriple={this.deleteTriple}
+                          changeShapeType={this.changeShapeType}
+                          changeShapeValue={this.changeShapeValue}
+                          changeTripleType={this.changeTripleType}
+                          changeTripleValue={this.changeTripleValue}
+                    />
+            
+                    <EditorComp shapes={this.state.shapes} 
+                                replaceShapes={this.replaceShapes}/>
+          
+            </div>
+                       
            
   }
     

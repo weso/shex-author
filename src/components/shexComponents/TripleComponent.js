@@ -16,16 +16,21 @@ class TripleComponent extends Component {
 
     render(){
         // onClick={this.deleteTriple.bind(this,this.state.triple.id)}
+        // <CardinalityComp shape={this.props.shape} />
+        //  <ValueComponent shape={this.props.shape} />
         return <div className="row tripleRow">
                     <div className="row triples-header">
                         <label className="col-sm-1 tripleLabel">Triple</label>                        
                         
-                        <TripleTypeComp triple={this.props.triple} />
+                        <TripleTypeComp shape={this.props.shape}
+                                        triple={this.props.triple}
+                                        changeTripleType={this.props.changeTripleType}
+                                        changeTripleValue={this.props.changeTripleValue} />
                       
-                        <CardinalityComp triple={this.props.triple} />
+                       
 
                         <button className="col-xs-10 deletePropButton mdc-icon-button material-icons btn-danger"
-                               onClick={this.props.deleteTriple.bind(this,this.props.shapeId,this.props.triple.id)}>
+                               onClick={this.props.deleteTriple.bind(this,this.props.shape.id,this.props.triple.id)}>
                                 delete
                         </button>
 
@@ -35,7 +40,7 @@ class TripleComponent extends Component {
                             </label>
                         </div>
                         
-                        <ValueComponent triple={this.props.triple} />
+                      
                        
                     </div>
                 </div>

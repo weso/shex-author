@@ -1,50 +1,45 @@
 
 import React,{Component} from 'react';
+import IriComp from './concrete/IriComp';
+import PrefixedComp from './concrete/PrefixedComp';
+
+
+let IriRef = require('../../../entities/shexEntities/types/concreteTypes/iriRef.js');
+let PrefixedIri = require('../../../entities/shexEntities/types/concreteTypes/prefixedIri.js');
 
 
 class TripleTypeComp extends Component {
 
-   
-    constructor(props) {
-        super(props);
-        this.triple = props.triple;
-        this.handleChange = this.handleChange.bind(this);
-
-        this.state = {
-
-            type:this.triple.type.getTypeName()
-
-        }
-    }
-
-    handleChange(event) {
-   
-        let type = event.target.value;
-        this.triple.setType(type);
-        this.setState({type:type})
-
-    }
-
-
-
-
-    getType(triple){
-        return { __html: this.triple.type.getHtml()}
-    }
     
     render(){
+
+        let typeComp;
+        let type = this.props.triple.type;
+        if(type instanceof IriRef){
+            type = <IriComp shape={this.props.shape}
+                            triple={this.props.triple}
+                            type='triple'
+                            changeTripleValue={this.props.changeTripleValue}/>
+        }
+        if(type instanceof PrefixedIri){
+            type = <PrefixedComp shape={this.props.shape}
+                                triple={this.props.triple}
+                                type='triple'
+                                changeTripleValue={this.props.changeTripleValue}/>
+        }
+     
+
         return <div className="row col-sm-6">
                     <select className="col-sm form-control tripleType" 
-                            value={this.state.type} 
-                            onChange={this.handleChange}>
+                            value={this.props.triple.type.getTypeName()} 
+                            onChange={this.props.changeTripleType.bind(this,this.props.shape.id,this.props.triple.id)}>
 
                             <option value="iriRef">IriRef</option>
                             <option value="prefixedIri">Prefixed</option>
                              
                     </select>
 
-                    <div className="row col-sm" 
-                        dangerouslySetInnerHTML={this.getType()} />
+                   {type}
                 
                 </div>
 

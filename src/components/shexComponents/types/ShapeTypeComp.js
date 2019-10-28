@@ -18,10 +18,12 @@ class ShapeTypeComp extends Component {
         let type = this.props.shape.type;
         if(type instanceof IriRef){
             type = <IriComp shape={this.props.shape}
+                            type='shape'
                             changeShapeValue={this.props.changeShapeValue}/>
         }
         if(type instanceof PrefixedIri){
             type = <PrefixedComp shape={this.props.shape}
+                                type='shape'
                                 changeShapeValue={this.props.changeShapeValue}/>
         }
         if(type instanceof BNode){

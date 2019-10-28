@@ -30,21 +30,17 @@ class EditorComp extends Component {
           });
 
     
+      yashe.replaceShapes=this.replaceShapes;
 
       yashe.on('blur', function() {
+             
           if(!yashe.hasErrors(yashe)){
-              //updateAssistant();
-              
+
               let tokens = tokenUtils.getTokens();
               let defShapes = tokenUtils.getDefinedShapes(tokens);
-              let shapeStore = ShapeStore.getInstance();
-              let shapes = tokenUtils.getShapes(defShapes);
-
-              shapeStore.setShapes(shapes);
-              shapeStore.setShapesCount(shapes.length)
-             // cambia(shapes)
-
-             
+              let newShapes = tokenUtils.getShapes(defShapes);
+         
+              yashe.replaceShapes(newShapes);
           }
       });
 
@@ -59,35 +55,11 @@ class EditorComp extends Component {
   }
   
 
-  cambia(){
-
-    let yashe = Editor.getInstance().getYashe();
-
-    if(!yashe.hasErrors(yashe)){
-              //updateAssistant();
-              
-              let tokens = tokenUtils.getTokens();
-              let defShapes = tokenUtils.getDefinedShapes(tokens);
-              //let shapeStore = ShapeStore.getInstance();
-              let newShapes = tokenUtils.getShapes(defShapes);
-
-              //shapeStore.setShapes(shapes);
-              //shapeStore.setShapesCount(shapes.length)
-             // cambia(shapes)
-            
-              this.replaceShapes(newShapes);
-           //  this.setProps({shapes:newShapes});
-    
-    }
   
-
-  }
 
 
   render(){
-      return  <div id='showcase' className='col-lg show'>
-      
-      <button onClick={this.cambia.bind(this)}>Imprime</button></div>
+      return  <div id='showcase' className='col-lg show'/>
   }
     
 }

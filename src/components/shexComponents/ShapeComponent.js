@@ -33,9 +33,11 @@ class ShapeComponent extends Component {
                         {this.props.shape.triples.map(triple =>
 
                             <TripleComponent key={triple.id}
-                                            shapeId={this.props.shape.id} 
+                                            shape={this.props.shape} 
                                             triple={triple}
-                                            deleteTriple={this.props.deleteTriple} 
+                                            deleteTriple={this.props.deleteTriple}
+                                            changeTripleType={this.props.changeTripleType}
+                                            changeTripleValue={this.props.changeTripleValue} 
                                             /> 
                             
                         )}
