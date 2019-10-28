@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 
@@ -7,185 +7,86 @@ import AssistantComp from './components/AssistantComp';
 
 let Shape = require('./entities/shexEntities/shape.js');
 let Triple = require('./entities/shexEntities/triple.js');
+let PrefixedIri = require('./entities/shexEntities/types/concreteTypes/prefixedIri.js');
+let IriRef = require('./entities/shexEntities/types/concreteTypes/iriRef.js');
+let Literal = require('./entities/shexEntities/types/concreteTypes/kinds/literal.js');
+let InlineShape = require('./entities/shexEntities/shexUtils/inlineShape.js');
+
 
 let Editor = require('./entities/editor.js');
 
 let Codemirror = require('codemirror');
 
+let initialShapes = [];
 
-class App extends Component {
+let shape0 = new Shape(0,new IriRef('shapeName','User'));
+shape0.addTriple(new Triple(0,new IriRef('shapeName','name'),new Literal(),new InlineShape(),'?',false));
+shape0.addTriple(new Triple(1,new PrefixedIri('tripleName')));
+shape0.addTriple(new Triple(2));
+
+let shape1 = new Shape(1,new IriRef('shapeName','Car'));
+
+initialShapes.push(shape0);
+initialShapes.push(shape1);
 
 
-  constructor(props){
-    super(props)
- 
-    this.state = {
-      shapes:this.props.shapes
-    }
-  }
+export const ShapesContext = React.createContext()
 
-  addShape = () =>{
 
-      const id = this.state.shapes.length;
+function App() {
+
+    const [shapes,setShapes] = useState(initialShapes);
+
+
+    const addShape = () =>{
+
+      console.log(shapes)
+      const id = shapes.length;
       const newShape = new Shape(id);
-      let newShapes = this.state.shapes;
-      newShapes.push(newShape);
-      
-      this.setState({ 
-          shapes: newShapes
-      });
 
-      Codemirror.signal(Editor.getInstance().getYashe(),'humanEvent',newShapes);
+      setShapes([...shapes,newShape]);
 
-  }
-
-  changeShapeType = (shapeId,event) =>{
-
-      const newShapes = this.state.shapes.filter(shape => {
-
-        if(shape.id == shapeId){
-          let type = event.target.value;
-          shape.setType(type);
-        }
-        return shape;
-    });
-
-    this.setState({shapes:newShapes});
-    Codemirror.signal(Editor.getInstance().getYashe(),'humanEvent',newShapes);
-  }
-
-
-  deleteShape = (shapeId) =>{
-    var response = window.confirm('Are you sure?');
-    if (response == true) {
-        const newShapes = this.state.shapes.filter(shape => shape.id != shapeId);
-        this.setState({shapes:newShapes});
-        Codemirror.signal(Editor.getInstance().getYashe(),'humanEvent',newShapes);
+      //let newShapes = shapes;
+      //newShapes.push(newShape)
     }
-        
-  }
- 
-    
-  addTriple = (shapeId) =>{
 
-    const newShapes = this.state.shapes.filter(shape => {
+    const deleteShape = (shapeId) =>{
+      var response = window.confirm('Are you sure?');
+      if (response == true) {
+          const newShapes = shapes.filter(shape => shape.id != shapeId);
+          setShapes(newShapes);
+          //Codemirror.signal(Editor.getInstance().getYashe(),'humanEvent',newShapes);
+      } 
+    }
 
-        if(shape.id == shapeId){
-          const id = shape.getTriplesCount();
-          const newTriple = new Triple(id);
-          shape.addTriple(newTriple);
-        }
-        return shape;
-    });
-
-    this.setState({shapes:newShapes});
-    Codemirror.signal(Editor.getInstance().getYashe(),'humanEvent',newShapes);
-
-  }
-
-
-  changeTripleType = (shapeId,tripleId,event) =>{
-
-     const newShapes = this.state.shapes.filter(shape => {
-        if(shape.id == shapeId){
-          shape.triples.filter(triple =>{
-              if(triple.id==tripleId){
-                 let type = event.target.value;
-                  triple.setType(type);                  
-              }
-              return triple             
-          });
-        }
-        return shape;
-    });
-
-    this.setState({shapes:newShapes});
-    Codemirror.signal(Editor.getInstance().getYashe(),'humanEvent',newShapes);
-
-  }
-
-
-  deleteTriple = (shapeId,tripleId) =>{
-  
-      const newShapes = this.state.shapes.filter(shape => {
-
+    const changeShapeType = (shapeId,event) =>{
+       const newShapes = shapes.filter(shape => {
           if(shape.id == shapeId){
-            const newTriples = shape.triples.filter( triple => triple.id != tripleId);
-            shape.setTriples(newTriples);
+            let type = event.target.value;
+            shape.setType(type);
           }
           return shape;
-      });
+        });
 
-      this.setState({shapes:newShapes})
-      Codemirror.signal(Editor.getInstance().getYashe(),'humanEvent',newShapes);
+      setShapes(newShapes);
+    }
 
-  }
-
-  replaceShapes = (newShapes) =>{
-    this.setState({shapes:newShapes});
-  }
-
-
-  changeShapeValue = (shapeId,value) =>{
-
-
-    const newShapes = this.state.shapes.filter(shape => {
-
-        if(shape.id == shapeId){
-          shape.type.setValue(value);
-        }
-        return shape;
-    });
-
-    this.setState({shapes:newShapes})
-    Codemirror.signal(Editor.getInstance().getYashe(),'humanEvent',newShapes);
-
-  }
-
-   changeTripleValue = (shapeId,tripleId,value) =>{
-
-    const newShapes = this.state.shapes.filter(shape => {
-
-        if(shape.id == shapeId){
-          shape.triples.filter(triple =>{
-              if(triple.id==tripleId){
-                  triple.type.setValue(value);            
-              }
-              return triple             
-          });
-          
-        }
-        return shape;
-    });
-
-    this.setState({shapes:newShapes})
-    Codemirror.signal(Editor.getInstance().getYashe(),'humanEvent',newShapes);
-
-  }
-
-
-
-  render(){
-
-      return <div className="row separator"> 
-                  <AssistantComp shapes={this.state.shapes}
-                          addShape={this.addShape}
-                          addTriple={this.addTriple}
-                          deleteShape={this.deleteShape}
-                          deleteTriple={this.deleteTriple}
-                          changeShapeType={this.changeShapeType}
-                          changeShapeValue={this.changeShapeValue}
-                          changeTripleType={this.changeTripleType}
-                          changeTripleValue={this.changeTripleValue}
-                    />
-            
-                    <EditorComp shapes={this.state.shapes} 
-                                replaceShapes={this.replaceShapes}/>
-          
-            </div>
+    return (<ShapesContext.Provider value={
+                                    {
+                                      shapes:shapes,
+                                      addShape:addShape,
+                                      deleteShape:deleteShape,
+                                      changeShapeType:changeShapeType
+                                    }
+                                  }>
+                <div className="row separator"> 
+                    <AssistantComp />
+                    
+                </div>
+            </ShapesContext.Provider>);
                        
            
-  }
+  
     
 }
 

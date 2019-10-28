@@ -1,5 +1,7 @@
 
-import React,{Component} from 'react';
+import React,{useContext} from 'react';
+
+import {ShapesContext} from '../../App';
 
 import TripleComponent from './TripleComponent';
 import ShapeTypeComp from './types/ShapeTypeComp';
@@ -7,45 +9,26 @@ import ShapeTypeComp from './types/ShapeTypeComp';
 let Triple = require('../../entities/shexEntities/triple.js');
 let ShapeStore = require('../../entities/shapeStore.js');
 
-class ShapeComponent extends Component {
+function ShapeComponent (props) {
 
-   
-    render(){
+    const context = useContext(ShapesContext);
 
-        return <div className="shapes-container">
-                    <div className="row shapes-header">
-                        <label className="col-sm-2">Shape </label>
-                        
-                       <ShapeTypeComp shape={this.props.shape}
-                                      changeShapeType={this.props.changeShapeType}
-                                      changeShapeValue={this.props.changeShapeValue} />
-
-                        <button className="col-xs-10 deleteShapeButton mdc-icon-button material-icons btn-danger" 
-                                onClick={this.props.deleteShape.bind(this,this.props.shape.id)}>
+    return (
+        <div className="shapes-container">
+            <div className="row shapes-header">
+                <label className="col-sm-2">Shape </label>
+                    <ShapeTypeComp shape={props.shape}/>
+                    <button className="col-xs-10 deleteShapeButton mdc-icon-button material-icons btn-danger" 
+                            onClick={()=>context.deleteShape(props.shape.id)}>
                                 delete
-                        </button>
-                    </div>
-                    <button className="btn-primary addPropButton col-xs-3"
-                            onClick={this.props.addTriple.bind(this,this.props.shape.id)}>
-                            + Triple</button>
-                    
-                    <div className="triples-container col-xs">
-                        {this.props.shape.triples.map(triple =>
-
-                            <TripleComponent key={triple.id}
-                                            shape={this.props.shape} 
-                                            triple={triple}
-                                            deleteTriple={this.props.deleteTriple}
-                                            changeTripleType={this.props.changeTripleType}
-                                            changeTripleValue={this.props.changeTripleValue} 
-                                            /> 
-                            
-                        )}
-                    </div>
-                </div>
+                    </button>
+            </div>
+         </div>   
+        
+        
+    );
                                    
-    }
-
+    
 }
 
 export default ShapeComponent;

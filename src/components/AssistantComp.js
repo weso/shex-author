@@ -1,41 +1,28 @@
 
-import React,{Component} from 'react';
+import React,{useContext} from 'react';
 import '../App.css';
 import ShapeComponent from './shexComponents/ShapeComponent';
+import {ShapesContext} from '../App';
 
+function AssistantComp (props) {
 
-let Triple = require('../entities/shexEntities/triple.js');
+    const context = useContext(ShapesContext);
 
-
-class AssistantComp extends Component {
-
-
-    render(){
-        return <div id='assistant-container' className="assistant col-lg-6" > 
-                    {this.props.shapes.map(shape =>
+    return (<div id='assistant-container' className="assistant col-lg-6" > 
+                    {context.shapes.map(shape =>{
                                 
-                            <ShapeComponent key={shape.id} 
-                                            shape={shape}
-                                            addTriple={this.props.addTriple}
-                                            deleteShape={this.props.deleteShape}
-                                            deleteTriple={this.props.deleteTriple}
-                                            changeShapeType={this.props.changeShapeType}
-                                            changeShapeValue={this.props.changeShapeValue}
-                                            changeTripleType={this.props.changeTripleType}
-                                            changeTripleValue={this.props.changeTripleValue}
-                                            />
-                        )
+                            return <ShapeComponent key={shape.id} shape={shape}/>
+                    })
                     }
 
                     <button id='addShapeButton' 
                             className="btn-primary addShapeButton"
-                            onClick={this.props.addShape.bind(this)}>
+                            onClick={context.addShape}>
                             + Shape
                     </button>
-                </div>
+                </div>);
 
-    }
-
+    
 }
 
 export default AssistantComp;
