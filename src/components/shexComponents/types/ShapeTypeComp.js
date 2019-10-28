@@ -19,13 +19,13 @@ function ShapeTypeComp (props) {
         let typeComp;
         let type = shape.type;
         if(type instanceof IriRef){
-            type = <IriComp shape={shape}type='shape'/>
+            typeComp = <IriComp shape={shape}type='shape'/>
         }
         if(type instanceof PrefixedIri){
-            type = <PrefixedComp shape={shape} type='shape'/>
+            typeComp = <PrefixedComp shape={shape} type='shape'/>
         }
         if(type instanceof BNode){
-            type = <BNodeComp shape={shape}/>
+            typeComp = <BNodeComp shape={shape}/>
         }
        
         return (<div className="row col-sm-6">
@@ -38,7 +38,7 @@ function ShapeTypeComp (props) {
                             <option value="bnode">BNode</option>
                     </select>
 
-                   {type}
+                   {typeComp}
                 
                 </div>);
 

@@ -17,10 +17,10 @@ function TripleTypeComp (props){
     let typeComp;
     let type = triple.type;
     if(type instanceof IriRef){
-        type = <IriComp shape={shape}triple={triple}type='triple'/>
+        typeComp = <IriComp shape={shape}triple={triple}type='triple'/>
     }
     if(type instanceof PrefixedIri){
-        type = <PrefixedComp shape={shape}triple={triple}type='triple'/>
+        typeComp = <PrefixedComp shape={shape}triple={triple}type='triple'/>
     }
      
     return (<div className="row col-sm-6">
@@ -33,7 +33,7 @@ function TripleTypeComp (props){
                              
                     </select>
 
-                   {type}
+                   {typeComp}
                 
             </div>);
 
