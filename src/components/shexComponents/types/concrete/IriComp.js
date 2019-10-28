@@ -1,44 +1,38 @@
 
-import React,{Component} from 'react';
+import React,{useState,useContext} from 'react';
+import {ShapesContext} from '../../../../App';
 
 
-class IriComp extends Component {
+function IriComp (props) {
 
-    constructor(props){
-        super(props);
-        
-        let value=this.props.shape.type.value
-        if(this.props.type !='shape'){
-          value = this.props.triple.type.value
-        }
-        this.state = {
-            value:value
-        }
-        
+    const context = useContext(ShapesContext);
+
+    let initialValue=props.shape.type.value;
+    if(props.type !='shape'){
+      //value = props.triple.type.value
     }
 
+    const [value,setValue] = useState(initialValue);
 
-
-    change = e =>{
-          this.setState({value:e.target.value})
-          if(this.props.type == 'shape'){
-            this.props.changeShapeValue(this.props.shape.id,e.target.value);
+    
+    const change = (e) =>{
+          setValue(e.target.value);
+          if(props.type == 'shape'){
+            context.changeShapeValue(props.shape.id,e.target.value);
           }else{
-            this.props.changeTripleValue(this.props.shape.id,this.props.triple.id,e.target.value);
+            //this.props.changeTripleValue(this.props.shape.id,this.props.triple.id,e.target.value);
           }
           
     }
     
 
-    render(){
-
-        return <input className={this.props.shape.type.context+' form-control col-sm'} 
+    return (<input className={props.shape.type.context+' form-control col-sm'} 
                       context="text" 
-                      value={this.state.value}
-                      onChange={this.change.bind(this)}/>
+                      value={value}
+                      onChange={change}/>);
     
                                    
-    }
+    
 
 }
 

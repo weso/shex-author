@@ -71,19 +71,35 @@ function App() {
       setShapes(newShapes);
     }
 
-    return (<ShapesContext.Provider value={
+    const changeShapeValue = (shapeId,value)=>{
+      const newShapes = shapes.filter(shape => {
+              if(shape.id == shapeId){
+                shape.type.setValue(value);
+              }
+              return shape;
+          });
+
+          setShapes(newShapes);
+    }
+
+    return (
+            
+            <ShapesContext.Provider value={
                                     {
                                       shapes:shapes,
                                       addShape:addShape,
                                       deleteShape:deleteShape,
-                                      changeShapeType:changeShapeType
+                                      changeShapeType:changeShapeType,
+                                      changeShapeValue:changeShapeValue
                                     }
                                   }>
+
                 <div className="row separator"> 
                     <AssistantComp />
                     
                 </div>
-            </ShapesContext.Provider>);
+            </ShapesContext.Provider>
+          );
                        
            
   

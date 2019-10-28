@@ -15,26 +15,18 @@ function ShapeTypeComp (props) {
 
         const context = useContext(ShapesContext);
    
-   /*
         let typeComp;
-        let type = this.props.shape.type;
+        let type = props.shape.type;
         if(type instanceof IriRef){
-            type = <IriComp shape={this.props.shape}
-                            type='shape'
-                            changeShapeValue={this.props.changeShapeValue}/>
+            type = <IriComp shape={props.shape}type='shape'/>
         }
         if(type instanceof PrefixedIri){
-            type = <PrefixedComp shape={this.props.shape}
-                                type='shape'
-                                changeShapeValue={this.props.changeShapeValue}/>
+            type = <PrefixedComp shape={props.shape} type='shape'/>
         }
         if(type instanceof BNode){
-            type = <BNodeComp shape={this.props.shape}
-                                changeShapeValue={this.props.changeShapeValue}/>
+            type = <BNodeComp shape={props.shape}/>
         }
-        */
-
-
+       
         return (<div className="row col-sm-6">
                     <select className="col-sm form-control shapeType" 
                             value={props.shape.type.getTypeName()} 
@@ -45,7 +37,7 @@ function ShapeTypeComp (props) {
                             <option value="bnode">BNode</option>
                     </select>
 
-                   {/*type*/}
+                   {type}
                 
                 </div>);
 

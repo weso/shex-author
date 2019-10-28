@@ -1,26 +1,23 @@
 
-import React,{Component} from 'react';
+import React,{useState,useContext} from 'react';
+import {ShapesContext} from '../../../../App';
 
 
-class PrefixedComp extends Component {
+function PrefixedComp (props) {
 
-    constructor(props){
-        super(props);
-        
-        let value=this.props.shape.type.value
-        if(this.props.type !='shape'){
-          value = this.props.triple.type.value
-        }
-        this.state = {
-            value:value
-        }
-        
+    const context = useContext(ShapesContext);
+
+    let initialValue=props.shape.type.value;
+    if(props.type !='shape'){
+      //value = props.triple.type.value
     }
 
+    const [value,setValue] = useState(initialValue);
 
-   getPrefixContex(){
+
+   const getPrefixContex = ()=>{
         let prefix = 'prefixShape';
-        let context = this.props.shape.type.context;
+        let context = props.shape.type.context;
         if( context == 'tripleName'){
             prefix = 'prefixTriple';
         }
@@ -30,27 +27,27 @@ class PrefixedComp extends Component {
         return prefix;
     }
 
-    change = e =>{
-          this.setState({value:e.target.value})
-          if(this.props.type == 'shape'){
-            this.props.changeShapeValue(this.props.shape.id,e.target.value);
+    const change = (e) =>{
+          setValue(e.target.value);
+          if(props.type == 'shape'){
+            context.changeShapeValue(props.shape.id,e.target.value);
           }else{
-            this.props.changeTripleValue(this.props.shape.id,this.props.triple.id,e.target.value);
+            //this.props.changeTripleValue(this.props.shape.id,this.props.triple.id,e.target.value);
           }
     }
 
-    render(){
+  
 
-        return  <div className='row col-sm'>
-                    <select className={this.getPrefixContex()+' col-sm form-control'}/>
-                    <input  className={this.props.shape.type.value+' form-control col-sm'} 
+    return  (<div className='row col-sm'>
+                    <select className={getPrefixContex()+' col-sm form-control'}/>
+                    <input  className={props.shape.type.value+' form-control col-sm'} 
                             context="text" 
-                            value={this.state.value}
-                            onChange={this.change.bind(this)} />      
-                </div>
+                            value={value}
+                            onChange={change} />      
+                </div>);
               
                                
-    }
+    
 
 }
 

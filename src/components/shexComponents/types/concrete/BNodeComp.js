@@ -1,39 +1,34 @@
 
-import React,{Component} from 'react';
+import React,{useState,useContext} from 'react';
+import {ShapesContext} from '../../../../App';
 
 
-class BNodeComp extends Component {
+function BNodeComp(props) {
 
-    constructor(props){
-        super(props);
-        
-        let value = this.props.shape.type.value;
-        if(value == ''){
-            value = 'example';
-            this.props.changeShapeValue(this.props.shape.id,value);
-        }
+    const context = useContext(ShapesContext);
 
-        this.state = {
-            value:value
-        }
-        
+    let initialValue=props.shape.type.value;     
+    if(initialValue == ''){
+        initialValue = 'example';
+        context.changeShapeValue(props.shape.id,initialValue);
     }
 
-    change = e =>{
-          this.setState({value:e.target.value})
-          this.props.changeShapeValue(this.props.shape.id,e.target.value);
+    const [value,setValue] = useState(initialValue);
+        
+
+    const change = (e) =>{
+          setValue(e.target.value)
+          context.changeShapeValue(props.shape.id,e.target.value);
     }
    
-    render(){
-        
 
-        return <input   className={this.props.shape.type.context+' form-control col-sm'} 
+    return (<input   className={props.shape.type.context+' form-control col-sm'} 
                         context="text" 
-                        value={this.state.value}
-                        onChange={this.change.bind(this)}/>
+                        value={value}
+                        onChange={change}/>);
 
                                       
-    }
+    
 
 }
 
