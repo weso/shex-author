@@ -26,7 +26,7 @@ function TripleTypeComp (props){
     return (<div className="row col-sm-6">
                     <select className="col-sm form-control tripleType" 
                             value={triple.type.getTypeName()} 
-                            onChange={()=>context.changeTripleType(shape.id,triple.id)}>
+                            onChange={(e)=>context.setTripleType(shape.id,triple.id,e)}>
 
                             <option value="iriRef">IriRef</option>
                             <option value="prefixedIri">Prefixed</option>

@@ -1,46 +1,35 @@
+import React,{useState,useContext} from 'react';
+import {ShapesContext} from '../../../App';
 
-import React,{Component} from 'react';
 
+function CardinalityComp (props) {
 
-class CardinalityComp extends Component {
+    const {shape,triple} = props;
+    
+    const context = useContext(ShapesContext);
+    const [cardinality,setCardinality] = useState(triple.cardinality.toString());
+    
 
-   
-    constructor(props) {
-        super(props);
-        this.triple = props.triple;
-        this.handleChange = this.handleChange.bind(this);
-
-        this.state = {
-
-            cardinality:this.triple.cardinality.toString()
-
-        }
-
-    }
-
-    handleChange(event) {
+    const handleChange = (event) => {
    
         let cardinality = event.target.value;
-        this.triple.setCardinality(cardinality);
-        this.setState({cardinality:cardinality})
-
+        setCardinality(cardinality)
+        context.setCardinality(shape.id,triple.id,cardinality);
+       
     }
 
 
-    
-    render(){
-        return  <select className="col-sm-3  form-control tripleCardinality"
-                        value={this.state.cardinality}
-                        onChange={this.handleChange}>
+    return(<select className="col-sm-3  form-control tripleCardinality"
+                    value={cardinality}
+                    onChange={handleChange}>
 
                             <option value="">Exactly one</option>
                             <option value="*">Zero or more</option>
                             <option value="+">One at least</option>
                             <option value="?">One or none</option>
-                </select>
+                </select>);
 
-                                   
-    }
+  
 
 }
 

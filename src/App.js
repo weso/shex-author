@@ -87,7 +87,7 @@ function App() {
       //Codemirror.signal(Editor.getInstance().getYashe(),'humanEvent',newShapes);
   }
 
-    const changeShapeType = (shapeId,event) =>{
+    const setShapeType = (shapeId,event) =>{
        const newShapes = shapes.filter(shape => {
           if(shape.id == shapeId){
             let type = event.target.value;
@@ -99,7 +99,25 @@ function App() {
       setShapes(newShapes);
     }
 
-    const changeShapeValue = (shapeId,value)=>{
+    const setTripleType = (shapeId,tripleId,event) =>{
+      const newShapes = shapes.filter(shape => {
+        if(shape.id == shapeId){
+          shape.triples.filter(triple =>{
+              if(triple.id==tripleId){
+                 let type = event.target.value;
+                  triple.setType(type);                  
+              }
+              return triple             
+          });
+        }
+        return shape;
+      });
+
+    setShapes(newShapes);
+    //Codemirror.signal(Editor.getInstance().getYashe(),'humanEvent',newShapes);
+  }
+
+    const setShapeValue = (shapeId,value)=>{
       const newShapes = shapes.filter(shape => {
               if(shape.id == shapeId){
                 shape.type.setValue(value);
@@ -110,7 +128,7 @@ function App() {
           setShapes(newShapes);
     }
 
-    const changeTripleValue = (shapeId,tripleId,value) =>{
+    const setTripleValue = (shapeId,tripleId,value) =>{
       const newShapes = shapes.filter(shape => {
         if(shape.id == shapeId){
           shape.triples.filter(triple =>{
@@ -127,6 +145,9 @@ function App() {
     //Codemirror.signal(Editor.getInstance().getYashe(),'humanEvent',newShapes);
     }
 
+    const setCardinality = (shapeId,tripleId,cardinality) =>{
+      
+    }
 
     const replaceShapes = (newShapes) =>{
       setShapes(newShapes);
@@ -141,9 +162,11 @@ function App() {
                                       addTriple:addTriple,
                                       deleteShape:deleteShape,
                                       deleteTriple:deleteTriple,
-                                      changeShapeType:changeShapeType,
-                                      changeShapeValue:changeShapeValue,
-                                      changeTripleValue:changeTripleValue,
+                                      setShapeType:setShapeType,
+                                      setTripleType:setTripleType,
+                                      setShapeValue:setShapeValue,
+                                      setTripleValue:setTripleValue,
+                                      setCardinality:setCardinality,
                                       replaceShapes:replaceShapes
                                     }
                                   }>

@@ -6,10 +6,11 @@ import {ShapesContext} from '../../../../App';
 function PrefixedComp (props) {
 
     const context = useContext(ShapesContext);
+    const {shape,triple,type} = props;
 
-    let initialValue=props.shape.type.value;
-    if(props.type !='shape'){
-      //value = props.triple.type.value
+    let initialValue=shape.type.value;
+    if(type !='shape'){
+      initialValue = triple.type.value
     }
 
     const [value,setValue] = useState(initialValue);
@@ -17,7 +18,7 @@ function PrefixedComp (props) {
 
    const getPrefixContex = ()=>{
         let prefix = 'prefixShape';
-        let context = props.shape.type.context;
+        let context = shape.type.context;
         if( context == 'tripleName'){
             prefix = 'prefixTriple';
         }
@@ -27,12 +28,12 @@ function PrefixedComp (props) {
         return prefix;
     }
 
-    const change = (e) =>{
+    const handleChange = (e) =>{
           setValue(e.target.value);
-          if(props.type == 'shape'){
-            context.changeShapeValue(props.shape.id,e.target.value);
+          if(type == 'shape'){
+            context.setShapeValue(shape.id,e.target.value);
           }else{
-            //this.props.changeTripleValue(this.props.shape.id,this.props.triple.id,e.target.value);
+            context.setTripleValue(shape.id,triple.id,e.target.value);
           }
     }
 
@@ -40,10 +41,10 @@ function PrefixedComp (props) {
 
     return  (<div className='row col-sm'>
                     <select className={getPrefixContex()+' col-sm form-control'}/>
-                    <input  className={props.shape.type.value+' form-control col-sm'} 
+                    <input  className={shape.type.value+' form-control col-sm'} 
                             context="text" 
                             value={value}
-                            onChange={change} />      
+                            onChange={handleChange} />      
                 </div>);
               
                                

@@ -10,18 +10,18 @@ function IriComp (props) {
 
     let initialValue=shape.type.value;
     if(type !='shape'){
-      //value = props.triple.type.value
+      initialValue = triple.type.value;
     }
 
     const [value,setValue] = useState(initialValue);
 
     
-    const change = (e) =>{
+    const handleChange = (e) =>{
           setValue(e.target.value);
           if(type == 'shape'){
-            context.changeShapeValue(shape.id,e.target.value);
+            context.setShapeValue(shape.id,e.target.value);
           }else{
-            context.changeTripleValue(shape.id,triple.id,e.target.value);
+            context.setTripleValue(shape.id,triple.id,e.target.value);
           }
           
     }
@@ -30,7 +30,7 @@ function IriComp (props) {
     return (<input className={shape.type.context+' form-control col-sm'} 
                       context="text" 
                       value={value}
-                      onChange={change}/>);
+                      onChange={handleChange}/>);
     
                                    
     

@@ -31,7 +31,7 @@ function ShapeTypeComp (props) {
         return (<div className="row col-sm-6">
                     <select className="col-sm form-control shapeType" 
                             value={shape.type.getTypeName()} 
-                            onChange={ (e) => context.changeShapeType(shape.id,e)}>
+                            onChange={ (e) => context.setShapeType(shape.id,e)}>
 
                             <option value="iriRef">IriRef</option>
                             <option value="prefixedIri">Prefixed</option>
