@@ -9,6 +9,18 @@ let Editor = require('../entities/editor.js');
 
 let tokenUtils = require('../utils/tokenUtils.js');
 
+const DEFAULT_SHAPE = 'PREFIX :       <http://example.org/>\n'+
+'PREFIX schema: <http://schema.org/>\n'+
+'PREFIX xsd:    <http://www.w3.org/2001/XMLSchema#>\n\n'+
+
+':User IRI {\n'+ 
+'  schema:name          xsd:string  ;\n'+
+'  schema:birthDate     xsd:date?  ;\n'+
+'  schema:birthPlace    xsd:string+  ;\n'+
+'  schema:knows          @:User*  \n'+
+'}';
+
+
 
 function EditorComp() {
 
@@ -46,7 +58,7 @@ function EditorComp() {
             });
 
 
-            //y.setValue(value)
+            y.setValue(DEFAULT_SHAPE)
             y.refresh();
             setYashe(y);
 
@@ -60,45 +72,6 @@ function EditorComp() {
             </div>            
     );
 
-/*
-  componentDidMount(){
-    
-    let yashe = YASHE(document.getElementById("showcase"),
-          {
-              persistent:false,
-              lineNumbers: true,
-              viewportMargin: Infinity
-          });
-
-    
-      yashe.replaceShapes=this.replaceShapes;
-
-      yashe.on('blur', function() {
-             
-          if(!yashe.hasErrors(yashe)){
-
-              let tokens = tokenUtils.getTokens();
-              let defShapes = tokenUtils.getDefinedShapes(tokens);
-              let newShapes = tokenUtils.getShapes(defShapes);
-         
-              yashe.replaceShapes(newShapes);
-          }
-      });
-
-
-      yashe.on('humanEvent', function(shapes) {
-          Editor.getInstance().draw(shapes);
-      });
-
-    
-    Editor.getInstance().setYashe(yashe);
-    
-  }
-
-  */
-  
- 
-  
     
 }
 

@@ -6,9 +6,10 @@ import {ShapesContext} from '../../../../App';
 function IriComp (props) {
 
     const context = useContext(ShapesContext);
+    const {shape,type} = props;
 
-    let initialValue=props.shape.type.value;
-    if(props.type !='shape'){
+    let initialValue=shape.type.value;
+    if(type !='shape'){
       //value = props.triple.type.value
     }
 
@@ -17,8 +18,8 @@ function IriComp (props) {
     
     const change = (e) =>{
           setValue(e.target.value);
-          if(props.type == 'shape'){
-            context.changeShapeValue(props.shape.id,e.target.value);
+          if(type == 'shape'){
+            context.changeShapeValue(shape.id,e.target.value);
           }else{
             //this.props.changeTripleValue(this.props.shape.id,this.props.triple.id,e.target.value);
           }
@@ -26,7 +27,7 @@ function IriComp (props) {
     }
     
 
-    return (<input className={props.shape.type.context+' form-control col-sm'} 
+    return (<input className={shape.type.context+' form-control col-sm'} 
                       context="text" 
                       value={value}
                       onChange={change}/>);

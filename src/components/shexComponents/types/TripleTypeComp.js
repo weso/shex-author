@@ -1,38 +1,32 @@
 
-import React,{Component} from 'react';
+import React,{useContext} from 'react';
 import IriComp from './concrete/IriComp';
 import PrefixedComp from './concrete/PrefixedComp';
 
+import {ShapesContext} from '../../../App';
 
 let IriRef = require('../../../entities/shexEntities/types/concreteTypes/iriRef.js');
 let PrefixedIri = require('../../../entities/shexEntities/types/concreteTypes/prefixedIri.js');
 
 
-class TripleTypeComp extends Component {
+function TripleTypeComp (props){
 
-    
-    render(){
+    const context = useContext(ShapesContext);
+    const {shape,triple} = props;
 
-        let typeComp;
-        let type = this.props.triple.type;
-        if(type instanceof IriRef){
-            type = <IriComp shape={this.props.shape}
-                            triple={this.props.triple}
-                            type='triple'
-                            changeTripleValue={this.props.changeTripleValue}/>
-        }
-        if(type instanceof PrefixedIri){
-            type = <PrefixedComp shape={this.props.shape}
-                                triple={this.props.triple}
-                                type='triple'
-                                changeTripleValue={this.props.changeTripleValue}/>
-        }
+    let typeComp;
+    let type = triple.type;
+    if(type instanceof IriRef){
+        type = <IriComp shape={shape}triple={triple}type='triple'/>
+    }
+    if(type instanceof PrefixedIri){
+        type = <PrefixedComp shape={shape}triple={triple}type='triple'/>
+    }
      
-
-        return <div className="row col-sm-6">
+    return (<div className="row col-sm-6">
                     <select className="col-sm form-control tripleType" 
-                            value={this.props.triple.type.getTypeName()} 
-                            onChange={this.props.changeTripleType.bind(this,this.props.shape.id,this.props.triple.id)}>
+                            value={triple.type.getTypeName()} 
+                            onChange={()=>context.changeTripleType(shape.id,triple.id)}>
 
                             <option value="iriRef">IriRef</option>
                             <option value="prefixedIri">Prefixed</option>
@@ -41,10 +35,7 @@ class TripleTypeComp extends Component {
 
                    {type}
                 
-                </div>
-
-                                   
-    }
+            </div>);
 
 }
 

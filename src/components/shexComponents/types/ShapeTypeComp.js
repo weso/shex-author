@@ -14,23 +14,24 @@ let BNode = require('../../../entities/shexEntities/types/concreteTypes/bNode.js
 function ShapeTypeComp (props) {
 
         const context = useContext(ShapesContext);
+        const {shape} = props;
    
         let typeComp;
-        let type = props.shape.type;
+        let type = shape.type;
         if(type instanceof IriRef){
-            type = <IriComp shape={props.shape}type='shape'/>
+            type = <IriComp shape={shape}type='shape'/>
         }
         if(type instanceof PrefixedIri){
-            type = <PrefixedComp shape={props.shape} type='shape'/>
+            type = <PrefixedComp shape={shape} type='shape'/>
         }
         if(type instanceof BNode){
-            type = <BNodeComp shape={props.shape}/>
+            type = <BNodeComp shape={shape}/>
         }
        
         return (<div className="row col-sm-6">
                     <select className="col-sm form-control shapeType" 
-                            value={props.shape.type.getTypeName()} 
-                            onChange={ (e) => context.changeShapeType(props.shape.id,e)}>
+                            value={shape.type.getTypeName()} 
+                            onChange={ (e) => context.changeShapeType(shape.id,e)}>
 
                             <option value="iriRef">IriRef</option>
                             <option value="prefixedIri">Prefixed</option>
