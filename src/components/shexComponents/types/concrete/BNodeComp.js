@@ -10,7 +10,7 @@ function BNodeComp(props) {
     let initialValue=props.shape.type.value;     
     if(initialValue == ''){
         initialValue = 'example';
-        context.setShapeValue(props.shape.id,initialValue);
+        context.setShapeTypeValue(props.shape.id,initialValue);
     }
 
     const [value,setValue] = useState(initialValue);
@@ -18,7 +18,7 @@ function BNodeComp(props) {
 
     const change = (e) =>{
           setValue(e.target.value)
-          context.setShapeValue(props.shape.id,e.target.value);
+          context.setShapeTypeValue(props.shape.id,e.target.value);
     }
    
 

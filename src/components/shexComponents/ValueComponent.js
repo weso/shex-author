@@ -1,28 +1,31 @@
 
-import React,{Component} from 'react';
+import React,{useContext} from 'react';
+
+import {ShapesContext} from '../../App';
 
 import ValueTypeComp from './types/ValueTypeComp';
 
-class ValueComponent extends Component {
+function ValueComponent (props) {
 
-  
-    render(){           
-        return <div className="col-12 valuesCol"  >
+    const context = useContext(ShapesContext);
+    const {shape,triple} = props;
+           
+    return (<div className="col-12 valuesCol"  >
                     <div className="row values-container">
                         <div className="col-10 triplesVal ">
                             <div className="row">
                                 <label className="col-3 valueLabel">Value</label>
                                
-                                <ValueTypeComp triple={this.props.triple}/>
+                                <ValueTypeComp shape={shape} triple={triple}/>
 
                                 <select className="col-4 form-control valueInlineShape"/>
 
                             </div>
                        </div>
                     </div>
-                </div>
+                </div>);
                                    
-    }
+
 
 }
 

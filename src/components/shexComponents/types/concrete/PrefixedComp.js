@@ -31,9 +31,9 @@ function PrefixedComp (props) {
     const handleChange = (e) =>{
           setValue(e.target.value);
           if(type == 'shape'){
-            context.setShapeValue(shape.id,e.target.value);
+            context.setShapeTypeValue(shape.id,e.target.value);
           }else{
-            context.setTripleValue(shape.id,triple.id,e.target.value);
+            context.setTripleTypeValue(shape.id,triple.id,e.target.value);
           }
     }
 

@@ -1,39 +1,27 @@
-import React,{Component} from 'react';
+import React,{useContext,useState} from 'react';
 
-class ValueTypeComp extends Component {
+import {ShapesContext} from '../../../App';
 
-    constructor(props) {
-        super(props);
-        this.triple = props.triple;
-        this.handleChange = this.handleChange.bind(this);
+function ValueTypeComp(props) {
+    
+    const {shape,triple} = props;
 
-        this.state = {
+    const context = useContext(ShapesContext);
+    const [value,setValue] = useState(triple.value.getTypeName())
+    
 
-            type:this.triple.value.getTypeName()
-
-        }
-
-    }
-
-    handleChange(event) {
-   
+    const handleChange = (event) =>{
         let value = event.target.value;
-        this.triple.setValue(value);
-        this.setState({value:value})
-
+        context.setTripleValue(shape.id,triple.id,value);
+        setValue(value);
     }
 
 
-    getValue(value){
-        return { __html: value.getHtml()}
-    }
 
-
-    render(){
-        return  <div className="row col-6">
+    return  (<div className="row col-6">
                     <select className="col form-control valueType"
-                                    value={this.state.value} 
-                                    onChange={this.handleChange}>
+                                    value={value} 
+                                    onChange={handleChange}>
 
                                     <option value="primitive">Primitive</option>
                                     <option value="shape">Shape</option>
@@ -45,12 +33,7 @@ class ValueTypeComp extends Component {
                                     <option value="bnodeKind">BNODE</option>
                                 </select>
 
-                    <div className="row col" 
-                         dangerouslySetInnerHTML={this.getValue(this.triple.value)} /> 
-                    </div>
-                                    
-                                   
-    }
+                    </div>);
 
 }
 

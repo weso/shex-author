@@ -17,9 +17,6 @@ class Triple {
         this.showValues = showValues;
       }
       
-
-
-
     addValue(value){
         this.values.push(value);
         this.valuesCount++;

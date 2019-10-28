@@ -117,7 +117,7 @@ function App() {
     //Codemirror.signal(Editor.getInstance().getYashe(),'humanEvent',newShapes);
   }
 
-    const setShapeValue = (shapeId,value)=>{
+    const setShapeTypeValue = (shapeId,value)=>{
       const newShapes = shapes.filter(shape => {
               if(shape.id == shapeId){
                 shape.type.setValue(value);
@@ -128,7 +128,7 @@ function App() {
           setShapes(newShapes);
     }
 
-    const setTripleValue = (shapeId,tripleId,value) =>{
+    const setTripleTypeValue = (shapeId,tripleId,value) =>{
       const newShapes = shapes.filter(shape => {
         if(shape.id == shapeId){
           shape.triples.filter(triple =>{
@@ -146,7 +146,37 @@ function App() {
     }
 
     const setCardinality = (shapeId,tripleId,cardinality) =>{
-      
+      const newShapes = shapes.filter(shape => {
+        if(shape.id == shapeId){
+          shape.triples.filter(triple =>{
+            if(triple.id==tripleId){
+                triple.setCardinality(cardinality);            
+            }
+            return triple             
+          });
+        }
+        return shape;
+    });
+
+    setShapes(newShapes);
+    //Codemirror.signal(Editor.getInstance().getYashe(),'humanEvent',newShapes);
+    }
+
+    const setTripleValue = (shapeId,tripleId,value) =>{
+      const newShapes = shapes.filter(shape => {
+        if(shape.id == shapeId){
+          shape.triples.filter(triple =>{
+            if(triple.id==tripleId){
+                triple.setValue(value);            
+            }
+            return triple             
+          });
+        }
+        return shape;
+    });
+
+    setShapes(newShapes);
+    //Codemirror.signal(Editor.getInstance().getYashe(),'humanEvent',newShapes);
     }
 
     const replaceShapes = (newShapes) =>{
@@ -164,9 +194,10 @@ function App() {
                                       deleteTriple:deleteTriple,
                                       setShapeType:setShapeType,
                                       setTripleType:setTripleType,
-                                      setShapeValue:setShapeValue,
-                                      setTripleValue:setTripleValue,
+                                      setShapeTypeValue:setShapeTypeValue,
+                                      setTripleTypeValue:setTripleTypeValue,
                                       setCardinality:setCardinality,
+                                      setTripleValue:setTripleValue,
                                       replaceShapes:replaceShapes
                                     }
                                   }>
