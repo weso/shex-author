@@ -6,11 +6,6 @@ class BNodeKind extends Type{
         super(value);
     }
 
-
-    getHtml(){
-        return null;
-    }
-
     getTypeName(){
         return 'bnodeKind';
     }

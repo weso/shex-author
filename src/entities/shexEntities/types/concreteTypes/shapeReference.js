@@ -6,10 +6,6 @@ class ShapeReference extends Type{
         super(value);
     }
 
-    getHtml(){
-        return null;
-    }
-
     getTypeName(){
         return 'shape';
     }

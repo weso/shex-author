@@ -10,26 +10,6 @@ class Primitive extends Type{
         super(value);
     }
 
-
-    getHtml(){
-        let select =  $('<select class="col-sm-2 form-control tripleValue">');
-        for(let prim in PRIMITIVES){
-            let value = PRIMITIVES[prim];
-            let option = $( '<option>' ).text(value).attr( 'value', value.toLowerCase() );
-            
-            if(value.toLowerCase() ==this.value){
-                option.prop('selected', true);
-            }
-            select.append(option);
-        }
-        
-        let html = '<select class="col-sm form-control tripleValue">';
-        html+=select.html()
-        html+='</select>';
-
-        return html;
-    }
-
     getTypeName(){
         return 'primitive';
     }

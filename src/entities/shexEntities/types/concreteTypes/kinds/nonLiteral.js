@@ -6,11 +6,6 @@ class NonLiteral extends Type{
         super(value);
     }
 
-
-    getHtml(){
-        return null;
-    }
-
     getTypeName(){
         return 'nonLiteral';
     }

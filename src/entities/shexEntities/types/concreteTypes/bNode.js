@@ -8,15 +8,6 @@ class BNode extends Type{
     }
 
 
-    getHtml(){
-        let str = '<input class="'+this.context+' form-control col-sm" context="text" value="replaceName">';
-        if(this.getValue() == ''){
-            this.setValue('example')
-        }
-        return str.replace('replaceName',this.getValue());
-    }
-
-
     getTypeName(){
         return 'bnode';
     }

@@ -6,11 +6,6 @@ class Literal extends Type{
         super(value);
     }
 
-
-    getHtml(){
-        return null;
-    }
-
     getTypeName(){
         return 'literal';
     }
