@@ -1,5 +1,5 @@
 
-import React,{useContext} from 'react';
+import React,{useContext,useState} from 'react';
 
 import {ShapesContext} from '../../App';
 
@@ -7,12 +7,31 @@ import TripleComponent from './TripleComponent';
 import ShapeTypeComp from './types/ShapeTypeComp';
 
 let Triple = require('../../entities/shexEntities/triple.js');
-let ShapeStore = require('../../entities/shapeStore.js');
 
 function ShapeComponent (props) {
 
     const context = useContext(ShapesContext);
     const {shape} = props;
+
+    const [triples,setTriples] = useState(shape.triples);
+
+    const handleChange = ()=>{
+        const id = shape.getTriplesCount();
+        const triple = new Triple(id);
+        
+        setTriples([...triples,triple]);
+
+        shape.addTriple(triple);
+        context.emit();
+        
+    }
+
+    const deleteTriple = (tripleId)=>{
+        const newTriples = shape.triples.filter( triple => triple.id != tripleId);
+        setTriples(newTriples);
+        shape.setTriples(newTriples);
+        context.emit();
+    }
 
     return (
         <div className="shapes-container">
@@ -26,15 +45,16 @@ function ShapeComponent (props) {
             </div>
 
             <button className="btn-primary addPropButton col-xs-3"
-                    onClick={()=>context.addTriple(shape.id)}>
+                    onClick={handleChange}>
                     + Triple</button>
 
             <div className="triples-container col-xs">
-                    {shape.triples.map(triple =>
+                    {triples.map(triple =>
 
                         <TripleComponent key={triple.id}
                                          shape={shape} 
                                          triple={triple}
+                                         deleteTriple={deleteTriple}
                         /> 
                             
                     )}

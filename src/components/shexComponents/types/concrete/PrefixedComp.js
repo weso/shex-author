@@ -3,6 +3,7 @@ import React,{useState,useContext,useEffect} from 'react';
 import {ShapesContext} from '../../../../App';
 
 let Editor = require('../../../../entities/editor.js');
+let Prefix = require('../../../../entities/shexEntities/shexUtils/prefix.js');
 
 function PrefixedComp (props) {
 
@@ -45,26 +46,45 @@ function PrefixedComp (props) {
     }
 
     const handleTypeChange = (e) =>{
-          setValue(e.target.value);
-          if(type == 'shape'){
-            context.setShapeTypeValue(shape.id,e.target.value);
-          }else if(type == 'triple'){
-            context.setTripleTypeValue(shape.id,triple.id,e.target.value);
-          }else{
-            context.setTripleValue(shape.id,triple.id,e.target.value);
-          }
+        const value = e.target.value;
+        if(type == 'shape'){
+          shape.type.setValue(value);
+        }else if(type == 'triple'){
+          triple.type.setValue(value);
+        }else{
+          triple.value.setValue(value);            
+        }
+        context.emit();
+        setValue(value);
     }
 
-      const handlePrefixChange = (e) =>{
-          setPrefix(e.target.value);
-          if(type == 'shape'){
-            context.setShapePrefix(shape.id,e.target.value);
-          }else if(type == 'triple'){
-            context.setTriplePrefix(shape.id,triple.id,e.target.value);
-          }else{
-            context.setValuePrefix(shape.id,triple.id,e.target.value);
-          }
+    const handlePrefixChange = (e) =>{
+      let prefix = getPrefix(e.target.value);
+
+      if(type == 'shape'){
+        shape.type.setPrefix(prefix);
+      }else if(type == 'triple'){
+        triple.type.setPrefix(prefix);  
+      }else{
+        triple.value.setPrefix(prefix);  
+      }
+
+      context.emit();
+      setPrefix(e.target.value);
     }
+
+    /**
+    Sácme de aquí pls
+     */
+    const getPrefix = (prefix)=>{
+      let defined = Editor.getInstance().getYashe().getDefinedPrefixes();
+      for(let def in defined){
+          if(defined[def] == prefix){
+            return new Prefix(def,defined[def]);
+          }
+      }
+      return null;
+}
 
 
   

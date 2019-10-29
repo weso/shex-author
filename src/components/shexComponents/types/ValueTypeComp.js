@@ -12,7 +12,8 @@ function ValueTypeComp(props) {
     
     const handleChange = (event) =>{
         let newType = event.target.value;
-        context.setTripleValueType(shape.id,triple.id,newType);
+        triple.setValue(newType);
+        context.emit();
         setValueType(newType);
     }
 

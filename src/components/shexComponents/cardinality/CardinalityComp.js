@@ -13,8 +13,9 @@ function CardinalityComp (props) {
     const handleChange = (event) => {
    
         let cardinality = event.target.value;
+        triple.setCardinality(cardinality);
+        context.emit();
         setCardinality(cardinality)
-        context.setCardinality(shape.id,triple.id,cardinality);
        
     }
 

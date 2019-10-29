@@ -6,23 +6,26 @@ import {ShapesContext} from '../../../../App';
 function BNodeComp(props) {
 
     const context = useContext(ShapesContext);
+    const {shape} = props;
 
-    let initialValue=props.shape.type.value;     
+    let initialValue=shape.type.value;     
     if(initialValue == ''){
         initialValue = 'example';
-        context.setShapeTypeValue(props.shape.id,initialValue);
+        shape.type.setValue(value);
     }
 
     const [value,setValue] = useState(initialValue);
         
 
     const change = (e) =>{
-          setValue(e.target.value)
-          context.setShapeTypeValue(props.shape.id,e.target.value);
+          const value = e.target.value;
+          shape.type.setValue(value);
+          context.emit();
+          setValue(value)
     }
    
 
-    return (<input   className={props.shape.type.context+' form-control col-sm'} 
+    return (<input   className={shape.type.context+' form-control col-sm'} 
                         context="text" 
                         value={value}
                         onChange={change}/>);

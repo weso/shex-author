@@ -13,7 +13,7 @@ import ValueComponent from './ValueComponent';
 function TripleComponent (props) {
 
     const context = useContext(ShapesContext);
-    const {shape,triple} = props;
+    const {shape,triple,deleteTriple} = props;
 
     return (<div className="row tripleRow">
                 <div className="row triples-header">
@@ -23,7 +23,7 @@ function TripleComponent (props) {
                     <CardinalityComp shape={shape} triple={triple}/>
 
                     <button className="col-xs-10 deletePropButton mdc-icon-button material-icons btn-danger"
-                            onClick={() => context.deleteTriple(shape.id,triple.id)}>
+                            onClick={() => deleteTriple(triple.id)}>
                             delete
                     </button>
 

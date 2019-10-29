@@ -1,9 +1,9 @@
 
 
 import React from 'react';
-import PrefixSelector from './shexComponents/prefix/PrefixSelector';
+import PrefixSelector from './PrefixSelector';
 
-let rdfUtils = require('../utils/rdfUtils.js');
+let rdfUtils = require('../../utils/rdfUtils.js');
 
 function Nav () {
 

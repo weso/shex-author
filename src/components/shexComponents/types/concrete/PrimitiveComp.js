@@ -12,8 +12,10 @@ function PrimitiveComp (props) {
     const [value,setValue] = useState(triple.value);
 
     const handleChange = (e) =>{
-          setValue(e.target.value);
-          context.setTripleValue(shape.id,triple.id,e.target.value); 
+          const value = e.target.value;
+          triple.value.setValue(value);
+          context.emit();
+          setValue(value);
     }
     
 

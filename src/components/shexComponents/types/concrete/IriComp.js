@@ -17,17 +17,18 @@ function IriComp (props) {
 
     const [value,setValue] = useState(initialValue);
 
-    
+     
     const handleChange = (e) =>{
-          setValue(e.target.value);
-          if(type == 'shape'){
-            context.setShapeTypeValue(shape.id,e.target.value);
-          }else if(type == 'triple'){
-            context.setTripleTypeValue(shape.id,triple.id,e.target.value);
-          }else{
-            context.setTripleValue(shape.id,triple.id,e.target.value);
-          }
-          
+      const value = e.target.value;
+      if(type == 'shape'){
+        shape.type.setValue(value);
+      }else if(type == 'triple'){
+        triple.type.setValue(value);
+      }else{
+        triple.value.setValue(value);            
+      }
+      context.emit();
+      setValue(value);
     }
     
 

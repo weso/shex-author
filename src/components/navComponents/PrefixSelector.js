@@ -1,6 +1,6 @@
 import React from 'react';
 
-let Editor = require('../../../entities/editor.js');
+let Editor = require('../../entities/editor.js');
 
 function PrefixSelector (props){
 
