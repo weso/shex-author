@@ -9,8 +9,10 @@ function IriComp (props) {
     const {shape,triple,type} = props;
 
     let initialValue=shape.type.value;
-    if(type !='shape'){
+    if(type =='triple'){
       initialValue = triple.type.value;
+    }else if(type =='value'){
+      initialValue = triple.value.value;
     }
 
     const [value,setValue] = useState(initialValue);
@@ -20,8 +22,10 @@ function IriComp (props) {
           setValue(e.target.value);
           if(type == 'shape'){
             context.setShapeTypeValue(shape.id,e.target.value);
-          }else{
+          }else if(type == 'triple'){
             context.setTripleTypeValue(shape.id,triple.id,e.target.value);
+          }else{
+            context.setTripleValue(shape.id,triple.id,e.target.value);
           }
           
     }

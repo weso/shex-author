@@ -8,17 +8,17 @@ function ValueTypeComp(props) {
     const {shape,triple} = props;
 
     const context = useContext(ShapesContext);
-    const [value,setValue] = useState(triple.value.getTypeName())
+    const [valueType,setValueType] = useState(triple.value.getTypeName())
     
     const handleChange = (event) =>{
-        let newValue = event.target.value;
-        context.setTripleValue(shape.id,triple.id,newValue);
-        setValue(newValue);
+        let newType = event.target.value;
+        context.setTripleValueType(shape.id,triple.id,newType);
+        setValueType(newType);
     }
 
     return  (<div className="row col-6">
                     <select className="col form-control valueType"
-                                    value={value} 
+                                    value={valueType} 
                                     onChange={handleChange}>
 
                                     <option value="primitive">Primitive</option>

@@ -17,7 +17,9 @@ function PrimitiveComp (props) {
     }
     
 
-    return (<select className="col-sm-4 form-control tripleValue">
+    return (<select className="col-sm-4 form-control tripleValue"
+                    value={value}
+                    onChange={handleChange}>
             {
                 primitives.map(prim =>{
                     return <option key={prim} value={prim.toLowerCase()}>{prim}</option>

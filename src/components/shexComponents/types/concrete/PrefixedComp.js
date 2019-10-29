@@ -15,17 +15,23 @@ function PrefixedComp (props) {
     //beacause if it is called by a triple 
     //we don't know its shape's type
     let initialPrefix; 
-    if(type !='shape'){
+    if(type=='shape'){
+      initialPrefix = shape.type.prefix.prefixValue;
+    }else if(type =='triple'){
       initialValue = triple.type.value;
       initialPrefix = triple.type.prefix.prefixValue;
     }else{ 
-      initialPrefix = shape.type.prefix.prefixValue;
+      initialValue = triple.value.value;
+      initialPrefix = triple.value.prefix.prefixValue;
     }
 
     const [value,setValue] = useState(initialValue);
     const [prefix,setPrefix] = useState(initialPrefix);
 
 
+  /**
+    Esto igual se puede quitar
+   */
    const getPrefixContex = ()=>{
         let prefix = 'prefixShape';
         let context = shape.type.context;
@@ -42,8 +48,10 @@ function PrefixedComp (props) {
           setValue(e.target.value);
           if(type == 'shape'){
             context.setShapeTypeValue(shape.id,e.target.value);
-          }else{
+          }else if(type == 'triple'){
             context.setTripleTypeValue(shape.id,triple.id,e.target.value);
+          }else{
+            context.setTripleValue(shape.id,triple.id,e.target.value);
           }
     }
 
@@ -51,8 +59,10 @@ function PrefixedComp (props) {
           setPrefix(e.target.value);
           if(type == 'shape'){
             context.setShapePrefix(shape.id,e.target.value);
-          }else{
+          }else if(type == 'triple'){
             context.setTriplePrefix(shape.id,triple.id,e.target.value);
+          }else{
+            context.setValuePrefix(shape.id,triple.id,e.target.value);
           }
     }
 

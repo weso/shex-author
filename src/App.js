@@ -130,12 +130,12 @@ function App() {
           setShapes(newShapes);
     }
 
-    const setTripleTypeValue = (shapeId,tripleId,value) =>{
+    const setTripleTypeValue = (shapeId,tripleId,type) =>{
       const newShapes = shapes.filter(shape => {
         if(shape.id == shapeId){
           shape.triples.filter(triple =>{
             if(triple.id==tripleId){
-                triple.type.setValue(value);            
+                triple.type.setValue(type);            
             }
             return triple             
           });
@@ -164,7 +164,7 @@ function App() {
     //Codemirror.signal(Editor.getInstance().getYashe(),'humanEvent',newShapes);
     }
 
-    const setTripleValue = (shapeId,tripleId,value) =>{
+    const setTripleValueType = (shapeId,tripleId,value) =>{
       const newShapes = shapes.filter(shape => {
         if(shape.id == shapeId){
           shape.triples.filter(triple =>{
@@ -179,6 +179,23 @@ function App() {
 
     setShapes(newShapes);
     //Codemirror.signal(Editor.getInstance().getYashe(),'humanEvent',newShapes);
+    }
+
+    const setTripleValue = (shapeId,tripleId,value) =>{
+      const newShapes = shapes.filter(shape => {
+        if(shape.id == shapeId){
+          shape.triples.filter(triple =>{
+            if(triple.id==tripleId){
+                triple.value.setValue(value);            
+            }
+            return triple             
+          });
+        }
+        return shape;
+    });
+
+    setShapes(newShapes);
+    Codemirror.signal(Editor.getInstance().getYashe(),'humanEvent',newShapes);
     }
 
     const setShapePrefix = (shapeId,prefix)=>{
@@ -200,6 +217,23 @@ function App() {
             shape.triples.filter(triple =>{
               if(triple.id==tripleId){
                   triple.type.setPrefix(pre);           
+               }
+             return triple             
+            });
+          }
+          return shape;
+        });
+
+        setShapes(newShapes);
+    }
+
+    const setValuePrefix = (shapeId,tripleId,prefix)=>{
+        let pre = getPrefix(prefix);
+        const newShapes = shapes.filter(shape => {
+          if(shape.id == shapeId){
+            shape.triples.filter(triple =>{
+              if(triple.id==tripleId){
+                  triple.value.setPrefix(pre);           
                }
              return triple             
             });
@@ -237,22 +271,32 @@ function App() {
             
             <ShapesContext.Provider value={
                                     {
-                                      shapes:shapes,
+                                      shapes:shapes, 
+
                                       addShape:addShape,
                                       addTriple:addTriple,
+
                                       deleteShape:deleteShape,
                                       deleteTriple:deleteTriple,
+
                                       setShapeType:setShapeType,
                                       setTripleType:setTripleType,
+
                                       setShapeTypeValue:setShapeTypeValue,
                                       setTripleTypeValue:setTripleTypeValue,
-                                      setCardinality:setCardinality,
+
+
+                                      setTripleValueType:setTripleValueType,
                                       setTripleValue:setTripleValue,
+
+                                      setCardinality:setCardinality,
                                       replaceShapes:replaceShapes,
                                       prefixes:prefixes,
                                       updatePrefixes:updatePrefixes,
+
                                       setShapePrefix:setShapePrefix,
-                                      setTriplePrefix:setTriplePrefix
+                                      setTriplePrefix:setTriplePrefix,
+                                      setValuePrefix:setValuePrefix
                                     }
                                   }>
 
