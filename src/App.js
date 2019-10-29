@@ -222,6 +222,10 @@ function App() {
 
   
     const replaceShapes = (newShapes) =>{
+      //This allows to render all the shapes when a property is updated.
+      //Best Glitch Ever
+      setShapes([]); 
+  
       setShapes(newShapes);
     }
 
@@ -246,7 +250,6 @@ function App() {
                                       setTripleValue:setTripleValue,
                                       replaceShapes:replaceShapes,
                                       prefixes:prefixes,
-                                      getPrefix:getPrefix,
                                       updatePrefixes:updatePrefixes,
                                       setShapePrefix:setShapePrefix,
                                       setTriplePrefix:setTriplePrefix
