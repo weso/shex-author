@@ -5,39 +5,13 @@ import './App.css';
 import EditorComp from './components/EditorComp';
 import AssistantComp from './components/AssistantComp';
 
-let Shape = require('./entities/shexEntities/shape.js');
-let Triple = require('./entities/shexEntities/triple.js');
-let PrefixedIri = require('./entities/shexEntities/types/concreteTypes/prefixedIri.js');
-let IriRef = require('./entities/shexEntities/types/concreteTypes/iriRef.js');
-let Literal = require('./entities/shexEntities/types/concreteTypes/kinds/literal.js');
-let InlineShape = require('./entities/shexEntities/shexUtils/inlineShape.js');
-
-let Prefix = require('./entities/shexEntities/shexUtils/prefix.js')
-
-let Editor = require('./entities/editor.js');
-
-let Codemirror = require('codemirror');
-
-let initialShapes = [];
-
-let shape0 = new Shape(0,new IriRef('shapeName','User'));
-shape0.addTriple(new Triple(0,new IriRef('shapeName','name'),new Literal(),new InlineShape(),'?',false));
-shape0.addTriple(new Triple(1,new PrefixedIri('tripleName')));
-shape0.addTriple(new Triple(2));
-
-let shape1 = new Shape(1,new IriRef('shapeName','Car'));
-
-initialShapes.push(shape0);
-initialShapes.push(shape1);
-
 let shexUtils = require('./utils/shexUtils.js');
 
 export const ShapesContext = React.createContext();
 
-
 function App() {
 
-    const [shapes,setShapes] = useState(initialShapes);
+    const [shapes,setShapes] = useState([]);
     const [prefixes,setPrefixes] = useState([{key:'',val:'http://example.org/'}]);
 
 

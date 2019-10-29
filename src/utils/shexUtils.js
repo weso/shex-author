@@ -6,9 +6,6 @@ let Shape = require('../entities/shexEntities/shape.js');
 let Triple = require('../entities/shexEntities/triple.js');
 let Prefix = require('../entities/shexEntities/shexUtils/prefix.js');
 
-
-
-
 let shapesCount = 0;
 
 
@@ -225,12 +222,8 @@ function getPrefix(prefix){
 
 
 function emit(newShapes) {
-    Codemirror
-        .signal(
-                Editor.getInstance().getYashe(),
-                'humanEvent',
-                newShapes
-                );
+    const yashe = Editor.getInstance().getYashe();
+    Codemirror.signal(yashe,'humanEvent',newShapes);
 }
 
 module.exports ={
