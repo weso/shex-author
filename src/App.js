@@ -220,6 +220,7 @@ function App() {
       return null;
     }
 
+  
     const replaceShapes = (newShapes) =>{
       setShapes(newShapes);
     }
@@ -245,6 +246,7 @@ function App() {
                                       setTripleValue:setTripleValue,
                                       replaceShapes:replaceShapes,
                                       prefixes:prefixes,
+                                      getPrefix:getPrefix,
                                       updatePrefixes:updatePrefixes,
                                       setShapePrefix:setShapePrefix,
                                       setTriplePrefix:setTriplePrefix

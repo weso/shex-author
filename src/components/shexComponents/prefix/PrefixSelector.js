@@ -1,25 +1,39 @@
+import React from 'react';
+
+let Editor = require('../../../entities/editor.js');
+
+function PrefixSelector (props){
+
+    const {namespaces} = props;
 
 
-import React, {Component} from 'react';
-
-class PrefixSelector extends Component {
-
-
-    constructor(props){
-        super(props);
-        this.namespaces = this.props.namespaces;
+    const handleChange = (e) =>{
+        let yashe = Editor.getInstance().getYashe();
+        let current = yashe.getValue();
+        let defined = yashe.getDefinedPrefixes();
+        let prefix= e.target.value;
+        let uri;
+        //getUri
+        for(let def in namespaces){
+          for(let p in namespaces[def]){
+            if(p==prefix)
+              uri = namespaces[def][p];
+          }
+        }
+        yashe.setValue( 'PREFIX ' + prefix + ': <' + uri + '>\n' + current );
     }
-   
-    render(){
-      return <div>
+
+    return (<div>
                 {
-                    Object.keys(this.namespaces).map( (key) =>{
+                    
+                    Object.keys(namespaces).map( (key) =>{
                             return <div key={key}>
-                                        <select  className='form-control'>
+                                        <select  className='form-control'
+                                                 onChange={handleChange}>
                                             <option>{key}</option>
                                             { 
-                                                Object.keys(this.namespaces[key]).map( (prefix) =>{
-                                                    return <option key={prefix}>{prefix}</option>
+                                                Object.keys(namespaces[key]).map( (prefix) =>{
+                                                    return <option key={prefix} value={prefix}>{prefix}</option>
                                                 })  
                                             }
                                         </select>
@@ -27,11 +41,8 @@ class PrefixSelector extends Component {
                                     
                     }) 
                 }
-            </div>
-                 
-                
-    }
-    
+            </div>);
+                     
 }
 
 
