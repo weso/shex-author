@@ -115,7 +115,7 @@ label{
 }
 
 .tripleType{
-	margin-left: -25px;
+	margin-left: -35px;
 	margin-right:2px;
 }
 
@@ -171,6 +171,8 @@ label{
 
 .checkbox{
 	margin-left: 15px;
+	margin-right: -28px;
+	
 }
 
 .valuesCol{

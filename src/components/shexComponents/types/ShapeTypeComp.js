@@ -35,7 +35,7 @@ function ShapeTypeComp (props) {
                                     type='shape'
                                     instance={shape.type.getTypeName()}/>
 
-                        <button className="col-1 deleteShapeButton mdc-icon-button material-icons btn-danger" 
+                        <button className="col-xs-1 deleteShapeButton mdc-icon-button material-icons btn-danger" 
                             onClick={()=>context.deleteShape(shape.id)}>
                             delete
                         </button>
