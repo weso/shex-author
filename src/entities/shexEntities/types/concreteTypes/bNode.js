@@ -2,7 +2,7 @@ let Type = require('../type.js');
 
 class BNode extends Type{
 
-    constructor(context,value=''){
+    constructor(context,value='example'){
         super(value);
         this.context = context;
     }

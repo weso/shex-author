@@ -30,6 +30,7 @@ let shape1 = new Shape(1,new IriRef('shapeName','Car'));
 initialShapes.push(shape0);
 initialShapes.push(shape1);
 
+let shexUtils = require('./utils/shexUtils.js');
 
 export const ShapesContext = React.createContext();
 
@@ -41,217 +42,59 @@ function App() {
 
 
     const addShape = () =>{
-
-      const id = shapes.length;
-      const newShape = new Shape(id);
-
-      setShapes([...shapes,newShape]);
-
-      let newShapes = shapes;
-      newShapes.push(newShape)
-      //Codemirror.signal(Editor.getInstance().getYashe(),'humanEvent',newShapes);
+      setShapes([...shapes,shexUtils.addShape(shapes)]);
     }
 
     const addTriple = (shapeId) =>{
-
-      const newShapes = shapes.filter(shape => {
-          if(shape.id == shapeId){
-            const id = shape.getTriplesCount();
-            const newTriple = new Triple(id);
-            shape.addTriple(newTriple);
-          }
-          return shape;
-      });
-
-      setShapes(newShapes);
-      //Codemirror.signal(Editor.getInstance().getYashe(),'humanEvent',newShapes);
+      setShapes(shexUtils.addTriple(shapes,shapeId));
     }
 
     const deleteShape = (shapeId) =>{
-      var response = window.confirm('Are you sure?');
-      if (response == true) {
-          const newShapes = shapes.filter(shape => shape.id != shapeId);
-          setShapes(newShapes);
-          //Codemirror.signal(Editor.getInstance().getYashe(),'humanEvent',newShapes);
-      } 
+      setShapes(shexUtils.deleteShape(shapes,shapeId));
     }
 
     const deleteTriple = (shapeId,tripleId) =>{
-
-      const newShapes = shapes.filter(shape => {
-          if(shape.id == shapeId){
-            const newTriples = shape.triples.filter( triple => triple.id != tripleId);
-            shape.setTriples(newTriples);
-          }
-          return shape;
-      });
-      setShapes(newShapes);
-      //Codemirror.signal(Editor.getInstance().getYashe(),'humanEvent',newShapes);
-  }
+      setShapes(shexUtils.deleteTriple(shapes,shapeId,tripleId));
+    }
 
     const setShapeType = (shapeId,event) =>{
-       const newShapes = shapes.filter(shape => {
-          if(shape.id == shapeId){
-            let type = event.target.value;
-            shape.setType(type);
-          }
-          return shape;
-        });
-
-      setShapes(newShapes);
+      setShapes(shexUtils.setShapeType(shapes,shapeId,event));
     }
 
     const setTripleType = (shapeId,tripleId,event) =>{
-      const newShapes = shapes.filter(shape => {
-        if(shape.id == shapeId){
-          shape.triples.filter(triple =>{
-              if(triple.id==tripleId){
-                 let type = event.target.value;
-                  triple.setType(type);                  
-              }
-              return triple             
-          });
-        }
-        return shape;
-      });
-
-    setShapes(newShapes);
-    //Codemirror.signal(Editor.getInstance().getYashe(),'humanEvent',newShapes);
-  }
+      setShapes(shexUtils.setTripleType(shapes,shapeId,tripleId,event));
+    }
 
     const setShapeTypeValue = (shapeId,value)=>{
-      const newShapes = shapes.filter(shape => {
-              if(shape.id == shapeId){
-                shape.type.setValue(value);
-              }
-              return shape;
-          });
-
-          setShapes(newShapes);
+      setShapes(shexUtils.setShapeTypeValue(shapes,shapeId,value));
     }
 
     const setTripleTypeValue = (shapeId,tripleId,type) =>{
-      const newShapes = shapes.filter(shape => {
-        if(shape.id == shapeId){
-          shape.triples.filter(triple =>{
-            if(triple.id==tripleId){
-                triple.type.setValue(type);            
-            }
-            return triple             
-          });
-        }
-        return shape;
-    });
-
-    setShapes(newShapes);
-    //Codemirror.signal(Editor.getInstance().getYashe(),'humanEvent',newShapes);
+      setShapes(shexUtils.setTripleTypeValue(shapes,shapeId,tripleId,type));
     }
 
     const setCardinality = (shapeId,tripleId,cardinality) =>{
-      const newShapes = shapes.filter(shape => {
-        if(shape.id == shapeId){
-          shape.triples.filter(triple =>{
-            if(triple.id==tripleId){
-                triple.setCardinality(cardinality);            
-            }
-            return triple             
-          });
-        }
-        return shape;
-    });
-
-    setShapes(newShapes);
-    //Codemirror.signal(Editor.getInstance().getYashe(),'humanEvent',newShapes);
+      setShapes(shexUtils.setCardinality(shapes,shapeId,tripleId,cardinality));
     }
 
     const setTripleValueType = (shapeId,tripleId,value) =>{
-      const newShapes = shapes.filter(shape => {
-        if(shape.id == shapeId){
-          shape.triples.filter(triple =>{
-            if(triple.id==tripleId){
-                triple.setValue(value);            
-            }
-            return triple             
-          });
-        }
-        return shape;
-    });
-
-    setShapes(newShapes);
-    //Codemirror.signal(Editor.getInstance().getYashe(),'humanEvent',newShapes);
+      setShapes(shexUtils.setTripleValueType(shapes,shapeId,tripleId,value));
     }
 
     const setTripleValue = (shapeId,tripleId,value) =>{
-      const newShapes = shapes.filter(shape => {
-        if(shape.id == shapeId){
-          shape.triples.filter(triple =>{
-            if(triple.id==tripleId){
-                triple.value.setValue(value);            
-            }
-            return triple             
-          });
-        }
-        return shape;
-    });
-
-    setShapes(newShapes);
-    Codemirror.signal(Editor.getInstance().getYashe(),'humanEvent',newShapes);
+      setShapes(shexUtils.setTripleValue(shapes,shapeId,tripleId,value));
     }
 
     const setShapePrefix = (shapeId,prefix)=>{
-      let pre = getPrefix(prefix);
-      const newShapes = shapes.filter(shape => {
-              if(shape.id == shapeId){
-                shape.type.setPrefix(pre);
-              }
-              return shape;
-          });
-
-          setShapes(newShapes);
+      setShapes(shexUtils.setShapePrefix(shapes,shapeId,prefix));
     }
 
-     const setTriplePrefix = (shapeId,tripleId,prefix)=>{
-        let pre = getPrefix(prefix);
-        const newShapes = shapes.filter(shape => {
-          if(shape.id == shapeId){
-            shape.triples.filter(triple =>{
-              if(triple.id==tripleId){
-                  triple.type.setPrefix(pre);           
-               }
-             return triple             
-            });
-          }
-          return shape;
-        });
-
-        setShapes(newShapes);
+    const setTriplePrefix = (shapeId,tripleId,prefix)=>{
+      setShapes(shexUtils.setTriplePrefix(shapes,shapeId,tripleId,prefix));
     }
 
     const setValuePrefix = (shapeId,tripleId,prefix)=>{
-        let pre = getPrefix(prefix);
-        const newShapes = shapes.filter(shape => {
-          if(shape.id == shapeId){
-            shape.triples.filter(triple =>{
-              if(triple.id==tripleId){
-                  triple.value.setPrefix(pre);           
-               }
-             return triple             
-            });
-          }
-          return shape;
-        });
-
-        setShapes(newShapes);
-    }
-
-    const getPrefix = (prefix)=>{
-      let defined = Editor.getInstance().getYashe().getDefinedPrefixes();
-      for(let def in defined){
-          if(defined[def] == prefix){
-            return new Prefix(def,defined[def]);
-          }
-      }
-      return null;
+      setShapes(shexUtils.setValuePrefix(shapes,shapeId,tripleId,prefix));
     }
 
   
