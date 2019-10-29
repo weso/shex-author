@@ -12,23 +12,30 @@ function FactoryTypeComp (props) {
     const {shape,triple,type,instance} = props;
 
     if(instance == 'iriRef'){
+        
         return <IriComp shape={shape} triple={triple} type={type}/>
-    }
 
-    if(instance == 'prefixedIri'){
+    }
+    else if(instance == 'prefixedIri'){
+
         return <PrefixedComp shape={shape} triple={triple} type={type}/>
-    }
 
-    if(instance == 'bnode'){
+    }
+    else if(instance == 'bnode'){
+
         return <BNodeComp shape={shape}/>
-    }
 
-    if(instance == 'primitive'){
+    }
+    else if(instance == 'primitive'){
+        
         return  <PrimitiveComp shape={shape} triple={triple}/>
-    }
 
-    if(instance == 'primitive'){
+    }else if(instance == 'shape'){
+        
         return  <ShapeRefComp shape={shape}triple={triple}/>
+
+    }else{
+        return null;
     }
                                    
 }
