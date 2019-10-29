@@ -3,23 +3,11 @@ import 'yashe/dist/yashe.min.css';
 import {ShapesContext} from '../App';
 
 
-let YASHE = require('yashe');
+const YASHE = require('yashe');
 
-let Editor = require('../entities/editor.js');
+const Editor = require('../entities/editor.js');
 
-let tokenUtils = require('../utils/tokenUtils.js');
-
-const DEFAULT_SHAPE = 'PREFIX :       <http://example.org/>\n'+
-'PREFIX schema: <http://schema.org/>\n'+
-'PREFIX xsd:    <http://www.w3.org/2001/XMLSchema#>\n\n'+
-
-':User IRI {\n'+ 
-'  schema:name          xsd:string  ;\n'+
-'  schema:birthDate     xsd:date?  ;\n'+
-'  schema:birthPlace    xsd:string+  ;\n'+
-'  schema:knows          @:User*  \n'+
-'}';
-
+const yasheUtils = require('../utils/yasheUtils.js');
 
 
 function EditorComp() {
@@ -28,6 +16,7 @@ function EditorComp() {
   const textAreaRef = useRef(null);
   const context = useContext(ShapesContext);
 
+ 
   useEffect(() => {
     
         if (!yashe) {
@@ -43,26 +32,8 @@ function EditorComp() {
 
              y.on('blur', function() {
                 if(!y.hasErrors(y)){
-
-                    let tokens = tokenUtils.getTokens();
-                    let defShapes = tokenUtils.getDefinedShapes(tokens);
-                    let newShapes = tokenUtils.getShapes(defShapes);
-              
-                    context.replaceShapes(newShapes);
-
-                    let newPrefixes = [];
-                    let prefix = {};
-                    let yashe = Editor.getInstance().getYashe();
-                    let keys = Object.keys(yashe.getDefinedPrefixes());
-                    let values = Object.values(yashe.getDefinedPrefixes());
-
-                    for(let i=0;i<keys.length;i++){
-                        prefix = {};
-                        prefix.key=keys[i];
-                        prefix.val=values[i];
-                        newPrefixes.push(prefix);
-      }
-                    context.updatePrefixes(newPrefixes);
+                    replaceShapes();
+                    updatePrefixes();
                 }
             });
 
@@ -71,7 +42,7 @@ function EditorComp() {
             });
 
 
-            y.setValue(DEFAULT_SHAPE)
+            y.setValue(yasheUtils.DEFAULT_SHAPE)
             y.refresh();
             setYashe(y);
 
@@ -80,12 +51,20 @@ function EditorComp() {
     }, [yashe]
     );
 
+    const replaceShapes = ()=>{
+        context.replaceShapes(yasheUtils.replaceShapes());
+    }
+
+    const updatePrefixes = ()=>{
+        context.updatePrefixes(yasheUtils.updatePrefixes());
+    }
+
+
     return  (<div className='col-lg show'>
                 <textarea ref={textAreaRef}/>
             </div>            
     );
 
-    
 }
 
 
