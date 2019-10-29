@@ -17,9 +17,9 @@ function PrefixedComp (props) {
     let initialPrefix; 
     if(type !='shape'){
       initialValue = triple.type.value;
-      initialPrefix = triple.type.prefix.prefixName;
+      initialPrefix = triple.type.prefix.prefixValue;
     }else{ 
-      initialPrefix = shape.type.prefix.prefixName;
+      initialPrefix = shape.type.prefix.prefixValue;
     }
 
     const [value,setValue] = useState(initialValue);
