@@ -1,5 +1,6 @@
 import React from 'react';
 
+let Codemirror = require('codemirror');
 let Editor = require('../../entities/editor.js');
 
 function PrefixSelector (props){
@@ -21,6 +22,7 @@ function PrefixSelector (props){
           }
         }
         yashe.setValue( 'PREFIX ' + prefix + ': <' + uri + '>\n' + current );
+        Codemirror.signal(yashe,'prefixUpdate');
     }
 
     return (<div>

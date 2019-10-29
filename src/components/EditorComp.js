@@ -42,6 +42,11 @@ function EditorComp() {
             });
 
 
+            y.on('prefixUpdate', function(shapes) {
+                updatePrefixes();
+            });
+
+
             y.setValue(yasheUtils.DEFAULT_SHAPE)
             y.refresh();
             setYashe(y);
