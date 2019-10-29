@@ -38,10 +38,6 @@ function ShapeComponent (props) {
             <div className="row shapes-header">
                 <label className="col-sm-2">Shape </label>
                     <ShapeTypeComp shape={shape}/>
-                    <button className="col-xs-10 deleteShapeButton mdc-icon-button material-icons btn-danger" 
-                            onClick={()=>context.deleteShape(shape.id)}>
-                            delete
-                    </button>
             </div>
 
             <button className="btn-primary addPropButton col-xs-3"

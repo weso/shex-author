@@ -20,20 +20,25 @@ function ShapeTypeComp (props) {
         }
 
 
-        return (<div className="row col-sm-6">
-                    <select className="col-sm form-control shapeType" 
+        return (<div className="row col-8">
+                        <select className="col-3 form-control shapeType" 
                             value={type} 
                             onChange={handleChange}>
 
                             <option value="iriRef">IriRef</option>
                             <option value="prefixedIri">Prefixed</option>
                             <option value="bnode">BNode</option>
-                    </select>
+                        </select>
 
-                   <FactoryTypeComp shape={shape} 
+                        <FactoryTypeComp shape={shape} 
                                     triple={null}
                                     type='shape'
                                     instance={shape.type.getTypeName()}/>
+
+                        <button className="col-1 deleteShapeButton mdc-icon-button material-icons btn-danger" 
+                            onClick={()=>context.deleteShape(shape.id)}>
+                            delete
+                        </button>
                 
                 </div>);
 

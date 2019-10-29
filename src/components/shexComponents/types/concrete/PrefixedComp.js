@@ -89,8 +89,8 @@ function PrefixedComp (props) {
 
   
 
-    return  (<div className='row col-sm'>
-                <select className={getPrefixContex()+' col-sm form-control'}
+    return  (<div className='row col-6'>
+                <select className={getPrefixContex()+' col-5 form-control'}
                         value={prefix}
                         onChange={handlePrefixChange}>
                   { 
@@ -100,7 +100,7 @@ function PrefixedComp (props) {
                   }
                 </select>
                    
-                <input  className={shape.type.value+' form-control col-sm'} 
+                <input  className={shape.type.value+' form-control col'} 
                         context="text" 
                         value={value}
                         onChange={handleTypeChange} />

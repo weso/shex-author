@@ -25,7 +25,7 @@ function BNodeComp(props) {
     }
    
 
-    return (<input   className={shape.type.context+' form-control col-sm'} 
+    return (<input   className={shape.type.context+' form-control col-4'} 
                         context="text" 
                         value={value}
                         onChange={change}/>);
