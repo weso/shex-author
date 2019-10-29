@@ -12,6 +12,7 @@ let IriRef = require('./entities/shexEntities/types/concreteTypes/iriRef.js');
 let Literal = require('./entities/shexEntities/types/concreteTypes/kinds/literal.js');
 let InlineShape = require('./entities/shexEntities/shexUtils/inlineShape.js');
 
+let Prefix = require('./entities/shexEntities/shexUtils/prefix.js')
 
 let Editor = require('./entities/editor.js');
 
@@ -180,6 +181,45 @@ function App() {
     //Codemirror.signal(Editor.getInstance().getYashe(),'humanEvent',newShapes);
     }
 
+    const setShapePrefix = (shapeId,prefix)=>{
+      let pre = getPrefix(prefix);
+      const newShapes = shapes.filter(shape => {
+              if(shape.id == shapeId){
+                shape.type.setPrefix(pre);
+              }
+              return shape;
+          });
+
+          setShapes(newShapes);
+    }
+
+     const setTriplePrefix = (shapeId,tripleId,prefix)=>{
+        let pre = getPrefix(prefix);
+        const newShapes = shapes.filter(shape => {
+          if(shape.id == shapeId){
+            shape.triples.filter(triple =>{
+              if(triple.id==tripleId){
+                  triple.type.setPrefix(pre);           
+               }
+             return triple             
+            });
+          }
+          return shape;
+        });
+
+        setShapes(newShapes);
+    }
+
+    const getPrefix = (prefix)=>{
+      let defined = Editor.getInstance().getYashe().getDefinedPrefixes();
+      for(let def in defined){
+          if(defined[def] == prefix){
+            return new Prefix(def,defined[def]);
+          }
+      }
+      return null;
+    }
+
     const replaceShapes = (newShapes) =>{
       setShapes(newShapes);
     }
@@ -205,7 +245,9 @@ function App() {
                                       setTripleValue:setTripleValue,
                                       replaceShapes:replaceShapes,
                                       prefixes:prefixes,
-                                      updatePrefixes:updatePrefixes
+                                      updatePrefixes:updatePrefixes,
+                                      setShapePrefix:setShapePrefix,
+                                      setTriplePrefix:setTriplePrefix
                                     }
                                   }>
 
