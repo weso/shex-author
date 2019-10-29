@@ -30,12 +30,13 @@ initialShapes.push(shape0);
 initialShapes.push(shape1);
 
 
-export const ShapesContext = React.createContext()
+export const ShapesContext = React.createContext();
 
 
 function App() {
 
     const [shapes,setShapes] = useState(initialShapes);
+    const [prefixes,setPrefixes] = useState([{key:'',val:'http://example.org/'}]);
 
 
     const addShape = () =>{
@@ -183,6 +184,10 @@ function App() {
       setShapes(newShapes);
     }
 
+    const updatePrefixes = (newPrefixes)=>{
+      setPrefixes(newPrefixes);
+    }
+
     return (
             
             <ShapesContext.Provider value={
@@ -198,7 +203,9 @@ function App() {
                                       setTripleTypeValue:setTripleTypeValue,
                                       setCardinality:setCardinality,
                                       setTripleValue:setTripleValue,
-                                      replaceShapes:replaceShapes
+                                      replaceShapes:replaceShapes,
+                                      prefixes:prefixes,
+                                      updatePrefixes:updatePrefixes
                                     }
                                   }>
 

@@ -48,8 +48,21 @@ function EditorComp() {
                     let defShapes = tokenUtils.getDefinedShapes(tokens);
                     let newShapes = tokenUtils.getShapes(defShapes);
               
-                 
                     context.replaceShapes(newShapes);
+
+                    let newPrefixes = [];
+                    let prefix = {};
+                    let yashe = Editor.getInstance().getYashe();
+                    let keys = Object.keys(yashe.getDefinedPrefixes());
+                    let values = Object.values(yashe.getDefinedPrefixes());
+
+                    for(let i=0;i<keys.length;i++){
+                        prefix = {};
+                        prefix.key=keys[i];
+                        prefix.val=values[i];
+                        newPrefixes.push(prefix);
+      }
+                    context.updatePrefixes(newPrefixes);
                 }
             });
 

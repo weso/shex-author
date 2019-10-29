@@ -1,11 +1,13 @@
 
-import React,{useState,useContext} from 'react';
+import React,{useState,useContext,useEffect} from 'react';
 import {ShapesContext} from '../../../../App';
 
+let Editor = require('../../../../entities/editor.js');
 
 function PrefixedComp (props) {
 
     const context = useContext(ShapesContext);
+ 
     const {shape,triple,type} = props;
 
     let initialValue=shape.type.value;
@@ -37,15 +39,24 @@ function PrefixedComp (props) {
           }
     }
 
+
   
 
     return  (<div className='row col-sm'>
-                    <select className={getPrefixContex()+' col-sm form-control'}/>
-                    <input  className={shape.type.value+' form-control col-sm'} 
-                            context="text" 
-                            value={value}
-                            onChange={handleChange} />      
-                </div>);
+                <select className={getPrefixContex()+' col-sm form-control'}>
+                  { 
+                    context.prefixes.map((pre) =>{
+                      return <option key={pre.key} value={pre.val}>{pre.key}</option>
+                    })
+                  }
+                </select>
+                   
+                <input  className={shape.type.value+' form-control col-sm'} 
+                        context="text" 
+                        value={value}
+                        onChange={handleChange} />
+               
+              </div>);
               
                                
     
