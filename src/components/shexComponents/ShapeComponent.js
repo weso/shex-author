@@ -21,7 +21,7 @@ function ShapeComponent (props) {
                     <ShapeTypeComp shape={shape}/>
                     <button className="col-xs-10 deleteShapeButton mdc-icon-button material-icons btn-danger" 
                             onClick={()=>context.deleteShape(shape.id)}>
-                                delete
+                            delete
                     </button>
             </div>
 

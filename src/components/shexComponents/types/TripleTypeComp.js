@@ -1,12 +1,8 @@
 
 import React,{useContext} from 'react';
-import IriComp from './concrete/IriComp';
-import PrefixedComp from './concrete/PrefixedComp';
+import FactoryTypeComp from './FactoryTypeComp';
 
 import {ShapesContext} from '../../../App';
-
-let IriRef = require('../../../entities/shexEntities/types/concreteTypes/iriRef.js');
-let PrefixedIri = require('../../../entities/shexEntities/types/concreteTypes/prefixedIri.js');
 
 
 function TripleTypeComp (props){
@@ -14,15 +10,7 @@ function TripleTypeComp (props){
     const context = useContext(ShapesContext);
     const {shape,triple} = props;
 
-    let typeComp;
-    let type = triple.type;
-    if(type instanceof IriRef){
-        typeComp = <IriComp shape={shape}triple={triple}type='triple'/>
-    }
-    if(type instanceof PrefixedIri){
-        typeComp = <PrefixedComp shape={shape}triple={triple}type='triple'/>
-    }
-     
+
     return (<div className="row col-sm-6">
                     <select className="col-sm form-control tripleType" 
                             value={triple.type.getTypeName()} 
@@ -33,7 +21,10 @@ function TripleTypeComp (props){
                              
                     </select>
 
-                   {typeComp}
+                   <FactoryTypeComp shape={shape} 
+                                    triple={triple}
+                                    type='triple'
+                                    instance={triple.type.getTypeName()}/>
                 
             </div>);
 

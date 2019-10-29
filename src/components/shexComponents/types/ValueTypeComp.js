@@ -2,10 +2,10 @@ import React,{useContext,useState} from 'react';
 
 import {ShapesContext} from '../../../App';
 
-import IriComp from '../types/concrete/IriComp';
-import PrefixedComp from '../types/concrete/PrefixedComp';
-import PrimitiveComp from '../types/concrete/PrimitiveComp';
-import ShapeRefComp from '../types/concrete/ShapeRefComp';
+import IriComp from './concrete/IriComp';
+import PrefixedComp from './concrete/PrefixedComp';
+import PrimitiveComp from './concrete/PrimitiveComp';
+import ShapeRefComp from './concrete/ShapeRefComp';
 
 
 let IriRef = require('../../../entities/shexEntities/types/concreteTypes/iriRef.js');
