@@ -45,8 +45,9 @@ function EditorComp() {
             y.setValue(yasheUtils.DEFAULT_SHAPE)
             y.refresh();
             setYashe(y);
-
+            
             Editor.getInstance().setYashe(y);
+            updatePrefixes();
         }
     }, [yashe]
     );
