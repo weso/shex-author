@@ -9,7 +9,7 @@ function PrimitiveComp (props) {
     const context = useContext(ShapesContext);
     const {shape,triple} = props;
 
-    const [value,setValue] = useState(triple.value);
+    const [value,setValue] = useState(triple.value.value);
 
     const handleChange = (e) =>{
           const value = e.target.value;
