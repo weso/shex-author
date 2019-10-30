@@ -70,12 +70,13 @@ function getShapes(defShapes){
     inlines = [];
     let shapes = [];
     let yashe = Editor.getInstance().getYashe();
-    defShapes.forEach(shape => {
-        
+
+    defShapes.forEach(token => {
+            
         let id = shapes.length;
-        let shapeDef = shape[0].string;
+        let shapeDef = token[0].string;
         let shapeType = getType(shapeDef,'shapeName');
-        let triples = getTriples(id,shape);
+        let triples = getTriples(id,token);
 
         shapes.push(new Shape(id,shapeType,triples));
     })
@@ -88,7 +89,8 @@ function getTriples(shapeId,shape) {
         let triples = [];
         let singleTriple = [];
         let yashe = Editor.getInstance().getYashe();
-        for(let i=3;i<shape.length;i++){
+        let start = getStart(shape);
+        for(let i=start;i<shape.length;i++){
             singleTriple.push(shape[i])
             if(shape[i].type == 'punc'){
                 if(singleTriple.length!=1){ //This line is neccesary when last triple of the shape ends with ';'
@@ -104,6 +106,7 @@ function getTriples(shapeId,shape) {
                         let token = singleTriple[s];
                         if(index == 0){
                             type = getType(token.string,'tripleName');
+                            
                         }else{
                             
                             if(token.type == 'string-2' || token.type == 'keyword' || token.type == 'variable-3'){
@@ -143,6 +146,14 @@ function getTriples(shapeId,shape) {
 
         }
     return triples;
+}
+
+function getStart(shape){
+    for(let i=0;i<shape.length;i++){
+        if(shape[i].string=='{'){
+            return i+1;
+        }
+    }
 }
 
 
