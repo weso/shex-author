@@ -12,7 +12,7 @@ function Nav (props) {
 
     
     return (<div className="row editor-nav">
-                <button className="btn btn-default assistantBtn" 
+                <button className="btn btn-default assistantBtn " 
                         type="button"
                         onClick={toggle}>
                         Assistant
