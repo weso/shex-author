@@ -12,6 +12,10 @@ function ValueTypeComp(props) {
     
     const handleChange = (event) =>{
         let newType = event.target.value;
+        if(newType!='shape'){
+            //This is necesary when we change from ShapeType to otherType
+            triple.inlineShape.shape = null;
+        }
         triple.setValue(newType);
         context.emit();
         setValueType(newType);

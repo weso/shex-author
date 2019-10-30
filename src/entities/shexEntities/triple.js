@@ -7,14 +7,13 @@ let InlineShape = require('./shexUtils/inlineShape.js');
 class Triple {
 
 
-    constructor(id,type=new PrefixedIri('tripleName'),value=new Primitive(),inlineShape=new InlineShape() ,cardinality='',showValues=false) {
+    constructor(id,type=new PrefixedIri('tripleName'),value=new Primitive(),inlineShape=new InlineShape(),cardinality='') {
         this.id = id;
         this.type = type;
         this.value = value;
         this.cardinality = cardinality;
         this.inlineShape = inlineShape;
         this.factory = new TypesFactory();
-        this.showValues = showValues;
       }
       
     addValue(value){
@@ -42,7 +41,6 @@ class Triple {
         this.cardinality = cardinality;
     }
 
-
     getInlineShape(){
         return this.inlineShape;
     }
@@ -62,13 +60,6 @@ class Triple {
     }
 
 
-    isShowValues(){
-        return this.showValues;
-    }
-
-    setShowValues(show){
-        this.showValues = show;
-    }
 
     toString(){
         return '  '+this.getType().toString()+'          '+
@@ -77,6 +68,7 @@ class Triple {
         this.getCardinality()+'  ;\n';
 
     }
+
 
    
 

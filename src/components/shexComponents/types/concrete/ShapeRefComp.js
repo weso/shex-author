@@ -14,10 +14,12 @@ function ShapeRefComp (props) {
     if(triple.inlineShape.shape != null){
         inlineValue = triple.inlineShape.shape.id;
     }
+    
     const [inlineShape,setInlineShape] = useState(inlineValue);
+    const [valueType,setValueType] = useState(triple.value.getTypeName())
 
 
-    const handleChange = (e) =>{
+    const handleInlineChange = (e) =>{
         const shapeId = e.target.value;
         let inlineShape = null;
         let inlineSelector = '';
@@ -30,11 +32,18 @@ function ShapeRefComp (props) {
         setInlineShape(inlineSelector);
     }
 
+    const handleTypeChange = (e) =>{
+        let newType = e.target.value;
+        triple.setValue(newType);
+        context.emit();
+        setValueType(newType);
+    }
+
 
     return (<div className='row col'>
                 <select className="col form-control valueInlineShape"
                         value={inlineShape}
-                        onChange={handleChange}>
+                        onChange={handleInlineChange}>
                     <option value=''></option>
                     { 
                     context.shapes.map(shape =>{
@@ -43,12 +52,14 @@ function ShapeRefComp (props) {
                   }
                 </select>
 
-                <select className="col form-control valueInlineShape">
-                    <option></option>
-                    <option>Iri</option>
-                    <option>Literal</option>
-                    <option>NonLiteral</option>
-                    <option>BNode</option>
+                <select className="col form-control valueInlineShape"
+                        value={valueType}
+                        onChange={handleTypeChange}>
+                    <option value='shape'></option>
+                    <option value='iriKind'>IRI</option>
+                    <option value="literal">Literal</option>
+                    <option value="nonLiteral">NonLiteral</option>
+                    <option value="bnodeKind">BNODE</option>
                 </select>
             </div>
 
