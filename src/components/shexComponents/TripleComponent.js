@@ -14,7 +14,7 @@ function TripleComponent (props) {
 
 
     return ( <SlideToggle duration={180}
-                          collapsed='true'
+                          collapsed
                           render={({ toggle, setCollapsibleElement, progress }) => (
                 <div className="row tripleRow">
 

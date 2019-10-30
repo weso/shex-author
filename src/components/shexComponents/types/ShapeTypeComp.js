@@ -8,15 +8,25 @@ import {ShapesContext} from '../../../App';
 function ShapeTypeComp (props) {
 
         const context = useContext(ShapesContext);
-        const {shape} = props;
+        const {shape,colapse} = props;
 
         const [type,setType] = useState(shape.type.getTypeName());
+        const [colapseBtn,setColapseBtn] = useState('expand_more');
    
         const handleChange = (e)=>{
                 const type = e.target.value;
                 shape.setType(type)
                 context.emit();
                 setType(type)
+        }
+
+        const handleColapse = (e)=>{
+                if(colapseBtn=='expand_more'){
+                    setColapseBtn('expand_less');
+                }else{
+                    setColapseBtn('expand_more');
+                }
+                colapse();
         }
 
 
@@ -34,6 +44,11 @@ function ShapeTypeComp (props) {
                                     triple={null}
                                     type='shape'
                                     instance={shape.type.getTypeName()}/>
+
+                        <button className="col-xs-1  colapseButton mdc-icon-button material-icons btn-primary"
+                                onClick={handleColapse}>
+                                {colapseBtn}
+                        </button>
 
                         <button className="col-xs-1 deleteShapeButton mdc-icon-button material-icons btn-danger" 
                             onClick={()=>context.deleteShape(shape.id)}>

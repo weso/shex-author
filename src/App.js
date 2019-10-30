@@ -54,7 +54,7 @@ function App() {
                                   }>
                 
                 <SlideToggle duration={500}
-                          collapsed='true'
+                          
                           render={({ toggle, setCollapsibleElement, progress }) => (
                           <div> 
                               <Nav toggle={toggle}/>

@@ -1,6 +1,7 @@
 
 import React,{useState,useContext} from 'react';
 import {ShapesContext} from '../../../../App';
+import Qualifier from '../../qualifier/Qualifier';
 
 let shexUtils = require('../../../../utils/shexUtils.js');
 
@@ -52,15 +53,7 @@ function ShapeRefComp (props) {
                   }
                 </select>
 
-                <select className="col form-control valueInlineShape"
-                        value={valueType}
-                        onChange={handleTypeChange}>
-                    <option value='shape'></option>
-                    <option value='iriKind'>IRI</option>
-                    <option value="literal">Literal</option>
-                    <option value="nonLiteral">NonLiteral</option>
-                    <option value="bnodeKind">BNODE</option>
-                </select>
+                <Qualifier triple={triple} scope='triple'/>
             </div>
 
     

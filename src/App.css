@@ -199,3 +199,12 @@ label{
 .cardiLabel{
 	margin-left: 20px;
 }
+
+.qualifier{
+	background-color: #eaf3ff;
+}
+
+.qualiLabel{
+	margin-left: 100px;
+	margin-right: -70px;
+}
