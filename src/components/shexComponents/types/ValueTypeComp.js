@@ -17,8 +17,8 @@ function ValueTypeComp(props) {
         setValueType(newType);
     }
 
-    return  (<div className="row col-6">
-                    <select className="col form-control valueType"
+    return  (<div className="row col-8">
+                    <select className="col-5 form-control valueType"
                                     value={valueType} 
                                     onChange={handleChange}>
 

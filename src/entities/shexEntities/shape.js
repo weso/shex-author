@@ -54,11 +54,6 @@ constructor(id,type=new IrirRef('shapeName'),triples = []) {
      }
 
 
-     getHtml(){
-      // return htmlUtils.getShapeHtml(this);
-     }
-
-
      toString(){
     
        //CAMBIAR

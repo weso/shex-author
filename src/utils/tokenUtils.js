@@ -15,11 +15,10 @@ let BNodeKind = require('../entities/shexEntities/types/concreteTypes/kinds/bNod
 
 let InlineShape = require('../entities/shexEntities/shexUtils/inlineShape.js');
 
-//let shapeUtils = require('./shapeUtils.js');
+let shexUtils = require('./shexUtils.js');
 
 
 let Editor = require('../entities/editor.js');
-let ShapeStore = require('../entities/shapeStore.js');
 
 //HAY QUE METER TODOS
 const PRIMITIVES = ['string','integer','date','boolean'];
@@ -210,32 +209,24 @@ function getType(def,context) {
     }
 }
 
-/*
-function updateInlines() {
+
+function updateInlines(shapes) {
 
     for(let inShape in inlines){
-
+  
         let shapeId = inlines[inShape].shapeId;
         let tripleId = inlines[inShape].tripleId;
         let name = inlines[inShape].inlineName;
 
-        let shape = shapeUtils.getShapeById(shapeId);
-        let triple = shapeUtils.getTripleById(shape,tripleId);
+        let shape = shexUtils.getShapeById(shapes,shapeId);
+        let triple = shexUtils.getTripleById(shape,tripleId);
 
-        let shapeRef = getShapeByName(name);
+        let shapeRef = shexUtils.getShapeByName(shapes,name);
         triple.getInlineShape().setShape(shapeRef);
-    }
-}
-*/
 
-function getShapeByName(name) {
-    let shapes = ShapeStore.getInstance().getShapes();
-    for(let s in shapes){
-        if(shapes[s].getType().getValue() == name){
-            return shapes[s];
-        }
     }
 }
+
 
 
 function getPrefixValue(defPrefixes,prefixName){
@@ -277,5 +268,5 @@ module.exports = {
     getTokens:getTokens,
     getDefinedShapes:getDefinedShapes,
     getShapes:getShapes,
-   // updateInlines:updateInlines
+    updateInlines:updateInlines
 }

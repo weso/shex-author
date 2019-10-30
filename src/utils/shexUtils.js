@@ -26,6 +26,27 @@ function deleteShape(shapes,shapeId) {
     return shapes;
 }
 
+function getShapeById(shapes,shapeId) {
+    return shapes.filter(function( obj ) {
+        return obj.id == shapeId
+    })[0];
+}
+
+function getShapeByName(shapes,name) {
+    for(let s in shapes){
+        if(shapes[s].getType().getValue() == name){
+            return shapes[s];
+        }
+    }
+}
+
+
+function getTripleById(shape,tripleId) {
+    return shape.getTriples().filter(function( obj ) {
+        return obj.id == tripleId
+    })[0];
+}
+
 
 
 function emit(newShapes) {
@@ -33,8 +54,13 @@ function emit(newShapes) {
     Codemirror.signal(yashe,'humanEvent',newShapes);
 }
 
+
+
 module.exports ={
     addShape:addShape,
     deleteShape:deleteShape,
+    getShapeById:getShapeById,
+    getShapeByName:getShapeByName,
+    getTripleById:getTripleById,
     emit:emit
 }
