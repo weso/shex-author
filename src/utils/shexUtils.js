@@ -48,7 +48,6 @@ function getTripleById(shape,tripleId) {
 }
 
 
-
 function emit(newShapes) {
     const yashe = Editor.getInstance().getYashe();
     Codemirror.signal(yashe,'humanEvent',newShapes);

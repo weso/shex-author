@@ -2,14 +2,13 @@
 import React,{useState,useContext} from 'react';
 import {ShapesContext} from '../../../../App';
 
+let shexUtils = require('../../../../utils/shexUtils.js');
+
 
 function ShapeRefComp (props) {
 
     const context = useContext(ShapesContext);
     const {shape,triple} = props;
-
-    const [value,setValue] = useState(triple.value);
-
 
     let inlineValue = '';
     if(triple.inlineShape.shape != null){
@@ -19,17 +18,23 @@ function ShapeRefComp (props) {
 
 
     const handleChange = (e) =>{
-          const value = e.target.value;
-          triple.setValue(value);
-          context.emit();
-          setValue(value);
+        const shapeId = e.target.value;
+        let inlineShape = null;
+        let inlineSelector = '';
+        if(shapeId!=''){
+            inlineShape = shexUtils.getShapeById(context.shapes,shapeId);
+            inlineSelector = inlineShape.id;
+        }
+        triple.getInlineShape().setShape(inlineShape);
+        context.emit();
+        setInlineShape(inlineSelector);
     }
 
 
     return (<div className='row col'>
                 <select className="col form-control valueInlineShape"
                         value={inlineShape}
-                        >
+                        onChange={handleChange}>
                     <option value=''></option>
                     { 
                     context.shapes.map(shape =>{
