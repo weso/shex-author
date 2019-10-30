@@ -1,7 +1,6 @@
 
 import React,{useContext,useState} from 'react';
 import FactoryTypeComp from './FactoryTypeComp';
-import CardinalityComp from '../cardinality/CardinalityComp';
 
 import {ShapesContext} from '../../../App';
 
@@ -47,9 +46,7 @@ function TripleTypeComp (props){
                                         triple={triple}
                                         type='triple'
                                         instance={triple.type.getTypeName()}/>
-                        
-                        <CardinalityComp shape={shape} triple={triple}/>
-                         
+                          
                         <button className="col-xs-1  colapseButton mdc-icon-button material-icons btn-primary"
                                 onClick={handleColapse}>
                                 {colapseBtn}

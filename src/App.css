@@ -195,3 +195,7 @@ label{
 .btn-default:hover{
 	background-color: #eaf3ff;
 }
+
+.cardiLabel{
+	margin-left: 20px;
+}

@@ -1,6 +1,7 @@
 import React,{useContext,useState} from 'react';
 import FactoryTypeComp from './FactoryTypeComp';
 
+
 import {ShapesContext} from '../../../App';
 
 function ValueTypeComp(props) {
@@ -21,7 +22,7 @@ function ValueTypeComp(props) {
         setValueType(newType);
     }
 
-    return  (<div className="row col-8">
+    return  (<div className="row col-10">
                     <select className="col-5 form-control valueType"
                                     value={valueType} 
                                     onChange={handleChange}>

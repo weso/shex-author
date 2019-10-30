@@ -4,6 +4,8 @@ import React,{useContext} from 'react';
 import {ShapesContext} from '../../App';
 
 import ValueTypeComp from './types/ValueTypeComp';
+import CardinalityComp from './cardinality/CardinalityComp';
+
 
 
 function ValueComponent (props) {
@@ -18,9 +20,10 @@ function ValueComponent (props) {
                         <div className="col-10 triplesVal ">
                             <div className="row">
                                 <label className="col-3 valueLabel">Value</label>
-        
                                 <ValueTypeComp shape={shape} triple={triple}/>
-
+                                
+                                <label className="col-3 cardiLabel">Cardinality</label>
+                                <CardinalityComp shape={shape} triple={triple}/>
                             </div>
                        </div>
                     </div>
