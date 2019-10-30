@@ -54,16 +54,16 @@ function App() {
                                   }>
                 
                 <SlideToggle duration={500}
-                          
-                          render={({ toggle, setCollapsibleElement, progress }) => (
-                          <div> 
-                              <Nav toggle={toggle}/>
-                              <div className="row separator"> 
-                                  <AssistantComp colapse={setCollapsibleElement} initialShapes={shapes}/>
-                                  <EditorComp />
-                                  
-                              </div>
-                          </div>                              
+                             collapsed
+                             render={({ toggle, setCollapsibleElement, progress }) => (
+                              <div> 
+                                  <Nav toggle={toggle}/>
+                                  <div className="row separator"> 
+                                      <AssistantComp colapse={setCollapsibleElement} initialShapes={shapes}/>
+                                      <EditorComp />
+                                      
+                                  </div>
+                              </div>                              
                   )}/>
 
 

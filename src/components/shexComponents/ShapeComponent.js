@@ -38,8 +38,8 @@ function ShapeComponent (props) {
     return (
         <div className="shapes-container">
             <SlideToggle duration={180}
-                          
-                          render={({ toggle, setCollapsibleElement, progress }) => (
+                         collapsed
+                         render={({ toggle, setCollapsibleElement, progress }) => (
                 <div>              
                     <div className="row shapes-header">
                         <label className="col-sm-2">Shape </label>
