@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import SlideToggle from "react-slide-toggle";
 import logo from './logo.svg';
 import './App.css';
 
@@ -51,12 +52,21 @@ function App() {
                                       emit:emit
                                     }
                                   }>
-                <Nav />
-                <div className="row separator"> 
-                    <AssistantComp initialShapes={shapes}/>
-                    <EditorComp />
-                    
-                </div>
+                
+                <SlideToggle duration={500}
+                          collapsed='true'
+                          render={({ toggle, setCollapsibleElement, progress }) => (
+                          <div> 
+                              <Nav toggle={toggle}/>
+                              <div className="row separator"> 
+                                  <AssistantComp colapse={setCollapsibleElement} initialShapes={shapes}/>
+                                  <EditorComp />
+                                  
+                              </div>
+                          </div>                              
+                  )}/>
+
+
             </ShapesContext.Provider>
           );
                        

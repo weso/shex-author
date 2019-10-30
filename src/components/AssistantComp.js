@@ -7,8 +7,9 @@ import {ShapesContext} from '../App';
 function AssistantComp (props) {
 
     const context = useContext(ShapesContext);
+    const {colapse} = props;
 
-    return (<div id='assistant-container' className="assistant col-lg-6" > 
+    return (<div ref={colapse} id='assistant-container' className="assistant col-lg-6" > 
                     {context.shapes.map(shape =>{
                                 
                             return <ShapeComponent key={shape.id} shape={shape}/>

@@ -52,6 +52,7 @@ function EditorComp() {
             setYashe(y);
             
             Editor.getInstance().setYashe(y);
+            replaceShapes();
             updatePrefixes();
         }
     }, [yashe]
