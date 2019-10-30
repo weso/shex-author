@@ -13,7 +13,7 @@ function TripleTypeComp (props){
         const {shape,triple,deleteTriple,colapse} = props;
 
         const [type,setType] = useState(triple.type.getTypeName());
-        const [btn,setBtn] = useState('expand_more');
+        const [colapseBtn,setColapseBtn] = useState('expand_more');
 
         const handleChange = (e)=>{
                 const type = e.target.value;
@@ -23,7 +23,11 @@ function TripleTypeComp (props){
         }
 
         const handleColapse = (e)=>{
-                setBtn('expand_less');
+                if(colapseBtn=='expand_more'){
+                    setColapseBtn('expand_less');
+                }else{
+                    setColapseBtn('expand_more');
+                }
                 colapse();
         }
 
@@ -45,15 +49,18 @@ function TripleTypeComp (props){
                                         instance={triple.type.getTypeName()}/>
                         
                         <CardinalityComp shape={shape} triple={triple}/>
-                         <button className="col-xs-1 deletePropButton mdc-icon-button material-icons btn-danger"
-                            onClick={() => deleteTriple(triple.id)}>
-                            delete
+                         
+                        <button className="col-xs-1  colapseButton mdc-icon-button material-icons btn-primary"
+                                onClick={handleColapse}>
+                                {colapseBtn}
                         </button>
 
-                        <button className="col-xs-1  mdc-icon-button material-icons btn-danger"
-                            onClick={handleColapse}>
-                            {btn}
+                        <button className="col-xs-1 deletePropButton mdc-icon-button material-icons btn-danger"
+                                onClick={() => deleteTriple(triple.id)}>
+                                delete
                         </button>
+
+                       
 
                          
                 </div>);

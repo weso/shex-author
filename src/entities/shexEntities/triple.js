@@ -1,13 +1,13 @@
 //let htmlUtils = require('../../utils/htmlUtils.js')
 let TypesFactory = require('./types/typesFactory.js');
-let IrirRef = require('./types/concreteTypes/iriRef.js');
+let PrefixedIri = require('./types/concreteTypes/prefixedIri.js');
 let Primitive = require('./types/concreteTypes/primitive.js');
 let InlineShape = require('./shexUtils/inlineShape.js');
 
 class Triple {
 
 
-    constructor(id,type=new IrirRef('tripleName'),value=new Primitive(),inlineShape=new InlineShape() ,cardinality='',showValues=false) {
+    constructor(id,type=new PrefixedIri('tripleName'),value=new Primitive(),inlineShape=new InlineShape() ,cardinality='',showValues=false) {
         this.id = id;
         this.type = type;
         this.value = value;
