@@ -32,6 +32,7 @@
   },
   "devDependencies": {
     "jquery": "^3.4.1",
+    "react-slide-toggle": "^0.3.3",
     "yashe": "^1.1.17"
   }
 }

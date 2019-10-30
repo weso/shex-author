@@ -1,5 +1,6 @@
 
 import React,{useContext} from 'react';
+import SlideToggle from "react-slide-toggle";
 
 import TripleTypeComp from './types/TripleTypeComp';
 
@@ -10,18 +11,27 @@ import ValueComponent from './ValueComponent';
 function TripleComponent (props) {
 
     const {shape,triple,deleteTriple} = props;
-//
-    return (<div className="row tripleRow">
-                <div className="row triples-header">
-                    <label className="col-sm-1 tripleLabel">Triple</label>                        
-                    
-                    <TripleTypeComp shape={shape} triple={triple} deleteTriple={deleteTriple}/>
-                
-                </div>
-                 <ValueComponent shape={shape} triple={triple}/>
-            </div>);
-                                   
 
+
+    return ( <SlideToggle duration={180}
+                          collapsed='true'
+                          render={({ toggle, setCollapsibleElement, progress }) => (
+                <div className="row tripleRow">
+
+                    <TripleTypeComp 
+                        shape={shape} 
+                        triple={triple} 
+                        deleteTriple={deleteTriple}
+                        colapse={toggle}/>
+               
+                <ValueComponent  
+                        shape={shape} 
+                        triple={triple} 
+                        colapse={setCollapsibleElement}/>
+                       
+                </div>
+            )}/>);
+                                   
 }
 
 export default TripleComponent;

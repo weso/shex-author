@@ -89,7 +89,7 @@ function PrefixedComp (props) {
 
   
 
-    return  (<div className='row col-6'>
+    return  (<div className='row col'>
                 <select className={getPrefixContex()+' col-5 form-control'}
                         value={prefix}
                         onChange={handlePrefixChange}>

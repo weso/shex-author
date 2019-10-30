@@ -4,6 +4,7 @@ import './App.css';
 
 import EditorComp from './components/EditorComp';
 import AssistantComp from './components/AssistantComp';
+import Nav from './components/navComponents/Nav';
 
 let shexUtils = require('./utils/shexUtils.js');
 
@@ -50,7 +51,7 @@ function App() {
                                       emit:emit
                                     }
                                   }>
-
+                <Nav />
                 <div className="row separator"> 
                     <AssistantComp initialShapes={shapes}/>
                     <EditorComp />

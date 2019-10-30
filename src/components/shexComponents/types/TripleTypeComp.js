@@ -10,9 +10,10 @@ function TripleTypeComp (props){
 
         const context = useContext(ShapesContext);
 
-        const {shape,triple,deleteTriple} = props;
+        const {shape,triple,deleteTriple,colapse} = props;
 
         const [type,setType] = useState(triple.type.getTypeName());
+        const [btn,setBtn] = useState('expand_more');
 
         const handleChange = (e)=>{
                 const type = e.target.value;
@@ -21,9 +22,15 @@ function TripleTypeComp (props){
                 setType(type)
         }
 
+        const handleColapse = (e)=>{
+                setBtn('expand_less');
+                colapse();
+        }
 
-        return (<div className="row col-9">
-                        <select className="col-3 form-control tripleType" 
+
+        return (<div className="row col triples-header">
+                        <label className="col-xs-1 tripleLabel">Triple</label>                        
+                        <select className="col-2 form-control tripleType" 
                                 value={type} 
                                 onChange={handleChange}>
 
@@ -43,12 +50,12 @@ function TripleTypeComp (props){
                             delete
                         </button>
 
-                        <div className="checkbox valuesCheck">
-                        <label>Values 
-                            <input className="check" type="checkbox" value=""/>
-                        </label>
-                    </div>
-                        
+                        <button className="col-xs-1  mdc-icon-button material-icons btn-danger"
+                            onClick={handleColapse}>
+                            {btn}
+                        </button>
+
+                         
                 </div>);
 
 }

@@ -9,11 +9,11 @@ import ValueTypeComp from './types/ValueTypeComp';
 function ValueComponent (props) {
 
     const context = useContext(ShapesContext);
-    const {shape,triple} = props;
+    const {shape,triple,colapse} = props;
 
 
            
-    return (<div className="col-12 valuesCol"  >
+    return (<div ref={colapse} className="col-12 valuesCol"  >
                     <div className="row values-container">
                         <div className="col-10 triplesVal ">
                             <div className="row">
