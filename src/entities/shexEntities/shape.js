@@ -9,7 +9,7 @@ let BlankKind = require('./types/concreteTypes/kinds/blankKind.js');
 
 class Shape {
 
-constructor(id,type=new IrirRef('shapeName'),triples = [],qualifier=new BlankKind()) {
+  constructor(id,type=new IrirRef('shapeName'),triples = [],qualifier=new BlankKind()) {
       this.id = id;
       this.type = type;
       this.triples = triples;

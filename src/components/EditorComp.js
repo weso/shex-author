@@ -16,7 +16,6 @@ function EditorComp() {
   const textAreaRef = useRef(null);
   const context = useContext(ShapesContext);
 
- 
   useEffect(() => {
     
         if (!yashe) {
@@ -46,6 +45,10 @@ function EditorComp() {
                 updatePrefixes();
             });
 
+            y.on('themeChange', function(shapes) {
+                changeThemeStyle();
+            });
+
 
             y.setValue(yasheUtils.DEFAULT_SHAPE)
             y.refresh();
@@ -65,6 +68,11 @@ function EditorComp() {
     const updatePrefixes = ()=>{
         context.updatePrefixes(yasheUtils.updatePrefixes());
     }
+
+     const changeThemeStyle = ()=>{
+         context.changeThemeStyle();
+    }
+
 
 
     return  (<div className='col-lg show'>
