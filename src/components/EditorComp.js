@@ -75,7 +75,7 @@ function EditorComp() {
 
 
 
-    return  (<div className='col-lg show'>
+    return  (<div className='col show'>
                 <textarea ref={textAreaRef}/>
             </div>            
     );

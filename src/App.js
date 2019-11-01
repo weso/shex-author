@@ -8,6 +8,7 @@ import EditorComp from './components/EditorComp';
 import AssistantComp from './components/AssistantComp';
 import Nav from './components/navComponents/Nav';
 
+
 let shexUtils = require('./utils/shexUtils.js');
 
 export const ShapesContext = React.createContext();
@@ -81,7 +82,7 @@ function App() {
                                   }>
                 
                 <SlideToggle duration={500}
-                             collapsed
+                             
                              render={({ toggle, setCollapsibleElement, progress }) => (
                               <div> 
                                   <Nav toggle={toggle}/>

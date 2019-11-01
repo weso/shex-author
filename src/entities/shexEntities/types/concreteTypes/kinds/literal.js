@@ -7,7 +7,7 @@ class Literal extends Type{
     }
 
     getTypeName(){
-        return 'literal';
+        return 'literalKind';
     }
 
     toString(){

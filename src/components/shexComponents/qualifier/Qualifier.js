@@ -12,9 +12,9 @@ function Qualifier (props) {
 
     let initialValue;
     if(scope=='shape'){
-        shape.qualifier.getTypeName();
+        initialValue = shape.qualifier.getTypeName();
     }else{
-        triple.value.getTypeName();
+        initialValue = triple.value.getTypeName();
     }
 
     const [valueType,setValueType] = useState(initialValue)
@@ -38,8 +38,8 @@ function Qualifier (props) {
                         onChange={handleTypeChange}>
                     <option value='shape'></option>
                     <option value='iriKind'>IRI</option>
-                    <option value="literal">Literal</option>
-                    <option value="nonLiteral">NonLiteral</option>
+                    <option value="literalKind">Literal</option>
+                    <option value="nonliteralKind">NonLiteral</option>
                     <option value="bnodeKind">BNODE</option>
                 </select>
 

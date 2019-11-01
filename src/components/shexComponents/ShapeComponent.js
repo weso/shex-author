@@ -34,11 +34,24 @@ function ShapeComponent (props) {
         shape.setTriples(newTriples);
         context.emit();
     }
+    /*
+
+    {
+                            shape.facets.map(facet =>{
+                                <div className="col row qualifier"  style={context.currentStyle}>
+                                <label className="col-2 qualiLabel">Facet</label>
+                                <div className="col-2">
+                                Aqui van jsjs
+                                </div>
+                            })
+
+                        }
+    */
 
     return (
         <div className="shapes-container" style={context.currentStyle}>
             <SlideToggle duration={180}
-                         collapsed
+                         
                          render={({ toggle, setCollapsibleElement, progress }) => (
                 <div>              
                     <div className="row shapes-header" style={context.currentStyle}>
@@ -48,19 +61,28 @@ function ShapeComponent (props) {
                     </div>
             
                     <div className="row qualifier" ref={setCollapsibleElement} style={context.currentStyle}>
-                        <label className="col-2 qualiLabel">Qualifier </label>
-                        <div className="col-2">
-                            <Qualifier shape={shape} scope='shape'/>
-                        </div>    
+                       
+                            <label className="col-2 qualiLabel">Qualifier </label>
+                            <div className="col-2">
+                                <Qualifier shape={shape} scope='shape'/>
+                            </div>
+
+                            
+                            <div className="row col-4">
+                                <label className="col facetLabel">Facet</label>
+                                <div className="col">
+                                <Qualifier shape={shape} scope='shape'/>
+                                </div>
+                            </div>
+
+                            
+                
+
                     </div>
 
                 </div>
 
             )}/>
-
-            <button className="btn-primary addPropButton col-xs-3"
-                    onClick={handleChange}>
-                    + Triple</button>
 
             <div className="triples-container col-xs "style={context.currentStyle}>
                     {triples.map(triple =>
@@ -73,6 +95,11 @@ function ShapeComponent (props) {
                             
                     )}
             </div>
+
+            <button className="btn-primary addPropButton col-xs-3"
+                    onClick={handleChange}>
+                    + Triple</button>
+
          </div>   
         
         

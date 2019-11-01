@@ -34,11 +34,11 @@ class TypesFactory{
             retType = new ShapeReference(context);
         }
 
-        if(type == 'literal'){
+        if(type == 'literalKind'){
             retType = new Literal(context);
         }
 
-        if(type == 'nonLiteral'){
+        if(type == 'nonliteralKind'){
             retType = new NonLiteral(context);
         }
 
