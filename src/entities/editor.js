@@ -36,8 +36,6 @@ const Editor = (()=> {
             this.getYashe().setValue(newContent);
         }
 
-
-
     }
 
    

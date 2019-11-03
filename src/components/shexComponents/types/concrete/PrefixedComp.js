@@ -2,8 +2,7 @@
 import React,{useState,useContext,useEffect} from 'react';
 import {ShapesContext} from '../../../../App';
 
-let Editor = require('../../../../entities/editor.js');
-let Prefix = require('../../../../entities/shexEntities/shexUtils/prefix.js');
+let prefixUtils = require('../../../../utils/prefixUtils.js');
 
 function PrefixedComp (props) {
 
@@ -59,7 +58,7 @@ function PrefixedComp (props) {
     }
 
     const handlePrefixChange = (e) =>{
-      let prefix = getPrefix(e.target.value);
+      let prefix = prefixUtils.getPrefix(e.target.value);
 
       if(type == 'shape'){
         shape.type.setPrefix(prefix);
@@ -73,26 +72,11 @@ function PrefixedComp (props) {
       setPrefix(e.target.value);
     }
 
-    /**
-    Sácme de aquí pls
-     */
-    const getPrefix = (prefix)=>{
-      let defined = Editor.getInstance().getYashe().getDefinedPrefixes();
-      for(let def in defined){
-          if(defined[def] == prefix){
-            return new Prefix(def,defined[def]);
-          }
-      }
-      return null;
-}
-
-
-  
-
     return  (<div className='row col-6'>
                 <select className={getPrefixContex()+' col-5 form-control'}
                         value={prefix}
                         onChange={handlePrefixChange}>
+                 
                   { 
                     context.prefixes.map((pre) =>{
                       return <option key={pre.key} value={pre.val}>{pre.key}</option>

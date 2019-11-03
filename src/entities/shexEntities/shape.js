@@ -1,6 +1,3 @@
-/*
-let htmlUtils = require('../../utils/htmlUtils.js');
-*/
 let TypesFactory = require('./types/typesFactory.js');
 
 let IrirRef = require('./types/concreteTypes/iriRef.js');
@@ -9,7 +6,7 @@ let BlankKind = require('./types/concreteTypes/kinds/blankKind.js');
 
 class Shape {
 
-constructor(id,type=new IrirRef('shapeName'),triples = [],qualifier=new BlankKind()) {
+  constructor(id,type=new IrirRef('shapeName'),triples = [],qualifier=new BlankKind()) {
       this.id = id;
       this.type = type;
       this.triples = triples;
@@ -67,7 +64,7 @@ constructor(id,type=new IrirRef('shapeName'),triples = [],qualifier=new BlankKin
 
      toString(){
     
-      let str = this.type+' '+this.qualifier +'{\n'
+      let str = this.type+' '+this.qualifier+' {\n'
       this.triples.forEach(triple => {
         str+=triple;
       });

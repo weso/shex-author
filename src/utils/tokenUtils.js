@@ -12,10 +12,13 @@ let Literal = require('../entities/shexEntities/types/concreteTypes/kinds/litera
 let NonLiteral = require('../entities/shexEntities/types/concreteTypes/kinds/nonLiteral.js');
 let IriKind = require('../entities/shexEntities/types/concreteTypes/kinds/iriKind.js');
 let BNodeKind = require('../entities/shexEntities/types/concreteTypes/kinds/bNodeKind.js');
+let BlankKind = require('../entities/shexEntities/types/concreteTypes/kinds/blankKind.js');
 
 let InlineShape = require('../entities/shexEntities/shexUtils/inlineShape.js');
 
 let shexUtils = require('./shexUtils.js');
+
+let TypesFactory = require('../entities/shexEntities/types/typesFactory.js');
 
 
 let Editor = require('../entities/editor.js');
@@ -71,18 +74,26 @@ function getShapes(defShapes){
     let shapes = [];
     let yashe = Editor.getInstance().getYashe();
 
-    defShapes.forEach(token => {
+    defShapes.forEach(shape => {
             
         let id = shapes.length;
-        let shapeDef = token[0].string;
+        let shapeDef = shape[0].string;
         let shapeType = getType(shapeDef,'shapeName');
-        let triples = getTriples(id,token);
+        let qualifier = getQualifier(shape);
+        let triples = getTriples(id,shape);
 
-        shapes.push(new Shape(id,shapeType,triples));
+        shapes.push(new Shape(id,shapeType,triples,qualifier));
     })
-
     return shapes;
 
+}
+
+function getQualifier(shape) {
+    if(shape[1].type == 'keyword'){
+        let type = shape[1].string.toLowerCase();
+        return new TypesFactory().createType(type);
+    }
+    return new BlankKind();
 }
 
 function getTriples(shapeId,shape) {
@@ -92,60 +103,69 @@ function getTriples(shapeId,shape) {
         let start = getStart(shape);
         for(let i=start;i<shape.length;i++){
             singleTriple.push(shape[i])
-            if(shape[i].type == 'punc'){
+            if(shape[i].type == 'punc'){// finish of the triple ';'
                 if(singleTriple.length!=1){ //This line is neccesary when last triple of the shape ends with ';'
            
-                              
-                    let id = triples.length;
-                    let type;
-                    let value;
-                    let cardinality;
-                    let inlineShape = new InlineShape();
-                    let index = 0;
-                    for(let s in singleTriple){
-                        let token = singleTriple[s];
-                        if(index == 0){
-                            type = getType(token.string,'tripleName');
-                            
-                        }else{
-                            
-                            if(token.type == 'string-2' || token.type == 'keyword' || token.type == 'variable-3'){
-                                value = getValue(token.string);
-                            }
-                  
-                            if(token.type == 'at' ){
-                                
-                                let inlineName = getInlineName(token.string);
-                                inlines.push(
-                                        {
-                                            shapeId:shapeId,
-                                            tripleId:id,
-                                            inlineName:inlineName
-                                        }
-                                    );
-                            }
-
-                            if(token.type == 'card' ){
-                               cardinality = token.string;
-                            }
-
-                        }
-                      index++;
-                    }
-
-                    //ShapeRef
-                    if(value == undefined){
-                        value = new ShapeReference(); 
-                    }
-
-                    //console.log(value)
-                    triples.push(new Triple(id,type,value,inlineShape,cardinality));
+                    triples.push(getTriple(triples,singleTriple,shapeId));
                     singleTriple = [];
                 }
             }
 
         }
     return triples;
+}
+
+function getTriple(triples,singleTriple,shapeId) {
+    let id = triples.length;
+    let type;
+    let value;
+    let cardinality;
+    let inlineShape = new InlineShape();
+    let inlineName;
+    let index = 0;
+    for(let s in singleTriple){
+        let token = singleTriple[s];
+        
+        if(index == 0){
+            type = getType(token.string,'tripleName');
+            
+        }else{
+   
+            if(token.type == 'string-2' || token.type == 'keyword' || token.type == 'variable-3'){
+                value = getValue(token.string);
+            }
+    
+            if(token.type == 'at' ){
+                
+                inlineName = getInlineName(token.string);
+                inlines.push(
+                        {
+                            shapeId:shapeId,
+                            tripleId:id,
+                            inlineName:inlineName
+                        }
+                    );
+            }
+
+            if(token.type == 'card' ){
+                cardinality = token.string;
+            }
+
+        }
+        index++;
+    }
+
+
+    //ShapeRef
+    if(inlineName != undefined){
+        let ref;
+        if(value!= undefined){
+           ref = value.getTypeName();
+        }
+        value = new ShapeReference(ref); 
+    }
+
+    return new Triple(id,type,value,inlineShape,cardinality);
 }
 
 function getStart(shape){
@@ -160,21 +180,11 @@ function getStart(shape){
 
 function getValue(def) {
 
+    let factory = new TypesFactory();
+    let type = factory.createType(def.toLowerCase());
 
-    if(def.toLowerCase() == 'literal'){
-        return new Literal();
-    }
-
-    if(def.toLowerCase() == 'nonliteral'){
-        return new NonLiteral();
-    }
-
-    if(def.toLowerCase() == 'iri'){
-        return new IriKind();
-    }
-
-    if(def.toLowerCase() == 'bnode'){
-        return new BNodeKind();
+    if(type!=undefined){
+        return type;
     }
 
 
@@ -198,8 +208,7 @@ function getValue(def) {
         }
 
     }
-
-    
+ 
 }
 
 function getType(def,context) {

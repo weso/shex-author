@@ -3,9 +3,11 @@ import SlideToggle from "react-slide-toggle";
 import logo from './logo.svg';
 import './App.css';
 
+
 import EditorComp from './components/EditorComp';
 import AssistantComp from './components/AssistantComp';
 import Nav from './components/navComponents/Nav';
+
 
 let shexUtils = require('./utils/shexUtils.js');
 
@@ -15,6 +17,19 @@ function App() {
 
     const [shapes,setShapes] = useState([]);
     const [prefixes,setPrefixes] = useState([{key:'',val:'http://example.org/'}]);
+
+     const darkStyle = {
+        background: '#2B2B2B',
+        color:'white'
+    }
+
+    const lightStyle = {
+        background: '#eaf3ff',
+        color:'black'
+    }
+
+    const [style,setStyle] = useState(lightStyle);
+    let theme = 'light';
 
     const addShape = () =>{
       setShapes([...shapes,shexUtils.addShape(shapes)]);
@@ -38,7 +53,18 @@ function App() {
     const updatePrefixes = (newPrefixes)=>{
       setPrefixes(newPrefixes);
     }
+    
+    const changeThemeStyle = () =>{
+      if(theme=='light'){//I don't know why this doesn't work with style state
+        setStyle(darkStyle);
+        theme='dark';
+      }else{
+        theme='light';
+        setStyle(lightStyle);
+      }
+    }
 
+  
     return (
             
             <ShapesContext.Provider value={
@@ -49,7 +75,9 @@ function App() {
                                       replaceShapes:replaceShapes,
                                       prefixes:prefixes,
                                       updatePrefixes:updatePrefixes,
-                                      emit:emit
+                                      emit:emit,
+                                      currentStyle:style,
+                                      changeThemeStyle:changeThemeStyle
                                     }
                                   }>
                 
@@ -58,8 +86,8 @@ function App() {
                              render={({ toggle, setCollapsibleElement, progress }) => (
                               <div> 
                                   <Nav toggle={toggle}/>
-                                  <div className="row separator"> 
-                                      <AssistantComp colapse={setCollapsibleElement} initialShapes={shapes}/>
+                                  <div className="row separator" style={style}> 
+                                      <AssistantComp colapse={setCollapsibleElement} initialShapes={shapes} />
                                       <EditorComp />
                                       
                                   </div>

@@ -1,4 +1,3 @@
-//let htmlUtils = require('../../utils/htmlUtils.js')
 let TypesFactory = require('./types/typesFactory.js');
 let PrefixedIri = require('./types/concreteTypes/prefixedIri.js');
 let Primitive = require('./types/concreteTypes/primitive.js');

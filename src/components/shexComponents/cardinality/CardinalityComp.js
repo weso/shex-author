@@ -20,7 +20,7 @@ function CardinalityComp (props) {
     }
 
 
-    return(<div className='row col-3'>    
+    return(<div className='row col-4'>    
                 <select className="col  form-control tripleCardinality"
                     value={cardinality}
                     onChange={handleChange}>

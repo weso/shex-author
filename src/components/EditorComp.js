@@ -16,7 +16,6 @@ function EditorComp() {
   const textAreaRef = useRef(null);
   const context = useContext(ShapesContext);
 
- 
   useEffect(() => {
     
         if (!yashe) {
@@ -37,15 +36,35 @@ function EditorComp() {
                 }
             });
 
+
+        
             y.on('humanEvent', function(shapes) {
                 Editor.getInstance().draw(shapes);
             });
 
 
-            y.on('prefixUpdate', function(shapes) {
+            y.on('prefixUpdate', function() {
                 updatePrefixes();
             });
 
+            y.on('themeChange', function() {
+                changeThemeStyle();
+            });
+
+            y.on('delete', function() {
+                replaceShapes();
+                updatePrefixes();
+
+            });
+
+            y.on('upload', function() {
+                //TimeOut necesary
+                setTimeout(function(){
+                  replaceShapes();
+                  updatePrefixes();
+                }, 10);
+                
+            });
 
             y.setValue(yasheUtils.DEFAULT_SHAPE)
             y.refresh();
@@ -66,8 +85,13 @@ function EditorComp() {
         context.updatePrefixes(yasheUtils.updatePrefixes());
     }
 
+     const changeThemeStyle = ()=>{
+         context.changeThemeStyle();
+    }
 
-    return  (<div className='col-lg show'>
+
+
+    return  (<div className='col show'>
                 <textarea ref={textAreaRef}/>
             </div>            
     );

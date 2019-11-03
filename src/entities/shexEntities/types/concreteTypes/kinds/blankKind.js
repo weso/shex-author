@@ -7,7 +7,7 @@ class BlankKind extends Type{
     }
 
     getTypeName(){
-        return 'blankKind';
+        return 'blank';
     }
 
     toString(){

@@ -9,7 +9,7 @@ function AssistantComp (props) {
     const context = useContext(ShapesContext);
     const {colapse} = props;
 
-    return (<div ref={colapse} id='assistant-container' className="assistant col-lg-6" > 
+    return (<div ref={colapse} id='assistant-container' className="assistant col-lg-6" style={context.currentStyle}> 
                     {context.shapes.map(shape =>{
                                 
                             return <ShapeComponent key={shape.id} shape={shape}/>

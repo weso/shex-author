@@ -13,7 +13,7 @@ function PrefixSelector (props){
         let current = yashe.getValue();
         let defined = yashe.getDefinedPrefixes();
         let prefix= e.target.value;
-        let uri;
+        let uri = 'http://example.org/';
         //getUri
         for(let def in namespaces){
           for(let p in namespaces[def]){
@@ -26,6 +26,12 @@ function PrefixSelector (props){
     }
 
     return (<div>
+             
+                <button className='form-control'
+                        onClick={handleChange}>
+                        Example Prefix
+                </button>
+
                 {
                     
                     Object.keys(namespaces).map( (key) =>{

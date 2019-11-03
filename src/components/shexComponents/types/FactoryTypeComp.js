@@ -21,7 +21,7 @@ function FactoryTypeComp (props) {
         return <PrefixedComp shape={shape} triple={triple} type={type}/>
 
     }
-    else if(instance == 'bnode'){
+    else if(instance == 'bnodeType'){
 
         return <BNodeComp shape={shape}/>
 

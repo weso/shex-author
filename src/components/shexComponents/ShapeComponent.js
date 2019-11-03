@@ -35,34 +35,33 @@ function ShapeComponent (props) {
         context.emit();
     }
 
+
     return (
-        <div className="shapes-container">
+        <div className="shapes-container" style={context.currentStyle}>
             <SlideToggle duration={180}
                          collapsed
                          render={({ toggle, setCollapsibleElement, progress }) => (
                 <div>              
-                    <div className="row shapes-header">
+                    <div className="row shapes-header" style={context.currentStyle}>
                         <label className="col-sm-2">Shape </label>
                         <ShapeTypeComp shape={shape} colapse={toggle}/>
                     
                     </div>
             
-                    <div className="row qualifier" ref={setCollapsibleElement}>
-                        <label className="col-2 qualiLabel">Qualifier </label>
-                        <div className="col-2">
-                            <Qualifier shape={shape} scope='shape'/>
-                        </div>    
+                    <div className="row qualifier" ref={setCollapsibleElement} style={context.currentStyle}>
+                       
+                            <label className="col-2 qualiLabel">Qualifier </label>
+                            <div className="col-2">
+                                <Qualifier shape={shape} scope='shape'/>
+                            </div>
+
                     </div>
 
                 </div>
 
             )}/>
 
-            <button className="btn-primary addPropButton col-xs-3"
-                    onClick={handleChange}>
-                    + Triple</button>
-
-            <div className="triples-container col-xs">
+            <div className="triples-container col-xs "style={context.currentStyle}>
                     {triples.map(triple =>
 
                         <TripleComponent key={triple.id}
@@ -73,6 +72,11 @@ function ShapeComponent (props) {
                             
                     )}
             </div>
+
+            <button className="btn-primary addPropButton col-xs-3"
+                    onClick={handleChange}>
+                    + Triple</button>
+
          </div>   
         
         
