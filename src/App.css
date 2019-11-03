@@ -71,7 +71,7 @@ label{
 }
 
 .addShapeButton{
-	margin-top: 10px;
+	margin-top: 20px;
 	margin-left: -10px;
 	margin-bottom: 15px;
 }
@@ -98,7 +98,6 @@ label{
 }
 
 .triples-container{
-	margin-top: 20px;
 	margin-left:70px;
 	margin-right:30px;
 	background-color: #eaf3ff;
@@ -217,4 +216,9 @@ label{
 
 .yashe_deletedBtn{
 	margin-top:1px !important; 
+}
+
+.colapseTriplesBtn{
+	margin-left:-3px;
+	width:5%;
 }

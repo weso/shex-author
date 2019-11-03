@@ -50,6 +50,7 @@ function ShapeTypeComp (props) {
                                 {colapseBtn}
                         </button>
 
+
                         <button className="col-xs-1 deleteShapeButton mdc-icon-button material-icons btn-danger" 
                             onClick={()=>context.deleteShape(shape.id)}>
                             delete

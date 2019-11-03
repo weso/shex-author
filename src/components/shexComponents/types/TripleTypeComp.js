@@ -9,10 +9,10 @@ function TripleTypeComp (props){
 
         const context = useContext(ShapesContext);
 
-        const {shape,triple,deleteTriple,colapse} = props;
+        const {shape,triple,deleteTriple,handeCollapse} = props;
 
         const [type,setType] = useState(triple.type.getTypeName());
-        const [colapseBtn,setColapseBtn] = useState('expand_more');
+        const [collapseBtn,setCollapseBtn] = useState('expand_more');
 
         const handleChange = (e)=>{
                 const type = e.target.value;
@@ -21,13 +21,15 @@ function TripleTypeComp (props){
                 setType(type)
         }
 
-        const handleColapse = (e)=>{
-                if(colapseBtn=='expand_more'){
-                    setColapseBtn('expand_less');
+        const handleCollapse = (e)=>{
+                if(collapseBtn=='expand_more'){
+                    setCollapseBtn('expand_less');
                 }else{
-                    setColapseBtn('expand_more');
+                    setCollapseBtn('expand_more');
                 }
-                colapse();
+
+                handeCollapse();
+
         }
 
 
@@ -48,8 +50,8 @@ function TripleTypeComp (props){
                                         instance={triple.type.getTypeName()}/>
                           
                         <button className="col-xs-1  colapseButton mdc-icon-button material-icons btn-primary"
-                                onClick={handleColapse}>
-                                {colapseBtn}
+                                onClick={handleCollapse}>
+                                {collapseBtn}
                         </button>
 
                         <button className="col-xs-1 deletePropButton mdc-icon-button material-icons btn-danger"
