@@ -37,28 +37,34 @@ function EditorComp() {
             });
 
 
-            y.on('change', function(shapes) {
-               y.refresh();
-            });
-
+        
             y.on('humanEvent', function(shapes) {
                 Editor.getInstance().draw(shapes);
             });
 
 
-            y.on('prefixUpdate', function(shapes) {
+            y.on('prefixUpdate', function() {
                 updatePrefixes();
             });
 
-            y.on('themeChange', function(shapes) {
+            y.on('themeChange', function() {
                 changeThemeStyle();
             });
 
-            y.on('delete', function(shapes) {
+            y.on('delete', function() {
                 replaceShapes();
                 updatePrefixes();
+
             });
 
+            y.on('upload', function() {
+                //TimeOut necesary
+                setTimeout(function(){
+                  replaceShapes();
+                  updatePrefixes();
+                }, 10);
+                
+            });
 
             y.setValue(yasheUtils.DEFAULT_SHAPE)
             y.refresh();
