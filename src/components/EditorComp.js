@@ -49,6 +49,11 @@ function EditorComp() {
                 changeThemeStyle();
             });
 
+            y.on('delete', function(shapes) {
+                replaceShapes();
+                updatePrefixes();
+            });
+
 
             y.setValue(yasheUtils.DEFAULT_SHAPE)
             y.refresh();

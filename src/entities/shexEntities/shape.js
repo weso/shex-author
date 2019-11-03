@@ -1,6 +1,3 @@
-/*
-let htmlUtils = require('../../utils/htmlUtils.js');
-*/
 let TypesFactory = require('./types/typesFactory.js');
 
 let IrirRef = require('./types/concreteTypes/iriRef.js');
@@ -9,14 +6,13 @@ let BlankKind = require('./types/concreteTypes/kinds/blankKind.js');
 
 class Shape {
 
-  constructor(id,type=new IrirRef('shapeName'),triples = [],qualifier=new BlankKind(),facets=[]) {
+  constructor(id,type=new IrirRef('shapeName'),triples = [],qualifier=new BlankKind()) {
       this.id = id;
       this.type = type;
       this.triples = triples;
       this.triplesCount = this.triples.length;
       this.factory = new TypesFactory();
       this.qualifier = qualifier;
-      this.facets = facets;
     }
 
     addTriple(triple){
@@ -65,22 +61,10 @@ class Shape {
         this.type = this.factory.createType(type,'shapeName');
      }
 
-     addFacet(facet){
-       this.xsFacets.push(facet);
-     }
-
-    facetsString(){
-      let str ='';
-      this.facets.forEach(facet => {
-        str+=facet;
-      });
-      return str;
-    }
-
 
      toString(){
     
-      let str = this.type+' '+this.qualifier+' '+this.facetsString() +'{\n'
+      let str = this.type+' '+this.qualifier+' {\n'
       this.triples.forEach(triple => {
         str+=triple;
       });

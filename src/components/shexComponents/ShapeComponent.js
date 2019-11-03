@@ -34,24 +34,12 @@ function ShapeComponent (props) {
         shape.setTriples(newTriples);
         context.emit();
     }
-    /*
 
-    {
-                            shape.facets.map(facet =>{
-                                <div className="col row qualifier"  style={context.currentStyle}>
-                                <label className="col-2 qualiLabel">Facet</label>
-                                <div className="col-2">
-                                Aqui van jsjs
-                                </div>
-                            })
-
-                        }
-    */
 
     return (
         <div className="shapes-container" style={context.currentStyle}>
             <SlideToggle duration={180}
-                         
+                         collapsed
                          render={({ toggle, setCollapsibleElement, progress }) => (
                 <div>              
                     <div className="row shapes-header" style={context.currentStyle}>
@@ -66,17 +54,6 @@ function ShapeComponent (props) {
                             <div className="col-2">
                                 <Qualifier shape={shape} scope='shape'/>
                             </div>
-
-                            
-                            <div className="row col-4">
-                                <label className="col facetLabel">Facet</label>
-                                <div className="col">
-                                <Qualifier shape={shape} scope='shape'/>
-                                </div>
-                            </div>
-
-                            
-                
 
                     </div>
 

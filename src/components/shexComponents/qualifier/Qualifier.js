@@ -12,7 +12,6 @@ function Qualifier (props) {
 
     let initialValue;
     if(scope=='shape'){
-        console.log(shape.qualifier)
         initialValue = shape.qualifier.getTypeName();
     }else{
          initialValue = triple.value.value;
