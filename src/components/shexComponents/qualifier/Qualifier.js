@@ -8,24 +8,25 @@ let shexUtils = require('../../../utils/shexUtils.js');
 function Qualifier (props) {
 
     const context = useContext(ShapesContext);
-    const {shape,triple,scope} = props;
+    const {shape,triple,value,scope} = props;
 
     let initialValue;
     if(scope=='shape'){
+        console.log(shape.qualifier)
         initialValue = shape.qualifier.getTypeName();
     }else{
-        initialValue = triple.value.getTypeName();
+         initialValue = triple.value.value;
     }
 
-    const [valueType,setValueType] = useState(initialValue)
 
+    const [valueType,setValueType] = useState(initialValue)
 
     const handleTypeChange = (e) =>{
         let newType = e.target.value;
         if(scope=='shape'){
             shape.setQualifier(newType);
         }else{
-            triple.setValue(newType);
+            triple.value.value =newType;
         }
 
         context.emit();
@@ -37,10 +38,10 @@ function Qualifier (props) {
                         value={valueType}
                         onChange={handleTypeChange}>
                     <option value='shape'></option>
-                    <option value='iriKind'>IRI</option>
-                    <option value="literalKind">Literal</option>
-                    <option value="nonliteralKind">NonLiteral</option>
-                    <option value="bnodeKind">BNODE</option>
+                    <option value='iri'>IRI</option>
+                    <option value="literal">Literal</option>
+                    <option value="nonliteral">NonLiteral</option>
+                    <option value="bnode">BNODE</option>
                 </select>
 
     );

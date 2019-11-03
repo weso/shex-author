@@ -7,7 +7,7 @@ class IriKind extends Type{
     }
 
     getTypeName(){
-        return 'iriKind';
+        return 'iri';
     }
 
     toString(){

@@ -7,7 +7,7 @@ class BNodeKind extends Type{
     }
 
     getTypeName(){
-        return 'bnodeKind';
+        return 'bnode';
     }
 
     toString(){

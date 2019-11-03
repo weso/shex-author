@@ -9,7 +9,7 @@ class BNode extends Type{
 
 
     getTypeName(){
-        return 'bnode';
+        return 'bnodeType';
     }
 
 

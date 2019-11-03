@@ -22,7 +22,7 @@ class TypesFactory{
             retType = new PrefixedIri(context);
         }
 
-        if(type == 'bnode'){
+        if(type == 'bnodeType'){
             retType = new BNode(context);
         }
 
@@ -31,22 +31,22 @@ class TypesFactory{
         }
 
         if(type == 'shape'){
-            retType = new ShapeReference(context);
+            retType = new ShapeReference('');
         }
 
-        if(type == 'literalKind'){
+        if(type == 'literal'){
             retType = new Literal(context);
         }
 
-        if(type == 'nonliteralKind'){
+        if(type == 'nonliteral'){
             retType = new NonLiteral(context);
         }
 
-        if(type == 'iriKind'){
+        if(type == 'iri'){
             retType = new IriKind(context);
         }
 
-        if(type == 'bnodeKind'){
+        if(type == 'bnode'){
             retType = new BNodeKind(context);
         }
  

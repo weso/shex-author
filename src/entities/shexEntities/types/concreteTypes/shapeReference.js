@@ -10,8 +10,12 @@ class ShapeReference extends Type{
         return 'shape';
     }
 
+    setValue(value){
+        this.value=value;
+    }
+
     toString(){
-        return '';
+        return this.value;
     }
 
 

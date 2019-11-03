@@ -37,7 +37,7 @@ function ShapeTypeComp (props) {
 
                             <option value="iriRef">IriRef</option>
                             <option value="prefixedIri">Prefixed</option>
-                            <option value="bnode">BNode</option>
+                            <option value="bnodeType">BNode</option>
                         </select>
 
                         <FactoryTypeComp shape={shape} 
