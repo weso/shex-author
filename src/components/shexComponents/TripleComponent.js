@@ -12,7 +12,6 @@ function TripleComponent (props) {
 
     const {shape,triple,deleteTriple} = props;
 
-
     return ( <SlideToggle duration={180}
                           collapsed
                           render={({ toggle, setCollapsibleElement, progress }) => (
@@ -22,8 +21,8 @@ function TripleComponent (props) {
                         shape={shape} 
                         triple={triple} 
                         deleteTriple={deleteTriple}
-                        colapse={toggle}/>
-               
+                        handeCollapse={toggle}/>
+
                 <ValueComponent  
                         shape={shape} 
                         triple={triple} 

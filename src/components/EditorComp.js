@@ -37,7 +37,10 @@ function EditorComp() {
             });
 
 
-        
+             
+
+
+
             y.on('humanEvent', function(shapes) {
                 Editor.getInstance().draw(shapes);
             });
@@ -71,6 +74,13 @@ function EditorComp() {
             setYashe(y);
             
             Editor.getInstance().setYashe(y);
+
+            Editor.getInstance().getYashe().on('change', function() {
+                if(!y.hasErrors(y)){
+                    replaceShapes();
+                    updatePrefixes();
+                }
+            });
             replaceShapes();
             updatePrefixes();
         }
