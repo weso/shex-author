@@ -210,3 +210,11 @@ label{
 	margin-left: 100px;
 	margin-right: -70px;
 }
+
+.yashe_uploadBtn{
+	margin-right: 1px !important; 
+}
+
+.yashe_deletedBtn{
+	margin-top:1px !important; 
+}

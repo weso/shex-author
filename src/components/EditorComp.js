@@ -36,6 +36,11 @@ function EditorComp() {
                 }
             });
 
+
+            y.on('change', function(shapes) {
+               y.refresh();
+            });
+
             y.on('humanEvent', function(shapes) {
                 Editor.getInstance().draw(shapes);
             });
