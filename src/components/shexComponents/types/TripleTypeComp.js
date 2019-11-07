@@ -21,7 +21,7 @@ function TripleTypeComp (props){
                 setType(type)
         }
 
-        const handleCollapse = (e)=>{
+        const handleCollapseBtn = (e)=>{
                 if(collapseBtn=='expand_more'){
                     setCollapseBtn('expand_less');
                 }else{
@@ -50,7 +50,7 @@ function TripleTypeComp (props){
                                         instance={triple.type.getTypeName()}/>
                           
                         <button className="col-xs-1  colapseButton mdc-icon-button material-icons btn-primary"
-                                onClick={handleCollapse}>
+                                onClick={handleCollapseBtn}>
                                 {collapseBtn}
                         </button>
 
