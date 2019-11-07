@@ -32,14 +32,16 @@ let inlines;
 
 function getTokens(){
     let yashe = Editor.getInstance().getYashe();
-    let numPrefixes = Object.keys(yashe.getDefinedPrefixes()).length;
     let tokens =[];
-    for (var l = numPrefixes+1; l < yashe.lineCount(); ++l) {
-        let lineTokens = getNonWsTokens(yashe.getLineTokens(l));
-        lineTokens.forEach(token =>{
-            tokens.push(token);
-        })
+    if(yashe!=undefined){
+        let numPrefixes = Object.keys(yashe.getDefinedPrefixes()).length;
+        for (var l = numPrefixes+1; l < yashe.lineCount(); ++l) {
+            let lineTokens = getNonWsTokens(yashe.getLineTokens(l));
+            lineTokens.forEach(token =>{
+                tokens.push(token);
+            })
 
+        }
     }
     return tokens;
 }

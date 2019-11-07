@@ -27,14 +27,16 @@ const DEFAULT_SHAPE = 'PREFIX :       <http://example.org/>\n'+
     let newPrefixes = [];
     let prefix = {};
     let yashe = Editor.getInstance().getYashe();
-    let keys = Object.keys(yashe.getDefinedPrefixes());
-    let values = Object.values(yashe.getDefinedPrefixes());
+    if(yashe!=undefined){
+      let keys = Object.keys(yashe.getDefinedPrefixes());
+      let values = Object.values(yashe.getDefinedPrefixes());
 
-    for(let i=0;i<keys.length;i++){
-        prefix = {};
-        prefix.key=keys[i];
-        prefix.val=values[i];
-        newPrefixes.push(prefix);
+      for(let i=0;i<keys.length;i++){
+          prefix = {};
+          prefix.key=keys[i];
+          prefix.val=values[i];
+          newPrefixes.push(prefix);
+      }
     }
     return newPrefixes;
   }

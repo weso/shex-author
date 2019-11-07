@@ -19,6 +19,7 @@ function IriComp (props) {
 
      
     const handleChange = (e) =>{
+      
       const value = e.target.value;
       if(type == 'shape'){
         shape.type.setValue(value);
@@ -29,6 +30,9 @@ function IriComp (props) {
       }
       context.emit();
       setValue(value);
+
+
+    
     }
     
 

@@ -38,9 +38,6 @@ function EditorComp() {
 
 
              
-
-
-
             y.on('humanEvent', function(shapes) {
                 Editor.getInstance().draw(shapes);
             });
@@ -69,18 +66,26 @@ function EditorComp() {
                 
             });
 
+            y.on('keydown', function() {
+                if(!y.hasErrors(y)){
+                    replaceShapes();
+                    updatePrefixes();
+                }
+            });
+
+            y.on('keyHandled', function() {
+                if(!y.hasErrors(y)){
+                    replaceShapes();
+                    updatePrefixes();
+                }
+            });
+
             y.setValue(yasheUtils.DEFAULT_SHAPE)
             y.refresh();
             setYashe(y);
             
             Editor.getInstance().setYashe(y);
 
-            Editor.getInstance().getYashe().on('change', function() {
-                if(!y.hasErrors(y)){
-                    replaceShapes();
-                    updatePrefixes();
-                }
-            });
             replaceShapes();
             updatePrefixes();
         }
