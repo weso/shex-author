@@ -73,6 +73,8 @@ function EditorComp() {
                 }
             });
 
+            //Fired after a key is handled through a key map
+            //(for example "Ctrl-Z")
             y.on('keyHandled', function() {
                 if(!y.hasErrors(y)){
                     replaceShapes();
