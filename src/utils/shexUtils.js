@@ -16,9 +16,12 @@ function addShape (shapes){
     return newShape;
 }
 
-function deleteShape(shapes,shapeId) {
-    var response = window.confirm('Are you sure?');
-    if (response == true) {
+function deleteShape(shapes,shapeId,confirm) {
+    if(!confirm){
+        confirm = window.confirm('Are you sure?');
+    }
+    
+    if (confirm == true) {
         const newShapes = shapes.filter(shape => shape.id != shapeId);
         emit(newShapes);
         return newShapes;
@@ -50,7 +53,10 @@ function getTripleById(shape,tripleId) {
 
 function emit(newShapes) {
     const yashe = Editor.getInstance().getYashe();
-    Codemirror.signal(yashe,'humanEvent',newShapes);
+    if(yashe!=undefined){
+        Codemirror.signal(yashe,'humanEvent',newShapes);
+    }
+
 }
 
 

@@ -35,7 +35,7 @@ function App() {
     }
 
     const deleteShape = (shapeId) =>{
-      setShapes(shexUtils.deleteShape(shapes,shapeId));
+      setShapes(shexUtils.deleteShape(shapes,shapeId,false));
     }
 
     const emit = ()=>{
