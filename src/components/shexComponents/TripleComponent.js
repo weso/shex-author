@@ -1,12 +1,9 @@
-
 import React,{useContext} from 'react';
 import SlideToggle from "react-slide-toggle";
 
 import TripleTypeComp from './types/TripleTypeComp';
 
 import ValueComponent from './ValueComponent';
-
-
 
 function TripleComponent (props) {
 

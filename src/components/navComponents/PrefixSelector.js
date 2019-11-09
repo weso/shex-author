@@ -1,7 +1,6 @@
 import React from 'react';
-
-let Codemirror = require('codemirror');
-let Editor = require('../../entities/editor.js');
+import Codemirror from 'codemirror';
+import Editor from '../../entities/editor';
 
 function PrefixSelector (props){
 

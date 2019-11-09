@@ -1,13 +1,13 @@
-let PrefixedIri = require('./concreteTypes/prefixedIri.js');
-let IrirRef = require('./concreteTypes/iriRef.js');
-let BNode = require('./concreteTypes/bNode.js');
-let Primitive = require('./concreteTypes/primitive.js');
-let ShapeReference = require('./concreteTypes/shapeReference.js');
+import PrefixedIri from'./concreteTypes/prefixedIri';
+import IriRef from'./concreteTypes/iriRef';
+import BNode from'./concreteTypes/bNode';
+import Primitive from'./concreteTypes/primitive';
+import ShapeReference from'./concreteTypes/shapeReference';
 
-let Literal = require('./concreteTypes/kinds/literal.js');
-let NonLiteral = require('./concreteTypes/kinds/nonLiteral.js');
-let IriKind = require('./concreteTypes/kinds/iriKind.js');
-let BNodeKind = require('./concreteTypes/kinds/bNodeKind.js');
+import Literal from'./concreteTypes/kinds/literal';
+import NonLiteral from'./concreteTypes/kinds/nonLiteral';
+import IriKind from'./concreteTypes/kinds/iriKind';
+import BNodeKind from'./concreteTypes/kinds/bNodeKind';
 
 class TypesFactory{
 
@@ -15,7 +15,7 @@ class TypesFactory{
 
         let retType;
         if(type == 'iriRef'){
-            retType = new IrirRef(context);
+            retType = new IriRef(context);
         }
         
         if(type == 'prefixedIri'){
@@ -58,4 +58,4 @@ class TypesFactory{
 
 }
 
-module.exports = TypesFactory;
+export default TypesFactory;

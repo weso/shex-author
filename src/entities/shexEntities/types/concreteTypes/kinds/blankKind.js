@@ -1,4 +1,4 @@
-let Type = require('../../type.js');
+import Type from '../../type';
 
 class BlankKind extends Type{
 
@@ -18,4 +18,4 @@ class BlankKind extends Type{
 
 }
 
-module.exports = BlankKind;
+export default BlankKind;

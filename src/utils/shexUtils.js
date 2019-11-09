@@ -1,6 +1,6 @@
-let Codemirror = require('codemirror');
-let Editor = require('../entities/editor.js');
-let Shape = require('../entities/shexEntities/shape.js');
+import Codemirror from 'codemirror';
+import Editor from '../entities/editor';
+import Shape from '../entities/shexEntities/shape';
 
 let shapesCount = 0;
 
@@ -54,8 +54,7 @@ function emit(newShapes) {
 }
 
 
-
-module.exports ={
+const shexUtils = {
     addShape:addShape,
     deleteShape:deleteShape,
     getShapeById:getShapeById,
@@ -63,3 +62,5 @@ module.exports ={
     getTripleById:getTripleById,
     emit:emit
 }
+
+export default shexUtils;

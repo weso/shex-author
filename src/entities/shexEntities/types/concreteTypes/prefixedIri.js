@@ -1,5 +1,5 @@
-let Type = require('../type.js');
-let Prefix = require('../../shexUtils/prefix.js');
+import Type from '../type';
+import Prefix from '../../shexUtils/prefix';
 
 class PrefixedIri extends Type{
 
@@ -29,4 +29,4 @@ class PrefixedIri extends Type{
 
 }
 
-module.exports = PrefixedIri;
+export default PrefixedIri;

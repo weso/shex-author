@@ -1,8 +1,6 @@
-
 import React,{useState,useContext,useEffect} from 'react';
 import {ShapesContext} from '../../../../App';
-
-let prefixUtils = require('../../../../utils/prefixUtils.js');
+import {getPrefix} from '../../../../utils/prefixUtils';
 
 function PrefixedComp (props) {
 
@@ -58,7 +56,7 @@ function PrefixedComp (props) {
     }
 
     const handlePrefixChange = (e) =>{
-      let prefix = prefixUtils.getPrefix(e.target.value);
+      let prefix = getPrefix(e.target.value);
 
       if(type == 'shape'){
         shape.type.setPrefix(prefix);

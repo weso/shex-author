@@ -1,6 +1,8 @@
-let TypesFactory = require('./types/typesFactory.js');
-let PrefixedIri = require('./types/concreteTypes/prefixedIri.js');
-let Primitive = require('./types/concreteTypes/primitive.js');
+import TypesFactory from './types/typesFactory';
+
+import PrefixedIri from './types/concreteTypes/prefixedIri';
+import Primitive from './types/concreteTypes/primitive';
+
 let InlineShape = require('./shexUtils/inlineShape.js');
 
 class Triple {
@@ -69,8 +71,6 @@ class Triple {
     }
 
 
-   
-
 }
 
-module.exports  = Triple;
+export default Triple;

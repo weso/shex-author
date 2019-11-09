@@ -1,16 +1,12 @@
-
-
 import React from 'react';
 import PrefixSelector from './PrefixSelector';
+import {ALL_PREFIXES} from '../../utils/rdfUtils';
 
-let rdfUtils = require('../../utils/rdfUtils.js');
 
 function Nav (props) {
 
-    const namespaces = rdfUtils.ALL_PREFIXES;
     const {toggle} = props;
 
-    
     return (<div className="row editor-nav">
                 <button className="btn btn-default assistantBtn " 
                         type="button"
@@ -25,7 +21,7 @@ function Nav (props) {
                         <li>
                             <div id='prefixesDropdown' className='prefixes'>  
 
-                                <PrefixSelector namespaces={namespaces}/>
+                                <PrefixSelector namespaces={ALL_PREFIXES}/>
                                   
                             </div>
                         </li>

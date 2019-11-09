@@ -1,27 +1,30 @@
-let Shape = require('../entities/shexEntities/shape.js')
-let Triple = require('../entities/shexEntities/triple.js')
-let Prefix = require('../entities/shexEntities/shexUtils/prefix.js')
+import shexUtils from './shexUtils';
 
-let IriRef = require('../entities/shexEntities/types/concreteTypes/iriRef.js');
-let PrefixedIri = require('../entities/shexEntities/types/concreteTypes/prefixedIri.js');
-let BNode = require('../entities/shexEntities/types/concreteTypes/bNode.js');
-let Primitive = require('../entities/shexEntities/types/concreteTypes/primitive.js');
-let ShapeReference = require('../entities/shexEntities/types/concreteTypes/shapeReference.js');
+import Editor from '../entities/editor';
 
-let Literal = require('../entities/shexEntities/types/concreteTypes/kinds/literal.js');
-let NonLiteral = require('../entities/shexEntities/types/concreteTypes/kinds/nonLiteral.js');
-let IriKind = require('../entities/shexEntities/types/concreteTypes/kinds/iriKind.js');
-let BNodeKind = require('../entities/shexEntities/types/concreteTypes/kinds/bNodeKind.js');
-let BlankKind = require('../entities/shexEntities/types/concreteTypes/kinds/blankKind.js');
+import  Shape from '../entities/shexEntities/shape';
+import  Triple from '../entities/shexEntities/triple';
 
-let InlineShape = require('../entities/shexEntities/shexUtils/inlineShape.js');
+import TypesFactory from '../entities/shexEntities/types/typesFactory';
 
-let shexUtils = require('./shexUtils.js');
+import PrefixedIri from '../entities/shexEntities/types/concreteTypes/prefixedIri';
+import IriRef from '../entities/shexEntities/types/concreteTypes/iriRef';
+import BNode from '../entities/shexEntities/types/concreteTypes/bNode';
+import Primitive from '../entities/shexEntities/types/concreteTypes/primitive';
+import ShapeReference from '../entities/shexEntities/types/concreteTypes/shapeReference';
 
-let TypesFactory = require('../entities/shexEntities/types/typesFactory.js');
+import Literal from '../entities/shexEntities/types/concreteTypes/kinds/literal';
+import NonLiteral from '../entities/shexEntities/types/concreteTypes/kinds/nonLiteral';
+import IriKind from '../entities/shexEntities/types/concreteTypes/kinds/iriKind';
+import BNodeKind from '../entities/shexEntities/types/concreteTypes/kinds/bNodeKind';
+import BlankKind from '../entities/shexEntities/types/concreteTypes/kinds/blankKind';
 
 
-let Editor = require('../entities/editor.js');
+
+import Prefix from '../entities/shexEntities/shexUtils/prefix';
+
+import InlineShape from '../entities/shexEntities/shexUtils/inlineShape';
+
 
 //HAY QUE METER TODOS
 const PRIMITIVES = ['string','integer','date','boolean'];
@@ -77,7 +80,6 @@ function getShapes(defShapes){
     let yashe = Editor.getInstance().getYashe();
 
     defShapes.forEach(shape => {
-            
         let id = shapes.length;
         let shapeDef = shape[0].string;
         let shapeType = getType(shapeDef,'shapeName');
@@ -286,9 +288,11 @@ function getNonWsTokens(tokens){
     })
 }
 
-module.exports = {
+const tokenUtils = {
     getTokens:getTokens,
     getDefinedShapes:getDefinedShapes,
     getShapes:getShapes,
     updateInlines:updateInlines
 }
+
+export default tokenUtils;

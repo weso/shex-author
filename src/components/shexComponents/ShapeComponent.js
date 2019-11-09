@@ -1,4 +1,3 @@
-
 import React,{useContext,useState} from 'react';
 import SlideToggle from "react-slide-toggle";
 
@@ -8,7 +7,7 @@ import TripleComponent from './TripleComponent';
 import ShapeTypeComp from './types/ShapeTypeComp';
 import Qualifier from './qualifier/Qualifier';
 
-let Triple = require('../../entities/shexEntities/triple.js');
+import Triple from '../../entities/shexEntities/triple';
 
 function ShapeComponent (props) {
 

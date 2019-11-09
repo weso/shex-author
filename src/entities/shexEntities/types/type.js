@@ -15,4 +15,4 @@ class Type{
 
 }
 
-module.exports = Type;
+export default Type;

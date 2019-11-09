@@ -1,4 +1,4 @@
-let Type = require('../../type.js');
+import Type from '../../type';
 
 class NonLiteral extends Type{
 
@@ -18,4 +18,4 @@ class NonLiteral extends Type{
 
 }
 
-module.exports = NonLiteral;
+export default NonLiteral;

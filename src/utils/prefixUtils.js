@@ -1,7 +1,7 @@
-let Editor = require('../entities/editor.js');
-let Prefix = require('../entities/shexEntities/shexUtils/prefix.js');
+import Editor from '../entities/editor';
+import Prefix from '../entities/shexEntities/shexUtils/prefix.js';
 
-function getPrefix(prefix){
+export function getPrefix(prefix){
       let defined = Editor.getInstance().getYashe().getDefinedPrefixes();
       for(let def in defined){
           if(defined[def] == prefix){
@@ -11,6 +11,3 @@ function getPrefix(prefix){
       return new Prefix();
 }
 
-module.exports = {
-    getPrefix:getPrefix
-}

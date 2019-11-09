@@ -2,13 +2,10 @@ import React, {useState,useContext,useEffect,useRef} from 'react';
 import 'yashe/dist/yashe.min.css';
 import {ShapesContext} from '../App';
 
+import YASHE from 'yashe';
+import Editor from '../entities/editor';
 
-const YASHE = require('yashe');
-
-const Editor = require('../entities/editor.js');
-
-const yasheUtils = require('../utils/yasheUtils.js');
-
+import yasheUtils from '../utils/yasheUtils';
 
 function EditorComp() {
 

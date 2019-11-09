@@ -1,5 +1,6 @@
-const tokenUtils = require('./tokenUtils.js');
-const Editor = require('../entities/editor.js');
+import Editor from '../entities/editor';
+import tokenUtils from './tokenUtils';
+
 
 const DEFAULT_SHAPE = 'PREFIX :       <http://example.org/>\n'+
 'PREFIX schema: <http://schema.org/>\n'+
@@ -41,9 +42,11 @@ const DEFAULT_SHAPE = 'PREFIX :       <http://example.org/>\n'+
     return newPrefixes;
   }
 
-  module.exports = {
+ const yasheUtils = {
       DEFAULT_SHAPE:DEFAULT_SHAPE,
       replaceShapes:replaceShapes,
       updatePrefixes:updatePrefixes
 
   }
+
+  export default yasheUtils;

@@ -8,8 +8,8 @@ import EditorComp from './components/EditorComp';
 import AssistantComp from './components/AssistantComp';
 import Nav from './components/navComponents/Nav';
 
+import shexUtils from './utils/shexUtils';
 
-let shexUtils = require('./utils/shexUtils.js');
 
 export const ShapesContext = React.createContext();
 

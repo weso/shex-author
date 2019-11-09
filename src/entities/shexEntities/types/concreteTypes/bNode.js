@@ -1,4 +1,4 @@
-let Type = require('../type.js');
+import Type from '../type';
 
 class BNode extends Type{
 
@@ -21,4 +21,4 @@ class BNode extends Type{
 
 
 
-module.exports = BNode;
+export default BNode;

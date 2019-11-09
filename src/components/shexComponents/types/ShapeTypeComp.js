@@ -1,9 +1,7 @@
-
 import React,{useContext,useState} from 'react';
 import FactoryTypeComp from './FactoryTypeComp';
 
 import {ShapesContext} from '../../../App';
-
 
 function ShapeTypeComp (props) {
 

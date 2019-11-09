@@ -1,7 +1,5 @@
-let Type = require('../type.js');
-let $ = require('jquery');
+import Type from '../type';
 
-//HAY QUE METER TODOS
 const PRIMITIVES = ['String','Integer','Date','Boolean'];
 
 class Primitive extends Type{
@@ -22,4 +20,4 @@ class Primitive extends Type{
 
 }
 
-module.exports = Primitive;
+export default Primitive;

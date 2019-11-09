@@ -1,8 +1,8 @@
-let TypesFactory = require('./types/typesFactory.js');
+import TypesFactory from './types/typesFactory';
 
-let IrirRef = require('./types/concreteTypes/iriRef.js');
-let PrefixedIri = require('./types/concreteTypes/prefixedIri.js');
-let BlankKind = require('./types/concreteTypes/kinds/blankKind.js');
+import IrirRef from './types/concreteTypes/iriRef';
+import PrefixedIri from './types/concreteTypes/prefixedIri';
+import BlankKind from './types/concreteTypes/kinds/blankKind';
 
 class Shape {
 
@@ -77,4 +77,4 @@ class Shape {
 
   }
 
-  module.exports = Shape;
+export default Shape;

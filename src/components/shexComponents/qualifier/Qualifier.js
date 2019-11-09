@@ -1,8 +1,7 @@
-
 import React,{useState,useContext} from 'react';
 import {ShapesContext} from '../../../App';
 
-let shexUtils = require('../../../utils/shexUtils.js');
+import shexUtils from '../../../utils/shexUtils';
 
 
 function Qualifier (props) {

@@ -1,8 +1,6 @@
-'use strict';
+import YASHE from 'yashe';
 
-let YASHE = require('yashe');
-
-//Singleton
+//Singleton Pattern
 const Editor = (()=> {
 
     function EditorClass(){
@@ -55,4 +53,4 @@ const Editor = (()=> {
 })();
 
 
-module.exports = Editor;
+export default Editor;

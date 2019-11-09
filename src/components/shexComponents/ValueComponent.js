@@ -1,12 +1,9 @@
-
 import React,{useContext} from 'react';
 
 import {ShapesContext} from '../../App';
 
 import ValueTypeComp from './types/ValueTypeComp';
 import CardinalityComp from './cardinality/CardinalityComp';
-
-
 
 function ValueComponent (props) {
 

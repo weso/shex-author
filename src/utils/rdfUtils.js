@@ -1,5 +1,4 @@
-
-const ALL_PREFIXES = {
+export const ALL_PREFIXES = {
     Wikidata: {
         wikibase: 'http://wikiba.se/ontology#',
         wd: 'http://www.wikidata.org/entity/',
@@ -43,7 +42,3 @@ const ALL_PREFIXES = {
 };
 
 
-
-module.exports = {
-    ALL_PREFIXES:ALL_PREFIXES
-}

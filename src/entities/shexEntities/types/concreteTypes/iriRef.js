@@ -1,6 +1,5 @@
-let Type = require('../type.js');
-let Editor = require('../../../editor.js')
-
+import Type from '../type';
+import Editor from'../../../editor';
 
 class IriRef extends Type{
 
@@ -21,4 +20,4 @@ class IriRef extends Type{
 
 }
 
-module.exports = IriRef;
+export default IriRef;
