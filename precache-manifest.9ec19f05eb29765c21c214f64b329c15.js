@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8bc2263402d8ab5e1b5e81574a11bbd2",
+    "revision": "8497f45114a4984a83cc246c0e5998e0",
     "url": "/shex-author/index.html"
   },
   {
-    "revision": "0386de326ecf5d91fcff",
+    "revision": "529e6863ffaa68601be9",
     "url": "/shex-author/static/css/2.d722c9db.chunk.css"
   },
   {
-    "revision": "f719b6b4e2ddc2d7756a",
+    "revision": "9409ca7cdc6db6fce6ca",
     "url": "/shex-author/static/css/main.db65ce8c.chunk.css"
   },
   {
-    "revision": "0386de326ecf5d91fcff",
-    "url": "/shex-author/static/js/2.722a83b6.chunk.js"
+    "revision": "529e6863ffaa68601be9",
+    "url": "/shex-author/static/js/2.80e261f4.chunk.js"
   },
   {
-    "revision": "f719b6b4e2ddc2d7756a",
-    "url": "/shex-author/static/js/main.5eff87d2.chunk.js"
+    "revision": "9409ca7cdc6db6fce6ca",
+    "url": "/shex-author/static/js/main.4ed4d9a3.chunk.js"
   },
   {
     "revision": "2c7093afc688868c62e3",
