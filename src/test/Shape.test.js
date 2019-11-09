@@ -46,3 +46,37 @@ test('Add Triple', ()=>{
     shape.addTriple(new Triple(0));
     expect(shape.triples.length==1).toBeTruthy();
 });
+
+test('Remove Triple', ()=>{
+    let shape = new Shape(0);
+    expect(shape.triples.length==0).toBeTruthy();
+    shape.addTriple(new Triple(0));
+    expect(shape.triples.length==1).toBeTruthy();
+    shape.removeTriple(0);
+    expect(shape.triples.length==0).toBeTruthy();
+});
+
+test('Draw Default Shape', ()=>{
+    let shape = new Shape(0);
+    let expectedStr = '<>{}';
+    let shapeStr = shape.toString().replace(/\s/g,'');
+    expect(shapeStr ==expectedStr).toBeTruthy();
+});
+
+test('Draw Modified Shape', ()=>{
+    let shape = new Shape(0);
+    shape.type.value = 'Wikidata';
+    let expectedStr = '<Wikidata>{}';
+    let shapeStr = shape.toString().replace(/\s/g,'');
+    expect(shapeStr ==expectedStr).toBeTruthy();
+});
+
+test('Draw Shape with Triples', ()=>{
+    let shape = new Shape(0);
+    shape.type.value = 'Wikidata';
+    shape.addTriple(new Triple(0));
+    shape.addTriple(new Triple(1));
+    let expectedStr = '<Wikidata>{:xsd:string;:xsd:string;}';
+    let shapeStr = shape.toString().replace(/\s/g,'');
+    expect(shapeStr ==expectedStr).toBeTruthy();
+});
