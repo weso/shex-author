@@ -1,0 +1,1 @@
+{"ast":null,"code":"var engine = require('../src/store-engine');\n\nvar storages = require('../storages/all');\n\nvar plugins = [require('../plugins/json2')];\nmodule.exports = engine.createStore(storages, plugins);","map":null,"metadata":{},"sourceType":"script"}
