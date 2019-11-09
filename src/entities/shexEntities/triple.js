@@ -3,7 +3,7 @@ import TypesFactory from './types/typesFactory';
 import PrefixedIri from './types/concreteTypes/prefixedIri';
 import Primitive from './types/concreteTypes/primitive';
 
-let InlineShape = require('./shexUtils/inlineShape.js');
+import InlineShape from './shexUtils/inlineShape';
 
 class Triple {
 
