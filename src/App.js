@@ -3,7 +3,6 @@ import SlideToggle from "react-slide-toggle";
 import logo from './logo.svg';
 import './App.css';
 
-
 import EditorComp from './components/EditorComp';
 import AssistantComp from './components/AssistantComp';
 import Nav from './components/navComponents/Nav';

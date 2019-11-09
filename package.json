@@ -2,7 +2,7 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://mistermboy.github.io/shex-author-react",
+  "homepage": "https://weso.github.io/shex-author",
   "dependencies": {
     "gh-pages": "^2.1.1",
     "react": "^16.11.0",
