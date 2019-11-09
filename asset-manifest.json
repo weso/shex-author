@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/shex-author/static/css/main.db65ce8c.chunk.css",
+    "main.js": "/shex-author/static/js/main.7e6d54a3.chunk.js",
+    "main.js.map": "/shex-author/static/js/main.7e6d54a3.chunk.js.map",
+    "runtime-main.js": "/shex-author/static/js/runtime-main.95ebbff4.js",
+    "runtime-main.js.map": "/shex-author/static/js/runtime-main.95ebbff4.js.map",
+    "static/css/2.d722c9db.chunk.css": "/shex-author/static/css/2.d722c9db.chunk.css",
+    "static/js/2.455cc6ae.chunk.js": "/shex-author/static/js/2.455cc6ae.chunk.js",
+    "static/js/2.455cc6ae.chunk.js.map": "/shex-author/static/js/2.455cc6ae.chunk.js.map",
+    "index.html": "/shex-author/index.html",
+    "precache-manifest.7c742a738f2ffb5a8937d32b5b29bfaf.js": "/shex-author/precache-manifest.7c742a738f2ffb5a8937d32b5b29bfaf.js",
+    "service-worker.js": "/shex-author/service-worker.js",
+    "static/css/2.d722c9db.chunk.css.map": "/shex-author/static/css/2.d722c9db.chunk.css.map",
+    "static/css/main.db65ce8c.chunk.css.map": "/shex-author/static/css/main.db65ce8c.chunk.css.map",
+    "static/media/logo.svg": "/shex-author/static/media/logo.25bf045c.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.95ebbff4.js",
+    "static/css/2.d722c9db.chunk.css",
+    "static/js/2.455cc6ae.chunk.js",
+    "static/css/main.db65ce8c.chunk.css",
+    "static/js/main.7e6d54a3.chunk.js"
+  ]
+}
