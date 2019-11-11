@@ -1,6 +1,6 @@
 import React,{useState,useContext} from 'react';
 import {ShapesContext} from '../../../../App';
-import Qualifier from '../../qualifier/Qualifier';
+import Qualifier from '../../utils/Qualifier';
 
 import shexUtils from '../../../../utils/shexUtils';
 

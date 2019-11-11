@@ -5,7 +5,7 @@ import {ShapesContext} from '../../App';
 
 import TripleComponent from './TripleComponent';
 import ShapeTypeComp from './types/ShapeTypeComp';
-import Qualifier from './qualifier/Qualifier';
+import Qualifier from './utils/Qualifier';
 
 import Triple from '../../entities/shexEntities/triple';
 

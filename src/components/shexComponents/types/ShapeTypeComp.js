@@ -1,5 +1,5 @@
 import React,{useContext,useState} from 'react';
-import FactoryTypeComp from './FactoryTypeComp';
+import ComponentTypeFactory from './ComponentTypeFactory';
 
 import {ShapesContext} from '../../../App';
 
@@ -38,7 +38,7 @@ function ShapeTypeComp (props) {
                             <option value="bnodeType">BNode</option>
                         </select>
 
-                        <FactoryTypeComp shape={shape} 
+                        <ComponentTypeFactory shape={shape} 
                                     triple={null}
                                     type='shape'
                                     instance={shape.type.getTypeName()}/>

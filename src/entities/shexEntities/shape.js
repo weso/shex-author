@@ -1,7 +1,6 @@
 import TypesFactory from './types/typesFactory';
 
 import IrirRef from './types/concreteTypes/iriRef';
-import PrefixedIri from './types/concreteTypes/prefixedIri';
 import BlankKind from './types/concreteTypes/kinds/blankKind';
 
 class Shape {

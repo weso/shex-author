@@ -1,5 +1,5 @@
 import React,{useContext,useState} from 'react';
-import FactoryTypeComp from './FactoryTypeComp';
+import ComponentTypeFactory from './ComponentTypeFactory';
 
 import {ShapesContext} from '../../../App';
 
@@ -37,7 +37,7 @@ function ValueTypeComp(props) {
                                 </select>
 
 
-                                <FactoryTypeComp shape={shape} 
+                                <ComponentTypeFactory shape={shape} 
                                     triple={triple}
                                     type='value'
                                     instance={triple.value.getTypeName()}/>

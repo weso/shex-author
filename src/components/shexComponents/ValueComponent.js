@@ -3,7 +3,7 @@ import React,{useContext} from 'react';
 import {ShapesContext} from '../../App';
 
 import ValueTypeComp from './types/ValueTypeComp';
-import CardinalityComp from './cardinality/CardinalityComp';
+import CardinalityComp from './utils/CardinalityComp';
 
 function ValueComponent (props) {
 

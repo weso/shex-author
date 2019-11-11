@@ -1,14 +1,11 @@
 import TypesFactory from './types/typesFactory';
-
-import PrefixedIri from './types/concreteTypes/prefixedIri';
-import Primitive from './types/concreteTypes/primitive';
-
+import IrirRef from './types/concreteTypes/iriRef';
 import InlineShape from './shexUtils/inlineShape';
 
 class Triple {
 
 
-    constructor(id,type=new PrefixedIri('tripleName'),value=new Primitive(),inlineShape=new InlineShape(),cardinality='') {
+    constructor(id,type=new IrirRef('tripleName'),value=new IrirRef(),inlineShape=new InlineShape(),cardinality='') {
         this.id = id;
         this.type = type;
         this.value = value;
