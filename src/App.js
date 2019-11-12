@@ -6,6 +6,8 @@ import './App.css';
 
 import EditorComp from './components/EditorComp';
 import AssistantComp from './components/AssistantComp';
+import VisualizeComp from  './components/VisualizeComp';
+
 import Nav from './components/navComponents/Nav';
 
 import shexUtils from './utils/shexUtils';
@@ -131,16 +133,9 @@ function App() {
                                        
                                   </div>
 
-                                  
-                                  
-                             
-
-                                  <div className="col visualize">  
-                                        <h2>Visualize</h2>
-                                        
-                                        <div className="row col" dangerouslySetInnerHTML={{__html:svg}}/>         
-                                    </div>
-                               </div>                                 
+                                  <VisualizeComp colapse={setCollapsibleElement} svg={svg}/>
+                           </div>
+                                                            
                   )}/>
 
 
