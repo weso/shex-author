@@ -39,6 +39,7 @@
     "jquery": "^3.4.1",
     "react-numeric-input": "^2.2.3",
     "react-slide-toggle": "^0.3.3",
+    "reactstrap": "^8.1.1",
     "yashe": "^1.1.24"
   }
 }

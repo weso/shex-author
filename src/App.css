@@ -231,3 +231,12 @@ svg{
 	margin-top:10px;
 }
 
+
+.deleteALL{
+	background-color: transparent;
+	border:none;
+}
+
+.deleteALL:hover{
+	background-color: #eaf3ff;
+}

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
+import { Collapse } from 'reactstrap';
 import axios from 'axios';
-import SlideToggle from "react-slide-toggle";
 import logo from './logo.svg';
 import './App.css';
 
@@ -22,6 +22,12 @@ function App() {
     const [shapes,setShapes] = useState([]);
     const [svg,setSvg] = useState('');
     const [prefixes,setPrefixes] = useState([{key:'',val:'http://example.org/'}]);
+    const [isAssistantOpen, setAssistantOpen] = useState(true);
+    const [isVisualizeOpen, setVisualizeOpen] = useState(true);
+
+    const assistanToggle = () => setAssistantOpen(!isAssistantOpen);
+    const visualizeToggle = () => setVisualizeOpen(!isVisualizeOpen);
+
 
      const darkStyle = {
         background: '#2B2B2B',
@@ -54,6 +60,7 @@ function App() {
       //Best Glitch Ever
       setShapes([]); 
       setShapes(newShapes);
+      visualize();
     }
 
     const updatePrefixes = (newPrefixes)=>{
@@ -105,40 +112,42 @@ function App() {
         
     }
 
-  
+
     return (
             
-            <ShapesContext.Provider value={
-                                    {
-                                      shapes,shapes,
-                                      addShape:addShape,
-                                      deleteShape:deleteShape,
-                                      replaceShapes:replaceShapes,
-                                      prefixes:prefixes,
-                                      updatePrefixes:updatePrefixes,
-                                      emit:emit,
-                                      currentStyle:style,
-                                      changeThemeStyle:changeThemeStyle,
-                                      visualize:visualize
-                                    }
-                                  }>
+            <ShapesContext.Provider 
+                value={
+                  {
+                    shapes,shapes,
+                    addShape:addShape,
+                    deleteShape:deleteShape,
+                    replaceShapes:replaceShapes,
+                    prefixes:prefixes,
+                    updatePrefixes:updatePrefixes,
+                    emit:emit,
+                    currentStyle:style,
+                    changeThemeStyle:changeThemeStyle,
+                    visualize:visualize
+                  }
+                }>
                 
-                <SlideToggle duration={500}
-                             render={({ toggle, setCollapsibleElement, progress }) => (
-                              <div> 
-                                  <Nav toggle={toggle}/>
-                                  <div className="row separator" style={style}> 
-                                      <AssistantComp colapse={setCollapsibleElement} initialShapes={shapes} />
-                                      <EditorComp />
-                                       
-                                  </div>
+                
+                <Nav  assistanToggle={assistanToggle} 
+                      visualizeToggle={visualizeToggle}/>
 
-                                  <VisualizeComp colapse={setCollapsibleElement} svg={svg}/>
-                           </div>
-                                                            
-                  )}/>
-
-
+                <div className="row colseparator" style={style}> 
+                    
+                    <Collapse isOpen={isAssistantOpen} className="assistant col" style={style}>
+                        <AssistantComp initialShapes={shapes} />
+                     </Collapse> 
+                    
+                    <EditorComp />
+                      
+                </div>
+              
+                <Collapse isOpen={isVisualizeOpen} >
+                  <VisualizeComp svg={svg}/>
+                </Collapse>   
             </ShapesContext.Provider>
           );
                        
