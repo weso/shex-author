@@ -1,0 +1,1 @@
+{"ast":null,"code":"module.exports = json2Plugin;\n\nfunction json2Plugin() {\n  require('./lib/json2');\n\n  return {};\n}","map":null,"metadata":{},"sourceType":"script"}

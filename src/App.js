@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import axios from 'axios';
 import SlideToggle from "react-slide-toggle";
 import logo from './logo.svg';
 import './App.css';
@@ -9,12 +10,15 @@ import Nav from './components/navComponents/Nav';
 
 import shexUtils from './utils/shexUtils';
 
+import Editor from './entities/editor';
+
 
 export const ShapesContext = React.createContext();
 
 function App() {
 
     const [shapes,setShapes] = useState([]);
+    const [svg,setSvg] = useState('');
     const [prefixes,setPrefixes] = useState([{key:'',val:'http://example.org/'}]);
 
      const darkStyle = {
@@ -40,6 +44,7 @@ function App() {
 
     const emit = ()=>{
       shexUtils.emit(shapes);
+      visualize();
     }
 
     const replaceShapes = (newShapes) =>{
@@ -63,6 +68,41 @@ function App() {
       }
     }
 
+    const getSchema = function(){
+      let yashe = Editor.getInstance().getYashe();
+      if(yashe){
+          return yashe.getValue();
+      }
+      return '';
+    }
+
+
+    const visualize = function(){
+
+        let bodyFormData = new FormData();
+        bodyFormData.set('schema', getSchema());
+        bodyFormData.set('schemaFormat', 'ShExC');
+        bodyFormData.set('schemaEngine', 'SHEX');
+
+
+        axios({
+            method: 'post',
+            url: 'http://rdfshape.weso.es:8080/api/schema/visualize',
+            data: bodyFormData,
+            config: { headers: {'Content-Type': 'multipart/form-data' }}
+        })
+        .then(function (response) {
+            //handle success
+            setSvg(response.data.svg);
+        })
+        .catch(function (response) {
+            //handle error
+            console.log(response);
+        });
+
+        
+    }
+
   
     return (
             
@@ -76,7 +116,8 @@ function App() {
                                       updatePrefixes:updatePrefixes,
                                       emit:emit,
                                       currentStyle:style,
-                                      changeThemeStyle:changeThemeStyle
+                                      changeThemeStyle:changeThemeStyle,
+                                      visualize:visualize
                                     }
                                   }>
                 
@@ -87,9 +128,19 @@ function App() {
                                   <div className="row separator" style={style}> 
                                       <AssistantComp colapse={setCollapsibleElement} initialShapes={shapes} />
                                       <EditorComp />
-                                      
+                                       
                                   </div>
-                              </div>                              
+
+                                  
+                                  
+                             
+
+                                  <div className="col visualize">  
+                                        <h2>Visualize</h2>
+                                        
+                                        <div className="row col" dangerouslySetInnerHTML={{__html:svg}}/>         
+                                    </div>
+                               </div>                                 
                   )}/>
 
 

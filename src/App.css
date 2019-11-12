@@ -58,21 +58,18 @@ html{
 }
 
 
-.separator{
-	background-color: white;
-}
-
 
 
 label{
 	font-weight: bold;
 	margin-top: 10px;
+	margin-left:10px;
 	margin-right:-50px; 
 }
 
 .addShapeButton{
 	margin-top: 20px;
-	margin-left: -10px;
+	margin-left: 10px;
 	margin-bottom: 15px;
 }
 
@@ -219,6 +216,14 @@ label{
 }
 
 .colapseTriplesBtn{
-	margin-left:-3px;
+	margin-left:10px;
 	width:5%;
 }
+
+.visualize{
+	height: 100%;
+	width:100%;
+	border: 1px solid grey;
+}
+
+

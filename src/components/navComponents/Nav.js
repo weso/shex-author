@@ -1,4 +1,5 @@
-import React from 'react';
+import React,{useContext} from 'react';
+import {ShapesContext} from '../../App';
 import PrefixSelector from './PrefixSelector';
 import {ALL_PREFIXES} from '../../utils/rdfUtils';
 
@@ -6,12 +7,21 @@ import {ALL_PREFIXES} from '../../utils/rdfUtils';
 function Nav (props) {
 
     const {toggle} = props;
+    const context = useContext(ShapesContext);
+
 
     return (<div className="row editor-nav">
                 <button className="btn btn-default assistantBtn " 
                         type="button"
                         onClick={toggle}>
                         Assistant
+                </button>
+
+
+                <button className="btn btn-default assistantBtn " 
+                        type="button"
+                        onClick={context.visualize()}>
+                        Peticion
                 </button>
 
                 <div className="dropdown">
