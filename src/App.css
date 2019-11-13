@@ -201,7 +201,6 @@ label{
 }
 
 .visualize{
-	border-top: 1px solid grey;
 	height:100%;
 }
 
@@ -233,6 +232,7 @@ svg{
 .btns{
 	background-color: #f8f9fa !important;
 	height: 60px;
+	width: 70px;
 	border:none;
 }
 
@@ -247,4 +247,8 @@ svg{
 
 .edit{
 	background-color: white;
+}
+
+.comps{
+	border-bottom: 1px solid grey;
 }
