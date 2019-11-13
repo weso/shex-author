@@ -1,12 +1,9 @@
-.editor-nav{
-	background-color: #f8f9fa;
-	border: 1px solid grey;
-	margin-top: -1px;
-}
+
 
 .navbar{
 	background-color: #222 !important;
 	color: white !important;
+	border: 1px solid grey;
 }
 
 .btn-default{
@@ -19,18 +16,7 @@
 	margin: 0px !important;
 }
 
-.show{
-	background-color: white;
-}
 
-
-
-.assistant{
-	border-right: 1px solid grey;
-	border-left: 1px solid grey;
-	border-bottom: 1px solid grey;
-	background-color: #fff;
-}
 
 html{
 
@@ -38,25 +24,23 @@ html{
 
 }
 
-.container-fluid{
-	background-color: #fff;
-}
 
 .CodeMirror{
 	height: 100% !important;
 	width: 100% !important;
 	font-size:1.5em !important;
 	min-height:273px;
+	border-right: none !important;
 }
 
 
 
 .yashe{
-	height: 100% ;
-	width: 100% ;
-	margin-left: -15px !important;
+	height: 100% !important;
+	width: 100% !important;
+	margin-left: -15px;
+	border-right: none !important;
 }
-
 
 
 
@@ -180,10 +164,6 @@ label{
 	margin-left: 3px;
 }
 
-.assistantBtn{
-	margin-left: 3px;
-}
-
 
 .colapseButton{
 	margin-left: 5px;
@@ -239,4 +219,32 @@ svg{
 
 .deleteALL:hover{
 	background-color: #eaf3ff;
+}
+
+
+
+.lateralNav{
+	background-color: #f8f9fa !important;
+	border-right: 1px solid grey;
+	margin-left: 8px;
+}
+
+
+.btns{
+	background-color: #f8f9fa !important;
+	height: 60px;
+	border:none;
+}
+
+.btns:hover{
+	background-color: #eaf3ff !important;
+}
+
+.assisTitle{
+	margin-top:5px;
+	border-bottom: 1px solid grey;
+}
+
+.edit{
+	background-color: white;
 }

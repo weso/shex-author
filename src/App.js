@@ -132,13 +132,15 @@ function App() {
                 }>
                 
                 
-                <Nav  assistanToggle={assistanToggle} 
+                
+
+                <div className="row comps" style={style}> 
+                    
+                    <Nav  assistanToggle={assistanToggle} 
                       visualizeToggle={visualizeToggle}/>
 
-                <div className="row colseparator" style={style}> 
-                    
-                    <Collapse isOpen={isAssistantOpen} className="assistant col" style={style}>
-                        <AssistantComp initialShapes={shapes} />
+                    <Collapse isOpen={isAssistantOpen} className="col" style={style}>
+                        <AssistantComp/>
                      </Collapse> 
                     
                     <EditorComp />

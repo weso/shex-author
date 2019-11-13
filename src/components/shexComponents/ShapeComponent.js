@@ -61,8 +61,8 @@ function ShapeComponent (props) {
                 
                 </div>
         
-                <Collapse isOpen={isQualiOpen}  timeout={110} style={context.currentStyle}>
-                    <div className="row qualifier">
+                <Collapse isOpen={isQualiOpen}  timeout={110}>
+                    <div className="row qualifier" style={context.currentStyle}>
                             <label className="col-2 qualiLabel">Qualifier </label>
                             <div className="col-2">
                                 <Qualifier shape={shape} scope='shape'/>

@@ -8,6 +8,8 @@ function AssistantComp (props) {
     const context = useContext(ShapesContext);
 
     return (<div id='assistant-container'> 
+
+                    <div className='col row assisTitle'>Assistant</div>
                     {context.shapes.map(shape =>{
                                 
                             return <ShapeComponent key={shape.id} shape={shape}/>

@@ -20,23 +20,27 @@ function Nav (props) {
         }
     }
 
-    return (<div className="row editor-nav">
-                <button className="btn btn-default assistantBtn " 
-                        type="button"
-                        onClick={assistanToggle}>
-                        Assistant
-                </button>
+    return (<div className='lateralNav col-xs-1'>
+                    <button className="col mdc-icon-button material-icons btns"
+                            type="button"
+                            onClick={assistanToggle}>
+                            info
+                    </button>
+                    <br/>
 
-
-                <button className="btn btn-default " 
-                        type="button"
+                    <button className="col mdc-icon-button material-icons btns"type="button"
                         onClick={visualizeToggle}>
-                        Visualize
-                </button>
+                        remove_red_eye
+                    </button> 
+                
+                     <br/>
+                     <button className="col mdc-icon-button material-icons  btns"
+                             onClick={handle}>
+                            delete_outline
+                     </button>
+                    <br/>
 
-              
-
-                <div className="dropdown">
+                      <div className="dropdown">
                     <button className="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Prefixes
                     <span className="caret"></span></button>
                     <ul className='dropdown-menu'>
@@ -49,12 +53,8 @@ function Nav (props) {
                         </li>
                     </ul>
                 </div>
-
-                 <button className="deleteALL material-icons "
-                                onClick={handle}>
-                                delete_outline
-                        </button>
-            </div>);
+                    
+        </div>);
     
     
 }

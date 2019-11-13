@@ -10,7 +10,7 @@ import yasheUtils from '../utils/yasheUtils';
 function EditorComp() {
 
   const [yashe,setYashe] = useState(null);
-  const textAreaRef = useRef(null);
+  const divRef = useRef(null);
   const context = useContext(ShapesContext);
 
   useEffect(() => {
@@ -22,8 +22,8 @@ function EditorComp() {
                 viewportMargin: Infinity
             }
             
-            const y = YASHE.fromTextArea(
-                textAreaRef.current, 
+            const y = YASHE(
+                divRef.current, 
                 options)
 
              y.on('blur', function() {
@@ -87,6 +87,8 @@ function EditorComp() {
 
             replaceShapes();
             updatePrefixes();
+
+            
         }
     }, [yashe]
     );
@@ -105,10 +107,7 @@ function EditorComp() {
 
 
 
-    return  (<div className='col show'>
-                <textarea ref={textAreaRef}/>
-            </div>            
-    );
+    return  (<div className="col edit" ref={divRef}/>);
 
 }
 
