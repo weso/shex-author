@@ -8,7 +8,7 @@ import EditorComp from './components/EditorComp';
 import AssistantComp from './components/AssistantComp';
 import VisualizeComp from  './components/VisualizeComp';
 
-import Nav from './components/navComponents/Nav';
+import LateralNav from './components/navComponents/LateralNav';
 
 import shexUtils from './utils/shexUtils';
 
@@ -131,12 +131,11 @@ function App() {
                   }
                 }>
                 
+            
                 
-                
-
                 <div className="row comps" style={style}> 
                     
-                    <Nav  assistanToggle={assistanToggle} 
+                    <LateralNav  assistanToggle={assistanToggle} 
                       visualizeToggle={visualizeToggle}/>
 
                     <Collapse isOpen={isAssistantOpen} className="col" style={style}>

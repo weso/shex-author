@@ -21,6 +21,7 @@ function Nav (props) {
     }
 
     return (<div className='lateralNav col-xs-1'>
+    
                     <button className="col mdc-icon-button material-icons btns"
                             type="button"
                             onClick={assistanToggle}>
@@ -41,7 +42,9 @@ function Nav (props) {
                     <br/>
 
                       <div className="dropdown">
-                    <button className="btn btn-default dropdown-toggle  mdc-icon-button material-icons btns" type="button" data-toggle="dropdown">local_parking
+                    <button className="btn btn-default dropdown-toggle  
+                                    mdc-icon-button material-icons 
+                                    btns prefixSelector" type="button" data-toggle="dropdown">local_parking
                     <span className="caret"></span></button>
                     <ul className='dropdown-menu'>
                         <li>

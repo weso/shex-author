@@ -1,9 +1,22 @@
-
+.editor-nav{
+	background-color: #f8f9fa;
+	border: 1px solid grey;
+	margin-top: -1px;
+}
 
 .navbar{
 	background-color: #222 !important;
 	color: white !important;
-	border: 1px solid grey;
+	
+}
+
+h1{
+	font-weight: bold !important;
+}
+
+
+.assisTitle{
+	font-weight: bold !important;
 }
 
 .btn-default{
@@ -12,9 +25,6 @@
 	font-weight: bold !important;
 }
 
-.dropdown{
-	margin: 0px !important;
-}
 
 
 
@@ -71,17 +81,12 @@ label{
 
 .shapes-container{
 	margin-top: 10px;
-
 }
 
-.shapes-header{
-	background-color: #eaf3ff;
-}
 
 .triples-container{
 	margin-left:70px;
 	margin-right:30px;
-	background-color: #eaf3ff;
 }
 
 .addPropButton{
@@ -91,9 +96,7 @@ label{
 }
 
 
-.shapes-labels{
-	background-color: #eaf3ff;
-}
+
 
 .tripleType{
 	margin-left: -35px;
@@ -223,21 +226,57 @@ svg{
 
 
 .lateralNav{
-	background-color: #f8f9fa !important;
+	background-color: white !important;
 	border-right: 1px solid grey;
-	margin-left: 8px;
+	margin-left: 20px;
+
 }
 
+.prefixSelector{
+	font-size: 20px !important;
+}
+
+.prefixSelector:focus {
+	outline:0 !important;
+}
+
+.prefixSelector:active {
+	transform: translateY(4px);
+	outline:0 !important;
+}
 
 .btns{
-	background-color: #f8f9fa !important;
+	background-color: transparent !important;
 	height: 60px;
 	width: 70px;
 	border:none;
+	font-size: 28px;
+	filter: 
+			invert(0.4)
+			sepia(0.5)
+			hue-rotate(195deg)
+			saturate(16.2)
+			brightness(0);
 }
 
 .btns:hover{
-	background-color: #eaf3ff !important;
+	background-color: transparent !important;
+
+	filter: 
+			invert(0.4)
+			sepia(0.5)
+			hue-rotate(195deg)
+			saturate(16.2)
+			brightness(1.4);
+}
+
+.btns:active {
+	transform: translateY(4px);
+	outline:0;
+}
+
+.btns:focus {
+	outline:0;
 }
 
 .assisTitle{
