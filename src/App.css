@@ -2,6 +2,7 @@
 	background-color: #f8f9fa;
 	border: 1px solid grey;
 	margin-top: -1px;
+
 }
 
 .navbar{
@@ -10,9 +11,7 @@
 	
 }
 
-h1{
-	font-weight: bold !important;
-}
+
 
 
 .assisTitle{
@@ -214,22 +213,11 @@ svg{
 }
 
 
-.deleteALL{
-	background-color: transparent;
-	border:none;
-}
-
-.deleteALL:hover{
-	background-color: #eaf3ff;
-}
-
 
 
 .lateralNav{
 	background-color: white !important;
 	border-right: 1px solid grey;
-	margin-left: 20px;
-
 }
 
 .prefixSelector{
@@ -261,7 +249,6 @@ svg{
 
 .btns:hover{
 	background-color: transparent !important;
-
 	filter: 
 			invert(0.4)
 			sepia(0.5)
@@ -279,10 +266,94 @@ svg{
 	outline:0;
 }
 
-.assisTitle{
+
+.shexTitle{
+	font-size: 40px;
+	font-weight: bold !important;
+	margin-left:20px !important;
+}
+
+
+.asis{
+	border:none;
+	font-size: 30px;
+	background-color: transparent !important;
+	filter: 
+			invert(0.4)
+			sepia(0.5)
+			hue-rotate(195deg)
+			saturate(16.2)
+			brightness(1.4);
+}
+
+.asis:hover{
+	background-color: transparent !important;
+	filter: 
+			invert(0.4)
+			sepia(0.5)
+			hue-rotate(195deg)
+			saturate(16.2)
+			brightness(10);
+}
+
+.asis:active {
+	transform: translateY(4px);
+	outline:0;
+}
+
+.asis:focus {
+	outline:0;
+}
+
+.assisTitleDiv{
 	margin-top:5px;
 	border-bottom: 1px solid grey;
 }
+
+.assisTitle{
+	margin-left:5px;
+	color:#222;
+}
+
+
+.navItems{
+	margin-left: 10px;
+	border:none;
+	font-size: 20px;
+	color: black !important;
+	filter: 
+			invert(0.4)
+			sepia(0.5)
+			hue-rotate(195deg)
+			saturate(16.2)
+			brightness(1.4);
+}
+
+.navItems:hover{
+	text-decoration: none;
+	background-color: transparent !important;
+	filter: 
+			invert(0.4)
+			sepia(0.5)
+			hue-rotate(195deg)
+			saturate(16.2)
+			brightness(10);
+}
+
+.navItems:active {
+	transform: translateY(4px);
+	outline:0;
+}
+
+.navItems:focus {
+	outline:0;
+}
+
+.navbar{
+	margin-top: -10px;
+	height: 70px !important;
+}
+
 
 .edit{
 	background-color: white;
@@ -290,4 +361,12 @@ svg{
 
 .comps{
 	border-bottom: 1px solid grey;
+	margin-left: 1px;
 }
+
+
+.dropdown :focus{
+	box-shadow: none !important;
+}
+
+

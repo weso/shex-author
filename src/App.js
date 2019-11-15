@@ -9,6 +9,7 @@ import AssistantComp from './components/AssistantComp';
 import VisualizeComp from  './components/VisualizeComp';
 
 import LateralNav from './components/navComponents/LateralNav';
+import Nav from './components/navComponents/Nav';
 
 import shexUtils from './utils/shexUtils';
 
@@ -24,9 +25,11 @@ function App() {
     const [prefixes,setPrefixes] = useState([{key:'',val:'http://example.org/'}]);
     const [isAssistantOpen, setAssistantOpen] = useState(true);
     const [isVisualizeOpen, setVisualizeOpen] = useState(true);
+    const [isLateralNavOpen, setLateralNavOpen] = useState(true);
 
     const assistanToggle = () => setAssistantOpen(!isAssistantOpen);
     const visualizeToggle = () => setVisualizeOpen(!isVisualizeOpen);
+    const lateralNavToggle = () => setLateralNavOpen(!isLateralNavOpen);
 
 
      const darkStyle = {
@@ -131,12 +134,15 @@ function App() {
                   }
                 }>
                 
-            
-                
+                <Nav lateralNavToggle={lateralNavToggle}/>
+              
                 <div className="row comps" style={style}> 
+                 
                     
-                    <LateralNav  assistanToggle={assistanToggle} 
-                      visualizeToggle={visualizeToggle}/>
+                    <Collapse isOpen={isLateralNavOpen} className="lateralNav col-xs-1">
+                        <LateralNav  assistanToggle={assistanToggle} visualizeToggle={visualizeToggle}/>
+                     </Collapse> 
+                    
 
                     <Collapse isOpen={isAssistantOpen} className="col" style={style}>
                         <AssistantComp/>

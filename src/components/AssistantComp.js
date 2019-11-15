@@ -9,7 +9,9 @@ function AssistantComp (props) {
 
     return (<div id='assistant-container'> 
 
-                    <div className='col row assisTitle'>Assistant</div>
+                    <div className='col row assisTitleDiv'>
+                        <span className="assisTitle">Assistant</span>
+                    </div>
                     {context.shapes.map(shape =>{
                                 
                             return <ShapeComponent key={shape.id} shape={shape}/>

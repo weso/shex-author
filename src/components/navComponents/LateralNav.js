@@ -20,7 +20,7 @@ function Nav (props) {
         }
     }
 
-    return (<div className='lateralNav col-xs-1'>
+    return (<div>
     
                     <button className="col mdc-icon-button material-icons btns"
                             type="button"
@@ -35,27 +35,49 @@ function Nav (props) {
                     </button> 
                 
                      <br/>
+                  
+                    <div className="dropdown">
+                        <button className="btn btn-default dropdown-toggle  
+                                        mdc-icon-button material-icons 
+                                         btns prefixSelector" type="button" data-toggle="dropdown">folder_open
+                        <span className="caret"></span></button>
+                        <ul className='dropdown-menu'>
+                            <li>
+                                <div id='prefixesDropdown' className='prefixes'>  
+                                    <button>Example1</button>
+                                    <button>Example2</button>
+                                    <button>Example3</button>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+
+
+                    <br/>
                      <button className="col mdc-icon-button material-icons  btns"
                              onClick={handle}>
                             delete_outline
                      </button>
                     <br/>
 
-                      <div className="dropdown">
-                    <button className="btn btn-default dropdown-toggle  
-                                    mdc-icon-button material-icons 
-                                    btns prefixSelector" type="button" data-toggle="dropdown">local_parking
-                    <span className="caret"></span></button>
-                    <ul className='dropdown-menu'>
-                        <li>
-                            <div id='prefixesDropdown' className='prefixes'>  
+                    
 
-                                <PrefixSelector namespaces={ALL_PREFIXES}/>
-                                  
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+                    <div className="dropdown">
+                        <button className="btn btn-default dropdown-toggle  
+                                        mdc-icon-button material-icons 
+                                        btns prefixSelector" type="button" data-toggle="dropdown">local_parking
+                        <span className="caret"></span></button>
+                        <ul className='dropdown-menu'>
+                            <li>
+                                <div id='prefixesDropdown' className='prefixes'>  
+
+                                    <PrefixSelector namespaces={ALL_PREFIXES}/>
+                                    
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                     
         </div>);
     
