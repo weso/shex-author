@@ -377,3 +377,17 @@ svg{
 }
 
 
+.inputfileBtn{
+	width: 0%;
+}
+
+.uploadBtn{
+	margin-left: -30px;
+	margin-top: -20px;
+	margin-bottom: 20px;
+}
+
+.light{
+	fill: white;
+}
+
