@@ -1,8 +1,12 @@
 import React,{useContext} from 'react';
+import Codemirror from 'codemirror';
 import {ShapesContext} from '../../App';
 import PrefixSelector from './PrefixSelector';
 import {ALL_PREFIXES} from '../../utils/rdfUtils';
 import  Editor from '../../entities/editor';
+
+import {defaultExample} from '../../examples/defaultExample';
+import {wikiExample} from '../../examples/wikiExample';
 
 function Nav (props) {
 
@@ -18,6 +22,16 @@ function Nav (props) {
             // It's something about react state
             Editor.getInstance().getYashe().setValue('');
         }
+    }
+
+    const loadExample = function(example){ 
+        let yashe = Editor.getInstance().getYashe();
+        if(example=='default'){
+            yashe.setValue(defaultExample)
+        }else{
+            yashe.setValue(wikiExample)
+        }
+         Codemirror.signal(yashe,'keyHandled');
     }
 
     return (<div>
@@ -44,9 +58,9 @@ function Nav (props) {
                         <ul className='dropdown-menu'>
                             <li>
                                 <div id='prefixesDropdown' className='prefixes'>  
-                                    <button>Example1</button>
-                                    <button>Example2</button>
-                                    <button>Example3</button>
+                                    <button className="form-control"onClick={()=>loadExample('default')}>User</button>
+                                    <button className="form-control" onClick={()=>loadExample('wiki')}>Wikidata</button>
+                                    
                                 </div>
                             </li>
                         </ul>
