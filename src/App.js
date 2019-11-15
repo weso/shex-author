@@ -30,6 +30,11 @@ function App() {
     const assistanToggle = () => setAssistantOpen(!isAssistantOpen);
     const visualizeToggle = () => setVisualizeOpen(!isVisualizeOpen);
     const lateralNavToggle = () => setLateralNavOpen(!isLateralNavOpen);
+    const colapseAll = () =>{
+      setAssistantOpen(!isLateralNavOpen);
+      setVisualizeOpen(!isLateralNavOpen);
+      setLateralNavOpen(!isLateralNavOpen);
+    }
 
 
      const darkStyle = {
@@ -134,7 +139,7 @@ function App() {
                   }
                 }>
                 
-                <Nav lateralNavToggle={lateralNavToggle}/>
+                <Nav colapseAll={colapseAll}/>
               
                 <div className="row comps" style={style}> 
                  

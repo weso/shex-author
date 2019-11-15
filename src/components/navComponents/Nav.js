@@ -2,12 +2,12 @@ import React,{useContext} from 'react';
 
 function Nav (props) {
 
-    const {lateralNavToggle} = props;
+    const {colapseAll} = props;
 
     return (   <nav className="navbar navbar-default ">
         <div className="navbar-header">
          <button className="asis mdc-icon-button material-icons"type="button"
-                 onClick={lateralNavToggle} >
+                 onClick={colapseAll} >
                             menu
                         </button> 
             <span className='shexTitle'>ShExAuthor</span>
