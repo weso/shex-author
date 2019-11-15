@@ -27,7 +27,7 @@ function App() {
     const [isVisualizeOpen, setVisualizeOpen] = useState(true);
     const [isLateralNavOpen, setLateralNavOpen] = useState(true);
 
-    const assistanToggle = () => setAssistantOpen(!isAssistantOpen);
+    const assistantToggle = () => setAssistantOpen(!isAssistantOpen); 
     const visualizeToggle = () => setVisualizeOpen(!isVisualizeOpen);
     const lateralNavToggle = () => setLateralNavOpen(!isLateralNavOpen);
     const colapseAll = () =>{
@@ -141,11 +141,10 @@ function App() {
                 
                 <Nav colapseAll={colapseAll}/>
               
-                <div className="row comps" style={style}> 
-                 
+                <div className="row comps" style={style}>                  
                     
                     <Collapse isOpen={isLateralNavOpen} className="lateralNav col-xs-1">
-                        <LateralNav  assistanToggle={assistanToggle} visualizeToggle={visualizeToggle}/>
+                        <LateralNav  assistantToggle={assistantToggle} visualizeToggle={visualizeToggle}/>
                      </Collapse> 
                     
 

@@ -15,9 +15,10 @@ function ShapeComponent (props) {
     const {shape} = props;
 
     const [triples,setTriples] = useState(shape.triples);
-     const [colapseBtn,setColapseBtn] = useState('expand_less');
-     const [isTriplesOpen, setTriplesOpen] = useState(true);
-     const [isQualiOpen, setQualiOpen] = useState(false);
+    const [colapseBtn,setColapseBtn] = useState(context.colapseBtn);
+    const [isQualiOpen, setQualiOpen] = useState(false);
+    const [isTriplesOpen, setTriplesOpen] = useState(true);
+
 
     const handleChange = ()=>{
         const id = shape.getTriplesCount();
@@ -31,12 +32,14 @@ function ShapeComponent (props) {
     }
 
     const handleTriplesColapse = ()=>{
-            if(colapseBtn=='expand_more'){
-                setColapseBtn('expand_less');
-            }else{
-                setColapseBtn('expand_more');
-            }
-           setTriplesOpen(!isTriplesOpen);
+        if(context.colapseBtn=='expand_more'){
+            context.setColapseBtn('expand_less');
+        }else{
+            context.setColapseBtn('expand_more');
+        }
+        //context.triplesToggle();
+        setTriplesOpen(!isTriplesOpen);
+        console.log('jasjkd')
     }
 
 
@@ -74,29 +77,30 @@ function ShapeComponent (props) {
          
                 <button className="col-xs-1  colapseTriplesBtn mdc-icon-button material-icons btn-primary"
                         onClick={()=>handleTriplesColapse()}>
-                        {colapseBtn}
+                        {context.colapseBtn}
                 </button>
                 
 
-                <Collapse isOpen={isTriplesOpen} style={context.currentStyle}>
-                    <div className="triples-container col-xs "style={context.currentStyle}>
-                            {triples.map(triple =>
-
-                                <TripleComponent key={triple.id}
-                                                shape={shape} 
-                                                triple={triple}
-                                                deleteTriple={deleteTriple}
-                                /> 
-                                    
-                            )}
-                    </div>
-
-                    <button className="btn-primary addPropButton col-xs-3"
-                            onClick={handleChange}>
-                            + Triple
-                    </button>
                 
-                </Collapse>
+                     <Collapse isOpen={isTriplesOpen}  style={context.currentStyle}>
+                        <div className="triples-container col-xs "style={context.currentStyle}>
+                                {triples.map(triple =>
+
+                                    <TripleComponent key={triple.id}
+                                                    shape={shape} 
+                                                    triple={triple}
+                                                    deleteTriple={deleteTriple}
+                                    /> 
+                                        
+                                )}
+                        </div>
+
+                        <button className="btn-primary addPropButton col-xs-3"
+                                onClick={handleChange}>
+                                + Triple
+                        </button>
+                     </Collapse>
+             
                 
             </div>
      

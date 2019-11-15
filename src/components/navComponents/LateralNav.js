@@ -10,7 +10,7 @@ import {wikiExample} from '../../examples/wikiExample';
 
 function Nav (props) {
 
-    const {assistanToggle,visualizeToggle} = props;
+    const {assistantToggle,visualizeToggle} = props;
     const context = useContext(ShapesContext);
 
     const  handle = function(){
@@ -95,7 +95,7 @@ function Nav (props) {
     
                     <button className="col mdc-icon-button material-icons btns" title="Show ShEx Assistant"
                             type="button"
-                            onClick={assistanToggle}>
+                            onClick={assistantToggle}>
                             info
                     </button>
                     <br/>
@@ -104,9 +104,6 @@ function Nav (props) {
                         onClick={visualizeToggle}>
                         remove_red_eye
                     </button> 
-
-                     
-
 
                     <br/>
                      <button className="col btns svgBtn uploadBtn"type="button" onChange={readFile} title="Upload">
