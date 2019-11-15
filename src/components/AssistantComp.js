@@ -10,7 +10,7 @@ function AssistantComp (props) {
     return (<div id='assistant-container'> 
 
                     <div className='col row assisTitleDiv'>
-                        <span className="assisTitle">Assistant</span>
+                        <span className="assisTitle" style={context.style}>Assistant</span>
                     </div>
                     {context.shapes.map(shape =>{
                                 
