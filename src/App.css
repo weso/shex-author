@@ -220,25 +220,28 @@ svg{
 	border-right: 1px solid grey;
 }
 
-.prefixSelector{
+.selector{
 	font-size: 20px !important;
+	
 }
 
-.prefixSelector:focus {
+
+
+.selector:focus {
 	outline:0 !important;
 }
 
-.prefixSelector:active {
+.selector:active {
 	transform: translateY(4px);
 	outline:0 !important;
 }
 
 .btns{
 	background-color: transparent !important;
-	height: 60px;
+	height: 50px;
 	width: 70px;
 	border:none;
-	font-size: 28px;
+	font-size: 30px;
 	filter: 
 			invert(0.4)
 			sepia(0.5)
@@ -266,6 +269,10 @@ svg{
 	outline:0;
 }
 
+.svgBtn{
+	margin-top: -10px;
+	margin-bottom: 10px;
+}
 
 .shexTitle{
 	font-size: 40px;
