@@ -28,9 +28,7 @@
 
 
 html{
-
 	background-color: white;
-
 }
 
 
@@ -40,6 +38,7 @@ html{
 	font-size:1.5em !important;
 	min-height:273px;
 	border-right: none !important;
+	border-bottom: none !important;
 }
 
 
@@ -48,7 +47,6 @@ html{
 	height: 100% !important;
 	width: 100% !important;
 	margin-left: -15px;
-	border-right: none !important;
 }
 
 
@@ -204,6 +202,7 @@ label{
 
 .visualize{
 	height:100%;
+	float: center;
 }
 
 
@@ -367,6 +366,7 @@ svg{
 }
 
 .comps{
+	height: 100% !important; 
 	border-bottom: 1px solid grey;
 	margin-left: 1px;
 }
@@ -391,3 +391,12 @@ svg{
 	fill: white;
 }
 
+.separatorVisualize{
+	height: 40px;
+	border-bottom: 1px solid grey;
+	background-color: #f8f9fa;
+}
+
+.visual{
+	margin-top: 50px;
+}

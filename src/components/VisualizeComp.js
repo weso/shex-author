@@ -5,8 +5,12 @@ function VisualizeComp (props) {
     const {svg} = props;
 
     return (<div className="visualize">  
-                <h1>Visualize</h1>
-                <div dangerouslySetInnerHTML={{__html:svg}}/>         
+                
+                <div className='row visual'>
+                    <div className='col'/>
+                    <div className='col' dangerouslySetInnerHTML={{__html:svg}}/> 
+                    <div className='col'/>        
+                 </div>
             </div>
             );
 
