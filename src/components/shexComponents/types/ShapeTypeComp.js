@@ -28,7 +28,7 @@ function ShapeTypeComp (props) {
         }
 
 
-        return (<div className="row col-8">
+        return (<div className="row col-8 headerSelectors">
                         <select className="col-3 form-control shapeType" 
                             value={type} 
                             onChange={handleChange}>

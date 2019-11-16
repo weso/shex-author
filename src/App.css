@@ -78,9 +78,15 @@ label{
 
 .shapes-container{
 	margin-top: 10px;
-
 }
 
+.shapes-header{
+	border-top: 10px solid white;
+}
+
+.headerSelectors{
+	margin-top: 5px;
+}
 
 .triples-container{
 	margin-left:70px;

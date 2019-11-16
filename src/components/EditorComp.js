@@ -63,6 +63,12 @@ function EditorComp() {
                 
             });
 
+            y.on('keydown', function() {
+                if(!y.hasErrors()){
+                    replaceShapes();
+                    updatePrefixes();
+                }
+            });
            
 
             //Fired after a key is handled through a key map
