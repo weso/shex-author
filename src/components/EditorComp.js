@@ -76,15 +76,18 @@ function EditorComp() {
                 
             });
 
-/*
+
             y.on('keydown', function() {
-                if(!y.hasErrors()){
-                    replaceShapes();
-                    updatePrefixes();
-                }
+                 setTimeout(function(){
+                    if(!y.hasErrors()){
+                        replaceShapes();
+                        updatePrefixes();
+                    }
+                }, 50);
+                
             });
 
-            */
+           
            
 
             //Fired after a key is handled through a key map

@@ -90,7 +90,9 @@ function Nav (props) {
         }else{
             yashe.setValue(wikiExample)
         }
-         Codemirror.signal(yashe,'keyHandled');
+        setTimeout(() => {//needed
+            Codemirror.signal(yashe,'keyHandled');
+        }, 10); 
     }
 
     const scrollTop = function(){
@@ -125,7 +127,22 @@ function Nav (props) {
                         onClick={visualizeToggle}>
                         remove_red_eye
                     </button> 
-                    <br/>
+                    
+                    <div className="dropdown" title="Prefixes">
+                        <button className="btn btn-default dropdown-toggle  
+                                        mdc-icon-button material-icons 
+                                        btns selector" type="button" data-toggle="dropdown">local_parking
+                        <span className="caret"></span></button>
+                        <ul className='dropdown-menu'>
+                            <li>
+                                <div id='prefixesDropdown' className='prefixes'>  
+
+                                    <PrefixSelector namespaces={ALL_PREFIXES}/>
+                                    
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
 
                     <button className="col mdc-icon-button material-icons btns"type="button" title="Undo"
                         onClick={undo}>
@@ -161,21 +178,7 @@ function Nav (props) {
                     </button> 
                 
                      <br/>
-                  <div className="dropdown" title="Prefixes">
-                        <button className="btn btn-default dropdown-toggle  
-                                        mdc-icon-button material-icons 
-                                        btns selector" type="button" data-toggle="dropdown">local_parking
-                        <span className="caret"></span></button>
-                        <ul className='dropdown-menu'>
-                            <li>
-                                <div id='prefixesDropdown' className='prefixes'>  
-
-                                    <PrefixSelector namespaces={ALL_PREFIXES}/>
-                                    
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
+                  
 
                     <div className="dropdown" title="Galery">
                         <button className="btn btn-default dropdown-toggle  
