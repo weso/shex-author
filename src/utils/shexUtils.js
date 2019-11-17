@@ -12,8 +12,8 @@ function addShape (shapes){
     let newShapes = [];
     newShapes = Object.assign(newShapes, shapes);
     newShapes.push(newShape)
-    emit(newShapes);
-    return newShape;
+     emit(newShapes);
+     return newShape;    
 }
 
 function deleteShape(shapes,shapeId,confirm) {

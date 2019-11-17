@@ -52,10 +52,12 @@ function App() {
 
     const addShape = () =>{
       setShapes([...shapes,shexUtils.addShape(shapes)]);
+      visualize();
     }
 
     const deleteShape = (shapeId) =>{
       setShapes(shexUtils.deleteShape(shapes,shapeId,false));
+      visualize();
     }
 
     const emit = ()=>{
