@@ -31,7 +31,8 @@ function EditorComp() {
             const options = {
                 persistent:false,
                 lineNumbers: true,
-                viewportMargin: Infinity
+                viewportMargin: Infinity,
+                value:yasheUtils.DEFAULT_SHAPE
             }
             
             const y = YASHE(
@@ -95,7 +96,7 @@ function EditorComp() {
                 }
             });
 
-            y.setValue(yasheUtils.DEFAULT_SHAPE)
+            
             y.refresh();
             setYashe(y);
             

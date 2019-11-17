@@ -8,6 +8,8 @@ import  Editor from '../../entities/editor';
 import {defaultExample} from '../../examples/defaultExample';
 import {wikiExample} from '../../examples/wikiExample';
 
+import yasheUtils from '../../utils/yasheUtils';
+
 function Nav (props) {
 
     const {assistantToggle,visualizeToggle} = props;
@@ -94,6 +96,21 @@ function Nav (props) {
     const scrollTop = function(){
         window.scrollTo(0, 0);
     }
+    
+    const undo = function(){
+        Editor.getInstance().getYashe().undo();
+        setTimeout(() => {//needed
+            context.replaceShapes(yasheUtils.replaceShapes());    
+        }, 10); 
+        
+    }
+
+    const redo = function(){
+        Editor.getInstance().getYashe().redo();
+        setTimeout(() => {//needed
+            context.replaceShapes(yasheUtils.replaceShapes());    
+        }, 10); 
+    }
 
     return (<div className='lateral'>
                     <div className='lateralTop'>
@@ -108,8 +125,20 @@ function Nav (props) {
                         onClick={visualizeToggle}>
                         remove_red_eye
                     </button> 
-
                     <br/>
+
+                    <button className="col mdc-icon-button material-icons btns"type="button" title="Undo"
+                        onClick={undo}>
+                        undo
+                    </button> 
+                    <br/>
+                    
+                    <button className="col mdc-icon-button material-icons btns"type="button" title="Redo"
+                        onClick={redo}>
+                        redo
+                    </button> 
+                    <br/>
+
                      <button className="col btns svgBtn uploadBtn"type="button" onChange={readFile} title="Upload">
                         <input type="file" accept=".shex" name="file-1[]" id="file-1" className="inputfileBtn" data-multiple-caption="{count}'
                         +'files selected" multiple /><label htmlFor="file-1" >
