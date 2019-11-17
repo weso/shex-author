@@ -38,7 +38,7 @@ function App() {
 
 
      const darkStyle = {
-        background: '#2B2B2B',
+        background: '#222',
         color:'white'
     }
 

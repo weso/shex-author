@@ -29,6 +29,7 @@
 
 html{
 	background-color: white;
+	overflow-x: hidden;
 }
 
 
@@ -81,7 +82,8 @@ label{
 }
 
 .shapes-header{
-	border-top: 10px solid white;
+	margin-top:-10px;
+	border-top: 5px solid white;
 }
 
 .headerSelectors{
@@ -149,12 +151,22 @@ label{
 	margin-bottom:10px;
 }
 
-.wikibaseRDFtoolTip{
+body{
+ width: auto;;
+}
 
+
+.wikibaseRDFtoolTip{
+	clear:both !important;
+	 overflow:hidden !important; 
+	height:1% !important;
 	line-height:20px !important;
-	max-height: 10% !important;
 	font-size: 20px !important;
 
+}
+
+.wikidata_tooltip{
+	
 }
 
 .checkbox{
@@ -320,7 +332,6 @@ svg{
 
 .assisTitleDiv{
 	margin-top:5px;
-	border-bottom: 1px solid grey;
 }
 
 .assisTitle{
@@ -367,12 +378,9 @@ svg{
 }
 
 
-.edit{
-	background-color: white;
-}
-
 .comps{
 	height: 100% !important; 
+	width: 100% !important; 
 	border-bottom: 1px solid grey;
 	margin-left: 1px;
 }

@@ -13,7 +13,19 @@ function EditorComp() {
   const divRef = useRef(null);
   const context = useContext(ShapesContext);
 
-  useEffect(() => {
+   const darkStyle = {
+        background: '#2B2B2B',
+    }
+
+    const lightStyle = {
+        background: 'white',
+    }
+
+    const [style,setStyle] = useState(lightStyle);
+    let theme = 'light';
+
+
+    useEffect(() => {
     
         if (!yashe) {
             const options = {
@@ -106,12 +118,19 @@ function EditorComp() {
     }
 
      const changeThemeStyle = ()=>{
-         context.changeThemeStyle();
+        if(theme=='light'){//I don't know why this doesn't work with style state
+            setStyle(darkStyle);
+            theme='dark';
+        }else{
+            theme='light';
+            setStyle(lightStyle);
+        }
+        context.changeThemeStyle();
     }
 
 
 
-    return  (<div className="col edit" ref={divRef}/>);
+    return  (<div className="col edit" ref={divRef} style={style}/>);
 
 }
 
