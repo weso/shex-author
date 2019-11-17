@@ -83,7 +83,7 @@ function EditorComp() {
                         replaceShapes();
                         updatePrefixes();
                     }
-                }, 50);
+                }, 20);
                 
             });
 
