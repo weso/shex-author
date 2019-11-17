@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "5f108cab4a381ffc38aaa119d3313a70",
+    "revision": "f61b94c376c2fbe4b8228e4287326105",
     "url": "/shex-author/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/shex-author/static/css/2.d722c9db.chunk.css"
   },
   {
-    "revision": "a5bc7e295135cc2d5155",
+    "revision": "c506cf0d1543ae412535",
     "url": "/shex-author/static/css/main.e6214f69.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/shex-author/static/js/2.aff32b84.chunk.js"
   },
   {
-    "revision": "a5bc7e295135cc2d5155",
-    "url": "/shex-author/static/js/main.ec3ecadc.chunk.js"
+    "revision": "c506cf0d1543ae412535",
+    "url": "/shex-author/static/js/main.d0accb3e.chunk.js"
   },
   {
     "revision": "2c7093afc688868c62e3",
