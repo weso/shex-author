@@ -17,7 +17,10 @@ function Nav (props) {
 
     const  handle = function(){
         if(window.confirm('Are you sure?')){
-            context.replaceShapes([]);
+            //Needed for visualize
+            setTimeout(() => {
+                context.replaceShapes([]);    
+            }, 10);
             // We can't do emit() because it takes 
             // like another call to change shapes state
             // I don't know exactly the reaseon...
