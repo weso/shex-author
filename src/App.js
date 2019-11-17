@@ -1,13 +1,19 @@
 import React, {useState} from 'react';
-import SlideToggle from "react-slide-toggle";
+import { Collapse } from 'reactstrap';
+import axios from 'axios';
 import logo from './logo.svg';
 import './App.css';
 
 import EditorComp from './components/EditorComp';
 import AssistantComp from './components/AssistantComp';
+import VisualizeComp from  './components/VisualizeComp';
+
+import LateralNav from './components/navComponents/LateralNav';
 import Nav from './components/navComponents/Nav';
 
 import shexUtils from './utils/shexUtils';
+
+import Editor from './entities/editor';
 
 
 export const ShapesContext = React.createContext();
@@ -15,10 +21,24 @@ export const ShapesContext = React.createContext();
 function App() {
 
     const [shapes,setShapes] = useState([]);
+    const [svg,setSvg] = useState('');
     const [prefixes,setPrefixes] = useState([{key:'',val:'http://example.org/'}]);
+    const [isAssistantOpen, setAssistantOpen] = useState(true);
+    const [isVisualizeOpen, setVisualizeOpen] = useState(true);
+    const [isLateralNavOpen, setLateralNavOpen] = useState(true);
+
+    const assistantToggle = () => setAssistantOpen(!isAssistantOpen); 
+    const visualizeToggle = () => setVisualizeOpen(!isVisualizeOpen);
+    const lateralNavToggle = () => setLateralNavOpen(!isLateralNavOpen);
+    const colapseAll = () =>{
+      setAssistantOpen(!isLateralNavOpen);
+      setVisualizeOpen(!isLateralNavOpen);
+      setLateralNavOpen(!isLateralNavOpen);
+    }
+
 
      const darkStyle = {
-        background: '#2B2B2B',
+        background: '#222',
         color:'white'
     }
 
@@ -32,14 +52,17 @@ function App() {
 
     const addShape = () =>{
       setShapes([...shapes,shexUtils.addShape(shapes)]);
+      visualize();
     }
 
     const deleteShape = (shapeId) =>{
       setShapes(shexUtils.deleteShape(shapes,shapeId,false));
+      visualize();
     }
 
     const emit = ()=>{
       shexUtils.emit(shapes);
+      visualize();
     }
 
     const replaceShapes = (newShapes) =>{
@@ -47,6 +70,7 @@ function App() {
       //Best Glitch Ever
       setShapes([]); 
       setShapes(newShapes);
+      visualize();
     }
 
     const updatePrefixes = (newPrefixes)=>{
@@ -63,36 +87,80 @@ function App() {
       }
     }
 
-  
+    const getSchema = function(){
+      let yashe = Editor.getInstance().getYashe();
+      if(yashe){
+          return yashe.getValue();
+      }
+      return '';
+    }
+
+
+    const visualize = function(){
+
+        let bodyFormData = new FormData();
+        bodyFormData.set('schema', getSchema());
+        bodyFormData.set('schemaFormat', 'ShExC');
+        bodyFormData.set('schemaEngine', 'SHEX');
+
+
+        axios({
+            method: 'post',
+            url: 'http://rdfshape.weso.es:8080/api/schema/visualize',
+            data: bodyFormData,
+            config: { headers: {'Content-Type': 'multipart/form-data' }}
+        })
+        .then(function (response) {
+            //handle success
+            setSvg(response.data.svg);
+        })
+        .catch(function (response) {
+            //handle error
+            console.log(response);
+        });
+
+        
+    }
+
+
     return (
             
-            <ShapesContext.Provider value={
-                                    {
-                                      shapes,shapes,
-                                      addShape:addShape,
-                                      deleteShape:deleteShape,
-                                      replaceShapes:replaceShapes,
-                                      prefixes:prefixes,
-                                      updatePrefixes:updatePrefixes,
-                                      emit:emit,
-                                      currentStyle:style,
-                                      changeThemeStyle:changeThemeStyle
-                                    }
-                                  }>
+            <ShapesContext.Provider 
+                value={
+                  {
+                    shapes,shapes,
+                    addShape:addShape,
+                    deleteShape:deleteShape,
+                    replaceShapes:replaceShapes,
+                    prefixes:prefixes,
+                    updatePrefixes:updatePrefixes,
+                    emit:emit,
+                    currentStyle:style,
+                    changeThemeStyle:changeThemeStyle,
+                    visualize:visualize
+                  }
+                }>
                 
-                <SlideToggle duration={500}
-                             render={({ toggle, setCollapsibleElement, progress }) => (
-                              <div> 
-                                  <Nav toggle={toggle}/>
-                                  <div className="row separator" style={style}> 
-                                      <AssistantComp colapse={setCollapsibleElement} initialShapes={shapes} />
-                                      <EditorComp />
-                                      
-                                  </div>
-                              </div>                              
-                  )}/>
+                <Nav colapseAll={colapseAll}/>
+              
+                <div className="row comps" style={style}>                  
+                    
+                    <Collapse isOpen={isLateralNavOpen} className="lateralNav col-xs-1">
+                        <LateralNav  assistantToggle={assistantToggle} visualizeToggle={visualizeToggle}/>
+                     </Collapse> 
+                    
 
-
+                    <Collapse isOpen={isAssistantOpen} className="col" style={style}>
+                        <AssistantComp/>
+                     </Collapse> 
+                    
+                    <EditorComp />
+                      
+                </div>
+              
+                <Collapse isOpen={isVisualizeOpen} >
+                  <VisualizeComp svg={svg}/>
+                </Collapse>   
             </ShapesContext.Provider>
           );
                        

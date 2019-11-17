@@ -10,20 +10,33 @@ import yasheUtils from '../utils/yasheUtils';
 function EditorComp() {
 
   const [yashe,setYashe] = useState(null);
-  const textAreaRef = useRef(null);
+  const divRef = useRef(null);
   const context = useContext(ShapesContext);
 
-  useEffect(() => {
+   const darkStyle = {
+        background: '#2B2B2B',
+    }
+
+    const lightStyle = {
+        background: 'white',
+    }
+
+    const [style,setStyle] = useState(lightStyle);
+    let theme = 'light';
+
+
+    useEffect(() => {
     
         if (!yashe) {
             const options = {
                 persistent:false,
                 lineNumbers: true,
-                viewportMargin: Infinity
+                viewportMargin: Infinity,
+                value:yasheUtils.DEFAULT_SHAPE
             }
             
-            const y = YASHE.fromTextArea(
-                textAreaRef.current, 
+            const y = YASHE(
+                divRef.current, 
                 options)
 
              y.on('blur', function() {
@@ -63,12 +76,19 @@ function EditorComp() {
                 
             });
 
+
             y.on('keydown', function() {
-                if(!y.hasErrors()){
-                    replaceShapes();
-                    updatePrefixes();
-                }
+                 setTimeout(function(){
+                    if(!y.hasErrors()){
+                        replaceShapes();
+                        updatePrefixes();
+                    }
+                }, 50);
+                
             });
+
+           
+           
 
             //Fired after a key is handled through a key map
             //(for example "Ctrl-Z")
@@ -79,7 +99,7 @@ function EditorComp() {
                 }
             });
 
-            y.setValue(yasheUtils.DEFAULT_SHAPE)
+            
             y.refresh();
             setYashe(y);
             
@@ -87,6 +107,8 @@ function EditorComp() {
 
             replaceShapes();
             updatePrefixes();
+
+            
         }
     }, [yashe]
     );
@@ -100,15 +122,19 @@ function EditorComp() {
     }
 
      const changeThemeStyle = ()=>{
-         context.changeThemeStyle();
+        if(theme=='light'){//I don't know why this doesn't work with style state
+            setStyle(darkStyle);
+            theme='dark';
+        }else{
+            theme='light';
+            setStyle(lightStyle);
+        }
+        context.changeThemeStyle();
     }
 
 
 
-    return  (<div className='col show'>
-                <textarea ref={textAreaRef}/>
-            </div>            
-    );
+    return  (<div className="col edit" ref={divRef} style={style}/>);
 
 }
 

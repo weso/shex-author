@@ -1,5 +1,6 @@
-import React,{useContext} from 'react';
-import SlideToggle from "react-slide-toggle";
+import React,{useContext,useState} from 'react';
+import { Collapse } from 'reactstrap';
+import {ShapesContext} from '../../App';
 
 import TripleTypeComp from './types/TripleTypeComp';
 
@@ -7,27 +8,29 @@ import ValueComponent from './ValueComponent';
 
 function TripleComponent (props) {
 
+    const context = useContext(ShapesContext);
+
     const {shape,triple,deleteTriple} = props;
+    const [isOpen, setIsOpen] = useState(false);
 
-    return ( <SlideToggle duration={180}
-                          collapsed
-                          render={({ toggle, setCollapsibleElement, progress }) => (
-                <div className="row tripleRow">
+    const toggle = () => setIsOpen(!isOpen);
 
-                    <TripleTypeComp 
+    return ( <div >
+
+                <TripleTypeComp 
+                    shape={shape} 
+                    triple={triple} 
+                    deleteTriple={deleteTriple}
+                    handeCollapse={toggle}/>
+
+                <Collapse isOpen={isOpen} style={context.currentStyle}>
+                    <ValueComponent  
                         shape={shape} 
-                        triple={triple} 
-                        deleteTriple={deleteTriple}
-                        handeCollapse={toggle}/>
-
-                <ValueComponent  
-                        shape={shape} 
-                        triple={triple} 
-                        colapse={setCollapsibleElement}/>
-                       
-                </div>
-            )}/>);
-                                   
+                        triple={triple}/>
+                </Collapse>
+                
+            </div>
+        );                          
 }
 
 export default TripleComponent;

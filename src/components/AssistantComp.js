@@ -6,13 +6,16 @@ import {ShapesContext} from '../App';
 function AssistantComp (props) {
 
     const context = useContext(ShapesContext);
-    const {colapse} = props;
 
-    return (<div ref={colapse} id='assistant-container' className="assistant col-lg-6" style={context.currentStyle}> 
+    return (<div id='assistant-container'> 
+
+                    <div className='col row assisTitleDiv'>
+                        <span className="assisTitle" style={context.style}>Assistant</span>
+                    </div>
                     {context.shapes.map(shape =>{
                                 
                             return <ShapeComponent key={shape.id} shape={shape}/>
-                    })
+                        })
                     }
 
                     <button id='addShapeButton' 

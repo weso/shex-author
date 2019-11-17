@@ -6,7 +6,7 @@ import {ShapesContext} from '../../../App';
 function ShapeTypeComp (props) {
 
         const context = useContext(ShapesContext);
-        const {shape,colapse} = props;
+        const {shape,collapse} = props;
 
         const [type,setType] = useState(shape.type.getTypeName());
         const [colapseBtn,setColapseBtn] = useState('expand_more');
@@ -24,11 +24,11 @@ function ShapeTypeComp (props) {
                 }else{
                     setColapseBtn('expand_more');
                 }
-                colapse();
+                collapse();
         }
 
 
-        return (<div className="row col-8">
+        return (<div className="row col-8 headerSelectors">
                         <select className="col-3 form-control shapeType" 
                             value={type} 
                             onChange={handleChange}>

@@ -1,36 +1,25 @@
-import React from 'react';
-import PrefixSelector from './PrefixSelector';
-import {ALL_PREFIXES} from '../../utils/rdfUtils';
-
+import React,{useContext} from 'react';
 
 function Nav (props) {
 
-    const {toggle} = props;
+    const {colapseAll} = props;
 
-    return (<div className="row editor-nav">
-                <button className="btn btn-default assistantBtn " 
-                        type="button"
-                        onClick={toggle}>
-                        Assistant
-                </button>
-
-                <div className="dropdown">
-                    <button className="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Prefixes
-                    <span className="caret"></span></button>
-                    <ul className='dropdown-menu'>
-                        <li>
-                            <div id='prefixesDropdown' className='prefixes'>  
-
-                                <PrefixSelector namespaces={ALL_PREFIXES}/>
-                                  
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>);
+    return (   <nav className="navbar navbar-default ">
+        <div className="navbar-header">
+         <button className="asis mdc-icon-button material-icons"type="button"
+                 onClick={colapseAll} >
+                            menu
+                        </button> 
+            <span className='shexTitle'>ShExAuthor</span>
+            <a className="navItems" target="_blank" href="http://www.weso.es/YASHE/">YASHE</a>
+            <a className="navItems" target="_blank" href="https://www.linkedin.com/in/pablo-men%C3%A9ndez-su%C3%A1rez-106262a7/">About me</a>
+     
+        </div>
+    </nav>);
     
     
 }
 
 
 export default Nav;
+

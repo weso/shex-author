@@ -8,11 +8,11 @@ import CardinalityComp from './utils/CardinalityComp';
 function ValueComponent (props) {
 
     const context = useContext(ShapesContext);
-    const {shape,triple,colapse} = props;
+    const {shape,triple} = props;
 
 
            
-    return (<div ref={colapse} className="col-12 valuesCol"  >
+    return (<div className="col-12 valuesCol"  >
                     <div className="row values-container">
                         <div className="col-10 triplesVal ">
                             <div className="row">

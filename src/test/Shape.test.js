@@ -76,7 +76,7 @@ test('Draw Shape with Triples', ()=>{
     shape.type.value = 'Wikidata';
     shape.addTriple(new Triple(0));
     shape.addTriple(new Triple(1));
-    let expectedStr = '<Wikidata>{:xsd:string;:xsd:string;}';
+    let expectedStr = '<Wikidata>{<><>;<><>;}';
     let shapeStr = shape.toString().replace(/\s/g,'');
     expect(shapeStr ==expectedStr).toBeTruthy();
 });

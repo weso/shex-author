@@ -12,8 +12,8 @@ import InlineShape from '../entities/shexEntities/shexUtils/inlineShape';
 test('Default Triple', ()=>{
     let triple = new Triple(0);
     expect(triple.id==0).toBeTruthy();
-    expect(triple.type instanceof PrefixedIri).toBeTruthy();
-    expect(triple.value instanceof Primitive).toBeTruthy();
+    expect(triple.type instanceof IrirRef).toBeTruthy();
+    expect(triple.value instanceof IrirRef).toBeTruthy();
     expect(triple.inlineShape instanceof InlineShape).toBeTruthy();
     expect(triple.cardinality == '').toBeTruthy();
 });
@@ -26,8 +26,8 @@ test('Change TripleID', ()=>{
 
 test('Change Triple Type', ()=>{
     let triple = new Triple(0);
-    triple.type = new IrirRef('shapeName');
-    expect(triple.type instanceof IrirRef).toBeTruthy();
+    triple.type = new PrefixedIri('shapeName');
+    expect(triple.type instanceof PrefixedIri).toBeTruthy();
 });
 
 
@@ -69,7 +69,7 @@ test('Change Cardinality', ()=>{
 
 test('Draw Default Triple', ()=>{
     let triple = new Triple(0);
-    let expectedStr = ':xsd:string;';
+    let expectedStr = '<><>;';
     let tripleStr = triple.toString().replace(/\s/g,'');
     expect(tripleStr ==expectedStr).toBeTruthy();
 });
@@ -77,7 +77,7 @@ test('Draw Default Triple', ()=>{
 test('Draw Modified Triple', ()=>{
     let triple = new Triple(0);
     triple.type.value = 'Wikidata';
-    let expectedStr = ':Wikidataxsd:string;';
+    let expectedStr = '<Wikidata><>;';
     let tripleStr = triple.toString().replace(/\s/g,'');
     expect(tripleStr ==expectedStr).toBeTruthy();
 });
