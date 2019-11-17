@@ -91,8 +91,12 @@ function Nav (props) {
          Codemirror.signal(yashe,'keyHandled');
     }
 
-    return (<div>
-    
+    const scrollTop = function(){
+        window.scrollTo(0, 0);
+    }
+
+    return (<div className='lateral'>
+                    <div className='lateralTop'>
                     <button className="col mdc-icon-button material-icons btns" title="Show ShEx Assistant"
                             type="button"
                             onClick={assistantToggle}>
@@ -167,7 +171,16 @@ function Nav (props) {
                              onClick={handle}>
                             delete_outline
                      </button>
-                  
+                    <br/>
+                    </div>
+
+                    <div className='lateralBottom'>
+                      <button className="mdc-icon-button material-icons btns"type="button" title="Up"
+                              onClick={scrollTop}
+                        >
+                        arrow_upward
+                    </button> 
+                   </div>
                     
         </div>);
     

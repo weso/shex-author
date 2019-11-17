@@ -420,3 +420,20 @@ svg{
 	margin-top: 50px;
 	background-color: white;
 }
+
+
+.lateral{
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	flex: 0 0 55px;
+}
+
+.lateralTop{
+	flex-grow: 1;
+}
+
+
+.lateralBottom{
+	flex-grow: 0;
+}
