@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f61b94c376c2fbe4b8228e4287326105",
+    "revision": "c88ce1a12119c56e3ca42337e4038464",
     "url": "/shex-author/index.html"
   },
   {
-    "revision": "d4dbf65703d6111254a1",
-    "url": "/shex-author/static/css/2.d722c9db.chunk.css"
+    "revision": "85e6b996c2a2ce471818",
+    "url": "/shex-author/static/css/2.46eb9be4.chunk.css"
   },
   {
-    "revision": "c506cf0d1543ae412535",
+    "revision": "a8f30e6b7e7c7247681d",
     "url": "/shex-author/static/css/main.e6214f69.chunk.css"
   },
   {
-    "revision": "d4dbf65703d6111254a1",
-    "url": "/shex-author/static/js/2.aff32b84.chunk.js"
+    "revision": "85e6b996c2a2ce471818",
+    "url": "/shex-author/static/js/2.7772fd95.chunk.js"
   },
   {
-    "revision": "c506cf0d1543ae412535",
-    "url": "/shex-author/static/js/main.d0accb3e.chunk.js"
+    "revision": "a8f30e6b7e7c7247681d",
+    "url": "/shex-author/static/js/main.ae888670.chunk.js"
   },
   {
     "revision": "2c7093afc688868c62e3",
