@@ -31,7 +31,7 @@ function EditorComp() {
             const options = {
                 persistent:false,
                 lineNumbers: true,
-                viewportMargin: Infinity,
+                
                 value:yasheUtils.DEFAULT_SHAPE
             }
             

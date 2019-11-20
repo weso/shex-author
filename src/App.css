@@ -27,10 +27,7 @@
 
 
 
-html{
-	background-color: #eaf3ff;
-	overflow-x: hidden;
-}
+
 
 
 .CodeMirror{
@@ -79,12 +76,11 @@ label{
 }
 
 .shapes-container{
-	margin-top: 10px;
+	margin-top: 30px;
 }
 
 .shapes-header{
 	margin-top:-10px;
-	border-top: 5px solid white;
 }
 
 .headerSelectors{
@@ -202,7 +198,7 @@ body{
 }
 
 .qualifier{
-	background-color: white;
+	margin-right: -110px;
 }
 
 .qualiLabel{
@@ -330,6 +326,7 @@ svg{
 
 .assisTitleDiv{
 	margin-top:5px;
+	
 }
 
 .assisTitle{
@@ -381,17 +378,18 @@ svg{
 	width: 100% !important; 
 	border: 1px solid grey;
 	margin-left: 1px;
-	background-color: #FFFFFF;
+	background-color: #f8f8ff;
 }
 
-.form-control{
-	background-color: #f2f5f6 !important;
-	
-}
 
 .globalContainer{
-	background-color: #eaf3ff;
+	background-color: #ddeafa;
 	padding: 2%;
+}
+
+html{
+	background-color: #ddeafa;
+	overflow-x: hidden;
 }
 
 
@@ -405,6 +403,10 @@ svg{
 	border-radius: 8px;
 }
 
+.btn:focus {
+	outline:none !important;
+  }
+
 .shapeBtns{
 	margin-left: 4px;
 }
@@ -412,6 +414,7 @@ svg{
 .visualize{
 	height: 100% !important; 
 	width: 100% !important; 
+	min-height: 170px;
 	margin-left: 1px;
 	float: center;
 	border: 1px solid grey;
