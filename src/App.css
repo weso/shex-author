@@ -62,7 +62,7 @@ label{
 
 .addShapeButton{
 	margin-top: 20px;
-	margin-left: 0px;
+	margin-left: 8px;
 	margin-bottom: 15px;
 }
 
@@ -397,14 +397,11 @@ svg{
 
 .btn-primary{
 	background-color:#0073C2 !important;
-	border-color: #0073C2 !important;
 	border-radius: 8px;
-	box-shadow: 0px !important;
 }
 
 .btn-danger{
 	background-color:#C7384F !important;
-	border-color: #C7384F !important;
 	border-radius: 8px;
 }
 
