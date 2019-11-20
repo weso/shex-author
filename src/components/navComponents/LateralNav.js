@@ -103,18 +103,22 @@ function Nav (props) {
     }
     
     const undo = function(){
-        Editor.getInstance().getYashe().undo();
+        let yashe = Editor.getInstance().getYashe();
+        yashe.undo();
         setTimeout(() => {//needed
-            context.replaceShapes(yasheUtils.replaceShapes());    
+            context.replaceShapes(yasheUtils.replaceShapes());
+            context.updatePrefixes(yasheUtils.updatePrefixes());
         }, 10); 
         
     }
 
     const redo = function(){
-        Editor.getInstance().getYashe().redo();
+        let yashe = Editor.getInstance().getYashe();
+        yashe.redo();
         setTimeout(() => {//needed
             context.replaceShapes(yasheUtils.replaceShapes());    
-        }, 10); 
+            context.updatePrefixes(yasheUtils.updatePrefixes());
+        }, 10);  
     }
 
     return (<div className='lateral'>

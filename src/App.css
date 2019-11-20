@@ -381,7 +381,12 @@ svg{
 	width: 100% !important; 
 	border: 1px solid grey;
 	margin-left: 1px;
-	background-color: white;
+	background-color: #FFFFFF;
+}
+
+.form-control{
+	background-color: #f2f5f6 !important;
+	
 }
 
 .globalContainer{
@@ -389,14 +394,18 @@ svg{
 	padding: 2%;
 }
 
+
 .btn-primary{
 	background-color:#0073C2 !important;
 	border-color: #0073C2 !important;
+	border-radius: 8px;
+	box-shadow: 0px !important;
 }
 
 .btn-danger{
 	background-color:#C7384F !important;
 	border-color: #C7384F !important;
+	border-radius: 8px;
 }
 
 .shapeBtns{

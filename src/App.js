@@ -85,6 +85,7 @@ function App() {
     }
 
     const updatePrefixes = (newPrefixes)=>{
+      setPrefixes([])
       setPrefixes(newPrefixes);
     }
     
