@@ -7,9 +7,7 @@ import TripleTypeComp from './types/TripleTypeComp';
 import ValueComponent from './ValueComponent';
 
 function TripleComponent (props) {
-
-    const context = useContext(ShapesContext);
-
+    
     const {shape,triple,deleteTriple} = props;
     const [isOpen, setIsOpen] = useState(false);
 
@@ -23,7 +21,7 @@ function TripleComponent (props) {
                     deleteTriple={deleteTriple}
                     handeCollapse={toggle}/>
 
-                <Collapse isOpen={isOpen} style={context.currentStyle}>
+                <Collapse isOpen={isOpen}>
                     <ValueComponent  
                         shape={shape} 
                         triple={triple}/>

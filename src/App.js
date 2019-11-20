@@ -37,7 +37,7 @@ function App() {
     }
 
 
-     const darkStyle = {
+    const darkStyle = {
         background: '#222',
         color:'white'
     }
@@ -49,6 +49,17 @@ function App() {
 
     const [style,setStyle] = useState(lightStyle);
     let theme = 'light';
+
+    const changeThemeStyle = () =>{
+      if(theme=='light'){//I don't know why this doesn't work with style state
+        setStyle(darkStyle);
+        theme='dark';
+      }else{
+        theme='light';
+        setStyle(lightStyle);
+      }
+    }
+
 
     const addShape = () =>{
       setShapes([...shapes,shexUtils.addShape(shapes)]);
@@ -77,15 +88,6 @@ function App() {
       setPrefixes(newPrefixes);
     }
     
-    const changeThemeStyle = () =>{
-      if(theme=='light'){//I don't know why this doesn't work with style state
-        setStyle(darkStyle);
-        theme='dark';
-      }else{
-        theme='light';
-        setStyle(lightStyle);
-      }
-    }
 
     const getSchema = function(){
       let yashe = Editor.getInstance().getYashe();
@@ -147,21 +149,21 @@ function App() {
                 
                 <Nav colapseAll={colapseAll}/>
               
-                <div className="row comps" style={style}>                  
-                    
-                    <Collapse isOpen={isLateralNavOpen} className="lateralNav col-xs-1">
-                        <LateralNav  assistantToggle={assistantToggle} visualizeToggle={visualizeToggle}/>
-                     </Collapse> 
-                    
-
-                    <Collapse isOpen={isAssistantOpen} className="col" style={style}>
-                        <AssistantComp/>
-                     </Collapse> 
-                    
-                    <EditorComp />
+                <div className="globalContainer">
+                  <div className="row comps">                     
+                      <Collapse isOpen={isLateralNavOpen} className="lateralNav col-xs-1">
+                          <LateralNav  assistantToggle={assistantToggle} visualizeToggle={visualizeToggle}/>
+                      </Collapse> 
                       
+
+                      <Collapse isOpen={isAssistantOpen} className="col">
+                          <AssistantComp/>
+                      </Collapse> 
+                      
+                      <EditorComp />
+                        
+                  </div>
                 </div>
-              
                 <Collapse isOpen={isVisualizeOpen} >
                   <VisualizeComp svg={svg}/>
                 </Collapse>   

@@ -53,16 +53,14 @@ function ShapeComponent (props) {
 
 
     return (
-        <div className="shapes-container" style={context.currentStyle}>
+        <div className="shapes-container">
                      
-                <div className="row shapes-header" style={context.currentStyle}>
-                    <label className="col-sm-2">Shape </label>
-                    <ShapeTypeComp shape={shape} collapse={handleQualiCollapse}/>
-                
+                <div className="row shapes-header">
+                    <ShapeTypeComp shape={shape} collapse={handleQualiCollapse}/>                
                 </div>
         
                 <Collapse isOpen={isQualiOpen}  timeout={110}>
-                    <div className="row qualifier" style={context.currentStyle}>
+                    <div className="row qualifier" >
                             <label className="col-2 qualiLabel">Qualifier </label>
                             <div className="col-2">
                                 <Qualifier shape={shape} scope='shape'/>
@@ -78,8 +76,8 @@ function ShapeComponent (props) {
                 </button>
                 
 
-                <Collapse isOpen={isTriplesOpen} style={context.currentStyle}>
-                    <div className="triples-container col-xs "style={context.currentStyle}>
+                <Collapse isOpen={isTriplesOpen} >
+                    <div className="triples-container col-xs ">
                             {triples.map(triple =>
 
                                 <TripleComponent key={triple.id}
