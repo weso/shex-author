@@ -115,10 +115,12 @@ function App() {
         })
         .then(function (response) {
             //handle success
-            if(response.data.svg.startsWith('<?xml')){
-              setSvg(response.data.svg);
-            }else{
-              setSvg(null)
+            if(response.data.svg != undefined){
+              if(response.data.svg.startsWith('<?xml')){
+                setSvg(response.data.svg);
+              }else{
+                setSvg(null)
+              }
             }
         })
         .catch(function (response) {

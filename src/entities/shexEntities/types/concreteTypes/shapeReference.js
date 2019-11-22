@@ -15,6 +15,9 @@ class ShapeReference extends Type{
     }
 
     toString(){
+        if(this.value=='shape'){
+            return '';
+        }
         return this.value;
     }
 
