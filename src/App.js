@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import { Collapse } from 'reactstrap';
 import axios from 'axios';
-import logo from './logo.svg';
 import './App.css';
 
 import EditorComp from './components/EditorComp';
@@ -24,7 +23,7 @@ function App() {
     const [svg,setSvg] = useState('');
     const [prefixes,setPrefixes] = useState([{key:'',val:'http://example.org/'}]);
     const [isAssistantOpen, setAssistantOpen] = useState(true);
-    const [isVisualizeOpen, setVisualizeOpen] = useState(true);
+    const [isVisualizeOpen, setVisualizeOpen] = useState(false);
     const [isLateralNavOpen, setLateralNavOpen] = useState(true);
 
     const assistantToggle = () => setAssistantOpen(!isAssistantOpen); 
