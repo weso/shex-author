@@ -36,30 +36,6 @@ function App() {
     }
 
 
-    const darkStyle = {
-        background: '#222',
-        color:'white'
-    }
-
-    const lightStyle = {
-        background: '#eaf3ff',
-        color:'black'
-    }
-
-    const [style,setStyle] = useState(lightStyle);
-    let theme = 'light';
-
-    const changeThemeStyle = () =>{
-      if(theme=='light'){//I don't know why this doesn't work with style state
-        setStyle(darkStyle);
-        theme='dark';
-      }else{
-        theme='light';
-        setStyle(lightStyle);
-      }
-    }
-
-
     const addShape = () =>{
       setShapes([...shapes,shexUtils.addShape(shapes)]);
       visualize();
@@ -143,8 +119,6 @@ function App() {
                     prefixes:prefixes,
                     updatePrefixes:updatePrefixes,
                     emit:emit,
-                    currentStyle:style,
-                    changeThemeStyle:changeThemeStyle,
                     visualize:visualize
                   }
                 }>

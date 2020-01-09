@@ -13,17 +13,6 @@ function EditorComp() {
   const divRef = useRef(null);
   const context = useContext(ShapesContext);
 
-   const darkStyle = {
-        background: '#2B2B2B',
-    }
-
-    const lightStyle = {
-        background: 'white',
-    }
-
-    const [style,setStyle] = useState(lightStyle);
-    let theme = 'light';
-
 
     useEffect(() => {
     
@@ -57,9 +46,6 @@ function EditorComp() {
                 updatePrefixes();
             });
 
-            y.on('themeChange', function() {
-                changeThemeStyle();
-            });
 
             y.on('delete', function() {
                 replaceShapes();
@@ -87,8 +73,6 @@ function EditorComp() {
                 
             });
 
-           
-           
 
             //Fired after a key is handled through a key map
             //(for example "Ctrl-Z")
@@ -121,20 +105,7 @@ function EditorComp() {
         context.updatePrefixes(yasheUtils.updatePrefixes());
     }
 
-     const changeThemeStyle = ()=>{
-        if(theme=='light'){//I don't know why this doesn't work with style state
-            setStyle(darkStyle);
-            theme='dark';
-        }else{
-            theme='light';
-            setStyle(lightStyle);
-        }
-        context.changeThemeStyle();
-    }
-
-
-
-    return  (<div className="col edit" ref={divRef} style={style}/>);
+    return  (<div className="col edit" ref={divRef}/>);
 
 }
 
