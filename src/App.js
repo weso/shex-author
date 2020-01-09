@@ -11,8 +11,7 @@ import LateralNav from './components/navComponents/LateralNav';
 import Nav from './components/navComponents/Nav';
 
 import shexUtils from './utils/shexUtils';
-
-import Editor from './entities/editor';
+import {getRequestOptions} from './utils/visualizeUtils'; 
 
 
 export const ShapesContext = React.createContext();
@@ -23,7 +22,7 @@ function App() {
     const [svg,setSvg] = useState('');
     const [prefixes,setPrefixes] = useState([{key:'',val:'http://example.org/'}]);
     const [isAssistantOpen, setAssistantOpen] = useState(true);
-    const [isVisualizeOpen, setVisualizeOpen] = useState(false);
+    const [isVisualizeOpen, setVisualizeOpen] = useState(true);
     const [isLateralNavOpen, setLateralNavOpen] = useState(true);
 
     const assistantToggle = () => setAssistantOpen(!isAssistantOpen); 
@@ -64,31 +63,9 @@ function App() {
       setPrefixes(newPrefixes);
     }
     
-
-    const getSchema = function(){
-      let yashe = Editor.getInstance().getYashe();
-      if(yashe){
-          return yashe.getValue();
-      }
-      return '';
-    }
-
-
     const visualize = function(){
 
-        let bodyFormData = new FormData();
-        bodyFormData.set('schema', getSchema());
-        bodyFormData.set('schemaFormat', 'ShExC');
-        bodyFormData.set('schemaEngine', 'SHEX');
-
-
-        axios({
-            method: 'post',
-            url: 'http://rdfshape.weso.es:8080/api/schema/visualize',
-            data: bodyFormData,
-            config: { headers: {'Content-Type': 'multipart/form-data' }}
-        })
-        .then(function (response) {
+        axios(getRequestOptions()).then(function (response) {
             //handle success
             if(response.data.svg != undefined){
               if(response.data.svg.startsWith('<?xml')){
@@ -103,7 +80,6 @@ function App() {
             console.log(response);
         });
 
-        
     }
 
 
@@ -123,32 +99,30 @@ function App() {
                   }
                 }>
                 
-                <Nav colapseAll={colapseAll}/>
-              
-                <div className="globalContainer">
-                  <div className="row comps">                     
-                      <Collapse isOpen={isLateralNavOpen} className="lateralNav col-xs-1">
-                          <LateralNav  assistantToggle={assistantToggle} visualizeToggle={visualizeToggle}/>
-                      </Collapse> 
-                      
-
-                      <Collapse isOpen={isAssistantOpen} className="col">
-                          <AssistantComp/>
-                      </Collapse> 
-                      
-                      <EditorComp />
+                  <Nav colapseAll={colapseAll}/>
+                
+                  <div className="globalContainer">
+                    <div className="row comps">                     
+                        <Collapse isOpen={isLateralNavOpen} className="lateralNav col-xs-1">
+                            <LateralNav  assistantToggle={assistantToggle} visualizeToggle={visualizeToggle}/>
+                        </Collapse> 
                         
+
+                        <Collapse isOpen={isAssistantOpen} className="col">
+                            <AssistantComp/>
+                        </Collapse> 
+                        
+                        <EditorComp />
+                          
+                    </div>
                   </div>
-                </div>
-                <Collapse isOpen={isVisualizeOpen} >
-                  <VisualizeComp svg={svg}/>
-                </Collapse>   
+                  <Collapse isOpen={isVisualizeOpen} >
+                    <VisualizeComp svg={svg}/>
+                  </Collapse>   
+                  
             </ShapesContext.Provider>
           );
                        
-           
-  
-    
 }
 
 

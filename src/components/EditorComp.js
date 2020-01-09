@@ -109,7 +109,5 @@ function EditorComp() {
 
 }
 
-
-
 export default EditorComp;
 
