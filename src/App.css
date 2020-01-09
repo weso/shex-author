@@ -27,10 +27,7 @@
 
 
 
-html{
-	background-color: white;
-	overflow-x: hidden;
-}
+
 
 
 .CodeMirror{
@@ -40,6 +37,7 @@ html{
 	min-height:273px;
 	border-right: none !important;
 	border-bottom: none !important;
+	border-top:none !important;
 }
 
 
@@ -61,7 +59,7 @@ label{
 
 .addShapeButton{
 	margin-top: 20px;
-	margin-left: 10px;
+	margin-left: 8px;
 	margin-bottom: 15px;
 }
 
@@ -78,12 +76,11 @@ label{
 }
 
 .shapes-container{
-	margin-top: 10px;
+	margin-top: 30px;
 }
 
 .shapes-header{
 	margin-top:-10px;
-	border-top: 5px solid white;
 }
 
 .headerSelectors{
@@ -97,7 +94,7 @@ label{
 
 .addPropButton{
 	margin-top: 5px;
-	margin-left: 70px;
+	margin-left: 95px;
 	margin-bottom: 20px;
 }
 
@@ -189,16 +186,19 @@ body{
 	margin-bottom: 5px;
 }
 
-.btn-default:hover{
-	background-color: #eaf3ff;
-}
 
 .cardiLabel{
-	margin-left: 20px;
+	margin-left: 25px;
+	margin-right: -10px;
+}
+
+.valueLabel{
+	margin-left: 5px;
+	margin-right: -30px;
 }
 
 .qualifier{
-	background-color: #eaf3ff;
+	margin-right: -110px;
 }
 
 .qualiLabel{
@@ -218,12 +218,6 @@ body{
 	margin-left:10px;
 	width:5%;
 }
-
-.visualize{
-	height:100%;
-	float: center;
-}
-
 
 
 svg{
@@ -332,6 +326,7 @@ svg{
 
 .assisTitleDiv{
 	margin-top:5px;
+	
 }
 
 .assisTitle{
@@ -381,10 +376,51 @@ svg{
 .comps{
 	height: 100% !important; 
 	width: 100% !important; 
-	border-bottom: 1px solid grey;
+	border: 1px solid grey;
 	margin-left: 1px;
+	background-color: #f8f8ff;
 }
 
+
+.globalContainer{
+	background-color: #ddeafa;
+	padding: 2%;
+}
+
+html{
+	background-color: #ddeafa;
+	overflow-x: hidden;
+}
+
+
+.btn-primary{
+	background-color:#0073C2 !important;
+	border-radius: 8px;
+}
+
+.btn-danger{
+	background-color:#C7384F !important;
+	border-radius: 8px;
+}
+
+.btn:focus {
+	outline:none !important;
+  }
+
+.shapeBtns{
+	margin-left: 4px;
+}
+
+.visualize{
+	height: 100% !important; 
+	width: 100% !important; 
+	min-height: 170px;
+	margin-left: 1px;
+	float: center;
+	border: 1px solid grey;
+	background-color: white;
+	
+}
 
 
 .dropdown :focus{
@@ -414,11 +450,6 @@ svg{
 
 .visual{
 	margin-top: 50px;
-}
-
-.bottom{
-	margin-top: 50px;
-	background-color: white;
 }
 
 

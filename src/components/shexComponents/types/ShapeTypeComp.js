@@ -28,8 +28,9 @@ function ShapeTypeComp (props) {
         }
 
 
-        return (<div className="row col-8 headerSelectors">
-                        <select className="col-3 form-control shapeType" 
+        return (<div className="row col-10 headerSelectors">
+                        <label className="col-xs-1 tripleLabel">Shape </label>
+                        <select className="col-2 form-control tripleType" 
                             value={type} 
                             onChange={handleChange}>
 
@@ -49,7 +50,7 @@ function ShapeTypeComp (props) {
                         </button>
 
 
-                        <button className="col-xs-1 deleteShapeButton mdc-icon-button material-icons btn-danger" 
+                        <button className="col-xs-1 deletePropButton mdc-icon-button material-icons btn-danger" 
                             onClick={()=>context.deleteShape(shape.id)}>
                             delete
                         </button>

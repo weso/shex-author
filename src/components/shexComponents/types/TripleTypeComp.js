@@ -47,7 +47,7 @@ function TripleTypeComp (props){
                                         type='triple'
                                         instance={triple.type.getTypeName()}/>
                           
-                        <button className="col-xs-1  colapseButton mdc-icon-button material-icons btn-primary"
+                        <button className="col-xs-1 colapseButton mdc-icon-button material-icons btn-primary"
                                 onClick={handleCollapseBtn}>
                                 {collapseBtn}
                         </button>

@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import { Collapse } from 'reactstrap';
 import axios from 'axios';
-import logo from './logo.svg';
 import './App.css';
 
 import EditorComp from './components/EditorComp';
@@ -24,7 +23,7 @@ function App() {
     const [svg,setSvg] = useState('');
     const [prefixes,setPrefixes] = useState([{key:'',val:'http://example.org/'}]);
     const [isAssistantOpen, setAssistantOpen] = useState(true);
-    const [isVisualizeOpen, setVisualizeOpen] = useState(true);
+    const [isVisualizeOpen, setVisualizeOpen] = useState(false);
     const [isLateralNavOpen, setLateralNavOpen] = useState(true);
 
     const assistantToggle = () => setAssistantOpen(!isAssistantOpen); 
@@ -37,7 +36,7 @@ function App() {
     }
 
 
-     const darkStyle = {
+    const darkStyle = {
         background: '#222',
         color:'white'
     }
@@ -49,6 +48,17 @@ function App() {
 
     const [style,setStyle] = useState(lightStyle);
     let theme = 'light';
+
+    const changeThemeStyle = () =>{
+      if(theme=='light'){//I don't know why this doesn't work with style state
+        setStyle(darkStyle);
+        theme='dark';
+      }else{
+        theme='light';
+        setStyle(lightStyle);
+      }
+    }
+
 
     const addShape = () =>{
       setShapes([...shapes,shexUtils.addShape(shapes)]);
@@ -74,18 +84,10 @@ function App() {
     }
 
     const updatePrefixes = (newPrefixes)=>{
+      setPrefixes([])
       setPrefixes(newPrefixes);
     }
     
-    const changeThemeStyle = () =>{
-      if(theme=='light'){//I don't know why this doesn't work with style state
-        setStyle(darkStyle);
-        theme='dark';
-      }else{
-        theme='light';
-        setStyle(lightStyle);
-      }
-    }
 
     const getSchema = function(){
       let yashe = Editor.getInstance().getYashe();
@@ -112,7 +114,13 @@ function App() {
         })
         .then(function (response) {
             //handle success
-            setSvg(response.data.svg);
+            if(response.data.svg != undefined){
+              if(response.data.svg.startsWith('<?xml')){
+                setSvg(response.data.svg);
+              }else{
+                setSvg(null)
+              }
+            }
         })
         .catch(function (response) {
             //handle error
@@ -143,21 +151,21 @@ function App() {
                 
                 <Nav colapseAll={colapseAll}/>
               
-                <div className="row comps" style={style}>                  
-                    
-                    <Collapse isOpen={isLateralNavOpen} className="lateralNav col-xs-1">
-                        <LateralNav  assistantToggle={assistantToggle} visualizeToggle={visualizeToggle}/>
-                     </Collapse> 
-                    
-
-                    <Collapse isOpen={isAssistantOpen} className="col" style={style}>
-                        <AssistantComp/>
-                     </Collapse> 
-                    
-                    <EditorComp />
+                <div className="globalContainer">
+                  <div className="row comps">                     
+                      <Collapse isOpen={isLateralNavOpen} className="lateralNav col-xs-1">
+                          <LateralNav  assistantToggle={assistantToggle} visualizeToggle={visualizeToggle}/>
+                      </Collapse> 
                       
+
+                      <Collapse isOpen={isAssistantOpen} className="col">
+                          <AssistantComp/>
+                      </Collapse> 
+                      
+                      <EditorComp />
+                        
+                  </div>
                 </div>
-              
                 <Collapse isOpen={isVisualizeOpen} >
                   <VisualizeComp svg={svg}/>
                 </Collapse>   

@@ -31,7 +31,7 @@ function EditorComp() {
             const options = {
                 persistent:false,
                 lineNumbers: true,
-                viewportMargin: Infinity,
+                showTooltip:false,
                 value:yasheUtils.DEFAULT_SHAPE
             }
             
@@ -83,7 +83,7 @@ function EditorComp() {
                         replaceShapes();
                         updatePrefixes();
                     }
-                }, 50);
+                }, 20);
                 
             });
 
