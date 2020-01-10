@@ -10,4 +10,3 @@ export function getPrefix(prefix){
       }
       return new Prefix();
 }
-

@@ -6,7 +6,6 @@ function PrefixSelector (props){
 
     const {namespaces} = props;
 
-
     const handleChange = (e) =>{
         let yashe = Editor.getInstance().getYashe();
         let current = yashe.getValue();

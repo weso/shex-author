@@ -19,7 +19,10 @@ class PrefixedIri extends Type{
 
 
     getTypeName(){
-        return 'prefixedIri';
+        if(this.context=='shapeName'){
+            return 'prefixedShape'
+        }
+        return 'prefixedTriple';
     }
 
 

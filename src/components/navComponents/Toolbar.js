@@ -4,9 +4,6 @@ import PrefixSelector from './PrefixSelector';
 import {ALL_PREFIXES} from '../../utils/rdfUtils';
 import  Editor from '../../entities/editor';
 
-import {defaultExample} from '../../examples/defaultExample';
-import {wikiExample} from '../../examples/wikiExample';
-
 import yasheUtils from '../../utils/yasheUtils';
 import {readFileTool,downloadFile,changeTheme,loadExample,scrollTop} from '../../utils/toolbarUtils';
 
@@ -23,7 +20,7 @@ function Toolbar (props) {
             }, 10);
             // We can't do emit() because it takes 
             // like another call to change shapes state
-            // I don't know exactly the reaseon...
+            // I don't know exactly the reason...
             // It's something about react state
             Editor.getInstance().getYashe().setValue('');
         }

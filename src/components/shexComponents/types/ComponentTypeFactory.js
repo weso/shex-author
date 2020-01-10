@@ -1,7 +1,9 @@
 import React from 'react';
 
 import IriComp from './concrete/IriComp';
-import PrefixedComp from './concrete/PrefixedComp';
+import PrefixedShape from './concrete/PrefixedShape';
+import PrefixedTriple from './concrete/PrefixedTriple';
+import PrefixedValue from './concrete/PrefixedValue';
 import BNodeComp from './concrete/BNodeComp';
 import PrimitiveComp from './concrete/PrimitiveComp';
 import ShapeRefComp from './concrete/ShapeRefComp';
@@ -14,10 +16,19 @@ function ComponentTypeFactory (props) {
         
         return <IriComp shape={shape} triple={triple} type={type}/>
 
-    }
-    else if(instance == 'prefixedIri'){
+    }else if(instance == 'prefixedShape'){
 
-        return <PrefixedComp shape={shape} triple={triple} type={type}/>
+        return <PrefixedShape  shape={shape}/>
+
+    }
+    else if(instance == 'prefixedTriple'){
+
+        return <PrefixedTriple  triple={triple}/>
+
+    }
+    else if(instance == 'prefixedValue'){
+
+        return <PrefixedValue  triple={triple}/>
 
     }
     else if(instance == 'bnodeType'){
@@ -33,9 +44,10 @@ function ComponentTypeFactory (props) {
         
         return  <ShapeRefComp shape={shape}triple={triple}/>
 
-    }else{
-        return null;
     }
+        
+    return null;
+    
                                    
 }
 
