@@ -11,7 +11,7 @@ import ShapeRefComp from './concrete/ShapeRefComp';
 function ComponentTypeFactory (props) {
 
     const {shape,triple,type,instance} = props;
-
+    
     if(instance == 'iriRef'){
         
         return <IriComp shape={shape} triple={triple} type={type}/>

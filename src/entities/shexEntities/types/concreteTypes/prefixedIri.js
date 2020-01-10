@@ -17,7 +17,7 @@ class PrefixedIri extends Type{
         this.prefix = prefix;
     }
 
-
+   
     getTypeName(){
         if(this.context=='shapeName'){
             return 'prefixedShape'
