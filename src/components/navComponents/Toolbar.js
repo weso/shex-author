@@ -1,5 +1,4 @@
 import React,{useContext} from 'react';
-import Codemirror from 'codemirror';
 import {ShapesContext} from '../../App';
 import PrefixSelector from './PrefixSelector';
 import {ALL_PREFIXES} from '../../utils/rdfUtils';
@@ -9,8 +8,9 @@ import {defaultExample} from '../../examples/defaultExample';
 import {wikiExample} from '../../examples/wikiExample';
 
 import yasheUtils from '../../utils/yasheUtils';
+import {readFileTool,downloadFile,changeTheme,loadExample,scrollTop} from '../../utils/toolbarUtils';
 
-function Nav (props) {
+function Toolbar (props) {
 
     const {assistantToggle,visualizeToggle} = props;
     const context = useContext(ShapesContext);
@@ -29,90 +29,6 @@ function Nav (props) {
         }
     }
 
-    const readFileTool = function handleFileSelect(event) {
-        var files = event.target.files
-        //Only one file allowed
-        if(files.length>1){
-            return;
-        }
-
-        var file = event.target.files[0];
-        //Only ShEx files allowed
-        if(!file.name.endsWith('.shex')){
-            return;
-        }
-        var reader = new FileReader();
-        reader.onload = function(event) {
-            Editor.getInstance().getYashe().setValue(event.target.result)
-        };
-
-        reader.readAsText(file);
-        Codemirror.signal(Editor.getInstance().getYashe(),'upload');
-    }
-
-    const downloadFile = function(){
-        var textFileAsBlob = new Blob([ Editor.getInstance().getYashe().getValue() ], { type: 'text/shex' });
-        var fileNameToSaveAs = "document.shex";
-
-        var downloadLink = document.createElement("a");
-        downloadLink.download = fileNameToSaveAs;
-        downloadLink.innerHTML = "Download File";
-        if (window.URL != null) {
-            // Chrome allows the link to be clicked without actually adding it to the DOM.
-            downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
-        } else {
-            // Firefox requires the link to be added to the DOM before it can be clicked.
-            downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
-            downloadLink.style.display = "none";
-            document.body.appendChild(downloadLink);
-        }
-        downloadLink.click();
-    }
-
-    const changeTheme = function(){
-        let yashe = Editor.getInstance().getYashe();
-        var themeValue = 'wiki'
-        var color = 'black'
-        if(yashe.getOption('theme') == 'wiki'){
-            themeValue='dark'
-            color = 'white'
-            document.getElementById("downloadBtn").classList.add('light');
-            document.getElementById("copyBtn").classList.add('light');
-            document.getElementById("deleteBtn").classList.add('light');
-            document.getElementById("themeBtn").classList.add('light');
-            document.getElementById("smallBtn").classList.add('light');
-            document.getElementById("fullBtn").classList.add('light');
-            document.getElementById("uploadBntLabel").classList.add('light');
-        }else{
-            document.getElementById("downloadBtn").classList.remove('light');
-            document.getElementById("copyBtn").classList.remove('light');
-            document.getElementById("deleteBtn").classList.remove('light');
-            document.getElementById("themeBtn").classList.remove('light');
-            document.getElementById("smallBtn").classList.remove('light');
-            document.getElementById("fullBtn").classList.remove('light');
-            document.getElementById("uploadBntLabel").classList.remove('light');
-        }
-        
-      yashe.setOption("theme",themeValue)
-      Codemirror.signal(yashe,'themeChange');
-    }
-
-    const loadExample = function(example){ 
-        let yashe = Editor.getInstance().getYashe();
-        if(example=='default'){
-            yashe.setValue(defaultExample)
-        }else{
-            yashe.setValue(wikiExample)
-        }
-        setTimeout(() => {//needed
-            Codemirror.signal(yashe,'keyHandled');
-        }, 10); 
-    }
-
-    const scrollTop = function(){
-        window.scrollTo(0, 0);
-    }
-    
     const undo = function(){
         let yashe = Editor.getInstance().getYashe();
         yashe.undo();
@@ -238,4 +154,4 @@ function Nav (props) {
 }
 
 
-export default Nav;
+export default Toolbar;

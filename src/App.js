@@ -7,7 +7,7 @@ import EditorComp from './components/EditorComp';
 import AssistantComp from './components/AssistantComp';
 import VisualizeComp from  './components/VisualizeComp';
 
-import LateralNav from './components/navComponents/LateralNav';
+import Toolbar from './components/navComponents/Toolbar';
 import Nav from './components/navComponents/Nav';
 
 import shexUtils from './utils/shexUtils';
@@ -23,15 +23,15 @@ function App() {
     const [prefixes,setPrefixes] = useState([{key:'',val:'http://example.org/'}]);
     const [isAssistantOpen, setAssistantOpen] = useState(true);
     const [isVisualizeOpen, setVisualizeOpen] = useState(true);
-    const [isLateralNavOpen, setLateralNavOpen] = useState(true);
+    const [isToolbarOpen, setToolbarOpen] = useState(true);
 
     const assistantToggle = () => setAssistantOpen(!isAssistantOpen); 
     const visualizeToggle = () => setVisualizeOpen(!isVisualizeOpen);
-    const lateralNavToggle = () => setLateralNavOpen(!isLateralNavOpen);
+    const lateralNavToggle = () => setToolbarOpen(!isToolbarOpen);
     const colapseAll = () =>{
-      setAssistantOpen(!isLateralNavOpen);
-      setVisualizeOpen(!isLateralNavOpen);
-      setLateralNavOpen(!isLateralNavOpen);
+      setAssistantOpen(!isToolbarOpen);
+      setVisualizeOpen(!isToolbarOpen);
+      setToolbarOpen(!isToolbarOpen);
     }
 
 
@@ -85,8 +85,7 @@ function App() {
 
     return (
             
-            <ShapesContext.Provider 
-                value={
+            <ShapesContext.Provider value={
                   {
                     shapes,shapes,
                     addShape:addShape,
@@ -100,13 +99,11 @@ function App() {
                 }>
                 
                   <Nav colapseAll={colapseAll}/>
-                
                   <div className="globalContainer">
                     <div className="row comps">                     
-                        <Collapse isOpen={isLateralNavOpen} className="lateralNav col-xs-1">
-                            <LateralNav  assistantToggle={assistantToggle} visualizeToggle={visualizeToggle}/>
+                        <Collapse isOpen={isToolbarOpen} className="lateralNav col-xs-1">
+                            <Toolbar  assistantToggle={assistantToggle} visualizeToggle={visualizeToggle}/>
                         </Collapse> 
-                        
 
                         <Collapse isOpen={isAssistantOpen} className="col">
                             <AssistantComp/>
