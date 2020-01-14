@@ -15,11 +15,6 @@ class Triple {
         this.factory = new TypesFactory();
       }
       
-    addValue(value){
-        this.values.push(value);
-        this.valuesCount++;
-    }
-
     getId(){
         return this.id;
     }
