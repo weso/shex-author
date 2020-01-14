@@ -15,7 +15,7 @@ function ShapeRefComp (props) {
     }
     
     const [inlineShape,setInlineShape] = useState(inlineValue);
-    const [valueType,setValueType] = useState(triple.value.getTypeName())
+    const [valueType,setValueType] = useState(triple.value.type.getTypeName())
 
 
     const handleInlineChange = (e) =>{

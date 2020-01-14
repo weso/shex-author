@@ -24,7 +24,8 @@ function TripleComponent (props) {
                 <Collapse isOpen={isOpen}>
                     <ValueComponent  
                         shape={shape} 
-                        triple={triple}/>
+                        triple={triple}
+                        value={triple.value}/>
                 </Collapse>
                 
             </div>

@@ -13,7 +13,6 @@ class TypesFactory{
 
     createType(type,context){
 
-        console.log(type)
         let retType;
         if(type == 'iriRef'){
             retType = new IriRef(context);

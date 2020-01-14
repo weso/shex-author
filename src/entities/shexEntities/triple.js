@@ -9,7 +9,7 @@ class Triple {
     constructor(id,type=new IrirRef('tripleName'),value=new Value(new IrirRef()),inlineShape=new InlineShape(),cardinality='') {
         this.id = id;
         this.type = type;
-        this.value = value;
+        this.value = new Value(value);
         this.cardinality = cardinality;
         this.inlineShape = inlineShape;
         this.factory = new TypesFactory();
@@ -40,22 +40,13 @@ class Triple {
     }
 
 
-    setValue(value){
-        this.value=value;
-    }
-
-    getValue(){
-       return this.value;
-    }
-
-
     getCardinality(){
         return this.cardinality;
     }
 
 
 
-
+    
     getInitialValue(){
         return this.type.value;
     }

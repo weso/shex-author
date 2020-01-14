@@ -1,17 +1,14 @@
 import React from 'react';
 
 import IriComp from './concrete/IriComp';
-import PrefixedShape from './concrete/PrefixedShape';
-import PrefixedTriple from './concrete/PrefixedTriple';
-import PrefixedValue from './concrete/PrefixedValue';
 import BNodeComp from './concrete/BNodeComp';
 import PrimitiveComp from './concrete/PrimitiveComp';
 import ShapeRefComp from './concrete/ShapeRefComp';
-import PrefixedTest from'./concrete/PrefixedTest';
+import PrefixedComp from'./concrete/PrefixedComp';
 
 function ComponentTypeFactory (props) {
 
-    const {shape,triple,type,instance} = props;
+    const {shape,triple,value,type,instance} = props;
     
     if(instance == 'iriRef'){
         
@@ -19,17 +16,17 @@ function ComponentTypeFactory (props) {
 
     }else if(instance == 'prefixedShape'){
 
-        return <PrefixedTest  element={shape}/>
+        return <PrefixedComp  element={shape}/>
 
     }
     else if(instance == 'prefixedTriple'){
 
-        return <PrefixedTest  element={triple}/>
+        return <PrefixedComp  element={triple}/>
 
     }
     else if(instance == 'prefixedValue'){
 
-        return <PrefixedTest  element={triple}/>
+        return <PrefixedComp  element={value}/>
 
     }
     else if(instance == 'bnodeType'){

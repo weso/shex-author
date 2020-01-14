@@ -7,14 +7,14 @@ import CardinalityComp from './utils/CardinalityComp';
 
 function ValueComponent (props) {
     
-    const {shape,triple} = props;
+    const {shape,triple,value} = props;
 
     return (<div className="col-12 valuesCol"  >
                     <div className="row values-container">
                         <div className="col-10 triplesVal ">
                             <div className="row">
                                 <label className="col-3 valueLabel">Value</label>
-                                <ValueTypeComp shape={shape} triple={triple}/>
+                                <ValueTypeComp shape={shape} triple={triple} value={value}/>
                                 
                                 <label className="col-3 cardiLabel">Cardinality</label>
                                 <CardinalityComp shape={shape} triple={triple}/>

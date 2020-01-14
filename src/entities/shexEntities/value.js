@@ -6,13 +6,30 @@ class Value {
         this.type = type;
     }
 
-    setVal(type){
+    setType(type){
         this.type = this.factory.createType(type,'valueName');
     }
 
-    getVal(){
+    getType(){
         return this.type;
     }
+
+    getInitialValue(){
+        return this.type.value;
+    }
+      
+    getInitialPrefix(){
+        return this.type.prefix.prefixValue;
+    }
+
+    setTypeValue(value){
+        this.type.setValue(value);
+    }
+
+    setPrefix(prefix){
+        this.type.setPrefix(prefix);
+    }
+      
 }
 
 export default Value;

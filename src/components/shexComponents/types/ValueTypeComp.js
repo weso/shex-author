@@ -5,10 +5,10 @@ import {ShapesContext} from '../../../App';
 
 function ValueTypeComp(props) {
     
-    const {shape,triple} = props;
+    const {shape,triple,value} = props;
 
     const context = useContext(ShapesContext);
-    const [valueType,setValueType] = useState(triple.value.getTypeName())
+    const [valueType,setValueType] = useState(triple.value.type.getTypeName())
     
     const handleChange = (event) =>{
         let newType = event.target.value;
@@ -16,7 +16,7 @@ function ValueTypeComp(props) {
             //This is necesary when we change from ShapeType to otherType
             triple.inlineShape.shape = null;
         }
-        triple.setValue(newType);
+        value.setValue(newType);
         context.emit();
         setValueType(newType);
     }
@@ -40,7 +40,7 @@ function ValueTypeComp(props) {
                                 <ComponentTypeFactory shape={shape} 
                                     triple={triple}
                                     type='value'
-                                    instance={triple.value.getTypeName()}/>
+                                    instance={triple.value.type.getTypeName()}/>
 
                     </div>);
 
