@@ -8,11 +8,19 @@ import PrefixedComp from'./concrete/PrefixedComp';
 
 function ComponentTypeFactory (props) {
 
-    const {shape,triple,value,type,instance} = props;
+    const {shape,triple,value,instance} = props;
     
-    if(instance == 'iriRef'){
+    if(instance == 'iriShape'){
 
-        return <IriComp shape={shape} triple={triple} type={type}/>
+        return <IriComp element={shape}/>
+
+    }else if(instance == 'iriTriple'){
+
+        return <IriComp element={triple}/>
+
+    }else if(instance == 'iriValue'){
+
+        return <IriComp element={value}/>
 
     }else if(instance == 'prefixedShape'){
 
@@ -39,7 +47,7 @@ function ComponentTypeFactory (props) {
 
     }else if(instance == 'shape'){
         
-        return  <ShapeRefComp shape={shape}triple={triple}/>
+        return  <ShapeRefComp triple={triple}/>
 
     }
         

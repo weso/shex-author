@@ -13,7 +13,6 @@ function Qualifier (props) {
     const handleTypeChange = (e) =>{
         let newType = e.target.value;
         element.setQualifier(newType);
-        console.log(element)
         context.emit();
         setValueType(newType);
     }

@@ -28,7 +28,7 @@ function ValueTypeComp(props) {
 
                                     <option value="primitive">Primitive</option>
                                     <option value="shape">Shape</option>
-                                    <option value="iriRef">IriRef</option>
+                                    <option value="iriValue">IriRef</option>
                                     <option value="prefixedValue">Prefixed</option>
                                     <option value="literal">Literal</option>
                                     <option value="nonliteral">NonLiteral</option>
@@ -40,7 +40,6 @@ function ValueTypeComp(props) {
                                 <ComponentTypeFactory shape={shape} 
                                     triple={triple}
                                     value={value}
-                                    type='value'
                                     instance={value.type.getTypeName()}/>
 
                     </div>);

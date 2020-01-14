@@ -34,14 +34,13 @@ function ShapeTypeComp (props) {
                             value={type} 
                             onChange={handleChange}>
 
-                            <option value="iriRef">IriRef</option>
+                            <option value="iriShape">IriRef</option>
                             <option value="prefixedShape">Prefixed</option>
                             <option value="bnodeType">BNode</option>
                         </select>
 
                         <ComponentTypeFactory shape={shape} 
                                     triple={null}
-                                    type='shape'
                                     instance={shape.type.getTypeName()}/>
 
                         <button className="col-xs-1  colapseButton mdc-icon-button material-icons btn-primary"

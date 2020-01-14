@@ -76,7 +76,7 @@ class Shape {
     }
 
     setPrefix(prefix){
-        this.type.setPrefix(prefix);
+      this.type.setPrefix(prefix);
     }
      
 

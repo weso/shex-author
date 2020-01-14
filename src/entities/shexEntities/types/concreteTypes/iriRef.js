@@ -9,7 +9,12 @@ class IriRef extends Type{
     }
 
     getTypeName(){
-        return 'iriRef';
+        if(this.context=='shapeName'){
+            return 'iriShape'
+        }else if(this.context=='tripleName'){
+            return 'iriTriple';
+        }
+        return 'iriValue';
     }
 
 

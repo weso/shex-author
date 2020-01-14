@@ -14,7 +14,7 @@ class TypesFactory{
     createType(type,context){
 
         let retType;
-        if(type == 'iriRef'){
+        if(type == 'iriShape' || type == 'iriTriple' || type == 'iriValue'){
             retType = new IriRef(context);
         }
         

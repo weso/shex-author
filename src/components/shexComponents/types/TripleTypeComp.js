@@ -37,14 +37,13 @@ function TripleTypeComp (props){
                                 value={type} 
                                 onChange={handleChange}>
 
-                                <option value="iriRef">IriRef</option>
+                                <option value="iriTriple">IriRef</option>
                                 <option value="prefixedTriple">Prefixed</option>
                                 
                         </select>
 
                         <ComponentTypeFactory shape={shape} 
                                         triple={triple}
-                                        type='triple'
                                         instance={triple.type.getTypeName()}/>
                           
                         <button className="col-xs-1 colapseButton mdc-icon-button material-icons btn-primary"

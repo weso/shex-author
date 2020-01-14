@@ -7,7 +7,7 @@ import shexUtils from '../../../../utils/shexUtils';
 function ShapeRefComp (props) {
 
     const context = useContext(ShapesContext);
-    const {shape,triple} = props;
+    const {triple} = props;
 
     let inlineValue = '';
     if(triple.inlineShape.shape != null){
@@ -15,8 +15,6 @@ function ShapeRefComp (props) {
     }
     
     const [inlineShape,setInlineShape] = useState(inlineValue);
-    const [valueType,setValueType] = useState(triple.value.type.getTypeName())
-
 
     const handleInlineChange = (e) =>{
         const shapeId = e.target.value;
