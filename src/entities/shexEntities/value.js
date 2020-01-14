@@ -4,10 +4,13 @@ class Value {
 
     constructor(type) {
         this.type = type;
+        this.factory = new TypesFactory();
     }
 
     setType(type){
+        console.log(type)
         this.type = this.factory.createType(type,'valueName');
+        console.log(this.type)
     }
 
     getType(){
@@ -28,6 +31,10 @@ class Value {
 
     setPrefix(prefix){
         this.type.setPrefix(prefix);
+    }
+
+    toString(){
+        return this.type.toString();
     }
       
 }

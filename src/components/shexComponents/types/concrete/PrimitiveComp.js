@@ -6,20 +6,20 @@ const primitives = ['String','Integer','Date','Boolean'];
 function PrimitiveComp (props) {
 
     const context = useContext(ShapesContext);
-    const {shape,triple} = props;
+    const {value} = props;
 
-    const [value,setValue] = useState(triple.value.value);
+    const [type,setType] = useState(value.type);
 
     const handleChange = (e) =>{
-          const value = e.target.value;
-          triple.value.setValue(value);
+          const newValue = e.target.value;
+          value.type.value = newValue;
           context.emit();
-          setValue(value);
+          setType(newValue);
     }
     
 
     return (<select className="col-sm-4 form-control tripleValue"
-                    value={value}
+                    value={type}
                     onChange={handleChange}>
             {
                 primitives.map(prim =>{

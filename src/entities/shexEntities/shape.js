@@ -80,9 +80,6 @@ class Shape {
     }
      
 
-
-
-
      toString(){
     
       let str = this.type+' '+this.qualifier+' {\n'

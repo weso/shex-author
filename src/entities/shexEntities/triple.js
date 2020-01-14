@@ -44,6 +44,9 @@ class Triple {
         return this.cardinality;
     }
 
+    getValue(){
+        return this.value;
+    }
 
 
     
@@ -62,9 +65,6 @@ class Triple {
     setPrefix(prefix){
          this.type.setPrefix(prefix);
     }
-
-
-
 
 
 

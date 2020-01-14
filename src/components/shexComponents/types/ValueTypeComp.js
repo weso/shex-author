@@ -16,7 +16,7 @@ function ValueTypeComp(props) {
             //This is necesary when we change from ShapeType to otherType
             triple.inlineShape.shape = null;
         }
-        value.setValue(newType);
+        value.setType(newType);
         context.emit();
         setValueType(newType);
     }
@@ -39,6 +39,7 @@ function ValueTypeComp(props) {
 
                                 <ComponentTypeFactory shape={shape} 
                                     triple={triple}
+                                    value={value}
                                     type='value'
                                     instance={triple.value.type.getTypeName()}/>
 

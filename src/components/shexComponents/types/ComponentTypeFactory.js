@@ -36,7 +36,7 @@ function ComponentTypeFactory (props) {
     }
     else if(instance == 'primitive'){
         
-        return  <PrimitiveComp shape={shape} triple={triple}/>
+        return  <PrimitiveComp value={value}/>
 
     }else if(instance == 'shape'){
         
