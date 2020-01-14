@@ -8,8 +8,8 @@ function ValueTypeComp(props) {
     const {shape,triple,value} = props;
 
     const context = useContext(ShapesContext);
-    const [valueType,setValueType] = useState(triple.value.type.getTypeName())
-    
+    const [valueType,setValueType] = useState(value.type.getTypeName())
+
     const handleChange = (event) =>{
         let newType = event.target.value;
         if(newType!='shape'){
@@ -41,7 +41,7 @@ function ValueTypeComp(props) {
                                     triple={triple}
                                     value={value}
                                     type='value'
-                                    instance={triple.value.type.getTypeName()}/>
+                                    instance={value.type.getTypeName()}/>
 
                     </div>);
 

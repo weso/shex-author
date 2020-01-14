@@ -31,14 +31,6 @@ function ShapeRefComp (props) {
         setInlineShape(inlineSelector);
     }
 
-    const handleTypeChange = (e) =>{
-        let newType = e.target.value;
-        triple.setValue(newType);
-        context.emit();
-        setValueType(newType);
-    }
-
-
     return (<div className='row col'>
                 <select className="col form-control valueInlineShape"
                         value={inlineShape}

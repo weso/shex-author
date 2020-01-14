@@ -39,7 +39,6 @@ function EditorComp() {
              
             y.on('humanEvent', function(shapes) {
                 Editor.getInstance().draw(shapes);
-                console.log(shapes)
             });
 
 

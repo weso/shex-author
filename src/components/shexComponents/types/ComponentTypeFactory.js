@@ -9,9 +9,10 @@ import PrefixedComp from'./concrete/PrefixedComp';
 function ComponentTypeFactory (props) {
 
     const {shape,triple,value,type,instance} = props;
+    console.log(instance)
     
     if(instance == 'iriRef'){
-        
+
         return <IriComp shape={shape} triple={triple} type={type}/>
 
     }else if(instance == 'prefixedShape'){
@@ -25,7 +26,6 @@ function ComponentTypeFactory (props) {
 
     }
     else if(instance == 'prefixedValue'){
-
         return <PrefixedComp  element={value}/>
 
     }

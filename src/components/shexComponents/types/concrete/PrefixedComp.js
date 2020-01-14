@@ -9,7 +9,10 @@ function PrefixedComp (props) {
     const [value,setValue] = useState(element.getInitialValue());
     const [prefix,setPrefix] = useState(element.getInitialPrefix());
 
+
+
     const handleTypeChange = (e) =>{
+        console.log(element)
         const value = e.target.value;
         element.setTypeValue(value);            
         context.emit();

@@ -8,9 +8,7 @@ class Value {
     }
 
     setType(type){
-        console.log(type)
         this.type = this.factory.createType(type,'valueName');
-        console.log(this.type)
     }
 
     getType(){
