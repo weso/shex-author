@@ -63,7 +63,7 @@ function ShapeComponent (props) {
                     <div className="row qualifier" >
                             <label className="col-2 qualiLabel">Qualifier </label>
                             <div className="col-2">
-                                <Qualifier shape={shape} scope='shape'/>
+                                <Qualifier element={shape}/>
                             </div>
                     </div>
                 </Collapse>

@@ -1,10 +1,12 @@
 import TypesFactory from './types/typesFactory';
+import BlankKind from './types/concreteTypes/kinds/blankKind';
 
 class Value {
 
-    constructor(type) {
+    constructor(type,qualifier=new BlankKind()) {
         this.type = type;
         this.factory = new TypesFactory();
+        this.qualifier = qualifier;
     }
 
     setType(type){
@@ -31,8 +33,12 @@ class Value {
         this.type.setPrefix(prefix);
     }
 
+    setQualifier(qualifier){
+        this.qualifier = this.factory.createType(qualifier,'shapeName');
+    }
+
     toString(){
-        return this.type.toString();
+        return this.type.toString()+' '+this.qualifier;
     }
       
 }

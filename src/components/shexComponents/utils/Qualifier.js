@@ -7,26 +7,13 @@ import shexUtils from '../../../utils/shexUtils';
 function Qualifier (props) {
 
     const context = useContext(ShapesContext);
-    const {shape,triple,value,scope} = props;
-
-    let initialValue;
-    if(scope=='shape'){
-        initialValue = shape.qualifier.getTypeName();
-    }else{
-         initialValue = triple.value.value;
-    }
-
-
-    const [valueType,setValueType] = useState(initialValue)
+    const {element} = props;
+    const [valueType,setValueType] = useState(element.qualifier.getTypeName())
 
     const handleTypeChange = (e) =>{
         let newType = e.target.value;
-        if(scope=='shape'){
-            shape.setQualifier(newType);
-        }else{
-            triple.value.value =newType;
-        }
-
+        element.setQualifier(newType);
+        console.log(element)
         context.emit();
         setValueType(newType);
     }
