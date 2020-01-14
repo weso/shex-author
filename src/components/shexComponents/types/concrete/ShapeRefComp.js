@@ -43,7 +43,7 @@ function ShapeRefComp (props) {
                   }
                 </select>
 
-                <Qualifier element={triple.value}/>
+                <Qualifier element={triple.value.type}/>
             </div>
 
     

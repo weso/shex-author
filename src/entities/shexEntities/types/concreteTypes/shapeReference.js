@@ -1,9 +1,14 @@
 import Type from '../type';
+import TypesFactory from '../typesFactory';
+import BlankKind from './kinds/blankKind';
+
 
 class ShapeReference extends Type{
 
-    constructor(value=''){
+    constructor(value='',qualifier=new BlankKind()){
         super(value);
+        this.qualifier = qualifier;
+        this.factory = new TypesFactory();
     }
 
     getTypeName(){
@@ -14,11 +19,16 @@ class ShapeReference extends Type{
         this.value=value;
     }
 
+    setQualifier(qualifier){
+        this.qualifier = this.factory.createType(qualifier,'shapeName');
+    }
+
+
     toString(){
         if(this.value=='shape'){
-            return '';
+            return this.qualifier;
         }
-        return this.value;
+        return this.value+' '+this.qualifier;
     }
 
 
