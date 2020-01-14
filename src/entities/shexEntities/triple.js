@@ -1,11 +1,12 @@
 import TypesFactory from './types/typesFactory';
 import IrirRef from './types/concreteTypes/iriRef';
 import InlineShape from './shexUtils/inlineShape';
+import Value from './value';
 
 class Triple {
 
 
-    constructor(id,type=new IrirRef('tripleName'),value=new IrirRef(),inlineShape=new InlineShape(),cardinality='') {
+    constructor(id,type=new IrirRef('tripleName'),value=new Value(new IrirRef()),inlineShape=new InlineShape(),cardinality='') {
         this.id = id;
         this.type = type;
         this.value = value;
@@ -31,10 +32,6 @@ class Triple {
        this.type = this.factory.createType(type,'tripleName');
      }
 
-    setValue(value){
-        this.value = this.factory.createType(value,'valueName');;
-    }
-
     setCardinality(cardinality){
         this.cardinality = cardinality;
     }
@@ -48,6 +45,10 @@ class Triple {
     }
 
 
+    setValue(value){
+        this.value=value;
+    }
+
     getValue(){
        return this.value;
     }
@@ -56,6 +57,28 @@ class Triple {
     getCardinality(){
         return this.cardinality;
     }
+
+
+
+
+    getInitialValue(){
+        return this.type.value;
+    }
+
+    getInitialPrefix(){
+        return this.type.prefix.prefixValue;
+    }
+
+    setTypeValue(value){
+        this.type.setValue(value);
+    }
+
+    setPrefix(prefix){
+         this.type.setPrefix(prefix);
+    }
+
+
+
 
 
 

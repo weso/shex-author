@@ -13,9 +13,9 @@ function ShapeTypeComp (props) {
    
         const handleChange = (e)=>{
                 const type = e.target.value;
-                shape.setType(type)
+                shape.setType(type);
                 context.emit();
-                setType(type)
+                setType(type);
         }
 
         const handleColapse = (e)=>{
@@ -35,7 +35,7 @@ function ShapeTypeComp (props) {
                             onChange={handleChange}>
 
                             <option value="iriRef">IriRef</option>
-                            <option value="prefixedIri">Prefixed</option>
+                            <option value="prefixedShape">Prefixed</option>
                             <option value="bnodeType">BNode</option>
                         </select>
 

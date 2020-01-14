@@ -13,12 +13,13 @@ class TypesFactory{
 
     createType(type,context){
 
+        console.log(type)
         let retType;
         if(type == 'iriRef'){
             retType = new IriRef(context);
         }
         
-        if(type == 'prefixedIri'){
+        if(type == 'prefixedShape' || type == 'prefixedTriple' || type == 'prefixedValue'){
             retType = new PrefixedIri(context);
         }
 

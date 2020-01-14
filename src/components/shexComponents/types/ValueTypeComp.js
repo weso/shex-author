@@ -29,7 +29,7 @@ function ValueTypeComp(props) {
                                     <option value="primitive">Primitive</option>
                                     <option value="shape">Shape</option>
                                     <option value="iriRef">IriRef</option>
-                                    <option value="prefixedIri">Prefixed</option>
+                                    <option value="prefixedValue">Prefixed</option>
                                     <option value="literal">Literal</option>
                                     <option value="nonliteral">NonLiteral</option>
                                     <option value="iri">IRI</option>

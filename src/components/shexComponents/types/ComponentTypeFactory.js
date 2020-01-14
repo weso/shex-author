@@ -7,6 +7,7 @@ import PrefixedValue from './concrete/PrefixedValue';
 import BNodeComp from './concrete/BNodeComp';
 import PrimitiveComp from './concrete/PrimitiveComp';
 import ShapeRefComp from './concrete/ShapeRefComp';
+import PrefixedTest from'./concrete/PrefixedTest';
 
 function ComponentTypeFactory (props) {
 
@@ -18,17 +19,17 @@ function ComponentTypeFactory (props) {
 
     }else if(instance == 'prefixedShape'){
 
-        return <PrefixedShape  shape={shape}/>
+        return <PrefixedTest  element={shape}/>
 
     }
     else if(instance == 'prefixedTriple'){
 
-        return <PrefixedTriple  triple={triple}/>
+        return <PrefixedTest  element={triple}/>
 
     }
     else if(instance == 'prefixedValue'){
 
-        return <PrefixedValue  triple={triple}/>
+        return <PrefixedTest  element={triple}/>
 
     }
     else if(instance == 'bnodeType'){

@@ -38,7 +38,7 @@ function TripleTypeComp (props){
                                 onChange={handleChange}>
 
                                 <option value="iriRef">IriRef</option>
-                                <option value="prefixedIri">Prefixed</option>
+                                <option value="prefixedTriple">Prefixed</option>
                                 
                         </select>
 
