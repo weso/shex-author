@@ -96,7 +96,7 @@ function App() {
                     emit:emit,
                     visualize:visualize
                   }
-                }>
+            }>
                 
                   <Nav colapseAll={colapseAll}/>
                   <div className="globalContainer">
@@ -117,7 +117,7 @@ function App() {
                     <VisualizeComp svg={svg}/>
                   </Collapse>   
                   
-            </ShapesContext.Provider>
+          </ShapesContext.Provider>
           );
                        
 }

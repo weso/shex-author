@@ -12,7 +12,7 @@ function PrefixSelector (props){
     return (<div>
                 <button className='form-control' onClick={handleChange}> Example Prefix</button>
                 {
-                    Object.keys(namespaces).map( (key) =>{return 
+                    Object.keys(namespaces).map( (key) =>{return( 
                         <div key={key}>
                             <select  className='form-control' onChange={handleChange}>
                                 <option>{key}</option>
@@ -23,7 +23,7 @@ function PrefixSelector (props){
                                     }
                             </select>
                         </div>             
-                    }) 
+                    )}) 
                 }
             </div>);          
 }
