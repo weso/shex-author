@@ -53,50 +53,45 @@ function ShapeComponent (props) {
 
 
     return (
-        <div className="shapes-container">
-                     
-                <div className="row shapes-header">
-                    <ShapeTypeComp shape={shape} collapse={handleQualiCollapse}/>                
-                </div>
-        
-                <Collapse isOpen={isQualiOpen}  timeout={110}>
-                    <div className="row qualifier" >
-                            <label className="col-2 qualiLabel">Qualifier </label>
-                            <div className="col-2">
-                                <Qualifier element={shape}/>
-                            </div>
-                    </div>
-                </Collapse>
-           
-
-         
-                <button className="col-xs-1  colapseTriplesBtn mdc-icon-button material-icons btn-primary"
-                        onClick={()=>handleTriplesColapse()}>
-                        {colapseBtn}
-                </button>
-                
-
-                <Collapse isOpen={isTriplesOpen} >
-                    <div className="triples-container col-xs ">
-                            {triples.map(triple =>
-
-                                <TripleComponent key={triple.id}
-                                                shape={shape} 
-                                                triple={triple}
-                                                deleteTriple={deleteTriple}
-                                /> 
-                                    
-                            )}
-                    </div>
-
-                    <button className="btn-primary addPropButton col-xs-3"
-                            onClick={handleChange}>
-                            + Triple
-                    </button>
-                
-                </Collapse>
-                
+        <div className="shapes-container"> 
+            <div className="row shapes-header">
+                <ShapeTypeComp shape={shape} collapse={handleQualiCollapse}/>                
             </div>
+    
+            <Collapse isOpen={isQualiOpen}  timeout={110}>
+                <div className="row qualifier" >
+                    <label className="col-2 qualiLabel">Qualifier </label>
+                    <div className="col-2">
+                        <Qualifier element={shape}/>
+                    </div>
+                </div>
+            </Collapse>
+                
+            <button className="col-xs-1  colapseTriplesBtn mdc-icon-button material-icons btn-primary"
+                    onClick={()=>handleTriplesColapse()}>
+                    {colapseBtn}
+            </button>
+            
+
+            <Collapse isOpen={isTriplesOpen} >
+                <div className="triples-container col-xs ">
+                    {triples.map(triple =>
+
+                        <TripleComponent key={triple.id}
+                                        shape={shape} 
+                                        triple={triple}
+                                        deleteTriple={deleteTriple}
+                        /> 
+                    )}
+                </div>
+
+                <button className="btn-primary addPropButton col-xs-3"
+                        onClick={handleChange}>
+                        + Triple
+                </button>
+            
+            </Collapse>
+        </div>
      
     );
                                    
