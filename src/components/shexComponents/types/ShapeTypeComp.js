@@ -29,31 +29,24 @@ function ShapeTypeComp (props) {
 
 
         return (<div className="row col-10 headerSelectors">
-                        <label className="col-xs-1 tripleLabel">Shape </label>
-                        <select className="col-2 form-control tripleType" 
-                            value={type} 
-                            onChange={handleChange}>
+                    <label className="col-xs-1 tripleLabel">Shape </label>
+                    <select className="col-2 form-control tripleType" value={type} onChange={handleChange}>
+                        <option value="iriShape">IriRef</option>
+                        <option value="prefixedShape">Prefixed</option>
+                        <option value="bnodeType">BNode</option>
+                    </select>
 
-                            <option value="iriShape">IriRef</option>
-                            <option value="prefixedShape">Prefixed</option>
-                            <option value="bnodeType">BNode</option>
-                        </select>
+                    <ComponentTypeFactory shape={shape} triple={null} instance={shape.type.getTypeName()}/>
 
-                        <ComponentTypeFactory shape={shape} 
-                                    triple={null}
-                                    instance={shape.type.getTypeName()}/>
+                    <button className="col-xs-1  colapseButton mdc-icon-button material-icons btn-primary"
+                            onClick={handleColapse}>
+                            {colapseBtn}
+                    </button>
 
-                        <button className="col-xs-1  colapseButton mdc-icon-button material-icons btn-primary"
-                                onClick={handleColapse}>
-                                {colapseBtn}
-                        </button>
-
-
-                        <button className="col-xs-1 deletePropButton mdc-icon-button material-icons btn-danger" 
-                            onClick={()=>context.deleteShape(shape.id)}>
-                            delete
-                        </button>
-                
+                    <button className="col-xs-1 deletePropButton mdc-icon-button material-icons btn-danger" 
+                        onClick={()=>context.deleteShape(shape.id)}>
+                        delete
+                    </button>
                 </div>);
 
                                    

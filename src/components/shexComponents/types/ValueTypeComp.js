@@ -22,27 +22,20 @@ function ValueTypeComp(props) {
     }
 
     return  (<div className="row col-10">
-                    <select className="col-5 form-control valueType"
-                                    value={valueType} 
-                                    onChange={handleChange}>
+                <select className="col-5 form-control valueType" value={valueType} onChange={handleChange}>
+                    <option value="primitive">Primitive</option>
+                    <option value="shape">Shape</option>
+                    <option value="iriValue">IriRef</option>
+                    <option value="prefixedValue">Prefixed</option>
+                    <option value="literal">Literal</option>
+                    <option value="nonliteral">NonLiteral</option>
+                    <option value="iri">IRI</option>
+                    <option value="bnode">BNODE</option>
+                </select>
 
-                                    <option value="primitive">Primitive</option>
-                                    <option value="shape">Shape</option>
-                                    <option value="iriValue">IriRef</option>
-                                    <option value="prefixedValue">Prefixed</option>
-                                    <option value="literal">Literal</option>
-                                    <option value="nonliteral">NonLiteral</option>
-                                    <option value="iri">IRI</option>
-                                    <option value="bnode">BNODE</option>
-                                </select>
+                <ComponentTypeFactory shape={shape} triple={triple} value={value} instance={value.type.getTypeName()}/>
 
-
-                                <ComponentTypeFactory shape={shape} 
-                                    triple={triple}
-                                    value={value}
-                                    instance={value.type.getTypeName()}/>
-
-                    </div>);
+            </div>);
 
 }
 

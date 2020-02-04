@@ -18,15 +18,13 @@ function Qualifier (props) {
     }
 
 
-    return (<select className="col form-control valueInlineShape"
-                        value={valueType}
-                        onChange={handleTypeChange}>
-                    <option value='shape'></option>
-                    <option value='iri'>IRI</option>
-                    <option value="literal">Literal</option>
-                    <option value="nonliteral">NonLiteral</option>
-                    <option value="bnode">BNODE</option>
-                </select>
+    return (<select className="col form-control valueInlineShape" value={valueType} onChange={handleTypeChange}>
+                <option value='shape'></option>
+                <option value='iri'>IRI</option>
+                <option value="literal">Literal</option>
+                <option value="nonliteral">NonLiteral</option>
+                <option value="bnode">BNODE</option>
+            </select>
 
     );
     

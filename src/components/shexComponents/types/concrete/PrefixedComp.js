@@ -24,13 +24,10 @@ function PrefixedComp (props) {
     }
 
     return  (<div className='row col-6'>
-                <select className=' col-5 form-control'
-                        value={prefix}
-                        onChange={handlePrefixChange}>
-                
+                <select className=' col-5 form-control' value={prefix} onChange={handlePrefixChange}>
                     { 
                         context.prefixes.map((pre) =>{
-                        return <option key={pre.key} value={pre.val}>{pre.key}</option>
+                            return <option key={pre.key} value={pre.val}>{pre.key}</option>
                         })
                     }
                 </select>
@@ -42,7 +39,6 @@ function PrefixedComp (props) {
             </div>); 
               
 }
-
 
 export default PrefixedComp;
 

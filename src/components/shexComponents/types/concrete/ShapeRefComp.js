@@ -30,17 +30,14 @@ function ShapeRefComp (props) {
     }
 
     return (<div className='row col'>
-                <select className="col form-control valueInlineShape"
-                        value={inlineShape}
-                        onChange={handleInlineChange}>
+                <select className="col form-control valueInlineShape" value={inlineShape} onChange={handleInlineChange}>
                     <option value=''></option>
                     { 
-                    context.shapes.map(shape =>{
-                      return <option key={shape.id} value={shape.id}>{'@'+shape.type}</option>
+                        context.shapes.map(shape =>{
+                            return <option key={shape.id} value={shape.id}>{'@'+shape.type}</option>
                     })
                   }
                 </select>
-
                 <Qualifier element={triple.value.type}/>
             </div>
 

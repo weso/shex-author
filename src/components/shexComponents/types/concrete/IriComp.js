@@ -14,11 +14,11 @@ function IriComp (props) {
       setValue(value);
     }
     
-    return (<input className={element.type.context+' form-control col-4'} 
-                      context="text" 
-                      value={value}
-                      onChange={handleChange}/>);
-    
+    return (<input  className={element.type.context+' form-control col-4'} 
+                    context="text" 
+                    value={value}
+                    onChange={handleChange}/>);
+  
 }
 
 export default IriComp;
