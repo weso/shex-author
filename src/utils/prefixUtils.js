@@ -10,3 +10,12 @@ export function getPrefix(prefix){
       }
       return new Prefix();
 }
+
+export function getUri(prefix,namespaces){
+  for(let def in namespaces){
+    for(let p in namespaces[def]){
+      if(p==prefix)
+        return namespaces[def][p];
+    }
+  }
+}

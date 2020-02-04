@@ -12,10 +12,8 @@ function Nav (props) {
                     <a className="navItems" target="_blank" href="https://www.linkedin.com/in/pablo-men%C3%A9ndez-su%C3%A1rez-106262a7/">About me</a>
                 </div>
             </nav>);
-    
-    
+        
 }
-
 
 export default Nav;
 
