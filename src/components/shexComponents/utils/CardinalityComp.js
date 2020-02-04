@@ -8,7 +8,6 @@ function CardinalityComp (props) {
     const context = useContext(ShapesContext);
     const [cardinality,setCardinality] = useState(triple.cardinality.toString());
     
-
     const handleChange = (event) => {
    
         let cardinality = event.target.value;
@@ -18,21 +17,14 @@ function CardinalityComp (props) {
        
     }
 
-
     return(<div className='row col-4'>    
-                <select className="col  form-control tripleCardinality"
-                    value={cardinality}
-                    onChange={handleChange}>
-
-                            <option value="">Exactly one</option>
-                            <option value="*">Zero or more</option>
-                            <option value="+">One at least</option>
-                            <option value="?">One or none</option>
+                <select className="col  form-control tripleCardinality" value={cardinality} onChange={handleChange}>
+                    <option value="">Exactly one</option>
+                    <option value="*">Zero or more</option>
+                    <option value="+">One at least</option>
+                    <option value="?">One or none</option>
                 </select>
-                
             </div>);
-
-  
 
 }
 

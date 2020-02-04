@@ -7,12 +7,11 @@ import EditorComp from './components/EditorComp';
 import AssistantComp from './components/AssistantComp';
 import VisualizeComp from  './components/VisualizeComp';
 
-import LateralNav from './components/navComponents/LateralNav';
+import Toolbar from './components/navComponents/Toolbar';
 import Nav from './components/navComponents/Nav';
 
 import shexUtils from './utils/shexUtils';
-
-import Editor from './entities/editor';
+import {getRequestOptions} from './utils/visualizeUtils'; 
 
 
 export const ShapesContext = React.createContext();
@@ -23,40 +22,16 @@ function App() {
     const [svg,setSvg] = useState('');
     const [prefixes,setPrefixes] = useState([{key:'',val:'http://example.org/'}]);
     const [isAssistantOpen, setAssistantOpen] = useState(true);
-    const [isVisualizeOpen, setVisualizeOpen] = useState(false);
-    const [isLateralNavOpen, setLateralNavOpen] = useState(true);
+    const [isVisualizeOpen, setVisualizeOpen] = useState(true);
+    const [isToolbarOpen, setToolbarOpen] = useState(true);
 
     const assistantToggle = () => setAssistantOpen(!isAssistantOpen); 
     const visualizeToggle = () => setVisualizeOpen(!isVisualizeOpen);
-    const lateralNavToggle = () => setLateralNavOpen(!isLateralNavOpen);
+    const lateralNavToggle = () => setToolbarOpen(!isToolbarOpen);
     const colapseAll = () =>{
-      setAssistantOpen(!isLateralNavOpen);
-      setVisualizeOpen(!isLateralNavOpen);
-      setLateralNavOpen(!isLateralNavOpen);
-    }
-
-
-    const darkStyle = {
-        background: '#222',
-        color:'white'
-    }
-
-    const lightStyle = {
-        background: '#eaf3ff',
-        color:'black'
-    }
-
-    const [style,setStyle] = useState(lightStyle);
-    let theme = 'light';
-
-    const changeThemeStyle = () =>{
-      if(theme=='light'){//I don't know why this doesn't work with style state
-        setStyle(darkStyle);
-        theme='dark';
-      }else{
-        theme='light';
-        setStyle(lightStyle);
-      }
+      setAssistantOpen(!isToolbarOpen);
+      setVisualizeOpen(!isToolbarOpen);
+      setToolbarOpen(!isToolbarOpen);
     }
 
 
@@ -88,31 +63,9 @@ function App() {
       setPrefixes(newPrefixes);
     }
     
-
-    const getSchema = function(){
-      let yashe = Editor.getInstance().getYashe();
-      if(yashe){
-          return yashe.getValue();
-      }
-      return '';
-    }
-
-
     const visualize = function(){
 
-        let bodyFormData = new FormData();
-        bodyFormData.set('schema', getSchema());
-        bodyFormData.set('schemaFormat', 'ShExC');
-        bodyFormData.set('schemaEngine', 'SHEX');
-
-
-        axios({
-            method: 'post',
-            url: 'http://rdfshape.weso.es:8080/api/schema/visualize',
-            data: bodyFormData,
-            config: { headers: {'Content-Type': 'multipart/form-data' }}
-        })
-        .then(function (response) {
+        axios(getRequestOptions()).then(function (response) {
             //handle success
             if(response.data.svg != undefined){
               if(response.data.svg.startsWith('<?xml')){
@@ -127,14 +80,12 @@ function App() {
             console.log(response);
         });
 
-        
     }
 
 
     return (
             
-            <ShapesContext.Provider 
-                value={
+            <ShapesContext.Provider value={
                   {
                     shapes,shapes,
                     addShape:addShape,
@@ -143,38 +94,32 @@ function App() {
                     prefixes:prefixes,
                     updatePrefixes:updatePrefixes,
                     emit:emit,
-                    currentStyle:style,
-                    changeThemeStyle:changeThemeStyle,
                     visualize:visualize
                   }
-                }>
+            }>
                 
-                <Nav colapseAll={colapseAll}/>
-              
-                <div className="globalContainer">
-                  <div className="row comps">                     
-                      <Collapse isOpen={isLateralNavOpen} className="lateralNav col-xs-1">
-                          <LateralNav  assistantToggle={assistantToggle} visualizeToggle={visualizeToggle}/>
-                      </Collapse> 
-                      
+                  <Nav colapseAll={colapseAll}/>
+                  <div className="globalContainer">
+                    <div className="row comps">                     
+                        <Collapse isOpen={isToolbarOpen} className="lateralNav col-xs-1">
+                            <Toolbar  assistantToggle={assistantToggle} visualizeToggle={visualizeToggle}/>
+                        </Collapse> 
 
-                      <Collapse isOpen={isAssistantOpen} className="col">
-                          <AssistantComp/>
-                      </Collapse> 
-                      
-                      <EditorComp />
+                        <Collapse isOpen={isAssistantOpen} className="col">
+                            <AssistantComp/>
+                        </Collapse> 
                         
+                        <EditorComp />
+                          
+                    </div>
                   </div>
-                </div>
-                <Collapse isOpen={isVisualizeOpen} >
-                  <VisualizeComp svg={svg}/>
-                </Collapse>   
-            </ShapesContext.Provider>
+                  <Collapse isOpen={isVisualizeOpen} >
+                    <VisualizeComp svg={svg}/>
+                  </Collapse>   
+                  
+          </ShapesContext.Provider>
           );
                        
-           
-  
-    
 }
 
 

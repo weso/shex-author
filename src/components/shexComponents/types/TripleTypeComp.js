@@ -33,19 +33,12 @@ function TripleTypeComp (props){
 
         return (<div className="row col triples-header">
                         <label className="col-xs-1 tripleLabel">Triple</label>                        
-                        <select className="col-2 form-control tripleType" 
-                                value={type} 
-                                onChange={handleChange}>
-
-                                <option value="iriRef">IriRef</option>
-                                <option value="prefixedIri">Prefixed</option>
-                                
+                        <select className="col-2 form-control tripleType" value={type} onChange={handleChange}>
+                                <option value="iriTriple">IriRef</option>
+                                <option value="prefixedTriple">Prefixed</option>
                         </select>
 
-                        <ComponentTypeFactory shape={shape} 
-                                        triple={triple}
-                                        type='triple'
-                                        instance={triple.type.getTypeName()}/>
+                        <ComponentTypeFactory shape={shape} triple={triple} instance={triple.type.getTypeName()}/>
                           
                         <button className="col-xs-1 colapseButton mdc-icon-button material-icons btn-primary"
                                 onClick={handleCollapseBtn}>
@@ -56,10 +49,6 @@ function TripleTypeComp (props){
                                 onClick={() => deleteTriple(triple.id)}>
                                 delete
                         </button>
-
-                       
-
-                         
                 </div>);
 
 }
