@@ -1,4 +1,4 @@
-/*
+
 
 .assistantContainer{
     display: grid;
@@ -10,11 +10,11 @@
   
     grid-gap: 10px;
 
-    background: black;
+    
     padding: 2%;
 }
 
-*/
+
 
 .comps{
     border-radius: 50px;
@@ -28,28 +28,80 @@
 
 
 .shape{
-    background: slateblue;
-    padding: 10px;
+   
     color: white;
     text-align: center;
     
     display: grid;
-    border-radius: 10px;
+    
 }
 
+.shapeName{
+    
+}
+
+
+
 .header{
-    background: white;
+    background: #F0F8FF;
     padding: 10px;
     color: black;
     text-align: left;
 
+    border: 1px solid grey;
+    border-radius: 10px 10px 0px 0px;
+    display: grid;
+    grid-template-columns: 10% 75% 10%;
+    grid-gap: 10px;
+}
+
+
+.box1{ grid-area: box1;}
+.box2{ grid-area: box2;}
+.box3{ grid-area: box3;}
+
+.griBox{ 
+    display: grid;
+    grid-template-columns: 10% 10% 60%;
+    grid-gap: 10px;
+}
+
+
+.custom{
+    background: white;
+    padding: 10px;
+    color: black;
+
+    border-left: 1px solid grey;
+    border-right: 1px solid grey;
+    border-bottom: 1px solid grey;
+    border-radius: 0px 0px 10px 10px;
 
     display: grid;
-    grid-template-columns: 10% 50% 5% 5%;
+    grid-template-areas: 
+        'box1 box1 box1'
+        'box2 box2 box2'
+        'box3 box3 box3' ;
+    text-align: left;
+    grid-gap: 5px;
 }
+
+
+
+.customSelector{
+    border-radius: 10px;
+    background: white;
+    outline: none;
+}
+
+
+
 
 .customShape{
     background: green;
     padding: 10px;
     color: white;
 }
+
+
+
