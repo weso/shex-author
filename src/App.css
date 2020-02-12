@@ -249,6 +249,7 @@ svg{
 
 .btns{
 	background-color: transparent !important;
+	transition: transform 0.2s;
 	height: 50px;
 	width: 70px;
 	border:none;
@@ -263,6 +264,7 @@ svg{
 
 .btns:hover{
 	background-color: transparent !important;
+	transform: scale(1.5);
 	filter: 
 			invert(0.4)
 			sepia(0.5)
@@ -429,13 +431,11 @@ html{
 
 
 .inputfileBtn{
-	width: 0%;
+	display: none;
 }
 
 .uploadBtn{
-	margin-left: -30px;
-	margin-top: -20px;
-	margin-bottom: 20px;
+	background-color: red;
 }
 
 .light{
