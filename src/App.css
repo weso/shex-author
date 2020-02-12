@@ -229,7 +229,6 @@ svg{
 
 .lateralNav{
 	background-color: white !important;
-	border-right: 1px solid grey;
 }
 
 .selector{
@@ -376,7 +375,7 @@ svg{
 .comps{
 	height: 100% !important; 
 	width: 100% !important; 
-	border: 1px solid grey;
+	
 	margin-left: 1px;
 	background-color: #f8f8ff;
 }
@@ -418,6 +417,7 @@ html{
 	margin-left: 1px;
 	float: center;
 	border: 1px solid grey;
+	border-radius: 20px;
 	background-color: white;
 	
 }

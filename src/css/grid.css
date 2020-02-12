@@ -1,0 +1,55 @@
+/*
+
+.assistantContainer{
+    display: grid;
+    grid-template-columns: 100%;
+   
+    align-content: center;
+  
+
+  
+    grid-gap: 10px;
+
+    background: black;
+    padding: 2%;
+}
+
+*/
+
+.comps{
+    border-radius: 50px;
+    
+}
+
+.lateralNav {
+    border: 1px solid grey;
+    border-radius:  20px 0px 0px 20px;
+}
+
+
+.shape{
+    background: slateblue;
+    padding: 10px;
+    color: white;
+    text-align: center;
+    
+    display: grid;
+    border-radius: 10px;
+}
+
+.header{
+    background: white;
+    padding: 10px;
+    color: black;
+    text-align: left;
+
+
+    display: grid;
+    grid-template-columns: 10% 50% 5% 5%;
+}
+
+.customShape{
+    background: green;
+    padding: 10px;
+    color: white;
+}
