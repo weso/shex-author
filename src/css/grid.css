@@ -33,7 +33,7 @@
     text-align: center;
     display: grid;
     margin-top: 60px;
-    
+
 }
 
 
@@ -46,12 +46,22 @@
     border-radius: 10px;
 }
 
+.addTripleButton{
+    margin-top: 10px;
+    background: #EFDECD;
+    border-radius: 10px;
+}
+
 .addShapeButton:focus{
     outline: none;
 }
 
+.addTripleButton:focus{
+    outline: none;
+}
+
 .header{
-    background: #C4E4FF ;
+    background: #C6E2FF ;
     padding: 10px;
     color: black;
     text-align: left;
@@ -76,8 +86,8 @@
     border-bottom: 1px solid grey;
     border-radius: 0px 0px 10px 10px ;
     display: grid;
-    grid-template-columns: 100%;
-  
+    grid-template-columns: 10% 90%;
+    
 }
 
 .tripleHeader{
@@ -89,23 +99,48 @@
     border: 1px solid grey;
     border-radius: 10px 10px 0px 0px;
     display: grid;
-    grid-template-columns: 10% 30% 20% 20% 5% 5%;
+    grid-template-columns: 10% 30% 20% 5% 5% 5%;
     grid-gap: 10px;
+   
 }
 
+.customColapse{
+    margin-bottom: 10px;
+    grid-column: 2/3;
+}
 
 
 
 .box1{ grid-area: box1;}
 .box2{ grid-area: box2;}
 .box3{ grid-area: box3;}
+.box4{ grid-area: box4;}
 
-.griBox{ 
+.gridBox{ 
     display: grid;
     grid-template-columns: 10% 10% 54%;
     grid-gap: 10px;
 }
 
+.gridTriplesBox{ 
+    display: grid;
+    grid-template-columns: 7% 10% 54%;
+    grid-gap: 30px;
+}
+
+.customTriple{
+    background: white;
+    padding: 10px;
+    color: black;
+
+    border-left: 1px solid grey;
+    border-right: 1px solid grey;
+    border-bottom: 1px solid grey;
+    border-radius: 0px 0px 10px 10px;
+
+    display: grid;
+    grid-template-columns: 100%;
+}
 
 .custom{
     background: white;
@@ -121,7 +156,8 @@
     grid-template-areas: 
         'box1 box1 box1'
         'box2 box2 box2'
-        'box3 box3 box3' ;
+        'box3 box3 box3'
+        'box4 box4 box4' ;
     text-align: left;
     grid-gap: 5px;
 }
