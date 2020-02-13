@@ -3,14 +3,8 @@
 .assistantContainer{
     display: grid;
     grid-template-columns: 100%;
-   
     align-content: center;
-  
-
-  
     grid-gap: 10px;
-
-    
     padding: 2%;
 }
 
@@ -32,7 +26,7 @@
     color: #f8f8ff;
     text-align: center;
     display: grid;
-    margin-top: 60px;
+    margin-top: 10px;
 
 }
 
@@ -71,7 +65,7 @@
 
 
 .triples{
-    background: white;
+    background: #EBF4FF;
     padding: 10px;
     color: black;
     text-align: left;
@@ -132,7 +126,7 @@
 }
 
 .customTriple{
-    background: white;
+    background: #EFE8E1;
     padding: 10px;
     color: black;
 
@@ -147,7 +141,7 @@
 }
 
 .custom{
-    background: white;
+    background: #EBF4FF;
     padding: 10px;
     color: black;
 
