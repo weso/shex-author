@@ -9,7 +9,11 @@ function AssistantComp (props) {
 
     const context = useContext(ShapesContext);
     const [isCustomOpen,setCustomOpen] = useState(false);
+    const [isTripleCustomOpen,setTripleCustomOpen] = useState(false);
+    const [isTriplesOpen,setTriplesOpen] = useState(true);
     const [isPrefix,setPrefix] = useState(true);
+
+    const [colapseBtn,setColapseBtn] = useState('menu_open');
 
     /*
  
@@ -31,11 +35,25 @@ function AssistantComp (props) {
                             + Shape
                     </button>
 
+    
     */
-    const click = function(){
 
 
-    setCustomOpen(!isCustomOpen);
+    const customize = function(){
+        setCustomOpen(!isCustomOpen);
+        setTriplesOpen(false);
+        setColapseBtn('menu');
+    }
+
+    const triples = function(){
+        setCustomOpen(false);
+        setTriplesOpen(!isTriplesOpen);
+
+        if(colapseBtn=='menu'){
+            setColapseBtn('menu_open');
+        }else{
+            setColapseBtn('menu');
+        }
     }
 
      const open = function(evt){
@@ -47,10 +65,17 @@ function AssistantComp (props) {
             
     }
 
-  const notify = function(evt){
-
-      console.log(evt.target.checked)
+    const del = function(id){
+        context.deleteShape(id);
     }
+
+
+     const customizeTriple = function(){
+        setTripleCustomOpen(!isTripleCustomOpen);
+        //setTriplesOpen(false);
+        //setColapseBtn('menu');
+    }
+
 
     return (<div id='assistant-container' className='assistantContainer'> 
 
@@ -61,13 +86,18 @@ function AssistantComp (props) {
                             return  <div className="shape" key={shape.id}>
 
             <div className="header">
-                <label className="">Shape </label>
+            
+                <label className="shapeNameLabel">Shape </label>
                 <input className="form-control shapeName"/>
-                <button className="accordion" onClick={click}>Customize</button>
-
+                <button className="accordion mdc-icon-button material-icons" onClick={customize}>build</button>
+                <button className="deleteShapeBtn mdc-icon-button material-icons" onClick={()=>del(shape.id)}>delete</button>
+                <div/>
+                <div/>
+                <button className="triplesBtn mdc-icon-button material-icons" onClick={triples}>{colapseBtn}</button>
+             
             </div>
 
-
+            
             <Collapse isOpen={isCustomOpen} >
                     <div className="custom">
                         
@@ -105,6 +135,191 @@ function AssistantComp (props) {
                         </div>
                     </div>
             </Collapse> 
+
+
+            <Collapse isOpen={isTriplesOpen} >
+                    <div className="triples">
+                        
+                        <div className="tripleHeader">
+                            <label>Triple </label>
+                            <input className="form-control shapeName"/>
+                            <select className="customSelector">
+                                    <option value="0">String</option>
+                                    <option value="1">Integer</option>
+                                    <option value="2">Boolean</option>
+                                    <option value="2">Date</option>
+                            </select>
+                            <select className="customSelector">
+                                <option value="">Exactly one</option>
+                                <option value="*">Zero or more</option>
+                                <option value="+">One at least</option>
+                                <option value="?">One or none</option>
+                            </select>
+                            <button className="accordion mdc-icon-button material-icons" onClick={customizeTriple}>build</button>
+                            <button className="deleteShapeBtn mdc-icon-button material-icons" onClick={()=>del(shape.id)}>delete</button>
+                        </div>
+
+                        <Collapse isOpen={isTripleCustomOpen} className='customColapse' >
+                            <div className="custom">
+                        
+                        <div className="box1 griBox">
+                            <div/>
+                            <label>Type </label>
+                            <select className="customSelector" onChange={open}>
+                                <option value="0">IriRef</option>
+                                <option value="1" selected>PrefixedIri</option>
+                                <option value="2">Bnode</option>
+                            </select>
+                        </div>
+
+                        <Collapse isOpen={isPrefix} className="box2 griBox">
+                            <div/>
+                            <label>Prefix </label>
+                            <select className="customSelector">
+                                <option value="0">default</option>
+                                <option value="1">xsd</option>
+                                <option value="2">schema</option>
+                            </select>
+                        </Collapse>
+
+
+                        <div className="box3 griBox">
+                            <div/>
+                            <label>Qualifier </label>
+                            <select className="customSelector">
+                                <option value="1">None</option>
+                                <option value="2">Iri</option>
+                                <option value="3">Literal</option>
+                                <option value="4">NonLiteral</option>
+                                <option value="5">Bnode</option>
+                            </select>
+                        </div>
+                    </div>
+                        </Collapse>      
+
+                        <div className="tripleHeader">
+                            <label>Triple </label>
+                            <input className="form-control shapeName"/>
+                            <select className="customSelector">
+                                    <option value="0">String</option>
+                                    <option value="1">Integer</option>
+                                    <option value="2">Boolean</option>
+                                    <option value="2">Date</option>
+                            </select>
+                            <select className="customSelector">
+                                <option value="">Exactly one</option>
+                                <option value="*">Zero or more</option>
+                                <option value="+">One at least</option>
+                                <option value="?">One or none</option>
+                            </select>
+                            <button className="accordion mdc-icon-button material-icons" onClick={customizeTriple}>build</button>
+                            <button className="deleteShapeBtn mdc-icon-button material-icons" onClick={()=>del(shape.id)}>delete</button>
+                        </div>
+
+                        <Collapse isOpen={isTripleCustomOpen} className='customColapse' >
+                            <div className="custom">
+                        
+                        <div className="box1 griBox">
+                            <div/>
+                            <label>Type </label>
+                            <select className="customSelector" onChange={open}>
+                                <option value="0">IriRef</option>
+                                <option value="1" selected>PrefixedIri</option>
+                                <option value="2">Bnode</option>
+                            </select>
+                        </div>
+
+                        <Collapse isOpen={isPrefix} className="box2 griBox">
+                            <div/>
+                            <label>Prefix </label>
+                            <select className="customSelector">
+                                <option value="0">default</option>
+                                <option value="1">xsd</option>
+                                <option value="2">schema</option>
+                            </select>
+                        </Collapse>
+
+
+                        <div className="box3 griBox">
+                            <div/>
+                            <label>Qualifier </label>
+                            <select className="customSelector">
+                                <option value="1">None</option>
+                                <option value="2">Iri</option>
+                                <option value="3">Literal</option>
+                                <option value="4">NonLiteral</option>
+                                <option value="5">Bnode</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                       
+                        
+
+                        </Collapse>   <div className="tripleHeader">
+                            <label>Triple </label>
+                            <input className="form-control shapeName"/>
+                            <select className="customSelector">
+                                    <option value="0">String</option>
+                                    <option value="1">Integer</option>
+                                    <option value="2">Boolean</option>
+                                    <option value="2">Date</option>
+                            </select>
+                            <select className="customSelector">
+                                <option value="">Exactly one</option>
+                                <option value="*">Zero or more</option>
+                                <option value="+">One at least</option>
+                                <option value="?">One or none</option>
+                            </select>
+                            <button className="accordion mdc-icon-button material-icons" onClick={customizeTriple}>build</button>
+                            <button className="deleteShapeBtn mdc-icon-button material-icons" onClick={()=>del(shape.id)}>delete</button>
+                        </div>
+
+                        <Collapse isOpen={isTripleCustomOpen} className='customColapse' >
+                            <div className="custom">
+                        
+                        <div className="box1 griBox">
+                            <div/>
+                            <label>Type </label>
+                            <select className="customSelector" onChange={open}>
+                                <option value="0">IriRef</option>
+                                <option value="1" selected>PrefixedIri</option>
+                                <option value="2">Bnode</option>
+                            </select>
+                        </div>
+
+                        <Collapse isOpen={isPrefix} className="box2 griBox">
+                            <div/>
+                            <label>Prefix </label>
+                            <select className="customSelector">
+                                <option value="0">default</option>
+                                <option value="1">xsd</option>
+                                <option value="2">schema</option>
+                            </select>
+                        </Collapse>
+
+
+                        <div className="box3 griBox">
+                            <div/>
+                            <label>Qualifier </label>
+                            <select className="customSelector">
+                                <option value="1">None</option>
+                                <option value="2">Iri</option>
+                                <option value="3">Literal</option>
+                                <option value="4">NonLiteral</option>
+                                <option value="5">Bnode</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                       
+                        
+
+                        </Collapse>              
+                    </div>
+            </Collapse> 
            
             
 
@@ -113,7 +328,7 @@ function AssistantComp (props) {
                     }
 
          <button id='addShapeButton' 
-                            className="btn-primary addShapeButton"
+                            className="addShapeButton"
                             onClick={context.addShape}>
                             + Shape
                     </button>

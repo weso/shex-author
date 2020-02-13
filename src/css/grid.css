@@ -29,21 +29,29 @@
 
 .shape{
    
-    color: white;
+    color: #f8f8ff;
     text-align: center;
-    
     display: grid;
+    margin-top: 60px;
     
 }
+
 
 .shapeName{
-    
+    height: 100%;
 }
 
+.addShapeButton{
+    background: #ddeafa;
+    border-radius: 10px;
+}
 
+.addShapeButton:focus{
+    outline: none;
+}
 
 .header{
-    background: #F0F8FF;
+    background: #C4E4FF ;
     padding: 10px;
     color: black;
     text-align: left;
@@ -51,9 +59,41 @@
     border: 1px solid grey;
     border-radius: 10px 10px 0px 0px;
     display: grid;
-    grid-template-columns: 10% 75% 10%;
+    grid-template-columns: 10% 55% 5% 5% 5% 5% 5%;
     grid-gap: 10px;
 }
+
+
+
+.triples{
+    background: white;
+    padding: 10px;
+    color: black;
+    text-align: left;
+
+    border-left: 1px solid grey;
+    border-right: 1px solid grey;
+    border-bottom: 1px solid grey;
+    border-radius: 0px 0px 10px 10px ;
+    display: grid;
+    grid-template-columns: 100%;
+  
+}
+
+.tripleHeader{
+    background: #EFDECD ;
+    padding: 10px;
+    color: black;
+    text-align: left;
+
+    border: 1px solid grey;
+    border-radius: 10px 10px 0px 0px;
+    display: grid;
+    grid-template-columns: 10% 30% 20% 20% 5% 5%;
+    grid-gap: 10px;
+}
+
+
 
 
 .box1{ grid-area: box1;}
@@ -62,7 +102,7 @@
 
 .griBox{ 
     display: grid;
-    grid-template-columns: 10% 10% 60%;
+    grid-template-columns: 10% 10% 54%;
     grid-gap: 10px;
 }
 
@@ -96,12 +136,70 @@
 
 
 
-
 .customShape{
     background: green;
     padding: 10px;
     color: white;
 }
 
+.accordion{
+    background: #3d3d3d;
+    color:white;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    height: 100%;
+    font-size: 25px;
+}
 
 
+.accordion:focus{
+    outline: none;
+}
+
+
+.accordion:hover{
+    transform: scale(1.1);
+}
+
+.accordion:active {
+	transform: translateY(4px);
+}
+
+
+.deleteShapeBtn{
+    background: #FF7373;
+    color: white;
+    border-radius: 10px;
+    outline: nonew;
+    border: none;
+    height: 100%;
+   
+}
+
+.deleteShapeBtn:focus{
+    outline: none;
+}
+
+
+.deleteShapeBtn:hover{
+    transform: scale(1.1);
+}
+
+.triplesBtn{
+    background: transparent;
+    color:#222;
+    border-radius: 10px;
+    border: none;
+    height: 100%;
+    font-size: 25px;
+}
+
+.triplesBtn:focus{
+    outline: none;
+}
+
+.shapeNameLabel{
+    color:#222;
+    font-weight: 900;
+}
