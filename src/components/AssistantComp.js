@@ -153,7 +153,14 @@ function AssistantComp (props) {
                                     <option value="2">Boolean</option>
                                     <option value="2">Date</option>
                             </select>
-                           
+                                                 
+                            <select className="customSelector">
+                                <option value="">Exactly one</option>
+                                <option value="*">Zero or more</option>
+                                <option value="+">One at least</option>
+                                <option value="?">One or none</option>
+                            </select>
+                               
                             <button className="accordion mdc-icon-button material-icons" onClick={customizeTriple}>build</button>
                             <button className="deleteShapeBtn mdc-icon-button material-icons" onClick={()=>del(shape.id)}>delete</button>
                         </div>
@@ -181,18 +188,6 @@ function AssistantComp (props) {
                                     </select>
                                 </Collapse>
 
-
-                                <div className="gridTriplesBox">
-                                    <div/>
-                                    <label>Cardinality </label>
-                                    <select className="customSelector">
-                                        <option value="">Exactly one</option>
-                                        <option value="*">Zero or more</option>
-                                        <option value="+">One at least</option>
-                                        <option value="?">One or none</option>
-                                    </select>
-                                </div>
-                        
 
                                 <div className="gridTriplesBox">
                                     <div/>
@@ -210,8 +205,7 @@ function AssistantComp (props) {
                        
                             </div>
                         </Collapse> 
-                        
-             <div className="tripleHeader">
+                        <div className="tripleHeader">
                            
                            
                             <label>Triple </label>
@@ -222,7 +216,14 @@ function AssistantComp (props) {
                                     <option value="2">Boolean</option>
                                     <option value="2">Date</option>
                             </select>
-                           
+                                                 
+                            <select className="customSelector">
+                                <option value="">Exactly one</option>
+                                <option value="*">Zero or more</option>
+                                <option value="+">One at least</option>
+                                <option value="?">One or none</option>
+                            </select>
+                               
                             <button className="accordion mdc-icon-button material-icons" onClick={customizeTriple}>build</button>
                             <button className="deleteShapeBtn mdc-icon-button material-icons" onClick={()=>del(shape.id)}>delete</button>
                         </div>
@@ -250,18 +251,6 @@ function AssistantComp (props) {
                                     </select>
                                 </Collapse>
 
-
-                                <div className="gridTriplesBox">
-                                    <div/>
-                                    <label>Cardinality </label>
-                                    <select className="customSelector">
-                                        <option value="">Exactly one</option>
-                                        <option value="*">Zero or more</option>
-                                        <option value="+">One at least</option>
-                                        <option value="?">One or none</option>
-                                    </select>
-                                </div>
-                        
 
                                 <div className="gridTriplesBox">
                                     <div/>
@@ -289,7 +278,14 @@ function AssistantComp (props) {
                                     <option value="2">Boolean</option>
                                     <option value="2">Date</option>
                             </select>
-                           
+                                                 
+                            <select className="customSelector">
+                                <option value="">Exactly one</option>
+                                <option value="*">Zero or more</option>
+                                <option value="+">One at least</option>
+                                <option value="?">One or none</option>
+                            </select>
+                               
                             <button className="accordion mdc-icon-button material-icons" onClick={customizeTriple}>build</button>
                             <button className="deleteShapeBtn mdc-icon-button material-icons" onClick={()=>del(shape.id)}>delete</button>
                         </div>
@@ -317,18 +313,6 @@ function AssistantComp (props) {
                                     </select>
                                 </Collapse>
 
-
-                                <div className="gridTriplesBox">
-                                    <div/>
-                                    <label>Cardinality </label>
-                                    <select className="customSelector">
-                                        <option value="">Exactly one</option>
-                                        <option value="*">Zero or more</option>
-                                        <option value="+">One at least</option>
-                                        <option value="?">One or none</option>
-                                    </select>
-                                </div>
-                        
 
                                 <div className="gridTriplesBox">
                                     <div/>
@@ -356,7 +340,14 @@ function AssistantComp (props) {
                                     <option value="2">Boolean</option>
                                     <option value="2">Date</option>
                             </select>
-                           
+                                                 
+                            <select className="customSelector">
+                                <option value="">Exactly one</option>
+                                <option value="*">Zero or more</option>
+                                <option value="+">One at least</option>
+                                <option value="?">One or none</option>
+                            </select>
+                               
                             <button className="accordion mdc-icon-button material-icons" onClick={customizeTriple}>build</button>
                             <button className="deleteShapeBtn mdc-icon-button material-icons" onClick={()=>del(shape.id)}>delete</button>
                         </div>
@@ -387,18 +378,6 @@ function AssistantComp (props) {
 
                                 <div className="gridTriplesBox">
                                     <div/>
-                                    <label>Cardinality </label>
-                                    <select className="customSelector">
-                                        <option value="">Exactly one</option>
-                                        <option value="*">Zero or more</option>
-                                        <option value="+">One at least</option>
-                                        <option value="?">One or none</option>
-                                    </select>
-                                </div>
-                        
-
-                                <div className="gridTriplesBox">
-                                    <div/>
                                     <label>Value </label>
                                     <select className="customSelector" >
                                         <option value="0">IriRef</option>
@@ -413,6 +392,7 @@ function AssistantComp (props) {
                        
                             </div>
                         </Collapse> 
+             
                         <button 
                             className="addTripleButton"
                             onClick={context.addShape}>
