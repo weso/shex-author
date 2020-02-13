@@ -46,11 +46,6 @@
     border-radius: 10px;
 }
 
-.addTripleButton{
-    margin-top: 10px;
-    background: #EFDECD;
-    border-radius: 10px;
-}
 
 .addShapeButton:focus{
     outline: none;
@@ -86,9 +81,17 @@
     border-bottom: 1px solid grey;
     border-radius: 0px 0px 10px 10px ;
     display: grid;
-    grid-template-columns: 10% 90%;
+    grid-template-columns: 100%;
+
     
 }
+
+.addTripleButton{
+    margin-top: 10px;
+    background: #EFDECD;
+    border-radius: 10px;
+}
+
 
 .tripleHeader{
     background: #EFDECD ;
@@ -99,14 +102,14 @@
     border: 1px solid grey;
     border-radius: 10px 10px 0px 0px;
     display: grid;
-    grid-template-columns: 10% 30% 20% 5% 5% 5%;
+    grid-template-columns: 10% 55% 20% 5% 5% 5%;
     grid-gap: 10px;
    
 }
 
 .customColapse{
     margin-bottom: 10px;
-    grid-column: 2/3;
+
 }
 
 
@@ -125,7 +128,7 @@
 .gridTriplesBox{ 
     display: grid;
     grid-template-columns: 7% 10% 54%;
-    grid-gap: 30px;
+    grid-gap: 35px;
 }
 
 .customTriple{
@@ -140,6 +143,7 @@
 
     display: grid;
     grid-template-columns: 100%;
+    grid-gap: 5px;
 }
 
 .custom{
