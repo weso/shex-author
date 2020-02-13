@@ -158,7 +158,7 @@ function App() {
                       </Collapse> 
                       
 
-                      <Collapse isOpen={isAssistantOpen} className="col">
+                      <Collapse isOpen={isAssistantOpen} className="col assistCollapse">
                           <AssistantComp/>
                       </Collapse> 
                       
