@@ -237,13 +237,6 @@ input[type=text] {
 
 
 
-.comps{
-	
-	width: 100% !important; 
-	background-color: #f8f8ff;
-	display: grid;
-	grid-template-columns: 4% 47% 50% ;
-}
 
 
 .globalContainer{
@@ -299,3 +292,18 @@ html{
 .shapeNameLabel{
 	margin-left: 24px;
 }
+
+
+.comps{
+	background-color: #f8f8ff;
+	border-radius: 20px;
+}
+
+.resize{
+	width: 5px;
+	height: 100%;
+	background-color: #222;
+
+}
+
+

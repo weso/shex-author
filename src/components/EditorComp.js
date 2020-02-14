@@ -134,7 +134,7 @@ function EditorComp() {
 
 
 
-    return  (<div className="edit" ref={divRef} style={style}/>);
+    return  (<div className="col edit" ref={divRef} style={style}/>);
 
 }
 

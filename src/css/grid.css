@@ -6,13 +6,15 @@
     align-content: center;
     grid-gap: 10px;
     padding: 2%;
+    height: 100%;
    
 }
 
 .assistCollapse{
-   
+    height: 100%;
     border-top:1px solid grey;
     border-bottom:1px solid grey;
+
 }
 
 
@@ -25,13 +27,6 @@
 }
 
 
-
-
-
-.comps{
-    border-radius: 50px;
-    
-}
 
 .lateralNav {
     border: 1px solid grey;
@@ -257,12 +252,4 @@
 }
 
 
-.resize{
-    width: 20px;
-    background-color: red;
-    height: 100%;
-    border: 1px solid #222;
-    border-radius: 2px;
-    text-align: center;
-    overflow: hidden;
-}
+

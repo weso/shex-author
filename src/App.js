@@ -16,7 +16,6 @@ import Editor from './entities/editor';
 
 import ResizePanel from "react-resize-panel";
 
-
 export const ShapesContext = React.createContext();
 
 function App() {
@@ -154,17 +153,18 @@ function App() {
                 <Nav colapseAll={colapseAll}/>
               
                 <div className="globalContainer">
-                  <div className="comps">                     
-                      <Collapse isOpen={isLateralNavOpen} className="lateralNav">
+                  <div className="row comps">                     
+                      <Collapse isOpen={isLateralNavOpen} className="col-xs-1 lateralNav">
                           <LateralNav  assistantToggle={assistantToggle} visualizeToggle={visualizeToggle}/>
                       </Collapse> 
-                      
-                    
-                        <Collapse isOpen={isAssistantOpen} className="assistCollapse">
-                          
-                            <AssistantComp/>
-                         
-                        </Collapse> 
+
+
+                      <Collapse isOpen={isAssistantOpen} className="assistCollapse">
+                       <ResizePanel direction="e"  handleClass="resize">
+                          <AssistantComp/>
+                        </ResizePanel>
+
+                      </Collapse> 
                      
                       <EditorComp />
                         
@@ -180,6 +180,14 @@ function App() {
   
     
 }
+
+/*
+ 
+                        
+                            
+                         
+                      
+*/
 
 
 export default App;

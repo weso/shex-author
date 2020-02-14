@@ -5,6 +5,8 @@ import '../css/grid.css';
 import ShapeComponent from './shexComponents/ShapeComponent';
 import {ShapesContext} from '../App';
 
+
+
 function AssistantComp (props) {
 
     const context = useContext(ShapesContext);
@@ -77,7 +79,7 @@ function AssistantComp (props) {
     }
 
 
-    return (<div id='assistant-container' className='assistantContainer'> 
+    return (<div id='assistant-container' className='col assistantContainer'> 
 
         
 
