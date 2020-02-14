@@ -14,6 +14,8 @@ import shexUtils from './utils/shexUtils';
 
 import Editor from './entities/editor';
 
+import ResizePanel from "react-resize-panel";
+
 
 export const ShapesContext = React.createContext();
 
@@ -152,16 +154,18 @@ function App() {
                 <Nav colapseAll={colapseAll}/>
               
                 <div className="globalContainer">
-                  <div className="row comps">                     
-                      <Collapse isOpen={isLateralNavOpen} className="lateralNav col-xs-1">
+                  <div className="comps">                     
+                      <Collapse isOpen={isLateralNavOpen} className="lateralNav">
                           <LateralNav  assistantToggle={assistantToggle} visualizeToggle={visualizeToggle}/>
                       </Collapse> 
                       
-
-                      <Collapse isOpen={isAssistantOpen} className="col assistCollapse">
-                          <AssistantComp/>
-                      </Collapse> 
-                      
+                    
+                        <Collapse isOpen={isAssistantOpen} className="assistCollapse">
+                          
+                            <AssistantComp/>
+                         
+                        </Collapse> 
+                     
                       <EditorComp />
                         
                   </div>

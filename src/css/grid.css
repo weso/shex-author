@@ -255,3 +255,14 @@
     color:#222;
     font-weight: 900;
 }
+
+
+.resize{
+    width: 20px;
+    background-color: red;
+    height: 100%;
+    border: 1px solid #222;
+    border-radius: 2px;
+    text-align: center;
+    overflow: hidden;
+}
