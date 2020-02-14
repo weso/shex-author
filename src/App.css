@@ -373,6 +373,17 @@ svg{
 	height: 70px !important;
 }
 
+input[type=text] {
+	background-color: white;
+	border: 1px solid #222;
+  }
+
+  .customSelector{
+	background-color: white;
+	border: 1px solid #222;
+  }
+
+
 
 .comps{
 	height: 100% !important; 
@@ -468,4 +479,8 @@ html{
 
 .lateralBottom{
 	flex-grow: 0;
+}
+
+.shapeNameLabel{
+	margin-left: 24px;
 }
