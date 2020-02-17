@@ -1,5 +1,6 @@
 
 
+
     .assistantContainer{
         display: grid;
         grid-template-columns: 100%;
@@ -12,7 +13,7 @@
 
     .assistCollapse{
         margin-right: 0px;
-        min-width: 500px;
+        min-width: 800px;
         max-width: 1400px;
         border-bottom: 1px solid grey;
         border-top:1px solid grey;
@@ -320,11 +321,17 @@
         border: none;
         height: 100%;
         font-size: 25px;
+        
+        grid-column: 7/8;
     }
 
     .triplesBtn:focus{
         outline: none;
     }
 
+
+    .customLabel{
+        grid-column: 2/3;
+    }
 
 
