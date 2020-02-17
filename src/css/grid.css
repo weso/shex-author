@@ -1,255 +1,260 @@
 
 
-.assistantContainer{
-    display: grid;
-    grid-template-columns: 100%;
-    align-content: center;
-    grid-gap: 10px;
-    padding: 2%;
-    height: 100%;
+    .assistantContainer{
+        display: grid;
+        grid-template-columns: 100%;
+        align-content: center;
+        grid-gap: 10px;
+        padding: 2%;
+    }
+
+    .containerAssist{
+
+        border-top:1px solid grey;
+        border-bottom:1px solid grey;
+    }
+
+    .resize{
+        width: 100%;
+        height: 100%;
+        border-left: 3px solid #222;
+        margin-right: 30px;
+    }
+
    
-}
+    .edit{
+        border-top: 1px solid grey;
+        border-bottom: 1px solid grey;
+        border-right: 1px solid grey;
+        border-radius: 0px 10px 10px 0px!important;
 
-.assistCollapse{
-    height: 100%;
-    border-top:1px solid grey;
-    border-bottom:1px solid grey;
+        @media (min-width: 300px) { 
 
-}
+            border:5px solid red;
 
 
-
-.edit{
-    border-top: 1px solid grey;
-    border-bottom: 1px solid grey;
-    border-right: 1px solid grey;
-    border-radius: 0px 10px 10px 0px!important;
-}
+        }
+    }
 
 
 
-.lateralNav {
-    border: 1px solid grey;
-    border-radius:  20px 0px 0px 20px;
-}
+    .lateralNav {
+        border: 1px solid grey;
+        border-radius:  20px 0px 0px 20px;
+    }
 
 
-.shape{
-   
-    color: #f8f8ff;
-    text-align: center;
-    display: grid;
-    margin-top: 10px;
-
-}
-
-
-.shapeName{
-    height: 100%;
-}
-
-.addShapeButton{
-    background: #ddeafa;
-    border-radius: 10px;
-}
-
-
-.addShapeButton:focus{
-    outline: none;
-}
-
-.addTripleButton:focus{
-    outline: none;
-}
-
-.header{
-    background: #C6E2FF ;
-    padding: 10px;
-    color: black;
-    text-align: left;
-
-    border: 1px solid grey;
-    border-radius: 10px 10px 0px 0px;
-    display: grid;
-    grid-template-columns: 10% 55% 5% 5% 5% 5% 5%;
-    grid-gap: 10px;
-}
-
-
-
-.triples{
-    background: #EBF4FF;
-    padding: 10px;
-    color: black;
-    text-align: left;
-
-    border-left: 1px solid grey;
-    border-right: 1px solid grey;
-    border-bottom: 1px solid grey;
-    border-radius: 0px 0px 10px 10px ;
-    display: grid;
-    grid-template-columns: 100%;
-
+    .shape{
     
-}
+        color: #f8f8ff;
+        text-align: center;
+        display: grid;
+        margin-top: 10px;
 
-.addTripleButton{
-    margin-top: 10px;
-    background: #EFDECD;
-    border-radius: 10px;
-}
-
-
-.tripleHeader{
-    background: #EFDECD ;
-    padding: 10px;
-    color: black;
-    text-align: left;
-
-    border: 1px solid grey;
-    border-radius: 10px 10px 0px 0px;
-    display: grid;
-    grid-template-columns: 9% 33% 20% 20%  5% 5%;
-    grid-gap: 10px;
-   
-}
-
-.customColapse{
-    margin-bottom: 10px;
-
-}
+    }
 
 
+    .shapeName{
+        height: 100%;
+    }
 
-.box1{ grid-area: box1;}
-.box2{ grid-area: box2;}
-.box3{ grid-area: box3;}
-.box4{ grid-area: box4;}
+    .addShapeButton{
+        background: #ddeafa;
+        border-radius: 10px;
+    }
 
-.gridBox{ 
-    display: grid;
-    grid-template-columns: 10% 10% 54%;
-    grid-gap: 10px;
-}
 
-.gridTriplesBox{ 
-    display: grid;
-    grid-template-columns: 7% 10% 54%;
-    grid-gap: 35px;
-}
+    .addShapeButton:focus{
+        outline: none;
+    }
 
-.customTriple{
-    background: #EFE8E1;
-    padding: 10px;
-    color: black;
+    .addTripleButton:focus{
+        outline: none;
+    }
 
-    border-left: 1px solid grey;
-    border-right: 1px solid grey;
-    border-bottom: 1px solid grey;
-    border-radius: 0px 0px 10px 10px;
+    .header{
+        background: #C6E2FF ;
+        padding: 10px;
+        color: black;
+        text-align: left;
 
-    display: grid;
-    grid-template-columns: 100%;
-    grid-gap: 5px;
-}
-
-.custom{
-    background: #EBF4FF;
-    padding: 10px;
-    color: black;
-
-    border-left: 1px solid grey;
-    border-right: 1px solid grey;
-    border-bottom: 1px solid grey;
-    border-radius: 0px 0px 10px 10px;
-
-    display: grid;
-    grid-template-areas: 
-        'box1 box1 box1'
-        'box2 box2 box2'
-        'box3 box3 box3'
-        'box4 box4 box4' ;
-    text-align: left;
-    grid-gap: 5px;
-}
+        border: 1px solid grey;
+        border-radius: 10px 10px 0px 0px;
+        display: grid;
+        grid-template-columns: 10% 55% 5% 5% 5% 5% 5%;
+        grid-gap: 10px;
+    }
 
 
 
-.customSelector{
-    border-radius: 10px;
-    background: white;
-    outline: none;
-}
+    .triples{
+        background: #EBF4FF;
+        padding: 10px;
+        color: black;
+        text-align: left;
+
+        border-left: 1px solid grey;
+        border-right: 1px solid grey;
+        border-bottom: 1px solid grey;
+        border-radius: 0px 0px 10px 10px ;
+        display: grid;
+        grid-template-columns: 100%;
+
+        
+    }
+
+    .addTripleButton{
+        margin-top: 10px;
+        background: #EFDECD;
+        border-radius: 10px;
+    }
+
+
+    .tripleHeader{
+        background: #EFDECD ;
+        padding: 10px;
+        color: black;
+        text-align: left;
+
+        border: 1px solid grey;
+        border-radius: 10px 10px 0px 0px;
+        display: grid;
+        grid-template-columns: 9% 33% 20% 20%  5% 5%;
+        grid-gap: 10px;
+    
+    }
+
+    .customColapse{
+        margin-bottom: 10px;
+
+    }
 
 
 
-.customShape{
-    background: green;
-    padding: 10px;
-    color: white;
-}
+    .box1{ grid-area: box1;}
+    .box2{ grid-area: box2;}
+    .box3{ grid-area: box3;}
+    .box4{ grid-area: box4;}
 
-.accordion{
-    background: #3d3d3d;
-    color:white;
-    border-radius: 10px;
-    outline: none;
-    border: none;
-    height: 100%;
-    font-size: 25px;
-}
+    .gridBox{ 
+        display: grid;
+        grid-template-columns: 10% 10% 54%;
+        grid-gap: 10px;
+    }
+
+    .gridTriplesBox{ 
+        display: grid;
+        grid-template-columns: 7% 10% 54%;
+        grid-gap: 35px;
+    }
+
+    .customTriple{
+        background: #EFE8E1;
+        padding: 10px;
+        color: black;
+
+        border-left: 1px solid grey;
+        border-right: 1px solid grey;
+        border-bottom: 1px solid grey;
+        border-radius: 0px 0px 10px 10px;
+
+        display: grid;
+        grid-template-columns: 100%;
+        grid-gap: 5px;
+    }
+
+    .custom{
+        background: #EBF4FF;
+        padding: 10px;
+        color: black;
+
+        border-left: 1px solid grey;
+        border-right: 1px solid grey;
+        border-bottom: 1px solid grey;
+        border-radius: 0px 0px 10px 10px;
+
+        display: grid;
+        grid-template-areas: 
+            'box1 box1 box1'
+            'box2 box2 box2'
+            'box3 box3 box3'
+            'box4 box4 box4' ;
+        text-align: left;
+        grid-gap: 5px;
+    }
 
 
-.accordion:focus{
-    outline: none;
-}
+
+    .customSelector{
+        border-radius: 10px;
+        background: white;
+        outline: none;
+    }
 
 
-.accordion:hover{
-    transform: scale(1.1);
-}
 
-.accordion:active {
-	transform: translateY(4px);
-}
+    .customShape{
+        background: green;
+        padding: 10px;
+        color: white;
+    }
 
-
-.deleteShapeBtn{
-    background: #FF7373;
-    color: white;
-    border-radius: 10px;
-    outline: nonew;
-    border: none;
-    height: 100%;
-   
-}
-
-.deleteShapeBtn:focus{
-    outline: none;
-}
+    .accordion{
+        background: #3d3d3d;
+        color:white;
+        border-radius: 10px;
+        outline: none;
+        border: none;
+        height: 100%;
+        font-size: 25px;
+    }
 
 
-.deleteShapeBtn:hover{
-    transform: scale(1.1);
-}
+    .accordion:focus{
+        outline: none;
+    }
 
-.triplesBtn{
-    background: transparent;
-    color:#222;
-    border-radius: 10px;
-    border: none;
-    height: 100%;
-    font-size: 25px;
-}
 
-.triplesBtn:focus{
-    outline: none;
-}
+    .accordion:hover{
+        transform: scale(1.1);
+    }
 
-.shapeNameLabel{
-    color:#222;
-    font-weight: 900;
-}
+    .accordion:active {
+        transform: translateY(4px);
+    }
+
+
+    .deleteShapeBtn{
+        background: #FF7373;
+        color: white;
+        border-radius: 10px;
+        outline: nonew;
+        border: none;
+        height: 100%;
+    
+    }
+
+    .deleteShapeBtn:focus{
+        outline: none;
+    }
+
+
+    .deleteShapeBtn:hover{
+        transform: scale(1.1);
+    }
+
+    .triplesBtn{
+        background: transparent;
+        color:#222;
+        border-radius: 10px;
+        border: none;
+        height: 100%;
+        font-size: 25px;
+    }
+
+    .triplesBtn:focus{
+        outline: none;
+    }
 
 
 

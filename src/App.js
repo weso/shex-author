@@ -152,19 +152,19 @@ function App() {
                 
                 <Nav colapseAll={colapseAll}/>
               
-                <div className="globalContainer">
-                  <div className="row comps">                     
+       <div className="globalContainer">
+                  <div className="row row-cols-3 comps container-sm">                     
                       <Collapse isOpen={isLateralNavOpen} className="col-xs-1 lateralNav">
                           <LateralNav  assistantToggle={assistantToggle} visualizeToggle={visualizeToggle}/>
                       </Collapse> 
 
-
-                      <Collapse isOpen={isAssistantOpen} className="assistCollapse">
-                       <ResizePanel direction="e"  handleClass="resize">
-                          <AssistantComp/>
-                        </ResizePanel>
-
-                      </Collapse> 
+                  <Collapse isOpen={isAssistantOpen} className="row assistCollapse">
+                     <ResizePanel direction="e"  handleClass="resize">
+                      <div className="col containerAssist">
+                        <AssistantComp/>                    
+                      </div>
+                      </ResizePanel>
+                  </Collapse> 
                      
                       <EditorComp />
                         
@@ -172,7 +172,9 @@ function App() {
                 </div>
                 <Collapse isOpen={isVisualizeOpen} >
                   <VisualizeComp svg={svg}/>
-                </Collapse>   
+                </Collapse>                         
+                         
+               
             </ShapesContext.Provider>
           );
                        
@@ -184,8 +186,42 @@ function App() {
 /*
  
                         
-                            
+       <div className="globalContainer">
+                  <div className="row comps">                     
+                      <Collapse isOpen={isLateralNavOpen} className="col-xs-1 lateralNav">
+                          <LateralNav  assistantToggle={assistantToggle} visualizeToggle={visualizeToggle}/>
+                      </Collapse> 
+
+                  <Collapse isOpen={isAssistantOpen} className="row assistCollapse">
+                     <ResizePanel direction="e"  handleClass="resize">
+                      <div className="col containerAssist">
+                        <AssistantComp/>                    
+                      </div>
+                      </ResizePanel>
+                  </Collapse> 
+                     
+                      <EditorComp />
+                        
+                  </div>
+                </div>
+                <Collapse isOpen={isVisualizeOpen} >
+                  <VisualizeComp svg={svg}/>
+                </Collapse>                         
                          
+
+
+                <div className="div0">
+                
+                  <div className="div1">Qwerty
+                  </div>
+
+                  <ResizePanel direction="e"   handleClass="resize">
+                    <div className="div2">Qwerty</div>
+                  </ResizePanel>
+
+                  <div className="div3">Qwerty
+                  </div>
+                </div>
                       
 */
 
