@@ -154,24 +154,22 @@ function App() {
                 
                 <Nav colapseAll={colapseAll}/>
               
-       <div className="globalContainer">
+                <div className="globalContainer">
                   <div className="row row-cols-3 comps ">                     
                       <Collapse isOpen={isLateralNavOpen} className="col-xs-1 lateralNav">
                           <LateralNav  assistantToggle={assistantToggle} visualizeToggle={visualizeToggle}/>
                       </Collapse> 
 
-                  <Collapse isOpen={isAssistantOpen} className="row assistCollapse">
-                   <ResizableBox className="col box" width={100}  axis="x">
-                      <div className="col containerAssist">
-                        <AssistantComp/>                                       
-                      </div>
-                 </ResizableBox>     
-                     
-                  </Collapse> 
+                      <Collapse isOpen={isAssistantOpen} className="row assistCollapse">
+                        <ResizableBox className="col box" width={100}  axis="x">
+                            <div className="col containerAssist">
+                              <AssistantComp/>                                       
+                            </div>
+                        </ResizableBox>     
+                      </Collapse> 
                      
                       <EditorComp />
                       
-                        
                   </div>
                 </div>
                 <Collapse isOpen={isVisualizeOpen} >
