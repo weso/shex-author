@@ -16,6 +16,8 @@ import Editor from './entities/editor';
 
 import ResizePanel from "react-resize-panel";
 
+import { Resizable, ResizableBox } from 'react-resizable';
+
 export const ShapesContext = React.createContext();
 
 function App() {
@@ -153,20 +155,22 @@ function App() {
                 <Nav colapseAll={colapseAll}/>
               
        <div className="globalContainer">
-                  <div className="row row-cols-3 comps container-sm">                     
+                  <div className="row row-cols-3 comps ">                     
                       <Collapse isOpen={isLateralNavOpen} className="col-xs-1 lateralNav">
                           <LateralNav  assistantToggle={assistantToggle} visualizeToggle={visualizeToggle}/>
                       </Collapse> 
 
                   <Collapse isOpen={isAssistantOpen} className="row assistCollapse">
-                     <ResizePanel direction="e"  handleClass="resize">
+                   <ResizableBox className="col box" width={100}  axis="x">
                       <div className="col containerAssist">
-                        <AssistantComp/>                    
+                        <AssistantComp/>                                       
                       </div>
-                      </ResizePanel>
+                 </ResizableBox>     
+                     
                   </Collapse> 
                      
                       <EditorComp />
+                      
                         
                   </div>
                 </div>
@@ -186,29 +190,7 @@ function App() {
 /*
  
                         
-       <div className="globalContainer">
-                  <div className="row comps">                     
-                      <Collapse isOpen={isLateralNavOpen} className="col-xs-1 lateralNav">
-                          <LateralNav  assistantToggle={assistantToggle} visualizeToggle={visualizeToggle}/>
-                      </Collapse> 
-
-                  <Collapse isOpen={isAssistantOpen} className="row assistCollapse">
-                     <ResizePanel direction="e"  handleClass="resize">
-                      <div className="col containerAssist">
-                        <AssistantComp/>                    
-                      </div>
-                      </ResizePanel>
-                  </Collapse> 
-                     
-                      <EditorComp />
-                        
-                  </div>
-                </div>
-                <Collapse isOpen={isVisualizeOpen} >
-                  <VisualizeComp svg={svg}/>
-                </Collapse>                         
-                         
-
+  
 
                 <div className="div0">
                 
@@ -222,6 +204,43 @@ function App() {
                   <div className="div3">Qwerty
                   </div>
                 </div>
+
+                 .div0{
+        display:grid;
+        grid-template-areas: 
+        'divi1 divi2 divi2 divi3 divi3';
+     
+        background: white;
+        height: 500px;
+    }
+
+    .div1{
+        grid-area: divi1;
+        background: red;
+    }
+
+
+    .sss{
+        background: yellow;
+        width: 100%;
+    }
+
+    .div2{
+
+        grid-area: divi2;
+       
+       
+        overflow: auto;
+        resize: horizontal;
+        
+        resize: horizontal;
+    }
+
+    .div3{
+        grid-area: divi3;
+        background: purple;
+    }
+
                       
 */
 
