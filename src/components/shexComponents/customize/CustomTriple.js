@@ -1,23 +1,52 @@
-import React,{useState} from 'react';
+import React,{useState,useContext} from 'react';
 import { Collapse } from 'reactstrap';
+
+import {ShapesContext} from '../../../App';
+
+import {getPrefix} from '../../../utils/prefixUtils';
 
 function CustomTriple (props) {
 
+    const context = useContext(ShapesContext);
     const {triple,isTripleCustomOpen} = props;
 
-    let initialPrefix=false;
-    if(triple.type.getTypeName()=='prefixedIri'){
-        initialPrefix = true;
+    const [type,setType] = useState(triple.type.getTypeName());
+
+    let initialPrefix = 'example';
+    let initialOpenPrefix = false;
+    if(triple.type.prefix!=undefined){
+        initialPrefix = triple.type.prefix.prefixValue;
+        initialOpenPrefix = true;
     }
 
-    const [isPrefix,setPrefix] = useState(initialPrefix);
+    const [prefix,setPrefix] = useState(initialPrefix);
+    const [isPrefixOpen,setPrefixOpen] = useState(initialOpenPrefix);
 
-    const handleTypeChange = function(evt){
-        if(evt.target.value=='1'){
-            setPrefix(true);
+    const handleTypeChange = function(e){
+        const type  = e.target.value;
+        const value = triple.type.value;
+        triple.setType(type);
+        triple.type.value = value;
+        context.emit();
+        setType(type);
+        setPrefix('example');
+        collapsePrefix(e)
+    }
+
+
+    const handlePrefixChange = function(e){
+        let prefix = getPrefix(e.target.value);
+        triple.type.setPrefix(prefix);
+        context.emit();
+        setPrefix(e.target.value);
+    }
+
+    const collapsePrefix = function(e){
+        if(e.target.value=='prefixedIri'){
+            setPrefixOpen(true);
         }else{
-            setPrefix(false);
-        }   
+            setPrefixOpen(false);
+        }    
     }
 
     return (
@@ -26,20 +55,26 @@ function CustomTriple (props) {
                     <div className="gridTriplesBox">
                         <div/>
                         <label>Type </label>
-                        <select className="customSelector" onChange={handleTypeChange}>
-                            <option value="0">IriRef</option>
-                            <option value="1">PrefixedIri</option>
-                            <option value="2">Bnode</option>
+                        <select className="customSelector" 
+                                value={type}
+                                onChange={handleTypeChange}>
+                            <option value="iriRef">IriRef</option>
+                            <option value="prefixedIri">PrefixedIri</option>
                         </select>
                     </div>
 
-                    <Collapse isOpen={isPrefix} className="gridTriplesBox">
+                    <Collapse isOpen={isPrefixOpen} className="gridTriplesBox">
                         <div/>
                         <label>Prefix </label>
-                        <select className="customSelector">
-                            <option value="0">default</option>
-                            <option value="1">xsd</option>
-                            <option value="2">schema</option>
+                        <select className="customSelector" value={prefix} onChange={handlePrefixChange}>
+                            <option value="example">example</option>
+                            { 
+                            context.prefixes.map((pre) =>{
+                                if(pre.key!=''){
+                                    return <option key={pre.key} value={pre.val}>{pre.key}</option>
+                                }                        
+                                })
+                            }
                         </select>
                     </Collapse>
 

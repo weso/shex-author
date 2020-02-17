@@ -29,6 +29,7 @@ function CustomShape (props) {
         shape.type.value = value;
         context.emit();
         setType(type);
+        setPrefix('example');
         collapsePrefix(e)
     }
 
