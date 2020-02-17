@@ -1,33 +1,48 @@
 import React,{useState,useContext} from 'react';
 import {ShapesContext} from '../../../App';
 
+const primitives = ['String','Integer','Date','Boolean'];
+
 function TripleHeader (props) {
 
     const context = useContext(ShapesContext); 
     const {triple,deleteTriple,customizeTriple} = props;
 
-    const [value,setValue] = useState(triple.type.value);
+    const [name,setName] = useState(triple.type.value);
+    const [primitive,setPrimitive] = useState(triple.value.value);  
+    
 
-    const handleChange = function(e){
-        const value = e.target.value;
-        triple.type.setValue(value);
+
+    const handleNameChange = function(e){
+        const name = e.target.value;
+        triple.type.setValue(name);
         context.emit();
-        setValue(value);
+        setName(name);
     }
+
+    const handlePrimitiveChange = function(e){
+        const primitive = e.target.value;
+        triple.value.setValue(primitive);
+        context.emit();
+        setPrimitive(primitive)
+    }
+
+   
 
     return (
         <div className="tripleHeader">
             <label>Triple </label>
             <input  type="text" 
                     className="form-control shapeName"
-                    value={value}
-                    onChange={handleChange}/>
+                    value={name}
+                    onChange={handleNameChange}/>
 
-            <select className="customSelector">
-                    <option value="0">String</option>
-                    <option value="1">Integer</option>
-                    <option value="2">Boolean</option>
-                    <option value="2">Date</option>
+            <select className="customSelector" value={primitive} onChange={handlePrimitiveChange}>
+                {
+                    primitives.map(prim =>{
+                        return <option key={prim} value={prim.toLowerCase()}>{prim}</option>
+                    })
+                }
             </select>                                            
             <select className="customSelector">
                 <option value="">Exactly one</option>

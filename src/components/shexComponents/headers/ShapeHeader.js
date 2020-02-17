@@ -5,13 +5,13 @@ function ShapeHeader (props) {
 
     const context = useContext(ShapesContext); 
     const {shape,customizeShape,collapseTriples,colapseBtn} = props;
-    const [value,setValue] = useState(shape.type.value);
+    const [name,setName] = useState(shape.type.value);
 
     const handleChange = function(e){
-        const value = e.target.value;
-        shape.type.setValue(value);
+        const name = e.target.value;
+        shape.type.setValue(name);
         context.emit();
-        setValue(value);
+        setName(name);
     }
 
     return (
@@ -19,7 +19,7 @@ function ShapeHeader (props) {
             <label  className="shapeNameLabel">Shape</label>
             <input  type="text" 
                     className="form-control shapeName"
-                    value={value}
+                    value={name}
                     onChange={handleChange}/>
 
             <button className="accordion mdc-icon-button material-icons" onClick={customizeShape}>build</button>
