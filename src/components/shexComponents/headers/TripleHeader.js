@@ -9,7 +9,8 @@ function TripleHeader (props) {
     const {triple,deleteTriple,customizeTriple} = props;
 
     const [name,setName] = useState(triple.type.value);
-    const [primitive,setPrimitive] = useState(triple.value.value);  
+    const [primitive,setPrimitive] = useState(triple.value.value);
+    const [cardinality,setCardinality] = useState(triple.cardinality.toString());  
     
 
 
@@ -27,6 +28,13 @@ function TripleHeader (props) {
         setPrimitive(primitive)
     }
 
+    const handleCardinalityChange = function(e){
+        let cardinality = e.target.value;
+        triple.setCardinality(cardinality);
+        context.emit();
+        setCardinality(cardinality)
+    }
+
    
 
     return (
@@ -37,14 +45,20 @@ function TripleHeader (props) {
                     value={name}
                     onChange={handleNameChange}/>
 
-            <select className="customSelector" value={primitive} onChange={handlePrimitiveChange}>
+            <select className="customSelector" 
+                    value={primitive} 
+                    onChange={handlePrimitiveChange}>
                 {
                     primitives.map(prim =>{
                         return <option key={prim} value={prim.toLowerCase()}>{prim}</option>
                     })
                 }
-            </select>                                            
-            <select className="customSelector">
+            </select>
+
+            <select className="customSelector" 
+                    value={cardinality}
+                    onChange={handleCardinalityChange}>
+
                 <option value="">Exactly one</option>
                 <option value="*">Zero or more</option>
                 <option value="+">One at least</option>
