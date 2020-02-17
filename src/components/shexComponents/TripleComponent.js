@@ -8,9 +8,12 @@ import ValueComponent from './ValueComponent';
 
 function TripleComponent (props) {
     
-    const {shape,triple,deleteTriple,customizeTriple,isTripleCustomOpen} = props;
-    const [isOpen, setIsOpen] = useState(false);
-
+    const {shape,triple,deleteTriple} = props;
+    const [isTripleCustomOpen,setTripleCustomOpen] = useState(false);
+    
+    const customizeTriple = function(){
+        setTripleCustomOpen(!isTripleCustomOpen);
+    }
 
     return ( 
         <div>

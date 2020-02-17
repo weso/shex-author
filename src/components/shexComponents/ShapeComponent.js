@@ -19,9 +19,10 @@ function ShapeComponent (props) {
     const {shape} = props;
 
     const [triples,setTriples] = useState(shape.triples);
-
- 
-     const [isQualiOpen, setQualiOpen] = useState(false);
+    const [isCustomOpen,setCustomOpen] = useState(false);
+    const [isTriplesOpen,setTriplesOpen] = useState(true);
+    const [isPrefix,setPrefix] = useState(true);
+    const [colapseBtn,setColapseBtn] = useState('menu_open');
 
 
     const addTriple = ()=>{
@@ -35,20 +36,6 @@ function ShapeComponent (props) {
         
     }
 
-    const handleTriplesColapse = ()=>{
-            if(colapseBtn=='expand_more'){
-                setColapseBtn('expand_less');
-            }else{
-                setColapseBtn('expand_more');
-            }
-           setTriplesOpen(!isTriplesOpen);
-    }
-
-
-    const handleQualiCollapse = ()=>{
-        setQualiOpen(!isQualiOpen);
-    }
-
     const deleteTriple = (tripleId)=>{
         const newTriples = shape.triples.filter( triple => triple.id != tripleId);
         setTriples(newTriples);
@@ -57,26 +44,13 @@ function ShapeComponent (props) {
     }
 
 
-
-
-
-
-    const [isCustomOpen,setCustomOpen] = useState(false);
-    const [isTripleCustomOpen,setTripleCustomOpen] = useState(false);
-    const [isTriplesOpen,setTriplesOpen] = useState(true);
-    const [isPrefix,setPrefix] = useState(true);
-
-    const [colapseBtn,setColapseBtn] = useState('menu_open');
-
-
-
-    const customize = function(){
+    const customizeShape = function(){
         setCustomOpen(!isCustomOpen);
         setTriplesOpen(false);
         setColapseBtn('menu');
     }
 
-    const triplesMenu = function(){
+    const collapseTriples = function(){
         setCustomOpen(false);
         setTriplesOpen(!isTriplesOpen);
 
@@ -87,28 +61,25 @@ function ShapeComponent (props) {
         }
     }
 
-     const open = function(evt){
-            if(evt.target.value=='1'){
-                setPrefix(true);
-            }else{
-                setPrefix(false);
-            }
-            
+     const collapsePrefix = function(evt){
+        if(evt.target.value=='1'){
+            setPrefix(true);
+        }else{
+            setPrefix(false);
+        }    
     }
-
-
-
-     const customizeTriple = function(){
-        setTripleCustomOpen(!isTripleCustomOpen);
-        //setTriplesOpen(false);
-        //setColapseBtn('menu');
-    }
-
 
     return (
         <div className="shape" key={shape.id}>
-            <ShapeHeader shape={shape} customize={customize} triplesMenu={triplesMenu} colapseBtn={colapseBtn}/>
-            <CustomShape isCustomOpen={isCustomOpen} isPrefix={isPrefix} open={open}/>
+
+            <ShapeHeader shape={shape} 
+                         customizeShape={customizeShape} 
+                         collapseTriples={collapseTriples} 
+                         colapseBtn={colapseBtn}/>
+
+            <CustomShape isCustomOpen={isCustomOpen} 
+                         isPrefix={isPrefix} 
+                         collapsePrefix={collapsePrefix}/>
                  
             <Collapse isOpen={isTriplesOpen} >
                 <div className="triples">
@@ -117,8 +88,6 @@ function ShapeComponent (props) {
                                          shape={shape} 
                                          triple={triple}
                                          deleteTriple={deleteTriple}
-                                         customizeTriple={customizeTriple}
-                                         isTripleCustomOpen={isTripleCustomOpen}
                         /> 
                     )}
                     <button className="addTripleButton" onClick={addTriple}>+ Triple</button>        

@@ -3,14 +3,14 @@ import { Collapse } from 'reactstrap';
 
 function CustomShape (props) {
 
-    const {isCustomOpen,isPrefix,open} = props;
+    const {isCustomOpen,isPrefix,collapsePrefix} = props;
 
     return (
         <Collapse isOpen={isCustomOpen} >
             <div className="custom">
                 <div className="box1 gridBox">
                     <label className="customLabel">Type </label>
-                    <select className="customSelector" onChange={open}>
+                    <select className="customSelector" onChange={collapsePrefix}>
                         <option value="0">IriRef</option>
                         <option value="1" selected>PrefixedIri</option>
                         <option value="2">Bnode</option>
