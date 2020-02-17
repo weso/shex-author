@@ -5,6 +5,7 @@
   "homepage": "https://weso.github.io/shex-author",
   "dependencies": {
     "gh-pages": "^2.1.1",
+    "re-resizable": "^6.2.0",
     "react": "^16.11.0",
     "react-data-grid": "^7.0.0-alpha.24",
     "react-dom": "^16.11.0",

@@ -1,3 +1,4 @@
+
 import React, {useState} from 'react';
 import { Collapse } from 'reactstrap';
 import axios from 'axios';
@@ -14,9 +15,8 @@ import shexUtils from './utils/shexUtils';
 
 import Editor from './entities/editor';
 
-import ResizePanel from "react-resize-panel";
 
-import { Resizable, ResizableBox } from 'react-resizable';
+import { Resizable } from "re-resizable";
 
 export const ShapesContext = React.createContext();
 
@@ -155,21 +155,33 @@ function App() {
                 <Nav colapseAll={colapseAll}/>
               
                 <div className="globalContainer">
-                  <div className="row row-cols-3 comps ">                     
+                  <div className="row comps ">                     
                       <Collapse isOpen={isLateralNavOpen} className="col-xs-1 lateralNav">
                           <LateralNav  assistantToggle={assistantToggle} visualizeToggle={visualizeToggle}/>
                       </Collapse> 
 
-                      <Collapse isOpen={isAssistantOpen} className="row assistCollapse">
-                        <Resizable className="col box" width={100} height={100} axis="x">
-                            <div className="col containerAssist">
-                              <AssistantComp/>                                       
-                            </div>
-                        </Resizable>     
-                      </Collapse> 
+                  
+
+                  <Collapse isOpen={isAssistantOpen} className='row assistCollapse'>
+                    <Resizable className="col row resizable"
+                      defaultSize={{
+                        width:500,
+                        height:500,
+                      }}
+                      enable={{right:true}}
+                    >
+                      <div className="col containerAssist">
+                        <AssistantComp/>                            
+                      </div>
+
+                    </Resizable>     
+                  </Collapse>                         
+                         
+                 
                      
-                      <EditorComp />
+                  <EditorComp  />
                       
+                        
                   </div>
                 </div>
                 <Collapse isOpen={isVisualizeOpen} >
@@ -189,56 +201,7 @@ function App() {
  
                         
   
-
-                <div className="div0">
-                
-                  <div className="div1">Qwerty
-                  </div>
-
-                  <ResizePanel direction="e"   handleClass="resize">
-                    <div className="div2">Qwerty</div>
-                  </ResizePanel>
-
-                  <div className="div3">Qwerty
-                  </div>
-                </div>
-
-                 .div0{
-        display:grid;
-        grid-template-areas: 
-        'divi1 divi2 divi2 divi3 divi3';
-     
-        background: white;
-        height: 500px;
-    }
-
-    .div1{
-        grid-area: divi1;
-        background: red;
-    }
-
-
-    .sss{
-        background: yellow;
-        width: 100%;
-    }
-
-    .div2{
-
-        grid-area: divi2;
-       
-       
-        overflow: auto;
-        resize: horizontal;
-        
-        resize: horizontal;
-    }
-
-    .div3{
-        grid-area: divi3;
-        background: purple;
-    }
-
+            
                       
 */
 

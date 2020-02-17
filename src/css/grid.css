@@ -1,6 +1,5 @@
 
 
-
     .assistantContainer{
         display: grid;
         grid-template-columns: 100%;
@@ -12,23 +11,24 @@
 
 
     .assistCollapse{
-        margin-right: 0px;
-        min-width: 800px;
-        max-width: 1400px;
         border-bottom: 1px solid grey;
         border-top:1px solid grey;
+        max-width: 1400px;
+        min-width: 500px;
     }
+
  
 
-    .resize{
-        width: 100%;
-        height: 100%;
-        border-left: 3px solid #222;
-        margin-right: 30px;
+    .resizable{
+        height: 100% !important;
+        border-right:4px double #95b2d6;
+        border-collapse: separate ;
+        
     }
 
-   
+    
     .edit{
+
         border-top: 1px solid grey;
         border-bottom: 1px solid grey;
         border-right: 1px solid grey;
@@ -37,9 +37,9 @@
     }
 
 
-    .react-resizable {
+        .react-resizable {
         position: relative;
-      }
+        }
       .react-resizable-handle {
         position: absolute;
         
@@ -55,58 +55,6 @@
    
        
       }
-      .react-resizable-handle-sw {
-        bottom: 0;
-        left: 0;
-        cursor: col-resize;
-        transform: rotate(90deg);
-      }
-      .react-resizable-handle-se {
-        bottom: 0;
-        right: 0;
-        cursor: col-resize;
-      }
-      .react-resizable-handle-nw {
-        top: 0;
-        left: 0;
-        cursor: col-resize;
-        transform: rotate(180deg);
-      }
-      .react-resizable-handle-ne {
-        top: 0;
-        right: 0;
-        cursor: col-resize;
-        transform: rotate(270deg);
-      }
-      .react-resizable-handle-w,
-      .react-resizable-handle-e {
-        top: 50%;
-        margin-top: -10px;
-        cursor: col-resize;
-      }
-      .react-resizable-handle-w {
-        left: 0;
-        transform: rotate(135deg);
-      }
-      .react-resizable-handle-e {
-        right: 0;
-        transform: rotate(315deg);
-      }
-      .react-resizable-handle-n,
-      .react-resizable-handle-s {
-        left: 50%;
-        margin-left: -10px;
-        cursor: col-resize;
-      }
-      .react-resizable-handle-n {
-        top: 0;
-        transform: rotate(225deg);
-      }
-      .react-resizable-handle-s {
-        bottom: 0;
-        transform: rotate(45deg);
-      }
-   
 
 
     .lateralNav {
@@ -199,8 +147,6 @@
         margin-bottom: 10px;
 
     }
-
-
 
     .box1{ grid-area: box1;}
     .box2{ grid-area: box2;}
@@ -321,17 +267,8 @@
         border: none;
         height: 100%;
         font-size: 25px;
-        
-        grid-column: 7/8;
     }
 
     .triplesBtn:focus{
         outline: none;
     }
-
-
-    .customLabel{
-        grid-column: 2/3;
-    }
-
-
