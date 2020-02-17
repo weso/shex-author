@@ -23,6 +23,7 @@ function TripleHeader (props) {
 
     const handlePrimitiveChange = function(e){
         const primitive = e.target.value;
+        triple.setValue('primitive');
         triple.value.setValue(primitive);
         context.emit();
         setPrimitive(primitive)

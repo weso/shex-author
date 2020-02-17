@@ -11,6 +11,7 @@ function CustomTriple (props) {
     const {triple,isTripleCustomOpen} = props;
 
     const [type,setType] = useState(triple.type.getTypeName());
+    const [valueType,setValueType] = useState(triple.value.getTypeName());
 
     let initialPrefix = 'example';
     let initialOpenPrefix = false;
@@ -41,12 +42,24 @@ function CustomTriple (props) {
         setPrefix(e.target.value);
     }
 
+
     const collapsePrefix = function(e){
         if(e.target.value=='prefixedIri'){
             setPrefixOpen(true);
         }else{
             setPrefixOpen(false);
         }    
+    }
+
+    const handleValueTypeChange = function(e){
+        let newType = e.target.value;
+        if(newType!='shape'){
+            //This is necesary when we change from ShapeType to otherType
+            triple.inlineShape.shape = null;
+        }
+        triple.setValue(newType);
+        context.emit();
+        setValueType(newType);
     }
 
     return (
@@ -82,14 +95,16 @@ function CustomTriple (props) {
                     <div className="gridTriplesBox">
                         <div/>
                         <label>Value </label>
-                        <select className="customSelector" >
-                            <option value="0">IriRef</option>
-                            <option value="1">PrefixedIri</option>
-                            <option value="2">Shape</option>
-                            <option value="3">Literal</option>
-                            <option value="4">NonLiteral</option>
-                            <option value="5">IRI</option>
-                            <option value="6">BNode</option>
+                        <select className="customSelector"
+                                value={valueType}
+                                onChange={handleValueTypeChange}>
+                            <option value="iriRef">IriRef</option>
+                            <option value="prefixedIri">PrefixedIri</option>
+                            <option value="shape">Shape</option>
+                            <option value="literal">Literal</option>
+                            <option value="nonliteral">NonLiteral</option>
+                            <option value="iri">IRI</option>
+                            <option value="bnode">BNode</option>
                         </select>
                     </div>
         
