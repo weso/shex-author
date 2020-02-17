@@ -3,14 +3,13 @@ import { Collapse } from 'reactstrap';
 
 import {ShapesContext} from '../../App';
 
+import ShapeHeader from  './headers/ShapeHeader';
+import CustomShape from './customize/CustomShape';
 import TripleComponent from './TripleComponent';
-import ShapeTypeComp from './types/ShapeTypeComp';
-import Qualifier from './utils/Qualifier';
 
 import Triple from '../../entities/shexEntities/triple';
 
-import ShapeHeader from  './headers/ShapeHeader';
-import CustomShape from './customize/CustomShape';
+
 
 
 function ShapeComponent (props) {
@@ -94,7 +93,6 @@ function ShapeComponent (props) {
                 </div>                    
             </Collapse> 
         </div>
-     
     );
                                    
     
