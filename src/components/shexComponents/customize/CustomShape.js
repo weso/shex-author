@@ -3,13 +3,16 @@ import { Collapse } from 'reactstrap';
 
 import {ShapesContext} from '../../../App';
 
+import {getPrefix} from '../../../utils/prefixUtils';
+
 function CustomShape (props) {
 
     const context = useContext(ShapesContext);
     const {shape,isCustomOpen,isPrefix} = props;
     const [type,setType] = useState(shape.type.getTypeName());
+    const [prefix,setPrefix] = useState(shape.type.prefix.prefixValue)
     const [qualifier,setQualifier] = useState(shape.qualifier.getTypeName())
-
+    
     const handleTypeChange = function(e){
         const type  = e.target.value;
         const value = shape.type.value;
@@ -26,6 +29,14 @@ function CustomShape (props) {
         setQualifier(newType);
     }
 
+    const handlePrefixChange = function(e){
+        let prefix = getPrefix(e.target.value);
+        shape.type.setPrefix(prefix);
+        context.emit();
+        setPrefix(e.target.value);
+    }
+    
+
     return (
         <Collapse isOpen={isCustomOpen} >
             <div className="custom">
@@ -39,10 +50,15 @@ function CustomShape (props) {
                 </div>
                 <Collapse isOpen={isPrefix} className="box2 gridBox">
                     <label className="customLabel">Prefix </label>
-                    <select className="customSelector">
-                        <option value="0">default</option>
-                        <option value="1">xsd</option>
-                        <option value="2">schema</option>
+                    <select className="customSelector" value={prefix} onChange={handlePrefixChange}>
+                        <option value="0">example</option>
+                        { 
+                        context.prefixes.map((pre) =>{
+                            if(pre.key!=''){
+                                return <option key={pre.key} value={pre.val}>{pre.key}</option>
+                            }                        
+                        })
+                    }
                     </select>
                 </Collapse>
                 <div className="box3 gridBox">
