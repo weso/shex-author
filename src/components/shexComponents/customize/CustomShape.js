@@ -8,6 +8,7 @@ function CustomShape (props) {
     const context = useContext(ShapesContext);
     const {shape,isCustomOpen,isPrefix} = props;
     const [type,setType] = useState(shape.type.getTypeName());
+    const [qualifier,setQualifier] = useState(shape.qualifier.getTypeName())
 
     const handleTypeChange = function(e){
         const type  = e.target.value;
@@ -16,6 +17,13 @@ function CustomShape (props) {
         shape.type.value = value;
         context.emit();
         setType(type);
+    }
+
+    const handleQualifierChange = function(e){
+        let newType = e.target.value;
+        shape.setQualifier(newType);
+        context.emit();
+        setQualifier(newType);
     }
 
     return (
@@ -39,12 +47,12 @@ function CustomShape (props) {
                 </Collapse>
                 <div className="box3 gridBox">
                     <label className="customLabel">Qualifier </label>
-                    <select className="customSelector">
-                        <option value="1">None</option>
-                        <option value="2">Iri</option>
-                        <option value="3">Literal</option>
-                        <option value="4">NonLiteral</option>
-                        <option value="5">Bnode</option>
+                    <select className="customSelector" value={qualifier} onChange={handleQualifierChange}>
+                        <option value="shape">None</option>
+                        <option value="iri">Iri</option>
+                        <option value="literal">Literal</option>
+                        <option value="nonliteral">NonLiteral</option>
+                        <option value="bnode">Bnode</option>
                     </select>
                 </div>
             </div>
