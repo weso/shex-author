@@ -18,7 +18,6 @@ function ShapeComponent (props) {
     const [triples,setTriples] = useState(shape.triples);
     const [isCustomOpen,setCustomOpen] = useState(false);
     const [isTriplesOpen,setTriplesOpen] = useState(true);
-    const [isPrefix,setPrefix] = useState(true);
     const [colapseBtn,setColapseBtn] = useState('menu_open');
 
 
@@ -58,13 +57,6 @@ function ShapeComponent (props) {
         }
     }
 
-     const collapsePrefix = function(evt){
-        if(evt.target.value=='prefixedIri'){
-            setPrefix(true);
-        }else{
-            setPrefix(false);
-        }    
-    }
 
     return (
         <div className="shape">
@@ -75,8 +67,7 @@ function ShapeComponent (props) {
                          colapseBtn={colapseBtn}/>
 
             <CustomShape shape={shape}
-                         isCustomOpen={isCustomOpen} 
-                         isPrefix={isPrefix}/>
+                         isCustomOpen={isCustomOpen} />
                  
             <Collapse isOpen={isTriplesOpen} >
                 <div className="triples">

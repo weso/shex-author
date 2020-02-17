@@ -8,11 +8,20 @@ import {getPrefix} from '../../../utils/prefixUtils';
 function CustomShape (props) {
 
     const context = useContext(ShapesContext);
-    const {shape,isCustomOpen,isPrefix} = props;
+    const {shape,isCustomOpen} = props;
     const [type,setType] = useState(shape.type.getTypeName());
-    const [prefix,setPrefix] = useState(shape.type.prefix.prefixValue)
     const [qualifier,setQualifier] = useState(shape.qualifier.getTypeName())
     
+    let initialPrefix = 'example';
+    let initialOpenPrefix = false;
+    if(shape.type.prefix!=undefined){
+        initialPrefix = shape.type.prefix.prefixValue;
+        initialOpenPrefix = true;
+    }
+
+    const [prefix,setPrefix] = useState(initialPrefix);
+    const [isPrefixOpen,setPrefixOpen] = useState(initialOpenPrefix);
+
     const handleTypeChange = function(e){
         const type  = e.target.value;
         const value = shape.type.value;
@@ -20,6 +29,7 @@ function CustomShape (props) {
         shape.type.value = value;
         context.emit();
         setType(type);
+        collapsePrefix(e)
     }
 
     const handleQualifierChange = function(e){
@@ -35,6 +45,14 @@ function CustomShape (props) {
         context.emit();
         setPrefix(e.target.value);
     }
+
+    const collapsePrefix = function(e){
+        if(e.target.value=='prefixedIri'){
+            setPrefixOpen(true);
+        }else{
+            setPrefixOpen(false);
+        }    
+    }
     
 
     return (
@@ -48,10 +66,10 @@ function CustomShape (props) {
                         <option value="bnodeType">Bnode</option>
                     </select>
                 </div>
-                <Collapse isOpen={isPrefix} className="box2 gridBox">
+                <Collapse isOpen={isPrefixOpen} className="box2 gridBox">
                     <label className="customLabel">Prefix </label>
                     <select className="customSelector" value={prefix} onChange={handlePrefixChange}>
-                        <option value="0">example</option>
+                        <option value="example">example</option>
                         { 
                         context.prefixes.map((pre) =>{
                             if(pre.key!=''){
