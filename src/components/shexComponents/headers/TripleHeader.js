@@ -1,13 +1,28 @@
-import React from 'react';
+import React,{useState,useContext} from 'react';
+import {ShapesContext} from '../../../App';
 
 function TripleHeader (props) {
 
+    const context = useContext(ShapesContext); 
     const {triple,deleteTriple,customizeTriple} = props;
+
+    const [value,setValue] = useState(triple.type.value);
+
+    const handleChange = function(e){
+        const value = e.target.value;
+        triple.type.setValue(value);
+        context.emit();
+        setValue(value);
+    }
 
     return (
         <div className="tripleHeader">
             <label>Triple </label>
-            <input type="text" className="form-control shapeName"/>
+            <input  type="text" 
+                    className="form-control shapeName"
+                    value={value}
+                    onChange={handleChange}/>
+
             <select className="customSelector">
                     <option value="0">String</option>
                     <option value="1">Integer</option>

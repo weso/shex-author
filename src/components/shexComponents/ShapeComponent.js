@@ -10,8 +10,6 @@ import TripleComponent from './TripleComponent';
 import Triple from '../../entities/shexEntities/triple';
 
 
-
-
 function ShapeComponent (props) {
 
     const context = useContext(ShapesContext);
@@ -24,7 +22,7 @@ function ShapeComponent (props) {
     const [colapseBtn,setColapseBtn] = useState('menu_open');
 
 
-    const addTriple = ()=>{
+    const addTriple = function(){
         const id = shape.getTriplesCount();
         const triple = new Triple(id);
         
@@ -35,7 +33,7 @@ function ShapeComponent (props) {
         
     }
 
-    const deleteTriple = (tripleId)=>{
+    const deleteTriple = function(tripleId){
         const newTriples = shape.triples.filter( triple => triple.id != tripleId);
         setTriples(newTriples);
         shape.setTriples(newTriples);
@@ -76,9 +74,9 @@ function ShapeComponent (props) {
                          collapseTriples={collapseTriples} 
                          colapseBtn={colapseBtn}/>
 
-            <CustomShape isCustomOpen={isCustomOpen} 
-                         isPrefix={isPrefix} 
-                         collapsePrefix={collapsePrefix}/>
+            <CustomShape shape={shape}
+                         isCustomOpen={isCustomOpen} 
+                         isPrefix={isPrefix}/>
                  
             <Collapse isOpen={isTriplesOpen} >
                 <div className="triples">

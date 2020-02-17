@@ -1,18 +1,29 @@
-import React from 'react';
+import React,{useState,useContext} from 'react';
 import { Collapse } from 'reactstrap';
+
+import {ShapesContext} from '../../../App';
 
 function CustomShape (props) {
 
-    const {isCustomOpen,isPrefix,collapsePrefix} = props;
+    const context = useContext(ShapesContext);
+    const {shape,isCustomOpen,isPrefix,handleShapeType} = props;
+    const [type,setType] = useState(shape.type.getTypeName());
+
+    const handleTypeChange = function(e){
+        const type = e.target.value;
+        shape.setType(type)
+        context.emit();
+        setType(type);
+    }
 
     return (
         <Collapse isOpen={isCustomOpen} >
             <div className="custom">
                 <div className="box1 gridBox">
                     <label className="customLabel">Type </label>
-                    <select className="customSelector" onChange={collapsePrefix}>
+                    <select className="customSelector" value={type} onChange={handleShapeType}>
                         <option value="0">IriRef</option>
-                        <option value="1" selected>PrefixedIri</option>
+                        <option value="1">PrefixedIri</option>
                         <option value="2">Bnode</option>
                     </select>
                 </div>
