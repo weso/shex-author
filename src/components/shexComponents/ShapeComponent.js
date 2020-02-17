@@ -9,7 +9,9 @@ import Qualifier from './utils/Qualifier';
 
 import Triple from '../../entities/shexEntities/triple';
 
+import ShapeHeader from  './headers/ShapeHeader';
 import CustomShape from './customize/CustomShape';
+
 
 function ShapeComponent (props) {
 
@@ -94,9 +96,6 @@ function ShapeComponent (props) {
             
     }
 
-    const del = function(id){
-        context.deleteShape(id);
-    }
 
 
      const customizeTriple = function(){
@@ -108,19 +107,12 @@ function ShapeComponent (props) {
 
     return (
         <div className="shape" key={shape.id}>
-            <div className="header">            
-                <label className="shapeNameLabel">Shape </label>
-                <input type="text" className="form-control shapeName"/>
-                <button className="accordion mdc-icon-button material-icons" onClick={customize}>build</button>
-                <button className="deleteShapeBtn mdc-icon-button material-icons" onClick={()=>del(shape.id)}>delete</button>
-                <button className="triplesBtn mdc-icon-button material-icons" onClick={triplesMenu}>{colapseBtn}</button>
-            </div>
+            <ShapeHeader shape={shape} customize={customize} triplesMenu={triplesMenu} colapseBtn={colapseBtn}/>
             <CustomShape isCustomOpen={isCustomOpen} isPrefix={isPrefix} open={open}/>
                  
             <Collapse isOpen={isTriplesOpen} >
                 <div className="triples">
                     {triples.map(triple =>
-
                         <TripleComponent key={triple.id}
                                          shape={shape} 
                                          triple={triple}
@@ -129,18 +121,10 @@ function ShapeComponent (props) {
                                          isTripleCustomOpen={isTripleCustomOpen}
                         /> 
                     )}
-                    <button 
-                        className="addTripleButton"
-                        onClick={addTriple}>
-                        + Triple
-                </button>        
-                </div>
-                    
+                    <button className="addTripleButton" onClick={addTriple}>+ Triple</button>        
+                </div>                    
             </Collapse> 
-           
-            
-
-                    </div>
+        </div>
      
     );
                                    

@@ -1,7 +1,5 @@
-import React,{useContext,useState} from 'react';
+import React from 'react';
 import { Collapse } from 'reactstrap';
-
-
 
 function CustomShape (props) {
 
