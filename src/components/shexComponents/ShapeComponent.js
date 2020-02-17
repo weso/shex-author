@@ -59,7 +59,7 @@ function ShapeComponent (props) {
     }
 
      const collapsePrefix = function(evt){
-        if(evt.target.value=='1'){
+        if(evt.target.value=='prefixedIri'){
             setPrefix(true);
         }else{
             setPrefix(false);
@@ -67,7 +67,7 @@ function ShapeComponent (props) {
     }
 
     return (
-        <div className="shape" key={shape.id}>
+        <div className="shape">
 
             <ShapeHeader shape={shape} 
                          customizeShape={customizeShape} 

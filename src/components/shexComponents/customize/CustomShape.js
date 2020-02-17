@@ -6,12 +6,14 @@ import {ShapesContext} from '../../../App';
 function CustomShape (props) {
 
     const context = useContext(ShapesContext);
-    const {shape,isCustomOpen,isPrefix,handleShapeType} = props;
+    const {shape,isCustomOpen,isPrefix} = props;
     const [type,setType] = useState(shape.type.getTypeName());
 
     const handleTypeChange = function(e){
-        const type = e.target.value;
-        shape.setType(type)
+        const type  = e.target.value;
+        const value = shape.type.value;
+        shape.setType(type);
+        shape.type.value = value;
         context.emit();
         setType(type);
     }
@@ -21,10 +23,10 @@ function CustomShape (props) {
             <div className="custom">
                 <div className="box1 gridBox">
                     <label className="customLabel">Type </label>
-                    <select className="customSelector" value={type} onChange={handleShapeType}>
-                        <option value="0">IriRef</option>
-                        <option value="1">PrefixedIri</option>
-                        <option value="2">Bnode</option>
+                    <select className="customSelector" value={type} onChange={handleTypeChange}>
+                        <option value="iriRef">IriRef</option>
+                        <option value="prefixedIri">PrefixedIri</option>
+                        <option value="bnodeType">Bnode</option>
                     </select>
                 </div>
                 <Collapse isOpen={isPrefix} className="box2 gridBox">

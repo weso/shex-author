@@ -13,7 +13,7 @@ function AssistantComp (props) {
     
     return (<div id='assistant-container' className='assistantContainer'> 
 
-                {context.shapes.map(shape =>{return  <ShapeComponent shape={shape}/> })}
+                {context.shapes.map(shape =>{return  <ShapeComponent shape={shape} key={shape.id}/> })}
                 
                 <button id='addShapeButton' 
                         className="addShapeButton" 

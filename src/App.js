@@ -161,11 +161,11 @@ function App() {
                       </Collapse> 
 
                       <Collapse isOpen={isAssistantOpen} className="row assistCollapse">
-                        <ResizableBox className="col box" width={100}  axis="x">
+                        <Resizable className="col box" width={100} height={100} axis="x">
                             <div className="col containerAssist">
                               <AssistantComp/>                                       
                             </div>
-                        </ResizableBox>     
+                        </Resizable>     
                       </Collapse> 
                      
                       <EditorComp />

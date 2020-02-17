@@ -44,7 +44,7 @@
         position: absolute;
         
         width: 1em;
-        height: 100%;
+        height: 100% !important;
 
         background: #ddeafa;
         background-image: url( data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAhCAQAAABOpSL+AAAAIklEQVR4AWMwbb/PdR+JZDD9f1/oPhI5sgVGBSruc9xHIgGdSQqqQJGkRgAAAABJRU5ErkJggg== );

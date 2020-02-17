@@ -28,7 +28,7 @@ function CustomTriple (props) {
                         <label>Type </label>
                         <select className="customSelector" onChange={handleTypeChange}>
                             <option value="0">IriRef</option>
-                            <option value="1" selected>PrefixedIri</option>
+                            <option value="1">PrefixedIri</option>
                             <option value="2">Bnode</option>
                         </select>
                     </div>
@@ -49,7 +49,7 @@ function CustomTriple (props) {
                         <label>Value </label>
                         <select className="customSelector" >
                             <option value="0">IriRef</option>
-                            <option value="1" selected>PrefixedIri</option>
+                            <option value="1">PrefixedIri</option>
                             <option value="2">Shape</option>
                             <option value="3">Literal</option>
                             <option value="4">NonLiteral</option>
