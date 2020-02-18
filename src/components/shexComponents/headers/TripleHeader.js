@@ -6,7 +6,7 @@ const primitives = ['String','Integer','Date','Boolean'];
 function TripleHeader (props) {
 
     const context = useContext(ShapesContext); 
-    const {triple,deleteTriple,customizeTriple} = props;
+    const {triple,deleteTriple,customizeTriple,collapseConstraints} = props;
 
     const [name,setName] = useState(triple.type.value);
     
@@ -26,9 +26,9 @@ function TripleHeader (props) {
                     value={name}
                     onChange={handleNameChange}/>
 
-            <button className="accordion mdc-icon-button material-icons" onClick={customizeTriple}>build</button>
+            <button className="buildBtn buildTripleBtn mdc-icon-button material-icons" onClick={customizeTriple}>build</button>
             <button className="deleteShapeBtn mdc-icon-button material-icons" onClick={()=>deleteTriple(triple.id)}>delete</button>
-            <button className="triplesBtn mdc-icon-button material-icons" >asd</button>
+            <button className="collapseBtn mdc-icon-button material-icons" onClick={collapseConstraints}>menu</button>
         </div>
     );
                                    

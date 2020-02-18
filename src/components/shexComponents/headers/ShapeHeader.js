@@ -22,9 +22,9 @@ function ShapeHeader (props) {
                     value={name}
                     onChange={handleChange}/>
 
-            <button className="accordion mdc-icon-button material-icons" onClick={customizeShape}>build</button>
+            <button className="buildBtn buildShapeBtn mdc-icon-button material-icons" onClick={customizeShape}>build</button>
             <button className="deleteShapeBtn mdc-icon-button material-icons" onClick={()=>context.deleteShape(shape.id)}>delete</button>
-            <button className="triplesBtn mdc-icon-button material-icons" onClick={collapseTriples}>{colapseBtn}</button>
+            <button className="collapseBtn mdc-icon-button material-icons" onClick={collapseTriples}>{colapseBtn}</button>
         </div>
     );
                                    

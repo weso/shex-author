@@ -14,7 +14,7 @@ function TripleComponent (props) {
     const [colapseBtn,setColapseBtn] = useState('menu_open');
 
     const customizeTriple = function(){
-        setTripleCustomOpen(!isConstraintsOpen);
+        setTripleCustomOpen(!isTripleCustomOpen);
         setConstraintsOpen(false);
         setColapseBtn('menu');
     }
@@ -34,14 +34,14 @@ function TripleComponent (props) {
         <div>
             <TripleHeader triple={triple} 
                           deleteTriple={deleteTriple} 
-                          customizeTriple={customizeTriple}/>
+                          customizeTriple={customizeTriple}
+                          collapseConstraints={collapseConstraints}/>
 
             <CustomTriple triple={triple} isTripleCustomOpen={isTripleCustomOpen}/>
 
             <Collapse isOpen={isConstraintsOpen} >
                 <div className="constraints">
                     <ConstraintComponent triple={triple}/>
-                    
                 </div>                    
             </Collapse> 
            

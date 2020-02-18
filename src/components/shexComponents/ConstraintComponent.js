@@ -32,6 +32,7 @@ function ConstraintComponent (props) {
                     })
                 }
             </select>
+            <button className="buildBtn buildConstraintBtn mdc-icon-button material-icons">build</button>
         </div>);
                                    
 
