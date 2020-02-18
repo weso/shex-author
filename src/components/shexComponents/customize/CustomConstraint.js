@@ -4,6 +4,7 @@ import { Collapse } from 'reactstrap';
 import {ShapesContext} from '../../../App';
 import {getPrefix} from '../../../utils/prefixUtils';
 
+import shexUtils from '../../../utils/shexUtils';
 
 function CustomConstraint (props) {
 
@@ -11,11 +12,11 @@ function CustomConstraint (props) {
     const {triple,isCustomOpen} = props;
 
     const [constraint,setConstraint] = useState(triple.value.getTypeName());
-    
     const [isShapeRefOpen,setShapeRefOpen] = useState(false);
     const [isQualiOpen,setQualiOpen] = useState(false);
-
-
+ 
+    const [qualifier,setQualifier] = useState(triple.value.value)
+        
     let initialPrefix = 'example';
     let initialOpenPrefix = false;
     if(triple.value.prefix!=undefined){
@@ -34,6 +35,13 @@ function CustomConstraint (props) {
     const [name,setName] = useState(triple.value.value);
     const [isNameOpen,setNameOpen] = useState(initialOpenName);
 
+    let inlineValue = '';
+    if(triple.inlineShape.shape != null){
+        inlineValue = triple.inlineShape.shape.id;
+    }
+    
+    const [shapeRef,setShapeRef] = useState(inlineValue);
+
     const handlePrefixChange = function(e){ 
         let prefix = getPrefix(e.target.value);
         triple.value.setPrefix(prefix);
@@ -49,6 +57,28 @@ function CustomConstraint (props) {
         setName(newName);
     }
 
+    const handleShapeRefChange = function(e){
+        const shapeId = e.target.value;
+        let inlineShape = null;
+        let inlineSelector = '';
+        if(shapeId!=''){
+            inlineShape = shexUtils.getShapeById(context.shapes,shapeId);
+            inlineSelector = inlineShape.id;
+        }
+        triple.getInlineShape().setShape(inlineShape);
+        context.emit();
+        setShapeRef(inlineSelector);
+    }
+
+    const handleQualifierChange = function(e){
+        let newQualifier = e.target.value;
+        triple.value.value = newQualifier;
+        context.emit();
+        setQualifier(newQualifier);
+    }
+
+    
+
 
 
     const handleConstraintChange = function(e){
@@ -58,17 +88,26 @@ function CustomConstraint (props) {
             triple.inlineShape.shape = null;
         }
         triple.setValue(newConstraint);
-        //conserve the name
-        triple.value.setValue(name);
+       
+        if(newConstraint!='shape'){
+            //conserve the name
+            triple.value.setValue(name);
+        }else{
+            //Set the first shape by default
+            setShapeRef(context.shapes[0]);
+            triple.getInlineShape().setShape(context.shapes[0]);
+        }
+
 
         context.emit();
         setConstraint(newConstraint);
+        setQualifier('none');
 
         setNameOpen(false);
         setPrefixOpen(false);
         setShapeRefOpen(false);
         setQualiOpen(false);
-
+    
 
         if(newConstraint == 'iriRef'){
             setNameOpen(true);
@@ -131,8 +170,10 @@ function CustomConstraint (props) {
 
                     <Collapse isOpen={isShapeRefOpen} className="gridBox">
                         <label className="customLabel">ShapeRef</label>
-                        <select className="customSelector">
-                        <option value=''></option>
+                        <select className="customSelector"
+                                value={shapeRef}
+                                onChange={handleShapeRefChange}>
+                       
                         { 
                         context.shapes.map(shape =>{
                             return <option key={shape.id} value={shape.id}>{'@'+shape.type}</option>
@@ -143,7 +184,9 @@ function CustomConstraint (props) {
        
                     <Collapse isOpen={isQualiOpen} className="gridBox">
                         <label className="customLabel">Qualifier </label>
-                        <select className="customSelector" >
+                        <select className="customSelector"
+                                value={qualifier}
+                                onChange={handleQualifierChange} >
                             <option value="shape">None</option>
                             <option value="iri">Iri</option>
                             <option value="literal">Literal</option>
