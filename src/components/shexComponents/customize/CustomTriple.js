@@ -2,8 +2,8 @@ import React,{useState,useContext} from 'react';
 import { Collapse } from 'reactstrap';
 
 import {ShapesContext} from '../../../App';
-
 import {getPrefix} from '../../../utils/prefixUtils';
+
 
 function CustomTriple (props) {
 
@@ -11,7 +11,7 @@ function CustomTriple (props) {
     const {triple,isTripleCustomOpen} = props;
 
     const [type,setType] = useState(triple.type.getTypeName());
-    const [valueType,setValueType] = useState(triple.value.getTypeName());
+   
 
     let initialPrefix = 'example';
     let initialOpenPrefix = false;
@@ -51,16 +51,6 @@ function CustomTriple (props) {
         }    
     }
 
-    const handleValueTypeChange = function(e){
-        let newType = e.target.value;
-        if(newType!='shape'){
-            //This is necesary when we change from ShapeType to otherType
-            triple.inlineShape.shape = null;
-        }
-        triple.setValue(newType);
-        context.emit();
-        setValueType(newType);
-    }
 
     return (
         <Collapse isOpen={isTripleCustomOpen} className='customColapse'>
@@ -87,24 +77,7 @@ function CustomTriple (props) {
                                 })
                             }
                         </select>
-                    </Collapse>
-
-
-                    <div className="gridTriplesBox">
-                        <label className="customLabel">Value </label>
-                        <select className="customSelector"
-                                value={valueType}
-                                onChange={handleValueTypeChange}>
-                            <option value="iriRef">IriRef</option>
-                            <option value="prefixedIri">PrefixedIri</option>
-                            <option value="shape">Shape</option>
-                            <option value="literal">Literal</option>
-                            <option value="nonliteral">NonLiteral</option>
-                            <option value="iri">IRI</option>
-                            <option value="bnode">BNode</option>
-                        </select>
-                    </div>
-        
+                    </Collapse>                    
                 </div>
             </Collapse>                  
     );

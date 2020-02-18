@@ -4,14 +4,30 @@ import {ShapesContext} from '../../App';
 
 import TripleHeader from './headers/TripleHeader';
 import CustomTriple from './customize/CustomTriple';
+import ConstraintComponent from './ConstraintComponent';
 
 function TripleComponent (props) {
     
     const {shape,triple,deleteTriple} = props;
     const [isTripleCustomOpen,setTripleCustomOpen] = useState(false);
-    
+    const [isConstraintsOpen,setConstraintsOpen] = useState(true);
+    const [colapseBtn,setColapseBtn] = useState('menu_open');
+
     const customizeTriple = function(){
-        setTripleCustomOpen(!isTripleCustomOpen);
+        setTripleCustomOpen(!isConstraintsOpen);
+        setConstraintsOpen(false);
+        setColapseBtn('menu');
+    }
+
+    const collapseConstraints = function(){
+        setTripleCustomOpen(false);
+        setConstraintsOpen(!isConstraintsOpen);
+
+        if(colapseBtn=='menu'){
+            setColapseBtn('menu_open');
+        }else{
+            setColapseBtn('menu');
+        }
     }
 
     return ( 
@@ -21,9 +37,25 @@ function TripleComponent (props) {
                           customizeTriple={customizeTriple}/>
 
             <CustomTriple triple={triple} isTripleCustomOpen={isTripleCustomOpen}/>
-            
+
+            <Collapse isOpen={isConstraintsOpen} >
+                <div className="constraints">
+                    <ConstraintComponent triple={triple}/>
+                    
+                </div>                    
+            </Collapse> 
+           
         </div>);                          
 }
+
+/*
+<Collapse isOpen={isConstraintsOpen} >
+                <div className="constraints">
+                    <ConstraintComponent triple={triple}/>
+                    <button className="addTripleButton">+ Constraint</button>        
+                </div>                    
+            </Collapse> 
+*/
 
 export default TripleComponent;
 

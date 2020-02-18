@@ -21,7 +21,8 @@
 
     .resizable{
         height: 100% !important;
-        border-right:4px double #95b2d6;
+        /*border-right:4px double #95b2d6;*/
+        border-right:4px double#b5bec9;
         border-collapse: separate ;
         
     }
@@ -106,9 +107,27 @@
 
 
 
+    .constraintHeader{
+        background: #d6ffc654 ;
+        padding: 10px;
+        color: black;
+        text-align: left;
+
+        border: 1px solid grey;
+        border-radius: 10px;
+        display: grid;
+        grid-template-columns: 10% 55% 5% 5% 5% 5% 5%;
+        grid-gap: 28px;
+    }
+
+
+
     .triples{
         background: #EBF4FF;
-        padding: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-right:30px;
+        padding-left:30px;
         color: black;
         text-align: left;
 
@@ -118,9 +137,38 @@
         border-radius: 0px 0px 10px 10px ;
         display: grid;
         grid-template-columns: 100%;
-
         
     }
+
+    .constraints{
+        background: #EFE8E1;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-right:40px;
+        padding-left:40px;
+        color: black;
+        text-align: left;
+
+        border-left: 1px solid grey;
+        border-right: 1px solid grey;
+        border-bottom: 1px solid grey;
+        border-radius: 0px 0px 10px 10px ;
+        display: grid;
+        grid-template-columns: 100%;
+        margin-bottom: 10px;
+    }
+
+    .addConstraintButton{
+        margin-top: 10px;
+        background: #ffe1e1;
+        border-radius: 10px;
+    }
+
+    /*
+fcffe1  amarillu
+
+fce1ff46
+    */
 
     .addTripleButton{
         margin-top: 10px;
@@ -138,8 +186,8 @@
         border: 1px solid grey;
         border-radius: 10px 10px 0px 0px;
         display: grid;
-        grid-template-columns: 9% 33% 20% 20%  5% 5%;
-        grid-gap: 10px;
+        grid-template-columns: 10% 55% 5% 5% 5% 5% 5%;
+        grid-gap: 15px;
     
     }
 
@@ -208,7 +256,7 @@
 
 
     .customSelector{
-        border-radius: 10px;
+        border-radius: 5px;
         background: white;
         outline: none;
     }
@@ -276,4 +324,12 @@
 
     .triplesBtn:focus{
         outline: none;
+    }
+
+
+    *, *::after, *::before {
+        -webkit-user-select: none;
+        -webkit-user-drag: none;
+        -webkit-app-region: no-drag;
+        cursor: default;
     }

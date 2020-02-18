@@ -9,11 +9,7 @@ function TripleHeader (props) {
     const {triple,deleteTriple,customizeTriple} = props;
 
     const [name,setName] = useState(triple.type.value);
-    const [primitive,setPrimitive] = useState(triple.value.value);
-    const [cardinality,setCardinality] = useState(triple.cardinality.toString());  
     
-
-
     const handleNameChange = function(e){
         const name = e.target.value;
         triple.type.setValue(name);
@@ -21,52 +17,18 @@ function TripleHeader (props) {
         setName(name);
     }
 
-    const handlePrimitiveChange = function(e){
-        const primitive = e.target.value;
-        triple.setValue('primitive');
-        triple.value.setValue(primitive);
-        context.emit();
-        setPrimitive(primitive)
-    }
-
-    const handleCardinalityChange = function(e){
-        let cardinality = e.target.value;
-        triple.setCardinality(cardinality);
-        context.emit();
-        setCardinality(cardinality)
-    }
-
    
-
     return (
-        <div className="tripleHeader">
-            <label>Triple </label>
+        <div className="tripleHeader">            
+            <label  className="shapeNameLabel">Triple</label>
             <input  type="text" 
                     className="form-control shapeName"
                     value={name}
                     onChange={handleNameChange}/>
 
-            <select className="customSelector" 
-                    value={primitive} 
-                    onChange={handlePrimitiveChange}>
-                {
-                    primitives.map(prim =>{
-                        return <option key={prim} value={prim.toLowerCase()}>{prim}</option>
-                    })
-                }
-            </select>
-
-            <select className="customSelector" 
-                    value={cardinality}
-                    onChange={handleCardinalityChange}>
-
-                <option value="">Exactly one</option>
-                <option value="*">Zero or more</option>
-                <option value="+">One at least</option>
-                <option value="?">One or none</option>
-            </select>                        
             <button className="accordion mdc-icon-button material-icons" onClick={customizeTriple}>build</button>
             <button className="deleteShapeBtn mdc-icon-button material-icons" onClick={()=>deleteTriple(triple.id)}>delete</button>
+            <button className="triplesBtn mdc-icon-button material-icons" >asd</button>
         </div>
     );
                                    
