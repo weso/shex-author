@@ -11,10 +11,45 @@ function CustomConstraint (props) {
     const {triple,isCustomOpen} = props;
 
     const [constraint,setConstraint] = useState(triple.value.getTypeName());
-    const [isNameOpen,setNameOpen] = useState(false);
-    const [isPrefixOpen,setPrefixOpen] = useState(false);
+    
     const [isShapeRefOpen,setShapeRefOpen] = useState(false);
     const [isQualiOpen,setQualiOpen] = useState(false);
+
+
+    let initialPrefix = 'example';
+    let initialOpenPrefix = false;
+    if(triple.value.prefix!=undefined){
+        initialPrefix = triple.value.prefix.prefixValue;
+        initialOpenPrefix = true;
+    }
+
+    const [prefix,setPrefix] = useState(initialPrefix);
+    const [isPrefixOpen,setPrefixOpen] = useState(initialOpenPrefix);
+
+    let initialOpenName = false;
+    if(triple.value.value!='' && constraint!='primitive'){
+        initialOpenName = true;
+    }
+
+    const [name,setName] = useState(triple.value.value);
+    const [isNameOpen,setNameOpen] = useState(initialOpenName);
+
+    const handlePrefixChange = function(e){ 
+        let prefix = getPrefix(e.target.value);
+        triple.value.setPrefix(prefix);
+        context.emit();
+        setPrefix(e.target.value);
+
+    }
+
+    const handleNameChange = function(e){
+        let newName = e.target.value;
+        triple.value.setValue(newName);
+        context.emit();
+        setName(newName);
+    }
+
+
 
     const handleConstraintChange = function(e){
         let newConstraint = e.target.value;
@@ -23,6 +58,9 @@ function CustomConstraint (props) {
             triple.inlineShape.shape = null;
         }
         triple.setValue(newConstraint);
+        //conserve the name
+        triple.value.setValue(name);
+
         context.emit();
         setConstraint(newConstraint);
 
@@ -69,12 +107,17 @@ function CustomConstraint (props) {
                     </div>     
                     <Collapse isOpen={isNameOpen} className="gridBox">
                         <label className="customLabel">Name</label>
-                        <input  type="text" className="form-control shapeName"/> 
+                        <input  type="text" 
+                                className="form-control shapeName"
+                                value={name}
+                                onChange={handleNameChange}/> 
                     </Collapse>
 
                     <Collapse isOpen={isPrefixOpen} className="gridBox">
                         <label className="customLabel">Prefix</label>
-                        <select className="customSelector">
+                        <select className="form-control customSelector" 
+                                value={prefix}
+                                onChange={handlePrefixChange}>
                             <option value="example">example</option>
                             { 
                             context.prefixes.map((pre) =>{
