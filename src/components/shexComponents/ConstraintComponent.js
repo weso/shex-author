@@ -1,6 +1,11 @@
 import React,{useState,useContext} from 'react';
 
 import {ShapesContext} from '../../App';
+import { Collapse } from 'reactstrap';
+
+import ConstraintHeader from './headers/ConstraintHeader';
+import CustomConstraint from './customize/CustomConstraint';
+
 
 const primitives = ['String','Integer','Date','Boolean'];
 
@@ -8,32 +13,19 @@ function ConstraintComponent (props) {
     
     const context = useContext(ShapesContext);
     const {triple} = props;
-    const [primitive,setPrimitive] = useState(triple.value.value);
-
+    const [isCustomOpen,setCustomOpen] = useState(false);
   
 
-       const handlePrimitiveChange = function(e){
-        const primitive = e.target.value;
-        triple.setValue('primitive');
-        triple.value.setValue(primitive);
-        context.emit();
-        setPrimitive(primitive)
+    const customizeConstraint = function(){
+        setCustomOpen(!isCustomOpen);
     }
 
-
-    return ( <div className="constraintHeader">
-                <label>Constraint </label>
-                <select className="customSelector" 
-                    value={primitive} 
-                    onChange={handlePrimitiveChange}>
-                {
-                    primitives.map(prim =>{
-                        return <option key={prim} value={prim.toLowerCase()}>{prim}</option>
-                    })
-                }
-            </select>
-            <button className="buildBtn buildConstraintBtn mdc-icon-button material-icons">build</button>
-        </div>);
+    return (   
+    <div>    
+        <ConstraintHeader triple={triple} customizeConstraint={customizeConstraint}/>
+        <CustomConstraint triple={triple} isCustomOpen={isCustomOpen}/>
+    </div>
+        );
                                    
 
 

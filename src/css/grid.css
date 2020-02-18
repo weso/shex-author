@@ -101,7 +101,7 @@
         border: 1px solid grey;
         border-radius: 10px 10px 0px 0px;
         display: grid;
-        grid-template-columns: 10% 65% 5% 5% 5% 8% 5%;
+        grid-template-columns: 10% 65% 5% 5% 5% 7% 5%;
         grid-gap: 10px;
     }
 
@@ -114,7 +114,7 @@
         text-align: left;
 
         border: 1px solid grey;
-        border-radius: 10px;
+        border-radius: 10px 10px 0px 0px;
         display: grid;
         grid-template-columns: 12% 58% 5% 5% 5% 5% 5%;
         grid-gap: 10px;
@@ -220,6 +220,21 @@ fce1ff46
 
     .customTriple{
         background: #EFE8E1;
+        padding: 10px;
+        color: black;
+
+        border-left: 1px solid grey;
+        border-right: 1px solid grey;
+        border-bottom: 1px solid grey;
+        border-radius: 0px 0px 10px 10px;
+
+        display: grid;
+        grid-template-columns: 100%;
+        grid-gap: 5px;
+    }
+
+    .customConstraint{
+        background:#e4fadb54;
         padding: 10px;
         color: black;
 
