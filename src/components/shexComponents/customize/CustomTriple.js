@@ -66,8 +66,7 @@ function CustomTriple (props) {
         <Collapse isOpen={isTripleCustomOpen} className='customColapse'>
                 <div className="customTriple">
                     <div className="gridTriplesBox">
-                        <div/>
-                        <label>Type </label>
+                        <label className="customLabel">Type </label>
                         <select className="customSelector" 
                                 value={type}
                                 onChange={handleTypeChange}>
@@ -76,9 +75,8 @@ function CustomTriple (props) {
                         </select>
                     </div>
 
-                    <Collapse isOpen={isPrefixOpen} className="gridTriplesBox">
-                        <div/>
-                        <label>Prefix </label>
+                    <Collapse isOpen={isPrefixOpen} className="gridTriplesBox">                       
+                        <label className="customLabel">Prefix </label>
                         <select className="customSelector" value={prefix} onChange={handlePrefixChange}>
                             <option value="example">example</option>
                             { 
@@ -93,8 +91,7 @@ function CustomTriple (props) {
 
 
                     <div className="gridTriplesBox">
-                        <div/>
-                        <label>Value </label>
+                        <label className="customLabel">Value </label>
                         <select className="customSelector"
                                 value={valueType}
                                 onChange={handleValueTypeChange}>

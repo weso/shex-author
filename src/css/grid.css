@@ -157,6 +157,11 @@
         display: grid;
         grid-template-columns: 10% 10% 54%;
         grid-gap: 10px;
+
+    }
+
+    .customLabel{
+        grid-column: 2/3;
     }
 
     .gridTriplesBox{ 
