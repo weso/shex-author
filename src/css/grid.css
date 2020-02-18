@@ -212,7 +212,7 @@ fce1ff46
         grid-column: 2/3;
     }
 
-    .gridTriplesBox{ 
+    .gridBox{ 
         display: grid;
         grid-template-columns: 7% 10% 54%;
         grid-gap: 35px;

@@ -13,7 +13,7 @@ function ConstraintComponent (props) {
     
     const context = useContext(ShapesContext);
     const {triple} = props;
-    const [isCustomOpen,setCustomOpen] = useState(false);
+    const [isCustomOpen,setCustomOpen] = useState(true);
   
 
     const customizeConstraint = function(){
