@@ -104,11 +104,10 @@
         border: 1px solid grey;
         border-radius: 10px 10px 0px 0px;
         display: grid;
-        grid-template-columns: 10% 65% 5% 5% 5% 7% 5%;
+        grid-template-columns: 11% 65% 6% 6% 9%;
         /*grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));*/
         grid-gap: 10px;
 
-        
     }
 
 
@@ -192,7 +191,7 @@ fce1ff46
         border: 1px solid grey;
         border-radius: 10px 10px 0px 0px;
         display: grid;
-        grid-template-columns: 10% 62% 5% 5% 5% 12% 5%;
+        grid-template-columns: 12% 62% 5% 5% 15%;
         grid-gap: 10px;
     
     }
@@ -290,44 +289,21 @@ fce1ff46
         color: white;
     }
 
-    .buildBtn{
-        background: #3d3d3d;
-        color:white;
-        border-radius: 10px;
-        outline: none;
-        border: none;
-        height: 100%;
-        font-size: 25px;
-    }
 
 /*
 3d3d3d negro boton build
 */
 
 
-    .buildBtn:focus{
-        outline: none;
-    }
-
-
-    .buildBtn:hover{
-        transform: scale(1.1);
-        color:white;
-    }
-
-    .buildBtn:active {
-        transform: translateY(4px);
-    }
 
 
     .deleteShapeBtn{
         background: #FF7373;
         color: white;
         border-radius: 10px;
-        outline: nonew;
+        outline: none;
         border: none;
-        height: 100%;
-    
+
     }
 
     .deleteShapeBtn:focus{
@@ -346,9 +322,6 @@ fce1ff46
         border: none;
         height: 100%;
         font-size: 25px;
-
-        grid-column: 6/7;
-
     }
 
     .collapseBtn:focus{
@@ -364,6 +337,71 @@ fce1ff46
     }
 
 
+    .deleteTripleBtn{
+        background: #FF7373;
+        color: white;
+        border-radius: 10px;
+        outline: none;
+        border: none;
+        padding:2px;
+
+    }
+
+    .deleteTripleBtn:focus{
+        outline: none;
+    }
+
+
+    .deleteTripleBtn:hover{
+        transform: scale(1.1);
+    }
+
+
+    
+
+
+
+
+
+    .buildBtn{
+        background: #3d3d3d;
+        color:white;
+        border-radius: 10px;
+        outline: none;
+        border: none;
+    }
+
+
+    .buildBtn:focus{
+        outline: none;
+    }
+
+
+    .buildBtn:hover{
+        transform: scale(1.1);
+    }
+
+    .buildBtn:active {
+        transform: translateY(4px);
+    }
+   
+
+    .buildShapeBtn{
+        font-size: 25px;
+    }
+
+
+    .buildTripleBtn{
+        font-size: 22px;
+        padding:2px;
+    }
+
+
+    .buildConstraintBtn{
+        font-size: 20px;
+        padding:2px;
+    }
+    
 /*
 
     @media (max-width: 2040px) {

@@ -31,7 +31,7 @@ function ConstraintHeader (props) {
                     })
                 }
             </select>
-            <button className="buildBtn buildConstraintBtn mdc-icon-button material-icons" onClick={customizeConstraint}>build</button>
+            <button className="buildBtn buildConstraintBtn buildConstraintBtn mdc-icon-button material-icons" onClick={customizeConstraint}>build</button>
         </div>
     );
                                    
