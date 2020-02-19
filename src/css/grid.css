@@ -191,7 +191,7 @@ fce1ff46
         border: 1px solid grey;
         border-radius: 10px 10px 0px 0px;
         display: grid;
-        grid-template-columns: 15% 56% 6% 6% 18%;
+        grid-template-columns: 15% 56% 6% 6% 15%;
         grid-gap: 10px;
     
     }

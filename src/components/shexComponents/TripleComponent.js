@@ -35,6 +35,7 @@ function TripleComponent (props) {
             <TripleHeader triple={triple} 
                           deleteTriple={deleteTriple} 
                           customizeTriple={customizeTriple}
+                          colapseBtn={colapseBtn}
                           collapseConstraints={collapseConstraints}/>
 
             <CustomTriple triple={triple} isTripleCustomOpen={isTripleCustomOpen}/>
