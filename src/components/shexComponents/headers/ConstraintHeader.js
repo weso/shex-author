@@ -10,6 +10,7 @@ function ConstraintHeader (props) {
     const {triple,customizeConstraint} = props;
 
     const [primitive,setPrimitive] = useState(triple.value.value);
+     const [cardinality,setCardinality] = useState(triple.cardinality);
    
     const handlePrimitiveChange = function(e){
         const primitive = e.target.value;
@@ -17,6 +18,14 @@ function ConstraintHeader (props) {
         triple.value.setValue(primitive);
         context.emit();
         setPrimitive(primitive)
+    }
+
+    const handleCardinalityChange = function(e){
+        let newCardinality = e.target.value;
+        triple.setCardinality(newCardinality);
+        context.emit();
+        setCardinality(newCardinality)
+       
     }
    
     return (
@@ -31,7 +40,13 @@ function ConstraintHeader (props) {
                     })
                 }
             </select>
-            <button className={context.tripleBtns+" buildBtn buildTripleBtn mdc-icon-button material-icons"} onClick={customizeConstraint}>build</button>
+             <select className="customSelector" value={cardinality} onChange={handleCardinalityChange}>
+                    <option value="">Exactly one</option>
+                    <option value="*">Zero or more</option>
+                    <option value="+">One at least</option>
+                    <option value="?">One or none</option>
+                </select>
+            <button className={context.tripleBtns+" buildConstraint buildBtn buildTripleBtn mdc-icon-button material-icons"} onClick={customizeConstraint}>build</button>
         </div>
     );
                                    

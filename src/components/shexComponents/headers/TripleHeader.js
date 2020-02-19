@@ -26,7 +26,7 @@ function TripleHeader (props) {
                     value={name}
                     onChange={handleNameChange}/>
 
-            <button className={context.tripleBtns+" buildBtn buildTripleBtn mdc-icon-button material-icons"} onClick={customizeTriple}>build</button>
+            <button className={context.tripleBtns+" buildTriple buildBtn buildTripleBtn mdc-icon-button material-icons"} onClick={customizeTriple}>build</button>
             <button className={context.tripleBtns+" deleteTripleBtn mdc-icon-button material-icons"} onClick={()=>deleteTriple(triple.id)}>delete</button>
             <button className="collapseBtn mdc-icon-button material-icons" onClick={collapseConstraints}>{colapseBtn}</button>
         </div>

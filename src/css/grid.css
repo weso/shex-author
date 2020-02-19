@@ -76,19 +76,7 @@
         height: 100%;
     }
 
-    .addShapeButton{
-        background: #ddeafa;
-        border-radius: 10px;
-    }
 
-
-    .addShapeButton:focus{
-        outline: none;
-    }
-
-    .addTripleButton:focus{
-        outline: none;
-    }
 
     .header{
         background: #C6E2FF ;
@@ -133,25 +121,23 @@
         border: 1px solid grey;
         border-radius: 10px 10px 0px 0px;
         display: grid;
-        grid-template-columns: 20% 45% 7%;
+        grid-template-columns: 20% 22.5% 22.5% 7%;
         grid-gap: 10px;
     }
 
 
     .xs-constraintHeader{
-        grid-template-columns: 31% 39% 10%;
-       
-        
+        grid-template-columns: 29% 19.5% 30% 10%;
     }
 
 
     .sm-constraintHeader{
-        grid-template-columns: 30% 35% 10%;
+        grid-template-columns: 30% 17.5% 17.5% 10%;
     }
 
     .ms-constraintHeader{
       
-        grid-template-columns: 28% 35% 8%;
+        grid-template-columns: 22% 19% 25% 8%;
     }
 
 
@@ -171,7 +157,7 @@
         border-radius: 0px 0px 10px 10px ;
         display: grid;
         grid-template-columns: 100%;
-        
+            
     }
 
     .xs-triples{
@@ -223,10 +209,35 @@ fcffe1  amarillu
 fce1ff46
     */
 
+    .addBtns{
+        display: grid;
+        grid-template-columns: auto 40% auto;
+
+    }
+
+    .addShapeButton{
+        background: #ddeafa;
+        border-radius: 10px;
+        margin-top:50px;
+        grid-column: 2/3;
+        font-weight: bold;
+    }
+
+
+    .addShapeButton:focus{
+        outline: none;
+    }
+
+    .addTripleButton:focus{
+        outline: none;
+    }
+
     .addTripleButton{
         margin-top: 10px;
         background: #EFDECD;
         border-radius: 10px;
+        font-weight: bold;
+        grid-column: 2/3;
     }
 
 
@@ -399,7 +410,7 @@ fce1ff46
 
 
     .deleteShapeBtn{
-        background: #FF7373;
+        background: #79aff5;
         color: white;
         border-radius: 10px;
         outline: none;
@@ -439,7 +450,7 @@ fce1ff46
 
 
     .deleteTripleBtn{
-        background: #FF7373;
+        background: #f8a252;
         color: white;
         border-radius: 10px;
         outline: none;
@@ -461,7 +472,7 @@ fce1ff46
 
     .buildBtn{
         background: #3d3d3d;
-        color:white;
+        color:rgb(121, 175, 245);
         border-radius: 10px;
         outline: none;
         border: none;
@@ -480,6 +491,16 @@ fce1ff46
 
     .buildBtn:active {
         transform: translateY(4px);
+    }
+
+    .buildTriple{
+        background: #3d3d3d !important;
+        color:#f8a252 !important;
+    }
+
+    .buildConstraint{
+        background: #3d3d3d !important;
+        color:rgb(177, 224, 134) !important;
     }
    
     .xs-tripleBtns{
