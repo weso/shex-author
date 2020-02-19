@@ -28,6 +28,8 @@ function App() {
     const [isAssistantOpen, setAssistantOpen] = useState(true);
     const [isVisualizeOpen, setVisualizeOpen] = useState(false);
     const [isLateralNavOpen, setLateralNavOpen] = useState(true);
+    const [width,setWidth] = useState(800);
+    const [classContainer,setClassContainer] = useState('col containerAssist');
 
     const assistantToggle = () => setAssistantOpen(!isAssistantOpen); 
     const visualizeToggle = () => setVisualizeOpen(!isVisualizeOpen);
@@ -163,16 +165,39 @@ function App() {
                   
 
                   <Collapse isOpen={isAssistantOpen} className='row assistCollapse'>
-                    <Resizable className="col row resizable"
-                      defaultSize={{
-                        width:500,
-                        height:500,
-                      }}
-                      enable={{right:true}}
-                    >
-                      <div className="col containerAssist">
+           
+                    <Resizable  className="col row resizable"
+                                size={{ width: width }}
+                    
+                                onResize={(e, direction, ref, d) => {
+                                
+                                     if(width+d.width<700){
+                                        setClassContainer('col containerAssist-sm')
+                                      }else{
+                                        setClassContainer('col containerAssist')
+                                      }
+                                  
+                                }} 
+
+                                onResizeStop={(e, direction, ref, d) => {
+                                 
+                                    setWidth(width+d.width);
+                                     console.log(width+d.width)
+                                      console.log(width)
+                                     if(width+d.width<700){
+                                        setClassContainer('col containerAssist-sm')
+                                      }else{
+                                        setClassContainer('col containerAssist')
+                                      }
+                                  
+                                }} 
+                                enable={{right:true}}
+>
+                      <div className={classContainer}>
                         <AssistantComp/>                            
                       </div>
+
+
 
                     </Resizable>     
                   </Collapse>                         

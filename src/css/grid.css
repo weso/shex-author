@@ -9,12 +9,15 @@
     }
 
 
-
     .assistCollapse{
         border-bottom: 1px solid grey;
         border-top:1px solid grey;
         max-width: 1400px;
         min-width: 500px;
+    }
+
+    .containerAssist-sm{
+        background: red;
     }
 
  
@@ -38,10 +41,10 @@
     }
 
 
-        .react-resizable {
+    .react-resizable {
         position: relative;
-        }
-      .react-resizable-handle {
+    }
+    .react-resizable-handle {
         position: absolute;
         
         width: 1em;
@@ -52,10 +55,10 @@
         background-position: center center;
         background-repeat: no-repeat;
         
-       
-   
-       
-      }
+        
+
+    
+    }
 
 
     .lateralNav {
@@ -102,7 +105,10 @@
         border-radius: 10px 10px 0px 0px;
         display: grid;
         grid-template-columns: 10% 65% 5% 5% 5% 7% 5%;
+        /*grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));*/
         grid-gap: 10px;
+
+        
     }
 
 
@@ -356,3 +362,22 @@ fce1ff46
         -webkit-app-region: no-drag;
         cursor: default;
     }
+
+
+/*
+
+    @media (max-width: 2040px) {
+        .assistantContainer{
+            display: grid;
+            grid-template-columns: 100%;
+            align-content: center;
+            grid-gap: 10px;
+            padding: 2%;
+            background-color: red;
+        }
+      }
+
+      */
+    
+
+     
