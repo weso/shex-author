@@ -139,8 +139,8 @@
 
 
     .xs-constraintHeader{
-        grid-template-columns: 30% 39% 10%;
-        font-size: 14px;
+        grid-template-columns: 31% 39% 10%;
+       
         
     }
 
@@ -281,6 +281,11 @@ fce1ff46
         grid-gap: 35px;
     }
 
+    .constraintGridBox{ 
+        display: grid;
+        grid-template-columns: 7% 10% 54%;
+        grid-gap: 44px;
+    }
 
     .xs-gridBox{
         grid-gap: 40px;
@@ -291,6 +296,33 @@ fce1ff46
         grid-template-columns: 3% 10% 54%;
     }
 
+
+    .xs-tripleGridBox{
+        grid-template-columns: 0% 10% 54%;
+    }
+
+    .sm-tripleGridBox{
+      
+        grid-template-columns: 1% 10% 54%;
+    }
+
+    .ms-tripleGridBox{
+        grid-template-columns: 3% 10% 54%;
+    }
+
+
+    .xs-constraintGridBox{
+        grid-template-columns: 0% 20% 37%;
+     
+    }
+
+    .sm-constraintGridBox{
+        grid-template-columns: 1% 20% 37%;
+    }
+
+    .ms-constraintGridBox{
+        grid-template-columns: 1% 20% 54%;
+    }
 
     .customTriple{
         background: #EFE8E1;
