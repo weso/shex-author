@@ -59,7 +59,7 @@ function CustomShape (props) {
     return (
         <Collapse isOpen={isCustomOpen} >
             <div className="custom">
-                <div className="box1 gridBox">
+                <div className={context.customClass+" box1 gridBox"}>
                     <label className="customLabel">Type </label>
                     <select className="customSelector" value={type} onChange={handleTypeChange}>
                         <option value="iriRef">IriRef</option>
@@ -67,7 +67,7 @@ function CustomShape (props) {
                         <option value="bnodeType">Bnode</option>
                     </select>
                 </div>
-                <Collapse isOpen={isPrefixOpen} className="box2 gridBox">
+                <Collapse isOpen={isPrefixOpen} className={context.customClass+" box2 gridBox"}>
                     <label className="customLabel">Prefix </label>
                     <select className="customSelector" value={prefix} onChange={handlePrefixChange}>
                         <option value="example">example</option>
@@ -80,7 +80,7 @@ function CustomShape (props) {
                     }
                     </select>
                 </Collapse>
-                <div className="box3 gridBox">
+                <div className={context.customClass+" box3 gridBox"}>
                     <label className="customLabel">Qualifier </label>
                     <select className="customSelector" value={qualifier} onChange={handleQualifierChange}>
                         <option value="shape">None</option>

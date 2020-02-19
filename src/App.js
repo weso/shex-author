@@ -33,8 +33,10 @@ function App() {
     //Responsive
     const [shapeClass,setShapeClass] = useState('header');
     const [tripleClass,setTripleClass] = useState('tripleHeader');
+    const [triplesContainer,setTriplesContainer] = useState('triples');
     const [tripleBtns,setTripleBtns] = useState('tripleBtns');
     const [constraintClass,setConstraintClass] = useState('constraintHeader');
+    const [customClass,setCustomClass] = useState('gridBox');
 
     const assistantToggle = () => setAssistantOpen(!isAssistantOpen); 
     const visualizeToggle = () => setVisualizeOpen(!isVisualizeOpen);
@@ -159,7 +161,9 @@ function App() {
                     shapeClass:shapeClass,
                     tripleClass:tripleClass,
                     tripleBtns:tripleBtns,
-                    constraintClass:constraintClass
+                    constraintClass:constraintClass,
+                    customClass:customClass,
+                    triplesContainer:triplesContainer
                   }
                 }>
                 
@@ -184,7 +188,9 @@ function App() {
                                         setShapeClass('xs-header');
                                         setTripleClass('xs-tripleHeader');
                                         setTripleBtns('xs-tripleBtns');
+                                        setTriplesContainer('xs-triples');
                                         setConstraintClass('xs-constraintHeader');
+                                        setCustomClass('xs-gridBox');
                                         return;
                                       }
                                      
@@ -193,7 +199,9 @@ function App() {
                                         setShapeClass('sm-header');
                                         setTripleClass('sm-tripleHeader');
                                         setTripleBtns('tripleBtns');
+                                        setTriplesContainer('sm-triples');
                                         setConstraintClass('sm-constraintHeader');
+                                        setCustomClass('sm-gridBox');
                                         return;
                                       }
                                       
@@ -201,13 +209,17 @@ function App() {
                                         setShapeClass('ms-header');
                                         setTripleClass('ms-tripleHeader');
                                         setTripleBtns('tripleBtns');
+                                        setTriplesContainer('ms-triples');
                                         setConstraintClass('ms-constraintHeader');
+                                        setCustomClass('ms-gridBox');
                                          return;
                                       }else{
                                         setShapeClass('header')
                                         setTripleClass('tripleHeader');
                                         setTripleBtns('tripleBtns');
+                                        setTriplesContainer('triples');
                                         setConstraintClass('constraintHeader');
+                                        setCustomClass('gridBox');
                                       }
                                   
                                 }} 

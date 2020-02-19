@@ -70,7 +70,7 @@ function ShapeComponent (props) {
                          isCustomOpen={isCustomOpen} />
                  
             <Collapse isOpen={isTriplesOpen} >
-                <div className="triples">
+                <div className={context.triplesContainer+" triples"}>
                     {triples.map(triple =>
                         <TripleComponent key={triple.id}
                                          shape={shape} 
