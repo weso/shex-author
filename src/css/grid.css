@@ -121,7 +121,7 @@
         border: 1px solid grey;
         border-radius: 10px 10px 0px 0px;
         display: grid;
-        grid-template-columns: 12% 58% 5% 5% 5% 5% 5%;
+        grid-template-columns: 20% 45% 7%;
         grid-gap: 10px;
     }
 
@@ -131,8 +131,8 @@
         background: #EBF4FF;
         padding-top: 10px;
         padding-bottom: 10px;
-        padding-right:30px;
-        padding-left:30px;
+        padding-right:40px;
+        padding-left:40px;
         color: black;
         text-align: left;
 
@@ -191,7 +191,7 @@ fce1ff46
         border: 1px solid grey;
         border-radius: 10px 10px 0px 0px;
         display: grid;
-        grid-template-columns: 12% 62% 5% 5% 15%;
+        grid-template-columns: 15% 56% 6% 6% 18%;
         grid-gap: 10px;
     
     }
@@ -344,6 +344,7 @@ fce1ff46
         outline: none;
         border: none;
         padding:2px;
+       
 
     }
 
@@ -357,15 +358,8 @@ fce1ff46
     }
 
 
-    
-
-
-
-
-
     .buildBtn{
-        background: #3d3d3d;
-        color:white;
+        
         border-radius: 10px;
         outline: none;
         border: none;
@@ -388,18 +382,23 @@ fce1ff46
 
     .buildShapeBtn{
         font-size: 25px;
+        background: #3d3d3d;
+        color:white;
     }
 
 
     .buildTripleBtn{
-        font-size: 22px;
-        padding:2px;
+        font-size: 25px;
+        background: #3d3d3d;
+        color:white;
+    
     }
 
 
     .buildConstraintBtn{
-        font-size: 20px;
-        padding:2px;
+        font-size: 25px;
+        background: #3d3d3d;
+        color:white;
     }
     
 /*
