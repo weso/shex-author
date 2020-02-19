@@ -29,7 +29,12 @@ function App() {
     const [isVisualizeOpen, setVisualizeOpen] = useState(false);
     const [isLateralNavOpen, setLateralNavOpen] = useState(true);
     const [width,setWidth] = useState(800);
+
+    //Responsive
     const [shapeClass,setShapeClass] = useState('header');
+    const [tripleClass,setTripleClass] = useState('tripleHeader');
+    const [tripleBtns,setTripleBtns] = useState('tripleBtns');
+    const [constraintClass,setConstraintClass] = useState('constraintHeader');
 
     const assistantToggle = () => setAssistantOpen(!isAssistantOpen); 
     const visualizeToggle = () => setVisualizeOpen(!isVisualizeOpen);
@@ -151,7 +156,10 @@ function App() {
                     currentStyle:style,
                     changeThemeStyle:changeThemeStyle,
                     visualize:visualize,
-                    shapeClass:shapeClass
+                    shapeClass:shapeClass,
+                    tripleClass:tripleClass,
+                    tripleBtns:tripleBtns,
+                    constraintClass:constraintClass
                   }
                 }>
                 
@@ -174,20 +182,32 @@ function App() {
                                 
                                      if(width+d.width<600){
                                         setShapeClass('xs-header');
+                                        setTripleClass('xs-tripleHeader');
+                                        setTripleBtns('xs-tripleBtns');
+                                        setConstraintClass('xs-constraintHeader');
                                         return;
                                       }
                                      
                                      
                                      if(width+d.width<660){
                                         setShapeClass('sm-header');
+                                        setTripleClass('sm-tripleHeader');
+                                        setTripleBtns('tripleBtns');
+                                        setConstraintClass('sm-constraintHeader');
                                         return;
                                       }
                                       
                                       if(width+d.width<750){
                                         setShapeClass('ms-header');
+                                        setTripleClass('ms-tripleHeader');
+                                        setTripleBtns('tripleBtns');
+                                        setConstraintClass('ms-constraintHeader');
                                          return;
                                       }else{
                                         setShapeClass('header')
+                                        setTripleClass('tripleHeader');
+                                        setTripleBtns('tripleBtns');
+                                        setConstraintClass('constraintHeader');
                                       }
                                   
                                 }} 

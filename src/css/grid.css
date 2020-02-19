@@ -104,7 +104,6 @@
     }
 
     .xs-header{
-      
         padding: 8px;
         grid-template-columns: 17% 50% 8% 8% 1%;
         grid-gap: 10px;
@@ -112,14 +111,12 @@
 
 
     .sm-header{
-
         padding: 8px;
         grid-template-columns: 14% 55% 8% 8% 8%;
         grid-gap: 10px;
     }
 
     .ms-header{
-      
         padding: 10px;
         grid-template-columns: 13% 61% 7% 7% 1%;
         grid-gap: 8px;
@@ -138,6 +135,22 @@
         display: grid;
         grid-template-columns: 20% 45% 7%;
         grid-gap: 10px;
+    }
+
+
+    .xs-constraintHeader{
+        grid-template-columns: 35% 35% 10%;
+        font-size: 14px;
+    }
+
+
+    .sm-constraintHeader{
+        grid-template-columns: 30% 35% 10%;
+    }
+
+    .ms-constraintHeader{
+      
+        grid-template-columns: 28% 35% 8%;
     }
 
 
@@ -210,6 +223,22 @@ fce1ff46
         grid-gap: 10px;
     
     }
+
+
+    .xs-tripleHeader{
+        grid-gap: 8px;
+        grid-template-columns: 20% 46% 8% 8% 1%;
+    }
+
+
+    .sm-tripleHeader{
+        grid-template-columns: 17% 48% 8% 8% 12%;
+    }
+
+    .ms-tripleHeader{
+        grid-template-columns: 15% 50% 7% 7% 15%;
+    }
+
 
     .customColapse{
         margin-bottom: 10px;
@@ -396,6 +425,10 @@ fce1ff46
         transform: translateY(4px);
     }
    
+    .xs-tripleBtns{
+        font-size: 18px;
+        padding: 2px;
+    }
 
 /*
 

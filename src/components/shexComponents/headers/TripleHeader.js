@@ -19,15 +19,15 @@ function TripleHeader (props) {
 
    
     return (
-        <div className="tripleHeader">            
+        <div className={"tripleHeader "+context.tripleClass}>            
             <label  className="shapeNameLabel">Triple</label>
             <input  type="text" 
                     className="form-control shapeName"
                     value={name}
                     onChange={handleNameChange}/>
 
-            <button className="buildBtn buildTripleBtn mdc-icon-button material-icons" onClick={customizeTriple}>build</button>
-            <button className="deleteTripleBtn mdc-icon-button material-icons" onClick={()=>deleteTriple(triple.id)}>delete</button>
+            <button className={context.tripleBtns+" buildBtn buildTripleBtn mdc-icon-button material-icons"} onClick={customizeTriple}>build</button>
+            <button className={context.tripleBtns+" deleteTripleBtn mdc-icon-button material-icons"} onClick={()=>deleteTriple(triple.id)}>delete</button>
             <button className="collapseBtn mdc-icon-button material-icons" onClick={collapseConstraints}>{colapseBtn}</button>
         </div>
     );

@@ -20,7 +20,7 @@ function ConstraintHeader (props) {
     }
    
     return (
-       <div className="constraintHeader">
+       <div className={context.constraintClass+" constraintHeader"}>
                 <label>Constraint </label>
                 <select className="customSelector" 
                     value={primitive} 
@@ -31,7 +31,7 @@ function ConstraintHeader (props) {
                     })
                 }
             </select>
-            <button className="buildBtn buildConstraintBtn mdc-icon-button material-icons" onClick={customizeConstraint}>build</button>
+            <button className={context.tripleBtns+" buildBtn buildTripleBtn mdc-icon-button material-icons"} onClick={customizeConstraint}>build</button>
         </div>
     );
                                    
