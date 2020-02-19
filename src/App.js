@@ -29,7 +29,7 @@ function App() {
     const [isVisualizeOpen, setVisualizeOpen] = useState(false);
     const [isLateralNavOpen, setLateralNavOpen] = useState(true);
     const [width,setWidth] = useState(800);
-    const [classContainer,setClassContainer] = useState('col containerAssist');
+    const [shapeClass,setShapeClass] = useState('header');
 
     const assistantToggle = () => setAssistantOpen(!isAssistantOpen); 
     const visualizeToggle = () => setVisualizeOpen(!isVisualizeOpen);
@@ -150,7 +150,8 @@ function App() {
                     emit:emit,
                     currentStyle:style,
                     changeThemeStyle:changeThemeStyle,
-                    visualize:visualize
+                    visualize:visualize,
+                    shapeClass:shapeClass
                   }
                 }>
                 
@@ -171,10 +172,22 @@ function App() {
                     
                                 onResize={(e, direction, ref, d) => {
                                 
-                                     if(width+d.width<700){
-                                        setClassContainer('col containerAssist-sm')
+                                     if(width+d.width<600){
+                                        setShapeClass('xs-header');
+                                        return;
+                                      }
+                                     
+                                     
+                                     if(width+d.width<660){
+                                        setShapeClass('sm-header');
+                                        return;
+                                      }
+                                      
+                                      if(width+d.width<750){
+                                        setShapeClass('ms-header');
+                                         return;
                                       }else{
-                                        setClassContainer('col containerAssist')
+                                        setShapeClass('header')
                                       }
                                   
                                 }} 
@@ -182,18 +195,13 @@ function App() {
                                 onResizeStop={(e, direction, ref, d) => {
                                  
                                     setWidth(width+d.width);
-                                     console.log(width+d.width)
-                                      console.log(width)
-                                     if(width+d.width<700){
-                                        setClassContainer('col containerAssist-sm')
-                                      }else{
-                                        setClassContainer('col containerAssist')
-                                      }
+                                  
+                                    
                                   
                                 }} 
                                 enable={{right:true}}
 >
-                      <div className={classContainer}>
+                      <div className='col containerAssist'>
                         <AssistantComp/>                            
                       </div>
 

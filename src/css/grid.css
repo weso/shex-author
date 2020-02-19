@@ -16,11 +16,6 @@
         min-width: 500px;
     }
 
-    .containerAssist-sm{
-        background: red;
-    }
-
- 
 
     .resizable{
         height: 100% !important;
@@ -100,14 +95,34 @@
         padding: 10px;
         color: black;
         text-align: left;
-
         border: 1px solid grey;
         border-radius: 10px 10px 0px 0px;
         display: grid;
         grid-template-columns: 11% 65% 6% 6% 9%;
-        /*grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));*/
         grid-gap: 10px;
 
+    }
+
+    .xs-header{
+      
+        padding: 8px;
+        grid-template-columns: 17% 50% 8% 8% 1%;
+        grid-gap: 10px;
+    }
+
+
+    .sm-header{
+
+        padding: 8px;
+        grid-template-columns: 14% 55% 8% 8% 8%;
+        grid-gap: 10px;
+    }
+
+    .ms-header{
+      
+        padding: 10px;
+        grid-template-columns: 13% 61% 7% 7% 1%;
+        grid-gap: 8px;
     }
 
 
@@ -359,10 +374,12 @@ fce1ff46
 
 
     .buildBtn{
-        
+        background: #3d3d3d;
+        color:white;
         border-radius: 10px;
         outline: none;
         border: none;
+        font-size: 25px;
     }
 
 
@@ -380,27 +397,6 @@ fce1ff46
     }
    
 
-    .buildShapeBtn{
-        font-size: 25px;
-        background: #3d3d3d;
-        color:white;
-    }
-
-
-    .buildTripleBtn{
-        font-size: 25px;
-        background: #3d3d3d;
-        color:white;
-    
-    }
-
-
-    .buildConstraintBtn{
-        font-size: 25px;
-        background: #3d3d3d;
-        color:white;
-    }
-    
 /*
 
     @media (max-width: 2040px) {
