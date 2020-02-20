@@ -204,7 +204,7 @@ function App() {
                 <Nav colapseAll={colapseAll}/>
               
                 <div className="globalContainer">
-                  <div className={shake+" row comps "}>                     
+                  <div className={shake+" row comps"}>                     
                       <Collapse isOpen={isLateralNavOpen} className="col-xs-1 lateralNav">
                           <LateralNav  assistantToggle={assistantToggle} visualizeToggle={visualizeToggle}/>
                       </Collapse> 
@@ -276,6 +276,7 @@ function App() {
                                           setTriplesContainer('xs-triples');
                                           setShapeLabel('xs-label');
                                           setTripleLabel('xs-label');
+                                          setAddBtns('xs-addBtns');
                                           /*setConstraintClass('xs-constraintHeader');
                                           setCustomClass('xs-gridBox');
                                           setCustomTripleClass('xs-tripleGridBox');
@@ -285,13 +286,13 @@ function App() {
                                         }
                                       
                                       else{
-                                          setShapeClass('header')
-                                          
+                                          setShapeClass('header')                                          
                                           setTripleClass('tripleHeader');
                                           setTripleBtns('tripleBtns');
                                           setTriplesContainer('triples');
                                           setShapeLabel('shapeNameLabel');
                                           setTripleLabel('tripleNameLabel');
+                                           setAddBtns('addBtns');
                                          /* setConstraintClass('constraintHeader');
                                           setCustomClass('gridBox');
                                           setCustomTripleClass('gridBox');
