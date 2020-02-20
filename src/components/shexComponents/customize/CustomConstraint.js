@@ -154,7 +154,7 @@ function CustomConstraint (props) {
 
                 <div className="customConstraint">
                     <div className={context.customConstraintClass+" constraintGridBox"}>
-                        <label className="customLabel">Constraint </label>
+                        <label >Constraint </label>
                         <select className="customSelector"
                                 value={constraint}
                                 onChange={handleConstraintChange}>
@@ -169,7 +169,7 @@ function CustomConstraint (props) {
                         </select>
                     </div>     
                     <Collapse isOpen={isNameOpen} className={context.customConstraintClass+" constraintGridBox"}>
-                        <label className="customLabel">Name</label>
+                        <label >Name</label>
                         <input  type="text" 
                                 className="form-control shapeName"
                                 value={name}
@@ -177,7 +177,7 @@ function CustomConstraint (props) {
                     </Collapse>
 
                     <Collapse isOpen={isPrefixOpen} className={context.customConstraintClass+" constraintGridBox"}>
-                        <label className="customLabel">Prefix</label>
+                        <label >Prefix</label>
                         <select className="form-control customSelector" 
                                 value={prefix}
                                 onChange={handlePrefixChange}>
@@ -193,7 +193,7 @@ function CustomConstraint (props) {
                     </Collapse> 
 
                     <Collapse isOpen={isShapeRefOpen} className={context.customConstraintClass+" constraintGridBox"}>
-                        <label className="customLabel">ShapeRef</label>
+                        <label >ShapeRef</label>
                         <select className="customSelector"
                                 value={shapeRef}
                                 onChange={handleShapeRefChange}>
@@ -207,7 +207,7 @@ function CustomConstraint (props) {
                     </Collapse>
        
                     <Collapse isOpen={isQualiOpen} className={context.customConstraintClass+" constraintGridBox"}>
-                        <label className="customLabel">Qualifier </label>
+                        <label >Qualifier </label>
                         <select className="customSelector"
                                 value={qualifier}
                                 onChange={handleQualifierChange} >
