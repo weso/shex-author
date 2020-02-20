@@ -34,6 +34,8 @@ function App() {
     const [shapeClass,setShapeClass] = useState('header');
     const [tripleClass,setTripleClass] = useState('tripleHeader');
     const [triplesContainer,setTriplesContainer] = useState('triples');
+    const [shapeLabel,setShapeLabel] = useState('shapeNameLabel');
+    const [tripleLabel,setTripleLabel] = useState('tripleNameLabel');
     const [tripleBtns,setTripleBtns] = useState('tripleBtns');
     const [constraintClass,setConstraintClass] = useState('constraintHeader');
     const [customClass,setCustomClass] = useState('gridBox');
@@ -163,6 +165,8 @@ function App() {
                     shapeClass:shapeClass,
                     tripleClass:tripleClass,
                     tripleBtns:tripleBtns,
+                    shapeLabel:shapeLabel,
+                    tripleLabel:tripleLabel,
                     constraintClass:constraintClass,
                     customClass:customClass,
                     triplesContainer:triplesContainer,
@@ -244,6 +248,8 @@ function App() {
                                           setTripleClass('xs-tripleHeader');
                                           setTripleBtns('xs-tripleBtns');
                                           setTriplesContainer('xs-triples');
+                                          setShapeLabel('xs-label');
+                                          setTripleLabel('xs-label');
                                           /*setConstraintClass('xs-constraintHeader');
                                           setCustomClass('xs-gridBox');
                                           setCustomTripleClass('xs-tripleGridBox');
@@ -258,6 +264,8 @@ function App() {
                                           setTripleClass('tripleHeader');
                                           setTripleBtns('tripleBtns');
                                           setTriplesContainer('triples');
+                                          setShapeLabel('shapeNameLabel');
+                                          setTripleLabel('tripleNameLabel');
                                          /* setConstraintClass('constraintHeader');
                                           setCustomClass('gridBox');
                                           setCustomTripleClass('gridBox');

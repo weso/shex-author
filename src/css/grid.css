@@ -74,8 +74,15 @@
     }
 
 
+    .xs-label{
+        margin-left: 0px;
+    }
+
+
     .shapeName{
-        height: 100%;
+        border-radius: 4px;
+        color:#222;
+        padding-left: 5px;
     }
 
 
@@ -95,7 +102,7 @@
 
     .xs-header{
         padding: 8px;
-        grid-template-columns: 17% 50% 8% 8% 9%;
+        grid-template-columns: 10% 56% 8% 8% 9%;
         grid-gap: 10px;
 
     }
@@ -260,8 +267,9 @@ fce1ff46
    
 
     .xs-tripleHeader{
+        justify-content: center;
         grid-gap: 8px;
-        grid-template-columns: 11% 20% 20% 20% 6% 6% 6%;
+        grid-template-columns: 9% 24% 17% 20% 6% 6% 6%;
     }
 
 
@@ -393,6 +401,7 @@ fce1ff46
         border-radius: 5px;
         background: white;
         outline: none;
+        color:#222;
     }
 
 
