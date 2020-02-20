@@ -43,6 +43,8 @@ function App() {
     const [customClass,setCustomClass] = useState('gridBox');
     const [customTripleClass,setCustomTripleClass] = useState('gridBox');
     const [customConstraintClass,setCustomConstraintClass] = useState('constraintGridBox');
+    const [addBtns,setAddBtns] = useState('addBtns');
+
 
     const assistantToggle = () => setAssistantOpen(!isAssistantOpen); 
     const visualizeToggle = () => setVisualizeOpen(!isVisualizeOpen);
@@ -195,6 +197,7 @@ function App() {
                     triplesContainer:triplesContainer,
                     customTripleClass:customTripleClass,
                     customConstraintClass:customConstraintClass,
+                    addBtns:addBtns
                   }
                 }>
                 

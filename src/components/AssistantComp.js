@@ -15,12 +15,12 @@ function AssistantComp (props) {
 
                 {context.shapes.map(shape =>{return  <ShapeComponent shape={shape} key={shape.id}/> })}
                 
-                <div className="addBtns"> 
+               <div className="addCont">
                         <button id='addShapeButton' 
-                                className="addShapeButton" 
+                                className={context.addBtns+" addShapeButton"} 
                                 onClick={context.addShape}>
                                 + Shape</button>
-                </div>
+              </div>
         </div>);
 
     

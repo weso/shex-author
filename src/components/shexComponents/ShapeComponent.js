@@ -96,10 +96,9 @@ function ShapeComponent (props) {
                                          deleteTriple={deleteTriple}
                         /> 
                     )}
-
-                    <div className="addBtns"> 
-                        <button className="addTripleButton" onClick={addTriple}>+ Triple</button>        
-                    </div>     
+                
+                    <button className={context.addBtns+" addTripleButton"} onClick={addTriple}>+ Triple</button>        
+              
                 </div>                    
             </Collapse> 
         </div>
