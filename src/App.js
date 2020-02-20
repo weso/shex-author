@@ -187,7 +187,7 @@ function App() {
                                 size={{ width: width }}
                     
                                 onResize={(e, direction, ref, d) => {
-                                
+                                /*
                                      if(width+d.width<600){
                                         setShapeClass('xs-header');
                                         setTripleClass('xs-tripleHeader');
@@ -233,12 +233,38 @@ function App() {
                                         setCustomTripleClass('gridBox');
                                         setCustomConstraintClass('constraintGridBox');
                                       }
-                                  
+                                  */
                                 }} 
 
                                 onResizeStop={(e, direction, ref, d) => {
-                                 
-                                    setWidth(width+d.width);
+                                  setWidth(width+d.width);
+
+                                  if(width+d.width<600){
+                                          setShapeClass('xs-header');
+                                          setTripleClass('xs-tripleHeader');
+                                          setTripleBtns('xs-tripleBtns');
+                                          setTriplesContainer('xs-triples');
+                                          /*setConstraintClass('xs-constraintHeader');
+                                          setCustomClass('xs-gridBox');
+                                          setCustomTripleClass('xs-tripleGridBox');
+                                          setCustomConstraintClass('xs-constraintGridBox');
+                                          
+                                          */return;
+                                        }
+                                      
+                                      else{
+                                          setShapeClass('header')
+                                          
+                                          setTripleClass('tripleHeader');
+                                          setTripleBtns('tripleBtns');
+                                          setTriplesContainer('triples');
+                                         /* setConstraintClass('constraintHeader');
+                                          setCustomClass('gridBox');
+                                          setCustomTripleClass('gridBox');
+                                          setCustomConstraintClass('constraintGridBox');
+                                      
+                                      */ }
+                                   
                                   
                                     
                                   

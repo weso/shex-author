@@ -6,6 +6,7 @@
         align-content: center;
         grid-gap: 10px;
         padding: 2%;
+        
     }
 
 
@@ -68,7 +69,8 @@
         text-align: center;
         display: grid;
         margin-top: 10px;
-
+        grid-template-columns: 100%;
+        margin-right: -30px;
     }
 
 
@@ -93,8 +95,9 @@
 
     .xs-header{
         padding: 8px;
-        grid-template-columns: 17% 50% 8% 8% 1%;
+        grid-template-columns: 17% 50% 8% 8% 9%;
         grid-gap: 10px;
+
     }
 
 
@@ -146,8 +149,8 @@
         background: #EBF4FF;
         padding-top: 10px;
         padding-bottom: 10px;
-        padding-right:40px;
-        padding-left:40px;
+        padding-right:10px;
+        padding-left:10px;
         color: black;
         text-align: left;
 
@@ -161,9 +164,7 @@
     }
 
     .xs-triples{
-      
-       padding-right:20px;
-       padding-left:20px;
+      padding: 1px;
     }
 
     .sm-triples{
@@ -256,9 +257,11 @@ fce1ff46
     }
 
 
+   
+
     .xs-tripleHeader{
         grid-gap: 8px;
-        grid-template-columns: 20% 46% 8% 8% 1%;
+        grid-template-columns: 11% 20% 20% 20% 6% 6% 6%;
     }
 
 
@@ -455,8 +458,6 @@ fce1ff46
         outline: none;
         border: none;
         padding:2px;
-       
-
     }
 
     .deleteTripleBtn:focus{

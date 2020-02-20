@@ -40,7 +40,7 @@ function TripleHeader (props) {
    
     return (
         <div className={"tripleHeader "+context.tripleClass}>            
-            <label  className="shapeNameLabel">Triple</label>
+            <label  className="tripleNameLabel">Triple</label>
             <input  type="text" 
                     className="form-control shapeName"
                     value={name}
