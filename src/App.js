@@ -39,10 +39,6 @@ function App() {
     const [shapeLabel,setShapeLabel] = useState('shapeNameLabel');
     const [tripleLabel,setTripleLabel] = useState('tripleNameLabel');
     const [tripleBtns,setTripleBtns] = useState('tripleBtns');
-    const [constraintClass,setConstraintClass] = useState('constraintHeader');
-    const [customClass,setCustomClass] = useState('gridBox');
-    const [customTripleClass,setCustomTripleClass] = useState('gridBox');
-    const [customConstraintClass,setCustomConstraintClass] = useState('constraintGridBox');
     const [addBtns,setAddBtns] = useState('addBtns');
 
 
@@ -153,19 +149,45 @@ function App() {
     }
 
 
-  const _onActive = function(e) {
-    setShake('un-shake');
-  }
+    const _onActive = function(e) {
+      setShake('un-shake');
+    }
 
-  const _onIdle = function(e) {
-    setShake('shake');
-  }
+    const _onIdle = function(e) {
+      setShake('shake');
+    }
 
-  let idleTimer;
+    let idleTimer;
+
+
+    const makeItResponsive = function(e, direction, ref, d){
+    
+          setWidth(width+d.width);
+
+          if(width+d.width<700){
+                  setShapeClass('xs-header');
+                  setTripleClass('xs-tripleHeader');
+                  setTripleBtns('xs-tripleBtns');
+                  setTriplesContainer('xs-triples');
+                  setShapeLabel('xs-label');
+                  setTripleLabel('xs-label');
+                  setAddBtns('xs-addBtns');
+                  return;
+          }
+                
+          setShapeClass('header')                                          
+          setTripleClass('tripleHeader');
+          setTripleBtns('tripleBtns');
+          setTriplesContainer('triples');
+          setShapeLabel('shapeNameLabel');
+          setTripleLabel('tripleNameLabel');
+          setAddBtns('addBtns');
+        }
+    }
 
 
     return (
-            <div>
+      <div>
         <IdleTimer
           ref={ref => { idleTimer = ref }}
           element={document}
@@ -209,124 +231,24 @@ function App() {
                           <LateralNav  assistantToggle={assistantToggle} visualizeToggle={visualizeToggle}/>
                       </Collapse> 
 
-                  
-
-                  <Collapse isOpen={isAssistantOpen} className='row assistCollapse'>
-           
-                    <Resizable  className="col row resizable"
-                                size={{ width: width }}
-                    
-                                onResize={(e, direction, ref, d) => {
-                                /*
-                                     if(width+d.width<600){
-                                        setShapeClass('xs-header');
-                                        setTripleClass('xs-tripleHeader');
-                                        setTripleBtns('xs-tripleBtns');
-                                        setTriplesContainer('xs-triples');
-                                        setConstraintClass('xs-constraintHeader');
-                                        setCustomClass('xs-gridBox');
-                                        setCustomTripleClass('xs-tripleGridBox');
-                                        setCustomConstraintClass('xs-constraintGridBox');
-                                        return;
-                                      }
-                                     
-                                     
-                                     if(width+d.width<660){
-                                        setShapeClass('sm-header');
-                                        setTripleClass('sm-tripleHeader');
-                                        setTripleBtns('tripleBtns');
-                                        setTriplesContainer('sm-triples');
-                                        setConstraintClass('sm-constraintHeader');
-                                        setCustomClass('sm-gridBox');
-                                        setCustomTripleClass('sm-tripleGridBox');
-                                        setCustomConstraintClass('sm-constraintGridBox');
-                                        return;
-                                      }
-                                      
-                                      if(width+d.width<750){
-                                        setShapeClass('ms-header');
-                                        setTripleClass('ms-tripleHeader');
-                                        setTripleBtns('tripleBtns');
-                                        setTriplesContainer('ms-triples');
-                                        setConstraintClass('ms-constraintHeader');
-                                        setCustomClass('ms-gridBox');
-                                        setCustomTripleClass('ms-tripleGridBox');
-                                        setCustomConstraintClass('ms-constraintGridBox');
-                                         return;
-                                      }else{
-                                        setShapeClass('header')
-                                        setTripleClass('tripleHeader');
-                                        setTripleBtns('tripleBtns');
-                                        setTriplesContainer('triples');
-                                        setConstraintClass('constraintHeader');
-                                        setCustomClass('gridBox');
-                                        setCustomTripleClass('gridBox');
-                                        setCustomConstraintClass('constraintGridBox');
-                                      }
-                                  */
-                                }} 
-
-                                onResizeStop={(e, direction, ref, d) => {
-                                  setWidth(width+d.width);
-
-                                  if(width+d.width<600){
-                                          setShapeClass('xs-header');
-                                          setTripleClass('xs-tripleHeader');
-                                          setTripleBtns('xs-tripleBtns');
-                                          setTriplesContainer('xs-triples');
-                                          setShapeLabel('xs-label');
-                                          setTripleLabel('xs-label');
-                                          setAddBtns('xs-addBtns');
-                                          /*setConstraintClass('xs-constraintHeader');
-                                          setCustomClass('xs-gridBox');
-                                          setCustomTripleClass('xs-tripleGridBox');
-                                          setCustomConstraintClass('xs-constraintGridBox');
-                                          
-                                          */return;
-                                        }
-                                      
-                                      else{
-                                          setShapeClass('header')                                          
-                                          setTripleClass('tripleHeader');
-                                          setTripleBtns('tripleBtns');
-                                          setTriplesContainer('triples');
-                                          setShapeLabel('shapeNameLabel');
-                                          setTripleLabel('tripleNameLabel');
-                                           setAddBtns('addBtns');
-                                         /* setConstraintClass('constraintHeader');
-                                          setCustomClass('gridBox');
-                                          setCustomTripleClass('gridBox');
-                                          setCustomConstraintClass('constraintGridBox');
-                                      
-                                      */ }
-                                   
-                                  
-                                    
-                                  
-                                }} 
-                                enable={{right:true}}
->
-                      <div className='col containerAssist'>
-                        <AssistantComp/>                            
-                      </div>
-
-
-
-                    </Resizable>     
-                  </Collapse>                         
-                         
-                 
-                     
-                  <EditorComp  />
-                      
-                        
+                      <Collapse isOpen={isAssistantOpen} className='row assistCollapse'>
+                        <Resizable  className="col row resizable"
+                                    size={{ width: width }}                    
+                                    onResizeStop={makeItResponsive}              
+                                    enable={{right:true}}
+    >
+                                  <div className='col containerAssist'>
+                                    <AssistantComp/>                            
+                                  </div>
+                        </Resizable>     
+                      </Collapse>                         
+                                                
+                      <EditorComp/>                       
                   </div>
                 </div>
                 <Collapse isOpen={isVisualizeOpen} >
                   <VisualizeComp svg={svg}/>
-                </Collapse>                         
-                         
-               
+                </Collapse>                                                
             </ShapesContext.Provider>
 }
 
