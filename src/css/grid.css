@@ -294,7 +294,7 @@ fce1ff46
 
     .constraintGridBox{ 
         display: grid;
-        grid-template-columns: 7% 10% 54%;
+        grid-template-columns: 1% 15% 54%;
         grid-gap: 44px;
     }
 
@@ -350,15 +350,14 @@ fce1ff46
         grid-gap: 5px;
     }
 
+    /* e4fadb54  verde mas pocho aun */
     .customConstraint{
-        background:#e4fadb54;
+        background:#d6ffc654;
         padding: 10px;
         color: black;
 
-        border-left: 1px solid grey;
-        border-right: 1px solid grey;
-        border-bottom: 1px solid grey;
-        border-radius: 0px 0px 10px 10px;
+        border: 1px solid grey;
+        border-radius: 10px;
 
         display: grid;
         grid-template-columns: 100%;

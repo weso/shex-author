@@ -6,6 +6,10 @@ import {getPrefix} from '../../../utils/prefixUtils';
 
 import shexUtils from '../../../utils/shexUtils';
 
+
+const primitives = ['String','Integer','Date','Boolean'];
+
+
 function CustomConstraint (props) {
 
     const context = useContext(ShapesContext);
@@ -16,6 +20,8 @@ function CustomConstraint (props) {
     const [isQualiOpen,setQualiOpen] = useState(false);
  
     const [qualifier,setQualifier] = useState(triple.value.value)
+    const [primitive,setPrimitive] = useState(triple.value.value);
+    const [cardinality,setCardinality] = useState(triple.cardinality);
         
     let initialPrefix = 'example';
     let initialOpenPrefix = false;
@@ -77,6 +83,24 @@ function CustomConstraint (props) {
         setQualifier(newQualifier);
     }
 
+
+
+   
+    const handlePrimitiveChange = function(e){
+        const primitive = e.target.value;
+        triple.setValue('primitive');
+        triple.value.setValue(primitive);
+        context.emit();
+        setPrimitive(primitive)
+    }
+
+    const handleCardinalityChange = function(e){
+        let newCardinality = e.target.value;
+        triple.setCardinality(newCardinality);
+        context.emit();
+        setCardinality(newCardinality)
+       
+    }
     
 
 
@@ -127,10 +151,10 @@ function CustomConstraint (props) {
 
 
     return (
-         <Collapse isOpen={isCustomOpen} className='customColapse'>
+
                 <div className="customConstraint">
                     <div className={context.customConstraintClass+" constraintGridBox"}>
-                        <label className="customLabel">Type </label>
+                        <label className="customLabel">Constraint </label>
                         <select className="customSelector"
                                 value={constraint}
                                 onChange={handleConstraintChange}>
@@ -198,7 +222,7 @@ function CustomConstraint (props) {
                           
                                                                 
                 </div>
-            </Collapse>             
+  
     );
                                    
     

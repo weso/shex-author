@@ -21,10 +21,9 @@ function ConstraintComponent (props) {
     }
 
     return (   
-    <div>    
-        <ConstraintHeader triple={triple} customizeConstraint={customizeConstraint}/>
+
         <CustomConstraint triple={triple} isCustomOpen={isCustomOpen}/>
-    </div>
+
         );
                                    
 
