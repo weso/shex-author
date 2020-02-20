@@ -18,7 +18,7 @@ function ShapeHeader (props) {
         <div className={rounded+' header '+context.shapeClass}>            
             <label  className={context.shapeLabel+" shapeNameLabel"}>Shape</label>
             <input  type="text" 
-                    className="form-control shapeName"
+                    className="shapeName"
                     value={name}
                     onChange={handleChange}/>
 
