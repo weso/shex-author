@@ -222,17 +222,10 @@ fce1ff46
         font-weight: bold;
         margin-left:200px;
         margin-right: 200px;
-        -webkit-transition: margin 0.5s ease-in-out;
-        transition: margin 0.5s ease-in-out;
     }
 
     .addShapeButton:focus{
         outline: none;
-    }
-
-    .addShapeButton:hover{
-        margin-left:0px;
-        margin-right: 0px;
     }
 
     .addTripleButton{
@@ -242,10 +235,6 @@ fce1ff46
         font-weight: bold;
         padding: 1px;
         margin-bottom: 3px;
-        margin-left:200px;
-        margin-right: 200px;
-        -webkit-transition: margin 0.5s ease-in-out;
-        transition: margin 0.5s ease-in-out;
     }
     
 
@@ -259,6 +248,13 @@ fce1ff46
         outline: none;
     }
 
+
+    .addBtns{
+        margin-left:200px;
+        margin-right: 200px;
+        -webkit-transition: margin 0.5s ease-in-out;
+        transition: margin 0.5s ease-in-out;
+    }
 
     .addBtns:hover{
         margin-left:0px;
