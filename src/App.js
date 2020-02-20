@@ -18,6 +18,8 @@ import Editor from './entities/editor';
 
 import { Resizable } from "re-resizable";
 
+import IdleTimer from 'react-idle-timer'
+
 export const ShapesContext = React.createContext();
 
 function App() {
@@ -50,6 +52,8 @@ function App() {
       setVisualizeOpen(!isLateralNavOpen);
       setLateralNavOpen(!isLateralNavOpen);
     }
+
+    const [shake,setShake] = useState('un-shake');
 
 
     const darkStyle = {
@@ -147,9 +151,28 @@ function App() {
     }
 
 
+  const _onActive = function(e) {
+    setShake('un-shake');
+  }
+
+  const _onIdle = function(e) {
+    setShake('shake');
+  }
+
+  let idleTimer;
+
+
     return (
-            
-            <ShapesContext.Provider 
+            <div>
+        <IdleTimer
+          ref={ref => { idleTimer = ref }}
+          element={document}
+          onActive={_onActive}
+          onIdle={_onIdle}
+          debounce={250}
+          timeout={100 * 60 * 15} />
+        {
+            <ShapesContext.Provider
                 value={
                   {
                     shapes,shapes,
@@ -171,14 +194,14 @@ function App() {
                     customClass:customClass,
                     triplesContainer:triplesContainer,
                     customTripleClass:customTripleClass,
-                    customConstraintClass:customConstraintClass
+                    customConstraintClass:customConstraintClass,
                   }
                 }>
                 
                 <Nav colapseAll={colapseAll}/>
               
                 <div className="globalContainer">
-                  <div className="row comps ">                     
+                  <div className={shake+" row comps "}>                     
                       <Collapse isOpen={isLateralNavOpen} className="col-xs-1 lateralNav">
                           <LateralNav  assistantToggle={assistantToggle} visualizeToggle={visualizeToggle}/>
                       </Collapse> 
@@ -301,6 +324,9 @@ function App() {
                          
                
             </ShapesContext.Provider>
+}
+
+             </div>
           );
                        
            

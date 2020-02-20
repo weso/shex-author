@@ -195,10 +195,42 @@ fce1ff46
         background: #ddeafa;
         border-radius: 10px;
         margin-top:50px;
-        grid-column: 2/3;
+        grid-column: 1/4;
+        margin-left: 200px;
+        margin-right: 200px;
         font-weight: bold;
+        -webkit-transition: margin 0.5s ease-in-out;
+        transition: margin 0.5s ease-in-out;
+
+       
     }
 
+    .shake{
+        animation: shake 0.5s;
+        animation-iteration-count: infinite;
+    }
+
+
+    .addShapeButton:hover{
+        margin-left:0px;
+        margin-right: 0px;
+    }
+
+    @keyframes shake {
+        0% { transform: translate(1px, 1px) rotate(0deg); }
+        10% { transform: translate(-1px, -2px) rotate(-1deg); }
+        20% { transform: translate(-3px, 0px) rotate(1deg); }
+        30% { transform: translate(3px, 2px) rotate(0deg); }
+        40% { transform: translate(1px, -1px) rotate(1deg); }
+        50% { transform: translate(-1px, 2px) rotate(-1deg); }
+        60% { transform: translate(-3px, 1px) rotate(0deg); }
+        70% { transform: translate(3px, 1px) rotate(-1deg); }
+        80% { transform: translate(-1px, -1px) rotate(1deg); }
+        90% { transform: translate(1px, 2px) rotate(0deg); }
+        100% { transform: translate(1px, -2px) rotate(-1deg); }
+      }
+
+    
 
     .addShapeButton:focus{
         outline: none;
@@ -209,13 +241,24 @@ fce1ff46
     }
 
     .addTripleButton{
-        margin-top: 10px;
+        margin-top: 15px;
         background: #EFDECD;
         border-radius: 10px;
         font-weight: bold;
-        grid-column: 2/3;
+        padding: 1px;
+        margin-bottom: 3px;
+        margin-left: 200px;
+        margin-right: 200px;
+        grid-column: 1/4;
+        -webkit-transition: margin 0.5s ease-in-out;
+        transition: margin 0.5s ease-in-out;
     }
 
+
+    .addTripleButton:hover{
+        margin-left:0px;
+        margin-right: 0px;
+    }
 
     .tripleHeader{
         background: #EFDECD ;
