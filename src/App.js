@@ -182,7 +182,7 @@ function App() {
           setShapeLabel('shapeNameLabel');
           setTripleLabel('tripleNameLabel');
           setAddBtns('addBtns');
-        }
+        
     }
 
 
@@ -213,12 +213,8 @@ function App() {
                     tripleClass:tripleClass,
                     tripleBtns:tripleBtns,
                     shapeLabel:shapeLabel,
-                    tripleLabel:tripleLabel,
-                    constraintClass:constraintClass,
-                    customClass:customClass,
+                    tripleLabel:tripleLabel,                 
                     triplesContainer:triplesContainer,
-                    customTripleClass:customTripleClass,
-                    customConstraintClass:customConstraintClass,
                     addBtns:addBtns
                   }
                 }>
@@ -236,7 +232,7 @@ function App() {
                                     size={{ width: width }}                    
                                     onResizeStop={makeItResponsive}              
                                     enable={{right:true}}
-    >
+                                    >
                                   <div className='col containerAssist'>
                                     <AssistantComp/>                            
                                   </div>
