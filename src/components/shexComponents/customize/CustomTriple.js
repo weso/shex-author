@@ -8,7 +8,7 @@ import {getPrefix} from '../../../utils/prefixUtils';
 function CustomTriple (props) {
 
     const context = useContext(ShapesContext);
-    const {triple,isTripleCustomOpen} = props;
+    const {triple,isTripleCustomOpen,rounder} = props;
 
     const [type,setType] = useState(triple.type.getTypeName());
    
@@ -53,7 +53,10 @@ function CustomTriple (props) {
 
 
     return (
-        <Collapse isOpen={isTripleCustomOpen} className='customColapse'>
+        <Collapse isOpen={isTripleCustomOpen} 
+                  className='customColapse'
+                  onExited={rounder}
+                  onEntering={rounder}>
                 <div className="customTriple">
                     <div className={context.customTripleClass+" gridBox"}>
                         <label className="customLabel">Type </label>

@@ -31,9 +31,14 @@ function TripleComponent (props) {
         }
     }
 
-    const onExited= ()=>setRounded('roundme');
-    const onEntering= ()=>setRounded('un-roundme');
-  
+    const rounder =()=>{
+         if(rounded=='roundme'){
+            setRounded('un-roundme');
+        }else{
+            setRounded('roundme');
+        }
+
+    }
 
     return ( 
         <div>
@@ -44,11 +49,13 @@ function TripleComponent (props) {
                           collapseConstraints={collapseConstraints}
                           rounded={rounded}/>
 
-            <CustomTriple triple={triple} isTripleCustomOpen={isTripleCustomOpen}/>
+            <CustomTriple triple={triple} 
+                          isTripleCustomOpen={isTripleCustomOpen}
+                          rounder={rounder}/>
 
             <Collapse   isOpen={isConstraintsOpen}
-                        onExited={onExited}
-                        onEntering={onEntering} >
+                        onExited={rounder}
+                        onEntering={rounder} >
 
                 <div className="constraints">
                     <ConstraintComponent triple={triple}/>

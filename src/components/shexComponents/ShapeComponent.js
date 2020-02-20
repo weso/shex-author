@@ -61,8 +61,14 @@ function ShapeComponent (props) {
     }
 
 
-    const onExited= ()=>setRounded('roundme');
-    const onEntering= ()=>setRounded('un-roundme');
+    const rounder =()=>{
+         if(rounded=='roundme'){
+            setRounded('un-roundme');
+        }else{
+            setRounded('roundme');
+        }
+
+    }
   
 
     return (
@@ -76,12 +82,11 @@ function ShapeComponent (props) {
 
             <CustomShape shape={shape}
                          isCustomOpen={isCustomOpen}
-                         exit={onExited}
-                         enter={onEntering}/>
+                         rounder={rounder}/>
                  
             <Collapse   isOpen={isTriplesOpen} 
-                        onExited={onExited}
-                        onEntering={onEntering} >
+                        onExited={rounder}
+                        onEntering={rounder} >
 
                 <div className={context.triplesContainer+" triples"}>
                     {triples.map(triple =>
