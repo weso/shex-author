@@ -19,7 +19,7 @@ function ShapeComponent (props) {
     const [isCustomOpen,setCustomOpen] = useState(false);
     const [isTriplesOpen,setTriplesOpen] = useState(true);
     const [colapseBtn,setColapseBtn] = useState('menu_open');
-
+    const [rounded,setRounded] = useState('un-roundme');
 
     const addTriple = function(){
         const id = shape.getTriplesCount();
@@ -49,14 +49,21 @@ function ShapeComponent (props) {
     const collapseTriples = function(){
         setCustomOpen(false);
         setTriplesOpen(!isTriplesOpen);
+        
 
         if(colapseBtn=='menu'){
             setColapseBtn('menu_open');
         }else{
             setColapseBtn('menu');
         }
+
+       
     }
 
+
+    const onExited= ()=>setRounded('roundme');
+    const onEntering= ()=>setRounded('un-roundme');
+  
 
     return (
         <div className="shape">
@@ -64,12 +71,18 @@ function ShapeComponent (props) {
             <ShapeHeader shape={shape} 
                          customizeShape={customizeShape} 
                          collapseTriples={collapseTriples} 
-                         colapseBtn={colapseBtn}/>
+                         colapseBtn={colapseBtn}
+                         rounded={rounded}/>
 
             <CustomShape shape={shape}
-                         isCustomOpen={isCustomOpen} />
+                         isCustomOpen={isCustomOpen}
+                         exit={onExited}
+                         enter={onEntering}/>
                  
-            <Collapse isOpen={isTriplesOpen} >
+            <Collapse   isOpen={isTriplesOpen} 
+                        onExited={onExited}
+                        onEntering={onEntering} >
+
                 <div className={context.triplesContainer+" triples"}>
                     {triples.map(triple =>
                         <TripleComponent key={triple.id}

@@ -93,7 +93,6 @@
         color: black;
         text-align: left;
         border: 1px solid grey;
-        border-radius: 10px 10px 0px 0px;
         display: grid;
         grid-template-columns: 11% 65% 6% 6% 9%;
         grid-gap: 10px;
@@ -254,16 +253,12 @@ fce1ff46
         padding:10px;
         color: black;
         text-align: left;
-
         border: 1px solid grey;
-        border-radius: 10px 10px 0px 0px;
         display: grid;
         grid-template-columns: 11% 20% 20% 20% 6% 6% 6%;
         grid-gap: 10px;
     
     }
-
-
    
 
     .xs-tripleHeader{
@@ -515,6 +510,14 @@ fce1ff46
     .xs-tripleBtns{
         font-size: 18px;
         padding: 2px;
+    }
+
+    .roundme{
+        border-radius: 10px;
+    }
+            
+    .un-roundme{
+        border-radius: 10px 10px 0px 0px !important;
     }
 
 /*

@@ -4,7 +4,7 @@ import {ShapesContext} from '../../../App';
 function ShapeHeader (props) {
 
     const context = useContext(ShapesContext); 
-    const {shape,customizeShape,collapseTriples,colapseBtn} = props;
+    const {shape,customizeShape,collapseTriples,colapseBtn,rounded} = props;
     const [name,setName] = useState(shape.type.value);
 
     const handleChange = function(e){
@@ -15,7 +15,7 @@ function ShapeHeader (props) {
     }
 
     return (
-        <div className={'header '+context.shapeClass}>            
+        <div className={rounded+' header '+context.shapeClass}>            
             <label  className={context.shapeLabel+" shapeNameLabel"}>Shape</label>
             <input  type="text" 
                     className="form-control shapeName"

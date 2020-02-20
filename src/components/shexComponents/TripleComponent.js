@@ -12,6 +12,7 @@ function TripleComponent (props) {
     const [isTripleCustomOpen,setTripleCustomOpen] = useState(false);
     const [isConstraintsOpen,setConstraintsOpen] = useState(false);
     const [colapseBtn,setColapseBtn] = useState('menu_open');
+    const [rounded,setRounded] = useState('roundme');
 
     const customizeTriple = function(){
         setTripleCustomOpen(!isTripleCustomOpen);
@@ -30,7 +31,9 @@ function TripleComponent (props) {
         }
     }
 
-
+    const onExited= ()=>setRounded('roundme');
+    const onEntering= ()=>setRounded('un-roundme');
+  
 
     return ( 
         <div>
@@ -38,11 +41,15 @@ function TripleComponent (props) {
                           deleteTriple={deleteTriple} 
                           customizeTriple={customizeTriple}
                           colapseBtn={colapseBtn}
-                          collapseConstraints={collapseConstraints}/>
+                          collapseConstraints={collapseConstraints}
+                          rounded={rounded}/>
 
             <CustomTriple triple={triple} isTripleCustomOpen={isTripleCustomOpen}/>
 
-            <Collapse isOpen={isConstraintsOpen} >
+            <Collapse   isOpen={isConstraintsOpen}
+                        onExited={onExited}
+                        onEntering={onEntering} >
+
                 <div className="constraints">
                     <ConstraintComponent triple={triple}/>
                 </div>                    

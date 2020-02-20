@@ -7,7 +7,7 @@ const primitives = ['String','Integer','Date','Boolean'];
 function TripleHeader (props) {
 
     const context = useContext(ShapesContext); 
-    const {triple,deleteTriple,customizeTriple,colapseBtn,collapseConstraints} = props;
+    const {triple,deleteTriple,customizeTriple,colapseBtn,collapseConstraints,rounded} = props;
 
     const [name,setName] = useState(triple.type.value);
     const [primitive,setPrimitive] = useState(triple.value.value);
@@ -39,7 +39,7 @@ function TripleHeader (props) {
    
    
     return (
-        <div className={"tripleHeader "+context.tripleClass}>            
+        <div className={rounded+" tripleHeader "+context.tripleClass}>            
             <label  className={context.tripleLabel+" shapeTripleLabel"}>Triple</label>
             <input  type="text" 
                     className="shapeName"

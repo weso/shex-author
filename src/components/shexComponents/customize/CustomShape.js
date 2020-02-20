@@ -8,7 +8,7 @@ import {getPrefix} from '../../../utils/prefixUtils';
 function CustomShape (props) {
 
     const context = useContext(ShapesContext);
-    const {shape,isCustomOpen} = props;
+    const {shape,isCustomOpen,exit,enter} = props;
     const [type,setType] = useState(shape.type.getTypeName());
     const [qualifier,setQualifier] = useState(shape.qualifier.getTypeName())
     
@@ -57,7 +57,10 @@ function CustomShape (props) {
     
 
     return (
-        <Collapse isOpen={isCustomOpen} >
+        <Collapse isOpen={isCustomOpen}
+                  onExited={exit}
+                  onEntering={enter} >
+                  
             <div className="custom">
                 <div className={context.customClass+" box1 gridBox"}>
                     <label className="customLabel">Type </label>
