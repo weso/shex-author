@@ -120,37 +120,6 @@
     }
 
 
-
-    .constraintHeader{
-        background: #d6ffc654 ;
-        padding: 10px;
-        color: black;
-        text-align: left;
-
-        border: 1px solid grey;
-        border-radius: 10px 10px 0px 0px;
-        display: grid;
-        grid-template-columns: 20% 22.5% 22.5% 7%;
-        grid-gap: 10px;
-    }
-
-
-    .xs-constraintHeader{
-        grid-template-columns: 29% 19.5% 30% 10%;
-    }
-
-
-    .sm-constraintHeader{
-        grid-template-columns: 30% 17.5% 17.5% 10%;
-    }
-
-    .ms-constraintHeader{
-      
-        grid-template-columns: 22% 19% 25% 8%;
-    }
-
-
-
     .triples{
         background: #EBF4FF;
         padding-top: 10px;
@@ -288,9 +257,6 @@ fce1ff46
     .box4{ grid-area: box4;}
 
 
-    .customLabel{
-        grid-column: 2/3;
-    }
 
     .gridBox{ 
         display: grid;
@@ -300,13 +266,13 @@ fce1ff46
 
     .constraintGridBox{ 
         display: grid;
-        grid-template-columns: 1% 15% 54%;
+        grid-template-columns: 25% 54%;
         grid-gap: 44px;
     }
 
     .xs-gridBox{
         grid-gap: 40px;
-        grid-template-columns: 1% 10% 54%;
+        grid-template-columns: 15% 10% 54%;
     }
 
     .sm-gridBox{
