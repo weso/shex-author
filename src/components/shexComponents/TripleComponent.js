@@ -10,7 +10,7 @@ function TripleComponent (props) {
     
     const {shape,triple,deleteTriple} = props;
     const [isTripleCustomOpen,setTripleCustomOpen] = useState(false);
-    const [isConstraintsOpen,setConstraintsOpen] = useState(true);
+    const [isConstraintsOpen,setConstraintsOpen] = useState(false);
     const [colapseBtn,setColapseBtn] = useState('menu_open');
 
     const customizeTriple = function(){
@@ -29,6 +29,8 @@ function TripleComponent (props) {
             setColapseBtn('menu');
         }
     }
+
+
 
     return ( 
         <div>
