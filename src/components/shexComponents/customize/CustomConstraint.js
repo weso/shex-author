@@ -47,6 +47,8 @@ function CustomConstraint (props) {
         inlineOpen = true;
         initialOpenName = false;
     }
+
+  
     
     const [shapeRef,setShapeRef] = useState(inlineValue);
     const [isShapeRefOpen,setShapeRefOpen] = useState(inlineOpen);
@@ -158,13 +160,15 @@ function CustomConstraint (props) {
         }
 
         if(newConstraint == 'primitive'){
-            collapseConstraints();   
+            collapseConstraints();  
             triple.setValue('primitive');
             context.emit();
             //Whitout the timeout the assistant doesn't update
             setTimeout(function(){
-                context.replaceShapes(yasheUtils.replaceShapes())
-            }, 10);
+                context.replaceShapes(yasheUtils.replaceShapes());
+            }, 250); //250 to make scrolling animation slower
+
+           
             
         }
 

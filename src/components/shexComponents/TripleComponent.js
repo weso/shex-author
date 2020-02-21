@@ -11,24 +11,21 @@ function TripleComponent (props) {
     const {shape,triple,deleteTriple} = props;
     const [isTripleCustomOpen,setTripleCustomOpen] = useState(false);
     const [isConstraintsOpen,setConstraintsOpen] = useState(false);
-    const [colapseBtn,setColapseBtn] = useState('menu_open');
     const [rounded,setRounded] = useState('roundme');
 
     const customizeTriple = function(){
         setTripleCustomOpen(!isTripleCustomOpen);
         setConstraintsOpen(false);
-        setColapseBtn('menu');
     }
 
     const collapseConstraints = function(){
         setTripleCustomOpen(false);
         setConstraintsOpen(!isConstraintsOpen);
+    }
 
-        if(colapseBtn=='menu'){
-            setColapseBtn('menu_open');
-        }else{
-            setColapseBtn('menu');
-        }
+    const forceCollapse = function(collapse){
+        setTripleCustomOpen(false);
+        setConstraintsOpen(collapse);
     }
 
     const rounder =()=>{
@@ -45,8 +42,8 @@ function TripleComponent (props) {
             <TripleHeader triple={triple} 
                           deleteTriple={deleteTriple} 
                           customizeTriple={customizeTriple}
-                          colapseBtn={colapseBtn}
                           collapseConstraints={collapseConstraints}
+                          forceCollapse={forceCollapse}
                           rounded={rounded}/>
 
             <CustomTriple triple={triple} 

@@ -1,16 +1,19 @@
 import React,{useState,useContext} from 'react';
 import {ShapesContext} from '../../../App';
 
+import yasheUtils from '../../../utils/yasheUtils';
+
+
 const primitives = ['String','Integer','Date','Boolean','Custom'];
 
 
 function TripleHeader (props) {
 
     const context = useContext(ShapesContext); 
-    const {triple,deleteTriple,customizeTriple,colapseBtn,collapseConstraints,rounded} = props;
+    const {triple,deleteTriple,customizeTriple,forceCollapse,collapseConstraints,rounded} = props;
 
     const [name,setName] = useState(triple.type.value);
-    const [primitive,setPrimitive] = useState(triple.value.value);
+    
     const [cardinality,setCardinality] = useState(triple.cardinality);
 
     const handleNameChange = function(e){
@@ -20,22 +23,27 @@ function TripleHeader (props) {
         setName(name);
     }
 
+    let initialPrimitive = 'custom'
+    if(triple.value.value != ''){
+        initialPrimitive = triple.value.value;
+    }
+    const [primitive,setPrimitive] = useState(initialPrimitive);
+
 
     const handlePrimitiveChange = function(e){
         const primitive = e.target.value;
 
         if(primitive == 'custom'){
-            collapseConstraints();
-            triple.isCustom = true;
-            context.emit();
             setPrimitive('custom')
+            forceCollapse(true);
             return;
         }
 
         triple.setValue('primitive');
         triple.value.setValue(primitive);
         context.emit();
-        setPrimitive(primitive)
+        setPrimitive(primitive);
+        forceCollapse(false);
     }
 
     const handleCardinalityChange = function(e){
