@@ -21,11 +21,12 @@ function ShapeHeader (props) {
                     className="shapeName"
                     value={name}
                     onChange={handleChange}
-                    placeholder="eg: User"/>
+                    placeholder="eg: User"
+                    title="Shape Name"/>
 
-            <button className="buildBtn mdc-icon-button material-icons" onClick={customizeShape}>build</button>
-            <button className="deleteShapeBtn mdc-icon-button material-icons" onClick={()=>context.deleteShape(shape.id)}>delete</button>
-            <button className="collapseBtn mdc-icon-button material-icons" onClick={collapseTriples}>{colapseBtn}</button>
+            <button className="buildBtn mdc-icon-button material-icons" onClick={customizeShape} title="Customize Shape">build</button>
+            <button className="deleteShapeBtn mdc-icon-button material-icons" onClick={()=>context.deleteShape(shape.id)} title="Delete Shape">delete</button>
+            <button className="collapseBtn mdc-icon-button material-icons" onClick={collapseTriples} title="Show Triples">{colapseBtn}</button>
         </div>
     );
                                    

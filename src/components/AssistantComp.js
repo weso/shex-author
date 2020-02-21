@@ -18,7 +18,8 @@ function AssistantComp (props) {
                <div className="addCont">
                         <button id='addShapeButton' 
                                 className={context.addBtns+" addShapeButton"} 
-                                onClick={context.addShape}>
+                                onClick={context.addShape}
+                                title="Add Shape">
                                 + Shape</button>
               </div>
         </div>);

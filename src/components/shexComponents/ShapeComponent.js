@@ -97,7 +97,7 @@ function ShapeComponent (props) {
                         /> 
                     )}
                 
-                    <button className={context.addBtns+" addTripleButton"} onClick={addTriple}>+ Triple</button>        
+                    <button className={context.addBtns+" addTripleButton"} onClick={addTriple} title="Add Triple">+ Triple</button>        
               
                 </div>                    
             </Collapse> 
