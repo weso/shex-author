@@ -130,11 +130,43 @@ svg{
 	box-shadow: none !important;
 }
 
-.svgBtn{
-	margin-top: -10px;
-	margin-bottom: 10px;
+
+.svgBtn:hover{
+	cursor: pointer !important;
 }
 
+
+.svgBtnCont{
+	background-color: transparent !important;
+	transition: transform 0.2s;
+	border:none;
+	z-index: 10;
+}
+
+
+.svgBtnCont:hover{
+	cursor: pointer !important;
+	box-shadow: none !important;
+	transform: scale(1.5);
+	filter: 
+			invert(0.4)
+			sepia(0.5)
+			hue-rotate(195deg)
+			saturate(16.2)
+			brightness(1.4);
+	
+}
+
+.svgBtnCont:active {
+	transform: translateY(4px);
+	outline:0;
+	box-shadow: none !important;
+}
+
+.svgBtnCont:focus {
+	outline:0;
+	box-shadow: none !important;
+}
 
 
 .shexTitle{
@@ -289,9 +321,7 @@ box-shadow: none !important;
 	display: none;
 }
 
-.uploadBtn{
-	background-color: red;
-}
+
 
 .light{
 	fill: white;
