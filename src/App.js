@@ -100,7 +100,7 @@ function App() {
       setShapes(newShapes);
       visualize();
     }
-
+    
     const updatePrefixes = (newPrefixes)=>{
       setPrefixes([])
       setPrefixes(newPrefixes);

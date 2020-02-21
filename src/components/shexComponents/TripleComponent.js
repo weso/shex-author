@@ -4,7 +4,7 @@ import {ShapesContext} from '../../App';
 
 import TripleHeader from './headers/TripleHeader';
 import CustomTriple from './customize/CustomTriple';
-import ConstraintComponent from './ConstraintComponent';
+import CustomConstraint from './customize/CustomConstraint';
 
 function TripleComponent (props) {
     
@@ -58,7 +58,7 @@ function TripleComponent (props) {
                         onEntering={rounder} >
 
                 <div className="constraints">
-                    <ConstraintComponent triple={triple}/>
+                    <CustomConstraint triple={triple} collapseConstraints={collapseConstraints}/>
                 </div>                    
             </Collapse> 
            

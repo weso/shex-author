@@ -1,7 +1,7 @@
 import React,{useState,useContext} from 'react';
 import {ShapesContext} from '../../../App';
 
-const primitives = ['String','Integer','Date','Boolean'];
+const primitives = ['String','Integer','Date','Boolean','Custom'];
 
 
 function TripleHeader (props) {
@@ -12,7 +12,7 @@ function TripleHeader (props) {
     const [name,setName] = useState(triple.type.value);
     const [primitive,setPrimitive] = useState(triple.value.value);
     const [cardinality,setCardinality] = useState(triple.cardinality);
-   
+
     const handleNameChange = function(e){
         const name = e.target.value;
         triple.type.setValue(name);
@@ -23,6 +23,15 @@ function TripleHeader (props) {
 
     const handlePrimitiveChange = function(e){
         const primitive = e.target.value;
+
+        if(primitive == 'custom'){
+            collapseConstraints();
+            triple.isCustom = true;
+            context.emit();
+            setPrimitive('custom')
+            return;
+        }
+
         triple.setValue('primitive');
         triple.value.setValue(primitive);
         context.emit();

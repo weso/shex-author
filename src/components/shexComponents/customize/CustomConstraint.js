@@ -6,6 +6,8 @@ import {getPrefix} from '../../../utils/prefixUtils';
 
 import shexUtils from '../../../utils/shexUtils';
 
+import yasheUtils from '../../../utils/yasheUtils';
+
 
 const primitives = ['String','Integer','Date','Boolean'];
 
@@ -13,11 +15,10 @@ const primitives = ['String','Integer','Date','Boolean'];
 function CustomConstraint (props) {
 
     const context = useContext(ShapesContext);
-    const {triple,isCustomOpen} = props;
+    const {triple,isCustomOpen,collapseConstraints} = props;
 
     const [constraint,setConstraint] = useState(triple.value.getTypeName());
-    const [isShapeRefOpen,setShapeRefOpen] = useState(false);
-    const [isQualiOpen,setQualiOpen] = useState(false);
+    
  
     const [qualifier,setQualifier] = useState(triple.value.value)
     const [primitive,setPrimitive] = useState(triple.value.value);
@@ -42,11 +43,15 @@ function CustomConstraint (props) {
     const [isNameOpen,setNameOpen] = useState(initialOpenName);
 
     let inlineValue = '';
+    let inlineOpen = false;
     if(triple.inlineShape.shape != null){
         inlineValue = triple.inlineShape.shape.id;
+        inlineOpen = true;
     }
     
     const [shapeRef,setShapeRef] = useState(inlineValue);
+    const [isShapeRefOpen,setShapeRefOpen] = useState(inlineOpen);
+    const [isQualiOpen,setQualiOpen] = useState(inlineOpen);
 
     const handlePrefixChange = function(e){ 
         let prefix = getPrefix(e.target.value);
@@ -147,11 +152,21 @@ function CustomConstraint (props) {
             setQualiOpen(true);
         }
 
+        if(newConstraint == 'primitive'){
+            collapseConstraints();   
+            triple.setValue('primitive');
+            context.emit();
+            //Whitout the timeout the assistant doesn't update
+            setTimeout(function(){
+                context.replaceShapes(yasheUtils.replaceShapes())
+            }, 10);
+            
+        }
+
     }
 
 
     return (
-
                 <div className="customConstraint">
                     <div className={context.customConstraintClass+" constraintGridBox"}>
                         <label >Constraint </label>
@@ -168,6 +183,8 @@ function CustomConstraint (props) {
                             <option value="bnode">BNode</option>
                         </select>
                     </div>     
+
+         
                     <Collapse isOpen={isNameOpen} className={context.customConstraintClass+" constraintGridBox"}>
                         <label >Name</label>
                         <input  type="text" 
