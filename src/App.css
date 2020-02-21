@@ -200,6 +200,7 @@ svg{
 
 .navItems:hover{
 	text-decoration: none;
+	cursor: pointer;
 	background-color: transparent !important;
 	filter: 
 			invert(0.4)
