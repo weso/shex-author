@@ -108,6 +108,7 @@ svg{
 
 .btns:hover{
 	cursor: pointer !important;
+	box-shadow: none !important;
 	transform: scale(1.5);
 	filter: 
 			invert(0.4)
@@ -121,10 +122,12 @@ svg{
 .btns:active {
 	transform: translateY(4px);
 	outline:0;
+	box-shadow: none !important;
 }
 
 .btns:focus {
 	outline:0;
+	box-shadow: none !important;
 }
 
 .svgBtn{
@@ -267,13 +270,17 @@ html{
 .dropdown{
 width: 100%;
 z-index: 1000;
+box-shadow: none !important;
 }
 
+.dropdown:hover{
+	cursor: pointer !important;
+	box-shadow: none !important;
+}
 
 
 .dropdown:focus{
 	box-shadow: none !important;
-	
 }
 
 

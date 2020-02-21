@@ -147,7 +147,7 @@ function Nav (props) {
                     </button> 
                     
                     <div className="dropdown" title="Prefixes">
-                        <button className="btn btn-default dropdown-toggle  
+                        <button className="btn  dropdown-toggle  
                                         mdc-icon-button material-icons 
                                         btns selector" type="button" data-toggle="dropdown">local_parking
                         <span className="caret"></span></button>
