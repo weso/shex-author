@@ -4,7 +4,7 @@
         display: grid;
         grid-template-columns: 100%;
         align-content: center;
-        grid-gap: 10px;
+        gap: 10px;
         padding: 2%;
         
     }
@@ -23,7 +23,6 @@
         /*border-right:4px double #95b2d6;*/
         border-right:4px double#b5bec9;
         border-collapse: separate ;
-        
     }
 
     
@@ -57,10 +56,6 @@
     }
 
 
-    .lateralNav {
-        border: 1px solid grey;
-        border-radius:  20px 0px 0px 20px;
-    }
 
 
     .shape{
@@ -95,14 +90,14 @@
         border: 1px solid grey;
         display: grid;
         grid-template-columns: 11% 64% 6% 6% 9%;
-        grid-gap: 10px;
+        gap: 10px;
 
     }
 
     .xs-header{
         padding: 8px;
         grid-template-columns: 10% 56% 8% 8% 9%;
-        grid-gap: 10px;
+        gap: 10px;
 
     }
 
@@ -110,13 +105,13 @@
     .sm-header{
         padding: 8px;
         grid-template-columns: 14% 55% 8% 8% 8%;
-        grid-gap: 10px;
+        gap: 10px;
     }
 
     .ms-header{
         padding: 10px;
         grid-template-columns: 13% 61% 7% 7% 1%;
-        grid-gap: 8px;
+        gap: 8px;
     }
 
 
@@ -281,14 +276,14 @@ fce1ff46
         border: 1px solid grey;
         display: grid;
         grid-template-columns: 10% 24% 20% 19% 6% 6% 6%;
-        grid-gap: 10px;
+        gap: 10px;
     
     }
    
 
     .xs-tripleHeader{
         justify-content: center;
-        grid-gap: 8px;
+        gap: 8px;
         grid-template-columns: 9% 24% 17% 20% 6% 6% 6%;
     }
 
@@ -320,17 +315,17 @@ fce1ff46
     .gridBox{ 
         display: grid;
         grid-template-columns: 7% 10% 54%;
-        grid-gap: 35px;
+        gap: 35px;
     }
 
     .constraintGridBox{ 
         display: grid;
         grid-template-columns: 25% 54%;
-        grid-gap: 44px;
+        gap: 44px;
     }
 
     .xs-gridBox{
-        grid-gap: 40px;
+        gap: 40px;
         grid-template-columns: 15% 10% 54%;
     }
 
@@ -378,7 +373,7 @@ fce1ff46
 
         display: grid;
         grid-template-columns: 100%;
-        grid-gap: 5px;
+        gap: 5px;
     }
 
     /* e4fadb54  verde mas pocho aun */
@@ -392,7 +387,7 @@ fce1ff46
 
         display: grid;
         grid-template-columns: 100%;
-        grid-gap: 5px;
+        gap: 5px;
     }
 
     .custom{
@@ -412,7 +407,7 @@ fce1ff46
             'box3 box3 box3'
             'box4 box4 box4' ;
         text-align: left;
-        grid-gap: 5px;
+        gap: 5px;
     }
 
 
@@ -477,6 +472,10 @@ fce1ff46
         -webkit-user-drag: none;
         -webkit-app-region: no-drag;
         cursor: default;
+    }
+
+    .clickable{
+        cursor: pointer !important;
     }
 
 
@@ -545,6 +544,33 @@ fce1ff46
         border-radius: 10px 10px 0px 0px !important;
     }
 
+
+    .lateralNav {
+        border: 1px solid grey;
+        border-radius:  20px 0px 0px 20px;
+    }
+
+    .lateral{
+        display: grid;
+        grid-template-columns: 100%;
+        background-color: white;
+        border-radius: 10px;
+        margin:3px;
+     
+    }
+
+    .lateralTop{
+        display: grid;
+        grid-template-columns: 100%;
+        gap: 10px;
+        background-color: transparent;
+       
+     
+       
+    }
+
+    
+
 /*
 
     @media (max-width: 2040px) {
@@ -552,7 +578,7 @@ fce1ff46
             display: grid;
             grid-template-columns: 100%;
             align-content: center;
-            grid-gap: 10px;
+            gap: 10px;
             padding: 2%;
             background-color: red;
         }

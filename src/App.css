@@ -79,10 +79,6 @@ svg{
 }
 
 
-.lateralNav{
-	background-color: white !important;
-}
-
 .selector{
 	font-size: 20px !important;
 	
@@ -103,19 +99,15 @@ svg{
 	background-color: transparent !important;
 	transition: transform 0.2s;
 	height: 50px;
-	width: 70px;
+	width: 70px !important;
 	border:none;
 	font-size: 30px;
-	filter: 
-			invert(0.4)
-			sepia(0.5)
-			hue-rotate(195deg)
-			saturate(16.2)
-			brightness(0);
+	z-index: 3000;
+	padding: 20px;
 }
 
 .btns:hover{
-	background-color: transparent !important;
+	cursor: pointer !important;
 	transform: scale(1.5);
 	filter: 
 			invert(0.4)
@@ -123,6 +115,7 @@ svg{
 			hue-rotate(195deg)
 			saturate(16.2)
 			brightness(1.4);
+	
 }
 
 .btns:active {
@@ -138,6 +131,8 @@ svg{
 	margin-top: -10px;
 	margin-bottom: 10px;
 }
+
+
 
 .shexTitle{
 	font-size: 40px;
@@ -269,8 +264,16 @@ html{
 
 
 
-.dropdown :focus{
+.dropdown{
+width: 100%;
+z-index: 1000;
+}
+
+
+
+.dropdown:focus{
 	box-shadow: none !important;
+	
 }
 
 
