@@ -13,7 +13,6 @@ function TripleHeader (props) {
     const {triple,deleteTriple,customizeTriple,forceCollapse,collapseConstraints,rounded} = props;
 
     const [name,setName] = useState(triple.type.value);
-    
     const [cardinality,setCardinality] = useState(triple.cardinality);
 
     const handleNameChange = function(e){

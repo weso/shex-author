@@ -18,8 +18,6 @@ function CustomConstraint (props) {
     const {triple,isCustomOpen,collapseConstraints} = props;
 
     const [constraint,setConstraint] = useState(triple.value.getTypeName());
-    
- 
     const [qualifier,setQualifier] = useState(triple.value.value)
     const [primitive,setPrimitive] = useState(triple.value.value);
     const [cardinality,setCardinality] = useState(triple.cardinality);
