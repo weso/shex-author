@@ -20,7 +20,8 @@ function ShapeHeader (props) {
             <input  type="text" 
                     className="shapeName"
                     value={name}
-                    onChange={handleChange}/>
+                    onChange={handleChange}
+                    placeholder="eg: User"/>
 
             <button className="buildBtn mdc-icon-button material-icons" onClick={customizeShape}>build</button>
             <button className="deleteShapeBtn mdc-icon-button material-icons" onClick={()=>context.deleteShape(shape.id)}>delete</button>

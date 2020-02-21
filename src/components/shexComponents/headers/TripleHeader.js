@@ -60,7 +60,8 @@ function TripleHeader (props) {
             <input  type="text" 
                     className="shapeName"
                     value={name}
-                    onChange={handleNameChange}/>
+                    onChange={handleNameChange}
+                    placeholder="eg: name"/>
              <select className="customSelector" 
                     value={primitive} 
                     onChange={handlePrimitiveChange}>
