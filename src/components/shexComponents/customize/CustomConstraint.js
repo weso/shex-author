@@ -34,24 +34,29 @@ function CustomConstraint (props) {
     const [prefix,setPrefix] = useState(initialPrefix);
     const [isPrefixOpen,setPrefixOpen] = useState(initialOpenPrefix);
 
+
     let initialOpenName = false;
     if(triple.value.value!='' && constraint!='primitive'){
         initialOpenName = true;
     }
-
-    const [name,setName] = useState(triple.value.value);
-    const [isNameOpen,setNameOpen] = useState(initialOpenName);
 
     let inlineValue = '';
     let inlineOpen = false;
     if(triple.inlineShape.shape != null){
         inlineValue = triple.inlineShape.shape.id;
         inlineOpen = true;
+        initialOpenName = false;
     }
     
     const [shapeRef,setShapeRef] = useState(inlineValue);
     const [isShapeRefOpen,setShapeRefOpen] = useState(inlineOpen);
     const [isQualiOpen,setQualiOpen] = useState(inlineOpen);
+
+
+    const [name,setName] = useState(triple.value.value);
+    const [isNameOpen,setNameOpen] = useState(initialOpenName);
+
+
 
     const handlePrefixChange = function(e){ 
         let prefix = getPrefix(e.target.value);
