@@ -545,27 +545,34 @@ fce1ff46
     .lateralNav {
         border: 1px solid grey;
         border-radius:  20px 0px 0px 20px;
+        background-color: white;
     }
 
     .lateral{
+        height: 99%;
         display: grid;
         grid-template-columns: 100%;
+        grid-template-rows: 10% auto;
         background-color: white;
         border-radius: 10px;
         margin:3px;
-     
     }
 
     .lateralTop{
         display: grid;
         grid-template-columns: 100%;
-        gap: 10px;
-        background-color: transparent;
-       
-     
-       
+        gap: 6px;
+        background-color: transparent;  
     }
 
+    .lateralBottom{
+        display: grid;
+        grid-template-rows: 100%;
+        align-items: end;
+        justify-content: end;
+    }
+
+  
     
 
 /*
