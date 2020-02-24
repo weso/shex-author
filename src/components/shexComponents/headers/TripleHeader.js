@@ -52,6 +52,11 @@ function TripleHeader (props) {
         setCardinality(newCardinality)
        
     }
+
+    const handleCollapse = function(){
+        setPrimitive('custom')
+        collapseConstraints();
+    }
    
    
     return (
@@ -80,7 +85,7 @@ function TripleHeader (props) {
                     <option value="?">One or none</option>
                 </select>
             <button className={context.tripleBtns+" buildTriple buildBtn buildTripleBtn mdc-icon-button material-icons"} onClick={customizeTriple} title="Customize Triple">build</button>
-            <button className={context.tripleBtns+" buildConstraint buildBtn buildTripleBtn mdc-icon-button material-icons"}  onClick={collapseConstraints} title="Customize Constraint">build</button>
+            <button className={context.tripleBtns+" buildConstraint buildBtn buildTripleBtn mdc-icon-button material-icons"}  onClick={handleCollapse} title="Customize Constraint">build</button>
             <button className={context.tripleBtns+" deleteTripleBtn mdc-icon-button material-icons"} onClick={()=>deleteTriple(triple.id)} title="Delete Triple">delete</button>
 
         </div>

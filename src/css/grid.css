@@ -615,7 +615,11 @@ fce1ff46
         justify-content: end;
     }
 
-  
+    .danger {
+        background-color: #ffdddd;
+        border-left: 6px solid #f44336;
+        font-size: 15px;
+      }
    
 
 

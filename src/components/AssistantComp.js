@@ -21,8 +21,9 @@ function AssistantComp (props) {
                         <div className="asisTitleClose">
                                 <button className="closeAsis" title="Close Assistant" onClick={assistantToggle}>x</button>
                         </div> 
-                
+                        
                 </div>
+         
 
                 <div className="paddingDiv">
                         <div id='assistant-container' className='assistantContainer'> 

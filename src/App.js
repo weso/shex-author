@@ -221,7 +221,8 @@ function App() {
                 
                 <Nav colapseAll={colapseAll}/>
               
-                <div className="globalContainer">
+                <div className="globalContainer">       
+  
                   <div className={shake+" row comps"}>                     
                       <Collapse isOpen={isLateralNavOpen} className="col-xs-1 lateralNav">
                           <Toolbar  assistantToggle={assistantToggle} visualizeToggle={visualizeToggle}/>
@@ -233,7 +234,7 @@ function App() {
                                     onResizeStop={makeItResponsive}              
                                     enable={{right:true}}
                                     >
-                             
+                    
                                   <div className='col containerAssist'>
                                     <AssistantComp assistantToggle={assistantToggle}/>                            
                                   </div>
