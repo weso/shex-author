@@ -31,6 +31,7 @@ function App() {
     const [isVisualizeOpen, setVisualizeOpen] = useState(true);
     const [isLateralNavOpen, setLateralNavOpen] = useState(true);
     const [width,setWidth] = useState(800);
+    const [valid,setValid] = useState('valid');
 
     //Responsive
     const [shapeClass,setShapeClass] = useState('header');
@@ -93,9 +94,12 @@ function App() {
       visualize();
     }
 
-    const replaceShapes = (newShapes) =>{
+    const replaceShapes = (newShapes,valid) =>{
       //This allows to render all the shapes when a property is updated.
       //Best Glitch Ever
+      if(!valid){
+        setValid('danger');
+      }
       setShapes([]); 
       setShapes(newShapes);
       visualize();
@@ -215,7 +219,8 @@ function App() {
                     shapeLabel:shapeLabel,
                     tripleLabel:tripleLabel,                 
                     triplesContainer:triplesContainer,
-                    addBtns:addBtns
+                    addBtns:addBtns,
+                    valid:valid
                   }
                 }>
                 

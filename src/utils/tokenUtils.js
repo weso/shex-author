@@ -32,6 +32,7 @@ const CARDINALITY = ['*','?','+'];
 
 
 let inlines;
+let isValid = true;
 
 function getTokens(){
     let yashe = Editor.getInstance().getYashe();
@@ -46,6 +47,11 @@ function getTokens(){
 
         }
     }
+    
+    if(!isValid){
+        return null;
+    }
+
     return tokens;
 }
 
@@ -107,7 +113,7 @@ function getTriples(shapeId,shape) {
         let start = getStart(shape);
         for(let i=start;i<shape.length;i++){
             singleTriple.push(shape[i])
-            if(shape[i].type == 'punc'){// finish of the triple ';'
+            if(shape[i].type == 'punc' && shape[i].string==';'){// finish of the triple ';'
                 if(singleTriple.length!=1){ //This line is neccesary when last triple of the shape ends with ';'
            
                     triples.push(getTriple(triples,singleTriple,shapeId));
@@ -120,6 +126,11 @@ function getTriples(shapeId,shape) {
 }
 
 function getTriple(triples,singleTriple,shapeId) {
+    
+    if(singleTriple.length>5){
+        isValid = false;
+    }
+   
     let id = triples.length;
     let type;
     let value;

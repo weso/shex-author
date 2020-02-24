@@ -1,4 +1,4 @@
-import React,{useContext,useState} from 'react';
+import React,{useContext} from 'react';
 import { Collapse } from 'reactstrap';
 import '../App.css';
 import '../css/grid.css';
@@ -21,9 +21,12 @@ function AssistantComp (props) {
                         <div className="asisTitleClose">
                                 <button className="closeAsis" title="Close Assistant" onClick={assistantToggle}>x</button>
                         </div> 
-                        
+                    
+
                 </div>
-         
+                <div class={context.valid}>
+                        <p><strong>[Error]</strong> This Shape is very complex for me...</p>
+                </div>
 
                 <div className="paddingDiv">
                         <div id='assistant-container' className='assistantContainer'> 

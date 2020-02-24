@@ -114,7 +114,13 @@ function EditorComp() {
     );
 
     const replaceShapes = ()=>{
-        context.replaceShapes(yasheUtils.replaceShapes());
+        let newShapes = yasheUtils.replaceShapes();
+        let valid = true;
+        if(newShapes==null){
+            valid = false;
+            newShapes=[];
+        }
+        context.replaceShapes(newShapes,valid);
     }
 
     const updatePrefixes = ()=>{

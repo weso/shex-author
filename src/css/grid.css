@@ -620,6 +620,10 @@ fce1ff46
         border-left: 6px solid #f44336;
         font-size: 15px;
       }
+
+      .valid{
+        display: none;
+      }
    
 
 
