@@ -8,7 +8,7 @@ import EditorComp from './components/EditorComp';
 import AssistantComp from './components/AssistantComp';
 import VisualizeComp from  './components/VisualizeComp';
 
-import LateralNav from './components/navComponents/LateralNav';
+import Toolbar from './components/navComponents/Toolbar';
 import Nav from './components/navComponents/Nav';
 
 import shexUtils from './utils/shexUtils';
@@ -28,7 +28,7 @@ function App() {
     const [svg,setSvg] = useState('');
     const [prefixes,setPrefixes] = useState([{key:'',val:'http://example.org/'}]);
     const [isAssistantOpen, setAssistantOpen] = useState(true);
-    const [isVisualizeOpen, setVisualizeOpen] = useState(false);
+    const [isVisualizeOpen, setVisualizeOpen] = useState(true);
     const [isLateralNavOpen, setLateralNavOpen] = useState(true);
     const [width,setWidth] = useState(800);
 
@@ -224,7 +224,7 @@ function App() {
                 <div className="globalContainer">
                   <div className={shake+" row comps"}>                     
                       <Collapse isOpen={isLateralNavOpen} className="col-xs-1 lateralNav">
-                          <LateralNav  assistantToggle={assistantToggle} visualizeToggle={visualizeToggle}/>
+                          <Toolbar  assistantToggle={assistantToggle} visualizeToggle={visualizeToggle}/>
                       </Collapse> 
 
                       <Collapse isOpen={isAssistantOpen} className='row assistCollapse'>

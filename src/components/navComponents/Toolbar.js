@@ -10,7 +10,7 @@ import {wikiExample} from '../../examples/wikiExample';
 
 import yasheUtils from '../../utils/yasheUtils';
 
-function Nav (props) {
+function Toolbar (props) {
 
     const {assistantToggle,visualizeToggle} = props;
     const context = useContext(ShapesContext);
@@ -236,4 +236,4 @@ function Nav (props) {
 }
 
 
-export default Nav;
+export default Toolbar;
