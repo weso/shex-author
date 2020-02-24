@@ -233,8 +233,9 @@ function App() {
                                     onResizeStop={makeItResponsive}              
                                     enable={{right:true}}
                                     >
+                             
                                   <div className='col containerAssist'>
-                                    <AssistantComp/>                            
+                                    <AssistantComp assistantToggle={assistantToggle}/>                            
                                   </div>
                         </Resizable>     
                       </Collapse>                         
