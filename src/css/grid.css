@@ -119,6 +119,7 @@
         border-radius: 4px;
         color:#222;
         padding-left: 5px;
+        border: 1px solid #acaaaa !important;
     }
 
 
@@ -458,6 +459,7 @@ fce1ff46
         background: white;
         outline: none;
         color:#222;
+        border: 1px solid #acaaaa !important;
     }
 
 
