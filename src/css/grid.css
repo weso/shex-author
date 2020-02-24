@@ -4,24 +4,46 @@
     .containerAssist{
         height: 100% !important;
         width: 100% !important;
-        background-color: white;
         display: grid;
         grid-template-columns: 100%;
         padding: 0px;
-        background-color: #f1f7f4;
+        background-color: white;
+       
     }
-
+    
     .assistantContainer{
         display: grid;
         grid-template-columns: 100%;
         align-content: center;
         gap: 10px;
-        padding: 5px;
         width: 100% !important;
-       
     }
 
+    .paddingDiv{
+        padding: 2%;
+    }
 
+    
+    .assisTitle{
+        display: grid;
+        grid-template-columns: 97% 10%;
+        padding: 5px;
+        border-bottom: 1px solid grey;
+       font-size: 20px;
+      
+    }
+
+    
+   
+    .closeAsis{
+        background-color: transparent;
+        border:none;
+        grid-column: 2/3;
+    }
+
+    .closeAsis:focus{
+        outline: none;
+    }
 
 
     .assistCollapse{
@@ -79,11 +101,9 @@
 
 
     .shape{
-    
         color: #f8f8ff;
         text-align: center;
         display: grid;
-        margin-top: 3px;
         grid-template-columns: 100%;
   
     }
@@ -593,41 +613,7 @@ fce1ff46
     }
 
   
-    .assisTitleCont{
-        display: grid;
-        grid-template-columns: 80% 24.5%;
-        margin-left: -5px;
-       
-    }
-
-    .assisTitle{
-        padding: 3px;
-        font-size: 20px;
-        font-weight: bold;
-        border-bottom: 1px solid #222;
-        padding-left: 10px;
-    
-     
-    }
-    
-    .asisTitleClose{
-        border-bottom: 1px solid #222;
-        padding: 3px;
-        font-size: 20px;
-        display: grid;
-        grid-template-columns: 85% 15%;
-        font-weight: bold;   
-    }
-
-    .closeAsis{
-        background-color: transparent;
-        border:none;
-        grid-column: 2/3;
-    }
-
-    .closeAsis:focus{
-        outline: none;
-    }
+   
 
 
 /*

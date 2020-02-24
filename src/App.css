@@ -207,15 +207,6 @@ svg{
 	outline:0;
 }
 
-.assisTitleDiv{
-	margin-top:5px;
-	
-}
-
-.assisTitle{
-	margin-left:5px;
-}
-
 
 .navItems{
 	margin-left: 10px;
@@ -270,7 +261,7 @@ input[type=text] {
 
 
 
-.globalContainer{
+.globalContainer{ 
 	background-color: #ddeafa;
 	padding: 2%;
 }
