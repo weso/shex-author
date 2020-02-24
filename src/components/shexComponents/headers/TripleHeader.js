@@ -40,6 +40,7 @@ function TripleHeader (props) {
 
         triple.setValue('primitive');
         triple.value.setValue(primitive);
+        triple.inlineShape.shape = null;
         context.emit();
         setPrimitive(primitive);
         forceCollapse(false);
