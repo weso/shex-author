@@ -137,47 +137,7 @@
     }
 
 
-    .shapeName{
-        border-radius: 4px;
-        color:#222;
-        padding-left: 5px;
-        border: 1px solid #acaaaa !important;
-    }
-
-
-
-    .header{
-        background: #C6E2FF ;
-        padding: 10px;
-        color: black;
-        text-align: left;
-        border: 1px solid #acaaaa;
-        display: grid;
-        grid-template-columns: 11% 64% 6% 6% 9%;
-        gap: 10px;
-
-    }
-
-    .xs-header{
-        padding: 8px;
-        grid-template-columns: 10% 56% 8% 8% 9%;
-        gap: 10px;
-
-    }
-
-
-    .sm-header{
-        padding: 8px;
-        grid-template-columns: 14% 55% 8% 8% 8%;
-        gap: 10px;
-    }
-
-    .ms-header{
-        padding: 10px;
-        grid-template-columns: 13% 61% 7% 7% 1%;
-        gap: 8px;
-    }
-
+    
 
     .triples{
         background: #EBF4FF;
@@ -433,38 +393,6 @@ fce1ff46
 
 
 
-    .deleteShapeBtn{
-        background: #79aff5;
-        color: white;
-        border-radius: 10px;
-        outline: none;
-        border: none;
-
-    }
-
-    .deleteShapeBtn:focus{
-        outline: none;
-    }
-
-
-    .deleteShapeBtn:hover{
-        transform: scale(1.1);
-    }
-
-    .collapseBtn{
-        background: transparent;
-        color:#222;
-        border-radius: 10px;
-        border: none;
-        height: 100%;
-        font-size: 25px;
-    }
-
-    .collapseBtn:focus{
-        outline: none;
-    }
-
-
     *, *::after, *::before {
         -webkit-user-select: none;
         -webkit-user-drag: none;
@@ -492,29 +420,6 @@ fce1ff46
         transform: scale(1.1);
     }
 
-
-    .buildBtn{
-        background: #3d3d3d;
-        color:rgb(121, 175, 245);
-        border-radius: 10px;
-        outline: none;
-        border: none;
-        font-size: 25px;
-    }
-
-
-    .buildBtn:focus{
-        outline: none;
-    }
-
-
-    .buildBtn:hover{
-        transform: scale(1.1);
-    }
-
-    .buildBtn:active {
-        transform: translateY(4px);
-    }
 
     .buildTriple{
         background: #3d3d3d !important;

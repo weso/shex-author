@@ -69,6 +69,7 @@ function TripleHeader (props) {
                     onChange={handleNameChange}
                     placeholder="eg: name"
                     title="Triple Name"/>
+
              <select className="customSelector" 
                     value={primitive} 
                     onChange={handlePrimitiveChange}
@@ -79,15 +80,34 @@ function TripleHeader (props) {
                     })
                 }
             </select>
-             <select className="customSelector" value={cardinality} onChange={handleCardinalityChange} title="Cardinality">
+
+            <select className="customSelector" 
+                    value={cardinality} 
+                    onChange={handleCardinalityChange} 
+                    title="Cardinality">
                     <option value="">Exactly one</option>
                     <option value="*">Zero or more</option>
                     <option value="+">One at least</option>
                     <option value="?">One or none</option>
-                </select>
-            <button className={context.tripleBtns+" buildTriple buildBtn buildTripleBtn mdc-icon-button material-icons"} onClick={customizeTriple} title="Customize Triple">build</button>
-            <button className={context.tripleBtns+" buildConstraint buildBtn buildTripleBtn mdc-icon-button material-icons"}  onClick={handleCollapse} title="Customize Constraint">build</button>
-            <button className={context.tripleBtns+" deleteTripleBtn mdc-icon-button material-icons"} onClick={()=>deleteTriple(triple.id)} title="Delete Triple">delete</button>
+            </select>
+
+            <button className={context.tripleBtns+" buildTriple buildBtn buildTripleBtn mdc-icon-button material-icons"} 
+                    onClick={customizeTriple} 
+                    title="Customize Triple">
+                    build
+            </button>
+
+            <button className={context.tripleBtns+" buildConstraint buildBtn buildTripleBtn mdc-icon-button material-icons"}  
+                    onClick={handleCollapse} 
+                    title="Customize Constraint">
+                    build
+            </button>
+
+            <button className={context.tripleBtns+" deleteTripleBtn mdc-icon-button material-icons"} 
+                    onClick={()=>deleteTriple(triple.id)} 
+                    title="Delete Triple">
+                    delete
+            </button>
 
         </div>
     );

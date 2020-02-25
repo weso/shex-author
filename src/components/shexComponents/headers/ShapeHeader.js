@@ -1,6 +1,8 @@
 import React,{useState,useContext} from 'react';
 import {ShapesContext} from '../../../App';
 
+import '../../../css/shexComponents/headers/ShapeHeader.css';
+
 function ShapeHeader (props) {
 
     const context = useContext(ShapesContext); 
@@ -24,9 +26,23 @@ function ShapeHeader (props) {
                     placeholder="eg: User"
                     title="Shape Name"/>
 
-            <button className="buildBtn mdc-icon-button material-icons" onClick={customizeShape} title="Customize Shape">build</button>
-            <button className="deleteShapeBtn mdc-icon-button material-icons" onClick={()=>context.deleteShape(shape.id)} title="Delete Shape">delete</button>
-            <button className="collapseBtn mdc-icon-button material-icons" onClick={collapseTriples} title="Show Triples">{colapseBtn}</button>
+            <button className="buildBtn mdc-icon-button material-icons" 
+                    onClick={customizeShape} 
+                    title="Customize Shape">
+                    build
+            </button>
+
+            <button className="deleteShapeBtn mdc-icon-button material-icons" 
+                    onClick={()=>context.deleteShape(shape.id)} 
+                    title="Delete Shape">
+                    delete
+            </button>
+
+            <button className="collapseBtn mdc-icon-button material-icons" 
+                    onClick={collapseTriples} 
+                    title="Show Triples">
+                    {colapseBtn}
+            </button>
         </div>
     );
                                    
