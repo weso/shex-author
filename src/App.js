@@ -239,9 +239,8 @@ function App() {
                 <div className="globalContainer">       
   
                   <div className={shake+" row comps"}>                     
-                      <Collapse isOpen={isLateralNavOpen} className="col-xs-1 lateralNav">
-                          <Toolbar  assistantToggle={assistantToggle} visualizeToggle={visualizeToggle}/>
-                      </Collapse> 
+                      <Toolbar isLateralNavOpen={isLateralNavOpen}/>
+                
 
                       <Collapse isOpen={isAssistantOpen} className='row assistCollapse'>
                         <Resizable  className="col row resizable"

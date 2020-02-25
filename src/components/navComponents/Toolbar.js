@@ -1,4 +1,5 @@
 import React from 'react';
+import { Collapse } from 'reactstrap';
 import ShowAssist from './btns/ShowAssist';
 import VisualizeBtn from './btns/VisualizeBtn';
 import PrefixesBtn from './btns/PrefixesBtn';
@@ -11,11 +12,17 @@ import GaleryBtn from './btns/GaleryBtn';
 import DeleteAllBtn from './btns/DeleteAllBtn';
 import ScrollBtn from './btns/ScrollBtn';
 
+import '../../css/navComponents/Toolbar.css';
+
 
 function Toolbar (props) {
 
-    return (<div className='lateral'>
-                <div className='lateralTop'>                    
+    const {isLateralNavOpen} = props;
+
+    return (
+    <Collapse isOpen={isLateralNavOpen} className="col-xs-1 toolbarCollapse">
+        <div className='toolbar'>
+                <div className='toolbarTop'>                    
                     <ShowAssist/>
                     <VisualizeBtn/>
                     <PrefixesBtn/>
@@ -28,10 +35,11 @@ function Toolbar (props) {
                     <DeleteAllBtn/>
                 </div>                     
 
-                <div className='lateralBottom'>
+                <div className='toolbarBottom'>
                     <ScrollBtn/> 
                 </div>
-        </div>);
+        </div>
+    </Collapse>);
     
     
 }

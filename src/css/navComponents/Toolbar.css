@@ -1,0 +1,30 @@
+.toolbarCollapse {
+    border: 1px solid #acaaaa;
+    border-radius:  20px 0px 0px 20px;
+    background-color: white;
+}
+
+.toolbar{
+    height: 99%;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 10% auto;
+    background-color: white;
+    border-radius: 10px;
+    margin:3px;
+}
+
+.toolbarTop{
+    display: grid;
+    grid-template-columns: 100%;
+    gap: 6px;
+    background-color: transparent;  
+}
+
+.toolbarBottom{
+    display: grid;
+    grid-template-rows: 100%;
+    align-items: end;
+    justify-content: end;
+}
+
