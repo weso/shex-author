@@ -19,7 +19,7 @@ function GaleryBtn () {
             </button>
             <ul className='dropdown-menu'>
                 <li>
-                    <div id='prefixesDropdown' className='prefixes'>  
+                    <div id='prefixesDropdown'>  
                         <button className="form-control"
                                 onClick={()=>loadExample('default')}>
                                 User

@@ -14,7 +14,7 @@ function PrefixesBtn (props) {
             <span className="caret"></span></button>
             <ul className='dropdown-menu'>
                 <li>
-                    <div id='prefixesDropdown' className='prefixes'>  
+                    <div id='prefixesDropdown'>  
                         <PrefixSelector namespaces={ALL_PREFIXES}/>                                    
                     </div>
                 </li>

@@ -91,78 +91,7 @@ svg{
 	outline:0 !important;
 }
 
-.btns{
-	background-color: transparent !important;
-	transition: transform 0.2s;
-	height: 50px;
-	width: 70px !important;
-	border:none;
-	font-size: 30px;
-	z-index: 10;
-	padding: 20px;
-}
 
-.btns:hover{
-	cursor: pointer !important;
-	box-shadow: none !important;
-	transform: scale(1.5);
-	filter: 
-			invert(0.4)
-			sepia(0.5)
-			hue-rotate(195deg)
-			saturate(16.2)
-			brightness(1.4);
-	
-}
-
-.btns:active {
-	transform: translateY(4px);
-	outline:0;
-	box-shadow: none !important;
-}
-
-.btns:focus {
-	outline:0;
-	box-shadow: none !important;
-}
-
-
-.svgBtn:hover{
-	cursor: pointer !important;
-}
-
-
-.svgBtnCont{
-	background-color: transparent !important;
-	transition: transform 0.2s;
-	border:none;
-	z-index: 10;
-}
-
-
-.svgBtnCont:hover{
-	cursor: pointer !important;
-	box-shadow: none !important;
-	transform: scale(1.5);
-	filter: 
-			invert(0.4)
-			sepia(0.5)
-			hue-rotate(195deg)
-			saturate(16.2)
-			brightness(1.4);
-	
-}
-
-.svgBtnCont:active {
-	transform: translateY(4px);
-	outline:0;
-	box-shadow: none !important;
-}
-
-.svgBtnCont:focus {
-	outline:0;
-	box-shadow: none !important;
-}
 
 
 .shexTitle{
@@ -172,9 +101,6 @@ svg{
 }
 
 
-.uploadBtn{
-	margin-left: 15px !important;
-}
 
 
 
@@ -225,21 +151,6 @@ html{
 
 
 
-.dropdown{
-width: 100%;
-z-index: 1000;
-box-shadow: none !important;
-}
-
-.dropdown:hover{
-	cursor: pointer !important;
-	box-shadow: none !important;
-}
-
-
-.dropdown:focus{
-	box-shadow: none !important;
-}
 
 
 .inputfileBtn{
