@@ -24,6 +24,13 @@
     border: 1px solid #acaaaa !important;
 }
 
+label{
+	font-weight: bold;
+	margin-top: 10px;
+	margin-left:10px;
+	margin-right:-50px; 
+}
+
 
 
 .buildBtn{

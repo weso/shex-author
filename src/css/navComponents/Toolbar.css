@@ -107,6 +107,23 @@
 	margin-left: 15px !important;
 }
 
+.selector{
+	font-size: 21px !important;
+	
+}
+
+.selector:focus {
+	outline:0 !important;
+}
+
+.selector:active {
+	transform: translateY(4px);
+	outline:0 !important;
+}
+
+.inputfileBtn{
+	display: none;
+}
 
 /**
 

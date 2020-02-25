@@ -6,6 +6,42 @@
     margin-left: 0px;
 }
 
+.resizable{
+    height: 100% !important;
+    /*border-right:4px double #95b2d6;*/
+    max-width: 1100px;
+    border-right:4px double #bdbcbc;
+    margin-right: 14px;
+    margin-left: 0px;
+    z-index: 100;
+    padding: 0px;
+}
+
+
+.react-resizable {
+    position: relative;
+}
+.react-resizable-handle {
+    position: absolute;
+    
+    width: 1em;
+    height: 100% !important;
+
+    background: #ddeafa;
+    background-image: url( data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAhCAQAAABOpSL+AAAAIklEQVR4AWMwbb/PdR+JZDD9f1/oPhI5sgVGBSruc9xHIgGdSQqqQJGkRgAAAABJRU5ErkJggg== );
+    background-position: center center;
+    background-repeat: no-repeat;
+    
+}
+
+.edit{
+
+    border-top: 1px solid #acaaaa;
+    border-bottom: 1px solid #acaaaa;
+    border-right: 1px solid #acaaaa;
+    border-radius: 0px 10px 10px 0px!important;
+    min-width: 300px;
+}
 
 
 .containerAssist{
@@ -54,6 +90,10 @@
 }
 
 
+
+.assisTitle{
+	font-weight: bold !important;
+}
 
 
 
@@ -179,6 +219,15 @@
   }
 
 
+
+  *, *::after, *::before {
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-app-region: no-drag;
+    cursor: default;
+}
+
+
 /*
 
 
@@ -221,3 +270,41 @@
   }
 
 */
+
+
+/*
+3d3d3d negro boton build
+*/
+
+
+
+
+
+    /*
+    .roundme{
+        border-radius: 10px;
+    }
+            
+    .un-roundme{
+        border-radius: 10px 10px 0px 0px !important;
+    }
+*/
+
+    
+
+   
+       
+/*
+
+    @media (max-width: 2040px) {
+        .assistantContainer{
+            display: grid;
+            grid-template-columns: 100%;
+            align-content: center;
+            gap: 10px;
+            padding: 2%;
+            background-color: red;
+        }
+      }
+
+      */

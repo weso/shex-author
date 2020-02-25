@@ -1,98 +1,11 @@
-
-
-
-.assisTitle{
-	font-weight: bold !important;
+html{
+	background-color: #ddeafa;
+	overflow-x: hidden;
 }
-
-
-.CodeMirror{
-	height: 100% !important;
-	width: 100% !important;
-	font-size:1.5em !important;
-	min-height:273px;
-	border-right: none !important;
-	border-bottom: none !important;
-	border-top:none !important;
-}
-
-
-
-.yashe{
-	height: 100% !important;
-	width: 100% !important;
-	margin-left: -15px;
-}
-
-
-
-label{
-	font-weight: bold;
-	margin-top: 10px;
-	margin-left:10px;
-	margin-right:-50px; 
-}
-
-
 
 body{
  width: auto;
 }
-
-
-.wikibaseRDFtoolTip{
-	clear:both !important;
-	 overflow:hidden !important; 
-	height:1% !important;
-	line-height:20px !important;
-	font-size: 20px !important;
-
-}
-
-.wikidata_tooltip{
-	
-}
-
-
-
-.yashe_uploadBtn{
-	margin-right: 1px !important; 
-	margin-bottom: 2px !important;
-}
-
-.yashe_deletedBtn{
-	margin-top:1px !important; 
-}
-
-.yashe_downloadBtn{
-	margin-top:2px !important; 
-}
-
-
-
-svg{
-	margin-top:10px;
-}
-
-
-.selector{
-	font-size: 20px !important;
-	
-}
-
-
-
-.selector:focus {
-	outline:0 !important;
-}
-
-.selector:active {
-	transform: translateY(4px);
-	outline:0 !important;
-}
-
-
-
 
 .shexTitle{
 	font-size: 40px;
@@ -101,67 +14,30 @@ svg{
 }
 
 
-
-
-
-
-
-
-input[type=text] {
-	background-color: white;
-	border: 1px solid #222;
-  }
-
-
-
-
 .globalContainer{ 
 	background-color: #ddeafa;
 	padding: 2%;
 }
 
-html{
-	background-color: #ddeafa;
-	overflow-x: hidden;
-}
-
-
-
-.shapeBtns{
-	margin-left: 4px;
-}
 
 .visualize{
 	height: 100% !important; 
 	width: 100% !important; 
-	min-height: 170px;
+	min-height: 180px;
 	margin-left: 1px;
 	float: center;
 	border:1px solid #bdbcbc;
 	border-radius: 20px;
 	background-color: white;
-	
+
 }
-
-
-
-
-
-.inputfileBtn{
-	display: none;
-}
-
-
-
-.light{
-	fill: white;
-}
-
 
 .comps{
 	background-color: #f8f8ff;
 	border-radius: 20px;
 }
+
+
 
 
 

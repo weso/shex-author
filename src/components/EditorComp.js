@@ -7,6 +7,8 @@ import Editor from '../entities/editor';
 
 import yasheUtils from '../utils/yasheUtils';
 
+import '../css/shexComponents/Yashe.css';
+
 function EditorComp() {
 
   const [yashe,setYashe] = useState(null);
