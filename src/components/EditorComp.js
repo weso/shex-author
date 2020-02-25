@@ -39,18 +39,35 @@ function EditorComp() {
                 divRef.current, 
                 options)
 
-             y.on('blur', function() {
+                 y.on('humanEvent', function(shapes) {
+                Editor.getInstance().draw(shapes);
+            });
+
+
+            y.on('keydown', function() {
+                context.setLoading('showLoader');
+                context.setAsist('hideAsist');
+                setTimeout(function(){
+                    if(!y.hasErrors(y)){
+                        replaceShapes();
+                        updatePrefixes();
+                    }
+                    context.setLoading('hideLoader');
+                    context.setAsist('showAsist');
+                },1000)
+            });
+
+                /*
+
+            y.on('blur', function() {
                 if(!y.hasErrors(y)){
                     replaceShapes();
                     updatePrefixes();
                 }
             });
 
-
-             
-            y.on('humanEvent', function(shapes) {
-                Editor.getInstance().draw(shapes);
-            });
+      
+           
 
 
             y.on('prefixUpdate', function() {
@@ -76,20 +93,24 @@ function EditorComp() {
                 
             });
 
-
+            
             y.on('keydown', function() {
-                 setTimeout(function(){
+                setTimeout(function(){
                     if(!y.hasErrors()){
                         replaceShapes();
                         updatePrefixes();
                     }
-                }, 20);
+                },1000);
+                 
+             
                 
             });
 
-           
-           
+            
 
+           
+           
+/*
             //Fired after a key is handled through a key map
             //(for example "Ctrl-Z")
             y.on('keyHandled', function() {
@@ -98,6 +119,8 @@ function EditorComp() {
                     updatePrefixes();
                 }
             });
+
+            */
 
             
             y.refresh();
@@ -112,6 +135,24 @@ function EditorComp() {
         }
     }, [yashe]
     );
+
+
+    const debounce = function(func, wait, immediate) {
+        let timeout; let result;
+        return function() {
+            const context = this; 
+            const args = arguments;
+            const later = function() {
+            timeout = null;
+            if (!immediate) result = func.apply(context, args);
+            };
+            const callNow = immediate && !timeout;
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+            if (callNow) result = func.apply(context, args);
+            return result;
+        };
+    };
 
     const replaceShapes = ()=>{
         let newShapes = yasheUtils.replaceShapes();

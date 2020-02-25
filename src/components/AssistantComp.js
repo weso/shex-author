@@ -29,8 +29,15 @@ function AssistantComp (props) {
                 </div>
 
                 <div className="paddingDiv">
+
+                        
                         <div id='assistant-container' className='assistantContainer'> 
                         
+                        <div className={context.loading}>
+                                <div class="loader"></div>
+                        </div>
+
+                        <div className={context.asist}>
                                 {context.shapes.map(shape =>{return  <ShapeComponent shape={shape} key={shape.id}/> })}
                                 
                                 <div className="addCont">
@@ -40,6 +47,7 @@ function AssistantComp (props) {
                                                 title="Add Shape">
                                                 + Shape</button>
                                 </div>
+                        </div>
                         </div>
                 </div>
         </div>);

@@ -1,4 +1,5 @@
 import React,{useContext} from 'react';
+import '../../css/navComponents/Nav.css'; 
 
 function Nav (props) {
 
@@ -7,7 +8,7 @@ function Nav (props) {
     return (   <nav className="navbar navbar-default ">
         <div className="navbar-header">
         
-         <button className="asis mdc-icon-button material-icons"type="button"
+         <button className="collapseAllBtn mdc-icon-button material-icons"type="button"
                  onClick={colapseAll} >
                             menu
                         </button> 

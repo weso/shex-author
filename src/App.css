@@ -1,9 +1,5 @@
 
-.navbar{
-	background-color: #222 !important;
-	color: white !important;
-	
-}
+
 
 .assisTitle{
 	font-weight: bold !important;
@@ -242,10 +238,7 @@ svg{
 	outline:0;
 }
 
-.navbar{
-	margin-top: -10px;
-	height: 70px !important;
-}
+
 
 input[type=text] {
 	background-color: white;

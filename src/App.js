@@ -32,6 +32,9 @@ function App() {
     const [isLateralNavOpen, setLateralNavOpen] = useState(true);
     const [width,setWidth] = useState(800);
     const [valid,setValid] = useState('valid');
+    const [loading,setLoading] = useState('hideLoader');
+    const [asist,setAsist] = useState('showAsist');
+
 
     //Responsive
     const [shapeClass,setShapeClass] = useState('header');
@@ -154,7 +157,6 @@ function App() {
         
     }
 
-
     const _onActive = function(e) {
       setShake('un-shake');
     }
@@ -222,7 +224,11 @@ function App() {
                     tripleLabel:tripleLabel,                 
                     triplesContainer:triplesContainer,
                     addBtns:addBtns,
-                    valid:valid
+                    valid:valid,
+                    loading:loading,
+                    setLoading:setLoading,
+                    asist:asist,
+                    setAsist:setAsist
                   }
                 }>
                 
@@ -242,8 +248,8 @@ function App() {
                                     enable={{right:true}}
                                     >
                     
-                                  <div className='col containerAssist'>
-                                    <AssistantComp assistantToggle={assistantToggle}/>                            
+                                  <div className='col containerAssist'>                                    
+                                    <AssistantComp assistantToggle={assistantToggle}/> 
                                   </div>
                         </Resizable>     
                       </Collapse>                         
@@ -267,7 +273,7 @@ function App() {
 
 /*
  
-                        
+                                              
   
             
                       
