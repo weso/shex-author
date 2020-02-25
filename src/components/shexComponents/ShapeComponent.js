@@ -9,7 +9,6 @@ import TripleComponent from './TripleComponent';
 
 import Triple from '../../entities/shexEntities/triple';
 
-import '../../css/shexComponents/ShapeComponent.css';
 
 function ShapeComponent (props) {
 

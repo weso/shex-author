@@ -5,7 +5,7 @@ import '../css/grid.css';
 import ShapeComponent from './shexComponents/ShapeComponent';
 import {ShapesContext} from '../App';
 
-
+import '../css/shexComponents/Assistant.css';
 
 function AssistantComp (props) {
 
@@ -19,7 +19,7 @@ function AssistantComp (props) {
                                 ShEx Assistant
                         </div>
                         <div className="asisTitleClose">
-                                <button className="closeAsis" title="Close Assistant" onClick={assistantToggle}>x</button>
+                                <button className="closeAsisBtn" title="Close Assistant" onClick={assistantToggle}>x</button>
                         </div> 
                     
 
@@ -34,8 +34,7 @@ function AssistantComp (props) {
                                 {context.shapes.map(shape =>{return  <ShapeComponent shape={shape} key={shape.id}/> })}
                                 
                                 <div className="addCont">
-                                        <button id='addShapeButton' 
-                                                className={context.addBtns+" addShapeButton"} 
+                                        <button className={context.addBtns+" addShapeButton"} 
                                                 onClick={context.addShape}
                                                 title="Add Shape">
                                                 + Shape</button>

@@ -6,7 +6,6 @@ import TripleHeader from './headers/TripleHeader';
 import CustomComp from './customize/CustomComp';
 import ConstraintComponent from './ConstraintComponent';
 
-import '../../css/shexComponents/TripleComponent.css';
 
 function TripleComponent (props) {
     

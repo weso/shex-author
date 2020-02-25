@@ -1,0 +1,223 @@
+.assistCollapse{
+    border-bottom: 1px solid #acaaaa;
+    border-top:1px solid #acaaaa;
+    max-width: 1200px;
+    min-width: 500px;
+    margin-left: 0px;
+}
+
+
+
+.containerAssist{
+    height: 100% !important;
+    width: 100% !important;
+    display: grid;
+    grid-template-columns: 100%;
+    padding: 0px;
+    background-color: white;
+    
+}
+
+.assistantContainer{
+    height: 100% !important;
+    width: 100% !important;
+    gap: 10px;
+}
+
+
+.assisTitle{
+    display: grid;
+    grid-template-columns: 97% 10%;
+    padding: 5px;
+    border-bottom: 1px solid #bdbcbc;
+    font-size: 20px;
+    color:#5a5858;
+  
+}
+
+
+.closeAsisBtn{
+    background-color: transparent;
+    border:none;
+    grid-column: 2/3;
+}
+
+.closeAsisBtn:focus{
+    outline: none;
+}
+
+
+.showAsist{
+    padding: 2%;
+    height: 100% !important;
+    width: 100% !important;
+}
+
+
+
+
+
+.shape{
+    border: 1px solid #acaaaa;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+
+.xs-label{
+    margin-left: 0px;
+}
+
+
+.triples{
+    background: #EBF4FF;
+    color: black;
+    text-align: left;
+    border-radius: 0px 0px 10px 10px ;
+    display: grid;
+    grid-template-columns: 100%;
+        
+}
+
+.xs-triples{
+  padding: 1px;
+}
+
+
+
+.customConstraint{
+    background:#d6ffc654;
+    padding: 10px;
+    color: black;
+    border: 1px solid #acaaaa;
+    display: grid;
+    grid-template-columns: 100%;
+    gap: 5px;
+}
+
+
+/* ADD BUTTONS */
+
+.addBtns{
+    margin-left:200px;
+    margin-right: 200px;
+    -webkit-transition: margin 0.5s ease-in-out;
+    transition: margin 0.5s ease-in-out;
+}
+
+.addBtns:hover{
+    margin-left:0px;
+    margin-right: 0px;
+}
+
+.xs-addBtns{
+    margin-left:100px;
+    margin-right: 100px;
+    -webkit-transition: margin 0.5s ease-in-out;
+    transition: margin 0.5s ease-in-out;
+}
+
+.xs-addBtns:hover{
+    margin-left:0px;
+    margin-right: 0px;
+}
+
+.addCont{
+    display: grid;
+    grid-template-columns: 100%;
+}
+
+.addShapeButton{
+    background: #ddeafa;
+    border-radius: 10px;
+    margin-top:20px;
+    font-weight: bold;
+    margin-left:150px;
+    margin-right: 150px;
+}
+
+.addShapeButton:focus{
+    outline: none;
+}
+
+.addTripleButton{
+    margin-top: 3px;
+    background: #EFDECD;
+    border-radius: 10px;
+    font-weight: bold;
+    padding: 1px;
+    margin-bottom: 3px;
+}
+
+.addTripleButton:hover{
+    margin-left:0px;
+    margin-right: 0px;
+}
+
+
+.addTripleButton:focus{
+    outline: none;
+}
+
+
+
+
+.shape{
+
+    border: 1px solid #acaaaa;
+    border-radius: 10px;
+}
+
+.danger {
+    background-color: #ffdddd;
+    border-left: 6px solid #f44336;
+    font-size: 15px;
+  }
+
+  .valid{
+    display: none;
+  }
+
+
+/*
+
+
+.showAsist{
+        padding: 2%;
+        height: 100% !important;
+        width: 100% !important;
+    }
+
+    .hideAsist{
+        display: none;
+    }
+
+
+    .hideLoader{
+        display: none;
+    }
+
+  .showLoader{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .loader {
+    border: 16px solid #f3f3f3; 
+    border-top: 16px solid #3498db;
+    border-bottom: 16px solid #3498db; 
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+*/
