@@ -1,7 +1,8 @@
 import React,{useState,useContext} from 'react';
 import {ShapesContext} from '../../../App';
-
 import yasheUtils from '../../../utils/yasheUtils';
+
+import '../../../css/shexComponents/headers/TripleHeader.css';
 
 
 const primitives = ['String','Integer','Date','Boolean','Custom'];
@@ -62,15 +63,15 @@ function TripleHeader (props) {
    
     return (
         <div className={rounded+" tripleHeader "+context.tripleClass}>            
-            <label  className={context.tripleLabel+" shapeTripleLabel"}>Triple</label>
+            <label  className={context.tripleLabel}>Triple</label>
             <input  type="text" 
-                    className="shapeName"
+                    className="name"
                     value={name}
                     onChange={handleNameChange}
                     placeholder="eg: name"
                     title="Triple Name"/>
 
-             <select className="customSelector" 
+            <select className="customSelector" 
                     value={primitive} 
                     onChange={handlePrimitiveChange}
                     title="Constraint">

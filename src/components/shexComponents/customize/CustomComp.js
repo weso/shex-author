@@ -5,7 +5,7 @@ import KindConfig from './config/KindConfig';
 import PrefixConfig from './config/PrefixConfig';
 import QualifierConfig from './config/QualifierConfig';
 
-import '../../../css/shexComponents/customize/CustomShape.css'
+import '../../../css/shexComponents/customize/Custom.css'
 
 function CustomComp (props) {
 

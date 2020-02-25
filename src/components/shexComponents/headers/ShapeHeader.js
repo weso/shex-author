@@ -3,6 +3,7 @@ import {ShapesContext} from '../../../App';
 
 import '../../../css/shexComponents/headers/ShapeHeader.css';
 
+
 function ShapeHeader (props) {
 
     const context = useContext(ShapesContext); 
@@ -20,7 +21,7 @@ function ShapeHeader (props) {
         <div className={rounded+' header '+context.shapeClass}>            
             <label  className={context.shapeLabel+" shapeNameLabel"}>Shape</label>
             <input  type="text" 
-                    className="shapeName"
+                    className="name"
                     value={name}
                     onChange={handleChange}
                     placeholder="eg: User"
