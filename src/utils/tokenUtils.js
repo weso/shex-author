@@ -48,9 +48,12 @@ function getTokens(){
         }
     }
     
+    /*
     if(!isValid){
         return null;
     }
+
+    */
 
     return tokens;
 }
@@ -113,7 +116,7 @@ function getTriples(shapeId,shape) {
         let start = getStart(shape);
         for(let i=start;i<shape.length;i++){
             singleTriple.push(shape[i])
-            if(shape[i].type == 'punc' && shape[i].string==';'){// finish of the triple ';'
+            if(shape[i].type == 'punc'){// finish of the triple ';'
                 if(singleTriple.length!=1){ //This line is neccesary when last triple of the shape ends with ';'
            
                     triples.push(getTriple(triples,singleTriple,shapeId));
@@ -140,7 +143,6 @@ function getTriple(triples,singleTriple,shapeId) {
     let index = 0;
     for(let s in singleTriple){
         let token = singleTriple[s];
-        
         if(index == 0){
             type = getType(token.string,'tripleName');
             

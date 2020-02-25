@@ -24,7 +24,7 @@ function AssistantComp (props) {
                     
 
                 </div>
-                <div class={context.valid}>
+                <div className={context.valid}>
                         <p><strong>[Error]</strong> This Shape is very complex for me...</p>
                 </div>
 
