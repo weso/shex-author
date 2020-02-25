@@ -172,71 +172,12 @@ svg{
 }
 
 
-.asis{
-	border:none;
-	font-size: 30px;
-	background-color: transparent !important;
-	filter: 
-			invert(0.4)
-			sepia(0.5)
-			hue-rotate(195deg)
-			saturate(16.2)
-			brightness(1.4);
-}
-
-.asis:hover{
-	background-color: transparent !important;
-	filter: 
-			invert(0.4)
-			sepia(0.5)
-			hue-rotate(195deg)
-			saturate(16.2)
-			brightness(10);
-}
-
-.asis:active {
-	transform: translateY(4px);
-	outline:0;
-}
-
-.asis:focus {
-	outline:0;
+.uploadBtn{
+	margin-left: 15px !important;
 }
 
 
-.navItems{
-	margin-left: 10px;
-	border:none;
-	font-size: 20px;
-	color: black !important;
-	filter: 
-			invert(0.4)
-			sepia(0.5)
-			hue-rotate(195deg)
-			saturate(16.2)
-			brightness(1.4);
-}
 
-.navItems:hover{
-	text-decoration: none;
-	cursor: pointer;
-	background-color: transparent !important;
-	filter: 
-			invert(0.4)
-			sepia(0.5)
-			hue-rotate(195deg)
-			saturate(16.2)
-			brightness(10);
-}
-
-.navItems:active {
-	transform: translateY(4px);
-	outline:0;
-}
-
-.navItems:focus {
-	outline:0;
-}
 
 
 
