@@ -12,13 +12,12 @@
     }
     
     .assistantContainer{
-        display: grid;
         height: 100% !important;
         width: 100% !important;
         gap: 10px;
     }
 
-    .paddingDiv{
+    .showAsist{
         padding: 2%;
         height: 100% !important;
         width: 100% !important;
@@ -37,6 +36,8 @@
     display: grid;
     justify-content: center;
     align-items: center;
+    width: 100% !important;
+    height: 100% !important;
   }
 
   .loader {

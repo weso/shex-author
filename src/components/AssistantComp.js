@@ -28,16 +28,9 @@ function AssistantComp (props) {
                         <p><strong>[Error]</strong> This Shape is very complex for me...</p>
                 </div>
 
-                <div className="paddingDiv">
+                <div className={context.asist}>
 
-                        
                         <div id='assistant-container' className='assistantContainer'> 
-                        
-                        <div className={context.loading}>
-                                <div class="loader"></div>
-                        </div>
-
-                        <div className={context.asist}>
                                 {context.shapes.map(shape =>{return  <ShapeComponent shape={shape} key={shape.id}/> })}
                                 
                                 <div className="addCont">
@@ -48,7 +41,10 @@ function AssistantComp (props) {
                                                 + Shape</button>
                                 </div>
                         </div>
-                        </div>
+                </div>
+
+                <div className={context.loading}>
+                                <div class="loader"></div>
                 </div>
         </div>);
 
