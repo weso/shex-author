@@ -21,7 +21,7 @@ function KindConfig (props) {
     
 
     return (
-        <div className="gridBox">
+        <div className={context.gridClass + " gridBox"}>
             <label className="customLabel">Kind </label>
             <select className="customSelector" value={kind} onChange={handleKindChange}>
                 <option value="iriRef">IriRef</option>

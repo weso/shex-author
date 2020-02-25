@@ -6,6 +6,8 @@ import TripleHeader from './headers/TripleHeader';
 import CustomComp from './customize/CustomComp';
 import ConstraintComponent from './ConstraintComponent';
 
+import '../../css/shexComponents/TripleComponent.css';
+
 function TripleComponent (props) {
     
     const {shape,triple,deleteTriple} = props;
@@ -57,9 +59,8 @@ function TripleComponent (props) {
                         onExited={rounder}
                         onEntering={rounder} >
 
-                <div className="constraints">
-                    <ConstraintComponent triple={triple} collapseConstraints={collapseConstraints}/>
-                </div>                    
+                <ConstraintComponent triple={triple} collapseConstraints={collapseConstraints}/>
+                            
             </Collapse> 
            
         </div>);                          

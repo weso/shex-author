@@ -46,6 +46,8 @@ function App() {
     const [addBtns,setAddBtns] = useState('addBtns');
 
 
+    const [gridClass,setGridClass] = useState('gridBox');
+
     const assistantToggle = () => setAssistantOpen(!isAssistantOpen); 
     const visualizeToggle = () => setVisualizeOpen(!isVisualizeOpen);
     const lateralNavToggle = () => setLateralNavOpen(!isLateralNavOpen);
@@ -180,6 +182,7 @@ function App() {
                   setShapeLabel('xs-label');
                   setTripleLabel('xs-label');
                   setAddBtns('xs-addBtns');
+                  setGridClass('xs-gridBox');
                   return;
           }
                 
@@ -190,6 +193,7 @@ function App() {
           setShapeLabel('shapeNameLabel');
           setTripleLabel('tripleNameLabel');
           setAddBtns('addBtns');
+          setGridClass('gridBox');
         
     }
 
@@ -230,7 +234,8 @@ function App() {
                     asist:asist,
                     setAsist:setAsist,
                     assistantToggle:assistantToggle,
-                    visualizeToggle:visualizeToggle
+                    visualizeToggle:visualizeToggle,
+                    gridClass:gridClass
                   }
                 }>
                 

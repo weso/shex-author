@@ -16,7 +16,7 @@ function QualifierConfig (props) {
 
 
     return (
-         <div className="gridBox">
+         <div className={context.gridClass + " gridBox"}>
             <label className="customLabel">Qualifier </label>
             <select className="customSelector" value={qualifier} onChange={handleQualifierChange}>
                 <option value="shape">None</option>

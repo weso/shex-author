@@ -139,65 +139,6 @@
 
     
 
-    .triples{
-        background: #EBF4FF;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        padding-right:10px;
-        padding-left:10px;
-        color: black;
-        text-align: left;
-
-        border-left: 1px solid #acaaaa;
-        border-right: 1px solid #acaaaa;
-        border-bottom: 1px solid #acaaaa;
-        border-radius: 0px 0px 10px 10px ;
-        display: grid;
-        grid-template-columns: 100%;
-            
-    }
-
-    .xs-triples{
-      padding: 1px;
-    }
-
-    .sm-triples{
-  
-        padding-right:20px;
-         padding-left:20px;
-     }
-
-     .ms-triples{
-    
-        padding-right:30px;
-         padding-left:30px;
-     }
-
-
-    .constraints{
-        background: #EFE8E1;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        padding-right:40px;
-        padding-left:40px;
-        color: black;
-        text-align: left;
-
-        border-left: 1px solid #acaaaa;
-        border-right: 1px solid #acaaaa;
-        border-bottom: 1px solid #acaaaa;
-        border-radius: 0px 0px 10px 10px ;
-        display: grid;
-        grid-template-columns: 100%;
-        margin-bottom: 10px;
-    }
-
-    .addConstraintButton{
-        margin-top: 10px;
-        background: #ffe1e1;
-        border-radius: 10px;
-    }
-
     /*
 fcffe1  amarillu
 
@@ -292,99 +233,9 @@ fce1ff46
         margin-right: 0px;
     }
 
-    .tripleHeader{
-        background: #EFDECD ;
-        padding:10px;
-        color: black;
-        text-align: left;
-        border: 1px solid #acaaaa;
-        display: grid;
-        grid-template-columns: 10% 24% 20% 19% 6% 6% 6%;
-        gap: 10px;
-    
-    }
-   
-
-    .xs-tripleHeader{
-        justify-content: center;
-        gap: 8px;
-        grid-template-columns: 9% 24% 17% 20% 6% 6% 6%;
-    }
-
-
-    .sm-tripleHeader{
-        grid-template-columns: 17% 48% 8% 8% 12%;
-    }
-
-    .ms-tripleHeader{
-        grid-template-columns: 15% 50% 7% 7% 15%;
-    }
-
-
-
- 
-
-    
-
-    .constraintGridBox{ 
-        display: grid;
-        grid-template-columns: 25% 54%;
-        gap: 44px;
-    }
-
-    .xs-gridBox{
-        gap: 40px;
-        grid-template-columns: 15% 10% 54%;
-    }
-
-    .sm-gridBox{
-        grid-template-columns: 3% 10% 54%;
-    }
-
-
-    .xs-tripleGridBox{
-        grid-template-columns: 0% 10% 54%;
-    }
-
-    .sm-tripleGridBox{
-      
-        grid-template-columns: 1% 10% 54%;
-    }
-
-    .ms-tripleGridBox{
-        grid-template-columns: 3% 10% 54%;
-    }
-
-
-    .xs-constraintGridBox{
-        grid-template-columns: 0% 20% 37%;
-     
-    }
-
-    .sm-constraintGridBox{
-        grid-template-columns: 1% 20% 37%;
-    }
-
-    .ms-constraintGridBox{
-        grid-template-columns: 1% 20% 54%;
-    }
-
-   
 
     /* e4fadb54  verde mas pocho aun */
-    .customConstraint{
-        background:#d6ffc654;
-        padding: 10px;
-        color: black;
-
-        border: 1px solid #acaaaa;
-        border-radius: 10px;
-
-        display: grid;
-        grid-template-columns: 100%;
-        gap: 5px;
-    }
-
+   
     
 /*
 3d3d3d negro boton build
@@ -402,12 +253,7 @@ fce1ff46
 
 
 
-    
-
-
-    
-   
-    
+    /*
     .roundme{
         border-radius: 10px;
     }
@@ -415,7 +261,7 @@ fce1ff46
     .un-roundme{
         border-radius: 10px 10px 0px 0px !important;
     }
-
+*/
 
     
 

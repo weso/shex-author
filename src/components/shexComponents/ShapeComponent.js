@@ -9,6 +9,7 @@ import TripleComponent from './TripleComponent';
 
 import Triple from '../../entities/shexEntities/triple';
 
+import '../../css/shexComponents/ShapeComponent.css';
 
 function ShapeComponent (props) {
 
@@ -50,14 +51,11 @@ function ShapeComponent (props) {
         setCustomOpen(false);
         setTriplesOpen(!isTriplesOpen);
         
-
         if(colapseBtn=='menu'){
             setColapseBtn('menu_open');
         }else{
             setColapseBtn('menu');
         }
-
-       
     }
 
 
@@ -72,7 +70,7 @@ function ShapeComponent (props) {
   
 
     return (
-        <div>
+        <div className="shape">
             <ShapeHeader shape={shape} 
                          customizeShape={customizeShape} 
                          collapseTriples={collapseTriples} 
