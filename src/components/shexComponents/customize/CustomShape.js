@@ -32,11 +32,12 @@ function CustomShape (props) {
     
 
     return (
-        <Collapse isOpen={isCustomOpen} 
+        <Collapse isOpen={isCustomOpen}
+                  className='customColapse' 
                   onExited={rounder}
                   onEntering={rounder}>
 
-            <div className="custom">
+            <div className="customShape">
                 <KindConfig 
                     entity={shape}
                     setPrefix={setPrefix}

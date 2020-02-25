@@ -59,6 +59,7 @@ function CustomTriple (props) {
                   className='customColapse'
                   onExited={rounder}
                   onEntering={rounder}>
+                  
                 <div className="customTriple">
                     <KindConfig
                         entity={triple}

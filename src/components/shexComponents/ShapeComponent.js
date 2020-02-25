@@ -72,8 +72,7 @@ function ShapeComponent (props) {
   
 
     return (
-        <div className="shape">
-
+        <div>
             <ShapeHeader shape={shape} 
                          customizeShape={customizeShape} 
                          collapseTriples={collapseTriples} 
