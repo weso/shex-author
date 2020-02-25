@@ -4,6 +4,7 @@ import { Collapse } from 'reactstrap';
 import {ShapesContext} from '../../../App';
 import {getPrefix} from '../../../utils/prefixUtils';
 
+import TripleKindConfig from './config/TripleKindConfig';
 
 function CustomTriple (props) {
 
@@ -58,15 +59,10 @@ function CustomTriple (props) {
                   onExited={rounder}
                   onEntering={rounder}>
                 <div className="customTriple">
-                    <div className={context.customTripleClass+" gridBox"}>
-                        <label className="customLabel">Type </label>
-                        <select className="customSelector" 
-                                value={type}
-                                onChange={handleTypeChange}>
-                            <option value="iriRef">IriRef</option>
-                            <option value="prefixedIri">PrefixedIri</option>
-                        </select>
-                    </div>
+                    <TripleKindConfig
+                        triple={triple}
+                        setPrefix={setPrefix}
+                        collapsePrefix={collapsePrefix}/>
 
                     <Collapse isOpen={isPrefixOpen} className={context.customTripleClass+" gridBox"}>                       
                         <label className="customLabel">Prefix </label>
