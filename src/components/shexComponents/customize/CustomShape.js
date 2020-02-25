@@ -3,15 +3,15 @@ import { Collapse } from 'reactstrap';
 
 import {ShapesContext} from '../../../App';
 
-import {getPrefix} from '../../../utils/prefixUtils';
+import ShapeKindConfig from './config/ShapeKindConfig';
+import PrefixConfig from './config/PrefixConfig';
+import QualifierConfig from './config/QualifierConfig';
 
 function CustomShape (props) {
 
     const context = useContext(ShapesContext);
     const {shape,isCustomOpen,rounder} = props;
-    const [type,setType] = useState(shape.type.getTypeName());
-    const [qualifier,setQualifier] = useState(shape.qualifier.getTypeName())
-    
+
     let initialPrefix = 'example';
     let initialOpenPrefix = false;
     if(shape.type.prefix!=undefined){
@@ -21,32 +21,7 @@ function CustomShape (props) {
 
     const [prefix,setPrefix] = useState(initialPrefix);
     const [isPrefixOpen,setPrefixOpen] = useState(initialOpenPrefix);
-
-    const handleTypeChange = function(e){
-        const type  = e.target.value;
-        const value = shape.type.value;
-        shape.setType(type);
-        shape.type.value = value;
-        context.emit();
-        setType(type);
-        setPrefix('example');
-        collapsePrefix(e)
-    }
-
-    const handleQualifierChange = function(e){
-        let newType = e.target.value;
-        shape.setQualifier(newType);
-        context.emit();
-        setQualifier(newType);
-    }
-
-    const handlePrefixChange = function(e){
-        let prefix = getPrefix(e.target.value);
-        shape.type.setPrefix(prefix);
-        context.emit();
-        setPrefix(e.target.value);
-    }
-
+ 
     const collapsePrefix = function(e){
         if(e.target.value=='prefixedIri'){
             setPrefixOpen(true);
@@ -60,38 +35,22 @@ function CustomShape (props) {
         <Collapse isOpen={isCustomOpen} 
                   onExited={rounder}
                   onEntering={rounder}>
+
             <div className="custom">
-                <div className={context.customClass+" box1 gridBox"}>
-                    <label className="customLabel">Type </label>
-                    <select className="customSelector" value={type} onChange={handleTypeChange}>
-                        <option value="iriRef">IriRef</option>
-                        <option value="prefixedIri">PrefixedIri</option>
-                        <option value="bnodeType">Bnode</option>
-                    </select>
-                </div>
-                <Collapse isOpen={isPrefixOpen} className={context.customClass+" box2 gridBox"}>
-                    <label className="customLabel">Prefix </label>
-                    <select className="customSelector" value={prefix} onChange={handlePrefixChange}>
-                        <option value="example">example</option>
-                        { 
-                        context.prefixes.map((pre) =>{
-                            if(pre.key!=''){
-                                return <option key={pre.key} value={pre.val}>{pre.key}</option>
-                            }                        
-                        })
-                    }
-                    </select>
-                </Collapse>
-                <div className={context.customClass+" box3 gridBox"}>
-                    <label className="customLabel">Qualifier </label>
-                    <select className="customSelector" value={qualifier} onChange={handleQualifierChange}>
-                        <option value="shape">None</option>
-                        <option value="iri">Iri</option>
-                        <option value="literal">Literal</option>
-                        <option value="nonliteral">NonLiteral</option>
-                        <option value="bnode">Bnode</option>
-                    </select>
-                </div>
+                <ShapeKindConfig 
+                    shape={shape}
+                    setPrefix={setPrefix}
+                    collapsePrefix={collapsePrefix}/>
+               
+                <PrefixConfig 
+                    shape={shape}
+                    isPrefixOpen={isPrefixOpen}
+                    prefix={prefix}
+                    setPrefix={setPrefix}/>
+               
+               <QualifierConfig 
+                    shape={shape}/>
+                
             </div>
         </Collapse>                 
     );
