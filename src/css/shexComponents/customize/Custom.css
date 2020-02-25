@@ -2,12 +2,8 @@
     background: #EBF4FF;
     padding: 10px;
     color: black;
-
-    border-left: 1px solid #acaaaa;
-    border-right: 1px solid #acaaaa;
-    border-bottom: 1px solid #acaaaa;
+    border-top: 1px solid #acaaaa;
     border-radius: 0px 0px 10px 10px;
-
     display: grid;
     grid-template-columns: 100%;
     gap: 5px;
@@ -19,12 +15,7 @@
     background: #EFE8E1;
     padding: 10px;
     color: black;
-
-    border-left: 1px solid #acaaaa;
-    border-right: 1px solid #acaaaa;
-    border-bottom: 1px solid #acaaaa;
-
-
+    border-top: 1px solid #acaaaa;
     display: grid;
     grid-template-columns: 100%;
     gap: 5px;
