@@ -18,7 +18,7 @@ function ShapeKindConfig (props) {
     }
 
     return (
-         <Collapse isOpen={isPrefixOpen} className={context.customClass+" box2 gridBox"}>
+         <Collapse isOpen={isPrefixOpen} className="box2 gridBox">
             <label className="customLabel">Prefix </label>
             <select className="customSelector" value={prefix} onChange={handlePrefixChange}>
                 <option value="example">example</option>

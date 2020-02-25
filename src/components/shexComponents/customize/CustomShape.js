@@ -1,11 +1,11 @@
 import React,{useState,useContext} from 'react';
 import { Collapse } from 'reactstrap';
-
 import {ShapesContext} from '../../../App';
-
 import ShapeKindConfig from './config/ShapeKindConfig';
 import PrefixConfig from './config/PrefixConfig';
 import QualifierConfig from './config/QualifierConfig';
+
+import '../../../css/shexComponents/customize/CustomShape.css'
 
 function CustomShape (props) {
 

@@ -378,21 +378,9 @@ fce1ff46
 
     }
 
-    .customLabel{
-        grid-column: 2/3;
-    }
+ 
 
-    .box1{ grid-area: box1;}
-    .box2{ grid-area: box2;}
-    .box3{ grid-area: box3;}
-    .box4{ grid-area: box4;}
-
-
-    .gridBox{ 
-        display: grid;
-        grid-template-columns: 7% 10% 54%;
-        gap: 35px;
-    }
+    
 
     .constraintGridBox{ 
         display: grid;
@@ -466,45 +454,7 @@ fce1ff46
         gap: 5px;
     }
 
-    .custom{
-        background: #EBF4FF;
-        padding: 10px;
-        color: black;
-
-        border-left: 1px solid #acaaaa;
-        border-right: 1px solid #acaaaa;
-        border-bottom: 1px solid #acaaaa;
-        border-radius: 0px 0px 10px 10px;
-
-        display: grid;
-        grid-template-areas: 
-            'box1 box1 box1'
-            'box2 box2 box2'
-            'box3 box3 box3'
-            'box4 box4 box4' ;
-        text-align: left;
-        gap: 5px;
-    }
-
-
-
-    .customSelector{
-        border-radius: 5px;
-        background: white;
-        outline: none;
-        color:#222;
-        border: 1px solid #acaaaa !important;
-    }
-
-
-
-    .customShape{
-        background: green;
-        padding: 10px;
-        color: white;
-    }
-
-
+    
 /*
 3d3d3d negro boton build
 */
