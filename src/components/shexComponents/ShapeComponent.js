@@ -4,7 +4,7 @@ import { Collapse } from 'reactstrap';
 import {ShapesContext} from '../../App';
 
 import ShapeHeader from  './headers/ShapeHeader';
-import CustomShape from './customize/CustomShape';
+import CustomComp from './customize/CustomComp';
 import TripleComponent from './TripleComponent';
 
 import Triple from '../../entities/shexEntities/triple';
@@ -79,9 +79,12 @@ function ShapeComponent (props) {
                          colapseBtn={colapseBtn}
                          rounded={rounded}/>
 
-            <CustomShape shape={shape}
+            <CustomComp  entity={shape}
                          isCustomOpen={isCustomOpen}
-                         rounder={rounder}/>
+                         rounder={rounder}
+                         qualifier={true}
+                         bnode={true}
+                         customClass="customShape"/>
                  
             <Collapse   isOpen={isTriplesOpen} 
                         onExited={rounder}

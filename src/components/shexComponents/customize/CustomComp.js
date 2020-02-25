@@ -7,15 +7,15 @@ import QualifierConfig from './config/QualifierConfig';
 
 import '../../../css/shexComponents/customize/CustomShape.css'
 
-function CustomShape (props) {
+function CustomComp (props) {
 
     const context = useContext(ShapesContext);
-    const {shape,isCustomOpen,rounder} = props;
+    const {entity,isCustomOpen,rounder,qualifier,bnode,customClass} = props;
 
     let initialPrefix = 'example';
     let initialOpenPrefix = false;
-    if(shape.type.prefix!=undefined){
-        initialPrefix = shape.type.prefix.prefixValue;
+    if(entity.type.prefix!=undefined){
+        initialPrefix = entity.type.prefix.prefixValue;
         initialOpenPrefix = true;
     }
 
@@ -37,22 +37,22 @@ function CustomShape (props) {
                   onExited={rounder}
                   onEntering={rounder}>
 
-            <div className="customShape">
+            <div className={customClass}>
                 <KindConfig 
-                    entity={shape}
+                    entity={entity}
                     setPrefix={setPrefix}
                     collapsePrefix={collapsePrefix}
-                    bnode="false"/>
+                    bnode={bnode}/>
                
                 <PrefixConfig 
-                    entity={shape}
+                    entity={entity}
                     isPrefixOpen={isPrefixOpen}
                     prefix={prefix}
-                    setPrefix={setPrefix}/>
-               
-               <QualifierConfig 
-                    shape={shape}/>
-                
+                    setPrefix={setPrefix}/> 
+
+                 <Qualifier 
+                    isQualifier={qualifier}
+                    entity={entity}/>              
             </div>
         </Collapse>                 
     );
@@ -60,6 +60,14 @@ function CustomShape (props) {
     
 }
 
+function Qualifier(props) {
+  const {isQualifier,entity} = props;
+  if (isQualifier) {
+    return (<QualifierConfig shape={entity}/>)
+  }
+  return null;
+}
 
-export default CustomShape;
+
+export default CustomComp;
 

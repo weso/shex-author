@@ -20,10 +20,11 @@ function UploadBtn () {
                     id="file-1" 
                     className="inputfileBtn" 
                     data-multiple-caption="{count}'+'files selected" 
-                    multiple onChange={handleRead}/>
+                    multiple 
+                    onChange={handleRead}/>
 
             <label  className="svgBtn" 
-                    for="file-1">
+                    htmlFor="file-1">
                     <svg xmlns="http://www.w3.org/2000/svg" 
                         width="25" 
                         height="30" 

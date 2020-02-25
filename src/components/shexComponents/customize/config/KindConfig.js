@@ -18,24 +18,31 @@ function KindConfig (props) {
         collapsePrefix(e)
     }
 
+    
+
     return (
         <div className="gridBox">
             <label className="customLabel">Kind </label>
             <select className="customSelector" value={kind} onChange={handleKindChange}>
                 <option value="iriRef">IriRef</option>
                 <option value="prefixedIri">PrefixedIri</option>
-
-                { ()=>{if(bnode){
-                        return(<option value="bnodeType">Bnode</option>);
-                     }
-                }}
-                
+                <Bnode isBnode={bnode}/>
             </select>
         </div>
     );
                                    
     
 }
+
+
+function Bnode(props) {
+  const isBnode = props.isBnode;
+  if (isBnode) {
+    return <option value="bnodeType">Bnode</option>;
+  }
+  return null;
+}
+
 
 export default KindConfig;
 

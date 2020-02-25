@@ -44,7 +44,7 @@ function AssistantComp (props) {
                 </div>
 
                 <div className={context.loading}>
-                                <div class="loader"></div>
+                                <div className="loader"></div>
                 </div>
         </div>);
 

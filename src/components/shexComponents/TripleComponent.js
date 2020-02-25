@@ -3,7 +3,7 @@ import { Collapse } from 'reactstrap';
 import {ShapesContext} from '../../App';
 
 import TripleHeader from './headers/TripleHeader';
-import CustomTriple from './customize/CustomTriple';
+import CustomComp from './customize/CustomComp';
 import ConstraintComponent from './ConstraintComponent';
 
 function TripleComponent (props) {
@@ -46,9 +46,12 @@ function TripleComponent (props) {
                           forceCollapse={forceCollapse}
                           rounded={rounded}/>
 
-            <CustomTriple triple={triple} 
-                          isTripleCustomOpen={isTripleCustomOpen}
-                          rounder={rounder}/>
+            <CustomComp   entity={triple} 
+                          isCustomOpen={isTripleCustomOpen}
+                          rounder={rounder}
+                          qualifier={false}
+                          bnode={false}
+                          customClass="customTriple"/>
 
             <Collapse   isOpen={isConstraintsOpen}
                         onExited={rounder}
