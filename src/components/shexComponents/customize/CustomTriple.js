@@ -4,7 +4,8 @@ import { Collapse } from 'reactstrap';
 import {ShapesContext} from '../../../App';
 import {getPrefix} from '../../../utils/prefixUtils';
 
-import TripleKindConfig from './config/TripleKindConfig';
+import KindConfig from './config/KindConfig';
+import PrefixConfig from './config/PrefixConfig';
 
 function CustomTriple (props) {
 
@@ -59,24 +60,18 @@ function CustomTriple (props) {
                   onExited={rounder}
                   onEntering={rounder}>
                 <div className="customTriple">
-                    <TripleKindConfig
-                        triple={triple}
+                    <KindConfig
+                        entity={triple}
                         setPrefix={setPrefix}
-                        collapsePrefix={collapsePrefix}/>
+                        collapsePrefix={collapsePrefix}
+                        bnode="false"/>
 
-                    <Collapse isOpen={isPrefixOpen} className={context.customTripleClass+" gridBox"}>                       
-                        <label className="customLabel">Prefix </label>
-                        <select className="customSelector" value={prefix} onChange={handlePrefixChange}>
-                            <option value="example">example</option>
-                            { 
-                            context.prefixes.map((pre) =>{
-                                if(pre.key!=''){
-                                    return <option key={pre.key} value={pre.val}>{pre.key}</option>
-                                }                        
-                                })
-                            }
-                        </select>
-                    </Collapse>                    
+                     <PrefixConfig 
+                        entity={triple}
+                        isPrefixOpen={isPrefixOpen}
+                        prefix={prefix}
+                        setPrefix={setPrefix}/>
+                                       
                 </div>
             </Collapse>                  
     );

@@ -4,21 +4,21 @@ import {ShapesContext} from '../../../../App';
 
 import {getPrefix} from '../../../../utils/prefixUtils';
 
-function ShapeKindConfig (props) {
+function PrefixConfig (props) {
 
     const context = useContext(ShapesContext);
-    const {shape,isPrefixOpen,prefix,setPrefix} = props;
+    const {entity,isPrefixOpen,prefix,setPrefix} = props;
 
   
     const handlePrefixChange = function(e){
         let prefix = getPrefix(e.target.value);
-        shape.type.setPrefix(prefix);
+        entity.type.setPrefix(prefix);
         context.emit();
         setPrefix(e.target.value);
     }
 
     return (
-         <Collapse isOpen={isPrefixOpen} className="box2 gridBox">
+         <Collapse isOpen={isPrefixOpen} className="gridBox">
             <label className="customLabel">Prefix </label>
             <select className="customSelector" value={prefix} onChange={handlePrefixChange}>
                 <option value="example">example</option>
@@ -36,5 +36,5 @@ function ShapeKindConfig (props) {
     
 }
 
-export default ShapeKindConfig;
+export default PrefixConfig;
 

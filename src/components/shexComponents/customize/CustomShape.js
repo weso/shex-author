@@ -1,7 +1,7 @@
 import React,{useState,useContext} from 'react';
 import { Collapse } from 'reactstrap';
 import {ShapesContext} from '../../../App';
-import ShapeKindConfig from './config/ShapeKindConfig';
+import KindConfig from './config/KindConfig';
 import PrefixConfig from './config/PrefixConfig';
 import QualifierConfig from './config/QualifierConfig';
 
@@ -37,13 +37,14 @@ function CustomShape (props) {
                   onEntering={rounder}>
 
             <div className="custom">
-                <ShapeKindConfig 
-                    shape={shape}
+                <KindConfig 
+                    entity={shape}
                     setPrefix={setPrefix}
-                    collapsePrefix={collapsePrefix}/>
+                    collapsePrefix={collapsePrefix}
+                    bnode="false"/>
                
                 <PrefixConfig 
-                    shape={shape}
+                    entity={shape}
                     isPrefixOpen={isPrefixOpen}
                     prefix={prefix}
                     setPrefix={setPrefix}/>
