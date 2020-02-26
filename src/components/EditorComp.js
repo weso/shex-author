@@ -7,13 +7,14 @@ import Editor from '../entities/editor';
 
 import yasheUtils from '../utils/yasheUtils';
 
-import '../css/shexComponents/Yashe.css';
+import '../css/Yashe.css';
 
 function EditorComp() {
 
   const [yashe,setYashe] = useState(null);
   const divRef = useRef(null);
   const context = useContext(ShapesContext);
+  let oldShapes = [];
 
    const darkStyle = {
         background: '#2B2B2B',
@@ -46,24 +47,30 @@ function EditorComp() {
             });
 
 
-            y.on('keydown', function() {
-                context.setLoading('showLoader');
-                context.setAsist('hideAsist');
-                setTimeout(function(){
-                    if(!y.hasErrors(y)){
-                        replaceShapes();
-                        updatePrefixes();
+            y.on('keydown',function(){
+                if(!y.hasErrors(y)){
+                    let newShapes = getNewShapes();
+                    if(oldShapes.length == newShapes.length){
+                        replaceShapes(newShapes);
+                    }else{
+                        context.setLoading('showLoader');
+                        context.setAsist('hideAsist');
+                        setTimeout(function() {  
+                            oldShapes = replaceShapes(newShapes);
+                            updatePrefixes();                       
+                            context.setLoading('hideLoader');
+                            context.setAsist('showAsist');
+                        },500)
                     }
-                    context.setLoading('hideLoader');
-                    context.setAsist('showAsist');
-                },1000)
-            });
+                }
+                });
 
-                /*
+
+                
 
             y.on('blur', function() {
                 if(!y.hasErrors(y)){
-                    replaceShapes();
+                    oldShapes = replaceShapes(getNewShapes());
                     updatePrefixes();
                 }
             });
@@ -94,23 +101,6 @@ function EditorComp() {
                 }, 10);
                 
             });
-
-            
-            y.on('keydown', function() {
-                setTimeout(function(){
-                    if(!y.hasErrors()){
-                        replaceShapes();
-                        updatePrefixes();
-                    }
-                },1000);
-                 
-             
-                
-            });
-
-            
-
-           
            
 /*
             //Fired after a key is handled through a key map
@@ -130,7 +120,7 @@ function EditorComp() {
             
             Editor.getInstance().setYashe(y);
 
-            replaceShapes();
+            oldShapes = replaceShapes(getNewShapes());
             updatePrefixes();
 
             
@@ -156,14 +146,22 @@ function EditorComp() {
         };
     };
 
-    const replaceShapes = ()=>{
-        let newShapes = yasheUtils.replaceShapes();
+    const getNewShapes = function() {
+        return yasheUtils.replaceShapes();
+    }
+
+    const replaceShapes = (newShapes)=>{
+        /*
         let valid = true;
         if(newShapes==null){
             valid = false;
             newShapes=[];
         }
-        context.replaceShapes(newShapes,valid);
+         context.replaceShapes(newShapes,valid);
+
+        */
+        context.replaceShapes(newShapes);
+        return newShapes;
     }
 
     const updatePrefixes = ()=>{

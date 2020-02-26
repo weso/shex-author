@@ -99,14 +99,14 @@ function App() {
       visualize();
     }
 
-    const replaceShapes = (newShapes,valid) =>{
-      //This allows to render all the shapes when a property is updated.
-      //Best Glitch Ever
+    const replaceShapes = (newShapes) =>{
       /*
       if(!valid){
         setValid('danger');
       }
       */
+      //This allows to render all the shapes when a property is updated.
+      //Best Glitch Ever
       setShapes([]); 
       setShapes(newShapes);
       visualize();

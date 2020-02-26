@@ -228,30 +228,12 @@
 }
 
 
-/*
-
-
-.showAsist{
-        padding: 2%;
-        height: 100% !important;
-        width: 100% !important;
-    }
-
-    .hideAsist{
-        display: none;
-    }
-
-
-    .hideLoader{
-        display: none;
-    }
-
-  .showLoader{
+.showLoader{
     display: grid;
     justify-content: center;
     align-items: center;
     width: 100% !important;
-    height: 100% !important;
+    height: 93% !important;
   }
 
   .loader {
@@ -269,6 +251,28 @@
     100% { transform: rotate(360deg); }
   }
 
+  .hideAsist{
+    display: none;
+}
+
+.hideLoader{
+    display: none;
+}
+/*
+
+
+.showAsist{
+        padding: 2%;
+        height: 100% !important;
+        width: 100% !important;
+    }
+
+    
+
+
+   
+
+  
 */
 
 

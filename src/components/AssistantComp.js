@@ -3,7 +3,7 @@ import { Collapse } from 'reactstrap';
 import ShapeComponent from './shexComponents/ShapeComponent';
 import {ShapesContext} from '../App';
 
-import '../css/shexComponents/Assistant.css';
+import '../css/Assistant.css';
 
 function AssistantComp (props) {
 
@@ -22,10 +22,7 @@ function AssistantComp (props) {
                     
 
                 </div>
-                <div className={context.valid}>
-                        <p><strong>[Error]</strong> This Shape is very complex for me...</p>
-                </div>
-
+             
                 <div className={context.asist}>
 
                         <div id='assistant-container' className='assistantContainer'> 
@@ -41,11 +38,18 @@ function AssistantComp (props) {
                 </div>
 
                 <div className={context.loading}>
-                                <div className="loader"></div>
+                        <div className="loader"></div>
                 </div>
         </div>);
 
     
 }
+
+/*
+
+   <div className={context.valid}>
+                        <p><strong>[Error]</strong> This Shape is very complex for me...</p>
+                </div>
+*/
 
 export default AssistantComp;
