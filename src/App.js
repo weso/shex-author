@@ -30,7 +30,7 @@ function App() {
     const [isAssistantOpen, setAssistantOpen] = useState(true);
     const [isVisualizeOpen, setVisualizeOpen] = useState(true);
     const [isLateralNavOpen, setLateralNavOpen] = useState(true);
-    const [width,setWidth] = useState(650);
+    const [width,setWidth] = useState(700);
     const [valid,setValid] = useState('valid');
     const [loading,setLoading] = useState('hideLoader');
     const [asist,setAsist] = useState('showAsist');
@@ -49,11 +49,7 @@ function App() {
     const [gridClass,setGridClass] = useState('gridBox');
 
     const assistantToggle = () => setAssistantOpen(!isAssistantOpen); 
-    const visualizeToggle = () =>{ 
-
-      setVisualizeOpen(true);
-      window.scrollTo(0,document.body.scrollHeight);
-    }
+    const visualizeToggle = () => setVisualizeOpen(!isVisualizeOpen);
     const lateralNavToggle = () => setLateralNavOpen(!isLateralNavOpen);
     const colapseAll = () =>{
       setAssistantOpen(!isLateralNavOpen);
