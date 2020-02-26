@@ -192,7 +192,7 @@ function CustomConstraint (props) {
                     </div>     
 
          
-                    <Collapse isOpen={isNameOpen} className={context.customConstraintClass+" gridBox"}>
+                    <Collapse isOpen={isNameOpen} className={context.gridClass+" gridBox"}>
                         <label className="customLabel" >Name</label>
                         <input  type="text" 
                                 className="name"
@@ -200,7 +200,7 @@ function CustomConstraint (props) {
                                 onChange={handleNameChange}/> 
                     </Collapse>
 
-                    <Collapse isOpen={isPrefixOpen} className={context.customConstraintClass+" gridBox"}>
+                    <Collapse isOpen={isPrefixOpen} className={context.gridClass+" gridBox"}>
                         <label className="customLabel" >Prefix</label>
                         <select className="customSelector" 
                                 value={prefix}
@@ -216,7 +216,7 @@ function CustomConstraint (props) {
                         </select>
                     </Collapse> 
 
-                    <Collapse isOpen={isShapeRefOpen} className={context.customConstraintClass+" gridBox"}>
+                    <Collapse isOpen={isShapeRefOpen} className={context.gridClass+" gridBox"}>
                         <label className="customLabel" >ShapeRef</label>
                         <select className="customSelector"
                                 value={shapeRef}
@@ -230,7 +230,7 @@ function CustomConstraint (props) {
                         </select>    
                     </Collapse>
        
-                    <Collapse isOpen={isQualiOpen} className={context.customConstraintClass+" gridBox"}>
+                    <Collapse isOpen={isQualiOpen} className={context.gridClass+" gridBox"}>
                         <label className="customLabel" >Qualifier </label>
                         <select className="customSelector"
                                 value={qualifier}
