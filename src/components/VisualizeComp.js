@@ -4,12 +4,10 @@ function VisualizeComp (props) {
 
     const {svg} = props;
 
-    return (<div className="globalContainer visu">  
-                <div className='row visualize'>
-                    <div className='col'/>
-                    <div className='col' dangerouslySetInnerHTML={{__html:svg}}/> 
-                    <div className='col'/>        
-                 </div>
+    return (<div className="visualize"> 
+                <div className="umlContainer">   
+                    <div className='uml' dangerouslySetInnerHTML={{__html:svg}}/> 
+                </div>
             </div>
             );
 

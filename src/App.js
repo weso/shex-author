@@ -30,7 +30,7 @@ function App() {
     const [isAssistantOpen, setAssistantOpen] = useState(true);
     const [isVisualizeOpen, setVisualizeOpen] = useState(true);
     const [isLateralNavOpen, setLateralNavOpen] = useState(true);
-    const [width,setWidth] = useState(800);
+    const [width,setWidth] = useState(650);
     const [valid,setValid] = useState('valid');
     const [loading,setLoading] = useState('hideLoader');
     const [asist,setAsist] = useState('showAsist');
@@ -199,7 +199,7 @@ function App() {
 
 
     return (
-      <div>
+      <div className="appContainer">
         <IdleTimer
           ref={ref => { idleTimer = ref }}
           element={document}

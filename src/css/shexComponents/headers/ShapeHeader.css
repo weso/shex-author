@@ -1,12 +1,12 @@
 .header{
     background: #C6E2FF ;
-    padding: 10px;
+    padding: 8px;
     color: black;
     text-align: left;
     border-radius: 10px;
     border:none;
     display: grid;
-    grid-template-columns: 10% 65.5% 6.5% 6% 9%;
+    grid-template-columns: 10% 66% 6.5% 6% 7%;
     gap: 10px;
 
 }

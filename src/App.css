@@ -14,21 +14,37 @@ body{
 }
 
 
+.appContainer{
+	display: grid;
+}
+
 .globalContainer{ 
 	background-color: #ddeafa;
-	padding: 2%;
+	padding-top: 20px;
+	padding-left: 30px;
+	padding-right: 30px;
+	
 }
 
 
 .visualize{
-	height: 100% !important; 
-	width: 100% !important; 
 	min-height: 180px;
-	margin-left: 1px;
-	float: center;
-	border:1px solid #bdbcbc;
-	border-radius: 20px;
+	padding-top: 25px;
+	padding-left: 10px;
+	padding-right: 10px;
+	background-color: #ddeafa;
+
+}
+
+.umlContainer{
+	display: grid;
+	justify-content: center;
+	border-radius: 10px;
+	border: 1px solid #acaaaa;
 	background-color: white;
+}
+
+.uml{
 
 }
 
