@@ -85,8 +85,9 @@ export function loadExample(example){
 }
 
 export function scrollTop(){
-     window.scrollTo(0, 0);
+    window.scrollTo(0, 0);
 }
+
 
 export function undo(){
     let yashe = Editor.getInstance().getYashe();

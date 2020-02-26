@@ -17,7 +17,7 @@
 .toolbarTop{
     display: grid;
     grid-template-columns: 100%;
-    gap: 1px;
+    gap: 5px;
     background-color: transparent;  
 }
 

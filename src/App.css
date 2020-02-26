@@ -36,7 +36,7 @@ body{
 
 .visualize{
 	min-height: 180px;
-	padding-top: 25px;
+	padding-top: 55px;
 	padding-bottom: 15px;
 	padding-left: 35px;
 	padding-right: 35px;
@@ -50,6 +50,7 @@ body{
 	border-radius: 10px;
 	border: 1px solid #acaaaa;
 	background-color: white;
+	min-height: 180px;
 }
 
 .uml{

@@ -49,7 +49,11 @@ function App() {
     const [gridClass,setGridClass] = useState('gridBox');
 
     const assistantToggle = () => setAssistantOpen(!isAssistantOpen); 
-    const visualizeToggle = () => setVisualizeOpen(!isVisualizeOpen);
+    const visualizeToggle = () =>{ 
+
+      setVisualizeOpen(true);
+      window.scrollTo(0,document.body.scrollHeight);
+    }
     const lateralNavToggle = () => setLateralNavOpen(!isLateralNavOpen);
     const colapseAll = () =>{
       setAssistantOpen(!isLateralNavOpen);
