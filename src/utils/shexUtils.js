@@ -12,8 +12,14 @@ function addShape (shapes){
     let newShapes = [];
     newShapes = Object.assign(newShapes, shapes);
     newShapes.push(newShape)
-     emit(newShapes);
-     return newShape;    
+
+    const yashe = Editor.getInstance().getYashe();
+    Object.keys(yashe.getDefinedPrefixes()).map(p=>{
+        console.log(p)
+    })
+
+    emit(newShapes);
+    return newShape;    
 }
 
 function deleteShape(shapes,shapeId,confirm) {

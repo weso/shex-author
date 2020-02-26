@@ -1,12 +1,8 @@
-import React,{useContext} from 'react';
-import {ShapesContext} from '../../../App';
-
-import {ALL_PREFIXES} from '../../../utils/rdfUtils';
+import React from 'react';
 import PrefixSelector from '../PrefixSelector';
 
 function PrefixesBtn (props) {
 
-    const context = useContext(ShapesContext);
 
     return (        
         <div className="dropdown" title="Prefixes">
@@ -15,7 +11,7 @@ function PrefixesBtn (props) {
             <ul className='dropdown-menu'>
                 <li>
                     <div id='prefixesDropdown'>  
-                        <PrefixSelector namespaces={ALL_PREFIXES}/>                                    
+                        <PrefixSelector/>                                    
                     </div>
                 </li>
             </ul>

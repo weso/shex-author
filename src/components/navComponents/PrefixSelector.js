@@ -3,13 +3,12 @@ import Codemirror from 'codemirror';
 import Editor from '../../entities/editor';
 
 import {addPrefix} from '../../utils/prefixUtils';
+import {ALL_PREFIXES} from '../../utils/rdfUtils';
 
 function PrefixSelector (props){
 
-    const {namespaces} = props;
-
     const handleChange = (e) =>{
-       addPrefix(e.target.value,namespaces);
+       addPrefix(e.target.value);
     }
 
     return (
@@ -18,14 +17,14 @@ function PrefixSelector (props){
                     onClick={handleChange}>
                     Example Prefix
             </button>
-            {Object.keys(namespaces).map( (key) =>{
+            {Object.keys(ALL_PREFIXES).map( (key) =>{
                 return( 
                     <div key={key}>
                         <select className='form-control'
                                 onChange={handleChange}>
                             <option>{key}</option>
                             { 
-                                Object.keys(namespaces[key]).map( (prefix) =>{
+                                Object.keys(ALL_PREFIXES[key]).map( (prefix) =>{
                                     return <option key={prefix} value={prefix}>{prefix}</option>
                                 })  
                             }

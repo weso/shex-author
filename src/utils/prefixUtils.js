@@ -2,6 +2,8 @@ import Codemirror from 'codemirror';
 import Editor from '../entities/editor';
 import Prefix from '../entities/shexEntities/shexUtils/prefix.js';
 
+import {ALL_PREFIXES} from './rdfUtils';
+
 export function getPrefix(prefix){
       let defined = Editor.getInstance().getYashe().getDefinedPrefixes();
       for(let def in defined){
@@ -12,7 +14,8 @@ export function getPrefix(prefix){
       return new Prefix();
 }
 
-export function addPrefix(prefix,namespaces){
+export function addPrefix(prefix){
+        let namespaces = ALL_PREFIXES;
         let yashe = Editor.getInstance().getYashe();
         let current = yashe.getValue();
         let defined = yashe.getDefinedPrefixes();
