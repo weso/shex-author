@@ -20,9 +20,9 @@ body{
 
 .globalContainer{ 
 	background-color: #ddeafa;
-	padding-top: 20px;
-	padding-left: 30px;
-	padding-right: 30px;
+	padding-top: 30px;
+	padding-left: 50px;
+	padding-right: 50px;
 	
 }
 
@@ -37,8 +37,9 @@ body{
 .visualize{
 	min-height: 180px;
 	padding-top: 25px;
-	padding-left: 10px;
-	padding-right: 10px;
+	padding-bottom: 15px;
+	padding-left: 35px;
+	padding-right: 35px;
 	background-color: #ddeafa;
 
 }
