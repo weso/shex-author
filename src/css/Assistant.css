@@ -45,7 +45,6 @@
 
 
 .containerAssist{
-    height: 100% !important;
     width: 100% !important;
     display: grid;
     grid-template-columns: 100%;

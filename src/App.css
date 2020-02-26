@@ -27,6 +27,13 @@ body{
 }
 
 
+.comps{
+	background-color: #f8f8ff;
+	border-radius: 20px;
+}
+
+
+
 .visualize{
 	min-height: 180px;
 	padding-top: 25px;
@@ -46,11 +53,6 @@ body{
 
 .uml{
 
-}
-
-.comps{
-	background-color: #f8f8ff;
-	border-radius: 20px;
 }
 
 
