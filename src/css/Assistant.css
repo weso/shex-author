@@ -64,10 +64,11 @@
 .assisTitle{
     display: grid;
     grid-template-columns: 97% 10%;
-    padding: 2px;
+    padding-top: 2px;
+    padding-left: 14px;
     border-bottom: 1px solid #bdbcbc;
     font-size: 20px;
-    color:#222;
+    color:#666565;
   
 }
 
@@ -101,6 +102,7 @@
     border: 1px solid #acaaaa;
     border-radius: 10px;
     margin-top: 10px;
+    background-color: #C6E2FF;
 }
 
 

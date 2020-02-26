@@ -3,7 +3,8 @@
     padding: 10px;
     color: black;
     text-align: left;
-    border-radius: 10px 10px 0px 0px;
+    border-radius: 10px;
+    border:none;
     display: grid;
     grid-template-columns: 10% 65.5% 6.5% 6% 9%;
     gap: 10px;
