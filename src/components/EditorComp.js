@@ -47,11 +47,14 @@ function EditorComp() {
             });
 
 
-            y.on('keydown',function(){
+            y.on('keyup',function(){
                 if(!y.hasErrors(y)){
                     let newShapes = getNewShapes();
                     if(oldShapes.length == newShapes.length){
-                        replaceShapes(newShapes);
+                            if(newShapes.toString()!=oldShapes.toString()){
+                                console.log('replace')
+                                oldShapes = replaceShapes(newShapes);
+                            }
                     }else{
                         context.setLoading('showLoader');
                         context.setAsist('hideAsist');
@@ -61,8 +64,9 @@ function EditorComp() {
                             context.setLoading('hideLoader');
                             context.setAsist('showAsist');
                         },500)
-                    }
+                    } 
                 }
+               
                 });
 
 
@@ -127,7 +131,6 @@ function EditorComp() {
         }
     }, [yashe]
     );
-
 
     const debounce = function(func, wait, immediate) {
         let timeout; let result;
