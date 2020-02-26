@@ -130,7 +130,7 @@
     background:#d6ffc654;
     padding: 10px;
     color: black;
-    border: 1px solid #acaaaa;
+    border-top: 1px solid #acaaaa;
     display: grid;
     grid-template-columns: 100%;
     gap: 5px;
