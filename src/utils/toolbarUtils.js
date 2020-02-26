@@ -80,7 +80,7 @@ export function loadExample(example){
         yashe.setValue(wikiExample)
     }
     setTimeout(() => {//needed
-        Codemirror.signal(yashe,'keyHandled');
+        Codemirror.signal(yashe,'galery');
     }, 10); 
 }
 

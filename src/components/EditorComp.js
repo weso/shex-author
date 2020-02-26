@@ -81,8 +81,6 @@ function EditorComp() {
 
       
            
-
-
             y.on('prefixUpdate', function() {
                 updatePrefixes();
             });
@@ -106,17 +104,30 @@ function EditorComp() {
                 
             });
            
-/*
+
             //Fired after a key is handled through a key map
             //(for example "Ctrl-Z")
             y.on('keyHandled', function() {
                 if(!y.hasErrors()){
-                    replaceShapes();
+                    oldShapes = replaceShapes(getNewShapes());
                     updatePrefixes();
                 }
             });
 
-            */
+            //Load example from Galery
+            y.on('galery', function() {
+                if(!y.hasErrors()){
+                    context.setLoading('showLoader');
+                    context.setAsist('hideAsist');
+                    setTimeout(function() {  
+                        oldShapes = replaceShapes(getNewShapes());
+                        updatePrefixes();                       
+                        context.setLoading('hideLoader');
+                        context.setAsist('showAsist');
+                    },500)
+                }
+            });
+            
 
             
             y.refresh();
