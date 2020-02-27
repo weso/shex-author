@@ -1,12 +1,11 @@
 import React,{useContext} from 'react';
-import {ShapesContext} from '../../../../App';
-
+import {AppContext} from '../../../../App';
 import yasheUtils from '../../../../utils/yasheUtils';
 import {undo} from '../../../../utils/toolbarUtils';
 
 function UndoBtn () {
 
-    const context = useContext(ShapesContext);
+    const context = useContext(AppContext);
 
     const handleUndo = function(){
         undo();

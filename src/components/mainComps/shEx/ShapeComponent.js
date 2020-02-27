@@ -1,8 +1,7 @@
 import React,{useContext,useState} from 'react';
 import { Collapse } from 'reactstrap';
-
-import {ShapesContext} from '../../../App';
-
+import {AppContext} from '../../../App';
+import {AssistContext} from '../Assistant';
 import ShapeHeader from  './headers/ShapeHeader';
 import CustomComp from './customize/CustomComp';
 import TripleComponent from './TripleComponent';
@@ -12,7 +11,8 @@ import Triple from '../../../entities/shexEntities/triple';
 
 function ShapeComponent (props) {
 
-    const context = useContext(ShapesContext);
+    const context = useContext(AppContext);
+    const assistContext =  useContext(AssistContext);
     const {shape} = props;
 
     const [triples,setTriples] = useState(shape.triples);
@@ -87,7 +87,7 @@ function ShapeComponent (props) {
                         onExited={rounder}
                         onEntering={rounder} >
 
-                <div className={context.triplesContainer+" triples"}>
+                <div className={assistContext.triplesContainer+" triples"}>
                     {triples.map(triple =>
                         <TripleComponent key={triple.id}
                                          shape={shape} 
@@ -96,7 +96,7 @@ function ShapeComponent (props) {
                         /> 
                     )}
                 
-                    <button className={context.addBtns+" addTripleButton"} onClick={addTriple} title="Add Triple">+ Triple</button>        
+                    <button className={assistContext.addBtns+" addTripleButton"} onClick={addTriple} title="Add Triple">+ Triple</button>        
               
                 </div>                    
             </Collapse> 

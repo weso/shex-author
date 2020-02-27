@@ -1,9 +1,9 @@
 import React,{useContext} from 'react';
-import {ShapesContext} from '../../../App';
+import {AppContext} from '../../../App';
 
 function AssistTitle (props) {
 
-    const context = useContext(ShapesContext);
+    const context = useContext(AppContext);
 
     return (<div className="assisTitle">
                 <div className="title">ShEx Assistant</div>

@@ -1,10 +1,10 @@
 import React,{useContext} from 'react';
-import {ShapesContext} from '../../../../App';
+import {AppContext} from '../../../../App';
 import {readFile} from '../../../../utils/toolbarUtils';
 
 function UploadBtn () {
 
-    const context = useContext(ShapesContext);
+    const context = useContext(AppContext);
 
     const handleRead = function(e){
         readFile(e.target.files);

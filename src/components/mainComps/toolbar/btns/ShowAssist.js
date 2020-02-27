@@ -1,9 +1,9 @@
 import React,{useContext} from 'react';
-import {ShapesContext} from '../../../../App';
+import {AppContext} from '../../../../App';
 
 function VisualizeBtn () {
 
-    const context = useContext(ShapesContext);
+    const context = useContext(AppContext);
 
     return (
         <button className="mdc-icon-button material-icons btns" 

@@ -1,11 +1,9 @@
 import React,{useState,useContext} from 'react';
 import { Collapse } from 'reactstrap';
-
-import {ShapesContext} from '../../../App';
+import {AppContext} from '../../../App';
+import {AssistContext} from '../Assistant';
 import {getPrefix} from '../../../utils/prefixUtils';
-
 import shexUtils from '../../../utils/shexUtils';
-
 import yasheUtils from '../../../utils/yasheUtils';
 
 
@@ -14,7 +12,8 @@ const primitives = ['String','Integer','Date','Boolean'];
 
 function CustomConstraint (props) {
 
-    const context = useContext(ShapesContext);
+    const context = useContext(AppContext);
+    const assistContext =  useContext(AssistContext);
     const {triple,isCustomOpen,collapseConstraints} = props;
 
     const [constraint,setConstraint] = useState(triple.value.getTypeName());
@@ -175,7 +174,7 @@ function CustomConstraint (props) {
 
     return (
                 <div className="customConstraint">
-                    <div className={context.gridClass+" gridBox"}>
+                    <div className={assistContext.gridClass+" gridBox"}>
                         <label className="customLabel" >Constraint </label>
                         <select className="customSelector"
                                 value={constraint}
@@ -192,7 +191,7 @@ function CustomConstraint (props) {
                     </div>     
 
          
-                    <Collapse isOpen={isNameOpen} className={context.gridClass+" gridBox"}>
+                    <Collapse isOpen={isNameOpen} className={assistContext.gridClass+" gridBox"}>
                         <label className="customLabel" >Name</label>
                         <input  type="text" 
                                 className="name"
@@ -200,7 +199,7 @@ function CustomConstraint (props) {
                                 onChange={handleNameChange}/> 
                     </Collapse>
 
-                    <Collapse isOpen={isPrefixOpen} className={context.gridClass+" gridBox"}>
+                    <Collapse isOpen={isPrefixOpen} className={assistContext.gridClass+" gridBox"}>
                         <label className="customLabel" >Prefix</label>
                         <select className="customSelector" 
                                 value={prefix}
@@ -216,7 +215,7 @@ function CustomConstraint (props) {
                         </select>
                     </Collapse> 
 
-                    <Collapse isOpen={isShapeRefOpen} className={context.gridClass+" gridBox"}>
+                    <Collapse isOpen={isShapeRefOpen} className={assistContext.gridClass+" gridBox"}>
                         <label className="customLabel" >ShapeRef</label>
                         <select className="customSelector"
                                 value={shapeRef}
@@ -230,7 +229,7 @@ function CustomConstraint (props) {
                         </select>    
                     </Collapse>
        
-                    <Collapse isOpen={isQualiOpen} className={context.gridClass+" gridBox"}>
+                    <Collapse isOpen={isQualiOpen} className={assistContext.gridClass+" gridBox"}>
                         <label className="customLabel" >Qualifier </label>
                         <select className="customSelector"
                                 value={qualifier}

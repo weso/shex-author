@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import { Collapse } from 'reactstrap';
-import {ShapesContext} from '../../../App'; 
+import {AppContext} from '../../../App'; 
 import ShowAssist from './btns/ShowAssist';
 import VisualizeBtn from './btns/VisualizeBtn';
 import PrefixesBtn from './btns/PrefixesBtn';
@@ -16,13 +16,12 @@ import ScrollBtn from './btns/ScrollBtn';
 import '../../../css/navComponents/Toolbar.css';
 
 
-function Toolbar (props) {
+function Toolbar () {
 
-    const context = useContext(ShapesContext);
-    const {isLateralNavOpen} = props;
+    const context = useContext(AppContext);
 
     return (
-    <Collapse isOpen={context.isLateralNavOpen} className="col-xs-1 toolbarCollapse">
+    <Collapse isOpen={context.isToolBarOpen} className="col-xs-1 toolbarCollapse">
         <div className='toolbar'>
                 <div className='toolbarTop'>                    
                     <ShowAssist/>

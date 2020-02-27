@@ -1,10 +1,10 @@
 import React,{useContext} from 'react';
-import {ShapesContext} from '../../../../App';
+import {AppContext} from '../../../../App';
 import  Editor from '../../../../entities/editor';
 
 function DeleteAllBtn () {
 
-    const context = useContext(ShapesContext);
+    const context = useContext(AppContext);
 
     const  deleteShapes = function(){
         if(window.confirm('Are you sure?')){

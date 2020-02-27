@@ -1,13 +1,11 @@
 import React,{useContext} from 'react';
-import {ShapesContext} from '../../../../App';
+import {AppContext} from '../../../../App';
 import  Editor from '../../../../entities/editor';
 import {scrollTop} from '../../../../utils/toolbarUtils';
 
 function ScrollBtn () {
 
-    const context = useContext(ShapesContext);
-
-
+    const context = useContext(AppContext);
 
     return (
          <button className="mdc-icon-button material-icons btns" 

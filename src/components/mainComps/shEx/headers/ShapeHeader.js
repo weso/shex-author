@@ -1,12 +1,14 @@
 import React,{useState,useContext} from 'react';
-import {ShapesContext} from '../../../../App';
+import {AppContext} from '../../../../App';
+import {AssistContext} from '../../Assistant';
 
 import '../../../../css/shexComponents/headers/ShapeHeader.css';
 
 
 function ShapeHeader (props) {
 
-    const context = useContext(ShapesContext); 
+    const context = useContext(AppContext);
+    const assistContext =  useContext(AssistContext);
     const {shape,customizeShape,collapseTriples,colapseBtn,rounded} = props;
     const [name,setName] = useState(shape.type.value);
 
@@ -18,8 +20,8 @@ function ShapeHeader (props) {
     }
 
     return (
-        <div className={rounded+' header '+context.shapeClass}>            
-            <label  className={context.shapeLabel+" shapeNameLabel"}>Shape</label>
+        <div className={rounded+' header '+assistContext.shapeHeader}>            
+            <label  className={assistContext.shapeLabel+" shapeNameLabel"}>Shape</label>
             <input  type="text" 
                     className="name"
                     value={name}

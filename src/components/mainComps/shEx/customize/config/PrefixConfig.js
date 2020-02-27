@@ -1,12 +1,12 @@
 import React,{useState,useContext} from 'react';
 import { Collapse } from 'reactstrap';
-import {ShapesContext} from '../../../../../App';
+import {AppContext} from '../../../../../App';
 
 import {getPrefix} from '../../../../../utils/prefixUtils';
 
 function PrefixConfig (props) {
 
-    const context = useContext(ShapesContext);
+    const context = useContext(AppContext);
     const {entity,isPrefixOpen,prefix,setPrefix} = props;
 
   

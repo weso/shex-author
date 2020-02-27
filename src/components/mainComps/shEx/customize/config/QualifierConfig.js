@@ -1,9 +1,9 @@
 import React,{useState,useContext} from 'react';
-import {ShapesContext} from '../../../../../App';
+import {AppContext} from '../../../../../App';
 
 function QualifierConfig (props) {
 
-    const context = useContext(ShapesContext);
+    const context = useContext(AppContext);
     const {shape} = props;
     const [qualifier,setQualifier] = useState(shape.qualifier.getTypeName())
   

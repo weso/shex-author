@@ -1,11 +1,10 @@
 import React,{useContext} from 'react';
-import {ShapesContext} from '../../../../App';
-
+import {AppContext} from '../../../../App';
 import {loadExample} from '../../../../utils/toolbarUtils';
 
 function GaleryBtn () {
 
-    const context = useContext(ShapesContext);
+    const context = useContext(AppContext);
 
     return (
          <div className="dropdown" title="Galery">

@@ -1,6 +1,6 @@
 import React,{useState,useContext} from 'react';
 import { Collapse } from 'reactstrap';
-import {ShapesContext} from '../../../../App';
+import {AppContext} from '../../../../App';
 import KindConfig from './config/KindConfig';
 import PrefixConfig from './config/PrefixConfig';
 import QualifierConfig from './config/QualifierConfig';
@@ -9,7 +9,7 @@ import '../../../../css/shexComponents/customize/Custom.css'
 
 function CustomComp (props) {
 
-    const context = useContext(ShapesContext);
+    const context = useContext(AppContext);
     const {entity,isCustomOpen,rounder,qualifier,bnode,customClass} = props;
 
     let initialPrefix = 'example';

@@ -1,11 +1,11 @@
 import React,{useContext} from 'react';
-import {ShapesContext} from '../../../../App';
+import {AppContext} from '../../../../App';
 
 import {changeTheme} from '../../../../utils/toolbarUtils';
 
 function ChangeThemeBtn () {
 
-    const context = useContext(ShapesContext);
+    const context = useContext(AppContext);
 
     return (
          <button  className="svgBtnCont" 

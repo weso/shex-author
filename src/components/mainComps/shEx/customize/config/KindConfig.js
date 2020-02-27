@@ -1,9 +1,9 @@
 import React,{useState,useContext} from 'react';
-import {ShapesContext} from '../../../../../App';
+import {AppContext} from '../../../../../App';
 
 function KindConfig (props) {
 
-    const context = useContext(ShapesContext);
+    const context = useContext(AppContext);
     const {entity,setPrefix,collapsePrefix,bnode} = props;
     const [kind,setKind] = useState(entity.type.getTypeName());
   

@@ -1,6 +1,6 @@
 import React, {useState,useContext,useEffect,useRef} from 'react';
 import 'yashe/dist/yashe.min.css';
-import {ShapesContext} from '../../App';
+import {AppContext} from '../../App';
 
 import YASHE from 'yashe';
 import Editor from '../../entities/editor';
@@ -13,7 +13,7 @@ function EditorComp() {
 
   const [yashe,setYashe] = useState(null);
   const divRef = useRef(null);
-  const context = useContext(ShapesContext);
+  const context = useContext(AppContext);
   let oldShapes = [];
 
     useEffect(() => {

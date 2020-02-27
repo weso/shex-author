@@ -12,7 +12,7 @@ import shexUtils from './utils/shexUtils';
 import Editor from './entities/editor';
 
 
-export const ShapesContext = React.createContext();
+export const AppContext = React.createContext();
 
 function App() {
 
@@ -22,20 +22,10 @@ function App() {
     const [isAssistantOpen, setAssistantOpen] = useState(true);
     const [isVisualizeOpen, setVisualizeOpen] = useState(true);
     const [isToolBarOpen, setToolBarOpen] = useState(true);
-    const [width,setWidth] = useState(700);
+    
     const [loading,setLoading] = useState('hideLoader');
     const [asist,setAsist] = useState('showAsist');
 
-
-    //Responsive
-    const [shapeClass,setShapeClass] = useState('header');
-    const [tripleClass,setTripleClass] = useState('tripleHeader');
-    const [triplesContainer,setTriplesContainer] = useState('triples');
-    const [shapeLabel,setShapeLabel] = useState('shapeNameLabel');
-    const [tripleLabel,setTripleLabel] = useState('tripleNameLabel');
-    const [tripleBtns,setTripleBtns] = useState('tripleBtns');
-    const [addBtns,setAddBtns] = useState('addBtns');
-    const [gridClass,setGridClass] = useState('gridBox');
 
     const assistantToggle = () => setAssistantOpen(!isAssistantOpen); 
     const visualizeToggle = () => setVisualizeOpen(!isVisualizeOpen);
@@ -118,37 +108,11 @@ function App() {
     }
 
 
-    const makeItResponsive = function(e, direction, ref, d){
     
-          setWidth(width+d.width);
-
-          if(width+d.width<700){
-                  setShapeClass('xs-header');
-                  setTripleClass('xs-tripleHeader');
-                  setTripleBtns('xs-tripleBtns');
-                  setTriplesContainer('xs-triples');
-                  setShapeLabel('xs-label');
-                  setTripleLabel('xs-label');
-                  setAddBtns('xs-addBtns');
-                  setGridClass('xs-gridBox');
-                  return;
-          }
-                
-          setShapeClass('header')                                          
-          setTripleClass('tripleHeader');
-          setTripleBtns('tripleBtns');
-          setTriplesContainer('triples');
-          setShapeLabel('shapeNameLabel');
-          setTripleLabel('tripleNameLabel');
-          setAddBtns('addBtns');
-          setGridClass('gridBox');
-        
-    }
-
 
     return (
       
-          <ShapesContext.Provider
+          <AppContext.Provider
                 value={
                   {
                     shapes:shapes,
@@ -160,20 +124,15 @@ function App() {
                     emit:emit,
                     visualize:visualize,
                     isToolBarOpen:isToolBarOpen,
-                    shapeClass:shapeClass,
-                    tripleClass:tripleClass,
-                    tripleBtns:tripleBtns,
-                    shapeLabel:shapeLabel,
-                    tripleLabel:tripleLabel,                 
-                    triplesContainer:triplesContainer,
-                    addBtns:addBtns,
+                    isAssistantOpen:isAssistantOpen,
+                    isVisualizeOpen:isVisualizeOpen,
+                    assistantToggle:assistantToggle,
+                    visualizeToggle:visualizeToggle,
                     loading:loading,
                     setLoading:setLoading,
                     asist:asist,
                     setAsist:setAsist,
-                    assistantToggle:assistantToggle,
-                    visualizeToggle:visualizeToggle,
-                    gridClass:gridClass
+                    
                   }
                 }>
 
@@ -181,7 +140,7 @@ function App() {
               <MainContainer/>
               <Visualizer svg={svg} isVisualizeOpen={isVisualizeOpen}/>
                                                   
-            </ShapesContext.Provider>);
+            </AppContext.Provider>);
 
 }  
            

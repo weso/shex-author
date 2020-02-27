@@ -1,5 +1,6 @@
 import React,{useState,useContext} from 'react';
-import {ShapesContext} from '../../../../App';
+import {AppContext} from '../../../../App';
+import {AssistContext} from '../../Assistant';
 import yasheUtils from '../../../../utils/yasheUtils';
 
 import '../../../../css/shexComponents/headers/TripleHeader.css';
@@ -10,7 +11,8 @@ const primitives = ['String','Integer','Date','Boolean','Custom'];
 
 function TripleHeader (props) {
 
-    const context = useContext(ShapesContext); 
+    const context = useContext(AppContext);
+    const assistContext =  useContext(AssistContext); 
     const {triple,deleteTriple,customizeTriple,forceCollapse,collapseConstraints,rounded} = props;
 
     const [name,setName] = useState(triple.type.value);
@@ -62,8 +64,8 @@ function TripleHeader (props) {
    
    
     return (
-        <div className={rounded+" tripleHeader "+context.tripleClass}>            
-            <label  className={context.tripleLabel}>Triple</label>
+        <div className={rounded+" tripleHeader "+assistContext.tripleHeader}>            
+            <label  className={assistContext.tripleLabel}>Triple</label>
             <input  type="text" 
                     className="name"
                     value={name}
@@ -92,19 +94,19 @@ function TripleHeader (props) {
                     <option value="?">One or none</option>
             </select>
 
-            <button className={context.tripleBtns+" buildTriple buildBtn buildTripleBtn mdc-icon-button material-icons"} 
+            <button className={assistContext.tripleBtns+" buildTriple buildBtn buildTripleBtn mdc-icon-button material-icons"} 
                     onClick={customizeTriple} 
                     title="Customize Triple">
                     build
             </button>
 
-            <button className={context.tripleBtns+" buildConstraint buildBtn buildTripleBtn mdc-icon-button material-icons"}  
+            <button className={assistContext.tripleBtns+" buildConstraint buildBtn buildTripleBtn mdc-icon-button material-icons"}  
                     onClick={handleCollapse} 
                     title="Customize Constraint">
                     build
             </button>
 
-            <button className={context.tripleBtns+" deleteTripleBtn mdc-icon-button material-icons"} 
+            <button className={assistContext.tripleBtns+" deleteTripleBtn mdc-icon-button material-icons"} 
                     onClick={()=>deleteTriple(triple.id)} 
                     title="Delete Triple">
                     delete

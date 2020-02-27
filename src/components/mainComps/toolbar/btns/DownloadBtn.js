@@ -1,11 +1,11 @@
 import React,{useContext} from 'react';
-import {ShapesContext} from '../../../../App';
+import {AppContext} from '../../../../App';
 
 import {downloadFile} from '../../../../utils/toolbarUtils';
 
 function DownloadBtn () {
 
-    const context = useContext(ShapesContext);
+    const context = useContext(AppContext);
 
 
     return (
