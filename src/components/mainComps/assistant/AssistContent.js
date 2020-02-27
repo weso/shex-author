@@ -1,6 +1,6 @@
 import React,{useContext} from 'react';
-import {ShapesContext} from '../../App';
-import ShapeComponent from './shexComponents/ShapeComponent';
+import {ShapesContext} from '../../../App';
+import ShapeComponent from '../shEx/ShapeComponent';
 
 function AssistContent (props) {
 

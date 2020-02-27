@@ -1,6 +1,6 @@
 import React,{useContext,useState} from 'react';
 import { Collapse } from 'reactstrap';
-import {ShapesContext} from '../../App';
+import {ShapesContext} from '../../../App';
 
 import TripleHeader from './headers/TripleHeader';
 import CustomComp from './customize/CustomComp';

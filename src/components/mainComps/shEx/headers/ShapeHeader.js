@@ -1,7 +1,7 @@
 import React,{useState,useContext} from 'react';
-import {ShapesContext} from '../../../App';
+import {ShapesContext} from '../../../../App';
 
-import '../../../css/shexComponents/headers/ShapeHeader.css';
+import '../../../../css/shexComponents/headers/ShapeHeader.css';
 
 
 function ShapeHeader (props) {

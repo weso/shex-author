@@ -1,13 +1,13 @@
 import React,{useContext,useState} from 'react';
 import { Collapse } from 'reactstrap';
 
-import {ShapesContext} from '../../App';
+import {ShapesContext} from '../../../App';
 
 import ShapeHeader from  './headers/ShapeHeader';
 import CustomComp from './customize/CustomComp';
 import TripleComponent from './TripleComponent';
 
-import Triple from '../../entities/shexEntities/triple';
+import Triple from '../../../entities/shexEntities/triple';
 
 
 function ShapeComponent (props) {

@@ -1,6 +1,6 @@
 import React,{useContext} from 'react';
 import {ShapesContext} from '../../../../App';
-import  Editor from '../../../../../entities/editor';
+import  Editor from '../../../../entities/editor';
 import {scrollTop} from '../../../../utils/toolbarUtils';
 
 function ScrollBtn () {

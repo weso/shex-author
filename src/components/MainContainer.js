@@ -3,7 +3,7 @@ import Toolbar from './mainComps/toolbar/Toolbar';
 import AssistantComp from './mainComps/Assistant';
 import EditorComp from './mainComps/EditorComp';
 
-function MainContainer (props) {
+function MainContainer () {
 
     return (
       <div className="globalContainer">       

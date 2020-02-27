@@ -1,5 +1,5 @@
 import React,{useContext} from 'react';
-import '../../css/navComponents/Nav.css'; 
+import '../css/navComponents/Nav.css'; 
 
 function Nav (props) {
 

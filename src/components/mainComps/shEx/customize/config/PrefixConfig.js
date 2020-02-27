@@ -1,8 +1,8 @@
 import React,{useState,useContext} from 'react';
 import { Collapse } from 'reactstrap';
-import {ShapesContext} from '../../../../App';
+import {ShapesContext} from '../../../../../App';
 
-import {getPrefix} from '../../../../utils/prefixUtils';
+import {getPrefix} from '../../../../../utils/prefixUtils';
 
 function PrefixConfig (props) {
 
