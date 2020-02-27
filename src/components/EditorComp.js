@@ -26,11 +26,10 @@ function EditorComp() {
                 value:yasheUtils.DEFAULT_SHAPE
             }
             
-            const y = YASHE(
-                divRef.current, 
-                options)
+            const y = YASHE(divRef.current,options);
 
-                 y.on('humanEvent', function(shapes) {
+            
+            y.on('humanEvent', function(shapes) {
                 Editor.getInstance().draw(shapes);
             });
 
@@ -38,61 +37,32 @@ function EditorComp() {
             y.on('keyup',function(){
                 if(!y.hasErrors(y)){
                     let newShapes = getNewShapes();
-                    if(oldShapes.length == newShapes.length){
-                            if(newShapes.toString()!=oldShapes.toString()){
-                                console.log('replace')
-                                oldShapes = replaceShapes(newShapes);
-                            }
-                    }else{
-                        context.setLoading('showLoader');
-                        context.setAsist('hideAsist');
-                        setTimeout(function() {  
+                    if(oldShapes.length == newShapes.length){ //Any new shape?
+                        if(newShapes.toString()!=oldShapes.toString()){ //Any cupdate?
                             oldShapes = replaceShapes(newShapes);
-                            updatePrefixes();                       
-                            context.setLoading('hideLoader');
-                            context.setAsist('showAsist');
-                        },500)
+                        }
+                    }else{
+                        updateAssist();
                     } 
-                }
-               
-                });
-
-
-                
-
-            y.on('blur', function() {
-                if(!y.hasErrors(y)){
-                    oldShapes = replaceShapes(getNewShapes());
-                    updatePrefixes();
-                }
+                }   
             });
 
-      
            
             y.on('prefixUpdate', function() {
                 updatePrefixes();
             });
-
-/*
-            y.on('themeChange', function() {
-                changeThemeStyle();
-            });
-
-*/
+            
 
             y.on('delete', function() {
-                replaceShapes();
+                oldShapes = replaceShapes(getNewShapes());
                 updatePrefixes();
 
             });
 
             y.on('upload', function() {
-                //TimeOut necesary
-                setTimeout(function(){
-                  replaceShapes();
-                  updatePrefixes();
-                }, 10);
-                
+                if(!y.hasErrors()){                   
+                    updateAssist();
+                }
             });
            
 
@@ -107,20 +77,12 @@ function EditorComp() {
 
             //Load example from Galery
             y.on('galery', function() {
-                if(!y.hasErrors()){
-                    context.setLoading('showLoader');
-                    context.setAsist('hideAsist');
-                    setTimeout(function() {  
-                        oldShapes = replaceShapes(getNewShapes());
-                        updatePrefixes();                       
-                        context.setLoading('hideLoader');
-                        context.setAsist('showAsist');
-                    },500)
+                if(!y.hasErrors()){                   
+                    updateAssist();
                 }
             });
-            
 
-            
+        
             y.refresh();
             setYashe(y);
             
@@ -134,7 +96,62 @@ function EditorComp() {
     }, [yashe]
     );
 
-    const debounce = function(func, wait, immediate) {
+    
+
+    const getNewShapes = function() {
+        return yasheUtils.replaceShapes();
+    }
+
+    const replaceShapes = (newShapes)=>{
+        context.replaceShapes(newShapes);
+        return newShapes;
+    }
+
+    const updatePrefixes = function(){
+        context.updatePrefixes(yasheUtils.updatePrefixes());
+    }
+
+
+    const updateAssist = function(){
+        loading();
+        setTimeout(function() {  
+            oldShapes = replaceShapes(getNewShapes());
+            updatePrefixes();                       
+            loaded();
+        },500)
+    }
+
+    const loading = function(){
+        context.setLoading('showLoader');
+        context.setAsist('hideAsist');
+    }
+
+    const loaded = function(){
+        context.setLoading('hideLoader');
+        context.setAsist('showAsist');
+    }
+
+
+
+    return  (<div className="col edit" ref={divRef}/>);
+
+}
+
+    /*
+        let valid = true;
+        if(newShapes==null){
+            valid = false;
+            newShapes=[];
+        }
+         context.replaceShapes(newShapes,valid);
+
+        */
+
+
+
+/*
+
+const debounce = function(func, wait, immediate) {
         let timeout; let result;
         return function() {
             const context = this; 
@@ -151,31 +168,18 @@ function EditorComp() {
         };
     };
 
-    const getNewShapes = function() {
-        return yasheUtils.replaceShapes();
-    }
+    */
 
-    const replaceShapes = (newShapes)=>{
-        /*
-        let valid = true;
-        if(newShapes==null){
-            valid = false;
-            newShapes=[];
-        }
-         context.replaceShapes(newShapes,valid);
 
-        */
-        context.replaceShapes(newShapes);
-        return newShapes;
-    }
 
-    const updatePrefixes = ()=>{
-        context.updatePrefixes(yasheUtils.updatePrefixes());
-    }
 
-    return  (<div className="col edit" ref={divRef}/>);
+/*
+            y.on('themeChange', function() {
+                changeThemeStyle();
+            });
 
-}
+*/
+
 
 
 
