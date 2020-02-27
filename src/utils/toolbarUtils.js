@@ -1,8 +1,8 @@
 import Codemirror from 'codemirror';
 import Editor from '../entities/editor';
 
-import {defaultExample} from '../examples/defaultExample';
-import {wikiExample} from '../examples/wikiExample';
+import {defaultExample} from '../shapes/defaultExample';
+import {wikiExample} from '../shapes/wikiExample';
 
 export function readFile(files){
     //Only one file allowed

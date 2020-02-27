@@ -2,7 +2,7 @@
 import React, {useState} from 'react';
 import { Collapse } from 'reactstrap';
 import axios from 'axios';
-import './App.css';
+import './css/App.css';
 
 import EditorComp from './components/EditorComp';
 import AssistantComp from './components/AssistantComp';
@@ -216,14 +216,5 @@ function App() {
 
 }  
            
-  
-/*
- 
-                                              
-  
-            
-                      
-*/
-
 
 export default App;
