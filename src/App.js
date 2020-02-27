@@ -22,11 +22,23 @@ function App() {
     const [isAssistantOpen, setAssistantOpen] = useState(true);
     const [isVisualizeOpen, setVisualizeOpen] = useState(true);
     const [isToolBarOpen, setToolBarOpen] = useState(true);
-    
+
+    const [width,setWidth] = useState(700);
+
     const [loading,setLoading] = useState('hideLoader');
     const [asist,setAsist] = useState('showAsist');
 
-
+    //Responsive
+    const [shapeHeader,setShapeHeader] = useState('header');
+    const [tripleHeader,setTripleHeader] = useState('tripleHeader');
+    const [triplesContainer,setTriplesContainer] = useState('triples');
+    const [shapeLabel,setShapeLabel] = useState('shapeNameLabel');
+    const [tripleLabel,setTripleLabel] = useState('tripleNameLabel');
+    const [tripleBtns,setTripleBtns] = useState('tripleBtns');
+    const [addBtns,setAddBtns] = useState('addBtns');
+    const [gridClass,setGridClass] = useState('gridBox');
+    
+  
     const assistantToggle = () => setAssistantOpen(!isAssistantOpen); 
     const visualizeToggle = () => setVisualizeOpen(!isVisualizeOpen);
     const toolbarToggle = () => setToolBarOpen(!isToolBarOpen);
@@ -107,6 +119,32 @@ function App() {
         
     }
 
+      const makeItResponsive = function(e, direction, ref, d){
+                setWidth(width+d.width);
+
+                if(width+d.width<700){
+                        setShapeHeader('xs-header');
+                        setTripleHeader('xs-tripleHeader');
+                        setTripleBtns('xs-tripleBtns');
+                        setTriplesContainer('xs-triples');
+                        setShapeLabel('xs-label');
+                        setTripleLabel('xs-label');
+                        setAddBtns('xs-addBtns');
+                        setGridClass('xs-gridBox');
+                        return;
+                }
+                        
+                setShapeHeader('header')                                          
+                setTripleHeader('tripleHeader');
+                setTripleBtns('tripleBtns');
+                setTriplesContainer('triples');
+                setShapeLabel('shapeNameLabel');
+                setTripleLabel('tripleNameLabel');
+                setAddBtns('addBtns');
+                setGridClass('gridBox');
+        }
+
+
 
     
 
@@ -115,23 +153,36 @@ function App() {
           <AppContext.Provider
                 value={
                   {
-                    shapes:shapes,
-                    addShape:addShape,
-                    deleteShape:deleteShape,
-                    replaceShapes:replaceShapes,
-                    prefixes:prefixes,
-                    updatePrefixes:updatePrefixes,
-                    emit:emit,
-                    visualize:visualize,
-                    isToolBarOpen:isToolBarOpen,
-                    isAssistantOpen:isAssistantOpen,
-                    isVisualizeOpen:isVisualizeOpen,
-                    assistantToggle:assistantToggle,
-                    visualizeToggle:visualizeToggle,
-                    loading:loading,
-                    setLoading:setLoading,
-                    asist:asist,
-                    setAsist:setAsist,
+                  shapes:shapes,
+                  addShape:addShape,
+                  deleteShape:deleteShape,
+                  replaceShapes:replaceShapes,
+                  prefixes:prefixes,
+                  updatePrefixes:updatePrefixes,
+                  emit:emit,
+                  visualize:visualize,
+                  isToolBarOpen:isToolBarOpen,
+                  isAssistantOpen:isAssistantOpen,
+                  isVisualizeOpen:isVisualizeOpen,
+                  assistantToggle:assistantToggle,
+                  visualizeToggle:visualizeToggle,
+
+                  //responsive
+                  width:width,
+                  makeItResponsive:makeItResponsive,
+                  shapeHeader:shapeHeader,
+                  tripleHeader:tripleHeader,
+                  triplesContainer:triplesContainer,
+                  shapeLabel:shapeLabel,
+                  tripleLabel:tripleLabel,
+                  tripleBtns:tripleBtns,
+                  addBtns:addBtns,
+                  gridClass:gridClass,
+                  loading:loading,
+                  setLoading:setLoading,
+                  asist:asist,
+                  setAsist:setAsist,
+
                     
                   }
                 }>
