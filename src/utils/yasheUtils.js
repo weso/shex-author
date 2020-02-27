@@ -51,11 +51,20 @@ const DEFAULT_SHAPE = 'PREFIX :       <http://example.org/>\n'+
     return newPrefixes;
   }
 
+function getSchema(){
+    let yashe = Editor.getInstance().getYashe();
+    if(yashe){
+        return yashe.getValue();
+    }
+    return '';
+  }
+
+
  const yasheUtils = {
       DEFAULT_SHAPE:DEFAULT_SHAPE,
       replaceShapes:replaceShapes,
-      updatePrefixes:updatePrefixes
-
+      updatePrefixes:updatePrefixes,
+      getSchema:getSchema
   }
 
   export default yasheUtils;

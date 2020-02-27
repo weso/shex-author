@@ -8,6 +8,8 @@ import MainContainer from './components/MainContainer';
 import Visualizer from './components/Visualizer';
 
 import shexUtils from './utils/shexUtils';
+import yasheUtils from './utils/yasheUtils';
+
 
 import Editor from './entities/editor';
 
@@ -78,22 +80,12 @@ function App() {
     }
     
 
-    const getSchema = function(){
-      let yashe = Editor.getInstance().getYashe();
-      if(yashe){
-          return yashe.getValue();
-      }
-      return '';
-    }
-
-
     const visualize = function(){
 
         let bodyFormData = new FormData();
-        bodyFormData.set('schema', getSchema());
+        bodyFormData.set('schema', yasheUtils.getSchema());
         bodyFormData.set('schemaFormat', 'ShExC');
         bodyFormData.set('schemaEngine', 'SHEX');
-
 
         axios({
             method: 'post',
@@ -101,52 +93,48 @@ function App() {
             data: bodyFormData,
             config: { headers: {'Content-Type': 'multipart/form-data' }}
         })
-        .then(function (response) {
-            //handle success
+        .then(function(response){
             if(response.data.svg != undefined){
-              if(response.data.svg.startsWith('<?xml')){
-                setSvg(response.data.svg);
-              }else{
-                setSvg(null)
-              }
-            }
+                if(response.data.svg.startsWith('<?xml')){
+                    setSvg(response.data.svg);
+                }else{
+                    setSvg(null)
+                }
+        }
         })
         .catch(function (response) {
             //handle error
             console.log(response);
         });
 
-        
     }
 
-      const makeItResponsive = function(e, direction, ref, d){
-                setWidth(width+d.width);
 
-                if(width+d.width<700){
-                        setShapeHeader('xs-header');
-                        setTripleHeader('xs-tripleHeader');
-                        setTripleBtns('xs-tripleBtns');
-                        setTriplesContainer('xs-triples');
-                        setShapeLabel('xs-label');
-                        setTripleLabel('xs-label');
-                        setAddBtns('xs-addBtns');
-                        setGridClass('xs-gridBox');
-                        return;
-                }
-                        
-                setShapeHeader('header')                                          
-                setTripleHeader('tripleHeader');
-                setTripleBtns('tripleBtns');
-                setTriplesContainer('triples');
-                setShapeLabel('shapeNameLabel');
-                setTripleLabel('tripleNameLabel');
-                setAddBtns('addBtns');
-                setGridClass('gridBox');
+      const makeItResponsive = function(e, direction, ref, d){
+            setWidth(width+d.width);
+
+            if(width+d.width<700){
+                    setShapeHeader('xs-header');
+                    setTripleHeader('xs-tripleHeader');
+                    setTripleBtns('xs-tripleBtns');
+                    setTriplesContainer('xs-triples');
+                    setShapeLabel('xs-label');
+                    setTripleLabel('xs-label');
+                    setAddBtns('xs-addBtns');
+                    setGridClass('xs-gridBox');
+                    return;
+            }
+                    
+            setShapeHeader('header')                                          
+            setTripleHeader('tripleHeader');
+            setTripleBtns('tripleBtns');
+            setTriplesContainer('triples');
+            setShapeLabel('shapeNameLabel');
+            setTripleLabel('tripleNameLabel');
+            setAddBtns('addBtns');
+            setGridClass('gridBox');
         }
 
-
-
-    
 
     return (
       
