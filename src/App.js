@@ -31,7 +31,6 @@ function App() {
     const [isVisualizeOpen, setVisualizeOpen] = useState(true);
     const [isLateralNavOpen, setLateralNavOpen] = useState(true);
     const [width,setWidth] = useState(700);
-    const [valid,setValid] = useState('valid');
     const [loading,setLoading] = useState('hideLoader');
     const [asist,setAsist] = useState('showAsist');
 
@@ -44,8 +43,6 @@ function App() {
     const [tripleLabel,setTripleLabel] = useState('tripleNameLabel');
     const [tripleBtns,setTripleBtns] = useState('tripleBtns');
     const [addBtns,setAddBtns] = useState('addBtns');
-
-
     const [gridClass,setGridClass] = useState('gridBox');
 
     const assistantToggle = () => setAssistantOpen(!isAssistantOpen); 
@@ -56,10 +53,6 @@ function App() {
       setVisualizeOpen(!isLateralNavOpen);
       setLateralNavOpen(!isLateralNavOpen);
     }
-
-    const [shake,setShake] = useState('un-shake');
-
-
 
     const addShape = () =>{
       setShapes([...shapes,shexUtils.addShape(shapes)]);
@@ -77,13 +70,9 @@ function App() {
     }
 
     const replaceShapes = (newShapes) =>{
-      /*
-      if(!valid){
-        setValid('danger');
-      }
-      */
       //This allows to render all the shapes when a property is updated.
       //Best Glitch Ever
+      //In fact... I would like to render only the property component...
       setShapes([]); 
       setShapes(newShapes);
       visualize();
@@ -136,16 +125,6 @@ function App() {
         
     }
 
-    const _onActive = function(e) {
-      setShake('un-shake');
-    }
-
-    const _onIdle = function(e) {
-      setShake('shake');
-    }
-
-    let idleTimer;
-
 
     const makeItResponsive = function(e, direction, ref, d){
     
@@ -176,16 +155,8 @@ function App() {
 
 
     return (
-      <div className="appContainer">
-        <IdleTimer
-          ref={ref => { idleTimer = ref }}
-          element={document}
-          onActive={_onActive}
-          onIdle={_onIdle}
-          debounce={250}
-          timeout={100 * 60 * 15} />
-        {
-            <ShapesContext.Provider
+      
+          <ShapesContext.Provider
                 value={
                   {
                     shapes:shapes,
@@ -203,7 +174,6 @@ function App() {
                     tripleLabel:tripleLabel,                 
                     triplesContainer:triplesContainer,
                     addBtns:addBtns,
-                    valid:valid,
                     loading:loading,
                     setLoading:setLoading,
                     asist:asist,
@@ -213,12 +183,12 @@ function App() {
                     gridClass:gridClass
                   }
                 }>
-                
+              <div className="appContainer">
                 <Nav colapseAll={colapseAll}/>
               
                 <div className="globalContainer">       
   
-                  <div className={shake+" row comps"}>                     
+                  <div className="row comps">                     
                       <Toolbar isLateralNavOpen={isLateralNavOpen}/>
                 
 
@@ -240,18 +210,13 @@ function App() {
                 </div>
                 <Collapse isOpen={isVisualizeOpen} >
                   <VisualizeComp svg={svg}/>
-                </Collapse>                                                
-            </ShapesContext.Provider>
-}
+                </Collapse>
+              </div>                                                
+            </ShapesContext.Provider>);
 
-             </div>
-          );
-                       
+}  
            
   
-    
-}
-
 /*
  
                                               
