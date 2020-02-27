@@ -1,7 +1,7 @@
 import React,{useContext} from 'react';
-import {ShapesContext} from '../../../App';
+import {ShapesContext} from '../../../../App';
 
-import {downloadFile} from '../../../utils/toolbarUtils';
+import {downloadFile} from '../../../../utils/toolbarUtils';
 
 function DownloadBtn () {
 

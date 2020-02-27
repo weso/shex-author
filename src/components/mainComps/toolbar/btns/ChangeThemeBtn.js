@@ -1,7 +1,7 @@
 import React,{useContext} from 'react';
-import {ShapesContext} from '../../../App';
+import {ShapesContext} from '../../../../App';
 
-import {changeTheme} from '../../../utils/toolbarUtils';
+import {changeTheme} from '../../../../utils/toolbarUtils';
 
 function ChangeThemeBtn () {
 

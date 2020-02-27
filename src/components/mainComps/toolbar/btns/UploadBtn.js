@@ -1,7 +1,6 @@
 import React,{useContext} from 'react';
-import {ShapesContext} from '../../../App';
-
-import {readFile} from '../../../utils/toolbarUtils';
+import {ShapesContext} from '../../../../App';
+import {readFile} from '../../../../utils/toolbarUtils';
 
 function UploadBtn () {
 

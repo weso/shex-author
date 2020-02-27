@@ -1,24 +1,16 @@
 
 import React, {useState} from 'react';
-import { Collapse } from 'reactstrap';
 import axios from 'axios';
 import './css/App.css';
 
-import EditorComp from './components/EditorComp';
-import AssistantComp from './components/AssistantComp';
-import VisualizeComp from  './components/VisualizeComp';
-
-import Toolbar from './components/navComponents/Toolbar';
-import Nav from './components/navComponents/Nav';
+import Nav from './components/Nav';
+import MainContainer from './components/MainContainer';
+import Visualizer from './components/Visualizer';
 
 import shexUtils from './utils/shexUtils';
 
 import Editor from './entities/editor';
 
-
-import { Resizable } from "re-resizable";
-
-import IdleTimer from 'react-idle-timer'
 
 export const ShapesContext = React.createContext();
 
@@ -29,7 +21,7 @@ function App() {
     const [prefixes,setPrefixes] = useState([{key:'',val:'http://example.org/'}]);
     const [isAssistantOpen, setAssistantOpen] = useState(true);
     const [isVisualizeOpen, setVisualizeOpen] = useState(true);
-    const [isLateralNavOpen, setLateralNavOpen] = useState(true);
+    const [isToolBarOpen, setToolBarOpen] = useState(true);
     const [width,setWidth] = useState(700);
     const [loading,setLoading] = useState('hideLoader');
     const [asist,setAsist] = useState('showAsist');
@@ -47,11 +39,11 @@ function App() {
 
     const assistantToggle = () => setAssistantOpen(!isAssistantOpen); 
     const visualizeToggle = () => setVisualizeOpen(!isVisualizeOpen);
-    const lateralNavToggle = () => setLateralNavOpen(!isLateralNavOpen);
+    const toolbarToggle = () => setToolBarOpen(!isToolBarOpen);
     const colapseAll = () =>{
-      setAssistantOpen(!isLateralNavOpen);
-      setVisualizeOpen(!isLateralNavOpen);
-      setLateralNavOpen(!isLateralNavOpen);
+      setAssistantOpen(!isToolBarOpen);
+      setVisualizeOpen(!isToolBarOpen);
+      setToolBarOpen(!isToolBarOpen);
     }
 
     const addShape = () =>{
@@ -167,6 +159,7 @@ function App() {
                     updatePrefixes:updatePrefixes,
                     emit:emit,
                     visualize:visualize,
+                    isToolBarOpen:isToolBarOpen,
                     shapeClass:shapeClass,
                     tripleClass:tripleClass,
                     tripleBtns:tripleBtns,
@@ -183,35 +176,11 @@ function App() {
                     gridClass:gridClass
                   }
                 }>
-              <div className="appContainer">
-                <Nav colapseAll={colapseAll}/>
-              
-                <div className="globalContainer">       
-  
-                  <div className="row comps">                     
-                      <Toolbar isLateralNavOpen={isLateralNavOpen}/>
-                
 
-                      <Collapse isOpen={isAssistantOpen} className='row assistCollapse'>
-                        <Resizable  className="col row resizable"
-                                    size={{ width: width }}                    
-                                    onResizeStop={makeItResponsive}              
-                                    enable={{right:true}}
-                                    >
-                    
-                                  <div className='col containerAssist'>                                    
-                                    <AssistantComp assistantToggle={assistantToggle}/> 
-                                  </div>
-                        </Resizable>     
-                      </Collapse>                         
-                                                
-                      <EditorComp/>                       
-                  </div>
-                </div>
-                <Collapse isOpen={isVisualizeOpen} >
-                  <VisualizeComp svg={svg}/>
-                </Collapse>
-              </div>                                                
+              <Nav colapseAll={colapseAll}/>
+              <MainContainer/>
+              <Visualizer svg={svg} isVisualizeOpen={isVisualizeOpen}/>
+                                                  
             </ShapesContext.Provider>);
 
 }  

@@ -1,9 +1,9 @@
 import React from 'react';
 import Codemirror from 'codemirror';
-import Editor from '../../entities/editor';
+import Editor from '../../../entities/editor';
 
-import {addPrefix} from '../../utils/prefixUtils';
-import {ALL_PREFIXES} from '../../utils/rdfUtils';
+import {addPrefix} from '../../../utils/prefixUtils';
+import {ALL_PREFIXES} from '../../../utils/rdfUtils';
 
 function PrefixSelector (props){
 

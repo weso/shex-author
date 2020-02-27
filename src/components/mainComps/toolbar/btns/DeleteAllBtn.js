@@ -1,6 +1,6 @@
 import React,{useContext} from 'react';
-import {ShapesContext} from '../../../App';
-import  Editor from '../../../entities/editor';
+import {ShapesContext} from '../../../../App';
+import  Editor from '../../../../entities/editor';
 
 function DeleteAllBtn () {
 

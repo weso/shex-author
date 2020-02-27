@@ -1,15 +1,15 @@
 import React,{useContext} from 'react';
-import {ShapesContext} from '../../../App';
+import {ShapesContext} from '../../../../App';
 
-import {redo} from '../../../utils/toolbarUtils';
-import yasheUtils from '../../../utils/yasheUtils';
+import yasheUtils from '../../../../utils/yasheUtils';
+import {undo} from '../../../../utils/toolbarUtils';
 
-function RedoBtn () {
+function UndoBtn () {
 
     const context = useContext(ShapesContext);
 
-    const handleRedo = function(){
-        redo();
+    const handleUndo = function(){
+        undo();
         setTimeout(() => {//needed
             context.replaceShapes(yasheUtils.replaceShapes());
             context.updatePrefixes(yasheUtils.updatePrefixes());
@@ -19,13 +19,14 @@ function RedoBtn () {
     return (
         <button className="mdc-icon-button material-icons btns" 
                 type="button" 
-                title="Redo"
-                onClick={handleRedo}>
-                redo
+                title="Undo"
+                onClick={handleUndo}>
+                undo
         </button> );
     
+  
 }
 
 
-export default RedoBtn;
+export default UndoBtn;
 
