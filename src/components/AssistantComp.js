@@ -13,21 +13,15 @@ function AssistantComp (props) {
     return (
         <div className="globalAssis">
                <div className="assisTitle">
-                        <div className="title">
-                                ShEx Assistant
-                        </div>
+                        <div className="title">ShEx Assistant</div>
                         <div className="asisTitleClose">
                                 <button className="closeAsisBtn" title="Close Assistant" onClick={assistantToggle}>x</button>
-                        </div> 
-                    
-
+                        </div>
                 </div>
              
                 <div className={context.asist}>
-
                         <div id='assistant-container' className='assistantContainer'> 
                                 {context.shapes.map(shape =>{return  <ShapeComponent shape={shape} key={shape.id}/> })}
-                                
                                 <div className="addCont">
                                         <button className={context.addBtns+" addShapeButton"} 
                                                 onClick={context.addShape}
