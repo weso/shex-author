@@ -1,0 +1,46 @@
+.customShape{
+    background: #EBF4FF;
+    padding: 10px;
+    color: black;
+    border-top: 1px solid #acaaaa;
+    border-radius: 0px 0px 10px 10px;
+    display: grid;
+    grid-template-columns: 100%;
+    gap: 5px;
+}
+
+
+
+.customTriple{
+    background: #EFE8E1;
+    padding: 10px;
+    color: black;
+    border-top: 1px solid #acaaaa;
+    display: grid;
+    grid-template-columns: 100%;
+    gap: 5px;
+}
+
+
+.gridBox{ 
+    display: grid;
+    grid-template-columns: 12% 15% 49%;
+}
+
+.xs-gridBox{
+    grid-template-columns: 10% 25% 49%;
+}
+
+
+.customLabel{
+    grid-column: 2/3;
+}
+
+.customSelector{
+    border-radius: 5px;
+    background: white;
+    outline: none;
+    color:#222;
+    border: 1px solid #acaaaa !important;
+}
+

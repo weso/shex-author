@@ -31,6 +31,7 @@ const PRIMITIVES = ['string','integer','date','boolean'];
 
 
 let inlines;
+let isValid = true;
 
 function getTokens(){
     let yashe = Editor.getInstance().getYashe();
@@ -45,6 +46,14 @@ function getTokens(){
 
         }
     }
+    
+    /*
+    if(!isValid){
+        return null;
+    }
+
+    */
+
     return tokens;
 }
 
@@ -119,6 +128,11 @@ function getTriples(shapeId,shape) {
 }
 
 function getTriple(triples,singleTriple,shapeId) {
+    
+    if(singleTriple.length>5){
+        isValid = false;
+    }
+   
     let id = triples.length;
     let type;
     let value;
@@ -128,7 +142,6 @@ function getTriple(triples,singleTriple,shapeId) {
     let index = 0;
     for(let s in singleTriple){
         let token = singleTriple[s];
-        
         if(index == 0){
             type = getType(token.string,'tripleName');
             

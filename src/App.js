@@ -1,20 +1,20 @@
+
 import React, {useState} from 'react';
-import { Collapse } from 'reactstrap';
 import axios from 'axios';
-import './App.css';
+import './css/App.css';
 
-import EditorComp from './components/EditorComp';
-import AssistantComp from './components/AssistantComp';
-import VisualizeComp from  './components/VisualizeComp';
-
-import Toolbar from './components/navComponents/Toolbar';
-import Nav from './components/navComponents/Nav';
+import Nav from './components/Nav';
+import MainContainer from './components/MainContainer';
+import Visualizer from './components/Visualizer';
 
 import shexUtils from './utils/shexUtils';
-import {getRequestOptions} from './utils/visualizeUtils'; 
+import yasheUtils from './utils/yasheUtils';
 
 
-export const ShapesContext = React.createContext();
+import Editor from './entities/editor';
+
+
+export const AppContext = React.createContext();
 
 function App() {
 
@@ -23,17 +23,32 @@ function App() {
     const [prefixes,setPrefixes] = useState([{key:'',val:'http://example.org/'}]);
     const [isAssistantOpen, setAssistantOpen] = useState(true);
     const [isVisualizeOpen, setVisualizeOpen] = useState(true);
-    const [isToolbarOpen, setToolbarOpen] = useState(true);
+    const [isToolBarOpen, setToolBarOpen] = useState(true);
 
+    const [width,setWidth] = useState(700);
+
+    const [loading,setLoading] = useState('hideLoader');
+    const [asist,setAsist] = useState('showAsist');
+
+    //Responsive
+    const [shapeHeader,setShapeHeader] = useState('header');
+    const [tripleHeader,setTripleHeader] = useState('tripleHeader');
+    const [triplesContainer,setTriplesContainer] = useState('triples');
+    const [shapeLabel,setShapeLabel] = useState('shapeNameLabel');
+    const [tripleLabel,setTripleLabel] = useState('tripleNameLabel');
+    const [tripleBtns,setTripleBtns] = useState('tripleBtns');
+    const [addBtns,setAddBtns] = useState('addBtns');
+    const [gridClass,setGridClass] = useState('gridBox');
+    
+  
     const assistantToggle = () => setAssistantOpen(!isAssistantOpen); 
     const visualizeToggle = () => setVisualizeOpen(!isVisualizeOpen);
-    const lateralNavToggle = () => setToolbarOpen(!isToolbarOpen);
+    const toolbarToggle = () => setToolBarOpen(!isToolBarOpen);
     const colapseAll = () =>{
-      setAssistantOpen(!isToolbarOpen);
-      setVisualizeOpen(!isToolbarOpen);
-      setToolbarOpen(!isToolbarOpen);
+      setAssistantOpen(!isToolBarOpen);
+      setVisualizeOpen(!isToolBarOpen);
+      setToolBarOpen(!isToolBarOpen);
     }
-
 
     const addShape = () =>{
       setShapes([...shapes,shexUtils.addShape(shapes)]);
@@ -53,27 +68,39 @@ function App() {
     const replaceShapes = (newShapes) =>{
       //This allows to render all the shapes when a property is updated.
       //Best Glitch Ever
+      //In fact... I would like to render only the property component...
       setShapes([]); 
       setShapes(newShapes);
       visualize();
     }
-
+    
     const updatePrefixes = (newPrefixes)=>{
       setPrefixes([])
       setPrefixes(newPrefixes);
     }
     
+
     const visualize = function(){
 
-        axios(getRequestOptions()).then(function (response) {
-            //handle success
+        let bodyFormData = new FormData();
+        bodyFormData.set('schema', yasheUtils.getSchema());
+        bodyFormData.set('schemaFormat', 'ShExC');
+        bodyFormData.set('schemaEngine', 'SHEX');
+
+        axios({
+            method: 'post',
+            url: 'http://rdfshape.weso.es:8080/api/schema/visualize',
+            data: bodyFormData,
+            config: { headers: {'Content-Type': 'multipart/form-data' }}
+        })
+        .then(function(response){
             if(response.data.svg != undefined){
-              if(response.data.svg.startsWith('<?xml')){
-                setSvg(response.data.svg);
-              }else{
-                setSvg(null)
-              }
-            }
+                if(response.data.svg.startsWith('<?xml')){
+                    setSvg(response.data.svg);
+                }else{
+                    setSvg(null)
+                }
+        }
         })
         .catch(function (response) {
             //handle error
@@ -83,44 +110,78 @@ function App() {
     }
 
 
+      const makeItResponsive = function(e, direction, ref, d){
+            setWidth(width+d.width);
+
+            if(width+d.width<700){
+                    setShapeHeader('xs-header');
+                    setTripleHeader('xs-tripleHeader');
+                    setTripleBtns('xs-tripleBtns');
+                    setTriplesContainer('xs-triples');
+                    setShapeLabel('xs-label');
+                    setTripleLabel('xs-label');
+                    setAddBtns('xs-addBtns');
+                    setGridClass('xs-gridBox');
+                    return;
+            }
+                    
+            setShapeHeader('header')                                          
+            setTripleHeader('tripleHeader');
+            setTripleBtns('tripleBtns');
+            setTriplesContainer('triples');
+            setShapeLabel('shapeNameLabel');
+            setTripleLabel('tripleNameLabel');
+            setAddBtns('addBtns');
+            setGridClass('gridBox');
+        }
+
+
     return (
-            
-            <ShapesContext.Provider value={
+      
+          <AppContext.Provider
+                value={
                   {
-                    shapes,shapes,
-                    addShape:addShape,
-                    deleteShape:deleteShape,
-                    replaceShapes:replaceShapes,
-                    prefixes:prefixes,
-                    updatePrefixes:updatePrefixes,
-                    emit:emit,
-                    visualize:visualize
+                  shapes:shapes,
+                  addShape:addShape,
+                  deleteShape:deleteShape,
+                  replaceShapes:replaceShapes,
+                  prefixes:prefixes,
+                  updatePrefixes:updatePrefixes,
+                  emit:emit,
+                  visualize:visualize,
+                  isToolBarOpen:isToolBarOpen,
+                  isAssistantOpen:isAssistantOpen,
+                  isVisualizeOpen:isVisualizeOpen,
+                  assistantToggle:assistantToggle,
+                  visualizeToggle:visualizeToggle,
+
+                  //responsive
+                  width:width,
+                  makeItResponsive:makeItResponsive,
+                  shapeHeader:shapeHeader,
+                  tripleHeader:tripleHeader,
+                  triplesContainer:triplesContainer,
+                  shapeLabel:shapeLabel,
+                  tripleLabel:tripleLabel,
+                  tripleBtns:tripleBtns,
+                  addBtns:addBtns,
+                  gridClass:gridClass,
+                  loading:loading,
+                  setLoading:setLoading,
+                  asist:asist,
+                  setAsist:setAsist,
+
+                    
                   }
-            }>
-                
-                  <Nav colapseAll={colapseAll}/>
-                  <div className="globalContainer">
-                    <div className="row comps">                     
-                        <Collapse isOpen={isToolbarOpen} className="lateralNav col-xs-1">
-                            <Toolbar  assistantToggle={assistantToggle} visualizeToggle={visualizeToggle}/>
-                        </Collapse> 
+                }>
 
-                        <Collapse isOpen={isAssistantOpen} className="col">
-                            <AssistantComp/>
-                        </Collapse> 
-                        
-                        <EditorComp />
-                          
-                    </div>
-                  </div>
-                  <Collapse isOpen={isVisualizeOpen} >
-                    <VisualizeComp svg={svg}/>
-                  </Collapse>   
-                  
-          </ShapesContext.Provider>
-          );
-                       
-}
+              <Nav colapseAll={colapseAll}/>
+              <MainContainer/>
+              <Visualizer svg={svg} isVisualizeOpen={isVisualizeOpen}/>
+                                                  
+            </AppContext.Provider>);
 
+}  
+           
 
 export default App;

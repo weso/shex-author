@@ -1,17 +1,16 @@
 import Codemirror from 'codemirror';
-import  Editor from '../entities/editor';
+import Editor from '../entities/editor';
 
-import {defaultExample} from '../examples/defaultExample';
-import {wikiExample} from '../examples/wikiExample';
+import {defaultExample} from '../shapes/defaultExample';
+import {wikiExample} from '../shapes/wikiExample';
 
-export function readFileTool(event) {
-    var files = event.target.files
+export function readFile(files){
     //Only one file allowed
     if(files.length>1){
         return;
     }
 
-    var file = event.target.files[0];
+    var file = files[0];
     //Only ShEx files allowed
     if(!file.name.endsWith('.shex')){
         return;
@@ -70,9 +69,10 @@ export function changeTheme(){
     
     yashe.setOption("theme",themeValue)
     Codemirror.signal(yashe,'themeChange');
+
 }
 
-export function loadExample(example){ 
+export function loadExample(example){
     let yashe = Editor.getInstance().getYashe();
     if(example=='default'){
         yashe.setValue(defaultExample)
@@ -80,10 +80,21 @@ export function loadExample(example){
         yashe.setValue(wikiExample)
     }
     setTimeout(() => {//needed
-        Codemirror.signal(yashe,'keyHandled');
+        Codemirror.signal(yashe,'galery');
     }, 10); 
 }
 
 export function scrollTop(){
     window.scrollTo(0, 0);
+}
+
+
+export function undo(){
+    let yashe = Editor.getInstance().getYashe();
+    yashe.undo();
+}
+
+export function redo(){
+    let yashe = Editor.getInstance().getYashe();
+    yashe.redo();
 }

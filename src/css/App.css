@@ -1,0 +1,64 @@
+html{
+	background-color: #ddeafa;
+	overflow-x: hidden;
+}
+
+body{
+ width: auto;
+}
+
+.shexTitle{
+	font-size: 40px;
+	font-weight: bold !important;
+	margin-left:20px !important;
+}
+
+
+.appContainer{
+	display: grid;
+}
+
+.globalContainer{ 
+	background-color: #ddeafa;
+	padding-top: 30px;
+	padding-left: 50px;
+	padding-right: 50px;
+	
+}
+
+
+.comps{
+	background-color: #f8f8ff;
+	border-radius: 20px;
+}
+
+
+
+.visualize{
+	min-height: 180px;
+	padding-top: 55px;
+	padding-bottom: 15px;
+	padding-left: 35px;
+	padding-right: 35px;
+	background-color: #ddeafa;
+
+}
+
+.umlContainer{
+	display: grid;
+	justify-content: center;
+	border-radius: 10px;
+	border: 1px solid #acaaaa;
+	background-color: white;
+	min-height: 180px;
+}
+
+.uml{
+
+}
+
+
+
+
+
+
