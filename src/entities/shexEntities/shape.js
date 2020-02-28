@@ -62,6 +62,25 @@ class Shape {
      }
 
 
+
+
+    getInitialValue(){
+       return this.type.value;
+    }
+     
+    getInitialPrefix(){
+      return this.type.prefix.prefixValue;
+    }
+
+    setTypeValue(value){
+      this.type.setValue(value);
+    }
+
+    setPrefix(prefix){
+      this.type.setPrefix(prefix);
+    }
+     
+
      toString(){
     
       let str = this.type+' '+this.qualifier+' {\n'

@@ -28,7 +28,6 @@ import InlineShape from '../entities/shexEntities/shexUtils/inlineShape';
 
 //HAY QUE METER TODOS
 const PRIMITIVES = ['string','integer','date','boolean'];
-const CARDINALITY = ['*','?','+'];
 
 
 let inlines;

@@ -14,11 +14,11 @@ class TypesFactory{
     createType(type,context){
 
         let retType;
-        if(type == 'iriRef'){
+        if(type == 'iriShape' || type == 'iriTriple' || type == 'iriValue'){
             retType = new IriRef(context);
         }
         
-        if(type == 'prefixedIri'){
+        if(type == 'prefixedShape' || type == 'prefixedTriple' || type == 'prefixedValue'){
             retType = new PrefixedIri(context);
         }
 
