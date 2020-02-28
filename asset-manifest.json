@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/shex-author/static/css/main.e508ec6e.chunk.css",
-    "main.js": "/shex-author/static/js/main.02c0fa3f.chunk.js",
-    "main.js.map": "/shex-author/static/js/main.02c0fa3f.chunk.js.map",
+    "main.css": "/shex-author/static/css/main.73e95850.chunk.css",
+    "main.js": "/shex-author/static/js/main.ad620f17.chunk.js",
+    "main.js.map": "/shex-author/static/js/main.ad620f17.chunk.js.map",
     "runtime-main.js": "/shex-author/static/js/runtime-main.95ebbff4.js",
     "runtime-main.js.map": "/shex-author/static/js/runtime-main.95ebbff4.js.map",
     "static/css/2.46eb9be4.chunk.css": "/shex-author/static/css/2.46eb9be4.chunk.css",
-    "static/js/2.87df9b0c.chunk.js": "/shex-author/static/js/2.87df9b0c.chunk.js",
-    "static/js/2.87df9b0c.chunk.js.map": "/shex-author/static/js/2.87df9b0c.chunk.js.map",
+    "static/js/2.5de9908f.chunk.js": "/shex-author/static/js/2.5de9908f.chunk.js",
+    "static/js/2.5de9908f.chunk.js.map": "/shex-author/static/js/2.5de9908f.chunk.js.map",
     "index.html": "/shex-author/index.html",
-    "precache-manifest.566744ae4cce679032b2a0a65969a60a.js": "/shex-author/precache-manifest.566744ae4cce679032b2a0a65969a60a.js",
+    "precache-manifest.b4dcff7bc9499e379e2601dfc707fe7e.js": "/shex-author/precache-manifest.b4dcff7bc9499e379e2601dfc707fe7e.js",
     "service-worker.js": "/shex-author/service-worker.js",
     "static/css/2.46eb9be4.chunk.css.map": "/shex-author/static/css/2.46eb9be4.chunk.css.map",
-    "static/css/main.e508ec6e.chunk.css.map": "/shex-author/static/css/main.e508ec6e.chunk.css.map"
+    "static/css/main.73e95850.chunk.css.map": "/shex-author/static/css/main.73e95850.chunk.css.map"
   },
   "entrypoints": [
     "static/js/runtime-main.95ebbff4.js",
     "static/css/2.46eb9be4.chunk.css",
-    "static/js/2.87df9b0c.chunk.js",
-    "static/css/main.e508ec6e.chunk.css",
-    "static/js/main.02c0fa3f.chunk.js"
+    "static/js/2.5de9908f.chunk.js",
+    "static/css/main.73e95850.chunk.css",
+    "static/js/main.ad620f17.chunk.js"
   ]
 }
