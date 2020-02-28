@@ -10,12 +10,17 @@ class Triple {
     constructor(id,type=new PrefixedIri('tripleName',new Prefix('schema','http://schema.org/')),value=new Primitive(),inlineShape=new InlineShape(),cardinality='') {
         this.id = id;
         this.type = type;
-        this.value = new Value(value);
+        this.value = value;
         this.cardinality = cardinality;
         this.inlineShape = inlineShape;
         this.factory = new TypesFactory();
       }
       
+    addValue(value){
+        this.values.push(value);
+        this.valuesCount++;
+    }
+
     getId(){
         return this.id;
     }
@@ -27,6 +32,10 @@ class Triple {
     setType(type){
        this.type = this.factory.createType(type,'tripleName');
      }
+
+    setValue(value){
+        this.value = this.factory.createType(value,'valueName');;
+    }
 
     setCardinality(cardinality){
         this.cardinality = cardinality;
@@ -41,30 +50,13 @@ class Triple {
     }
 
 
+    getValue(){
+       return this.value;
+    }
+
+
     getCardinality(){
         return this.cardinality;
-    }
-
-    getValue(){
-        return this.value;
-    }
-
-
-    
-    getInitialValue(){
-        return this.type.value;
-    }
-
-    getInitialPrefix(){
-        return this.type.prefix.prefixValue;
-    }
-
-    setTypeValue(value){
-        this.type.setValue(value);
-    }
-
-    setPrefix(prefix){
-         this.type.setPrefix(prefix);
     }
 
 
