@@ -13,6 +13,9 @@ class Primitive extends Type{
     }
 
     toString(){
+        if(this.value=='none'){
+            return '.';
+        }
         return 'xsd:'+this.getValue();
     }
 

@@ -40,6 +40,7 @@ function ConstraintComponent (props) {
                         value={primitive} 
                         onChange={handlePrimitiveChange}
                         title="Constraint">
+                        <option value='none'>None</option>
                         {
                             primitives.map(prim =>{
                                 return <option key={prim} value={prim.toLowerCase()}>{prim}</option>
