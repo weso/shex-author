@@ -33,7 +33,7 @@ function EditorComp() {
                 Editor.getInstance().draw(shapes);
             });
 
-
+            /*
             y.on('keyup',function(){
                 if(!y.hasErrors(y)){
                     let newShapes = getNewShapes();
@@ -46,6 +46,7 @@ function EditorComp() {
                     } 
                 }   
             });
+            */
 
            
             y.on('prefixUpdate', function() {
@@ -68,12 +69,15 @@ function EditorComp() {
 
             //Fired after a key is handled through a key map
             //(for example "Ctrl-Z")
+            /*
             y.on('keyHandled', function() {
                 if(!y.hasErrors()){
                     oldShapes = replaceShapes(getNewShapes());
                     updatePrefixes();
                 }
             });
+
+            */
 
             //Load example from Galery
             y.on('galery', function() {
