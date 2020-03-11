@@ -71,27 +71,6 @@ function TripleHeader (props) {
                     placeholder="eg: name"
                     title="Triple Name"/>
 
-            <select className="customSelector" 
-                    value={primitive} 
-                    onChange={handlePrimitiveChange}
-                    title="Constraint">
-                {
-                    primitives.map(prim =>{
-                        return <option key={prim} value={prim.toLowerCase()}>{prim}</option>
-                    })
-                }
-            </select>
-
-            <select className="customSelector" 
-                    value={cardinality} 
-                    onChange={handleCardinalityChange} 
-                    title="Cardinality">
-                    <option value="">Exactly one</option>
-                    <option value="*">Zero or more</option>
-                    <option value="+">One at least</option>
-                    <option value="?">One or none</option>
-            </select>
-
             <button className={context.tripleBtns+" buildTriple buildBtn buildTripleBtn mdc-icon-button material-icons"} 
                     onClick={customizeTriple} 
                     title="Customize Triple">
