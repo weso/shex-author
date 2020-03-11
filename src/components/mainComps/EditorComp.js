@@ -69,10 +69,13 @@ function EditorComp() {
             //Fired after a key is handled through a key map
             //(for example "Ctrl-Z")
             y.on('keyHandled', function() {
-                if(!y.hasErrors()){
-                    oldShapes = replaceShapes(getNewShapes());
-                    updatePrefixes();
-                }
+                setTimeout(() => {
+                    if(!y.hasErrors()){
+                        oldShapes = replaceShapes(getNewShapes());
+                        updatePrefixes();
+                    }
+                }, 300);
+               
             });
 
             //Load example from Galery

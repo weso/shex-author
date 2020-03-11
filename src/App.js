@@ -1,5 +1,5 @@
 
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import axios from 'axios';
 import './css/App.css';
 
@@ -38,8 +38,7 @@ function App() {
     const [tripleLabel,setTripleLabel] = useState('tripleNameLabel');
     const [tripleBtns,setTripleBtns] = useState('tripleBtns');
     const [addBtns,setAddBtns] = useState('addBtns');
-    const [gridClass,setGridClass] = useState('gridBox');
-    
+    const [gridClass,setGridClass] = useState('gridBox');    
   
     const assistantToggle = () => setAssistantOpen(!isAssistantOpen); 
     const visualizeToggle = () => setVisualizeOpen(!isVisualizeOpen);
@@ -109,33 +108,38 @@ function App() {
 
     }
 
+    const handleResize = function(e, direction, ref, d){
+        makeItResponsive(d.width);
+    }
 
-      const makeItResponsive = function(e, direction, ref, d){
-            setWidth(width+d.width);
+    const makeItResponsive = function(newWidht){
+          setWidth(width+newWidht);
+          if(width+newWidht<710){
+                  setShapeHeader('xs-header');
+                  setTripleHeader('xs-tripleHeader');
+                  setTripleBtns('xs-tripleBtns');
+                  setTriplesContainer('xs-triples');
+                  setShapeLabel('xs-label');
+                  setTripleLabel('xs-label');
+                  setAddBtns('xs-addBtns');
+                  setGridClass('xs-gridBox');
+                  return;
+          }
+                  
+          setShapeHeader('header')                                          
+          setTripleHeader('tripleHeader');
+          setTripleBtns('tripleBtns');
+          setTriplesContainer('triples');
+          setShapeLabel('shapeNameLabel');
+          setTripleLabel('tripleNameLabel');
+          setAddBtns('addBtns');
+          setGridClass('gridBox');
+    }
 
-            if(width+d.width<700){
-                    setShapeHeader('xs-header');
-                    setTripleHeader('xs-tripleHeader');
-                    setTripleBtns('xs-tripleBtns');
-                    setTriplesContainer('xs-triples');
-                    setShapeLabel('xs-label');
-                    setTripleLabel('xs-label');
-                    setAddBtns('xs-addBtns');
-                    setGridClass('xs-gridBox');
-                    return;
-            }
-                    
-            setShapeHeader('header')                                          
-            setTripleHeader('tripleHeader');
-            setTripleBtns('tripleBtns');
-            setTriplesContainer('triples');
-            setShapeLabel('shapeNameLabel');
-            setTripleLabel('tripleNameLabel');
-            setAddBtns('addBtns');
-            setGridClass('gridBox');
-        }
-
-
+    useEffect(() => {
+      makeItResponsive(0);
+    });
+    
     return (
       
           <AppContext.Provider
@@ -157,7 +161,7 @@ function App() {
 
                   //responsive
                   width:width,
-                  makeItResponsive:makeItResponsive,
+                  handleResize:handleResize,
                   shapeHeader:shapeHeader,
                   tripleHeader:tripleHeader,
                   triplesContainer:triplesContainer,
