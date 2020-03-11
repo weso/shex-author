@@ -9,8 +9,9 @@ function Cardinality (props) {
         const {triple} = props;
         const context = useContext(AppContext);
         const [cardinality,setCardinality] = useState(triple.cardinality);
-        const [isRange,setRange] = useState(true);
         const [isExactly,setExactly] = useState(false);
+        const [isMinLimit,setMinLimit] = useState(true);
+        const [isRange,setRange] = useState(false);
         const [min,setMin] = useState(1);
         const [max,setMax] = useState(10);
 
@@ -27,6 +28,11 @@ function Cardinality (props) {
                 setMin(valueAsNumber);
         }
 
+        const handleMinLimitChange = function(valueAsNumber){
+                triple.setCardinality('minLimit',valueAsNumber,max);
+                context.emit();
+                setMin(valueAsNumber);
+        }
         const handleMinChange = function(valueAsNumber){
                 triple.setCardinality('range',valueAsNumber,max);
                 context.emit();
@@ -60,6 +66,14 @@ function Cardinality (props) {
                                                 min={0} 
                                                 value={min}
                                                 onChange={handleExactlyChange}/>
+                        </Collapse> 
+
+                        <Collapse isOpen={isMinLimit} className="rangeCardinality">
+                                <label className={context.tripleLabel}>Value</label>
+                                <NumericInput   className="form-control" 
+                                                min={0} 
+                                                value={min}
+                                                onChange={handleMinLimitChange}/>
                         </Collapse> 
                         
                         <Collapse isOpen={isRange} className="rangeCardinality">
