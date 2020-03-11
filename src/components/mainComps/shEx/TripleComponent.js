@@ -3,6 +3,7 @@ import { Collapse } from 'reactstrap';
 import TripleHeader from './headers/TripleHeader';
 import CustomComp from './customize/CustomComp';
 import ConstraintComponent from './ConstraintComponent';
+import Cardinality from './customize/Cardinality';
 
 
 function TripleComponent (props) {
@@ -10,6 +11,7 @@ function TripleComponent (props) {
     const {shape,triple,deleteTriple} = props;
     const [isTripleCustomOpen,setTripleCustomOpen] = useState(false);
     const [isConstraintsOpen,setConstraintsOpen] = useState(false);
+    const [isCardinalityOpen,setCardinalityOpen] = useState(true);
     const [rounded,setRounded] = useState('roundme');
 
     const customizeTriple = function(){
@@ -57,6 +59,14 @@ function TripleComponent (props) {
                         onEntering={rounder} >
 
                 <ConstraintComponent triple={triple} collapseConstraints={collapseConstraints}/>
+                            
+            </Collapse> 
+
+            <Collapse   isOpen={isCardinalityOpen}
+                        onExited={rounder}
+                        onEntering={rounder} >
+
+                <Cardinality triple={triple}/>
                             
             </Collapse> 
            

@@ -83,6 +83,12 @@ function TripleHeader (props) {
                     build
             </button>
 
+            <button className={context.tripleBtns+" buildCardinality buildBtn buildTripleBtn mdc-icon-button material-icons"}  
+                    onClick={handleCollapse} 
+                    title="Customize Cardinality">
+                    build
+            </button>
+
             <button className={context.tripleBtns+" deleteTripleBtn mdc-icon-button material-icons"} 
                     onClick={()=>deleteTriple(triple.id)} 
                     title="Delete Triple">

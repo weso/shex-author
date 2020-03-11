@@ -6,7 +6,7 @@
     text-align: left;
     border-top: 1px solid #acaaaa;
     display: grid;
-    grid-template-columns: 10% 66% 6% 6% 6%;
+    grid-template-columns: 10% 59% 6% 6% 6% 6%;
     gap: 10px;
 
 }
@@ -33,6 +33,11 @@
 .buildConstraint{
     background: #3d3d3d !important;
     color:rgb(177, 224, 134) !important;
+}
+
+.buildCardinality{
+    background: #3d3d3d !important;
+    color:rgb(247, 173, 234) !important;
 }
 
 
