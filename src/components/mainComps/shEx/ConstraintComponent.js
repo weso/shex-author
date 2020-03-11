@@ -127,9 +127,11 @@ function ConstraintComponent (props) {
         }
 
 
+        triple.value.setValue('');
         context.emit();
         setConstraint(newConstraint);
         setQualifier('none');
+        setName('');
 
         setNameOpen(false);
         setPrefixOpen(false);
