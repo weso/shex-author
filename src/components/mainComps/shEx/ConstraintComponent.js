@@ -27,7 +27,7 @@ function ConstraintComponent (props) {
 
     return (
                 <div className="constraint">
-                    <label className={context.tripleLabel}>Constraint</label>
+                    <label className='gridLabel'>Constraint</label>
                     <select className="customSelector" 
                         value={primitive} 
                         onChange={handlePrimitiveChange}
