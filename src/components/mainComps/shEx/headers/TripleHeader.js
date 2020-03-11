@@ -11,7 +11,7 @@ const primitives = ['String','Integer','Date','Boolean','Custom'];
 function TripleHeader (props) {
 
     const context = useContext(AppContext);
-    const {triple,deleteTriple,customizeTriple,forceCollapse,collapseConstraints,rounded} = props;
+    const {triple,deleteTriple,customizeTriple,forceCollapse,collapseConstraints,customizeCardinality,rounded} = props;
 
     const [name,setName] = useState(triple.type.value);
     const [cardinality,setCardinality] = useState(triple.cardinality);
@@ -84,7 +84,7 @@ function TripleHeader (props) {
             </button>
 
             <button className={context.tripleBtns+" buildCardinality buildBtn buildTripleBtn mdc-icon-button material-icons"}  
-                    onClick={handleCollapse} 
+                    onClick={customizeCardinality} 
                     title="Customize Cardinality">
                     build
             </button>

@@ -141,14 +141,16 @@
     color: black;
     border-top: 1px solid #acaaaa;
     display: grid;
-    justify-content: center;
-    grid-template-columns:  20% 40%;
+    grid-template-columns: 10% 20% 40%;
+}
+
+.cardiLabel{
+    grid-column: 2/3;
 }
 
 
-
 .rangeCardinality{
-    grid-column: 1/3;
+    grid-column: 2/4;
     display: grid;
     justify-content: center;
     grid-template-columns: 32% 68%;

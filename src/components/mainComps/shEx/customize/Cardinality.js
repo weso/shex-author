@@ -52,7 +52,7 @@ function Cardinality (props) {
 
         return ( 
                 <div className="cardinality">
-                        <label className={context.tripleLabel}>Cardinality</label>
+                        <label className='cardiLabel'>Cardinality</label>
                         <select className="customSelector" 
                                 value={cardinality} 
                                 onChange={handleCardinalityChange} 

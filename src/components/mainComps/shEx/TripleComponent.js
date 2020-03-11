@@ -11,21 +11,31 @@ function TripleComponent (props) {
     const {shape,triple,deleteTriple} = props;
     const [isTripleCustomOpen,setTripleCustomOpen] = useState(false);
     const [isConstraintsOpen,setConstraintsOpen] = useState(false);
-    const [isCardinalityOpen,setCardinalityOpen] = useState(true);
+    const [isCardinalityOpen,setCardinalityOpen] = useState(false);
     const [rounded,setRounded] = useState('roundme');
 
     const customizeTriple = function(){
-        setTripleCustomOpen(!isTripleCustomOpen);
         setConstraintsOpen(false);
+        setCardinalityOpen(false);
+        setTripleCustomOpen(!isTripleCustomOpen);
     }
 
     const collapseConstraints = function(){
         setTripleCustomOpen(false);
+        setCardinalityOpen(false);
         setConstraintsOpen(!isConstraintsOpen);
+    }
+
+    const customizeCardinality = function(){
+        setConstraintsOpen(false);
+        setTripleCustomOpen(false);
+        setCardinalityOpen(!isCardinalityOpen);
+        
     }
 
     const forceCollapse = function(collapse){
         setTripleCustomOpen(false);
+        setCardinalityOpen(false);
         setConstraintsOpen(collapse);
     }
 
@@ -44,6 +54,7 @@ function TripleComponent (props) {
                           deleteTriple={deleteTriple} 
                           customizeTriple={customizeTriple}
                           collapseConstraints={collapseConstraints}
+                          customizeCardinality={customizeCardinality}
                           forceCollapse={forceCollapse}
                           rounded={rounded}/>
 

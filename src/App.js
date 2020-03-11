@@ -112,7 +112,7 @@ function App() {
 
       const makeItResponsive = function(e, direction, ref, d){
             setWidth(width+d.width);
-
+          
             if(width+d.width<700){
                     setShapeHeader('xs-header');
                     setTripleHeader('xs-tripleHeader');
