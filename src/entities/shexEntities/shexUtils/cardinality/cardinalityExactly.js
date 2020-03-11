@@ -1,11 +1,11 @@
 class CardinalityExactly{
 
-    constructor(min,max){
-        this.min = min;
+    constructor(value){
+        this.value = value;
     }
 
     toString(){
-        return '{'+min+'}';
+        return '{'+this.value+'}';
     }
 
 }

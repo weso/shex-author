@@ -9,14 +9,34 @@ function Cardinality (props) {
         const {triple} = props;
         const context = useContext(AppContext);
         const [cardinality,setCardinality] = useState(triple.cardinality);
-        const [isRange,setRange] = useState(false);
-        const [isExactly,setExactly] = useState(true);
+        const [isRange,setRange] = useState(true);
+        const [isExactly,setExactly] = useState(false);
+        const [min,setMin] = useState(1);
+        const [max,setMax] = useState(10);
 
         const handleCardinalityChange = function(e){
                 let newCardinality = e.target.value;
                 triple.setCardinality(newCardinality);
                 context.emit();
                 setCardinality(newCardinality)
+        }
+
+        const handleExactlyChange = function(valueAsNumber){
+                triple.setCardinality('exactly',valueAsNumber,max);
+                context.emit();
+                setMin(valueAsNumber);
+        }
+
+        const handleMinChange = function(valueAsNumber){
+                triple.setCardinality('range',valueAsNumber,max);
+                context.emit();
+                setMin(valueAsNumber);
+        }
+
+        const handleMaxChange = function(valueAsNumber){
+                triple.setCardinality('range',min,valueAsNumber);
+                context.emit();
+                setMax(valueAsNumber);
         }
 
         return ( 
@@ -36,16 +56,25 @@ function Cardinality (props) {
 
                         <Collapse isOpen={isExactly} className="rangeCardinality">
                                 <label className={context.tripleLabel}>Value</label>
-                                <NumericInput className="form-control" min={0} value={1}/>
+                                <NumericInput   className="form-control" 
+                                                min={0} 
+                                                value={min}
+                                                onChange={handleExactlyChange}/>
                         </Collapse> 
                         
                         <Collapse isOpen={isRange} className="rangeCardinality">
                                 <label className={context.tripleLabel}>Min</label>
-                                <NumericInput className="form-control" min={0} value={1}/>
-                                <label className={context.tripleLabel}>Max</label>
-                                <NumericInput className="form-control" min={0} value={10}/>
+                                <NumericInput   className="form-control" 
+                                                min={0} 
+                                                value={min}
+                                                onChange={handleMinChange}/>
 
-                          
+                                <label className={context.tripleLabel}>Max</label>
+                                <NumericInput   className="form-control" 
+                                                min={0} 
+                                                value={max}
+                                                onChange={handleMaxChange}/>
+
                         </Collapse> 
 
                 </div>);                          

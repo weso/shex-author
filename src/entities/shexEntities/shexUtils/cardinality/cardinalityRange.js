@@ -6,7 +6,7 @@ class CardinalityRange{
     }
 
     toString(){
-        return '{'+min+','+max+'}';
+        return '{'+this.min+','+this.max+'}';
     }
 
 }

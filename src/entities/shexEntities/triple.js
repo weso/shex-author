@@ -1,4 +1,5 @@
 import TypesFactory from './types/typesFactory';
+import CardinalityFactory from './shexUtils/cardinality/cardinalityFactory';
 import PrefixedIri from './types/concreteTypes/prefixedIri';
 import Primitive from './types/concreteTypes/primitive';
 import InlineShape from './shexUtils/inlineShape';
@@ -14,6 +15,7 @@ class Triple {
         this.cardinality = cardinality;
         this.inlineShape = inlineShape;
         this.factory = new TypesFactory();
+        this.cardFactory = new CardinalityFactory();
       }
       
     addValue(value){
@@ -37,8 +39,8 @@ class Triple {
         this.value = this.factory.createType(value,'valueName');;
     }
 
-    setCardinality(cardinality){
-        this.cardinality = cardinality;
+    setCardinality(cardinality,min,max){
+        this.cardinality = this.cardFactory.createCardinality(cardinality,min,max);
     }
 
     getInlineShape(){

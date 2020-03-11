@@ -1,9 +1,9 @@
-import CardinalityExactly from './CardinalityExactly';
-import CardinalityRange from './CardinalityRange';
+import CardinalityExactly from './cardinalityExactly';
+import CardinalityRange from './cardinalityRange';
 
 class CardinalityFactory{
 
-    createType(type,min.max){
+    createCardinality(type,min,max){
 
         let retType = type;
         if(type == 'exactly'){
