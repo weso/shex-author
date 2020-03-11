@@ -9,7 +9,7 @@ import yasheUtils from '../../../../utils/yasheUtils';
 function CustomConstraint (props) {
 
     const context = useContext(AppContext);
-    const {triple,collapseConstraints} = props;
+    const {triple,forceCollapse} = props;
 
     const [constraint,setConstraint] = useState(triple.value.getTypeName());
     const [qualifier,setQualifier] = useState(triple.value.value)
@@ -152,7 +152,7 @@ function CustomConstraint (props) {
         }
 
         if(newConstraint == 'primitive'){
-            collapseConstraints();  
+            forceCollapse();  
             triple.setValue('primitive');
             context.emit();
             //Whitout the timeout the assistant doesn't update
