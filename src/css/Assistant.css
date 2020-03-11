@@ -133,6 +133,15 @@
     grid-template-columns: 10% 20% 40%;
 }
 
+.constraintCollapse{
+    grid-column: 2/4;
+    background:#d6ffc654;
+    padding: 2px;
+    color: black;
+    display: grid;
+    grid-template-columns: 100%;
+    gap: 5px;
+}
 
 .cardinality{
     background:#f8e4f7;

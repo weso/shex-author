@@ -11,16 +11,23 @@ function ConstraintComponent (props) {
 
     const context = useContext(AppContext);
     const {triple,collapseConstraints} = props;
-    const [isCustomOpen,setCustomOpen] = useState(false);
+    const [isCustomOpen,setCustomOpen] = useState(true);
     const [primitive,setPrimitive] = useState(triple.value.value);
 
 
     const handlePrimitiveChange = function(e){
         const primitive = e.target.value;
+        /*
         triple.setValue('primitive');
         triple.value.setValue(primitive);
         context.emit();
         setPrimitive(primitive)
+        */
+
+        setCustomOpen(false);
+        if(primitive =='custom'){
+            setCustomOpen(true);
+        }
     }
 
 
@@ -38,7 +45,13 @@ function ConstraintComponent (props) {
                             })
                         }
                         <option value='custom'>Custom</option>
-                    </select>                                                             
+                    </select>    
+
+                    <Collapse isOpen={isCustomOpen} className='constraintCollapse'>
+                        <CustomConstraint
+                        triple={triple}
+                        collapseConstraints={collapseConstraints}/> 
+                    </Collapse>                                                         
                 </div>
   
     );
