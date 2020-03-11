@@ -10,7 +10,6 @@ function Cardinality (props) {
         const context = useContext(AppContext);
         const [cardinality,setCardinality] = useState(triple.cardinality);
         const [isExactly,setExactly] = useState(false);
-        const [isMinLimit,setMinLimit] = useState(true);
         const [isRange,setRange] = useState(false);
         const [min,setMin] = useState(1);
         const [max,setMax] = useState(10);
@@ -20,21 +19,27 @@ function Cardinality (props) {
                 triple.setCardinality(newCardinality);
                 context.emit();
                 setCardinality(newCardinality)
+
+
+                setExactly(false);
+                setRange(false);
+
+                if(newCardinality == 'exactly' || newCardinality == 'minLimit' ){
+                        setMin(1);
+                        setExactly(true);
+                }
+
+                if(newCardinality == 'range'){
+                        setMin(1);
+                        setMax(10);
+                        setRange(true);
+                }
+
+
         }
 
-        const handleExactlyChange = function(valueAsNumber){
-                triple.setCardinality('exactly',valueAsNumber,max);
-                context.emit();
-                setMin(valueAsNumber);
-        }
-
-        const handleMinLimitChange = function(valueAsNumber){
-                triple.setCardinality('minLimit',valueAsNumber,max);
-                context.emit();
-                setMin(valueAsNumber);
-        }
-        const handleMinChange = function(valueAsNumber){
-                triple.setCardinality('range',valueAsNumber,max);
+        const handleMinChange = function(valueAsNumber,kind){
+                triple.setCardinality(kind,valueAsNumber,max);
                 context.emit();
                 setMin(valueAsNumber);
         }
@@ -57,31 +62,26 @@ function Cardinality (props) {
                                 <option value="+">One at least</option>
                                 <option value="?">One or none</option>
                                 <option value="exactly">Exactly value</option>
+                                <option value="minLimit">Inferior Limit</option>
                                 <option value="range">Range</option>
                         </select> 
 
+                    
                         <Collapse isOpen={isExactly} className="rangeCardinality">
                                 <label className={context.tripleLabel}>Value</label>
                                 <NumericInput   className="form-control" 
                                                 min={0} 
                                                 value={min}
-                                                onChange={handleExactlyChange}/>
+                                                onChange={(value)=>{handleMinChange(value,cardinality)}}/>
                         </Collapse> 
 
-                        <Collapse isOpen={isMinLimit} className="rangeCardinality">
-                                <label className={context.tripleLabel}>Value</label>
-                                <NumericInput   className="form-control" 
-                                                min={0} 
-                                                value={min}
-                                                onChange={handleMinLimitChange}/>
-                        </Collapse> 
                         
                         <Collapse isOpen={isRange} className="rangeCardinality">
                                 <label className={context.tripleLabel}>Min</label>
                                 <NumericInput   className="form-control" 
                                                 min={0} 
                                                 value={min}
-                                                onChange={handleMinChange}/>
+                                                onChange={(value)=>{handleMinChange(value,'range')}}/>
 
                                 <label className={context.tripleLabel}>Max</label>
                                 <NumericInput   className="form-control" 

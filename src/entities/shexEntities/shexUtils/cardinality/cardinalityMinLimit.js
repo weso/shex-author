@@ -1,6 +1,6 @@
 class CardinalityMinLimit{
 
-    constructor(min){
+    constructor(min=1){
         this.min = min;
     }
 

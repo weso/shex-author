@@ -145,12 +145,15 @@
     grid-template-columns:  20% 40%;
 }
 
+
+
 .rangeCardinality{
     grid-column: 1/3;
     display: grid;
     justify-content: center;
-    grid-template-columns: 35% 70%;
-    padding: 10px;
+    grid-template-columns: 32% 68%;
+    gap:5px;
+    margin-top: 5px;
 }
 
 

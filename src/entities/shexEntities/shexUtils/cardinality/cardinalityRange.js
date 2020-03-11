@@ -1,6 +1,6 @@
 class CardinalityRange{
 
-    constructor(min,max){
+    constructor(min=1,max=10){
         this.min = min;
         this.max = max;
     }

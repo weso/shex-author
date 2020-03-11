@@ -1,6 +1,6 @@
 class CardinalityExactly{
 
-    constructor(value){
+    constructor(value=1){
         this.value = value;
     }
 
