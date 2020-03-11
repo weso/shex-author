@@ -10,7 +10,7 @@ function TripleComponent (props) {
     
     const {shape,triple,deleteTriple} = props;
     const [isTripleCustomOpen,setTripleCustomOpen] = useState(false);
-    const [isConstraintsOpen,setConstraintsOpen] = useState(true);
+    const [isConstraintsOpen,setConstraintsOpen] = useState(false);
     const [isCardinalityOpen,setCardinalityOpen] = useState(false);
     const [rounded,setRounded] = useState('roundme');
 

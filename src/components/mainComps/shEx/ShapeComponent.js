@@ -39,8 +39,16 @@ function ShapeComponent (props) {
 
 
     const customizeShape = function(){
-        setCustomOpen(!isCustomOpen);
-        setTriplesOpen(false);
+        //Completly collapsed shape open just customShape
+        if(!isCustomOpen && !isTriplesOpen ){
+            setCustomOpen(true);
+            setTriplesOpen(false);
+        }else{
+            //CustomShape opened  opens triples on collapse
+            setCustomOpen(!isCustomOpen);
+            setTriplesOpen(!isTriplesOpen);
+        }
+
         setColapseBtn('menu');
     }
 
