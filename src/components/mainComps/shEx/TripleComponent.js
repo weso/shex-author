@@ -25,6 +25,7 @@ function TripleComponent (props) {
 
         if(allCollased){
             setTripleCustomOpen(true);
+            changeCollapseBtn();
         }
     }
 
@@ -35,6 +36,7 @@ function TripleComponent (props) {
 
         if(allCollased){
             setConstraintsOpen(true);
+            changeCollapseBtn();
         }
     }
 
@@ -45,6 +47,7 @@ function TripleComponent (props) {
 
         if(allCollased){
             setInlineOpen(true);
+            changeCollapseBtn();
         }  
     }
 
@@ -55,6 +58,7 @@ function TripleComponent (props) {
 
         if(allCollased){
             setCardinalityOpen(true);
+            changeCollapseBtn();
         } 
         
     }
@@ -74,13 +78,18 @@ function TripleComponent (props) {
     const collapseToggle = function(){
         collapseAll(!allCollased);
         setAllCollapsed(!allCollased);
+        changeCollapseBtn();
+    }
 
+    const changeCollapseBtn = function(){
         if(colapseBtn=='menu'){
             setColapseBtn('menu_open');
         }else{
             setColapseBtn('menu');
         }
     }
+
+    
 
     const rounder =()=>{
          if(rounded=='roundme'){
@@ -140,14 +149,6 @@ function TripleComponent (props) {
         </div>);                          
 }
 
-/*
-<Collapse isOpen={isConstraintsOpen} >
-                <div className="constraints">
-                    <ConstraintComponent triple={triple}/>
-                    <button className="addTripleButton">+ Constraint</button>        
-                </div>                    
-            </Collapse> 
-*/
 
 export default TripleComponent;
 
