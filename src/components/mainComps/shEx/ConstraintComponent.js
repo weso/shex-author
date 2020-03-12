@@ -15,22 +15,7 @@ function ConstraintComponent (props) {
     const [isCustomOpen,setCustomOpen] = useState(false);
     const [primitive,setPrimitive] = useState(triple.value.value);
 
-    const handlePrimitiveChange = function(e){
-        const primitive = e.target.value;
-        triple.setValue('primitive');
-        triple.value.setValue(primitive);
-        setPrimitive(primitive)
-        setCustomOpen(false);
-        if(primitive =='custom'){
-            triple.value.setValue('');
-            setConstraint('primitive');
-            setName('');
-            setCustomOpen(true);
-        }
-        
-        context.emit();
-    }
-
+  
     const [constraint,setConstraint] = useState(triple.value.getTypeName());
     const [cardinality,setCardinality] = useState(triple.cardinality);
         
@@ -69,6 +54,25 @@ function ConstraintComponent (props) {
         setName(newName);
     }
 
+      const handlePrimitiveChange = function(e){
+        const primitive = e.target.value;
+        triple.setValue('primitive');
+        triple.value.setValue(primitive);
+        setPrimitive(primitive)
+        setCustomOpen(false);
+        if(primitive =='custom'){
+            triple.setValue('primitive');
+            triple.value.setValue('');
+            setConstraint('primitive');
+            setName('');
+            setCustomOpen(true);
+            setNameOpen(false);
+            setPrefixOpen(false);
+        }
+        
+        context.emit();
+    }
+
 
     const handleConstraintChange = function(e){
         let newConstraint = e.target.value;
@@ -78,7 +82,6 @@ function ConstraintComponent (props) {
         triple.value.setValue('');
         context.emit();
         setConstraint(newConstraint);
-        //setName('');
 
         setNameOpen(false);
         setPrefixOpen(false);
