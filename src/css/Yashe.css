@@ -34,17 +34,3 @@
 svg{
 	margin-top:10px;
 }
-
-
-.wikibaseRDFtoolTip{
-	clear:both !important;
-	overflow:hidden !important; 
-	height:1% !important;
-	line-height:20px !important;
-	font-size: 20px !important;
-
-}
-
-.wikidata_tooltip{
-	
-}

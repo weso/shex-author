@@ -22,7 +22,7 @@ function EditorComp() {
             const options = {
                 persistent:false,
                 lineNumbers: true,
-                showTooltip:false,
+                showTooltip:true,
                 value:yasheUtils.DEFAULT_SHAPE
             }
             
