@@ -15,7 +15,7 @@
 .xs-tripleHeader{
     justify-content: center;
     gap: 8px;
-    grid-template-columns: 9% 50% 20% 6% 6% 6% 6% 6%;
+    grid-template-columns: 9% 40% 6% 6% 6% 6% 6% 5%;
 }
 
 

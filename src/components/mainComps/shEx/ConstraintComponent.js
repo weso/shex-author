@@ -32,7 +32,6 @@ function ConstraintComponent (props) {
     }
 
     const [constraint,setConstraint] = useState(triple.value.getTypeName());
-    const [qualifier,setQualifier] = useState(triple.value.value)
     const [cardinality,setCardinality] = useState(triple.cardinality);
         
     let initialPrefix = 'example';
@@ -51,25 +50,9 @@ function ConstraintComponent (props) {
         initialOpenName = true;
     }
 
-    let inlineValue = '';
-    let inlineOpen = false;
-    if(triple.inlineShape.shape != null){
-        inlineValue = triple.inlineShape.shape.id;
-        inlineOpen = true;
-        initialOpenName = false;
-    }
-
-  
-    
-    const [shapeRef,setShapeRef] = useState(inlineValue);
-    const [isShapeRefOpen,setShapeRefOpen] = useState(inlineOpen);
-    const [isQualiOpen,setQualiOpen] = useState(inlineOpen);
-
 
     const [name,setName] = useState(triple.value.value);
     const [isNameOpen,setNameOpen] = useState(initialOpenName);
-
-
 
     const handlePrefixChange = function(e){ 
         let prefix = getPrefix(e.target.value);
@@ -86,59 +69,21 @@ function ConstraintComponent (props) {
         setName(newName);
     }
 
-    const handleShapeRefChange = function(e){
-        const shapeId = e.target.value;
-        let inlineShape = null;
-        let inlineSelector = '';
-        if(shapeId!=''){
-            inlineShape = shexUtils.getShapeById(context.shapes,shapeId);
-            inlineSelector = inlineShape.id;
-        }
-        triple.getInlineShape().setShape(inlineShape);
-        context.emit();
-        setShapeRef(inlineSelector);
-    }
-
-    const handleQualifierChange = function(e){
-        let newQualifier = e.target.value;
-        triple.value.value = newQualifier;
-        context.emit();
-        setQualifier(newQualifier);
-    }
-
-
-
 
     const handleConstraintChange = function(e){
         let newConstraint = e.target.value;
-        if(newConstraint!='shape'){
-            //This is necesary when we change from ShapeType to otherType
-            triple.inlineShape.shape = null;
-        }
         triple.setValue(newConstraint);
+        triple.value.setValue(name);
        
-        if(newConstraint!='shape'){
-            //conserve the name
-            triple.value.setValue(name);
-        }else{
-            //Set the first shape by default
-            setShapeRef(context.shapes[0]);
-            triple.getInlineShape().setShape(context.shapes[0]);
-        }
-
-
         triple.value.setValue('');
         context.emit();
         setConstraint(newConstraint);
-        setQualifier('none');
-        setName('');
+        //setName('');
 
         setNameOpen(false);
         setPrefixOpen(false);
-        setShapeRefOpen(false);
-        setQualiOpen(false);
-    
 
+    
         if(newConstraint == 'iriRef'){
             setNameOpen(true);
         }
@@ -146,11 +91,6 @@ function ConstraintComponent (props) {
         if(newConstraint == 'prefixedIri'){
             setNameOpen(true);
             setPrefixOpen(true);
-        }
-
-        if(newConstraint == 'shape'){
-            setShapeRefOpen(true);
-            setQualiOpen(true);
         }
 
         if(newConstraint == 'primitive'){
@@ -189,7 +129,6 @@ function ConstraintComponent (props) {
                             <option value="primitive">Primitive</option>
                             <option value="iriRef">IriRef</option>
                             <option value="prefixedIri">PrefixedIri</option>
-                            <option value="shape">ShapeRef</option>
                             <option value="literal">Literal</option>
                             <option value="nonliteral">NonLiteral</option>
                             <option value="iri">IRI</option>
@@ -220,35 +159,7 @@ function ConstraintComponent (props) {
                                 })
                             }
                             </select>
-                        </Collapse> 
-
-                        <Collapse isOpen={isShapeRefOpen} className='customConstraint'>
-                            <label  >ShapeRef</label>
-                            <select className="customSelector"
-                                    value={shapeRef}
-                                    onChange={handleShapeRefChange}>
-                        
-                            { 
-                            context.shapes.map(shape =>{
-                                return <option key={shape.id} value={shape.id}>{'@'+shape.type}</option>
-                                })
-                            }
-                            </select>    
-                        </Collapse>
-        
-                        <Collapse isOpen={isQualiOpen} className='customConstraint'>
-                            <label  >Qualifier </label>
-                            <select className="customSelector"
-                                    value={qualifier}
-                                    onChange={handleQualifierChange} >
-                                <option value="shape">None</option>
-                                <option value="iri">Iri</option>
-                                <option value="literal">Literal</option>
-                                <option value="nonliteral">NonLiteral</option>
-                                <option value="bnode">Bnode</option>
-                            </select>  
-                        </Collapse>
-                        
+                        </Collapse>     
                     </Collapse>                                                         
                 </div>
   
