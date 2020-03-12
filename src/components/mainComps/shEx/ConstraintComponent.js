@@ -69,6 +69,10 @@ function ConstraintComponent (props) {
             setNameOpen(false);
             setPrefixOpen(false);
         }
+
+        if(primitive =='none' && triple.inlineShape.shape != null){
+            triple.setValue('blankType');
+        }
         
         context.emit();
     }
