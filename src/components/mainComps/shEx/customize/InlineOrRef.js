@@ -32,7 +32,7 @@ function InlineOrRef (props) {
         }
         triple.getInlineShape().setShape(inlineShape);
         if(triple.value.value=='none'){
-            triple.value.setValue('');
+            triple.setValue('blankType');
         }
         context.emit();
         setShapeRef(inlineSelector);

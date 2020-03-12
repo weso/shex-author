@@ -1,6 +1,7 @@
 import PrefixedIri from'./concreteTypes/prefixedIri';
 import IriRef from'./concreteTypes/iriRef';
 import BNode from'./concreteTypes/bNode';
+import BlankType from'./concreteTypes/blankType';
 import Primitive from'./concreteTypes/primitive';
 import ShapeReference from'./concreteTypes/shapeReference';
 
@@ -24,6 +25,10 @@ class TypesFactory{
         
         if(type == 'bnodeType'){
             retType = new BNode(context);
+        }
+
+        if(type == 'blankType'){
+            retType = new BlankType();
         }
 
         if(type == 'primitive'){
