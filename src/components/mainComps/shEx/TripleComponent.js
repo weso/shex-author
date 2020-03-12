@@ -10,42 +10,76 @@ import Cardinality from './customize/Cardinality';
 function TripleComponent (props) {
     
     const {shape,triple,deleteTriple} = props;
-    const [isTripleCustomOpen,setTripleCustomOpen] = useState(true);
-    const [isConstraintsOpen,setConstraintsOpen] = useState(true);
-    const [isCardinalityOpen,setCardinalityOpen] = useState(true);
-    const [isInlineOpen,setInlineOpen] = useState(true);
+    const [isTripleCustomOpen,setTripleCustomOpen] = useState(false);
+    const [isConstraintsOpen,setConstraintsOpen] = useState(false);
+    const [isCardinalityOpen,setCardinalityOpen] = useState(false);
+    const [isInlineOpen,setInlineOpen] = useState(false);
+    const [allCollased,setAllCollapsed] = useState(false);
     const [rounded,setRounded] = useState('roundme');
+    const [colapseBtn,setColapseBtn] = useState('menu');
 
     const customizeTriple = function(){
-       // setConstraintsOpen(false);
-       // setCardinalityOpen(false);
+        collapseAll(false);
         setTripleCustomOpen(!isTripleCustomOpen);
+        setAllCollapsed(false);
+
+        if(allCollased){
+            setTripleCustomOpen(true);
+        }
     }
 
     const collapseConstraints = function(){
-       // setTripleCustomOpen(false);
-      //  setCardinalityOpen(false);
+        collapseAll(false);
         setConstraintsOpen(!isConstraintsOpen);
+        setAllCollapsed(false);
+
+        if(allCollased){
+            setConstraintsOpen(true);
+        }
     }
 
     const customizeInline = function(){
-      //  setConstraintsOpen(false);
-       // setTripleCustomOpen(false);
+        collapseAll(false);
         setInlineOpen(!isInlineOpen);
-        
+        setAllCollapsed(false);
+
+        if(allCollased){
+            setInlineOpen(true);
+        }  
     }
 
     const customizeCardinality = function(){
-      //  setConstraintsOpen(false);
-       // setTripleCustomOpen(false);
+        collapseAll(false);
         setCardinalityOpen(!isCardinalityOpen);
+        setAllCollapsed(false);
+
+        if(allCollased){
+            setCardinalityOpen(true);
+        } 
         
     }
 
     const forceCollapse = function(collapse){
-        setTripleCustomOpen(false);
-        setCardinalityOpen(false);
+       // collapseAll();
         setConstraintsOpen(collapse);
+    }
+
+    const collapseAll = function(collapse){
+        setTripleCustomOpen(collapse);
+        setConstraintsOpen(collapse);
+        setCardinalityOpen(collapse);
+        setInlineOpen(collapse);
+    }
+
+    const collapseToggle = function(){
+        collapseAll(!allCollased);
+        setAllCollapsed(!allCollased);
+
+        if(colapseBtn=='menu'){
+            setColapseBtn('menu_open');
+        }else{
+            setColapseBtn('menu');
+        }
     }
 
     const rounder =()=>{
@@ -66,6 +100,8 @@ function TripleComponent (props) {
                           customizeInline={customizeInline}
                           customizeCardinality={customizeCardinality}
                           forceCollapse={forceCollapse}
+                          collapseToggle={collapseToggle}
+                          colapseBtn={colapseBtn}
                           rounded={rounded}/>
 
             <CustomComp   entity={triple} 
