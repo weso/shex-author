@@ -31,6 +31,9 @@ function InlineOrRef (props) {
             inlineSelector = inlineShape.id;
         }
         triple.getInlineShape().setShape(inlineShape);
+        if(triple.value.value=='none'){
+            triple.value.setValue('');
+        }
         context.emit();
         setShapeRef(inlineSelector);
     }
