@@ -10,6 +10,7 @@
 }
 
 
+
 .customTriple{
     background: #EFE8E1;
     padding: 10px;
@@ -29,7 +30,7 @@
 
 .gridBox{ 
     display: grid;
-    grid-template-columns: 10% 15% 45%;
+    grid-template-columns: 10% 20% 40%;
 }
 
 .xs-gridBox{

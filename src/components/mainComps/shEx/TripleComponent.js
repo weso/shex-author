@@ -3,32 +3,41 @@ import { Collapse } from 'reactstrap';
 import TripleHeader from './headers/TripleHeader';
 import CustomComp from './customize/CustomComp';
 import ConstraintComponent from './ConstraintComponent';
+import InlineOrRef from './customize/InlineOrRef';
 import Cardinality from './customize/Cardinality';
 
 
 function TripleComponent (props) {
     
     const {shape,triple,deleteTriple} = props;
-    const [isTripleCustomOpen,setTripleCustomOpen] = useState(false);
-    const [isConstraintsOpen,setConstraintsOpen] = useState(false);
-    const [isCardinalityOpen,setCardinalityOpen] = useState(false);
+    const [isTripleCustomOpen,setTripleCustomOpen] = useState(true);
+    const [isConstraintsOpen,setConstraintsOpen] = useState(true);
+    const [isCardinalityOpen,setCardinalityOpen] = useState(true);
+    const [isInlineOpen,setInlineOpen] = useState(true);
     const [rounded,setRounded] = useState('roundme');
 
     const customizeTriple = function(){
-        setConstraintsOpen(false);
-        setCardinalityOpen(false);
+       // setConstraintsOpen(false);
+       // setCardinalityOpen(false);
         setTripleCustomOpen(!isTripleCustomOpen);
     }
 
     const collapseConstraints = function(){
-        setTripleCustomOpen(false);
-        setCardinalityOpen(false);
+       // setTripleCustomOpen(false);
+      //  setCardinalityOpen(false);
         setConstraintsOpen(!isConstraintsOpen);
     }
 
+    const customizeInline = function(){
+      //  setConstraintsOpen(false);
+       // setTripleCustomOpen(false);
+        setInlineOpen(!isInlineOpen);
+        
+    }
+
     const customizeCardinality = function(){
-        setConstraintsOpen(false);
-        setTripleCustomOpen(false);
+      //  setConstraintsOpen(false);
+       // setTripleCustomOpen(false);
         setCardinalityOpen(!isCardinalityOpen);
         
     }
@@ -54,6 +63,7 @@ function TripleComponent (props) {
                           deleteTriple={deleteTriple} 
                           customizeTriple={customizeTriple}
                           collapseConstraints={collapseConstraints}
+                          customizeInline={customizeInline}
                           customizeCardinality={customizeCardinality}
                           forceCollapse={forceCollapse}
                           rounded={rounded}/>
@@ -73,6 +83,14 @@ function TripleComponent (props) {
                             
             </Collapse> 
 
+             <Collapse  isOpen={isInlineOpen}
+                        onExited={rounder}
+                        onEntering={rounder} >
+
+                <InlineOrRef triple={triple}/>
+                            
+            </Collapse> 
+
             <Collapse   isOpen={isCardinalityOpen}
                         onExited={rounder}
                         onEntering={rounder} >
@@ -80,6 +98,8 @@ function TripleComponent (props) {
                 <Cardinality triple={triple}/>
                             
             </Collapse> 
+
+           
            
         </div>);                          
 }

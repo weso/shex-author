@@ -86,6 +86,9 @@ function EditorComp() {
                 }
             });
 
+            y.on('themeChange', function() {
+               
+            });
         
             y.refresh();
             setYashe(y);

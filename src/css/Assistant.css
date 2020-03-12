@@ -143,6 +143,15 @@
     gap: 5px;
 }
 
+.inline{
+    background:#f5fac8;
+    padding: 8px;
+    color: black;
+    border-top: 1px solid #acaaaa;
+    display: grid;
+    grid-template-columns: 10% 20% 40%;
+}
+
 .cardinality{
     background:#faf0f9;
     padding: 8px;
