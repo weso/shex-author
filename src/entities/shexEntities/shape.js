@@ -26,34 +26,8 @@ class Shape {
       });
     }
 
-    getTriplesCount(){
-      return this.triplesCount;
-    }
-
-
-    getId(){
-      return this.id;
-    }
-
-    getType(){
-      return this.type; 
-    }
-
-
-    getTriples() {
-        return this.triples;
-     }
-
-    setTriples(triples){
-      this.triples = triples;
-    }
-
-    getQualifier() {
-        return this.qualifier;
-     }
-
     setQualifier(qualifier){
-      this.qualifier = this.factory.createType(qualifier,'shapeName');
+      this.qualifier = this.qualifier;
     }
     
 
@@ -61,28 +35,8 @@ class Shape {
         this.type = this.factory.createType(type,'shapeName');
      }
 
-
-
-
-    getInitialValue(){
-       return this.type.value;
-    }
-     
-    getInitialPrefix(){
-      return this.type.prefix.prefixValue;
-    }
-
-    setTypeValue(value){
-      this.type.setValue(value);
-    }
-
-    setPrefix(prefix){
-      this.type.setPrefix(prefix);
-    }
-     
-
-     toString(){
-    
+ 
+    toString(){
       let str = this.type+' '+this.qualifier+' {\n'
       this.triples.forEach(triple => {
         str+=triple;
@@ -93,6 +47,43 @@ class Shape {
 
      }
 
+
+    //Getters and setters
+    getId(){
+      return this.id;
+    }
+
+    setId(id){
+      this.id=id;
+    }
+
+    getType(){
+      return this.type;
+    }
+
+    getTriples(){
+      return this.triples;
+    }
+
+    setTriples(triples){
+      this.triples = triples;
+    }
+
+    getTriplesCount(){
+      return this.triplesCount;
+    }
+
+    setTriplesCount(triplesCount){
+      this.triplesCount = triplesCount;
+    }
+
+    getQualifier(){
+      return this.qualifier;
+    }
+
+    setQualifier(qualifier){
+      this.qualifier = qualifier;
+    }
 
   }
 
