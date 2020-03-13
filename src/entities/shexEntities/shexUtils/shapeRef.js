@@ -1,6 +1,6 @@
 import Shape from'../shape';
 
-class InlineShape{
+class ShapeRef{
 
     constructor(shape=null){
         this.shape = shape;
@@ -28,4 +28,4 @@ class InlineShape{
 
 }
 
-export default InlineShape;
+export default ShapeRef;

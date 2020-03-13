@@ -23,7 +23,7 @@ import BlankKind from '../entities/shexEntities/types/concreteTypes/kinds/blankK
 
 import Prefix from '../entities/shexEntities/shexUtils/prefix';
 
-import InlineShape from '../entities/shexEntities/shexUtils/inlineShape';
+import ShapeRef from '../entities/shexEntities/shexUtils/shapeRef';
 
 
 //HAY QUE METER TODOS
@@ -137,7 +137,7 @@ function getTriple(triples,singleTriple,shapeId) {
     let type;
     let value;
     let cardinality;
-    let inlineShape = new InlineShape();
+    let shapeRef = new ShapeRef();
     let inlineName;
     let index = 0;
     for(let s in singleTriple){
@@ -181,7 +181,7 @@ function getTriple(triples,singleTriple,shapeId) {
         value = new ShapeReference(ref); 
     }
 
-    return new Triple(id,type,value,inlineShape,cardinality);
+    return new Triple(id,type,value,shapeRef,cardinality);
 }
 
 function getStart(shape){

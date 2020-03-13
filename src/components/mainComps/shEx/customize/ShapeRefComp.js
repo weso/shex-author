@@ -13,8 +13,8 @@ function InlineOrRef (props) {
 
     let inlineValue = '';
     let inlineOpen = false;
-    if(triple.inlineShape.shape != null){
-        inlineValue = triple.inlineShape.shape.id;
+    if(triple.shapeRef.shape != null){
+        inlineValue = triple.shapeRef.shape.id;
         inlineOpen = true;
     }
 
@@ -24,13 +24,13 @@ function InlineOrRef (props) {
 
     const handleShapeRefChange = function(e){
         const shapeId = e.target.value;
-        let inlineShape = null;
+        let shapeRef = null;
         let inlineSelector = '';
         if(shapeId!=''){
-            inlineShape = shexUtils.getShapeById(context.shapes,shapeId);
-            inlineSelector = inlineShape.id;
+            shapeRef = shexUtils.getShapeById(context.shapes,shapeId);
+            inlineSelector = shapeRef.id;
         }
-        triple.getInlineShape().setShape(inlineShape);
+        triple.getInlineShape().setShape(shapeRef);
         if(triple.value.value=='none'){
             triple.setValue('blankType');
             

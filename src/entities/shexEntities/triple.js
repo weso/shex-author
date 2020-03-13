@@ -2,18 +2,18 @@ import TypesFactory from './types/typesFactory';
 import CardinalityFactory from './shexUtils/cardinality/cardinalityFactory';
 import PrefixedIri from './types/concreteTypes/prefixedIri';
 import Primitive from './types/concreteTypes/primitive';
-import InlineShape from './shexUtils/inlineShape';
+import ShapeRef from './shexUtils/shapeRef';
 import Prefix from './shexUtils/prefix';
 
 class Triple {
 
 
-    constructor(id,type=new PrefixedIri('tripleName',new Prefix('schema','http://schema.org/')),value=new Primitive(),inlineShape=new InlineShape(),cardinality='') {
+    constructor(id,type=new PrefixedIri('tripleName',new Prefix('schema','http://schema.org/')),value=new Primitive(),shapeRef=new ShapeRef(),cardinality='') {
         this.id = id;
         this.type = type;
         this.value = value;
         this.cardinality = cardinality;
-        this.inlineShape = inlineShape;
+        this.shapeRef = shapeRef;
         this.factory = new TypesFactory();
         this.cardFactory = new CardinalityFactory();
       }
@@ -44,11 +44,11 @@ class Triple {
     }
 
     getInlineShape(){
-        return this.inlineShape;
+        return this.shapeRef;
     }
 
-    setInlineShape(inlineShape){
-        this.inlineShape = inlineShape;
+    setInlineShape(shapeRef){
+        this.shapeRef = shapeRef;
     }
 
 

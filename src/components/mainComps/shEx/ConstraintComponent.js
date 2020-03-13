@@ -17,7 +17,6 @@ function ConstraintComponent (props) {
 
   
     const [constraint,setConstraint] = useState(triple.value.getTypeName());
-    const [cardinality,setCardinality] = useState(triple.cardinality);
         
     let initialPrefix = 'example';
     let initialOpenPrefix = false;
@@ -70,7 +69,7 @@ function ConstraintComponent (props) {
             setPrefixOpen(false);
         }
 
-        if(primitive =='none' && triple.inlineShape.shape != null){
+        if(primitive =='none' && triple.shapeRef.shape != null){
             triple.setValue('blankType');
         }
         
@@ -166,7 +165,7 @@ function ConstraintComponent (props) {
                                 })
                             }
                             </select>
-                        </Collapse>     
+                        </Collapse>
                     </Collapse>                                                         
                 </div>
   

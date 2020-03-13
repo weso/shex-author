@@ -3,7 +3,7 @@ import { Collapse } from 'reactstrap';
 import TripleHeader from './headers/TripleHeader';
 import CustomComp from './customize/CustomComp';
 import ConstraintComponent from './ConstraintComponent';
-import InlineOrRef from './customize/InlineOrRef';
+import ShapeRefComp from './customize/ShapeRefComp';
 import Cardinality from './customize/Cardinality';
 
 
@@ -132,7 +132,7 @@ function TripleComponent (props) {
                         onExited={rounder}
                         onEntering={rounder} >
 
-                <InlineOrRef triple={triple}/>
+                <ShapeRefComp triple={triple}/>
                             
             </Collapse> 
 
