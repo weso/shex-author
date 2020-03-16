@@ -27,7 +27,9 @@ export function addPrefixComp(prefixes){
 }
 
 export function deletePrefixComp(prefixes,prefixId) {
-    return prefixes.filter(prefix => prefix.id != prefixId);
+    let newPrefixes = prefixes.filter(prefix => prefix.id != prefixId);
+    emitPrefixes(newPrefixes);
+    return newPrefixes;
 }
 
 

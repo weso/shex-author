@@ -1,17 +1,26 @@
 
 .prefixHeader{
-    background: #f8a6a6 ;
+    background: #fdd5d5 ;
     padding: 6px;
     color: black;
     text-align: left;
     border: 1px solid grey;
     border-radius: 10px;
     display: grid;
-    grid-template-columns: 20% 2% 4% 55% 5% 6%;
+    grid-template-columns: 0.5% 20% 2% 4% 53% 5% 6%;
     gap: 10px;
 }
 
+.prefixName{
+    grid-column: 2/3;
+}
 
+.prefixInput{
+    border-radius: 4px;
+    padding-left: 10px;
+    color:#222;
+    border: 1px solid #acaaaa !important;
+}
 
 .deletePrefix{
     background: #000000;
@@ -36,11 +45,12 @@
 }
 
 .addPrefixBtn{
-    background: #f8a6a6;
+    background: #fdd5d5;
     border-radius: 10px;
     font-weight: bold;
     margin-left:150px;
     margin-right: 150px;
+    margin-top: 6px;
 }
 
 .addPrefixBtn:focus{
