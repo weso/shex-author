@@ -75,6 +75,10 @@ label{
     transform: scale(1.1);
 }
 
+.deleteShapeBtn:active {
+    transform: translateY(4px);
+}
+
 
 
 .collapseBtn{

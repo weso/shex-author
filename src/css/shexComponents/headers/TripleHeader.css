@@ -63,3 +63,7 @@
 .deleteTripleBtn:hover{
     transform: scale(1.1);
 }
+
+.deleteTripleBtn:active {
+    transform: translateY(4px);
+}

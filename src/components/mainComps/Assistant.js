@@ -7,7 +7,6 @@ import AssistContent from './assistant/AssistContent';
 import AssistLoader from './assistant/AssistLoader';
 import '../../css/Assistant.css';
 
-export const AssistContext = React.createContext();
 
 function AssistantComp (props) {
 
@@ -30,11 +29,5 @@ function AssistantComp (props) {
         </Collapse>);
 }
 
-/*
-
-   <div className={context.valid}>
-                        <p><strong>[Error]</strong> This Shape is very complex for me...</p>
-                </div>
-*/
 
 export default AssistantComp;

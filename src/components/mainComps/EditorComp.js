@@ -67,6 +67,12 @@ function EditorComp() {
             });
            
 
+            y.on('blur', function() {
+                if(!y.hasErrors()){                   
+                    updateAssist();
+                }
+            });
+
             //Fired after a key is handled through a key map
             //(for example "Ctrl-Z")
             /*

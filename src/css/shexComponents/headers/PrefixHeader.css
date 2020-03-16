@@ -1,0 +1,31 @@
+.prefixHeader{
+    background: rgb(241, 132, 118) ;
+    padding: 8px;
+    color: black;
+    text-align: left;
+    border-radius: 10px;
+    border:none;
+    display: grid;
+    grid-template-columns: 20% 5% 5% 50% 5% 7%;
+    gap: 10px;
+}
+
+
+
+.deletePrefix{
+    background: #000000;
+    color: rgb(255, 255, 255);
+    border-radius: 10px;
+    outline: none;
+    border: none;
+
+}
+
+.deletePrefix:focus{
+    outline: none;
+}
+
+
+.deletePrefix:hover{
+    transform: scale(1.1);
+}

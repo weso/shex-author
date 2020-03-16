@@ -41,7 +41,7 @@ function App() {
     const [gridClass,setGridClass] = useState('gridBox');
     
   
-    const assistantToggle = () => setAssistantOpen(!isAssistantOpen); 
+    const assistantToggle = () => setAssistantOpen(!isAssistantOpen);
     const visualizeToggle = () => setVisualizeOpen(!isVisualizeOpen);
     const toolbarToggle = () => setToolBarOpen(!isToolBarOpen);
     const colapseAll = () =>{

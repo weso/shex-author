@@ -1,6 +1,7 @@
 import React,{useContext} from 'react';
 import {AppContext} from '../../../App';
 import ShapeComponent from '../shEx/ShapeComponent';
+import PrefixComp from '../../prefixAssist/PrefixComp';
 
 function AssistContent (props) {
 
@@ -17,6 +18,7 @@ function AssistContent (props) {
                             + Shape
                     </button>
                 </div>
+                <PrefixComp/>
             </div>
         </div>);
 }
