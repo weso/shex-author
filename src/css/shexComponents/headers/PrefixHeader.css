@@ -1,12 +1,12 @@
 .prefixHeader{
-    background: rgb(241, 132, 118) ;
+    background: #fa8b8b ;
     padding: 8px;
     color: black;
     text-align: left;
     border-radius: 10px;
     border:none;
     display: grid;
-    grid-template-columns: 20% 5% 5% 50% 5% 7%;
+    grid-template-columns: 20% 2% 4% 55% 5% 6%;
     gap: 10px;
 }
 
@@ -29,3 +29,21 @@
 .deletePrefix:hover{
     transform: scale(1.1);
 }
+
+.deletePrefix:active {
+    transform: translateY(4px);
+}
+
+.addPrefix{
+    background: #fa8b8b;
+    border-radius: 10px;
+    margin-top:20px;
+    font-weight: bold;
+    margin-left:150px;
+    margin-right: 150px;
+}
+
+.addPrefix:focus{
+    outline: none;
+}
+
