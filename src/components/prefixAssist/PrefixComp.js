@@ -5,6 +5,7 @@ import { Resizable } from "re-resizable";
 import AssistTitle from '../mainComps/assistant/AssistTitle';
 import Editor from '../../entities/editor';
 import Prefix from '../../entities/shexEntities/shexUtils/prefix';
+import {addPrefixComp,deletePrefixComp} from '../../utils/prefixUtils';
 
 import '../../css/shexComponents/headers/PrefixHeader.css';
 
@@ -12,29 +13,26 @@ function PrefixComp (props) {
 
         const context = useContext(AppContext);
         
-        let open = '<';
-        let close = '>';
+        const open = '<';
+        const close = '>';
         const defaultPrefixes = [
-                new Prefix('','http://example.org/'),
-                new Prefix('schema','http://schema.org/'),
-                new Prefix('xsd','http://www.w3.org/2001/XMLSchema#')
+                new Prefix('','http://example.org/',0),
+                new Prefix('schema','http://schema.org/',1),
+                new Prefix('xsd','http://www.w3.org/2001/XMLSchema#',2)
         ]
         const [prefixes,setPrefixes]=useState(defaultPrefixes);
-
         const addPrefix = function(){
-                setPrefixes([...prefixes,new Prefix('','')]);
+                setPrefixes([...prefixes,addPrefixComp(prefixes)]);
         }
       
-        useEffect(() => {
-        // Actualiza el título del documento usando la API del navegador
-       // prefixes.push()
-                
-        });
+        const deletePrefix = function(prefixId){
+                setPrefixes(deletePrefixComp(prefixes,prefixId));
+        }
       
         return (
                 <div>
                 {prefixes.map(prefix =>{
-                        return(<div  key={prefix.prefixName} className='prefixHeader'>            
+                        return(<div  key={prefix.id} className='prefixHeader'>            
                                         <input  type="text" 
                                                 className="name"
                                                 placeholder="eg: schema"
@@ -49,6 +47,7 @@ function PrefixComp (props) {
                                                 title="IRI"/>
                                         <label  className={context.shapeLabel+" prefixLabel"}>{close}</label>
                                         <button className="deletePrefix mdc-icon-button material-icons" 
+                                                onClick={()=>deletePrefix(prefix.id)}
                                                 title="Delete Prefix">
                                                 delete
                                         </button>                              

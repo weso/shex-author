@@ -5,7 +5,7 @@ import {addPrefix} from './prefixUtils';
 
 let shapesCount = 0;
 
-function addShape (shapes){
+function addShape(shapes){
 
     const id = shapes.length + shapesCount++;
     const newShape = new Shape(id);
@@ -29,6 +29,7 @@ function deleteShape(shapes,shapeId,confirm) {
     }
     return shapes;
 }
+
 
 function getShapeById(shapes,shapeId) {
     return shapes.filter(function( obj ) {

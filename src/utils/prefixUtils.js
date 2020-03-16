@@ -1,8 +1,9 @@
 import Codemirror from 'codemirror';
 import Editor from '../entities/editor';
-import Prefix from '../entities/shexEntities/shexUtils/prefix.js';
-
+import Prefix from '../entities/shexEntities/shexUtils/prefix';
 import {ALL_PREFIXES} from './rdfUtils';
+
+let prefixCount = 0;
 
 export function getPrefix(prefix){
     let defined = Editor.getInstance().getYashe().getDefinedPrefixes();
@@ -13,6 +14,17 @@ export function getPrefix(prefix){
     }
     return new Prefix();
 }
+
+
+export function addPrefixComp(prefixes){
+    const id = prefixes.length + prefixCount++;
+    return new Prefix('','',id);
+}
+
+export function deletePrefixComp(prefixes,prefixId) {
+    return prefixes.filter(prefix => prefix.id != prefixId);
+}
+
 
 export function addPrefix(prefix){
         let namespaces = ALL_PREFIXES;

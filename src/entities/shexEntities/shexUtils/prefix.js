@@ -1,8 +1,9 @@
 class Prefix {
 
-    constructor(prefixName='',prefixValue='http://example.org/'){
+    constructor(prefixName='',prefixValue='http://example.org/',id){
         this.prefixName = prefixName;
         this.prefixValue = prefixValue;
+        this.id = id;
     }
 
 
