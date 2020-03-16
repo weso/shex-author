@@ -31,7 +31,14 @@ function EditorComp() {
             
             y.on('humanEvent', function(shapes) {
                 Editor.getInstance().draw(shapes);
+                oldShapes = shapes;
             });
+
+            y.on('prefixChange', function(prefixes) {
+                Editor.getInstance().draw(oldShapes,prefixes);
+            });
+
+            
 
             /*
             y.on('keyup',function(){
@@ -92,9 +99,7 @@ function EditorComp() {
                 }
             });
 
-            y.on('themeChange', function() {
-               
-            });
+       
         
             y.refresh();
             setYashe(y);

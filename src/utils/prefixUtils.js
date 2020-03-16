@@ -18,7 +18,12 @@ export function getPrefix(prefix){
 
 export function addPrefixComp(prefixes){
     const id = prefixes.length + prefixCount++;
-    return new Prefix('','',id);
+    let newPrefix = new Prefix('','',id);
+    let newPrefixes = [];
+    newPrefixes = Object.assign(newPrefixes, prefixes);
+    newPrefixes.push(newPrefix);
+    emit(getPrefixesStr(newPrefixes));
+    return newPrefix;
 }
 
 export function deletePrefixComp(prefixes,prefixId) {
@@ -52,4 +57,21 @@ export function getUri(prefix,namespaces){
     }
   }
   return 'http://example.org/';
+}
+
+
+function getPrefixesStr(prefixes){
+  let str='';
+  prefixes.map(prefix =>{
+    str += 'PREFIX ' + prefix.prefixName + ': <' + prefix.prefixValue + '>\n';
+  })
+  return str;
+}
+
+function emit(newPrefixes) {
+    const yashe = Editor.getInstance().getYashe();
+    if(yashe!=undefined){
+        console.log(newPrefixes)
+        Codemirror.signal(yashe,'prefixChange',newPrefixes);
+    }
 }
