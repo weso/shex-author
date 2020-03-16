@@ -6,15 +6,13 @@ import AssistTitle from '../AssistTitle';
 import Editor from '../../../../entities/editor';
 import Prefix from '../../../../entities/shexEntities/shexUtils/prefix';
 import {addPrefixComp,deletePrefixComp} from '../../../../utils/prefixUtils';
+import PrefixComp from './PrefixComp';
 
 import '../../../../css/shexComponents/headers/PrefixHeader.css';
 
-function PrefixComp (props) {
+function Prefixes (props) {
 
         const context = useContext(AppContext);
-        
-        const open = '<';
-        const close = '>';
         const defaultPrefixes = [
                 new Prefix('','http://example.org/',0),
                 new Prefix('schema','http://schema.org/',1),
@@ -28,31 +26,16 @@ function PrefixComp (props) {
         const deletePrefix = function(prefixId){
                 setPrefixes(deletePrefixComp(prefixes,prefixId));
         }
+
+        const emit = function(){
+                context.emitPref(prefixes);
+        }
       
         return (
                 <div>
-                {prefixes.map(prefix =>{
-                        return(<div  key={prefix.id} className='prefixHeader'>            
-                                        <input  type="text" 
-                                                className="name"
-                                                placeholder="eg: schema"
-                                                value={prefix.prefixName}
-                                                title="Alias"/>
-                                        <label  className={context.shapeLabel+" prefixLabel"}>:</label>
-                                        <label  className={context.shapeLabel+" prefixLabel"}>{open}</label>
-                                        <input  type="text" 
-                                                className="name"
-                                                value={prefix.prefixValue}
-                                                placeholder="eg: http://schema.org/"
-                                                title="IRI"/>
-                                        <label  className={context.shapeLabel+" prefixLabel"}>{close}</label>
-                                        <button className="deletePrefix mdc-icon-button material-icons" 
-                                                onClick={()=>deletePrefix(prefix.id)}
-                                                title="Delete Prefix">
-                                                delete
-                                        </button>                              
-                                </div>)
-                })}
+                        {prefixes.map(prefix =>{
+                                return(<PrefixComp key={prefix.id} prefix={prefix} emit={emit} deletePrefix={deletePrefix}/>)
+                        })}
                         <div className="addCont">
                         <button className={context.addBtns+" addPrefixBtn"} 
                                 onClick={addPrefix}
@@ -61,7 +44,7 @@ function PrefixComp (props) {
                         </button>
                         </div>   
                 </div>
-);
+                );
 }
 
-export default PrefixComp;
+export default Prefixes;

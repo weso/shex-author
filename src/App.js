@@ -8,6 +8,7 @@ import MainContainer from './components/MainContainer';
 import Visualizer from './components/Visualizer';
 
 import shexUtils from './utils/shexUtils';
+import {emitPrefixes} from './utils/prefixUtils';
 import yasheUtils from './utils/yasheUtils';
 
 
@@ -72,6 +73,11 @@ function App() {
 
     const emit = ()=>{
       shexUtils.emit(shapes);
+      visualize();
+    }
+
+    const emitPref = (prefixes)=>{
+      emitPrefixes(prefixes);
       visualize();
     }
 
@@ -159,6 +165,7 @@ function App() {
                   prefixes:prefixes,
                   updatePrefixes:updatePrefixes,
                   emit:emit,
+                  emitPref:emitPref,
                   visualize:visualize,
                   isToolBarOpen:isToolBarOpen,
                   isAssistantOpen:isAssistantOpen,

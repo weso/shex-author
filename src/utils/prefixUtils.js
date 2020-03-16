@@ -22,7 +22,7 @@ export function addPrefixComp(prefixes){
     let newPrefixes = [];
     newPrefixes = Object.assign(newPrefixes, prefixes);
     newPrefixes.push(newPrefix);
-    emit(getPrefixesStr(newPrefixes));
+    emitPrefixes(newPrefixes);
     return newPrefix;
 }
 
@@ -68,10 +68,9 @@ function getPrefixesStr(prefixes){
   return str;
 }
 
-function emit(newPrefixes) {
+export function emitPrefixes(newPrefixes) {
     const yashe = Editor.getInstance().getYashe();
     if(yashe!=undefined){
-        console.log(newPrefixes)
-        Codemirror.signal(yashe,'prefixChange',newPrefixes);
+        Codemirror.signal(yashe,'prefixChange',getPrefixesStr(newPrefixes));
     }
 }
