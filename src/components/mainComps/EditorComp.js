@@ -54,17 +54,10 @@ function EditorComp() {
                 }   
             });
             */
-
-           
-            y.on('prefixUpdate', function() {
-                updatePrefixes();
-            });
-            
+   
 
             y.on('delete', function() {
                 oldShapes = replaceShapes(getNewShapes());
-                updatePrefixes();
-
             });
 
             y.on('upload', function() {
@@ -107,8 +100,6 @@ function EditorComp() {
             Editor.getInstance().setYashe(y);
 
             oldShapes = replaceShapes(getNewShapes());
-            updatePrefixes();
-
             
         }
     }, [yashe]
@@ -125,16 +116,11 @@ function EditorComp() {
         return newShapes;
     }
 
-    const updatePrefixes = function(){
-        context.updatePrefixes(yasheUtils.updatePrefixes());
-    }
-
 
     const updateAssist = function(){
         loading();
         setTimeout(function() {  
-            oldShapes = replaceShapes(getNewShapes());
-            updatePrefixes();                       
+            oldShapes = replaceShapes(getNewShapes());                
             loaded();
         },500)
     }
@@ -155,51 +141,6 @@ function EditorComp() {
 
 }
 
-    /*
-        let valid = true;
-        if(newShapes==null){
-            valid = false;
-            newShapes=[];
-        }
-         context.replaceShapes(newShapes,valid);
-
-        */
-
-
-
-/*
-
-const debounce = function(func, wait, immediate) {
-        let timeout; let result;
-        return function() {
-            const context = this; 
-            const args = arguments;
-            const later = function() {
-            timeout = null;
-            if (!immediate) result = func.apply(context, args);
-            };
-            const callNow = immediate && !timeout;
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
-            if (callNow) result = func.apply(context, args);
-            return result;
-        };
-    };
-
-    */
-
-
-
-
-/*
-            y.on('themeChange', function() {
-                changeThemeStyle();
-            });
-
-*/
-
-
-
-
+   
 export default EditorComp;
 

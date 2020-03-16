@@ -13,6 +13,9 @@ import yasheUtils from './utils/yasheUtils';
 
 
 import Editor from './entities/editor';
+import Prefix from './entities/shexEntities/shexUtils/prefix';
+
+import {addPrefixComp,deletePrefixComp} from './utils/prefixUtils';
 
 
 export const AppContext = React.createContext();
@@ -21,7 +24,6 @@ function App() {
 
     const [shapes,setShapes] = useState([]);
     const [svg,setSvg] = useState('');
-    const [prefixes,setPrefixes] = useState([{key:'',val:'http://example.org/'}]);
     const [isAssistantOpen, setAssistantOpen] = useState(true);
     const [isShapesOpen, setShapesOpen] = useState(true);
     const [isVisualizeOpen, setVisualizeOpen] = useState(true);
@@ -43,6 +45,13 @@ function App() {
     const [gridClass,setGridClass] = useState('gridBox');
     
   
+    const defaultPrefixes = [
+                new Prefix('','http://example.org/',0),
+                new Prefix('schema','http://schema.org/',1),
+                new Prefix('xsd','http://www.w3.org/2001/XMLSchema#',2)
+    ]
+    const [prefixes,setPrefixes] = useState(defaultPrefixes);
+
     const assistantToggle = () => setAssistantOpen(!isAssistantOpen);
     const shapesToggle = () => {
       //In case the assistant is closed...
@@ -71,12 +80,21 @@ function App() {
       visualize();
     }
 
+    const addPrefix = function(){
+      setPrefixes([...prefixes,addPrefixComp(prefixes)]);
+    }
+      
+    const deletePrefix = function(prefixId){
+      setPrefixes(deletePrefixComp(prefixes,prefixId));
+    }
+
+
     const emit = ()=>{
       shexUtils.emit(shapes);
       visualize();
     }
 
-    const emitPref = (prefixes)=>{
+    const emitPref = ()=>{
       emitPrefixes(prefixes);
       visualize();
     }
@@ -161,6 +179,8 @@ function App() {
                   shapes:shapes,
                   addShape:addShape,
                   deleteShape:deleteShape,
+                  addPrefix:addPrefix,
+                  deletePrefix:deletePrefix,
                   replaceShapes:replaceShapes,
                   prefixes:prefixes,
                   updatePrefixes:updatePrefixes,

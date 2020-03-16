@@ -4,22 +4,22 @@ import {AppContext} from '../../../../App';
 function PrefixComp (props) {
 
         const context = useContext(AppContext);
-        const {prefix,deletePrefix,emit} = props;
+        const {prefix} = props;
         const [name,setName] = useState(prefix.prefixName);
         const [value,setValue] = useState(prefix.prefixValue);
         const open = '<';
         const close = '>';
-
+  
         const handleAlias  = function(e,prefix){
                 prefix.prefixName = e.target.value;
                 setName(e.target.value);
-                emit();
+                context.emitPref();
         }
 
         const handleIri  = function(e,prefix){
                 prefix.prefixValue = e.target.value;
                 setValue(e.target.value);
-                emit();
+                context.emitPref();
         }
       
         return (
@@ -40,7 +40,7 @@ function PrefixComp (props) {
                             title="IRI"/>
                     <label  className={context.shapeLabel+" prefixLabel"}>{close}</label>
                     <button className="deletePrefix mdc-icon-button material-icons" 
-                            onClick={()=>deletePrefix(prefix.id)}
+                            onClick={()=>context.deletePrefix(prefix.id)}
                             title="Delete Prefix">
                             delete
                     </button>                              
