@@ -22,6 +22,7 @@ function App() {
     const [svg,setSvg] = useState('');
     const [prefixes,setPrefixes] = useState([{key:'',val:'http://example.org/'}]);
     const [isAssistantOpen, setAssistantOpen] = useState(true);
+    const [isShapesOpen, setShapesOpen] = useState(true);
     const [isVisualizeOpen, setVisualizeOpen] = useState(true);
     const [isToolBarOpen, setToolBarOpen] = useState(true);
 
@@ -42,6 +43,15 @@ function App() {
     
   
     const assistantToggle = () => setAssistantOpen(!isAssistantOpen);
+    const shapesToggle = () => {
+      //In case the assistant is closed...
+      if(!isAssistantOpen){
+        setAssistantOpen(true);
+        setShapesOpen(false);
+      }else{
+         setShapesOpen(!isShapesOpen);
+      }
+    }
     const visualizeToggle = () => setVisualizeOpen(!isVisualizeOpen);
     const toolbarToggle = () => setToolBarOpen(!isToolBarOpen);
     const colapseAll = () =>{
@@ -70,6 +80,7 @@ function App() {
       //Best Glitch Ever
       //In fact... I would like to render only the property component...
       setShapes([]); 
+      
       setShapes(newShapes);
       visualize();
     }
@@ -151,8 +162,10 @@ function App() {
                   visualize:visualize,
                   isToolBarOpen:isToolBarOpen,
                   isAssistantOpen:isAssistantOpen,
+                  isShapesOpen:isShapesOpen,
                   isVisualizeOpen:isVisualizeOpen,
                   assistantToggle:assistantToggle,
+                  shapesToggle:shapesToggle,
                   visualizeToggle:visualizeToggle,
 
                   //responsive

@@ -7,7 +7,7 @@ function VisualizeBtn () {
 
     return (
         <button className="mdc-icon-button material-icons btns" 
-                title="Show ShEx Assistant"
+                title="ShEx Assistant"
                 type="button"
                 onClick={context.assistantToggle}>
                 info

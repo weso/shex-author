@@ -1,9 +1,9 @@
 import React,{useState,useContext} from 'react';
 import { Collapse } from 'reactstrap';
-import {AppContext} from '../../../App';
-import {getPrefix} from '../../../utils/prefixUtils';
-import shexUtils from '../../../utils/shexUtils';
-import yasheUtils from '../../../utils/yasheUtils';
+import {AppContext} from '../../../../App';
+import {getPrefix} from '../../../../utils/prefixUtils';
+import shexUtils from '../../../../utils/shexUtils';
+import yasheUtils from '../../../../utils/yasheUtils';
 
 const primitives = ['String','Integer','Date','Boolean'];
 

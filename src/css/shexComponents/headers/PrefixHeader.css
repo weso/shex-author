@@ -1,10 +1,11 @@
+
 .prefixHeader{
-    background: #fa8b8b ;
-    padding: 8px;
+    background: #f8a6a6 ;
+    padding: 6px;
     color: black;
     text-align: left;
+    border: 1px solid grey;
     border-radius: 10px;
-    border:none;
     display: grid;
     grid-template-columns: 20% 2% 4% 55% 5% 6%;
     gap: 10px;
@@ -34,16 +35,16 @@
     transform: translateY(4px);
 }
 
-.addPrefix{
-    background: #fa8b8b;
+.addPrefixBtn{
+    background: #f8a6a6;
     border-radius: 10px;
-    margin-top:20px;
     font-weight: bold;
     margin-left:150px;
     margin-right: 150px;
 }
 
-.addPrefix:focus{
+.addPrefixBtn:focus{
     outline: none;
 }
+
 

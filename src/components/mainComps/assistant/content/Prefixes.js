@@ -1,13 +1,13 @@
 import React,{useContext,useState,useEffect} from 'react';
-import {AppContext} from '../../App';
+import {AppContext} from '../../../../App';
 import { Collapse } from 'reactstrap';
 import { Resizable } from "re-resizable";
-import AssistTitle from '../mainComps/assistant/AssistTitle';
-import Editor from '../../entities/editor';
-import Prefix from '../../entities/shexEntities/shexUtils/prefix';
-import {addPrefixComp,deletePrefixComp} from '../../utils/prefixUtils';
+import AssistTitle from '../AssistTitle';
+import Editor from '../../../../entities/editor';
+import Prefix from '../../../../entities/shexEntities/shexUtils/prefix';
+import {addPrefixComp,deletePrefixComp} from '../../../../utils/prefixUtils';
 
-import '../../css/shexComponents/headers/PrefixHeader.css';
+import '../../../../css/shexComponents/headers/PrefixHeader.css';
 
 function PrefixComp (props) {
 
@@ -54,7 +54,7 @@ function PrefixComp (props) {
                                 </div>)
                 })}
                         <div className="addCont">
-                        <button className={context.addBtns+" addPrefix"} 
+                        <button className={context.addBtns+" addPrefixBtn"} 
                                 onClick={addPrefix}
                                 title="Add Prefix">
                                 + Prefix

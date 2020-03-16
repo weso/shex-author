@@ -25,8 +25,8 @@ function Toolbar () {
         <div className='toolbar'>
                 <div className='toolbarTop'>                    
                     <ShowAssist/>
-                    <VisualizeBtn/>
                     <PrefixesBtn/>
+                    <VisualizeBtn/>
                     <UndoBtn/>
                     <RedoBtn/>
                     <UploadBtn/>

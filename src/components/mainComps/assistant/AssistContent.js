@@ -1,7 +1,9 @@
-import React,{useContext} from 'react';
+import React,{useContext,useState} from 'react';
 import {AppContext} from '../../../App';
-import ShapeComponent from '../shEx/ShapeComponent';
-import PrefixComp from '../../prefixAssist/PrefixComp';
+import { Collapse } from 'reactstrap';
+import ShapeComponent from './shEx/ShapeComponent';
+import Prefixes from './content/Prefixes';
+import Shapes from './content/Shapes';
 
 function AssistContent (props) {
 
@@ -10,15 +12,12 @@ function AssistContent (props) {
     return ( 
     <div className={context.asist}>
         <div id='assistant-container' className='assistantContainer'> 
-            {context.shapes.map(shape =>{return  <ShapeComponent shape={shape} key={shape.id}/> })}
-                <div className="addCont">
-                    <button className={context.addBtns+" addShapeButton"} 
-                            onClick={context.addShape}
-                            title="Add Shape">
-                            + Shape
-                    </button>
-                </div>
-                <PrefixComp/>
+                <Collapse isOpen={context.isShapesOpen}>
+                    <Shapes/>
+                </Collapse>
+                <Collapse isOpen={!context.isShapesOpen}>
+                    <Prefixes/>
+                </Collapse>
             </div>
         </div>);
 }
