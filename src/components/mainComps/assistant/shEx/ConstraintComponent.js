@@ -159,9 +159,9 @@ function ConstraintComponent (props) {
                                 <option value="example">example</option>
                                 { 
                                 context.prefixes.map((pre) =>{
-                                    if(pre.key!=''){
-                                        return <option key={pre.key} value={pre.val}>{pre.key}</option>
-                                    }                        
+                                     if(pre.prefixName!=''){
+                                        return <option key={pre.id} value={pre.prefixValue}>{pre.prefixName}</option>
+                                    }                         
                                 })
                             }
                             </select>

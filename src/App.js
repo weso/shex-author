@@ -13,7 +13,6 @@ import yasheUtils from './utils/yasheUtils';
 
 
 import Editor from './entities/editor';
-import Prefix from './entities/shexEntities/shexUtils/prefix';
 
 import {addPrefixComp,deletePrefixComp} from './utils/prefixUtils';
 
@@ -23,6 +22,7 @@ export const AppContext = React.createContext();
 function App() {
 
     const [shapes,setShapes] = useState([]);
+        const [prefixes,setPrefixes] = useState([]);
     const [svg,setSvg] = useState('');
     const [isAssistantOpen, setAssistantOpen] = useState(true);
     const [isShapesOpen, setShapesOpen] = useState(true);
@@ -45,12 +45,6 @@ function App() {
     const [gridClass,setGridClass] = useState('gridBox');
     
   
-    const defaultPrefixes = [
-                new Prefix('','http://example.org/',0),
-                new Prefix('schema','http://schema.org/',1),
-                new Prefix('xsd','http://www.w3.org/2001/XMLSchema#',2)
-    ]
-    const [prefixes,setPrefixes] = useState(defaultPrefixes);
 
     const assistantToggle = () => setAssistantOpen(!isAssistantOpen);
     const shapesToggle = () => {
@@ -102,11 +96,18 @@ function App() {
     const replaceShapes = (newShapes) =>{
       //This allows to render all the shapes when a property is updated.
       //Best Glitch Ever
-      //In fact... I would like to render only the property component...
+      //In fact... I would like to render just the property component...
       setShapes([]); 
       
       setShapes(newShapes);
       visualize();
+    }
+
+    const replacePrefixes = (newPrefixes) =>{
+      
+      setPrefixes([]); 
+      setPrefixes(newPrefixes);
+  
     }
     
     const updatePrefixes = (newPrefixes)=>{
@@ -182,6 +183,7 @@ function App() {
                   addPrefix:addPrefix,
                   deletePrefix:deletePrefix,
                   replaceShapes:replaceShapes,
+                  replacePrefixes:replacePrefixes,
                   prefixes:prefixes,
                   updatePrefixes:updatePrefixes,
                   emit:emit,

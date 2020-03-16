@@ -15,6 +15,11 @@ export function getPrefix(prefix){
     return new Prefix();
 }
 
+export function replacePrefixes(prefix){
+    let defined = Editor.getInstance().getYashe().getDefinedPrefixes();
+    console.log(defined)
+}
+
 
 export function addPrefixComp(prefixes){
     const id = prefixes.length + prefixCount++;

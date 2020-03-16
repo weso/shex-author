@@ -6,15 +6,23 @@ import YASHE from 'yashe';
 import Editor from '../../entities/editor';
 
 import yasheUtils from '../../utils/yasheUtils';
+import {replacePrefixes} from '../../utils/prefixUtils';
+import Prefix from '../../entities/shexEntities/shexUtils/prefix';
 
 import '../../css/Yashe.css';
 
 function EditorComp() {
 
-  const [yashe,setYashe] = useState(null);
-  const divRef = useRef(null);
-  const context = useContext(AppContext);
-  let oldShapes = [];
+    const [yashe,setYashe] = useState(null);
+    const divRef = useRef(null);
+    const context = useContext(AppContext);
+    let oldShapes = [];
+
+    const defaultPrefixes = [
+                new Prefix('','http://example.org/',0),
+                new Prefix('schema','http://schema.org/',1),
+                new Prefix('xsd','http://www.w3.org/2001/XMLSchema#',2)
+    ]
 
     useEffect(() => {
     
@@ -100,7 +108,7 @@ function EditorComp() {
             Editor.getInstance().setYashe(y);
 
             oldShapes = replaceShapes(getNewShapes());
-            
+            replacePrefixes(defaultPrefixes)
         }
     }, [yashe]
     );
@@ -111,9 +119,18 @@ function EditorComp() {
         return yasheUtils.replaceShapes();
     }
 
+    const getNewPrefixes = function() {
+        return replacePrefixes();
+    }
+
     const replaceShapes = (newShapes)=>{
         context.replaceShapes(newShapes);
         return newShapes;
+    }
+
+    const replacePrefixes = (newPrefixes)=>{
+        context.replacePrefixes(newPrefixes);
+        return newPrefixes;
     }
 
 
