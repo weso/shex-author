@@ -5,7 +5,12 @@ function AssistError (props) {
 
     const context = useContext(AppContext);
 
-    return (<div className={context.error}></div>);
+    return (<div className={context.error}>
+                <div className='shapeErrorCont'>
+                    <div className='shapeError'></div>
+                    <p>Ops... There are some errors in the editor</p>
+                </div>
+            </div>);
 }
 
 

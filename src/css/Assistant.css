@@ -310,11 +310,24 @@
     align-items: center;
     width: 100% !important;
     height: 93% !important;
+}
+
+.shapeErrorCont{
+   
+    display: grid;
+    height: 50% !important;
+    grid-template-rows:60% auto;
+}
+
+.shapeError{
     background: url('./imgs/error--v1.png');
     background-position: center; 
     background-repeat: no-repeat;
-    
+    height: 100%;
+   
 }
+
+
 
 
 /*
