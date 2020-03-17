@@ -64,10 +64,14 @@ class Triple {
 
 
     toString(){
+        if(this.getType().value!=''){
         return '  '+this.getType().toString()+'          '+
-        this.getValue().toString() +' '+
-        this.getInlineShape().toString()+
-        this.getCardinality()+'  ;\n';
+                this.getValue().toString() +' '+
+                this.getInlineShape().toString()+
+                this.getCardinality()+'  ;\n';
+        }
+        return '';
+       
 
     }
 

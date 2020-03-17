@@ -38,6 +38,7 @@ function EditorComp() {
             
             y.on('humanEvent', function(shapes) {
                 Editor.getInstance().draw(shapes);
+                //console.log(shapes)
                 oldShapes = shapes;
             });
 
@@ -52,6 +53,7 @@ function EditorComp() {
                 if(!y.hasErrors(y)){
                     hideError();
                     let newShapes = getNewShapes();
+                    //console.log(newShapes)
                     if(oldShapes.length == newShapes.length){ //Any new shape?
                         if(newShapes.toString()!=oldShapes.toString()){ //Any cupdate?
                             oldShapes = replaceShapes(newShapes);

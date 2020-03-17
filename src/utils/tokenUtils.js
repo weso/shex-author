@@ -96,6 +96,7 @@ function getShapes(defShapes){
 
         shapes.push(new Shape(id,shapeType,triples,qualifier));
     })
+    console.log(shapes)
     return shapes;
 
 }

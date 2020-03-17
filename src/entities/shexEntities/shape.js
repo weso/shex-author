@@ -37,14 +37,32 @@ class Shape {
 
  
     toString(){
-      let str = this.type+' '+this.qualifier+' {\n'
-      this.triples.forEach(triple => {
-        str+=triple;
-      });
+      let str='';
+      if(this.type.value!=''){
+        str = this.type+' '+this.qualifier;
+        if(this.checkContent()){
+          str+=' {\n';
+          this.triples.forEach(triple => {
+            str+=triple;
+          });
+          str+="}\n\n"
+        }
+       }
 
-      str+="}\n\n"
+      
       return str
 
+     }
+
+     //Checks if there is any triple with content
+     checkContent(){
+       let isContent = false;
+       this.triples.forEach(triple => {
+          if(triple.getType().value!=''){
+            isContent = true;
+          }
+        });
+        return isContent;
      }
 
 
