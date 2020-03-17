@@ -32,6 +32,7 @@ function App() {
     const [width,setWidth] = useState(700);
 
     const [loading,setLoading] = useState('hideLoader');
+    const [error,setError] = useState('hideError');
     const [asist,setAsist] = useState('showAsist');
 
     //Responsive
@@ -206,6 +207,8 @@ function App() {
                   setLoading:setLoading,
                   asist:asist,
                   setAsist:setAsist,
+                  error:error,
+                  setError:setError
 
                     
                   }

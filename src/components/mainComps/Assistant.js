@@ -5,6 +5,7 @@ import { Resizable } from "re-resizable";
 import AssistTitle from './assistant/AssistTitle';
 import AssistContent from './assistant/AssistContent';
 import AssistLoader from './assistant/AssistLoader';
+import AssistError from './assistant/AssistError';
 import '../../css/Assistant.css';
 
 
@@ -23,6 +24,7 @@ function AssistantComp (props) {
                                         <AssistTitle/>
                                         <AssistContent/>
                                         <AssistLoader/>
+                                        <AssistError/>
                                 </div>
                         </div>
                 </Resizable>     

@@ -298,6 +298,25 @@
 .hideLoader{
     display: none;
 }
+
+
+.hideError{
+    display: none;
+}
+
+.showError{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    width: 100% !important;
+    height: 93% !important;
+    background: url('./imgs/error--v1.png');
+    background-position: center; 
+    background-repeat: no-repeat;
+    
+}
+
+
 /*
 
 

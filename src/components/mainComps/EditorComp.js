@@ -47,9 +47,10 @@ function EditorComp() {
 
             
 
-            /*
+            
             y.on('keyup',function(){
                 if(!y.hasErrors(y)){
+                    hideError();
                     let newShapes = getNewShapes();
                     if(oldShapes.length == newShapes.length){ //Any new shape?
                         if(newShapes.toString()!=oldShapes.toString()){ //Any cupdate?
@@ -58,9 +59,11 @@ function EditorComp() {
                     }else{
                         updateAssist();
                     } 
+                }else{
+                    showError();
                 }   
             });
-            */
+            
    
 
             y.on('delete', function() {
@@ -76,24 +79,26 @@ function EditorComp() {
             });
            
 
+            /*
             y.on('blur', function() {
                 if(!y.hasErrors()){                   
                     updateAssist();
                     updatePrefixes(getNewPrefixes());
                 }
             });
+            */
 
             //Fired after a key is handled through a key map
             //(for example "Ctrl-Z")
-            /*
+            
             y.on('keyHandled', function() {
                 if(!y.hasErrors()){
                     oldShapes = replaceShapes(getNewShapes());
-                    updatePrefixes();
+                    updatePrefixes(getNewPrefixes());
                 }
             });
 
-            */
+            
 
             //Load example from Galery
             y.on('galery', function() {
@@ -155,6 +160,15 @@ function EditorComp() {
         context.setAsist('showAsist');
     }
 
+    const showError = function(){
+        context.setError('showError');
+        context.setAsist('hideAsist');
+    }
+
+    const hideError = function(){
+        context.setError('hideError');
+        context.setAsist('showAsist');
+    }
 
 
     return  (<div className="col edit" ref={divRef}/>);
