@@ -1,4 +1,5 @@
 import React,{useContext} from 'react';
+import Codemirror from 'codemirror';
 import {AppContext} from '../../../../App';
 import  Editor from '../../../../entities/editor';
 
@@ -16,7 +17,9 @@ function DeleteAllBtn () {
             // like another call to change shapes state
             // I don't know exactly the reason...
             // It's something about react state
-            Editor.getInstance().getYashe().setValue('');
+            let yashe = Editor.getInstance().getYashe();
+            yashe.setValue('');
+            Codemirror.signal(yashe,'delete');
         }
     }
 

@@ -6,7 +6,6 @@ import YASHE from 'yashe';
 import Editor from '../../entities/editor';
 
 import yasheUtils from '../../utils/yasheUtils';
-import {replacePrefixes} from '../../utils/prefixUtils';
 import Prefix from '../../entities/shexEntities/shexUtils/prefix';
 
 import '../../css/Yashe.css';
@@ -66,7 +65,7 @@ function EditorComp() {
 
             y.on('delete', function() {
                 oldShapes = replaceShapes(getNewShapes());
-                updatePrefixes(getNewPrefixes());
+                updatePrefixes(defaultPrefixes);
             });
 
             y.on('upload', function() {
@@ -124,7 +123,7 @@ function EditorComp() {
     }
 
     const getNewPrefixes = function() {
-        return replacePrefixes();
+        return yasheUtils.updatePrefixes();
     }
 
     const replaceShapes = (newShapes)=>{

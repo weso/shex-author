@@ -1,6 +1,6 @@
 import Editor from '../entities/editor';
 import tokenUtils from './tokenUtils';
-
+import Prefix from '../entities/shexEntities/shexUtils/prefix';
 
 const DEFAULT_SHAPE = 'PREFIX :       <http://example.org/>\n'+
 'PREFIX schema: <http://schema.org/>\n'+
@@ -13,6 +13,7 @@ const DEFAULT_SHAPE = 'PREFIX :       <http://example.org/>\n'+
 '  schema:knows          @:User*  \n'+
 '}';
   
+  let prefixCount = 0;
   
   function replaceShapes(){
     let tokens = tokenUtils.getTokens();
@@ -33,23 +34,15 @@ const DEFAULT_SHAPE = 'PREFIX :       <http://example.org/>\n'+
     return newShapes;
   }
 
-  function updatePrefixes(){
-    let newPrefixes = [];
-    let prefix = {};
-    let yashe = Editor.getInstance().getYashe();
-    if(yashe!=undefined){
-      let keys = Object.keys(yashe.getDefinedPrefixes());
-      let values = Object.values(yashe.getDefinedPrefixes());
-
-      for(let i=0;i<keys.length;i++){
-          prefix = {};
-          prefix.key=keys[i];
-          prefix.val=values[i];
-          newPrefixes.push(prefix);
-      }
-    }
-    return newPrefixes;
-  }
+ function updatePrefixes(prefix){
+    let defined = Editor.getInstance().getYashe().getDefinedPrefixes();
+    let prefixes = [];
+    Object.keys(defined).map(p =>{
+      let id = prefixes.length + prefixCount++;
+      prefixes.push(new Prefix(p,defined[p],id));
+    })
+    return prefixes;
+}
 
 function getSchema(){
     let yashe = Editor.getInstance().getYashe();

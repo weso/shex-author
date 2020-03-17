@@ -22,7 +22,7 @@ export const AppContext = React.createContext();
 function App() {
 
     const [shapes,setShapes] = useState([]);
-        const [prefixes,setPrefixes] = useState([]);
+    const [prefixes,setPrefixes] = useState([]);
     const [svg,setSvg] = useState('');
     const [isAssistantOpen, setAssistantOpen] = useState(true);
     const [isShapesOpen, setShapesOpen] = useState(true);
@@ -110,11 +110,6 @@ function App() {
   
     }
     
-    const updatePrefixes = (newPrefixes)=>{
-      setPrefixes([])
-      setPrefixes(newPrefixes);
-    }
-    
 
     const visualize = function(){
 
@@ -185,7 +180,6 @@ function App() {
                   replaceShapes:replaceShapes,
                   replacePrefixes:replacePrefixes,
                   prefixes:prefixes,
-                  updatePrefixes:updatePrefixes,
                   emit:emit,
                   emitPref:emitPref,
                   visualize:visualize,
