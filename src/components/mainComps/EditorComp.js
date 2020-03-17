@@ -66,11 +66,13 @@ function EditorComp() {
 
             y.on('delete', function() {
                 oldShapes = replaceShapes(getNewShapes());
+                updatePrefixes(getNewPrefixes());
             });
 
             y.on('upload', function() {
                 if(!y.hasErrors()){                   
                     updateAssist();
+                    updatePrefixes(getNewPrefixes());
                 }
             });
            
@@ -78,6 +80,7 @@ function EditorComp() {
             y.on('blur', function() {
                 if(!y.hasErrors()){                   
                     updateAssist();
+                    updatePrefixes(getNewPrefixes());
                 }
             });
 
@@ -97,6 +100,7 @@ function EditorComp() {
             y.on('galery', function() {
                 if(!y.hasErrors()){                   
                     updateAssist();
+                    updatePrefixes(getNewPrefixes());
                 }
             });
 
@@ -108,7 +112,7 @@ function EditorComp() {
             Editor.getInstance().setYashe(y);
 
             oldShapes = replaceShapes(getNewShapes());
-            replacePrefixes(defaultPrefixes)
+            updatePrefixes(defaultPrefixes)
         }
     }, [yashe]
     );
@@ -128,7 +132,7 @@ function EditorComp() {
         return newShapes;
     }
 
-    const replacePrefixes = (newPrefixes)=>{
+    const updatePrefixes = (newPrefixes)=>{
         context.replacePrefixes(newPrefixes);
         return newPrefixes;
     }

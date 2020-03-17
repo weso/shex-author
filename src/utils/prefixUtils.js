@@ -17,7 +17,12 @@ export function getPrefix(prefix){
 
 export function replacePrefixes(prefix){
     let defined = Editor.getInstance().getYashe().getDefinedPrefixes();
-    console.log(defined)
+    let prefixes = [];
+    Object.keys(defined).map(p =>{
+      let id = prefixes.length + prefixCount++;
+      prefixes.push(new Prefix(p,defined[p],id));
+    })
+    return prefixes;
 }
 
 

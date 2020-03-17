@@ -1,5 +1,4 @@
 import React,{useContext} from 'react';
-import PrefixSelector from '../PrefixSelector';
 import {AppContext} from '../../../../App';
 
 function PrefixesBtn (props) {

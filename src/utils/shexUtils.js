@@ -57,6 +57,7 @@ function emit(newShapes) {
     const yashe = Editor.getInstance().getYashe();
     if(yashe!=undefined){
         Codemirror.signal(yashe,'humanEvent',newShapes);
+        checkPrefixes();
     }
 }
 
