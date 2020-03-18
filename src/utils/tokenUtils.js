@@ -64,6 +64,7 @@ function getDefinedShapes(tokens){
     //Separate shapes in arrays
     tokens.forEach(element =>{
         shape.push(element);
+        console.log(element)
         if(element.string == '{'){
             brackets++;
         }
@@ -87,6 +88,7 @@ function getShapes(defShapes){
     let shapes = [];
     let yashe = Editor.getInstance().getYashe();
 
+    //console.log(defShapes)
     defShapes.forEach(shape => {
         let id = shapes.length;
         let shapeDef = shape[0].string;
@@ -96,7 +98,7 @@ function getShapes(defShapes){
 
         shapes.push(new Shape(id,shapeType,triples,qualifier));
     })
-    console.log(shapes)
+    
     return shapes;
 
 }

@@ -9,6 +9,7 @@ import yasheUtils from '../../utils/yasheUtils';
 import Prefix from '../../entities/shexEntities/shexUtils/prefix';
 
 import '../../css/Yashe.css';
+import '../../css/author.css';
 
 function EditorComp() {
 
@@ -30,6 +31,7 @@ function EditorComp() {
                 persistent:false,
                 lineNumbers: true,
                 showTooltip:true,
+                theme:'author',
                 value:yasheUtils.DEFAULT_SHAPE
             }
             
