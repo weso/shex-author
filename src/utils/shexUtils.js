@@ -39,7 +39,7 @@ function getShapeById(shapes,shapeId) {
 
 function getShapeByName(shapes,name) {
     for(let s in shapes){
-        if(shapes[s].getType().getValue() == name){
+        if(shapes[s].getType().toString() == name){
             return shapes[s];
         }
     }

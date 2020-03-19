@@ -185,13 +185,11 @@ function getTriples(shapeId,shape) {
 *    @param {Integer} ShapeId
 */
 function getTriple(triples,singleTriple,shapeId) {   
-      //console.log(singleTriple)
     let id = triples.length;
     let type;
     let constraint;
     let cardinality='';
     let shapeRef = new ShapeRef();
-    let inlineName;
     for(let s in singleTriple){
         let token = singleTriple[s];
         if(token.type == 'string-2' || token.type == 'variable-3'){
@@ -214,49 +212,21 @@ function getTriple(triples,singleTriple,shapeId) {
            console.log('error')
         }
 
-        
-
-        /*
-     
-            if(token.type == 'string-2' || token.type == 'keyword' || token.type == 'variable-3'){
-                value = getValue(token.string);
-            }
-    
-            if(token.type == 'at' ){
-                
-                inlineName = getInlineName(token.string);
+        if(token.type == 'at' ){
+                let ref = getRefName(token.string);
                 inlines.push(
                         {
                             shapeId:shapeId,
                             tripleId:id,
-                            inlineName:inlineName
+                            shapeRef:ref
                         }
                     );
-            }
+        }
 
-            if(token.type == 'card' ){
-                cardinality = token.string;
-            }
-*/
+    
       
     }
 
-  
-      /*
-    //ShapeRef
-    if(inlineName != undefined){
-        let ref;
-        if(value!= undefined){
-           ref = value.getTypeName();
-        }
-        value = new ShapeReference(ref); 
-    }
-
-    */
-
-    //console.log(type)
-    //console.log(constraint)
-    console.log(cardinality)
     return new Triple(id,type,constraint,shapeRef,cardinality);
 }
 
@@ -296,13 +266,14 @@ function getConstraint(def) {
     return type;
 }
 
+/**
+*   Get the Cardinality Object
+*   @param {String} Cardinality
+*   @return {Cardinality|String} Cardinality
+* */
 function getCardinality(card){
     if(card.length==1)return card;//Is it a simple card?
-
-    let exactly = card.split('{')[1].split('}')[0];
-    let inferior = card.split('{')[1].split('}');
-  
-    let range = card.split('{')[1].split('}')[0].split(',')
+    let range = card.split('{')[1].split('}')[0].split(','); //I know...
     let min = range[0];
     let max;
     if(range.length>1){
@@ -319,26 +290,22 @@ function getCardinality(card){
     }
 
     return factory.createCardinality(context,min,max);
-
-   // let type = factory.createType(card.toLowerCase());
 }
 
 
 
 function updateInlines(shapes) {
-
     for(let inShape in inlines){
-  
+
         let shapeId = inlines[inShape].shapeId;
         let tripleId = inlines[inShape].tripleId;
-        let name = inlines[inShape].inlineName;
+        let ref = inlines[inShape].shapeRef;
 
         let shape = shexUtils.getShapeById(shapes,shapeId);
         let triple = shexUtils.getTripleById(shape,tripleId);
+        let shapeRef = shexUtils.getShapeByName(shapes,ref);
 
-        let shapeRef = shexUtils.getShapeByName(shapes,name);
-        triple.getInlineShape().setShape(shapeRef);
-
+        triple.shapeRef.setShape(shapeRef);
     }
 }
 
@@ -365,11 +332,8 @@ function isPrimitive(value) {
 }
 
 
-function getInlineName(token) {
-    if(token.startsWith('@<')){
-        return token.split('<')[1].split('>')[0];
-    }
-    return token.split(':')[1];
+function getRefName(token) {
+    return token.split('@')[1];
 }
 
 
