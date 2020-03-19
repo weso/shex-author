@@ -151,17 +151,23 @@ function getQualifier(shape) {
     return new BlankKind();
 }
 
+
+/**
+*   Get an array of Triples
+*   @param {Integer} shapeId
+*   @param {Array} Shape (Tokens)
+*
+* */
 function getTriples(shapeId,shape) {
         let triples = [];
         let singleTriple = [];
         let yashe = Editor.getInstance().getYashe();
         let start = getStart(shape);
-
         for(let i=start;i<shape.length;i++){
             singleTriple.push(shape[i])
-            if(shape[i].type == 'punc'){// finish of the triple ';'
+            if(shape[i].type == 'punc'  // finish of the triple ';' 
+                || i==shape.length-1){  // finish of the last triple without ';'
                 if(singleTriple.length!=1){ //This line is neccesary when last triple of the shape ends with ';'
-           
                     triples.push(getTriple(triples,singleTriple,shapeId));
                     singleTriple = [];
                 }
@@ -171,46 +177,38 @@ function getTriples(shapeId,shape) {
     return triples;
 }
 
-function getTriple(triples,singleTriple,shapeId) {
-    //In progress...
-    if(singleTriple.length>5){
-        isValid = false;
-    }
-
-   
-   
+/**
+*    Get a Triple Object from a line of tokens
+*    @param {Array} Triples
+*    @param {Array} LineTokens
+*    @param {Integer} ShapeId
+*/
+function getTriple(triples,singleTriple,shapeId) {   
+      //console.log(singleTriple)
     let id = triples.length;
     let type;
-    let value;
+    let constraint;
     let cardinality;
     let shapeRef = new ShapeRef();
     let inlineName;
-    let index = 0;
-
-    let t,co,r,c;
-
     for(let s in singleTriple){
         let token = singleTriple[s];
-        if(token.type == 'string-2'){
-            //console.log(token.string)
+        if(token.type == 'string-2' || token.type == 'variable-3'){
             type = getType(token.string);
-            t=token.string;
         }
-
         if(token.type == 'constraint'){
-            //console.log(token.string)
-            co=token.string;
+            constraint = getConstraint(token.string);
         }
 
+        /*
         if(token.type == 'at'){
             r=token.string;
            
         }
-
-
+        */
         if(token.type == 'cardinality'){
            // console.log(token.string)
-          c=token.string;
+          cardinality=token.string;
         }
         if(token.type != 'string-2' && token.type != 'constraint' && token.type != 'at' && token.type != 'cardinality' && token.type != 'punc' ){
            console.log('error')
@@ -218,13 +216,8 @@ function getTriple(triples,singleTriple,shapeId) {
 
         
 
-        
-      
-        if(index == 0){
-            type = getType(token.string);
-            
-        }else{
-   
+        /*
+     
             if(token.type == 'string-2' || token.type == 'keyword' || token.type == 'variable-3'){
                 value = getValue(token.string);
             }
@@ -244,13 +237,12 @@ function getTriple(triples,singleTriple,shapeId) {
             if(token.type == 'card' ){
                 cardinality = token.string;
             }
-
-        }
-        index++;
+*/
+      
     }
 
   
-      
+      /*
     //ShapeRef
     if(inlineName != undefined){
         let ref;
@@ -260,9 +252,19 @@ function getTriple(triples,singleTriple,shapeId) {
         value = new ShapeReference(ref); 
     }
 
-    return new Triple(id,type,value,shapeRef,cardinality);
+    */
+
+    console.log(type)
+    console.log(constraint)
+    return new Triple(id,type,constraint,shapeRef,cardinality);
 }
 
+/**
+*   Get the start of the triple tokens
+*   @param {Array} Shape (Tokens)
+*   @return {Integer} Position
+*
+ */
 function getStart(shape){
     for(let i=0;i<shape.length;i++){
         if(shape[i].string=='{'){
@@ -272,38 +274,25 @@ function getStart(shape){
 }
 
 
-
-function getValue(def) {
-
+/**
+*   Get the constraint of the Triple
+*   @param {String} Token
+*   @return {Type}
+*/
+function getConstraint(def) {
     let factory = new TypesFactory();
     let type = factory.createType(def.toLowerCase());
-
+    //Isn't it a Prefixed/Iri/Primitive?
     if(type!=undefined){
         return type;
     }
-
-
-    if(def.startsWith('<')){
-        let value = def.split('<')[1].split('>')[0];
-        return new IriRef('valueName',value);
+    type = getType(def);
+    //Is it a Primitive?
+    if(type.getTypeName() == 'prefixedIri' && isPrimitive(type.value)){
+        let kind = def.split(':')[1];
+        return new Primitive(kind);
     }
-
-    let token = def.split(':');
-    let yashe = Editor.getInstance().getYashe();
-
-    if(token.length==2){
-        //At this point it can be Prefixed,Primitive or ShapeRef
-        if(isPrimitive(token[1])){
-            return new Primitive(token[1]);
-        }else{
-            let prefixName = token[0];
-            let prefixValue = getPrefixValue(yashe.getDefinedPrefixes(),prefixName)
-            let prefix = new Prefix(prefixName,prefixValue);
-            return  new PrefixedIri('valueName',prefix,token[1]);
-        }
-
-    }
- 
+    return type;
 }
 
 
