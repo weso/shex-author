@@ -189,7 +189,7 @@ function getTriple(triples,singleTriple,shapeId) {
     let id = triples.length;
     let type;
     let constraint;
-    let cardinality;
+    let cardinality='';
     let shapeRef = new ShapeRef();
     let inlineName;
     for(let s in singleTriple){
@@ -208,7 +208,6 @@ function getTriple(triples,singleTriple,shapeId) {
         }
         */
         if(token.type == 'cardinality'){
-           // console.log(token.string)
           cardinality=getCardinality(token.string);
         }
         if(token.type != 'string-2' && token.type != 'constraint' && token.type != 'at' && token.type != 'cardinality' && token.type != 'punc' ){
@@ -255,8 +254,9 @@ function getTriple(triples,singleTriple,shapeId) {
 
     */
 
-    console.log(type)
-    console.log(constraint)
+    //console.log(type)
+    //console.log(constraint)
+    console.log(cardinality)
     return new Triple(id,type,constraint,shapeRef,cardinality);
 }
 
@@ -299,11 +299,27 @@ function getConstraint(def) {
 function getCardinality(card){
     if(card.length==1)return card;//Is it a simple card?
 
-
-   // console.log(card)
-    console.log(card.split('{')[1].split('}'))
+    let exactly = card.split('{')[1].split('}')[0];
+    let inferior = card.split('{')[1].split('}');
+  
+    let range = card.split('{')[1].split('}')[0].split(',')
+    let min = range[0];
+    let max;
+    if(range.length>1){
+        max = range[1];
+    }
 
     let factory = new CardinalityFactory();
+    let context = 'range';
+    if(max == undefined){
+        context = 'exactly';
+    }
+    if(max == '' || max == '*'){
+        context = 'minLimit';
+    }
+
+    return factory.createCardinality(context,min,max);
+
    // let type = factory.createType(card.toLowerCase());
 }
 
