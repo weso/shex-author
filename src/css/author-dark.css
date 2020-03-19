@@ -1,0 +1,58 @@
+/* author-darkº THEME */
+
+.cm-s-author-dark .cm-keyword {color: rgb(243, 76, 76);}
+.cm-s-author-dark .cm-atom {color: #219;}
+.cm-s-author-dark .cm-number {color: #085;}
+.cm-s-author-dark .cm-def {color: #00f;}
+.cm-s-author-dark .cm-variable,
+.cm-s-default .cm-punctuation,
+.cm-s-author-dark .cm-property,
+.cm-s-author-dark .cm-operator {color: #05a;}
+.cm-s-author-dark .cm-variable-2 {color: #0F7A50;}
+.cm-s-author-dark .cm-comment {color: #999;}
+.cm-s-author-dark .cm-string {color: #b98003;}
+.cm-s-author-dark .cm-constraint {color: #05a;}
+.cm-s-author-dark .cm-meta {color: #555;}
+.cm-s-author-dark .cm-qualifier {color: #555;}
+.cm-s-author-dark .cm-builtin {color: #30a;}
+.cm-s-author-dark .cm-bracket {color: #997;}
+.cm-s-author-dark .cm-tag {color: #170;}
+.cm-s-author-dark .cm-attribute {color: #00c;}
+.cm-s-author-dark .cm-hr {color: #999;}
+.cm-s-author-dark .cm-link {color: #00c;}
+.cm-s-author-dark .cm-logical {color:#f00;}
+
+
+.cm-s-author-dark .cm-shape {color:#7dbdfd;}
+.cm-s-author-dark .cm-punc {color: #7dbdfd;}
+.cm-s-author-dark .cm-string-2 {color: #f3b671;}
+.cm-s-author-dark .cm-variable-3 {color: #f3b671;}
+.cm-s-author-dark .cm-constraint {color: #b3f5aa;}
+.cm-s-author-dark .cm-at {color:#f3fca2;}
+.cm-s-author-dark .cm-cardinality {color:#faaaf6;}
+.cm-s-author-dark .cm-prefixDelc {color:#f8acac;}
+
+.cm-s-author-dark .CodeMirror-cursor { border-left: 1px solid #A9B7C6; }  
+.cm-s-author-dark .CodeMirror-activeline-background { background: #323232; } 
+.cm-s-author-dark .CodeMirror-gutters { background: #353e47; border-right: 1px solid #313335; } 
+.cm-s-author-dark .CodeMirror-guttermarker { color: #FFEE80; }  
+.cm-s-author-dark .CodeMirror-guttermarker-subtle { color: #D0D0D0; }  
+.cm-s-author-dark .CodeMirrir-linenumber { color: #606366; } 
+
+.cm-s-author-dark div.CodeMirror-selected { background: #214283; }  
+
+
+.cm-s-author-dark.CodeMirror { /*3b3b3b 243241*/
+  background: #243241; 
+  color: #A9B7C6; 
+}
+
+.CodeMirror-hints.author-dark {
+  color: #9C9E9E;
+  background-color: #3B3E3F !important;
+}
+
+.CodeMirror-hints.author-dark .CodeMirror-hint-active {
+  background-color: #494D4E !important;
+  color: #9C9E9E !important;
+}

@@ -10,6 +10,7 @@ import Prefix from '../../entities/shexEntities/shexUtils/prefix';
 
 import '../../css/Yashe.css';
 import '../../css/author.css';
+import '../../css/author-dark.css';
 
 function EditorComp() {
 
@@ -31,7 +32,7 @@ function EditorComp() {
                 persistent:false,
                 lineNumbers: true,
                 showTooltip:true,
-                theme:'author',
+                theme:'author-dark',
                 value:yasheUtils.DEFAULT_SHAPE
             }
             
@@ -112,7 +113,6 @@ function EditorComp() {
                 }
             });
 
-       
         
             y.refresh();
             setYashe(y);

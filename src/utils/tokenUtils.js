@@ -33,12 +33,16 @@ const PRIMITIVES = ['string','integer','date','boolean'];
 let inlines;
 let isValid = true;
 
+/**
+*   Obtains all the current tokens in the editor
+*   @return {Array} tokens
+*
+ */
 function getTokens(){
     let yashe = Editor.getInstance().getYashe();
     let tokens =[];
     if(yashe!=undefined){
-        let numPrefixes = Object.keys(yashe.getDefinedPrefixes()).length;
-        for (var l = numPrefixes+1; l < yashe.lineCount(); ++l) {
+        for (var l = 0; l < yashe.lineCount(); ++l) {
             let lineTokens = getNonWsTokens(yashe.getLineTokens(l));
             lineTokens.forEach(token =>{
                 tokens.push(token);
@@ -46,39 +50,39 @@ function getTokens(){
 
         }
     }
-    
-    /*
-    if(!isValid){
-        return null;
-    }
-
-    */
-
     return tokens;
 }
 
+/**
+*   Split the tokens into Shapes
+*   @return {Array} Defined Shapes (Array of Token's arrays)
+*
+ */
 function getDefinedShapes(tokens){
     let brackets=0
     let shape=[];
     let defShapes = [];
+    let shapeCont = 0;
     //Separate shapes in arrays
     tokens.forEach(element =>{
-        shape.push(element);
-        console.log(element)
-        if(element.string == '{'){
-            brackets++;
-        }
+        //If we find a Shape then we start a new Array of tokens
+        if(element.type == 'shape'){
+            shape = [];
+            shape.push(element)
+            defShapes[shapeCont]=shape;
+            shapeCont++;
+        }else{
+             
+             //Get the tokens while it's from the inside of the shape
+            if(element.string == '{')brackets++;
+            if(element.string == '}')brackets--;
+            if(brackets!=0)shape.push(element);
 
-        if(element.string == '}'){
-            brackets--;
-            //Is the last } ?
-            if(brackets==0){
-                defShapes.push(shape);
-                shape = [];
-            }
+            // We could do just shape.push but if there are directives between shapes
+            // you will push that directives into the shape     
         }
-
     })
+    console.log(defShapes)
     return defShapes;
 }
 
@@ -87,8 +91,6 @@ function getShapes(defShapes){
     inlines = [];
     let shapes = [];
     let yashe = Editor.getInstance().getYashe();
-
-    //console.log(defShapes)
     defShapes.forEach(shape => {
         let id = shapes.length;
         let shapeDef = shape[0].string;
@@ -103,11 +105,34 @@ function getShapes(defShapes){
 
 }
 
+
+function getType(def,context) {
+    let value;
+    let yashe = Editor.getInstance().getYashe();
+    if(def.startsWith('<')){
+        value = def.split('<')[1].split('>')[0];
+        return new IriRef(context,value);
+    }else if(def.startsWith('_:')){
+        value = def.split(':')[1];
+        return new BNode(context,value);
+    }else{
+        value = def.split(':')[1];
+        let prefixName = def.split(':')[0];
+        let prefixValue = getPrefixValue(yashe.getDefinedPrefixes(),prefixName)
+        let prefix = new Prefix(prefixName,prefixValue);
+        return new PrefixedIri(context,prefix,value);
+    }
+    
+}
+
+
+
 function getQualifier(shape) {
     if(shape[1].type == 'keyword'){
         let type = shape[1].string.toLowerCase();
         return new TypesFactory().createType(type);
     }
+    
     return new BlankKind();
 }
 
@@ -116,6 +141,7 @@ function getTriples(shapeId,shape) {
         let singleTriple = [];
         let yashe = Editor.getInstance().getYashe();
         let start = getStart(shape);
+
         for(let i=start;i<shape.length;i++){
             singleTriple.push(shape[i])
             if(shape[i].type == 'punc'){// finish of the triple ';'
@@ -131,10 +157,12 @@ function getTriples(shapeId,shape) {
 }
 
 function getTriple(triples,singleTriple,shapeId) {
-    
+    //In progress...
     if(singleTriple.length>5){
         isValid = false;
     }
+
+   
    
     let id = triples.length;
     let type;
@@ -143,8 +171,40 @@ function getTriple(triples,singleTriple,shapeId) {
     let shapeRef = new ShapeRef();
     let inlineName;
     let index = 0;
+
+    let t,co,r,c;
+
     for(let s in singleTriple){
         let token = singleTriple[s];
+        if(token.type == 'string-2'){
+            //console.log(token.string)
+            type = getType(token.string,'tripleName');
+            t=token.string;
+        }
+
+        if(token.type == 'constraint'){
+            //console.log(token.string)
+            co=token.string;
+        }
+
+        if(token.type == 'at'){
+            r=token.string;
+           
+        }
+
+
+        if(token.type == 'cardinality'){
+           // console.log(token.string)
+          c=token.string;
+        }
+        if(token.type != 'string-2' && token.type != 'constraint' && token.type != 'at' && token.type != 'cardinality' && token.type != 'punc' ){
+           console.log('error')
+        }
+
+        
+
+        
+      
         if(index == 0){
             type = getType(token.string,'tripleName');
             
@@ -174,7 +234,8 @@ function getTriple(triples,singleTriple,shapeId) {
         index++;
     }
 
-
+  
+      
     //ShapeRef
     if(inlineName != undefined){
         let ref;
@@ -230,23 +291,6 @@ function getValue(def) {
  
 }
 
-function getType(def,context) {
-    let value;
-    let yashe = Editor.getInstance().getYashe();
-    if(def.startsWith('<')){
-        value = def.split('<')[1].split('>')[0];
-        return new IriRef(context,value);
-    }else if(def.startsWith('_:')){
-        value = def.split(':')[1];
-        return new BNode(context,value);
-    }else{
-        value = def.split(':')[1];
-        let prefixName = def.split(':')[0];
-        let prefixValue = getPrefixValue(yashe.getDefinedPrefixes(),prefixName)
-        let prefix = new Prefix(prefixName,prefixValue);
-        return new PrefixedIri(context,prefix,value);
-    }
-}
 
 
 function updateInlines(shapes) {

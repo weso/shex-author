@@ -1,16 +1,6 @@
 /* authorº THEME */
 
-.cm-s-author.CodeMirror { 
-  background: #fdfdfd; 
-  color: #A9B7C6; 
-  border: 10px;
-}
-
-
-
-.cm-s-author .cm-shape {color:#05a;}
-
-.cm-s-author .cm-keyword {color: #f00;}
+.cm-s-author .cm-keyword {color: rgb(243, 76, 76);}
 .cm-s-author .cm-atom {color: #219;}
 .cm-s-author .cm-number {color: #085;}
 .cm-s-author .cm-def {color: #00f;}
@@ -30,12 +20,15 @@
 .cm-s-author .cm-attribute {color: #00c;}
 .cm-s-author .cm-hr {color: #999;}
 .cm-s-author .cm-link {color: #00c;}
-.cm-s-author .cm-punc {color: black;}
 .cm-s-author .cm-logical {color:#f00;}
 
 
-.cm-s-author .cm-string-2 {color: #df8e32;}
-.cm-s-author .cm-variable-3 {color: #df8e32;}
-.cm-s-author .cm-constraint {color: #2ca71c98;}
-.cm-s-author .cm-at {color:#c4da00;}
-.cm-s-author .cm-cardinality {color:#faaaf6;}
+.cm-s-author .cm-shape {color:#3d9cfa;}
+.cm-s-author .cm-punc {color: #3d9cfa;}
+.cm-s-author .cm-string-2 {color: #f89626;}
+.cm-s-author .cm-variable-3 {color: #f89626;}
+.cm-s-author .cm-constraint {color: #04be4c;}
+.cm-s-author .cm-at {color:#bbb517;}
+.cm-s-author .cm-cardinality {color:#f174eb;}
+.cm-s-author .cm-prefixDelc {color:#f8acac;}
+

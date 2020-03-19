@@ -49,7 +49,7 @@
     display: grid;
     grid-template-columns: 100%;
     padding: 0px;
-    background-color: white;
+    background-color: #ffffff;
     
 }
 
@@ -125,6 +125,7 @@
 
 
 .constraint{
+    /*background:#d6ffc654;*/
     background:#d6ffc654;
     padding: 8px;
     color: black;
