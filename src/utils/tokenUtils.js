@@ -6,6 +6,7 @@ import  Shape from '../entities/shexEntities/shape';
 import  Triple from '../entities/shexEntities/triple';
 
 import TypesFactory from '../entities/shexEntities/types/typesFactory';
+import CardinalityFactory from '../entities/shexEntities/shexUtils/cardinality/cardinalityFactory';
 
 import PrefixedIri from '../entities/shexEntities/types/concreteTypes/prefixedIri';
 import IriRef from '../entities/shexEntities/types/concreteTypes/iriRef';
@@ -208,7 +209,7 @@ function getTriple(triples,singleTriple,shapeId) {
         */
         if(token.type == 'cardinality'){
            // console.log(token.string)
-          cardinality=token.string;
+          cardinality=getCardinality(token.string);
         }
         if(token.type != 'string-2' && token.type != 'constraint' && token.type != 'at' && token.type != 'cardinality' && token.type != 'punc' ){
            console.log('error')
@@ -293,6 +294,17 @@ function getConstraint(def) {
         return new Primitive(kind);
     }
     return type;
+}
+
+function getCardinality(card){
+    if(card.length==1)return card;//Is it a simple card?
+
+
+   // console.log(card)
+    console.log(card.split('{')[1].split('}'))
+
+    let factory = new CardinalityFactory();
+   // let type = factory.createType(card.toLowerCase());
 }
 
 

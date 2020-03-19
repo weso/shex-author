@@ -6,7 +6,7 @@ import Prefix from './shexUtils/prefix';
 
 class Shape {
 
-  constructor(id,type=new PrefixedIri('shapeName',new Prefix('','http://example.org/')),triples = [],qualifier=new BlankKind()) {
+  constructor(id,type=new PrefixedIri(new Prefix('','http://example.org/')),triples = [],qualifier=new BlankKind()) {
       this.id = id;
       this.type = type;
       this.triples = triples;
@@ -32,18 +32,21 @@ class Shape {
     
 
     setType(type){
-        this.type = this.factory.createType(type,'shapeName');
+        this.type = this.factory.createType(type);
      }
 
  
     toString(){
       let str='';
       if(this.type.value!=''){
-        str = this.type+' '+this.qualifier;
+        str+=this.type+' '+this.qualifier;
         if(this.checkContent()){
           str+=' {\n';
+          let longestTriple = this.getLongestTriple();
           this.triples.forEach(triple => {
-            str+=triple;
+            let tripleLength = triple.type.toString().length;
+            let diference = longestTriple - tripleLength;
+            str+=triple.toString(this.getSeparator(diference));
           });
           str+="}\n\n"
         }
@@ -65,6 +68,24 @@ class Shape {
         return isContent;
      }
 
+
+    getLongestTriple(){
+      let size=0;
+      this.triples.forEach(triple => {
+          let value = triple.type.toString().length;
+          if(value>size)size = value;
+      });
+      return size;
+    }
+
+    getSeparator(size){
+      let space = ' ';
+      let separator = '    ';
+      for(let i=0;i<size;i++){
+        separator+=space;
+      }
+      return separator;
+    }
 
     //Getters and setters
     getId(){

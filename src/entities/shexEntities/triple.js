@@ -8,7 +8,7 @@ import Prefix from './shexUtils/prefix';
 class Triple {
 
 
-    constructor(id,type=new PrefixedIri('tripleName',new Prefix('schema','http://schema.org/')),value=new Primitive(),shapeRef=new ShapeRef(),cardinality='') {
+    constructor(id,type=new PrefixedIri(new Prefix('schema','http://schema.org/')),value=new Primitive(),shapeRef=new ShapeRef(),cardinality='') {
         this.id = id;
         this.type = type;
         this.value = value;
@@ -32,11 +32,11 @@ class Triple {
     }
 
     setType(type){
-       this.type = this.factory.createType(type,'tripleName');
+       this.type = this.factory.createType(type);
      }
 
     setValue(value){
-        this.value = this.factory.createType(value,'valueName');;
+        this.value = this.factory.createType(value);
     }
 
     setCardinality(cardinality,min,max){
@@ -63,9 +63,9 @@ class Triple {
 
 
 
-    toString(){
+    toString(separator){
         if(this.getType().value!=''){
-        return '  '+this.getType().toString()+'          '+
+        return '  '+this.getType().toString()+separator+
                 this.getValue().toString() +' '+
                 this.getInlineShape().toString()+
                 this.getCardinality()+'  ;\n';
@@ -74,6 +74,8 @@ class Triple {
        
 
     }
+
+
 
 
 }
