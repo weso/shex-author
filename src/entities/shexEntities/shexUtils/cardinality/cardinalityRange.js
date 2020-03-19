@@ -5,6 +5,10 @@ class CardinalityRange{
         this.max = max;
     }
 
+    getCardType(){
+        return 'range';
+    }
+
     toString(){
         return '{'+this.min+','+this.max+'}';
     }

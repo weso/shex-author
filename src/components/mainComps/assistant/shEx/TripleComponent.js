@@ -4,7 +4,7 @@ import TripleHeader from './headers/TripleHeader';
 import CustomComp from './customize/CustomComp';
 import ConstraintComponent from './ConstraintComponent';
 import ShapeRefComp from './customize/ShapeRefComp';
-import Cardinality from './customize/Cardinality';
+import CardinalityComp from './customize/CardinalityComp';
 
 
 function TripleComponent (props) {
@@ -140,7 +140,7 @@ function TripleComponent (props) {
                         onExited={rounder}
                         onEntering={rounder} >
 
-                <Cardinality triple={triple}/>
+                <CardinalityComp triple={triple}/>
                             
             </Collapse> 
 

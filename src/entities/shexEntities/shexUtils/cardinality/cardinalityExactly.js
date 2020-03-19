@@ -4,6 +4,10 @@ class CardinalityExactly{
         this.value = value;
     }
 
+    getCardType(){
+        return 'exactly';
+    }
+
     toString(){
         return '{'+this.value+'}';
     }

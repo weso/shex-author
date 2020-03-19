@@ -7,6 +7,7 @@ import  Triple from '../entities/shexEntities/triple';
 
 import TypesFactory from '../entities/shexEntities/types/typesFactory';
 import CardinalityFactory from '../entities/shexEntities/shexUtils/cardinality/cardinalityFactory';
+import CardinalitySimple from '../entities/shexEntities/shexUtils/cardinality/cardinalitySimple';
 
 import PrefixedIri from '../entities/shexEntities/types/concreteTypes/prefixedIri';
 import IriRef from '../entities/shexEntities/types/concreteTypes/iriRef';
@@ -185,7 +186,7 @@ function getTriple(triples,singleTriple,shapeId) {
     let id = triples.length;
     let type;
     let constraint;
-    let cardinality='';
+    let cardinality=new CardinalitySimple();
     let shapeRef = new ShapeRef();
     for(let s in singleTriple){
         let token = singleTriple[s];
@@ -269,7 +270,7 @@ function getConstraint(def) {
 *   @return {Cardinality|String} Cardinality
 * */
 function getCardinality(card){
-    if(card.length==1)return card;//Is it a simple card?
+    if(card.length==1)return new CardinalitySimple(card);//Is it a simple card?
     let range = card.split('{')[1].split('}')[0].split(','); //I know...
     let min = range[0];
     let max;

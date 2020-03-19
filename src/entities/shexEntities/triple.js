@@ -1,5 +1,6 @@
 import TypesFactory from './types/typesFactory';
 import CardinalityFactory from './shexUtils/cardinality/cardinalityFactory';
+import CardinalitySimple from './shexUtils/cardinality/cardinalitySimple';
 import PrefixedIri from './types/concreteTypes/prefixedIri';
 import Primitive from './types/concreteTypes/primitive';
 import ShapeRef from './shexUtils/shapeRef';
@@ -8,7 +9,7 @@ import Prefix from './shexUtils/prefix';
 class Triple {
 
 
-    constructor(id,type=new PrefixedIri(new Prefix('schema','http://schema.org/')),constraint=new Primitive(),shapeRef=new ShapeRef(),cardinality='') {
+    constructor(id,type=new PrefixedIri(new Prefix('schema','http://schema.org/')),constraint=new Primitive(),shapeRef=new ShapeRef(),cardinality=new CardinalitySimple()) {
         this.id = id;
         this.type = type;
         this.constraint = constraint;

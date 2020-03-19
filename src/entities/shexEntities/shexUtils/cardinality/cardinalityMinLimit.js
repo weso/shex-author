@@ -4,6 +4,10 @@ class CardinalityMinLimit{
         this.min = min;
     }
 
+    getCardType(){
+        return 'minLimit';
+    }
+
     toString(){
         return '{'+this.min+',*}';
     }

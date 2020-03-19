@@ -4,39 +4,65 @@ import { Collapse } from 'reactstrap';
 import NumericInput from 'react-numeric-input';
 
 
-function Cardinality (props) {
+function CardinalityComp (props) {
     
         const {triple} = props;
         const context = useContext(AppContext);
-        const [cardinality,setCardinality] = useState(triple.cardinality);
-        const [isExactly,setExactly] = useState(false);
-        const [isRange,setRange] = useState(false);
+
+        let cardValue = triple.cardinality.getCardType();
+        let initialExactly = false;
+        let initialRange = false;
+        if(cardValue.length>1){ //not simple card
+                if(cardValue == 'exactly' || cardValue == 'minLimit' ){
+                        //setMin(1);
+                        initialExactly = true;
+                }
+
+                if(cardValue == 'range'){
+                       // setMin(1);
+                       // setMax(10);
+                        initialRange = true;
+                }
+        }
+
+       
+        const [cardinality,setCardinality] = useState(cardValue);
+        const [isExactly,setExactly] = useState(initialExactly);
+        const [isRange,setRange] = useState(initialRange);
         const [min,setMin] = useState(1);
         const [max,setMax] = useState(10);
+
+
+    
+
+   
+                
+
 
         const handleCardinalityChange = function(e){
                 let newCardinality = e.target.value;
                 triple.setCardinality(newCardinality);
                 context.emit();
                 setCardinality(newCardinality)
-
-
                 setExactly(false);
                 setRange(false);
+                checkCollapses(newCardinality);
+        }
 
-                if(newCardinality == 'exactly' || newCardinality == 'minLimit' ){
+        const checkCollapses = function(card){
+                if(card == 'exactly' || card == 'minLimit' ){
                         setMin(1);
                         setExactly(true);
                 }
 
-                if(newCardinality == 'range'){
+                if(card == 'range'){
                         setMin(1);
                         setMax(10);
                         setRange(true);
                 }
-
-
         }
+
+
 
         const handleMinChange = function(valueAsNumber,kind){
                 triple.setCardinality(kind,valueAsNumber,max);
@@ -96,5 +122,5 @@ function Cardinality (props) {
 
 
 
-export default Cardinality;
+export default CardinalityComp;
 
