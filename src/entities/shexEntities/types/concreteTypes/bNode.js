@@ -2,9 +2,8 @@ import Type from '../type';
 
 class BNode extends Type{
 
-    constructor(context,value='example'){
+    constructor(value='example'){
         super(value);
-        this.context = context;
     }
 
 

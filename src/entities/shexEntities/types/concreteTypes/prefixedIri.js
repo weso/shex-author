@@ -3,9 +3,8 @@ import Prefix from '../../shexUtils/prefix';
 
 class PrefixedIri extends Type{
 
-    constructor(context,prefix=new Prefix(),value=''){
+    constructor(prefix=new Prefix(),value=''){
         super(value);
-        this.context = context;
         this.prefix = prefix;
     }
 

@@ -3,9 +3,8 @@ import Editor from'../../../editor';
 
 class IriRef extends Type{
 
-    constructor(context,value=''){
+    constructor(value=''){
         super(value);
-        this.context = context;
     }
 
     getTypeName(){

@@ -17,15 +17,6 @@ const DEFAULT_SHAPE = 'PREFIX :       <http://example.org/>\n'+
   
   function replaceShapes(){
     let tokens = tokenUtils.getTokens();
-
-    /*
-    if(tokens==null){
-      return tokens;
-    }
-
-    */
-
-
     let defShapes = tokenUtils.getDefinedShapes(tokens);
     let newShapes = tokenUtils.getShapes(defShapes);
  

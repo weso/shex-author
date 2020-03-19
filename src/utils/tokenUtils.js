@@ -55,6 +55,7 @@ function getTokens(){
 
 /**
 *   Split the tokens into Shapes
+*   @param {Array} Tokens
 *   @return {Array} Defined Shapes (Array of Token's arrays)
 *
  */
@@ -82,11 +83,14 @@ function getDefinedShapes(tokens){
             // you will push that directives into the shape     
         }
     })
-    console.log(defShapes)
     return defShapes;
 }
 
-
+/**
+* Get the Shapes objects
+* @param {Array} Shapes (Array of Token's arrays)
+*
+ */
 function getShapes(defShapes){
     inlines = [];
     let shapes = [];
@@ -94,7 +98,7 @@ function getShapes(defShapes){
     defShapes.forEach(shape => {
         let id = shapes.length;
         let shapeDef = shape[0].string;
-        let shapeType = getType(shapeDef,'shapeName');
+        let shapeType = getType(shapeDef);
         let qualifier = getQualifier(shape);
         let triples = getTriples(id,shape);
 
@@ -106,21 +110,21 @@ function getShapes(defShapes){
 }
 
 
-function getType(def,context) {
+function getType(def) {
     let value;
     let yashe = Editor.getInstance().getYashe();
     if(def.startsWith('<')){
         value = def.split('<')[1].split('>')[0];
-        return new IriRef(context,value);
+        return new IriRef(value);
     }else if(def.startsWith('_:')){
         value = def.split(':')[1];
-        return new BNode(context,value);
+        return new BNode(value);
     }else{
         value = def.split(':')[1];
         let prefixName = def.split(':')[0];
         let prefixValue = getPrefixValue(yashe.getDefinedPrefixes(),prefixName)
         let prefix = new Prefix(prefixName,prefixValue);
-        return new PrefixedIri(context,prefix,value);
+        return new PrefixedIri(prefix,value);
     }
     
 }
@@ -178,7 +182,7 @@ function getTriple(triples,singleTriple,shapeId) {
         let token = singleTriple[s];
         if(token.type == 'string-2'){
             //console.log(token.string)
-            type = getType(token.string,'tripleName');
+            type = getType(token.string);
             t=token.string;
         }
 
