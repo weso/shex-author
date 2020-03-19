@@ -12,7 +12,6 @@ import PrefixedIri from '../entities/shexEntities/types/concreteTypes/prefixedIr
 import IriRef from '../entities/shexEntities/types/concreteTypes/iriRef';
 import BNode from '../entities/shexEntities/types/concreteTypes/bNode';
 import Primitive from '../entities/shexEntities/types/concreteTypes/primitive';
-import ShapeReference from '../entities/shexEntities/types/concreteTypes/shapeReference';
 
 import Literal from '../entities/shexEntities/types/concreteTypes/kinds/literal';
 import NonLiteral from '../entities/shexEntities/types/concreteTypes/kinds/nonLiteral';
@@ -27,13 +26,11 @@ import Prefix from '../entities/shexEntities/shexUtils/prefix';
 import ShapeRef from '../entities/shexEntities/shexUtils/shapeRef';
 
 
-//HAY QUE METER TODOS
+//HAY QUE METER TODOS (Update... ya no estoy tan seguro)
 const PRIMITIVES = ['string','integer','date','boolean'];
 
 
-let inlines;
-let isValid = true;
-
+let refs;
 /**
 *   Obtains all the current tokens in the editor
 *   @return {Array} tokens
@@ -93,7 +90,7 @@ function getDefinedShapes(tokens){
 *
  */
 function getShapes(defShapes){
-    inlines = [];
+    refs = [];
     let shapes = [];
     let yashe = Editor.getInstance().getYashe();
     defShapes.forEach(shape => {
@@ -214,7 +211,7 @@ function getTriple(triples,singleTriple,shapeId) {
 
         if(token.type == 'at' ){
                 let ref = getRefName(token.string);
-                inlines.push(
+                refs.push(
                         {
                             shapeId:shapeId,
                             tripleId:id,
@@ -294,12 +291,13 @@ function getCardinality(card){
 
 
 
-function updateInlines(shapes) {
-    for(let inShape in inlines){
 
-        let shapeId = inlines[inShape].shapeId;
-        let tripleId = inlines[inShape].tripleId;
-        let ref = inlines[inShape].shapeRef;
+function updateShapeRefs(shapes) {
+    for(let r in refs){
+
+        let shapeId = refs[r].shapeId;
+        let tripleId = refs[r].tripleId;
+        let ref = refs[r].shapeRef;
 
         let shape = shexUtils.getShapeById(shapes,shapeId);
         let triple = shexUtils.getTripleById(shape,tripleId);
@@ -308,6 +306,8 @@ function updateInlines(shapes) {
         triple.shapeRef.setShape(shapeRef);
     }
 }
+
+
 
 
 
@@ -347,7 +347,7 @@ const tokenUtils = {
     getTokens:getTokens,
     getDefinedShapes:getDefinedShapes,
     getShapes:getShapes,
-    updateInlines:updateInlines
+    updateShapeRefs:updateShapeRefs
 }
 
 export default tokenUtils;

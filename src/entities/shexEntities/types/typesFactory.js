@@ -3,7 +3,6 @@ import IriRef from'./concreteTypes/iriRef';
 import BNode from'./concreteTypes/bNode';
 import BlankType from'./concreteTypes/blankType';
 import Primitive from'./concreteTypes/primitive';
-import ShapeReference from'./concreteTypes/shapeReference';
 
 import Literal from'./concreteTypes/kinds/literal';
 import NonLiteral from'./concreteTypes/kinds/nonLiteral';
@@ -33,10 +32,6 @@ class TypesFactory{
 
         if(type == 'primitive'){
             retType = new Primitive();
-        }
-
-        if(type == 'shape'){
-            retType = new ShapeReference('');
         }
 
         if(type == 'literal'){
