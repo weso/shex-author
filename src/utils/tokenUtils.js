@@ -96,10 +96,10 @@ function getShapes(defShapes){
     let shapes = [];
     let yashe = Editor.getInstance().getYashe();
     defShapes.forEach(shape => {
-        let id = shapes.length;
+        let id  = shapes.length;
         let shapeDef = shape[0].string;
         let shapeType = getType(shapeDef);
-        let qualifier = getQualifier(shape);
+        let qualifier = getQualifier(shape[1]);
         let triples = getTriples(id,shape);
 
         shapes.push(new Shape(id,shapeType,triples,qualifier));
@@ -109,7 +109,11 @@ function getShapes(defShapes){
 
 }
 
-
+/**
+* Get the type of the Shape or Triple
+* @param {String} Shape or Triple
+*
+ */
 function getType(def) {
     let value;
     let yashe = Editor.getInstance().getYashe();
@@ -130,11 +134,18 @@ function getType(def) {
 }
 
 
-
+/**
+*   Get the Qualifier
+*   @param {Token} First token next to the ShapeExprLabel
+*   @return {Type}
+*
+*/
 function getQualifier(shape) {
-    if(shape[1].type == 'keyword'){
-        let type = shape[1].string.toLowerCase();
-        return new TypesFactory().createType(type);
+    if(shape){
+        if(shape.type == 'keyword'){
+            let type = shape[1].string.toLowerCase();
+            return new TypesFactory().createType(type);
+        }
     }
     
     return new BlankKind();
@@ -210,7 +221,7 @@ function getTriple(triples,singleTriple,shapeId) {
         
       
         if(index == 0){
-            type = getType(token.string,'tripleName');
+            type = getType(token.string);
             
         }else{
    
