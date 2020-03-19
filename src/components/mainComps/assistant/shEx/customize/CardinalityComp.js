@@ -13,31 +13,18 @@ function CardinalityComp (props) {
         let initialExactly = false;
         let initialRange = false;
         if(cardValue.length>1){ //not simple card
-                if(cardValue == 'exactly' || cardValue == 'minLimit' ){
-                        //setMin(1);
-                        initialExactly = true;
-                }
+                if(cardValue == 'exactly' 
+                || cardValue == 'minLimit')initialExactly = true;
 
-                if(cardValue == 'range'){
-                       // setMin(1);
-                       // setMax(10);
-                        initialRange = true;
-                }
+                if(cardValue == 'range')initialRange = true;
+         
         }
 
-       
         const [cardinality,setCardinality] = useState(cardValue);
         const [isExactly,setExactly] = useState(initialExactly);
         const [isRange,setRange] = useState(initialRange);
         const [min,setMin] = useState(1);
         const [max,setMax] = useState(10);
-
-
-    
-
-   
-                
-
 
         const handleCardinalityChange = function(e){
                 let newCardinality = e.target.value;

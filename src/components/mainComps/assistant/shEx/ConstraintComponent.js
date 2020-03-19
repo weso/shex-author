@@ -62,12 +62,12 @@ function ConstraintComponent (props) {
 
       const handlePrimitiveChange = function(e){
         const primitive = e.target.value;
-        triple.setValue('primitive');
+        triple.setConstraint('primitive');
         triple.constraint.setValue(primitive);
         setPrimitive(primitive)
         setCustomOpen(false);
         if(primitive =='custom'){
-            triple.setValue('primitive');
+            triple.setConstraint('primitive');
             triple.constraint.setValue('');
             setConstraint('primitive');
             setName('');
@@ -77,7 +77,7 @@ function ConstraintComponent (props) {
         }
 
         if(primitive =='none' && triple.shapeRef.shape != null){
-            triple.setValue('blankType');
+            triple.setConstraint('blankType');
         }
         
         context.emit();
@@ -86,7 +86,7 @@ function ConstraintComponent (props) {
 
     const handleConstraintChange = function(e){
         let newConstraint = e.target.value;
-        triple.setValue(newConstraint);
+        triple.setConstraint(newConstraint);
         triple.constraint.setValue(name);
        
         triple.constraint.setValue('');
@@ -108,7 +108,7 @@ function ConstraintComponent (props) {
 
         if(newConstraint == 'primitive'){
             setCustomOpen(false);  
-            triple.setValue('primitive');
+            triple.setConstraint('primitive');
             context.emit(); 
         }
 
