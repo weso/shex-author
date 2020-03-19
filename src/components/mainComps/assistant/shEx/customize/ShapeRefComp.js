@@ -3,52 +3,50 @@ import {AppContext} from '../../../../../App';
 import { Collapse } from 'reactstrap';
 import shexUtils from '../../../../../utils/shexUtils';
 
-
-
-function InlineOrRef (props) {
+function ShapeRefComp (props) {
     
     const {triple} = props;
     const context = useContext(AppContext);
 
 
-    let inlineValue = '';
-    let inlineOpen = false;
+    let refValue = '';
+    let refOpen = false;
     if(triple.shapeRef.shape != null){
-        inlineValue = triple.shapeRef.shape.id;
-        inlineOpen = true;
+        refValue = triple.shapeRef.shape.id;
+        refOpen = true;
     }
 
 
-    const [shapeRef,setShapeRef] = useState(inlineValue);
+    const [shapeRef,setShapeRef] = useState(refValue);
 
 
     const handleShapeRefChange = function(e){
         const shapeId = e.target.value;
         let shapeRef = null;
-        let inlineSelector = '';
+        let refSelector = '';
         if(shapeId!=''){
             shapeRef = shexUtils.getShapeById(context.shapes,shapeId);
-            inlineSelector = shapeRef.id;
+            refSelector = shapeRef.id;
         }
-        triple.getInlineShape().setShape(shapeRef);
-        if(triple.value.value=='none'){
+        triple.getShapeRef().setShape(shapeRef);
+        if(triple.constraint.value=='none'){
             triple.setValue('blankType');
             
         }
         
         if(shapeId=='' && triple.value.getTypeName() == 'blankType'){
             triple.setValue('primitive');
-            triple.value.setValue('none');
+            triple.constraint.setValue('none');
         }
         
       
         context.emit();
-        setShapeRef(inlineSelector);
+        setShapeRef(refSelector);
     }
      
     return ( 
-            <div className="inline">
-                    <label className="customLabel">ShapeRef</label>
+            <div className="shapeRef">
+                    <label className="customLabel">ShapeReference</label>
                     <select className="customSelector"
                             value={shapeRef}
                             onChange={handleShapeRefChange}>
@@ -65,5 +63,5 @@ function InlineOrRef (props) {
 
 
 
-export default InlineOrRef;
+export default ShapeRefComp;
 

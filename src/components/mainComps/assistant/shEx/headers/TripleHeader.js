@@ -33,8 +33,8 @@ function TripleHeader (props) {
     }
 
     let initialPrimitive = 'custom'
-    if(triple.value.value != ''){
-        initialPrimitive = triple.value.value;
+    if(triple.constraint.value != ''){
+        initialPrimitive = triple.constraint.value;
     }
     const [primitive,setPrimitive] = useState(initialPrimitive);
 
@@ -49,7 +49,7 @@ function TripleHeader (props) {
         }
 
         triple.setValue('primitive');
-        triple.value.setValue(primitive);
+        triple.constraint.setValue(primitive);
         triple.inlineShape.shape = null;
         context.emit();
         setPrimitive(primitive);

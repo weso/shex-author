@@ -8,19 +8,19 @@ import Prefix from './shexUtils/prefix';
 class Triple {
 
 
-    constructor(id,type=new PrefixedIri(new Prefix('schema','http://schema.org/')),value=new Primitive(),shapeRef=new ShapeRef(),cardinality='') {
+    constructor(id,type=new PrefixedIri(new Prefix('schema','http://schema.org/')),constraint=new Primitive(),shapeRef=new ShapeRef(),cardinality='') {
         this.id = id;
         this.type = type;
-        this.value = value;
+        this.constraint = constraint;
         this.cardinality = cardinality;
         this.shapeRef = shapeRef;
         this.factory = new TypesFactory();
         this.cardFactory = new CardinalityFactory();
       }
       
-    addValue(value){
-        this.values.push(value);
-        this.valuesCount++;
+    addValue(constraint){
+        this.constraints.push(constraint);
+        this.constraintsCount++;
     }
 
     getId(){
@@ -35,25 +35,25 @@ class Triple {
        this.type = this.factory.createType(type);
      }
 
-    setValue(value){
-        this.value = this.factory.createType(value);
+    setConstraint(constraint){
+        this.constraint = this.factory.createType(constraint);
     }
 
     setCardinality(cardinality,min,max){
         this.cardinality = this.cardFactory.createCardinality(cardinality,min,max);
     }
 
-    getInlineShape(){
+    getShapeRef(){
         return this.shapeRef;
     }
 
-    setInlineShape(shapeRef){
+    setShapeRef(shapeRef){
         this.shapeRef = shapeRef;
     }
 
 
-    getValue(){
-       return this.value;
+    getConstraint(){
+       return this.constraint;
     }
 
 
@@ -65,9 +65,9 @@ class Triple {
 
     toString(separator){
         let str=''
-        if(this.getType().value!=''){
+        if(this.getType().constraint!=''){
         return '  '+this.getType().toString()+separator+
-                this.getValue().toString() +' '+
+                this.getConstraint().toString() +' '+
                 this.getInlineShape().toString()+' '+
                 this.getCardinality()+'  ;\n';
         }
