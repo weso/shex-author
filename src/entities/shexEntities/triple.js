@@ -68,7 +68,7 @@ class Triple {
         if(this.getType().constraint!=''){
         return '  '+this.getType().toString()+separator+
                 this.getConstraint().toString() +' '+
-                this.getInlineShape().toString()+' '+
+                this.getShapeRef().toString()+' '+
                 this.getCardinality()+'  ;\n';
         }
         return '';

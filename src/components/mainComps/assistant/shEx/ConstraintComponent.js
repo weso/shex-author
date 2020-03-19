@@ -12,12 +12,19 @@ function ConstraintComponent (props) {
 
     const context = useContext(AppContext);
     const {triple} = props;
-    const [isCustomOpen,setCustomOpen] = useState(false);
-    const [primitive,setPrimitive] = useState(triple.constraint.value);
-
-  
-    const [constraint,setConstraint] = useState(triple.constraint.getTypeName());
+    
+    let constValue = triple.constraint.getTypeName();
+    let primValue = triple.constraint.value;
+    let customOpen = false;
+    if(constValue!='primitive'){
+        primValue = 'custom';
+        customOpen = true;
+    }
+    const [primitive,setPrimitive] = useState(primValue);    
+    const [constraint,setConstraint] = useState(constValue);
+    const [isCustomOpen,setCustomOpen] = useState(customOpen);
         
+    
     let initialPrefix = 'example';
     let initialOpenPrefix = false;
     if(triple.constraint.prefix!=undefined){
