@@ -30,12 +30,12 @@ function ShapeRefComp (props) {
         }
         triple.getShapeRef().setShape(shapeRef);
         if(triple.constraint.value=='none'){
-            triple.setValue('blankType');
+            triple.setConstraint('blankType');
             
         }
         
-        if(shapeId=='' && triple.value.getTypeName() == 'blankType'){
-            triple.setValue('primitive');
+        if(shapeId=='' && triple.constraint.getTypeName() == 'blankType'){
+            triple.setConstraint('primitive');
             triple.constraint.setValue('none');
         }
         

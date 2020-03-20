@@ -16,10 +16,14 @@ function ConstraintComponent (props) {
     let constValue = triple.constraint.getTypeName();
     let primValue = triple.constraint.value;
     let customOpen = false;
+    
     if(constValue!='primitive'){
         primValue = 'custom';
         customOpen = true;
     }
+
+   
+
     const [primitive,setPrimitive] = useState(primValue);    
     const [constraint,setConstraint] = useState(constValue);
     const [isCustomOpen,setCustomOpen] = useState(customOpen);
@@ -76,9 +80,7 @@ function ConstraintComponent (props) {
             setPrefixOpen(false);
         }
 
-        if(primitive =='none' && triple.shapeRef.shape != null){
-            triple.setConstraint('blankType');
-        }
+        checkRefs(primitive);
         
         context.emit();
     }
@@ -114,7 +116,13 @@ function ConstraintComponent (props) {
 
     }
 
+    const checkRefs = function(prim){
+        if(prim =='none' && triple.shapeRef.shape != null){
+            triple.setConstraint('blankType');
+        }
+    }
 
+    checkRefs(primitive);
 
 
     return (
