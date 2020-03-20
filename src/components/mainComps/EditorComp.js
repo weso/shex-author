@@ -12,12 +12,16 @@ import '../../css/Yashe.css';
 import '../../css/author.css';
 import '../../css/author-dark.css';
 
+const errorMsg = 'Ops... There are some errors in the editor';
+const complexMsg = 'Sorry that Shape is too complex for me';
+
 function EditorComp() {
 
     const [yashe,setYashe] = useState(null);
     const divRef = useRef(null);
     const context = useContext(AppContext);
     let oldShapes = [];
+    
 
     const defaultPrefixes = [
                 new Prefix('','http://example.org/',0),
@@ -49,6 +53,14 @@ function EditorComp() {
                 Editor.getInstance().draw(oldShapes,prefixes);
             });
 
+            y.on('forceError', function(prefixes) {
+                loading();
+                setTimeout(function() {
+                    loaded();  
+                    showError(complexMsg);
+                },500)
+            });
+
             
 
             
@@ -65,7 +77,7 @@ function EditorComp() {
                         updateAssist();
                     } 
                 }else{
-                    showError();
+                    showError(errorMsg);
                 }   
             });
             
@@ -164,9 +176,10 @@ function EditorComp() {
         context.setAsist('showAsist');
     }
 
-    const showError = function(){
+    const showError = function(error){
         context.setError('showError');
         context.setAsist('hideAsist');
+        context.setErrorMsg(error)
     }
 
     const hideError = function(){

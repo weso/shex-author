@@ -11,7 +11,7 @@ function UndoBtn () {
         undo();
         setTimeout(() => {//needed
             context.replaceShapes(yasheUtils.replaceShapes());
-            context.updatePrefixes(yasheUtils.updatePrefixes());
+            //context.updatePrefixes(yasheUtils.updatePrefixes());
         }, 10); 
     }
 

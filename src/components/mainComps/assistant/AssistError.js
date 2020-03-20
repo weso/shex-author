@@ -8,7 +8,7 @@ function AssistError (props) {
     return (<div className={context.error}>
                 <div className='shapeErrorCont'>
                     <div className='shapeError'></div>
-                    <p>Ops... There are some errors in the editor</p>
+                    <p>{context.errorMsg}</p>
                 </div>
             </div>);
 }

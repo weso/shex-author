@@ -22,7 +22,6 @@ const DEFAULT_SHAPE = 'PREFIX :       <http://example.org/>\n'+
  
     tokenUtils.updateShapeRefs(newShapes);
 
-    console.log(newShapes)
     return newShapes;
   }
 

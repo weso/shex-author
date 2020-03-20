@@ -34,6 +34,7 @@ function App() {
     const [loading,setLoading] = useState('hideLoader');
     const [error,setError] = useState('hideError');
     const [asist,setAsist] = useState('showAsist');
+    const [errorMsg,setErrorMsg] = useState('');
 
     //Responsive
     const [shapeHeader,setShapeHeader] = useState('header');
@@ -207,7 +208,9 @@ function App() {
                   asist:asist,
                   setAsist:setAsist,
                   error:error,
-                  setError:setError
+                  setError:setError,
+                  errorMsg:errorMsg,
+                  setErrorMsg:setErrorMsg
 
                     
                   }

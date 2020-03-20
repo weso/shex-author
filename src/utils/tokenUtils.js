@@ -1,6 +1,7 @@
-import shexUtils from './shexUtils';
 
+import Codemirror from 'codemirror';
 import Editor from '../entities/editor';
+import shexUtils from './shexUtils';
 
 import  Shape from '../entities/shexEntities/shape';
 import  Triple from '../entities/shexEntities/triple';
@@ -206,9 +207,18 @@ function getTriple(triples,singleTriple,shapeId) {
         if(token.type == 'cardinality'){
           cardinality=getCardinality(token.string);
         }
+        
         if(token.type != 'string-2' && token.type != 'constraint' && token.type != 'at' && token.type != 'cardinality' && token.type != 'punc' ){
            console.log('error')
+           Codemirror.signal(Editor.getInstance().getYashe(),'forceError');
         }
+
+        if(token.string == '{' || token.string == '['){
+            console.log('error')
+            Codemirror.signal(Editor.getInstance().getYashe(),'forceError');
+        }
+
+       
 
         if(token.type == 'at' ){
                 let ref = getRefName(token.string);
