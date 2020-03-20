@@ -54,6 +54,7 @@ function EditorComp() {
             });
 
             y.on('forceError', function(prefixes) {
+                hideError();
                 loading();
                 setTimeout(function() {
                     loaded();  

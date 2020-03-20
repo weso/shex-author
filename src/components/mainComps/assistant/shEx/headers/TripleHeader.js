@@ -72,7 +72,6 @@ function TripleHeader (props) {
    
     return (
         <div className={rounded+" tripleHeader "+context.tripleHeader}>            
-            <label  className={context.tripleLabel}>Triple</label>
             <input  type="text" 
                     className="name"
                     value={name}

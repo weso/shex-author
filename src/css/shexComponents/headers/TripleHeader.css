@@ -6,7 +6,7 @@
     text-align: left;
     border-top: 1px solid #acaaaa;
     display: grid;
-    grid-template-columns: 10% 44% 6% 6% 6% 6% 6% 6%;
+    grid-template-columns:  54% 6% 6% 6% 6% 6% 6%;
     gap: 10px;
 
 }
