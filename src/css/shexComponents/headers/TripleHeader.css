@@ -6,7 +6,7 @@
     text-align: left;
     border-top: 1px solid #acaaaa;
     display: grid;
-    grid-template-columns:  54% 6% 6% 6% 6% 6% 6%;
+    grid-template-columns:  54% 6% 6% 6% 6% 6% 10%;
     gap: 10px;
 
 }
@@ -15,7 +15,7 @@
 .xs-tripleHeader{
     justify-content: center;
     gap: 8px;
-    grid-template-columns: 9% 40% 6% 6% 6% 6% 6% 5%;
+    grid-template-columns: 54% 6% 6% 6% 6% 6% 6%;
 }
 
 
