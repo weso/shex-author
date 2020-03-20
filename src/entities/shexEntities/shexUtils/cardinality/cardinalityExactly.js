@@ -1,7 +1,7 @@
 class CardinalityExactly{
 
-    constructor(value=1){
-        this.value = value;
+    constructor(min=1){
+        this.min = min;
     }
 
     getCardType(){
@@ -9,7 +9,7 @@ class CardinalityExactly{
     }
 
     toString(){
-        return '{'+this.value+'}';
+        return '{'+this.min+'}';
     }
 
 }

@@ -1,26 +1,26 @@
 import CardinalityExactly from './cardinalityExactly';
 import CardinalityMinLimit from './cardinalityMinLimit';
 import CardinalityRange from './cardinalityRange';
+import CardinalitySimple from './cardinalitySimple';
 
 class CardinalityFactory{
 
     createCardinality(type,min,max){
 
-        let retType = type;
         if(type == 'exactly'){
-            retType = new CardinalityExactly(min);
+            return new CardinalityExactly(min);
         }
 
         if(type == 'minLimit'){
-            retType = new CardinalityMinLimit(min);
+            return new CardinalityMinLimit(min);
         }
 
         if(type == 'range'){
-            retType = new CardinalityRange(min,max);
+            return new CardinalityRange(min,max);
         }
- 
-        return retType;
 
+        return new CardinalitySimple(type);
+ 
     }
 
 

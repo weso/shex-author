@@ -8,7 +8,6 @@ import  Triple from '../entities/shexEntities/triple';
 
 import TypesFactory from '../entities/shexEntities/types/typesFactory';
 import CardinalityFactory from '../entities/shexEntities/shexUtils/cardinality/cardinalityFactory';
-import CardinalitySimple from '../entities/shexEntities/shexUtils/cardinality/cardinalitySimple';
 
 import PrefixedIri from '../entities/shexEntities/types/concreteTypes/prefixedIri';
 import IriRef from '../entities/shexEntities/types/concreteTypes/iriRef';
@@ -187,7 +186,7 @@ function getTriple(triples,singleTriple,shapeId) {
     let id = triples.length;
     let type;
     let constraint;
-    let cardinality=new CardinalitySimple();
+    let cardinality= new TypesFactory().createType('');
     let shapeRef = new ShapeRef();
     for(let s in singleTriple){
         let token = singleTriple[s];
@@ -198,41 +197,30 @@ function getTriple(triples,singleTriple,shapeId) {
             constraint = getConstraint(token.string);
         }
 
-        /*
-        if(token.type == 'at'){
-            r=token.string;
-           
+        if(token.type == 'at' ){
+            let ref = getRefName(token.string);
+            refs.push(
+                    {
+                        shapeId:shapeId,
+                        tripleId:id,
+                        shapeRef:ref
+                    }
+                );
         }
-        */
+
+
         if(token.type == 'cardinality'){
           cardinality=getCardinality(token.string);
         }
         
         if(token.type != 'string-2' && token.type != 'constraint' && token.type != 'at' && token.type != 'cardinality' && token.type != 'punc' ){
-           console.log('error')
            Codemirror.signal(Editor.getInstance().getYashe(),'forceError');
         }
 
         if(token.string == '{' || token.string == '['){
-            console.log('error')
             Codemirror.signal(Editor.getInstance().getYashe(),'forceError');
         }
-
-       
-
-        if(token.type == 'at' ){
-                let ref = getRefName(token.string);
-                refs.push(
-                        {
-                            shapeId:shapeId,
-                            tripleId:id,
-                            shapeRef:ref
-                        }
-                    );
-        }
-
-    
-      
+  
     }
 
     return new Triple(id,type,constraint,shapeRef,cardinality);
@@ -280,7 +268,8 @@ function getConstraint(def) {
 *   @return {Cardinality|String} Cardinality
 * */
 function getCardinality(card){
-    if(card.length==1)return new CardinalitySimple(card);//Is it a simple card?
+    let factory = new CardinalityFactory();
+    if(card.length==1)return factory.createCardinality(card);//Is it a simple card?
     let range = card.split('{')[1].split('}')[0].split(','); //I know...
     let min = range[0];
     let max;
@@ -288,7 +277,6 @@ function getCardinality(card){
         max = range[1];
     }
 
-    let factory = new CardinalityFactory();
     let context = 'range';
     if(max == undefined){
         context = 'exactly';

@@ -12,19 +12,26 @@ function CardinalityComp (props) {
         let cardValue = triple.cardinality.getCardType();
         let initialExactly = false;
         let initialRange = false;
+        let initialMin = 1;
+        let initialMax = 10;
         if(cardValue.length>1){ //not simple card
-                if(cardValue == 'exactly' 
-                || cardValue == 'minLimit')initialExactly = true;
-
-                if(cardValue == 'range')initialRange = true;
+                initialMin = triple.cardinality.min;
+                if(cardValue == 'exactly' || cardValue == 'minLimit'){
+                        initialExactly = true;
+                }
+                if(cardValue == 'range'){
+                        initialRange = true;
+                        initialMax = triple.cardinality.max;
+                }
+                
          
         }
 
         const [cardinality,setCardinality] = useState(cardValue);
         const [isExactly,setExactly] = useState(initialExactly);
         const [isRange,setRange] = useState(initialRange);
-        const [min,setMin] = useState(1);
-        const [max,setMax] = useState(10);
+        const [min,setMin] = useState(initialMin);
+        const [max,setMax] = useState(initialMax);
 
         const handleCardinalityChange = function(e){
                 let newCardinality = e.target.value;
