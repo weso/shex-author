@@ -92,15 +92,17 @@ function TripleHeader (props) {
                     build
             </button>
 
-            <button className={context.tripleBtns+" buildInlineRef buildBtn buildTripleBtn mdc-icon-button material-icons"}  
-                    onClick={customizeRef} 
-                    title="Customize InlineOrRef">
-                    build
-            </button>
+
 
             <button className={context.tripleBtns+" buildFacet buildBtn buildTripleBtn mdc-icon-button material-icons"}  
                     onClick={customizeFacet}
                     title="Customize Facets">
+                    build
+            </button>
+
+            <button className={context.tripleBtns+" buildInlineRef buildBtn buildTripleBtn mdc-icon-button material-icons"}  
+                    onClick={customizeRef} 
+                    title="Customize InlineOrRef">
                     build
             </button>
 

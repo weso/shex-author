@@ -149,13 +149,26 @@
     border-top: 1px solid #acaaaa;
 }
 
+.facetGlobal{
+    display: grid;
+    align-items: center;  
+    background:#f5d6d6; 
+}
+
+.facetCont{
+    background:#f5d6d6;
+    padding: 8px;
+    color: black;
+    border-top: 1px solid #acaaaa;
+}
+
 .longLabel{
     display: grid;
     grid-template-rows: 50% 50%;
 }
 
 .cardinality{
-    background:#faf0f9;
+    background:#fae2f8;
     padding: 8px;
     color: black;
     border-top: 1px solid #acaaaa;
@@ -239,6 +252,18 @@
     outline: none;
 }
 
+
+.addFacet{ 
+    background: rgb(247, 190, 190);
+    border-radius: 10px;
+    border: 1px solid white;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.addFacet:focus{
+    outline: none;
+}
 
 
 
