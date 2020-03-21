@@ -30,7 +30,7 @@
 
 .gridBox{ 
     display: grid;
-    grid-template-columns: 10% 20% 40%;
+    grid-template-columns: 10% 23% 40%;
 }
 
 .xs-gridBox{

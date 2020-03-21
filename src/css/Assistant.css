@@ -131,7 +131,7 @@
     color: black;
     border-top: 1px solid #acaaaa;
     display: grid;
-    grid-template-columns: 10% 20% 40%;
+    grid-template-columns: 10% 23% 40%;
 }
 
 .constraintCollapse{
@@ -150,7 +150,7 @@
     color: black;
     border-top: 1px solid #acaaaa;
     display: grid;
-    grid-template-columns: 10% 20% 40%;
+    grid-template-columns: 10% 23% 40%;
 }
 
 .cardinality{
@@ -159,7 +159,7 @@
     color: black;
     border-top: 1px solid #acaaaa;
     display: grid;
-    grid-template-columns: 10% 20% 40%;
+    grid-template-columns: 10% 23% 40%;
 }
 
 .gridLabel{
@@ -312,6 +312,7 @@
     width: 100% !important;
     height: 93% !important;
 }
+
 
 .shapeErrorCont{
    
