@@ -15,8 +15,9 @@ function TripleHeader (props) {
             deleteTriple,
             customizeTriple,
             forceCollapse,
-            customizeInline,
-            collapseConstraints,
+            customizeRef,
+            customizeFacet,
+            customizeContraints,
             customizeCardinality,
             collapseToggle,
             colapseBtn,
@@ -66,7 +67,7 @@ function TripleHeader (props) {
 
     const handleCollapse = function(){
         setPrimitive('custom')
-        collapseConstraints();
+        customizeContraints();
     }
    
    
@@ -92,8 +93,14 @@ function TripleHeader (props) {
             </button>
 
             <button className={context.tripleBtns+" buildInlineRef buildBtn buildTripleBtn mdc-icon-button material-icons"}  
-                    onClick={customizeInline} 
+                    onClick={customizeRef} 
                     title="Customize InlineOrRef">
+                    build
+            </button>
+
+            <button className={context.tripleBtns+" buildFacet buildBtn buildTripleBtn mdc-icon-button material-icons"}  
+                    onClick={customizeFacet}
+                    title="Customize Facets">
                     build
             </button>
 

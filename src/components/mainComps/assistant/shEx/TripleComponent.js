@@ -4,6 +4,7 @@ import TripleHeader from './headers/TripleHeader';
 import CustomComp from './customize/CustomComp';
 import ConstraintComponent from './ConstraintComponent';
 import ShapeRefComp from './customize/ShapeRefComp';
+import FacetComp from './customize/FacetComp';
 import CardinalityComp from './customize/CardinalityComp';
 
 
@@ -12,8 +13,9 @@ function TripleComponent (props) {
     const {shape,triple,deleteTriple} = props;
     const [isTripleCustomOpen,setTripleCustomOpen] = useState(false);
     const [isConstraintsOpen,setConstraintsOpen] = useState(false);
+    const [isRefOpen,setRefOpen] = useState(false);
+    const [isFacetOpen,setFacetOpen] = useState(false);
     const [isCardinalityOpen,setCardinalityOpen] = useState(false);
-    const [isInlineOpen,setInlineOpen] = useState(false);
     const [allCollased,setAllCollapsed] = useState(false);
     const [rounded,setRounded] = useState('roundme');
     const [colapseBtn,setColapseBtn] = useState('menu');
@@ -29,7 +31,7 @@ function TripleComponent (props) {
         }
     }
 
-    const collapseConstraints = function(){
+    const customizeContraints = function(){
         collapseAll(false);
         setConstraintsOpen(!isConstraintsOpen);
         setAllCollapsed(false);
@@ -40,13 +42,24 @@ function TripleComponent (props) {
         }
     }
 
-    const customizeInline = function(){
+    const customizeRef = function(){
         collapseAll(false);
-        setInlineOpen(!isInlineOpen);
+        setRefOpen(!isRefOpen);
         setAllCollapsed(false);
 
         if(allCollased){
-            setInlineOpen(true);
+            setRefOpen(true);
+            changeCollapseBtn();
+        }  
+    }
+
+      const customizeFacet = function(){
+        collapseAll(false);
+        setFacetOpen(!isFacetOpen);
+        setAllCollapsed(false);
+
+        if(allCollased){
+            setFacetOpen(true);
             changeCollapseBtn();
         }  
     }
@@ -71,8 +84,9 @@ function TripleComponent (props) {
     const collapseAll = function(collapse){
         setTripleCustomOpen(collapse);
         setConstraintsOpen(collapse);
+        setRefOpen(collapse);
+        setFacetOpen(collapse);
         setCardinalityOpen(collapse);
-        setInlineOpen(collapse);
     }
 
     const collapseToggle = function(){
@@ -105,8 +119,9 @@ function TripleComponent (props) {
             <TripleHeader triple={triple} 
                           deleteTriple={deleteTriple} 
                           customizeTriple={customizeTriple}
-                          collapseConstraints={collapseConstraints}
-                          customizeInline={customizeInline}
+                          customizeContraints={customizeContraints}
+                          customizeRef={customizeRef}
+                          customizeFacet={customizeFacet}
                           customizeCardinality={customizeCardinality}
                           forceCollapse={forceCollapse}
                           collapseToggle={collapseToggle}
@@ -128,13 +143,23 @@ function TripleComponent (props) {
                             
             </Collapse> 
 
-             <Collapse  isOpen={isInlineOpen}
+             <Collapse  isOpen={isRefOpen}
                         onExited={rounder}
                         onEntering={rounder} >
 
                 <ShapeRefComp triple={triple}/>
                             
             </Collapse> 
+
+            <Collapse   isOpen={isFacetOpen}
+                        onExited={rounder}
+                        onEntering={rounder} >
+
+                <FacetComp triple={triple}/>
+                            
+            </Collapse> 
+
+            
 
             <Collapse   isOpen={isCardinalityOpen}
                         onExited={rounder}
