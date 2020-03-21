@@ -71,7 +71,7 @@ function CardinalityComp (props) {
         }
 
         return ( 
-                <div className="cardinality">
+                <div className={context.gridClass + " gridBox cardinality"}>
                         <label className='gridLabel'>Cardinality</label>
                         <select className="customSelector" 
                                 value={cardinality} 

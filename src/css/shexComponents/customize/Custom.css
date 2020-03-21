@@ -30,7 +30,8 @@
 
 .gridBox{ 
     display: grid;
-    grid-template-columns: 10% 23% 40%;
+    align-items: center;
+    grid-template-columns: 10% 20% 40%;
 }
 
 .xs-gridBox{
@@ -48,5 +49,14 @@
     outline: none;
     color:#222;
     border: 1px solid #acaaaa !important;
+    height: 100%;
 }
 
+.shapeRefSelector{
+    border-radius: 5px;
+    background: white;
+    outline: none;
+    color:#222;
+    border: 1px solid #acaaaa !important;
+    height: 60%;
+}

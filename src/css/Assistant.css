@@ -130,8 +130,6 @@
     padding: 8px;
     color: black;
     border-top: 1px solid #acaaaa;
-    display: grid;
-    grid-template-columns: 10% 23% 40%;
 }
 
 .constraintCollapse{
@@ -149,8 +147,11 @@
     padding: 8px;
     color: black;
     border-top: 1px solid #acaaaa;
+}
+
+.longLabel{
     display: grid;
-    grid-template-columns: 10% 23% 40%;
+    grid-template-rows: 50% 50%;
 }
 
 .cardinality{
@@ -158,8 +159,6 @@
     padding: 8px;
     color: black;
     border-top: 1px solid #acaaaa;
-    display: grid;
-    grid-template-columns: 10% 23% 40%;
 }
 
 .gridLabel{

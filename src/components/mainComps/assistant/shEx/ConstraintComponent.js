@@ -126,7 +126,7 @@ function ConstraintComponent (props) {
 
 
     return (
-                <div className="constraint">
+                <div className={context.gridClass + " gridBox constraint"}>
                     <label className='gridLabel'>Constraint</label>
                     <select className="customSelector" 
                         value={primitive} 

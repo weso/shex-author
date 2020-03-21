@@ -45,9 +45,9 @@ function ShapeRefComp (props) {
     }
      
     return ( 
-            <div className="shapeRef">
-                    <label className="customLabel">ShapeReference</label>
-                    <select className="customSelector"
+            <div className={context.gridClass + " gridBox shapeRef"}>
+                    <label className="customLabel">Shape <br/><span>Reference</span></label>
+                    <select className="shapeRefSelector"
                             value={shapeRef}
                             onChange={handleShapeRefChange}>
                     <option value=''>none</option>
