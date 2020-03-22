@@ -143,13 +143,7 @@ function TripleComponent (props) {
                             
             </Collapse> 
 
-             <Collapse   isOpen={isFacetOpen}
-                        onExited={rounder}
-                        onEntering={rounder} >
-
-                <FacetComp triple={triple}/>
-                            
-            </Collapse> 
+             
 
 
              <Collapse  isOpen={isRefOpen}
@@ -157,6 +151,14 @@ function TripleComponent (props) {
                         onEntering={rounder} >
 
                 <ShapeRefComp triple={triple}/>
+                            
+            </Collapse> 
+
+            <Collapse   isOpen={isFacetOpen}
+                        onExited={rounder}
+                        onEntering={rounder} >
+
+                <FacetComp triple={triple}/>
                             
             </Collapse> 
 
