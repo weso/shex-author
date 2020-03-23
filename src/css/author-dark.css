@@ -2,7 +2,7 @@
 
 .cm-s-author-dark .cm-keyword {color: rgb(243, 76, 76);}
 .cm-s-author-dark .cm-atom {color: #219;}
-.cm-s-author-dark .cm-number {color: #085;}
+.cm-s-author-dark .cm-number {color: #ff5f5f;}
 .cm-s-author-dark .cm-def {color: #00f;}
 .cm-s-author-dark .cm-variable,
 .cm-s-default .cm-punctuation,
@@ -29,6 +29,7 @@
 .cm-s-author-dark .cm-variable-3 {color: #f3b671;}
 .cm-s-author-dark .cm-constraint {color: #b3f5aa;}
 .cm-s-author-dark .cm-at {color:#f3fca2;}
+.cm-s-author-dark .cm-facet {color:#ff5f5f;}
 .cm-s-author-dark .cm-cardinality {color:#faaaf6;}
 .cm-s-author-dark .cm-prefixDelc {color:#f8acac;}
 
