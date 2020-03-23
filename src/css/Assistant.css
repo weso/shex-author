@@ -280,24 +280,11 @@
     border-radius: 10px;
 /*    background:#f7bebe;*/
     margin-top:6px;
-    -webkit-transition: margin 0.4s ease-in-out;
-    transition: margin 0.4s ease-in-out;
-    margin-left: 50px;
-    margin-right: 50px;
 }
 
 .addFacet:focus{
     outline: none;
 }
-
-
-.addFacet:hover {
-    margin-left: 0px;
-    margin-right: 0px;
-}
-
-
-
 
 
 .shape{
