@@ -8,6 +8,7 @@ import  Triple from '../entities/shexEntities/triple';
 
 import TypesFactory from '../entities/shexEntities/types/typesFactory';
 import CardinalityFactory from '../entities/shexEntities/shexUtils/cardinality/cardinalityFactory';
+import Facet from '../entities/shexEntities/shexUtils/facet';
 
 import PrefixedIri from '../entities/shexEntities/types/concreteTypes/prefixedIri';
 import IriRef from '../entities/shexEntities/types/concreteTypes/iriRef';
@@ -186,10 +187,11 @@ function getTriple(triples,singleTriple,shapeId) {
     let id = triples.length;
     let type;
     let constraint;
+    let facets = [];
     let cardinality= new TypesFactory().createType('');
     let shapeRef = new ShapeRef();
-    for(let s in singleTriple){
-        let token = singleTriple[s];
+    for(let i=0;i<singleTriple.length;i++){
+        let token = singleTriple[i];
         if(token.type == 'string-2' || token.type == 'variable-3'){
             type = getType(token.string);
         }
@@ -208,12 +210,20 @@ function getTriple(triples,singleTriple,shapeId) {
                 );
         }
 
+        if(token.type == 'facet'){
+            i++;//Need the value
+            let value = singleTriple[i].string;
+            let id =facets.length;
+            let type = token.string.toLowerCase();
+            facets.push(new Facet(id,type,value));
+        }
+
 
         if(token.type == 'cardinality'){
           cardinality=getCardinality(token.string);
         }
         
-        if(token.type != 'string-2' && token.type != 'constraint' && token.type != 'at' && token.type != 'cardinality' && token.type != 'punc' ){
+        if(token.type != 'string-2' && token.type != 'constraint' && token.type != 'at' && token.type != 'facet' && token.type != 'cardinality' && token.type != 'punc' ){
            Codemirror.signal(Editor.getInstance().getYashe(),'forceError');
         }
 
@@ -223,7 +233,7 @@ function getTriple(triples,singleTriple,shapeId) {
   
     }
 
-    return new Triple(id,type,constraint,shapeRef,null,cardinality);
+    return new Triple(id,type,constraint,shapeRef,facets,cardinality);
 }
 
 /**
@@ -261,6 +271,7 @@ function getConstraint(def) {
     }
     return type;
 }
+
 
 /**
 *   Get the Cardinality Object

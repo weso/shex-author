@@ -7,7 +7,7 @@ import shexUtils from '../../../../../utils/shexUtils';
 function FacetComp (props) {
     const {triple} = props;
     const context = useContext(AppContext);
-    const [facets,setFacets]=useState([]);
+    const [facets,setFacets]=useState(triple.facets);
 
     const deleteFacet= function(id){
         setFacets(shexUtils.deleteFacet(facets,id));
@@ -40,7 +40,7 @@ function FacetComp (props) {
                                  return (
                                         <div key={f.id} className="facetInputs">
                                                 <select className="customSelector"
-                                                        value={f.value}
+                                                        value={f.type}
                                                         onChange={(e)=>handleTypeChange(f,e.target.value)}>
                                                         <option value="length">length</option>
                                                         <option value="minlength">minlength</option>
