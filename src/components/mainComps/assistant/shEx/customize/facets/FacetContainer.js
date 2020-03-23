@@ -11,11 +11,12 @@ function FacetContainer (props) {
 
     const deleteFacet= function(id){
         setFacets(shexUtils.deleteFacet(facets,id));
+        updateFacets();
     }
 
     const addFacet = function(){
         setFacets([...facets,shexUtils.addFacet(facets)]);
-        
+        updateFacets();
     }
 
     const updateFacets = function(){

@@ -76,14 +76,13 @@ class Triple {
         let str=''
         if(this.getType().constraint!=''){
             str+= '  '+this.getType().toString()+separator+
-                    this.getConstraint().toString() +' '+
-                    this.getShapeRef().toString();
+                    this.getConstraint().toString() +' ';
             if(this.facets){
                 this.facets.map(f=>{
                     str+=' '+f.toString()+' ';
                 })
             }
-            str+= this.getCardinality()+'  ;\n';
+            str+= this.getShapeRef().toString()+' '+ this.getCardinality()+'  ;\n';
         }
         return str;
        
