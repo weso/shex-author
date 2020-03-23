@@ -1,7 +1,6 @@
 import React,{useState,useContext} from 'react';
-import {AppContext} from '../../../../../App';
+import {AppContext} from '../../../../../../App';
 import NumericInput from 'react-numeric-input';
-import shexUtils from '../../../../../utils/shexUtils';
 
 function FacetComp (props) {
     const {facet,addFacet,deleteFacet,updateFacets} = props;
