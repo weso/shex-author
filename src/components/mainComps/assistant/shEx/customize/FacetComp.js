@@ -2,10 +2,10 @@ import React,{useState,useContext} from 'react';
 import {AppContext} from '../../../../../App';
 import { Collapse } from 'reactstrap';
 import NumericInput from 'react-numeric-input';
+import Facet from '../../../../../entities/shexEntities/shexUtils/facet';
 
 
 function FacetComp (props) {
-    
     const {triple} = props;
     const context = useContext(AppContext);
     const [facets,setFacets]=useState([]);
@@ -15,11 +15,15 @@ function FacetComp (props) {
 
     }
 
+    const addFacet = function(){
+        setFacets([...facets,new Facet()]);
+    }
+
     return ( <div className="facetGlobal">
                 <div className={context.gridClass + " gridBox facetCont"}>
                         <label className="customLabel">Facet</label>
                          {facets.map(f =>{
-                                 return (<div>
+                                 return (
                                         <div className="facetInputs">
                                                 <select className="customSelector">
                                                         <option value="length">length</option>
@@ -36,11 +40,12 @@ function FacetComp (props) {
                                                 className="form-control" 
                                                 min={0} 
                                                 />
+                                               
                                         </div>
-                                        <div/><div/></div>)
+                                        )
                          })}
+                        <button className="addFacet" title="Add Facet" onClick={addFacet}>+ Facet</button>      
                         
-                        <button className="addFacet" title="Add Facet">+ Facet</button>      
                 </div>   
                          
         </div>);                          
