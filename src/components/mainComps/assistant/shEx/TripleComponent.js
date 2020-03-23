@@ -19,6 +19,9 @@ function TripleComponent (props) {
     const [allCollased,setAllCollapsed] = useState(false);
     const [rounded,setRounded] = useState('roundme');
     const [colapseBtn,setColapseBtn] = useState('menu');
+    const [facetAllowed,setFacetAllowed] = useState(true);
+    const [noFacet,setNoFacet] = useState(false);
+
 
     const customizeTriple = function(){
         collapseAll(false);
@@ -114,6 +117,22 @@ function TripleComponent (props) {
 
     }
 
+    const collapseFacet = function(){
+        setFacetAllowed(false);
+        setTimeout(() => {
+            setNoFacet(true);
+        }, 400);
+       
+    }
+
+    const extendFacet = function(){
+        setNoFacet(false);
+        setTimeout(() => {
+            setFacetAllowed(true);
+        }, 400);
+       
+    }
+
     return ( 
         <div>
             <TripleHeader triple={triple} 
@@ -139,7 +158,9 @@ function TripleComponent (props) {
                         onExited={rounder}
                         onEntering={rounder} >
 
-                <ConstraintComponent triple={triple}/>
+                <ConstraintComponent    triple={triple} 
+                                        collapseFacet={collapseFacet}
+                                        extendFacet={extendFacet}/>
                             
             </Collapse> 
 
@@ -149,7 +170,7 @@ function TripleComponent (props) {
                         onExited={rounder}
                         onEntering={rounder} >
 
-                <FacetContainer triple={triple}/>
+                <FacetContainer triple={triple} facetAllowed={facetAllowed} noFacet={noFacet}/>
                             
             </Collapse> 
 

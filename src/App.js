@@ -46,7 +46,6 @@ function App() {
     const [addBtns,setAddBtns] = useState('addBtns');
     const [gridClass,setGridClass] = useState('gridBox');
     
-  
     const assistantToggle = () => setAssistantOpen(!isAssistantOpen);
     const shapesToggle = () => {
       //In case the assistant is closed...

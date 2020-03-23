@@ -1,11 +1,12 @@
 import React,{useState,useContext} from 'react';
 import {AppContext} from '../../../../../../App';
+import { Collapse } from 'reactstrap';
 import NumericInput from 'react-numeric-input';
 import shexUtils from '../../../../../../utils/shexUtils';
 import FacetComp from './FacetComp';
 
 function FacetContainer (props) {
-    const {triple} = props;
+    const {triple,facetAllowed,noFacet} = props;
     const context = useContext(AppContext);
     const [facets,setFacets]=useState(triple.facets);
 
@@ -25,18 +26,22 @@ function FacetContainer (props) {
 
     return ( <div className="facetGlobal">
                 <div className={context.gridClass + " gridBox facetCont"}>
-                        <label className="customLabel">Facet</label>
-                         {facets.map(f =>{
-                                 return (<FacetComp 
-                                            key={f.id} 
-                                            facet={f}
-                                            addFacet={addFacet}
-                                            deleteFacet={deleteFacet} />)
-                         })}
-                        <button className="addFacet" title="Add Facet" onClick={addFacet}>+ Facet</button>      
-                        
-                </div>   
-                         
+                    <label className="customLabel">Facet</label>
+                    <Collapse  isOpen={facetAllowed}>
+                    {facets.map(f =>{
+                                return (<FacetComp 
+                                        key={f.id} 
+                                        facet={f}
+                                        addFacet={addFacet}
+                                        deleteFacet={deleteFacet} />)
+                        })}
+                    <button className="addFacet" title="Add Facet" onClick={addFacet}>+ Facet</button>      
+                   </Collapse>
+                   <Collapse isOpen={noFacet}>
+                        <label className="noFacetLabel">Constraint needed</label>                        
+                    </Collapse> 
+                </div>
+                     
         </div>);                          
 }
 

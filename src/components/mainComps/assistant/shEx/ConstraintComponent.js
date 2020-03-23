@@ -11,7 +11,7 @@ const primitives = ['String','Integer','Date','Boolean'];
 function ConstraintComponent (props) {
 
     const context = useContext(AppContext);
-    const {triple} = props;
+    const {triple,collapseFacet,extendFacet} = props;
     
     let constValue = triple.constraint.getTypeName();
     let primValue = triple.constraint.value;
@@ -80,8 +80,7 @@ function ConstraintComponent (props) {
             setPrefixOpen(false);
         }
 
-        checkRefs(primitive);
-        
+        checkRefs(primitive);     
         context.emit();
     }
 
@@ -117,8 +116,13 @@ function ConstraintComponent (props) {
     }
 
     const checkRefs = function(prim){
-        if(prim =='none' && triple.shapeRef.shape != null){
-            triple.setConstraint('blankType');
+        if(prim =='none'){
+            collapseFacet();
+            if(triple.shapeRef.shape != null){
+                triple.setConstraint('blankType');
+            }
+        }else{
+            extendFacet();
         }
     }
 
@@ -143,7 +147,7 @@ function ConstraintComponent (props) {
 
                     <Collapse isOpen={isCustomOpen} className='constraintCollapse'>
                         <div className="customConstraint">
-                        <label>Kind </label>
+                        <label>Kind</label>
                         <select className="customSelector"
                                 value={constraint}
                                 onChange={handleConstraintChange}>

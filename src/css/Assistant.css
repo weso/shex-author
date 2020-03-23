@@ -293,8 +293,8 @@
     margin-left: 50px;
     margin-right: 50px;
     grid-column: 3/3;
-    -webkit-transition: margin 0.5s ease-in-out;
-    transition: margin 0.5s ease-in-out;
+    -webkit-transition: margin 0.4s ease-in-out;
+    transition: margin 0.4s ease-in-out;
 }
 
 .addFacet:focus{
@@ -306,6 +306,7 @@
     margin-left: 0px;
     margin-right: 0px;
 }
+
 
 
 .shape{
