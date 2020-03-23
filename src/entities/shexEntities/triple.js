@@ -77,19 +77,22 @@ class Triple {
 
 
     toString(separator){
-        let str=''
-        if(this.getType().constraint!=''){
-            str+= '  '+this.getType().toString()+separator+
-                    this.getConstraint().toString() +' ';
-            if(this.facets){
-                this.facets.map(f=>{
-                    str+=' '+f.toString()+' ';
+        let str='';
+        let type=this.getType();
+        let constraint = this.getConstraint();
+        let facets = this.getFacets();
+        let shapeRef = this.getShapeRef();
+        let cardinality = this.getCardinality();
+        if(type.value!=''){
+            str+= '  '+type+separator+constraint+' ';
+            if(facets ){
+                facets.map(f=>{
+                    str+=' '+f+' ';
                 })
             }
-            str+= this.getShapeRef().toString()+' '+ this.getCardinality()+'  ;\n';
+            str+= shapeRef+' '+cardinality+'  ;\n';
         }
         return str;
-       
 
     }
 

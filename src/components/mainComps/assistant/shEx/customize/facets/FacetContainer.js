@@ -24,10 +24,9 @@ function FacetContainer (props) {
         context.emit();
     }
 
-    return ( <div className="facetGlobal">
-                <div className={context.gridClass + " gridBox facetCont"}>
+    return ( <div className={context.gridClass + " gridBox facetCont"}>
                     <label className="customLabel">Facet</label>
-                    <Collapse  isOpen={facetAllowed}>
+                    <Collapse  isOpen={facetAllowed} className="collapseFacet">
                     {facets.map(f =>{
                                 return (<FacetComp 
                                         key={f.id} 
@@ -40,8 +39,6 @@ function FacetContainer (props) {
                    <Collapse isOpen={noFacet}>
                         <label className="noFacetLabel">Constraint needed</label>                        
                     </Collapse> 
-                </div>
-                     
         </div>);                          
 }
 
