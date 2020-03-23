@@ -1,12 +1,11 @@
 import React,{useState,useContext} from 'react';
 import {AppContext} from '../../../../../../App';
-import { Collapse } from 'reactstrap';
 import NumericInput from 'react-numeric-input';
 import shexUtils from '../../../../../../utils/shexUtils';
 import FacetComp from './FacetComp';
 
 function FacetContainer (props) {
-    const {triple,facetAllowed,noFacet} = props;
+    const {triple} = props;
     const context = useContext(AppContext);
     const [facets,setFacets]=useState(triple.facets);
 
@@ -24,22 +23,19 @@ function FacetContainer (props) {
         context.emit();
     }
 
-    return ( <div className={context.gridClass + " gridBox facetCont"}>
+    return (<div className={context.gridClass + " gridBox globalFacet"}>
                     <label className="customLabel">Facet</label>
-                    <Collapse  isOpen={facetAllowed} className="collapseFacet">
-                    {facets.map(f =>{
+                    <div className="facetCont">
+                        {facets.map(f =>{
                                 return (<FacetComp 
                                         key={f.id} 
                                         facet={f}
                                         addFacet={addFacet}
                                         deleteFacet={deleteFacet} />)
                         })}
-                    <button className="addFacet" title="Add Facet" onClick={addFacet}>+ Facet</button>      
-                   </Collapse>
-                   <Collapse isOpen={noFacet}>
-                        <label className="noFacetLabel">Constraint needed</label>                        
-                    </Collapse> 
-        </div>);                          
+                        <button className="addFacet" title="Add Facet" onClick={addFacet}>+ Facet</button>      
+                    </div>        
+            </div>);                          
 }
 
 

@@ -84,8 +84,9 @@ class Triple {
         let shapeRef = this.getShapeRef();
         let cardinality = this.getCardinality();
         if(type.value!=''){
-            str+= '  '+type+separator+constraint+' ';
-            if(facets ){
+            str+= '  '+type+separator;
+            str+= this.checkFacets();
+            if(facets){
                 facets.map(f=>{
                     str+=' '+f+' ';
                 })
@@ -94,6 +95,21 @@ class Triple {
         }
         return str;
 
+    }
+
+    /**
+    * If none constraint and there are facets don't print the '.'
+     */
+    checkFacets(){
+        let constraint = this.getConstraint();
+        if(this.facets.length>0){
+             if(constraint.getTypeName()!='Primitive' 
+                && constraint.value!='none'){
+                    return constraint+' ';
+                }
+            return '';
+        }
+        return constraint+' ';
     }
 
 

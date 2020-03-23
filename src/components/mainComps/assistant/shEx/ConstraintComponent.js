@@ -11,7 +11,7 @@ const primitives = ['String','Integer','Date','Boolean'];
 function ConstraintComponent (props) {
 
     const context = useContext(AppContext);
-    const {triple,collapseFacet,extendFacet} = props;
+    const {triple} = props;
     
     let constValue = triple.constraint.getTypeName();
     let primValue = triple.constraint.value;
@@ -117,12 +117,10 @@ function ConstraintComponent (props) {
 
     const checkRefs = function(prim){
         if(prim =='none'){
-            collapseFacet();
+            
             if(triple.shapeRef.shape != null){
                 triple.setConstraint('blankType');
             }
-        }else{
-            extendFacet();
         }
     }
 
