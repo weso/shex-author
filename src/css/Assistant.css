@@ -164,8 +164,31 @@
 
 .facetInputs{
     display: grid;
-    grid-template-columns: 60% 40%;
+    grid-template-columns: 55% 30% 15%;
     grid-column: 3/3;
+    padding-top: 4px;
+}
+
+.deleteFacetBtn{
+    background: #fd9090;
+    color: white;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+
+}
+
+.deleteFacetBtn:focus{
+    outline: none;
+}
+
+
+.deleteFacetBtn:hover{
+    transform: scale(1.1);
+}
+
+.deleteFacetBtn:active {
+    transform: translateY(4px);
 }
 
 .longLabel{

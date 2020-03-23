@@ -4,6 +4,7 @@ import Shape from '../entities/shexEntities/shape';
 import {addPrefix} from './prefixUtils';
 
 let shapesCount = 0;
+let facetsCount = 0;
 
 function addShape(shapes){
 
@@ -90,13 +91,26 @@ function checkPrefixes(){
 }
 
 
+
+function addFacet(facets){
+    const id = facets.length + facetsCount++;
+    return new Shape(id);    
+}
+
+function deleteFacet(facets,id) {
+    return facets.filter(f => f.id != id);
+}
+
+
 const shexUtils = {
     addShape:addShape,
     deleteShape:deleteShape,
     getShapeById:getShapeById,
     getShapeByName:getShapeByName,
     getTripleById:getTripleById,
-    emit:emit
+    emit:emit,
+    addFacet:addFacet,
+    deleteFacet:deleteFacet
 }
 
 export default shexUtils;

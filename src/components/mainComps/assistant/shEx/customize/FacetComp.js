@@ -2,21 +2,20 @@ import React,{useState,useContext} from 'react';
 import {AppContext} from '../../../../../App';
 import { Collapse } from 'reactstrap';
 import NumericInput from 'react-numeric-input';
-import Facet from '../../../../../entities/shexEntities/shexUtils/facet';
-
+import shexUtils from '../../../../../utils/shexUtils';
 
 function FacetComp (props) {
     const {triple} = props;
     const context = useContext(AppContext);
     const [facets,setFacets]=useState([]);
 
-
-    const handle= function(){
-
+    const deleteFacet= function(id){
+        setFacets(shexUtils.deleteFacet(facets,id));
     }
 
     const addFacet = function(){
-        setFacets([...facets,new Facet()]);
+        setFacets([...facets,shexUtils.addFacet(facets)]);
+        
     }
 
     return ( <div className="facetGlobal">
@@ -24,7 +23,7 @@ function FacetComp (props) {
                         <label className="customLabel">Facet</label>
                          {facets.map(f =>{
                                  return (
-                                        <div className="facetInputs">
+                                        <div key={f.id} className="facetInputs">
                                                 <select className="customSelector">
                                                         <option value="length">length</option>
                                                         <option value="minlength">minlength</option>
@@ -40,6 +39,11 @@ function FacetComp (props) {
                                                 className="form-control" 
                                                 min={0} 
                                                 />
+                                                 <button className={context.tripleBtns+" deleteFacetBtn mdc-icon-button material-icons"} 
+                                                        onClick={()=>deleteFacet(f.id)} 
+                                                        title="Delete Facet">
+                                                        delete
+                                                </button>
                                                
                                         </div>
                                         )

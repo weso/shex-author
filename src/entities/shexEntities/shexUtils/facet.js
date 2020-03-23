@@ -1,8 +1,13 @@
 class Facet{
 
-    constructor(type,value){
+    constructor(id,type,value){
+        this.id = id;
         this.type = type;
         this.value = value;
+    }
+
+    getId(){
+        return this.id;
     }
 
     getType(){
@@ -11,6 +16,10 @@ class Facet{
 
     getValue(){
         return this.value;
+    }
+
+    setId(id){
+        this.id = id;
     }
 
     setType(type){
