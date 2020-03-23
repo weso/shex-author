@@ -32,7 +32,7 @@ function FacetComp (props) {
                         <option value="mininclusive">mininclusive</option>
                         <option value="minexclusive">minexclusive</option>
                         <option value="maxinclusive">maxinclusive</option>
-                        <option value="maxinclusive">maxinclusive</option>
+                        <option value="maxexclusive">maxexclusive</option>
                 </select>
                 <NumericInput   
                 className="form-control" 
