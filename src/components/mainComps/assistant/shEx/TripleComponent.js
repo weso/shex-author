@@ -4,7 +4,7 @@ import TripleHeader from './headers/TripleHeader';
 import CustomComp from './customize/CustomComp';
 import ConstraintComponent from './ConstraintComponent';
 import ShapeRefComp from './customize/ShapeRefComp';
-import FacetComp from './customize/FacetComp';
+import FacetContainer from './customize/FacetContainer';
 import CardinalityComp from './customize/CardinalityComp';
 
 
@@ -158,7 +158,7 @@ function TripleComponent (props) {
                         onExited={rounder}
                         onEntering={rounder} >
 
-                <FacetComp triple={triple}/>
+                <FacetContainer triple={triple}/>
                             
             </Collapse> 
 
