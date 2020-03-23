@@ -8,12 +8,12 @@ import Prefix from './shexUtils/prefix';
 
 class Triple {
 
-    constructor(id,type=new PrefixedIri(new Prefix('schema','http://schema.org/')),constraint=new Primitive(),shapeRef=new ShapeRef(),cardinality=new CardinalitySimple()) {
+    constructor(id,type=new PrefixedIri(new Prefix('schema','http://schema.org/')),constraint=new Primitive(),shapeRef=new ShapeRef(),facets=[],cardinality=new CardinalitySimple()) {
         this.id = id;
         this.type = type;
         this.constraint = constraint;
-        //this.facets = facets;
         this.shapeRef = shapeRef;
+        this.facets = facets;
         this.cardinality = cardinality;
         this.factory = new TypesFactory();
         this.cardFactory = new CardinalityFactory();

@@ -223,7 +223,7 @@ function getTriple(triples,singleTriple,shapeId) {
   
     }
 
-    return new Triple(id,type,constraint,shapeRef,cardinality);
+    return new Triple(id,type,constraint,shapeRef,null,cardinality);
 }
 
 /**
