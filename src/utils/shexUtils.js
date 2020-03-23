@@ -1,6 +1,7 @@
 import Codemirror from 'codemirror';
 import Editor from '../entities/editor';
 import Shape from '../entities/shexEntities/shape';
+import Facet from '../entities/shexEntities/shexUtils/facet';
 import {addPrefix} from './prefixUtils';
 
 let shapesCount = 0;
@@ -94,7 +95,7 @@ function checkPrefixes(){
 
 function addFacet(facets){
     const id = facets.length + facetsCount++;
-    return new Shape(id);    
+    return new Facet(id);    
 }
 
 function deleteFacet(facets,id) {

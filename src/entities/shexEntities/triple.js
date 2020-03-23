@@ -53,6 +53,14 @@ class Triple {
     }
 
 
+    getFacets(){
+        return this.facets;
+    }
+
+    setFacets(facets){
+        this.facets = facets;
+    }
+
     getConstraint(){
        return this.constraint;
     }
@@ -67,12 +75,17 @@ class Triple {
     toString(separator){
         let str=''
         if(this.getType().constraint!=''){
-        return '  '+this.getType().toString()+separator+
-                this.getConstraint().toString() +' '+
-                this.getShapeRef().toString()+' '+
-                this.getCardinality()+'  ;\n';
+            str+= '  '+this.getType().toString()+separator+
+                    this.getConstraint().toString() +' '+
+                    this.getShapeRef().toString();
+            if(this.facets){
+                this.facets.map(f=>{
+                    str+=' '+f.toString()+' ';
+                })
+            }
+            str+= this.getCardinality()+'  ;\n';
         }
-        return '';
+        return str;
        
 
     }

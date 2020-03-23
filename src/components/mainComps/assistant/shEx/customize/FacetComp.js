@@ -18,13 +18,30 @@ function FacetComp (props) {
         
     }
 
+    const handleTypeChange = function(facet,type){
+        facet.setType(type);
+        updateFacets();
+    }
+
+    const handleValueChange = function(facet,value){
+        facet.setValue(value);
+        updateFacets();
+    }
+
+    const updateFacets = function(){
+        triple.facets = facets;
+        context.emit();
+    }
+
     return ( <div className="facetGlobal">
                 <div className={context.gridClass + " gridBox facetCont"}>
                         <label className="customLabel">Facet</label>
                          {facets.map(f =>{
                                  return (
                                         <div key={f.id} className="facetInputs">
-                                                <select className="customSelector">
+                                                <select className="customSelector"
+                                                        value={f.value}
+                                                        onChange={(e)=>handleTypeChange(f,e.target.value)}>
                                                         <option value="length">length</option>
                                                         <option value="minlength">minlength</option>
                                                         <option value="maxlength">maxlength</option>
@@ -37,7 +54,9 @@ function FacetComp (props) {
                                                 </select>
                                                 <NumericInput   
                                                 className="form-control" 
-                                                min={0} 
+                                                min={0}
+                                                value={f.value}
+                                                onChange={(e)=>handleValueChange(f,e)} 
                                                 />
                                                  <button className={context.tripleBtns+" deleteFacetBtn mdc-icon-button material-icons"} 
                                                         onClick={()=>deleteFacet(f.id)} 
@@ -58,28 +77,3 @@ function FacetComp (props) {
 
 
 export default FacetComp;
-
-
-
-
-
-
-/*
-<div className="facetInputs">
-                                <select className="customSelector">
-                                        <option value="length">length</option>
-                                        <option value="minlength">minlength</option>
-                                        <option value="maxlength">maxlength</option>
-                                        <option value="totaldigits">totaldigits</option>
-                                        <option value="fractiondigits">fractiondigits</option>
-                                        <option value="mininclusive">mininclusive</option>
-                                        <option value="minexclusive">minexclusive</option>
-                                        <option value="maxinclusive">maxinclusive</option>
-                                        <option value="maxinclusive">maxinclusive</option>
-                                        </select>
-                                <NumericInput   className="form-control" 
-                                                min={0} 
-                                                />
-                        </div>
-                        <div/><div/>
-                        */

@@ -1,6 +1,6 @@
 class Facet{
 
-    constructor(id,type,value){
+    constructor(id,type='',value=''){
         this.id = id;
         this.type = type;
         this.value = value;
