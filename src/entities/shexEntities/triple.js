@@ -23,6 +23,10 @@ class Triple {
         this.constraints.push(constraint);
         this.constraintsCount++;
     }
+    
+    addFacet(facet){
+        this.facets.push(facet);
+    }
 
     getId(){
         return this.id;

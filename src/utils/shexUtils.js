@@ -98,9 +98,6 @@ function addFacet(facets){
     return new Facet(id);    
 }
 
-function deleteFacet(facets,id) {
-    return facets.filter(f => f.id != id);
-}
 
 
 const shexUtils = {
@@ -111,7 +108,6 @@ const shexUtils = {
     getTripleById:getTripleById,
     emit:emit,
     addFacet:addFacet,
-    deleteFacet:deleteFacet
 }
 
 export default shexUtils;

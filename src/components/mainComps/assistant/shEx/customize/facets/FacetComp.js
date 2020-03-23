@@ -11,13 +11,13 @@ function FacetComp (props) {
     const handleTypeChange = function(type){
         facet.setType(type);
         setType(type);
-        updateFacets();
+        context.emit();
     }
 
     const handleValueChange = function(value){
         facet.setValue(value);
         setValue(value);
-        updateFacets();
+        context.emit();
     }
 
     return ( <div className="facetInputs">

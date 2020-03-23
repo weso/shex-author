@@ -10,17 +10,16 @@ function FacetContainer (props) {
     const [facets,setFacets]=useState(triple.facets);
 
     const deleteFacet= function(id){
-        setFacets(shexUtils.deleteFacet(facets,id));
-        updateFacets();
+        const newFacets = facets.filter(f => f.id != id);
+        setFacets(newFacets);
+        triple.setFacets(newFacets);
+        context.emit();
     }
 
     const addFacet = function(){
-        setFacets([...facets,shexUtils.addFacet(facets)]);
-        updateFacets();
-    }
-
-    const updateFacets = function(){
-        triple.facets = facets;
+        const facet = shexUtils.addFacet(facets);
+        setFacets([...facets,facet]);
+        triple.addFacet(facet);
         context.emit();
     }
 
@@ -32,8 +31,7 @@ function FacetContainer (props) {
                                             key={f.id} 
                                             facet={f}
                                             addFacet={addFacet}
-                                            deleteFacet={deleteFacet}
-                                            updateFacets={updateFacets} />)
+                                            deleteFacet={deleteFacet} />)
                          })}
                         <button className="addFacet" title="Add Facet" onClick={addFacet}>+ Facet</button>      
                         
