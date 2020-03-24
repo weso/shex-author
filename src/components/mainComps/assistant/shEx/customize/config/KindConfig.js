@@ -6,7 +6,8 @@ function KindConfig (props) {
     const context = useContext(AppContext);
     const {entity,setPrefix,collapsePrefix,bnode} = props;
     const [kind,setKind] = useState(entity.type.getTypeName());
-  
+    const iri ='<...>';
+
     const handleKindChange = function(e){
         const type  = e.target.value;
         const value = entity.type.value;
@@ -24,8 +25,8 @@ function KindConfig (props) {
         <div className={context.gridClass + " gridBox"}>
             <label className="customLabel">Kind </label>
             <select className="customSelector" value={kind} onChange={handleKindChange}>
-                <option value="iriRef">IriRef</option>
-                <option value="prefixedIri">PrefixedIri</option>
+                <option value="iriRef">{iri}</option>
+                <option value="prefixedIri">QName</option>
                 <Bnode isBnode={bnode}/>
             </select>
         </div>
