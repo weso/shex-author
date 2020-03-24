@@ -12,10 +12,10 @@ function AssistContent (props) {
     return ( 
     <div className={context.asist}>
         <div id='assistant-container' className='assistantContainer'> 
-                <Collapse isOpen={context.isShapesOpen}>
+                <Collapse isOpen={!context.isPrefixesOpen}>
                     <Shapes/>
                 </Collapse>
-                <Collapse isOpen={!context.isShapesOpen}>
+                <Collapse isOpen={context.isPrefixesOpen}>
                     <Prefixes/>
                 </Collapse>
             </div>

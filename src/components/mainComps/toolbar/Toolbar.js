@@ -3,7 +3,6 @@ import { Collapse } from 'reactstrap';
 import {AppContext} from '../../../App'; 
 import ShowAssist from './btns/ShowAssist';
 import VisualizeBtn from './btns/VisualizeBtn';
-import PrefixesBtn from './btns/PrefixesBtn';
 import UndoBtn from './btns/UndoBtn';
 import RedoBtn from './btns/RedoBtn';
 import UploadBtn from './btns/UploadBtn';
@@ -25,7 +24,6 @@ function Toolbar () {
         <div className='toolbar'>
                 <div className='toolbarTop'>                    
                     <ShowAssist/>
-                    <PrefixesBtn/>
                     <VisualizeBtn/>
                     <UndoBtn/>
                     <RedoBtn/>

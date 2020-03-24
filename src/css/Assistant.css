@@ -59,18 +59,34 @@
     gap: 10px;
 }
 
+.asisTitleClose{
+    grid-column: 4/4;
+}
 
-.assisTitle{
+.tabs{
     display: grid;
-    grid-template-columns: 95% 10%;
-    padding-top: 2px;
-    padding-left: 14px;
+    grid-template-columns: 22% 15% 58% 10%;
     border-bottom: 1px solid #bdbcbc;
     font-size: 20px;
     color:#666565;
   
 }
 
+.tablink{
+    background-color: transparent;
+    border:none;
+    text-align: start;
+    border-radius: 0px 0px 8px 0px;
+    border-right: 1px double gray;
+}
+
+.tablink:hover{
+    background-color: rgb(241, 241, 241);
+}
+
+.tablink:focus{
+    outline: none;
+}
 
 .closeAsisBtn{
     background-color: transparent;

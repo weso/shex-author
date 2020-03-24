@@ -25,7 +25,7 @@ function App() {
     const [prefixes,setPrefixes] = useState([]);
     const [svg,setSvg] = useState('');
     const [isAssistantOpen, setAssistantOpen] = useState(true);
-    const [isShapesOpen, setShapesOpen] = useState(true);
+    const [isPrefixesOpen, setPrefixesOpen] = useState(false);
     const [isVisualizeOpen, setVisualizeOpen] = useState(true);
     const [isToolBarOpen, setToolBarOpen] = useState(true);
 
@@ -47,15 +47,6 @@ function App() {
     const [gridClass,setGridClass] = useState('gridBox');
     
     const assistantToggle = () => setAssistantOpen(!isAssistantOpen);
-    const shapesToggle = () => {
-      //In case the assistant is closed...
-      if(!isAssistantOpen){
-        setAssistantOpen(true);
-        setShapesOpen(false);
-      }else{
-         setShapesOpen(!isShapesOpen);
-      }
-    }
     const visualizeToggle = () => setVisualizeOpen(!isVisualizeOpen);
     const toolbarToggle = () => setToolBarOpen(!isToolBarOpen);
     const colapseAll = () =>{
@@ -185,10 +176,10 @@ function App() {
                   visualize:visualize,
                   isToolBarOpen:isToolBarOpen,
                   isAssistantOpen:isAssistantOpen,
-                  isShapesOpen:isShapesOpen,
+                  isPrefixesOpen:isPrefixesOpen,
                   isVisualizeOpen:isVisualizeOpen,
                   assistantToggle:assistantToggle,
-                  shapesToggle:shapesToggle,
+                  setPrefixesOpen:setPrefixesOpen,
                   visualizeToggle:visualizeToggle,
 
                   //responsive
