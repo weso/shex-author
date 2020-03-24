@@ -286,6 +286,10 @@
     outline: none;
 }
 
+.hideTriples{
+    display: none;
+}
+
 
 .shape{
 

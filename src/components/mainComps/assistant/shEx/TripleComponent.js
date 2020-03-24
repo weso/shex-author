@@ -139,7 +139,7 @@ function TripleComponent (props) {
                         onExited={rounder}
                         onEntering={rounder} >
 
-                <ConstraintComponent    triple={triple} />
+                <ConstraintComponent   triple={triple} />
                             
             </Collapse> 
 

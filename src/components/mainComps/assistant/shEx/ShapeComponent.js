@@ -18,48 +18,31 @@ function ShapeComponent (props) {
     const [isTriplesOpen,setTriplesOpen] = useState(true);
     const [colapseBtn,setColapseBtn] = useState('menu_open');
     const [rounded,setRounded] = useState('un-roundme');
+
+    let initialHidding = 'triples';
+    if(shape.type.value ==''){
+        initialHidding = 'hideTriples';
+    }
+    const [hidding,setHidding] = useState(initialHidding);
    
-   const addTriple = function(){
+    const addTriple = function(){
         const id = shape.getTriplesCount();
         const triple = new Triple(id);
-        
-        shape.addTriple(triple);
-        context.emit();
 
         setTriples([...triples,triple]);
-        setTriplesAllowed(getTriplesIfAllowed())
-        
+
+        shape.addTriple(triple);
+        context.emit();        
     }
 
     const deleteTriple = function(tripleId){
         const newTriples = shape.triples.filter( triple => triple.id != tripleId);
-        setTriples(newTriples);
+        setTriples(newTriples)
         shape.setTriples(newTriples);
         context.emit();
-    }
-
-    const getTriplesIfAllowed = function(){
-        if(shape.type.value!=''){
-            return (<div className={context.triplesContainer+" triples"}>
-                    {triples.map(triple =>
-                        <TripleComponent key={triple.id}
-                                         shape={shape} 
-                                         triple={triple}
-                                         deleteTriple={deleteTriple}
-                        /> 
-                    )}
-                
-                    <button className={context.addBtns+" addTripleButton"} onClick={addTriple} title="Add Triple">+ Triple Constraint</button>        
-                   
-              
-                </div> )
-        }
         
     }
 
-    const [triplesAllowed,setTriplesAllowed] = useState(getTriplesIfAllowed())
-    
-    
     const customizeShape = function(){
         //Completly collapsed shape open just customShape
         if(!isCustomOpen && !isTriplesOpen ){
@@ -105,8 +88,7 @@ function ShapeComponent (props) {
                          collapseTriples={collapseTriples} 
                          colapseBtn={colapseBtn}
                          rounded={rounded}
-                         getTriplesIfAllowed={getTriplesIfAllowed}
-                         setTriplesAllowed={setTriplesAllowed}/>
+                         setHidding={setHidding}/>
 
             <CustomComp  entity={shape}
                          isCustomOpen={isCustomOpen}
@@ -120,7 +102,19 @@ function ShapeComponent (props) {
                         onEntering={rounder} >
 
                      
-                {triplesAllowed}              
+                <div className={context.triplesContainer+" "+ hidding}>
+                    {triples.map(triple =>
+                        <TripleComponent key={triple.id}
+                                         shape={shape} 
+                                         triple={triple}
+                                         deleteTriple={deleteTriple}
+                        /> 
+                    )}
+                
+                    <button className={context.addBtns+" addTripleButton"} onClick={addTriple} title="Add Triple">+ Triple Constraint</button>        
+                   
+              
+                </div>       
             </Collapse> 
         </div>
     );
