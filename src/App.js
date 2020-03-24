@@ -132,17 +132,31 @@ function App() {
         });
 
     }
-
-
-      const makeItResponsive = function(e, direction, ref, d){
-/*
-            let header = document.getElementsByClassName("header");
+      
+      const handleResize = function(e, direction, ref, d){
 
             setWidth(width+d.width);
-          
+
+            let shapeHeaders = document.getElementsByClassName("header");
+            let tripleHeaders = document.getElementsByClassName("tripleHeader");
+            
+            let shClass = "header";
+            let thClass = "tripleHeader";
             if(width+d.width<700){
-              console.log(header)
-                  header[0].className = "xs-header";
+                shClass += " xs-header";
+                thClass += " xs-tripleHeader"
+            }
+
+            for(let i=0;i<shapeHeaders.length;i++){
+              shapeHeaders[i].className = shClass;
+            }
+
+            for(let i=0;i<tripleHeaders.length;i++){
+              tripleHeaders[i].className = thClass;
+            }
+            
+           
+
               /*
                     setShapeHeader('xs-header');
                     setTripleHeader('xs-tripleHeader');
@@ -197,8 +211,8 @@ function App() {
 
                   
                   width:width,
+                  handleResize:handleResize,
           
-                  //BORRAR TODO
                   loading:loading,
                   setLoading:setLoading,
                   asist:asist,

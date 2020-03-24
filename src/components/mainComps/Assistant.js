@@ -16,7 +16,7 @@ function AssistantComp (props) {
         <Collapse isOpen={context.isAssistantOpen} className='row assistCollapse'>
                 <Resizable  className="col row resizable"
                         size={{ width: context.width }}                    
-                        onResizeStop={context.makeItResponsive}              
+                        onResize={context.handleResize}              
                         enable={{right:true}}>
         
                         <div className='col containerAssist'>                                    

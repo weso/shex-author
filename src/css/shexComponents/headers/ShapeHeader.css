@@ -12,9 +12,8 @@
 }
 
 .xs-header{
-    padding: 8px;
-    grid-template-columns: 10% 56% 8% 8% 9%;
-    gap: 10px;
+    display: grid;
+    grid-template-columns: 12% 56% 8% 8% 9%;
 }
 
 .name{
