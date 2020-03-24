@@ -21,14 +21,13 @@ function AssistTitle (props) {
 
         tablinks = document.getElementsByClassName("tablink");
         for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
+            tablinks[i].className = tablinks[i].className.replace(" activeTab", "");
         }
-        evt.currentTarget.className += " active";
+        evt.currentTarget.className += " activeTab";
     }
    
-
     return (<div className="tabs">
-                <button className="tablink" 
+                <button className="tablink activeTab" 
                         title="ShEx Assistant" 
                         onClick={(e)=>handleAssist(e)}>
                         ShEx Assistant

@@ -76,8 +76,9 @@
     grid-template-columns: 32% 25% 38% 10%;
 }
 
-.active {
-    background-color: #ccc !important;
+.activeTab {
+    /*fce8e8*/
+    background-color: #f1f4f5 !important;
   }
 
 .tablink{

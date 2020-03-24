@@ -191,36 +191,6 @@ function App() {
               grids[i].className = grids[i].className.replace('gridBox',grClass);
             }
 
-            
-
-           
-            
-           
-
-              /*
-                    setShapeHeader('xs-header');
-                    setTripleHeader('xs-tripleHeader');
-                    setTripleBtns('xs-tripleBtns');
-                    setTriplesContainer('xs-triples');
-                    setShapeLabel('xs-label');
-                    setTripleLabel('xs-label');
-                    setAddBtns('xs-addBtns');
-                    setGridClass('xs-gridBox');
-                    return;
-                   
-
-                    return;
-            }
-                    
-            setShapeHeader('header')                                          
-            setTripleHeader('tripleHeader');
-            setTripleBtns('tripleBtns');
-            setTriplesContainer('triples');
-            setShapeLabel('shapeNameLabel');
-            setTripleLabel('tripleNameLabel');
-            setAddBtns('addBtns');
-            setGridClass('gridBox');
-             */
         }
 
 
