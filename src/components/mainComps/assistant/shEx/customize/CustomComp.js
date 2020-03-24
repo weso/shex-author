@@ -1,7 +1,7 @@
 import React,{useState,useContext} from 'react';
 import { Collapse } from 'reactstrap';
 import {AppContext} from '../../../../../App';
-import KindConfig from './config/KindConfig';
+import TypeConfig from './config/TypeConfig';
 import PrefixConfig from './config/PrefixConfig';
 import QualifierConfig from './config/QualifierConfig';
 
@@ -38,7 +38,7 @@ function CustomComp (props) {
                   onEntering={rounder}>
 
             <div className={customClass}>
-                <KindConfig 
+                <TypeConfig 
                     entity={entity}
                     setPrefix={setPrefix}
                     collapsePrefix={collapsePrefix}

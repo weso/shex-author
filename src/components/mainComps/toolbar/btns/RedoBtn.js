@@ -12,7 +12,7 @@ function RedoBtn () {
         redo();
         setTimeout(() => {//needed
             context.replaceShapes(yasheUtils.replaceShapes());
-            context.updatePrefixes(yasheUtils.updatePrefixes());
+            //context.updatePrefixes(yasheUtils.updatePrefixes());
         }, 10); 
     }
 

@@ -195,7 +195,7 @@ function getTriple(triples,singleTriple,shapeId) {
         if(token.type == 'string-2' || token.type == 'variable-3'){
             type = getType(token.string);
         }
-        if(token.type == 'constraint'){
+        if(token.type == 'constraint' || token.type == 'constraintKeyword' ){
             constraint = getConstraint(token.string);
         }
 
@@ -223,7 +223,7 @@ function getTriple(triples,singleTriple,shapeId) {
           cardinality=getCardinality(token.string);
         }
         
-        if(token.type != 'string-2' && token.type != 'constraint' && token.type != 'at' && token.type != 'facet' && token.type != 'cardinality' && token.type != 'punc' ){
+        if(token.type != 'string-2' && token.type != 'constraint' && token.type != 'constraintKeyword' && token.type != 'at' && token.type != 'facet' && token.type != 'cardinality' && token.type != 'punc' ){
            Codemirror.signal(Editor.getInstance().getYashe(),'forceError');
         }
 

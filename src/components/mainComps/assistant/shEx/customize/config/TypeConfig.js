@@ -1,20 +1,20 @@
 import React,{useState,useContext} from 'react';
 import {AppContext} from '../../../../../../App';
 
-function KindConfig (props) {
+function TypeConfig (props) {
 
     const context = useContext(AppContext);
     const {entity,setPrefix,collapsePrefix,bnode} = props;
-    const [kind,setKind] = useState(entity.type.getTypeName());
+    const [type,setType] = useState(entity.type.getTypeName());
     const iri ='<...>';
 
-    const handleKindChange = function(e){
+    const handleTypeChange = function(e){
         const type  = e.target.value;
         const value = entity.type.value;
         entity.setType(type);
         entity.type.value = value;
         context.emit();
-        setKind(type);
+        setType(type);
         setPrefix('example');
         collapsePrefix(e)
     }
@@ -23,8 +23,8 @@ function KindConfig (props) {
 
     return (
         <div className={context.gridClass + " gridBox"}>
-            <label className="customLabel">Kind </label>
-            <select className="customSelector" value={kind} onChange={handleKindChange}>
+            <label className="customLabel">Type</label>
+            <select className="customSelector" value={type} onChange={handleTypeChange}>
                 <option value="iriRef">{iri}</option>
                 <option value="prefixedIri">QName</option>
                 <Bnode isBnode={bnode}/>
@@ -45,5 +45,5 @@ function Bnode(props) {
 }
 
 
-export default KindConfig;
+export default TypeConfig;
 
