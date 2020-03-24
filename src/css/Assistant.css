@@ -72,6 +72,10 @@
   
 }
 
+.xs-tabs{
+    grid-template-columns: 32% 25% 38% 10%;
+}
+
 .active {
     background-color: #ccc !important;
   }

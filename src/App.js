@@ -137,23 +137,39 @@ function App() {
 
             setWidth(width+d.width);
 
+            let tabs = document.getElementsByClassName("tabs")[0];
             let shapeHeaders = document.getElementsByClassName("header");
             let tripleHeaders = document.getElementsByClassName("tripleHeader");
             let addTripleBtns = document.getElementsByClassName("addTripleButton");
             let addShapeBtns = document.getElementsByClassName("addShapeButton");
+            let grids = document.getElementsByClassName("gridBox");
 
             
+            let tabClass = 'tabs';
             let shClass = 'header';
             let thClass = 'tripleHeader';
             let adTClass = 'addTripleButton';
             let adSClass = 'addShapeButton';
+            let grClass = 'gridBox';
             if(width+d.width<700){
+                tabClass += ' xs-tabs';
                 shClass += ' xs-header';
                 thClass += ' xs-tripleHeader';
                 adTClass += ' xs-addTripleButton';
                 adSClass += ' xs-addShapeButton';
+                grClass += ' xs-gridBox';
+            }else{
+              //Why this is needed?
+              tabClass = 'tabs';
+              shClass = 'header';
+              thClass = 'tripleHeader';
+              adTClass = 'addTripleButton';
+              adSClass = 'addShapeButton';
+              grClass = 'gridBox'
             }
 
+           
+            tabs.className = tabClass;
 
             for(let i=0;i<shapeHeaders.length;i++){
               shapeHeaders[i].className = shClass;
@@ -169,6 +185,10 @@ function App() {
 
             for(let i=0;i<addShapeBtns.length;i++){
               addShapeBtns[i].className = adSClass;
+            }
+
+            for(let i=0;i<grids.length;i++){
+              grids[i].className = grids[i].className.replace('gridBox',grClass);
             }
 
             
