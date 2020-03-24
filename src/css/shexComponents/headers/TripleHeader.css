@@ -13,16 +13,11 @@
 
 
 .xs-tripleHeader{
-    justify-content: center;
     gap: 8px;
-    grid-template-columns: 48% 6% 6% 6% 6% 6% 6% 6%;
+    grid-template-columns: 34% 8% 8% 8% 8% 8% 8% 8% 6%;
 }
 
 
-.xs-tripleBtns{
-    font-size: 18px;
-    padding: 2px;
-}
 
 
 .buildTriple{

@@ -10,7 +10,7 @@ function Shapes (props) {
         <div>
             {context.shapes.map(shape =>{return  <ShapeComponent shape={shape} key={shape.id}/> })}
                 <div className="addCont">
-                    <button className={context.addBtns+" addShapeButton"} 
+                    <button className="addShapeButton"
                             onClick={context.addShape}
                             title="Add Shape">
                             + Shape

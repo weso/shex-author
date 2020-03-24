@@ -139,13 +139,21 @@ function App() {
 
             let shapeHeaders = document.getElementsByClassName("header");
             let tripleHeaders = document.getElementsByClassName("tripleHeader");
+            let addTripleBtns = document.getElementsByClassName("addTripleButton");
+            let addShapeBtns = document.getElementsByClassName("addShapeButton");
+
             
-            let shClass = "header";
-            let thClass = "tripleHeader";
+            let shClass = 'header';
+            let thClass = 'tripleHeader';
+            let adTClass = 'addTripleButton';
+            let adSClass = 'addShapeButton';
             if(width+d.width<700){
-                shClass += " xs-header";
-                thClass += " xs-tripleHeader"
+                shClass += ' xs-header';
+                thClass += ' xs-tripleHeader';
+                adTClass += ' xs-addTripleButton';
+                adSClass += ' xs-addShapeButton';
             }
+
 
             for(let i=0;i<shapeHeaders.length;i++){
               shapeHeaders[i].className = shClass;
@@ -154,6 +162,18 @@ function App() {
             for(let i=0;i<tripleHeaders.length;i++){
               tripleHeaders[i].className = thClass;
             }
+
+            for(let i=0;i<addTripleBtns.length;i++){
+              addTripleBtns[i].className = adTClass;
+            }
+
+            for(let i=0;i<addShapeBtns.length;i++){
+              addShapeBtns[i].className = adSClass;
+            }
+
+            
+
+           
             
            
 
