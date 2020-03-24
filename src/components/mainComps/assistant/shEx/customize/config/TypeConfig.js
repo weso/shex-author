@@ -22,7 +22,7 @@ function TypeConfig (props) {
     
 
     return (
-        <div className={context.gridClass + " gridBox"}>
+        <div className="gridBox">
             <label className="customLabel">Type</label>
             <select className="customSelector" value={type} onChange={handleTypeChange}>
                 <option value="iriRef">{iri}</option>

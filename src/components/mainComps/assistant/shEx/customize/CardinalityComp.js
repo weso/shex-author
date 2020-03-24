@@ -71,7 +71,7 @@ function CardinalityComp (props) {
         }
 
         return ( 
-                <div className={context.gridClass + " gridBox cardinality"}>
+                <div className=" gridBox cardinality">
                         <label className='gridLabel'>Cardinality</label>
                         <select className="customSelector" 
                                 value={cardinality} 
@@ -88,7 +88,7 @@ function CardinalityComp (props) {
 
                     
                         <Collapse isOpen={isExactly} className="rangeCardinality">
-                                <label className={context.tripleLabel}>Value</label>
+                                <label className="tripleNameLabel">Value</label>
                                 <NumericInput   className="form-control" 
                                                 min={0} 
                                                 value={min}
@@ -97,13 +97,13 @@ function CardinalityComp (props) {
 
                         
                         <Collapse isOpen={isRange} className="rangeCardinality">
-                                <label className={context.tripleLabel}>Min</label>
+                                <label className="tripleNameLabel">Min</label>
                                 <NumericInput   className="form-control" 
                                                 min={0} 
                                                 value={min}
                                                 onChange={(value)=>{handleMinChange(value,'range')}}/>
 
-                                <label className={context.tripleLabel}>Max</label>
+                                <label className="tripleNameLabel">Max</label>
                                 <NumericInput   className="form-control" 
                                                 min={0} 
                                                 value={max}

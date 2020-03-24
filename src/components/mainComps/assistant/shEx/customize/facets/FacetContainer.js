@@ -23,7 +23,7 @@ function FacetContainer (props) {
         context.emit();
     }
 
-    return (<div className={context.gridClass + " gridBox globalFacet"}>
+    return (<div className="gridBox globalFacet">
                     <label className="gridLabel">Facet</label>
                     <div className="facetCont">
                         {facets.map(f =>{

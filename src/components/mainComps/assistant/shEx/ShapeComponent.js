@@ -17,7 +17,6 @@ function ShapeComponent (props) {
     const [isCustomOpen,setCustomOpen] = useState(false);
     const [isTriplesOpen,setTriplesOpen] = useState(true);
     const [colapseBtn,setColapseBtn] = useState('menu_open');
-    const [rounded,setRounded] = useState('un-roundme');
 
     let initialHidding = 'triples';
     if(shape.type.value ==''){
@@ -69,17 +68,6 @@ function ShapeComponent (props) {
     }
 
 
-    const rounder =()=>{
-         if(rounded=='roundme'){
-            setRounded('un-roundme');
-        }else{
-            setRounded('roundme');
-        }
-
-    }
-
-
-
 
     return (
         <div className="shape">
@@ -87,22 +75,18 @@ function ShapeComponent (props) {
                          customizeShape={customizeShape} 
                          collapseTriples={collapseTriples} 
                          colapseBtn={colapseBtn}
-                         rounded={rounded}
                          setHidding={setHidding}/>
 
             <CustomComp  entity={shape}
                          isCustomOpen={isCustomOpen}
-                         rounder={rounder}
                          qualifier={true}
                          bnode={true}
                          customClass="customShape"/>
                  
-            <Collapse   isOpen={isTriplesOpen} 
-                        onExited={rounder}
-                        onEntering={rounder} >
+            <Collapse   isOpen={isTriplesOpen}>
 
                      
-                <div className={context.triplesContainer+" "+ hidding}>
+                <div className="triples">
                     {triples.map(triple =>
                         <TripleComponent key={triple.id}
                                          shape={shape} 
@@ -111,7 +95,7 @@ function ShapeComponent (props) {
                         /> 
                     )}
                 
-                    <button className={context.addBtns+" addTripleButton"} onClick={addTriple} title="Add Triple">+ Triple Constraint</button>        
+                    <button className="addBtns addTripleButton" onClick={addTriple} title="Add Triple">+ Triple Constraint</button>        
                    
               
                 </div>       

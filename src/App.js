@@ -36,6 +36,8 @@ function App() {
     const [asist,setAsist] = useState('showAsist');
     const [errorMsg,setErrorMsg] = useState('');
 
+    const [tab, setTab] = useState('selectedTab');
+
     //Responsive
     const [shapeHeader,setShapeHeader] = useState('header');
     const [tripleHeader,setTripleHeader] = useState('tripleHeader');
@@ -133,9 +135,15 @@ function App() {
 
 
       const makeItResponsive = function(e, direction, ref, d){
+/*
+            let header = document.getElementsByClassName("header");
+
             setWidth(width+d.width);
           
             if(width+d.width<700){
+              console.log(header)
+                  header[0].className = "xs-header";
+              /*
                     setShapeHeader('xs-header');
                     setTripleHeader('xs-tripleHeader');
                     setTripleBtns('xs-tripleBtns');
@@ -144,6 +152,9 @@ function App() {
                     setTripleLabel('xs-label');
                     setAddBtns('xs-addBtns');
                     setGridClass('xs-gridBox');
+                    return;
+                   
+
                     return;
             }
                     
@@ -155,6 +166,7 @@ function App() {
             setTripleLabel('tripleNameLabel');
             setAddBtns('addBtns');
             setGridClass('gridBox');
+             */
         }
 
 
@@ -182,17 +194,11 @@ function App() {
                   setPrefixesOpen:setPrefixesOpen,
                   visualizeToggle:visualizeToggle,
 
-                  //responsive
+
+                  
                   width:width,
-                  makeItResponsive:makeItResponsive,
-                  shapeHeader:shapeHeader,
-                  tripleHeader:tripleHeader,
-                  triplesContainer:triplesContainer,
-                  shapeLabel:shapeLabel,
-                  tripleLabel:tripleLabel,
-                  tripleBtns:tripleBtns,
-                  addBtns:addBtns,
-                  gridClass:gridClass,
+          
+                  //BORRAR TODO
                   loading:loading,
                   setLoading:setLoading,
                   asist:asist,

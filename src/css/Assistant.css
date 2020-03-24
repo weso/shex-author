@@ -72,6 +72,10 @@
   
 }
 
+.active {
+    background-color: #ccc !important;
+  }
+
 .tablink{
     background-color: transparent;
     border:none;

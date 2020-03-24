@@ -22,8 +22,8 @@ function ShapeHeader (props) {
     }
 
     return (
-        <div className={rounded+' header '+context.shapeHeader}>            
-            <label  className={context.shapeLabel+" shapeNameLabel"}>Shape</label>
+        <div className='header'>            
+            <label  className="shapeNameLabel">Shape</label>
             <input  type="text" 
                     className="name"
                     value={name}

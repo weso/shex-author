@@ -72,7 +72,7 @@ function TripleHeader (props) {
    
    
     return (
-        <div className={rounded+" tripleHeader "+context.tripleHeader}>            
+        <div className="tripleHeader">            
             <input  type="text" 
                     className="name"
                     value={name}
@@ -80,41 +80,38 @@ function TripleHeader (props) {
                     placeholder="eg: name"
                     title="Triple Name"/>
 
-            <button className={context.tripleBtns+" buildTriple buildBtn buildTripleBtn mdc-icon-button material-icons"} 
+            <button className="tripleBtns buildTriple buildBtn buildTripleBtn mdc-icon-button material-icons"
                     onClick={customizeTriple} 
                     title="Customize Triple">
                     build
             </button>
 
-            <button className={context.tripleBtns+" buildConstraint buildBtn buildTripleBtn mdc-icon-button material-icons"}  
+            <button className="tripleBtns buildConstraint buildBtn buildTripleBtn mdc-icon-button material-icons"
                     onClick={handleCollapse} 
                     title="Customize Constraint">
                     build
             </button>
 
-             <button className={context.tripleBtns+" buildFacet buildBtn buildTripleBtn mdc-icon-button material-icons"}  
+             <button className="tripleBtns buildFacet buildBtn buildTripleBtn mdc-icon-button material-icons"
                     onClick={customizeFacet}
                     title="Customize Facets">
                     build
             </button>
 
-            <button className={context.tripleBtns+" buildInlineRef buildBtn buildTripleBtn mdc-icon-button material-icons"}  
+            <button className="tripleBtns buildInlineRef buildBtn buildTripleBtn mdc-icon-button material-icons"  
                     onClick={customizeRef} 
                     title="Customize InlineOrRef">
                     build
             </button>
 
            
-
-            
-
-            <button className={context.tripleBtns+" buildCardinality buildBtn buildTripleBtn mdc-icon-button material-icons"}  
+            <button className="tripleBtns buildCardinality buildBtn buildTripleBtn mdc-icon-button material-icons" 
                     onClick={customizeCardinality} 
                     title="Customize Cardinality">
                     build
             </button>
 
-            <button className={context.tripleBtns+" deleteTripleBtn mdc-icon-button material-icons"} 
+            <button className="tripleBtns deleteTripleBtn mdc-icon-button material-icons"
                     onClick={()=>deleteTriple(triple.id)} 
                     title="Delete Triple">
                     delete

@@ -17,7 +17,6 @@ function TripleComponent (props) {
     const [isFacetOpen,setFacetOpen] = useState(false);
     const [isCardinalityOpen,setCardinalityOpen] = useState(false);
     const [allCollased,setAllCollapsed] = useState(false);
-    const [rounded,setRounded] = useState('roundme');
     const [colapseBtn,setColapseBtn] = useState('menu');
 
     const customizeTriple = function(){
@@ -105,15 +104,6 @@ function TripleComponent (props) {
 
     
 
-    const rounder =()=>{
-         if(rounded=='roundme'){
-            setRounded('un-roundme');
-        }else{
-            setRounded('roundme');
-        }
-
-    }
-
     return ( 
         <div>
             <TripleHeader triple={triple} 
@@ -125,55 +115,29 @@ function TripleComponent (props) {
                           customizeCardinality={customizeCardinality}
                           forceCollapse={forceCollapse}
                           collapseToggle={collapseToggle}
-                          colapseBtn={colapseBtn}
-                          rounded={rounded}/>
+                          colapseBtn={colapseBtn}/>
 
             <CustomComp   entity={triple} 
                           isCustomOpen={isTripleCustomOpen}
-                          rounder={rounder}
                           qualifier={false}
                           bnode={false}
                           customClass="customTriple"/>
 
-            <Collapse   isOpen={isConstraintsOpen}
-                        onExited={rounder}
-                        onEntering={rounder} >
-
-                <ConstraintComponent   triple={triple} />
-                            
+            <Collapse   isOpen={isConstraintsOpen}>
+                <ConstraintComponent  triple={triple} />           
             </Collapse> 
 
-             
-
-            <Collapse   isOpen={isFacetOpen}
-                        onExited={rounder}
-                        onEntering={rounder} >
-
-                <FacetContainer triple={triple}/>
-                            
+            <Collapse   isOpen={isFacetOpen}>
+                <FacetContainer triple={triple}/> 
             </Collapse> 
 
-             <Collapse  isOpen={isRefOpen}
-                        onExited={rounder}
-                        onEntering={rounder} >
-
-                <ShapeRefComp triple={triple}/>
-                            
+             <Collapse  isOpen={isRefOpen}>
+                <ShapeRefComp triple={triple}/>      
             </Collapse> 
 
-
-           
-            
-
-            <Collapse   isOpen={isCardinalityOpen}
-                        onExited={rounder}
-                        onEntering={rounder} >
-
-                <CardinalityComp triple={triple}/>
-                            
+            <Collapse  isOpen={isCardinalityOpen}>
+                <CardinalityComp triple={triple}/>      
             </Collapse> 
-
-           
            
         </div>);                          
 }

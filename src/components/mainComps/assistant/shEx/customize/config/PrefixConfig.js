@@ -18,7 +18,7 @@ function PrefixConfig (props) {
     }
 
     return (
-         <Collapse isOpen={isPrefixOpen} className={context.gridClass + " gridBox"}>
+         <Collapse isOpen={isPrefixOpen} className="gridBox">
             <label className="customLabel">Prefix </label>
             <select className="customSelector" value={prefix} onChange={handlePrefixChange}>
                 <option value="example">example</option>

@@ -10,7 +10,7 @@ import '../../../../../css/shexComponents/customize/Custom.css'
 function CustomComp (props) {
 
     const context = useContext(AppContext);
-    const {entity,isCustomOpen,rounder,qualifier,bnode,customClass} = props;
+    const {entity,isCustomOpen,qualifier,bnode,customClass} = props;
 
     let initialPrefix = 'example';
     let initialOpenPrefix = false;
@@ -33,9 +33,7 @@ function CustomComp (props) {
 
     return (
         <Collapse isOpen={isCustomOpen}
-                  className='customColapse' 
-                  onExited={rounder}
-                  onEntering={rounder}>
+                  className='customColapse'>
 
             <div className={customClass}>
                 <TypeConfig 
