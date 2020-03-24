@@ -63,24 +63,42 @@ function EditorComp() {
             });
 
             
+            const debounce = function(func, wait, immediate) {
+                let timeout; let result;
+                return function() {
+                    const context = this; 
+                    const args = arguments;
+                    const later = function() {
+                    timeout = null;
+                    if (!immediate) result = func.apply(context, args);
+                    };
+                    const callNow = immediate && !timeout;
+                    clearTimeout(timeout);
+                    timeout = setTimeout(later, wait);
+                    if (callNow) result = func.apply(context, args);
+                    return result;
+                };
+            };
+           
 
             
-            y.on('keyup',function(){
-                if(!y.hasErrors(y)){
-                    hideError();
-                    let newShapes = getNewShapes();
-                    //console.log(newShapes)
-                    if(oldShapes.length == newShapes.length){ //Any new shape?
-                        if(newShapes.toString()!=oldShapes.toString()){ //Any cupdate?
-                            oldShapes = replaceShapes(newShapes);
-                        }
-                    }else{
-                        updateAssist();
-                    } 
-                }else{
-                    showError(errorMsg);
-                }   
-            });
+            y.on('keyup',debounce(function( e ) {
+                    if(!y.hasErrors(y)){
+                                hideError();
+                                let newShapes = getNewShapes();
+                                //console.log(newShapes)
+                                if(oldShapes.length == newShapes.length){ //Any new shape?
+                                    if(newShapes.toString()!=oldShapes.toString()){ //Any cupdate?
+                                        oldShapes = replaceShapes(newShapes);
+                                    }
+                                }else{
+                                    updateAssist();
+                                } 
+                            }else{
+                                showError(errorMsg);
+                            }   
+                }, 500)   
+            );
             
    
 
@@ -95,16 +113,18 @@ function EditorComp() {
                     updatePrefixes(getNewPrefixes());
                 }
             });
-           
 
-            /*
+           
+            
             y.on('blur', function() {
                 if(!y.hasErrors()){                   
                     updateAssist();
                     updatePrefixes(getNewPrefixes());
-                }
+                }else{
+                    showError(errorMsg);
+                }   
             });
-            */
+            
 
             //Fired after a key is handled through a key map
             //(for example "Ctrl-Z")
