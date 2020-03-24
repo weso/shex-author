@@ -6,7 +6,7 @@ import '../../../../../css/shexComponents/headers/ShapeHeader.css';
 function ShapeHeader (props) {
 
     const context = useContext(AppContext);
-    const {shape,customizeShape,collapseTriples,colapseBtn,rounded} = props;
+    const {shape,customizeShape,collapseTriples,colapseBtn,rounded,getTriplesIfAllowed,setTriplesAllowed} = props;
     const [name,setName] = useState(shape.type.value);
 
     const handleChange = function(e){
@@ -14,6 +14,7 @@ function ShapeHeader (props) {
         shape.type.setValue(name);
         context.emit();
         setName(name);
+        setTriplesAllowed(getTriplesIfAllowed());
     }
 
     return (
