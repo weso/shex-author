@@ -30,7 +30,6 @@ function App() {
     const [isToolBarOpen, setToolBarOpen] = useState(true);
 
     const [width,setWidth] = useState(700);
-    const [errorMsg,setErrorMsg] = useState('');
 
     const assistantToggle = () => setAssistantOpen(!isAssistantOpen);
     const visualizeToggle = () => setVisualizeOpen(!isVisualizeOpen);
@@ -209,16 +208,8 @@ function App() {
                   assistantToggle:assistantToggle,
                   setPrefixesOpen:setPrefixesOpen,
                   visualizeToggle:visualizeToggle,
-
-
-                  
                   width:width,
                   handleResize:handleResize,
-
-                  errorMsg:errorMsg,
-                  setErrorMsg:setErrorMsg
-
-                    
                   }
                 }>
 
