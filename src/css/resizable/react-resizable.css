@@ -1,0 +1,20 @@
+.react-resizable {
+    display: grid;
+    grid-template-columns: 99% 1%;
+    height: 100% !important;
+    background-color: #949494;
+    margin-right: -3px;
+   
+  
+}
+
+
+.react-resizable-handle-e {
+  cursor: ew-resize;
+  height: 100%;
+  border-left: 10px double #cac7c7;
+}
+
+
+ 
+  

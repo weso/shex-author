@@ -47,7 +47,7 @@
 }
 
 .xs-tabs{
-    grid-template-columns: 32% 25% 38% 10%;
+    grid-template-columns: 35% 25% 38% 10%;
 }
 
 .activeTab {
