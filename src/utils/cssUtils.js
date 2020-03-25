@@ -39,7 +39,6 @@ export function makeItResponsive(width){
         
         tabs.className = tabClass;
         for(let i=0;i<shapeHeaders.length;i++){
-           // console.log(i)
             shapeHeaders[i].className = shClass;
         }
 

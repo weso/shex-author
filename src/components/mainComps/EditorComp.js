@@ -43,11 +43,11 @@ function EditorComp() {
             const y = YASHE(divRef.current,options);
 
             
-            y.on('humanEvent', function(shapes) {
+            y.on('humanEvent', function(shapes,width) {
                 Editor.getInstance().draw(shapes);
                 //console.log(shapes)
                 oldShapes = shapes;
-                let data={size:{width:400}};
+                let data={size:{width:width}};
                 context.handleResize(null,data);
             });
 

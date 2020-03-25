@@ -30,6 +30,9 @@ function App() {
     const [isVisualizeOpen, setVisualizeOpen] = useState(true);
     const [isToolBarOpen, setToolBarOpen] = useState(true);
 
+    const [width,setWidth] = useState(700);
+
+
     const assistantToggle = () => setAssistantOpen(!isAssistantOpen);
     const visualizeToggle = () => setVisualizeOpen(!isVisualizeOpen);
     const toolbarToggle = () => setToolBarOpen(!isToolBarOpen);
@@ -40,12 +43,12 @@ function App() {
     }
 
     const addShape = () =>{
-      setShapes([...shapes,shexUtils.addShape(shapes)]);
+      setShapes([...shapes,shexUtils.addShape(shapes,width)]);
       visualize();
     }
 
     const deleteShape = (shapeId) =>{
-      setShapes(shexUtils.deleteShape(shapes,shapeId,false));
+      setShapes(shexUtils.deleteShape(shapes,shapeId,false,width));
       visualize();
     }
 
@@ -58,12 +61,12 @@ function App() {
     }
 
 
-    const emit = ()=>{
-      shexUtils.emit(shapes);
+    const emit = function(){
+      shexUtils.emit(shapes,width);
       visualize();
     }
 
-    const emitPref = ()=>{
+    const emitPref = function(){
       emitPrefixes(prefixes);
       visualize();
     }
@@ -116,20 +119,8 @@ function App() {
     }
       
       const handleResize = function(e, data){
-       //console.log(e.screenX)
-        console.log(data.size.width)
-          makeItResponsive(data.size.width);
-        /*
-        if(width+d.width>-1500){
-          console.log(width)
-            setWidth(width+d.width);
-            makeItResponsive(width);
-        }
-           
-
-            //console.log(d.width);
-            */
-            
+          setWidth(data.size.width)
+          makeItResponsive(data.size.width); 
       }
 
 
@@ -157,6 +148,7 @@ function App() {
                   setPrefixesOpen:setPrefixesOpen,
                   visualizeToggle:visualizeToggle,
                   handleResize:handleResize,
+                  width:width
                   }
                 }>
 

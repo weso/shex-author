@@ -7,7 +7,7 @@ import {addPrefix} from './prefixUtils';
 let shapesCount = 0;
 let facetsCount = 0;
 
-function addShape(shapes){
+function addShape(shapes,width){
 
     const id = shapes.length + shapesCount++;
     const newShape = new Shape(id);
@@ -16,17 +16,17 @@ function addShape(shapes){
     newShapes = Object.assign(newShapes, shapes);
     newShapes.push(newShape);
     checkPrefixes();
-    emit(newShapes);
+    emit(newShapes,width);
     return newShape;    
 }
 
-function deleteShape(shapes,shapeId,confirm) {
+function deleteShape(shapes,shapeId,confirm,width) {
     if(!confirm){
         confirm = window.confirm('Are you sure?');
     }
     if (confirm == true) {
         const newShapes = shapes.filter(shape => shape.id != shapeId);
-        emit(newShapes);
+        emit(newShapes,width);
         return newShapes;
     }
     return shapes;
@@ -55,10 +55,11 @@ function getTripleById(shape,tripleId) {
 }
 
 
-function emit(newShapes) {
+function emit(newShapes,width) {
+    console.log(width)
     const yashe = Editor.getInstance().getYashe();
     if(yashe!=undefined){
-        Codemirror.signal(yashe,'humanEvent',newShapes);
+        Codemirror.signal(yashe,'humanEvent',newShapes,width);
         checkPrefixes();
     }
 }

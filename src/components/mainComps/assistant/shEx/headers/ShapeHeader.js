@@ -44,7 +44,7 @@ function ShapeHeader (props) {
             </button>
 
             <button className="deleteShapeBtn mdc-icon-button material-icons" 
-                    onClick={()=>context.deleteShape(shape.id)} 
+                    onClick={()=>context.deleteShape(shape.id)}
                     title="Delete Shape">
                     delete
             </button>
