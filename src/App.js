@@ -53,11 +53,11 @@ function App() {
     }
 
     const addPrefix = function(){
-      setPrefixes([...prefixes,addPrefixComp(prefixes)]);
+      setPrefixes([...prefixes,addPrefixComp(prefixes,width)]);
     }
       
     const deletePrefix = function(prefixId){
-      setPrefixes(deletePrefixComp(prefixes,prefixId));
+      setPrefixes(deletePrefixComp(prefixes,prefixId,width));
     }
 
 
@@ -67,7 +67,7 @@ function App() {
     }
 
     const emitPref = function(){
-      emitPrefixes(prefixes);
+      emitPrefixes(prefixes,width);
       visualize();
     }
 

@@ -39,7 +39,7 @@
 
 .tabs{
     display: grid;
-    grid-template-columns: 22% 15% 58% 10%;
+    grid-template-columns: 28% 15% 58% 10%;
     border-bottom: 1px solid #bdbcbc;
     font-size: 20px;
     color:#666565;

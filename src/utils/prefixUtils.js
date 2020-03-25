@@ -17,19 +17,19 @@ export function getPrefix(prefix){
 
 
 
-export function addPrefixComp(prefixes){
+export function addPrefixComp(prefixes,width){
     const id = prefixes.length + prefixCount++;
     let newPrefix = new Prefix('','',id);
     let newPrefixes = [];
     newPrefixes = Object.assign(newPrefixes, prefixes);
     newPrefixes.push(newPrefix);
-    emitPrefixes(newPrefixes);
+    emitPrefixes(newPrefixes,width);
     return newPrefix;
 }
 
-export function deletePrefixComp(prefixes,prefixId) {
+export function deletePrefixComp(prefixes,prefixId,width) {
     let newPrefixes = prefixes.filter(prefix => prefix.id != prefixId);
-    emitPrefixes(newPrefixes);
+    emitPrefixes(newPrefixes,width);
     return newPrefixes;
 }
 
@@ -71,9 +71,9 @@ function getPrefixesStr(prefixes){
   return str;
 }
 
-export function emitPrefixes(newPrefixes) {
+export function emitPrefixes(newPrefixes,width) {
     const yashe = Editor.getInstance().getYashe();
     if(yashe!=undefined){
-        Codemirror.signal(yashe,'prefixChange',getPrefixesStr(newPrefixes));
+        Codemirror.signal(yashe,'prefixChange',getPrefixesStr(newPrefixes),width);
     }
 }

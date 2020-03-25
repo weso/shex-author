@@ -51,8 +51,11 @@ function EditorComp() {
                 context.handleResize(null,data);
             });
 
-            y.on('prefixChange', function(prefixes) {
+            y.on('prefixChange', function(prefixes,width) {
                 Editor.getInstance().draw(oldShapes,prefixes);
+                console.log(width)
+                let data={size:{width:width}};
+                context.handleResize(null,data);
             });
 
             y.on('forceError', function(prefixes) {
