@@ -1,51 +1,25 @@
 .assistCollapse{
     border-bottom: 1px solid #acaaaa;
     border-top:1px solid #acaaaa;
-    max-width: 1200px;
-    min-width: 500pX;
     margin-left: 0px;
 }
 
-.resizable{
-    height: 100% !important;
-    /*border-right:4px double #95b2d6;*/
-    max-width: 1100px;
-    border-right:4px double #bdbcbc;
-    margin-right: 14px;
-    margin-left: 0px;
-    z-index: 100;
-    padding: 0px;
-}
-
-
-.react-resizable {
-    position: relative;
-}
-.react-resizable-handle {
-    position: absolute;
-    
-    width: 1em;
-    height: 100% !important;
-
-    background: #ddeafa;
-    background-image: url( data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAhCAQAAABOpSL+AAAAIklEQVR4AWMwbb/PdR+JZDD9f1/oPhI5sgVGBSruc9xHIgGdSQqqQJGkRgAAAABJRU5ErkJggg== );
-    background-position: center center;
-    background-repeat: no-repeat;
-    
+.containerAssist{
+    display: grid;
+    grid-template-rows: auto 100%;
 }
 
 .edit{
-
     border-top: 1px solid #acaaaa;
     border-bottom: 1px solid #acaaaa;
     border-right: 1px solid #acaaaa;
     border-radius: 0px 10px 10px 0px!important;
-    min-width: 300px;
 }
 
 
 .containerAssist{
     width: 100% !important;
+    height: 100% !important;
     display: grid;
     grid-template-columns: 100%;
     padding: 0px;
@@ -69,7 +43,7 @@
     border-bottom: 1px solid #bdbcbc;
     font-size: 20px;
     color:#666565;
-  
+    max-height: 40px;
 }
 
 .xs-tabs{
@@ -125,7 +99,7 @@
 .shape{
     border: 1px solid #acaaaa;
     border-radius: 10px;
-    margin-top: 10px;
+    margin-bottom: 15px;
     background-color: #C6E2FF;
 }
 

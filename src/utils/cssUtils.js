@@ -15,7 +15,8 @@ export function makeItResponsive(width){
         let adSClass = 'addShapeButton';
         let grClass = 'gridBox';
         let prClass = 'prefixHeader';
-        if(width<700){
+       //console.log(width)
+        if(width<-100){
             tabClass += ' xs-tabs';
             shClass += ' xs-header';
             thClass += ' xs-tripleHeader';

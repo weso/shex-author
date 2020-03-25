@@ -47,6 +47,7 @@ function EditorComp() {
                 Editor.getInstance().draw(shapes);
                 //console.log(shapes)
                 oldShapes = shapes;
+                context.updateRes();
             });
 
             y.on('prefixChange', function(prefixes) {

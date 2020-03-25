@@ -118,9 +118,21 @@ function App() {
     }
       
       const handleResize = function(e, direction, ref, d){
+
+        if(width+d.width>-1500){
+          console.log(width)
             setWidth(width+d.width);
-            makeItResponsive(width+d.width);
+            makeItResponsive(width);
         }
+           
+
+            //console.log(d.width);
+            
+      }
+
+      const updateRes = function(){
+            makeItResponsive(600);
+      }
 
 
     return (
@@ -148,6 +160,7 @@ function App() {
                   visualizeToggle:visualizeToggle,
                   width:width,
                   handleResize:handleResize,
+                  updateRes:updateRes
                   }
                 }>
 
