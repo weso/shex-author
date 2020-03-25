@@ -1,5 +1,6 @@
 import React,{useState,useContext} from 'react';
 import {AppContext} from '../../../../../App';
+import {checkShapeName} from '../../../../../utils/cssUtils';
 import '../../../../../css/shexComponents/headers/ShapeHeader.css';
 
 
@@ -9,34 +10,15 @@ function ShapeHeader (props) {
     const {shape,customizeShape,collapseTriples,colapseBtn,rounded,setHidding} = props;
     const [name,setName] = useState(shape.type.value);
 
-    const handleChange = function(x){
-        const name = x.target.value;
+    const handleChange = function(e){
+        const name = e.target.value;
         shape.type.setValue(name);
         context.emit();
         setName(name);
-
-
-        setTimeout(() => {
-            if(shape.type.value ==''){
-                let triples = document.getElementsByClassName("triples");
-                if(triples.length>0)triples[shape.id].className = 'hideTriples';
-            }else{
-                let triples = document.getElementsByClassName("hideTriples");
-                if(triples.length>0)triples[shape.id].className = 'triples';
-            }
-        }, 0);
-       
-/*
-        if(shape.type.value ==''){
-            let triples = document.getElementsByClassName("triples");
-            triples[shape.id].className = 'hideTriples';
-        }else{
-            let triples = document.getElementsByClassName("hideTriples");
-                triples[shape.id].className = 'triples';
-        }
-
-        */
+        checkShapeName(shape);
     }
+
+
 
     return (
         <div className='header'>            

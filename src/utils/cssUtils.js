@@ -64,7 +64,25 @@ export function makeItResponsive(width){
 
     }, 0);
         
-        
+}
+
+
+export function checkShapeName(shape){
+         //Without the timeout shape.id is not accesible
+        setTimeout(() => {
+            if(shape.type.value ==''){
+                changeClass('sTriples'+shape.id,'hiddenTriples');
+                changeClass('msgTriples'+shape.id,'shapeNameNeeded');
+            }else{
+                changeClass('sTriples'+shape.id,'triples');
+                changeClass('msgTriples'+shape.id,'hiddenMsg');
+            }
+        }, 0);
+}
+
+function changeClass(before,after){
+    let triples = document.getElementsByClassName(before)[0];
+    if(triples)triples.className = before+' '+after;
 }
 
 

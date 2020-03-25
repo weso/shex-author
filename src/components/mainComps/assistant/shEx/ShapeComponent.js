@@ -29,7 +29,7 @@ function ShapeComponent (props) {
         const triple = new Triple(id);
 
         setTriples([...triples,triple]);
-
+        
         shape.addTriple(triple);
         context.emit();        
     }
@@ -67,8 +67,6 @@ function ShapeComponent (props) {
         }
     }
 
-
-
     return (
         <div className="shape">
             <ShapeHeader shape={shape} 
@@ -86,7 +84,7 @@ function ShapeComponent (props) {
             <Collapse   isOpen={isTriplesOpen}>
 
                      
-                <div className="triples">
+                <div className={"sTriples"+shape.id+" triples"}>
                     {triples.map(triple =>
                         <TripleComponent key={triple.id}
                                          shape={shape} 
@@ -98,7 +96,11 @@ function ShapeComponent (props) {
                     <button className="addTripleButton" onClick={addTriple} title="Add Triple">+ Triple Constraint</button>        
                    
               
-                </div>       
+                </div>
+
+                <div className={"msgTriples"+shape.id+" hiddenMsg"}>
+                    <p>First, write a name for your shape</p>
+                </div>
             </Collapse> 
         </div>
     );

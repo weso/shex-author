@@ -118,6 +118,23 @@
     grid-template-columns: 100%; 
 }
 
+.hiddenTriples{
+    display: none !important;
+}
+
+.hiddenMsg{
+    display: none;
+}
+
+.shapeNameNeeded{
+    background: #EBF4FF;
+    color: black;
+    border-radius: 0px 0px 10px 10px ;
+    display: grid;
+    padding-top: 10px;
+    justify-content: center;
+}
+
 
 .constraint{
     /*background:#d6ffc654;*/
@@ -281,10 +298,6 @@
 
 .addFacet:focus{
     outline: none;
-}
-
-.hideTriples{
-    display: none;
 }
 
 

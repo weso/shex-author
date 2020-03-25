@@ -9,7 +9,7 @@ import Visualizer from './components/Visualizer';
 
 import shexUtils from './utils/shexUtils';
 import {emitPrefixes} from './utils/prefixUtils';
-import {makeItResponsive} from './utils/cssUtils';
+import {makeItResponsive,checkShapeName} from './utils/cssUtils';
 import yasheUtils from './utils/yasheUtils';
 
 
@@ -43,7 +43,9 @@ function App() {
     }
 
     const addShape = () =>{
-      setShapes([...shapes,shexUtils.addShape(shapes,width)]);
+      let shape = shexUtils.addShape(shapes,width);
+      setShapes([...shapes,shape]);
+      checkShapeName(shape)
       visualize();
     }
 
