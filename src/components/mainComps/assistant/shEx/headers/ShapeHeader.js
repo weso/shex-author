@@ -10,21 +10,32 @@ function ShapeHeader (props) {
     const [name,setName] = useState(shape.type.value);
 
     const handleChange = function(x){
-         const name = x.target.value;
-            shape.type.setValue(name);
-            context.emit();
-            setName(name);
+        const name = x.target.value;
+        shape.type.setValue(name);
+        context.emit();
+        setName(name);
 
-            
-            console.log(shape.id)
-            /*
+
+        setTimeout(() => {
             if(shape.type.value ==''){
                 let triples = document.getElementsByClassName("triples");
-                triples[shape.id].className = 'hideTriples';
+                if(triples.length>0)triples[shape.id].className = 'hideTriples';
             }else{
                 let triples = document.getElementsByClassName("hideTriples");
-                 triples[shape.id].className = 'triples';
-            }*/
+                if(triples.length>0)triples[shape.id].className = 'triples';
+            }
+        }, 0);
+       
+/*
+        if(shape.type.value ==''){
+            let triples = document.getElementsByClassName("triples");
+            triples[shape.id].className = 'hideTriples';
+        }else{
+            let triples = document.getElementsByClassName("hideTriples");
+                triples[shape.id].className = 'triples';
+        }
+
+        */
     }
 
     return (
