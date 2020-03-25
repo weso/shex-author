@@ -30,8 +30,8 @@ function PrefixComp (props) {
                             value={name}
                             onChange={(e)=>handleAlias(e,prefix)}
                             title="Alias"/>
-                    <label  className={context.shapeLabel+" prefixLabel"}>:</label>
-                    <label  className={context.shapeLabel+" prefixLabel"}>{open}</label>
+                    <label  className="prefixLabel">:</label>
+                    <label  className="prefixLabel">{open}</label>
                     <input  type="text" 
                             className="prefixInput"
                             value={value}

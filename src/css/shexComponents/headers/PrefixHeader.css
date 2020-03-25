@@ -1,7 +1,6 @@
-
 .prefixHeader{
     background: #fdd5d5 ;
-    padding: 6px;
+    padding: 8px;
     color: black;
     text-align: left;
     border: 1px solid grey;
@@ -17,6 +16,13 @@
 
 .prefixName{
     grid-column: 2/3;
+}
+
+.prefixLabel{
+    font-weight: bold;
+	margin-top: 10px;
+	margin-left:10px;
+	margin-right:-50px; 
 }
 
 .prefixInput{

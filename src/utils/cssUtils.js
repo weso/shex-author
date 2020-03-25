@@ -66,23 +66,53 @@ export function makeItResponsive(width){
         
 }
 
+export function activeTab(evt){
+        let i;
+        let tablinks;
+
+        tablinks = document.getElementsByClassName("tablink");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" activeTab", "");
+        }
+        evt.currentTarget.className += " activeTab";
+}
+
 
 export function checkShapeName(shape){
-         //Without the timeout shape.id is not accesible
-        setTimeout(() => {
-            if(shape.type.value ==''){
-                changeClass('sTriples'+shape.id,'hiddenTriples');
-                changeClass('msgTriples'+shape.id,'shapeNameNeeded');
-            }else{
-                changeClass('sTriples'+shape.id,'triples');
-                changeClass('msgTriples'+shape.id,'hiddenMsg');
-            }
-        }, 0);
-}
+    let name = shape.type.value;
+    let id = shape.id;
+    setTimeout(() => {
+        if(!name.match(new RegExp('^[a-zA-Z0-9_.-]*$'))){
+            changeClass('sTriples'+id,'hidden');
+            changeClass('msgTriples'+id,'shapeNameNeeded','Wrong Shape name');
+            return;
+        }
 
-function changeClass(before,after){
+        if(name ==''){
+            changeClass('sTriples'+id,'hidden');
+            changeClass('msgTriples'+id,'shapeNameNeeded','First, write a name for your Shape');
+            return;
+        }
+
+        changeClass('sTriples'+id,'triples');
+        changeClass('msgTriples'+id,'hidden');
+    }, 0);
+        
+    }
+
+function changeClass(before,after,msg){
     let triples = document.getElementsByClassName(before)[0];
-    if(triples)triples.className = before+' '+after;
+    if(triples){
+        triples.className = before+' '+after;
+        if(msg)triples.textContent = msg;
+    }
 }
 
+
+/*
+
+ setTimeout(() => {
+            
+        }, 0);
+*/
 

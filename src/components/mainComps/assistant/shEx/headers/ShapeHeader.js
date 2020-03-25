@@ -24,7 +24,7 @@ function ShapeHeader (props) {
         <div className='header'>            
             <label  className="shapeNameLabel">Shape</label>
             <input  type="text" 
-                    className="name"
+                    className={"sName"+shape.id+" name"}
                     value={name}
                     onChange={handleChange}
                     placeholder="eg: User"

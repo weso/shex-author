@@ -1,5 +1,6 @@
 import React,{useContext} from 'react';
 import {AppContext} from '../../../App';
+import {activeTab} from '../../../utils/cssUtils';
 
 function AssistTitle (props) {
 
@@ -15,16 +16,7 @@ function AssistTitle (props) {
         activeTab(evt);
     }
 
-    const activeTab = function(evt){
-        let i;
-        let tablinks;
-
-        tablinks = document.getElementsByClassName("tablink");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" activeTab", "");
-        }
-        evt.currentTarget.className += " activeTab";
-    }
+    
    
     return (<div className="tabs">
                 <button className="tablink activeTab" 

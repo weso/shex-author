@@ -116,11 +116,7 @@
     grid-template-columns: 100%; 
 }
 
-.hiddenTriples{
-    display: none !important;
-}
-
-.hiddenMsg{
+.hidden{
     display: none;
 }
 

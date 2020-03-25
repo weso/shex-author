@@ -24,12 +24,16 @@
     height: 40px;
 }
 
-label{
+
+
+.shapeNameLabel{
 	font-weight: bold;
 	margin-top: 10px;
 	margin-left:10px;
 	margin-right:-50px; 
 }
+
+
 
 
 
