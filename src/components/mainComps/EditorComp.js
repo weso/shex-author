@@ -187,32 +187,31 @@ function EditorComp() {
         },500)
     }
 
+
+     const animate = function(before1,after1,before2,after2){
+        let e1 = document.getElementsByClassName(before1)[0];
+        if(e1) e1.className = after1;
+        let e2 = document.getElementsByClassName(before2)[0];
+        if(e2) e2.className = after2;
+     }
+
     const loading = function(){
-        document.getElementsByClassName("showAsist")[0].className = 'hideAsist';
-        document.getElementsByClassName("hideLoader")[0].className = 'showLoader';
+        animate('showAsist','hideAsist','hideLoader','showLoader');
     }
 
     const loaded = function(){
-        document.getElementsByClassName("hideAsist")[0].className = 'showAsist';
-        document.getElementsByClassName("showLoader")[0].className = 'hideLoader';
+         animate('showLoader','hideLoader','hideAsist','showAsist');
     }
 
-    /* REFACTOR*/
-
-    const showError = function(error){
-        let err = document.getElementsByClassName("hideError")[0];
-        if(err)err.className = 'showError';
-        let asis = document.getElementsByClassName("showAsist")[0];
-        if(asis)asis.className = 'hideAsist';
-        context.setErrorMsg(error)
+    const showError = function(err){
+        animate('hideError','showError','showAsist','hideAsist');
+        document.getElementsByClassName('errorMsg')[0].textContent = err;
     }
 
     const hideError = function(){
-        let err = document.getElementsByClassName("showError")[0];
-        if(err)err.className = 'hideError';
-        let asis = document.getElementsByClassName("hideAsist")[0];
-        if(asis)asis.className = 'showAsist';
+        animate('showError','hideError','hideAsist','showAsist');
     }
+
 
 
     return  (<div className="col edit" ref={divRef}/>);

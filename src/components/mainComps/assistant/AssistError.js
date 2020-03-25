@@ -8,11 +8,10 @@ function AssistError (props) {
     return (<div className='hideError'>
                 <div className='shapeErrorCont'>
                     <div className='shapeError'></div>
-                    <p>{context.errorMsg}</p>
+                    <p className='errorMsg'></p>
                 </div>
             </div>);
 }
 
 
 export default AssistError;
-
