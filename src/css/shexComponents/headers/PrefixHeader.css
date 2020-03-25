@@ -12,7 +12,7 @@
 }
 
 .xs-prefixHeader{
-    grid-template-columns: 0% 20% 2% 4% 47% 4% 8%;
+    grid-template-columns: 0% 20% 1% 4% 48% 4% 8%;
 }
 
 .prefixName{
@@ -32,7 +32,7 @@
     border-radius: 10px;
     outline: none;
     border: none;
-
+    font-size: 20px;
 }
 
 .deletePrefix:focus{
