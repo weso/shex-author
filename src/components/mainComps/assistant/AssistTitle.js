@@ -28,12 +28,12 @@ function AssistTitle (props) {
    
     return (<div className="tabs">
                 <button className="tablink activeTab" 
-                        title="ShEx Assistant" 
+                        title="ShEx Assistant Tab" 
                         onClick={(e)=>handleAssist(e)}>
                         ShEx Assistant
                 </button>
                 <button className="tablink" 
-                        title="Prefixes" 
+                        title="Prefixes Tab" 
                         onClick={(e)=>handlePrefixes(e)}>
                         Prefixes
                 </button>

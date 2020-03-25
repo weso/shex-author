@@ -33,21 +33,23 @@
     gap: 10px;
 }
 
-.asisTitleClose{
-    grid-column: 4/4;
-}
+
 
 .tabs{
     display: grid;
-    grid-template-columns: 28% 15% 58% 10%;
+    grid-template-columns: 28% 15% 53% 10%;
     border-bottom: 1px solid #bdbcbc;
     font-size: 20px;
     color:#666565;
     max-height: 40px;
 }
 
+.asisTitleClose{
+    grid-column: 4/4;
+}
+
 .xs-tabs{
-    grid-template-columns: 35% 25% 38% 10%;
+    grid-template-columns: 35% 25% 35% 10%;
 }
 
 .activeTab {
@@ -89,10 +91,6 @@
 }
 
 
-
-.assisTitle{
-	font-weight: bold !important;
-}
 
 
 

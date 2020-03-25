@@ -44,7 +44,7 @@ function ShapeHeader (props) {
 
             <button className="collapseBtn mdc-icon-button material-icons" 
                     onClick={collapseTriples} 
-                    title="Show Triples">
+                    title="Triple Constraints">
                     {colapseBtn}
             </button>
         </div>
