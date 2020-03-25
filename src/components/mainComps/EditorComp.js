@@ -188,24 +188,30 @@ function EditorComp() {
     }
 
     const loading = function(){
-        context.setLoading('showLoader');
-        context.setAsist('hideAsist');
+        document.getElementsByClassName("showAsist")[0].className = 'hideAsist';
+        document.getElementsByClassName("hideLoader")[0].className = 'showLoader';
     }
 
     const loaded = function(){
-        context.setLoading('hideLoader');
-        context.setAsist('showAsist');
+        document.getElementsByClassName("hideAsist")[0].className = 'showAsist';
+        document.getElementsByClassName("showLoader")[0].className = 'hideLoader';
     }
 
+    /* REFACTOR*/
+
     const showError = function(error){
-        context.setError('showError');
-        context.setAsist('hideAsist');
+        let err = document.getElementsByClassName("hideError")[0];
+        if(err)err.className = 'showError';
+        let asis = document.getElementsByClassName("showAsist")[0];
+        if(asis)asis.className = 'hideAsist';
         context.setErrorMsg(error)
     }
 
     const hideError = function(){
-        context.setError('hideError');
-        context.setAsist('showAsist');
+        let err = document.getElementsByClassName("showError")[0];
+        if(err)err.className = 'hideError';
+        let asis = document.getElementsByClassName("hideAsist")[0];
+        if(asis)asis.className = 'showAsist';
     }
 
 

@@ -5,7 +5,7 @@ function AssistLoader (props) {
 
     const context = useContext(AppContext);
 
-    return (<div className={context.loading}>
+    return (<div className='hideLoader'>
                 <div className="loader"></div>
             </div>);
 }

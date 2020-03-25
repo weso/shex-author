@@ -30,24 +30,8 @@ function App() {
     const [isToolBarOpen, setToolBarOpen] = useState(true);
 
     const [width,setWidth] = useState(700);
-
-    const [loading,setLoading] = useState('hideLoader');
-    const [error,setError] = useState('hideError');
-    const [asist,setAsist] = useState('showAsist');
     const [errorMsg,setErrorMsg] = useState('');
 
-    const [tab, setTab] = useState('selectedTab');
-
-    //Responsive
-    const [shapeHeader,setShapeHeader] = useState('header');
-    const [tripleHeader,setTripleHeader] = useState('tripleHeader');
-    const [triplesContainer,setTriplesContainer] = useState('triples');
-    const [shapeLabel,setShapeLabel] = useState('shapeNameLabel');
-    const [tripleLabel,setTripleLabel] = useState('tripleNameLabel');
-    const [tripleBtns,setTripleBtns] = useState('tripleBtns');
-    const [addBtns,setAddBtns] = useState('addBtns');
-    const [gridClass,setGridClass] = useState('gridBox');
-    
     const assistantToggle = () => setAssistantOpen(!isAssistantOpen);
     const visualizeToggle = () => setVisualizeOpen(!isVisualizeOpen);
     const toolbarToggle = () => setToolBarOpen(!isToolBarOpen);
@@ -143,6 +127,7 @@ function App() {
             let addTripleBtns = document.getElementsByClassName("addTripleButton");
             let addShapeBtns = document.getElementsByClassName("addShapeButton");
             let grids = document.getElementsByClassName("gridBox");
+            let prefixes = document.getElementsByClassName("prefixHeader");
 
             
             let tabClass = 'tabs';
@@ -151,6 +136,7 @@ function App() {
             let adTClass = 'addTripleButton';
             let adSClass = 'addShapeButton';
             let grClass = 'gridBox';
+            let prClass = 'prefixHeader';
             if(width+d.width<700){
                 tabClass += ' xs-tabs';
                 shClass += ' xs-header';
@@ -158,6 +144,7 @@ function App() {
                 adTClass += ' xs-addTripleButton';
                 adSClass += ' xs-addShapeButton';
                 grClass += ' xs-gridBox';
+                prClass += ' xs-prefixHeader';
             }else{
               //Why this is needed?
               tabClass = 'tabs';
@@ -165,7 +152,8 @@ function App() {
               thClass = 'tripleHeader';
               adTClass = 'addTripleButton';
               adSClass = 'addShapeButton';
-              grClass = 'gridBox'
+              grClass = 'gridBox';
+              prClass = 'prefixHeader';
             }
 
            
@@ -189,6 +177,10 @@ function App() {
 
             for(let i=0;i<grids.length;i++){
               grids[i].className = grids[i].className.replace('gridBox',grClass);
+            }
+
+            for(let i=0;i<prefixes.length;i++){
+              prefixes[i].className = prClass;
             }
 
         }
@@ -222,13 +214,7 @@ function App() {
                   
                   width:width,
                   handleResize:handleResize,
-          
-                  loading:loading,
-                  setLoading:setLoading,
-                  asist:asist,
-                  setAsist:setAsist,
-                  error:error,
-                  setError:setError,
+
                   errorMsg:errorMsg,
                   setErrorMsg:setErrorMsg
 

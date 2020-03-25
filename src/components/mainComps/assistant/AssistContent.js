@@ -10,7 +10,7 @@ function AssistContent (props) {
     const context = useContext(AppContext);
 
     return ( 
-    <div className={context.asist}>
+    <div className='showAsist'>
         <div id='assistant-container' className='assistantContainer'> 
                 <Collapse isOpen={!context.isPrefixesOpen}>
                     <Shapes/>

@@ -14,11 +14,17 @@ function ShapeHeader (props) {
             shape.type.setValue(name);
             context.emit();
             setName(name);
+
+            
+            console.log(shape.id)
+            /*
             if(shape.type.value ==''){
-                setHidding('hideTriples');
+                let triples = document.getElementsByClassName("triples");
+                triples[shape.id].className = 'hideTriples';
             }else{
-                setHidding('triples');
-            }
+                let triples = document.getElementsByClassName("hideTriples");
+                 triples[shape.id].className = 'triples';
+            }*/
     }
 
     return (

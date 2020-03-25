@@ -11,6 +11,10 @@
     gap: 10px;
 }
 
+.xs-prefixHeader{
+    grid-template-columns: 0% 20% 2% 4% 47% 4% 8%;
+}
+
 .prefixName{
     grid-column: 2/3;
 }

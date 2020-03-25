@@ -5,7 +5,7 @@ function AssistError (props) {
 
     const context = useContext(AppContext);
 
-    return (<div className={context.error}>
+    return (<div className='hideError'>
                 <div className='shapeErrorCont'>
                     <div className='shapeError'></div>
                     <p>{context.errorMsg}</p>
