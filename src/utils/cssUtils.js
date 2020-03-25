@@ -1,4 +1,7 @@
 export function makeItResponsive(width){
+        
+        //TimeOut need to take all the elements after render the DOM
+        setTimeout(() => {
         let tabs = document.getElementsByClassName("tabs")[0];
         let shapeHeaders = document.getElementsByClassName("header");
         let tripleHeaders = document.getElementsByClassName("tripleHeader");
@@ -7,7 +10,6 @@ export function makeItResponsive(width){
         let grids = document.getElementsByClassName("gridBox");
         let prefixes = document.getElementsByClassName("prefixHeader");
 
-        
         let tabClass = 'tabs';
         let shClass = 'header';
         let thClass = 'tripleHeader';
@@ -15,8 +17,7 @@ export function makeItResponsive(width){
         let adSClass = 'addShapeButton';
         let grClass = 'gridBox';
         let prClass = 'prefixHeader';
-       //console.log(width)
-        if(width<-100){
+        if(width<500){
             tabClass += ' xs-tabs';
             shClass += ' xs-header';
             thClass += ' xs-tripleHeader';
@@ -37,8 +38,8 @@ export function makeItResponsive(width){
 
         
         tabs.className = tabClass;
-
         for(let i=0;i<shapeHeaders.length;i++){
+           // console.log(i)
             shapeHeaders[i].className = shClass;
         }
 
@@ -61,6 +62,10 @@ export function makeItResponsive(width){
         for(let i=0;i<prefixes.length;i++){
             prefixes[i].className = prClass;
         }
+
+    }, 0);
+        
+        
 }
 
 

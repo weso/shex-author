@@ -30,8 +30,6 @@ function App() {
     const [isVisualizeOpen, setVisualizeOpen] = useState(true);
     const [isToolBarOpen, setToolBarOpen] = useState(true);
 
-    const [width,setWidth] = useState(700);
-
     const assistantToggle = () => setAssistantOpen(!isAssistantOpen);
     const visualizeToggle = () => setVisualizeOpen(!isVisualizeOpen);
     const toolbarToggle = () => setToolBarOpen(!isToolBarOpen);
@@ -117,8 +115,11 @@ function App() {
 
     }
       
-      const handleResize = function(e, direction, ref, d){
-
+      const handleResize = function(e, data){
+       //console.log(e.screenX)
+        console.log(data.size.width)
+          makeItResponsive(data.size.width);
+        /*
         if(width+d.width>-1500){
           console.log(width)
             setWidth(width+d.width);
@@ -127,11 +128,8 @@ function App() {
            
 
             //console.log(d.width);
+            */
             
-      }
-
-      const updateRes = function(){
-            makeItResponsive(600);
       }
 
 
@@ -158,9 +156,7 @@ function App() {
                   assistantToggle:assistantToggle,
                   setPrefixesOpen:setPrefixesOpen,
                   visualizeToggle:visualizeToggle,
-                  width:width,
                   handleResize:handleResize,
-                  updateRes:updateRes
                   }
                 }>
 

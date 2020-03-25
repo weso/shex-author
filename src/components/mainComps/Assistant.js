@@ -15,8 +15,8 @@ function AssistantComp (props) {
         const context = useContext(AppContext);
         return (
         <Collapse isOpen={context.isAssistantOpen} className='assistCollapse'>
-                <ResizableBox width={700} 
-                               minConstraints={[400, 100]} maxConstraints={[1000, 1000]}>
+                <ResizableBox width={700} onResize={(e,data)=>context.handleResize(e,data)}
+                               minConstraints={[470, 100]} maxConstraints={[1000, 1000]}>
                         
                         <div className='containerAssist'>                                    
                                 <AssistTitle/>
