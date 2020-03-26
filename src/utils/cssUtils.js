@@ -83,14 +83,16 @@ export function checkShapeName(shape){
     let type = shape.type.getTypeName();
     let id = shape.id;  
     setTimeout(() => {
+        /*
         if(!name.match(new RegExp('^[a-zA-Z0-9_.-]*$')) && type == 'prefixedIri'){
             return changeClass('sTriples'+id,'hidden');
         }
+        */
 
-        if(name =='')return changeClass('sTriples'+id,'hidden');
+        if(name =='')return changeClass('addTriple'+id,'disabled');
         
 
-        changeClass('sTriples'+id,'triples');
+        changeClass('addTriple'+id,'addTripleButton');
 
     }, 0);
         

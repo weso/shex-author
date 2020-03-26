@@ -18,12 +18,11 @@ function ShapeComponent (props) {
     const [isTriplesOpen,setTriplesOpen] = useState(true);
     const [colapseBtn,setColapseBtn] = useState('menu_open');
 
-    let initialHidding = 'triples';
-    if(shape.type.value ==''){
-        initialHidding = 'hideTriples';
-    }
-    const [hidding,setHidding] = useState(initialHidding);
-   
+    let initialDisabled = false;
+    if(shape.type.value == '')initialDisabled = true;
+    const [disabled,setDisabled] = useState(initialDisabled);
+
+
     const addTriple = function(){
         const id = shape.getTriplesCount();
         const triple = new Triple(id);
@@ -73,7 +72,8 @@ function ShapeComponent (props) {
                          customizeShape={customizeShape} 
                          collapseTriples={collapseTriples} 
                          colapseBtn={colapseBtn}
-                         setHidding={setHidding}/>
+                         disabled={disabled}
+                         setDisabled={setDisabled}/>
 
             <CustomComp  entity={shape}
                          isCustomOpen={isCustomOpen}
@@ -84,7 +84,7 @@ function ShapeComponent (props) {
             <Collapse   isOpen={isTriplesOpen}>
 
                      
-                <div className={"sTriples"+shape.id+" triples"}>
+                <div className=" triples">
                     {triples.map(triple =>
                         <TripleComponent key={triple.id}
                                          shape={shape} 
@@ -93,10 +93,16 @@ function ShapeComponent (props) {
                         /> 
                     )}
                 
-                    <button className="addTripleButton" onClick={addTriple} title="Add Triple">+ Triple Constraint</button>        
+                    <button className="addTripleButton" 
+                            onClick={addTriple} 
+                            disabled={disabled}
+                            title="Add Triple">
+                            + Triple Constraint
+                    </button>        
                    
               
                 </div>
+
 
             </Collapse> 
         </div>
