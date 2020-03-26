@@ -24,6 +24,20 @@
     height: 40px;
 }
 
+.react-inputs-validation__textbox__input___20hDL{
+    border-radius: 4px;
+    color:#222;
+    padding-left: 10px;
+    border: 1px solid #acaaaa !important;
+    height: 40px;
+    font-size: 15px !important;
+    width: 100%;
+}
+
+.react-inputs-validation__error___2aXSp{
+    font-size: 12px;
+    color:red;
+}
 
 
 .shapeNameLabel{

@@ -15,8 +15,11 @@ function AssistantComp (props) {
         const context = useContext(AppContext);
         return (
         <Collapse isOpen={context.isAssistantOpen} className='assistCollapse'>
-                <ResizableBox width={context.width} onResize={(e,data)=>context.handleResize(e,data)}
-                             resizeHandles={['e']}  minConstraints={[470, 100]} maxConstraints={[1000, 1000]}>
+                <ResizableBox   width={context.width} 
+                                height={100} //Just to avoid console errors, but ignore it
+                                onResize={(e,data)=>context.handleResize(e,data)}
+                                resizeHandles={['e']}  
+                                minConstraints={[470, 100]} maxConstraints={[1000, 1000]}>
                         
                         <div className='containerAssist'>                                    
                                 <AssistTitle/>
@@ -30,27 +33,3 @@ function AssistantComp (props) {
 
 
 export default AssistantComp;
-
-/*
-
-
-import { Resizable } from "re-resizable";
- <Collapse isOpen={context.isAssistantOpen} className='row assistCollapse'>
-                <Resizable  className="col row resizable"
-                        size={{ width: context.width }}                    
-                        onResize={context.handleResize}              
-                        enable={{right:true}}>
-        
-                        <div className='col containerAssist'>                                    
-                                <div className="globalAssis">
-                                        <AssistTitle/>
-                                        <AssistContent/>
-                                        <AssistLoader/>
-                                        <AssistError/>
-                                </div>
-                        </div>
-                </Resizable>     
-        </Collapse>);
-
-
-        */

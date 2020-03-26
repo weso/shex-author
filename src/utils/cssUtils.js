@@ -80,39 +80,26 @@ export function activeTab(evt){
 
 export function checkShapeName(shape){
     let name = shape.type.value;
-    let id = shape.id;
+    let type = shape.type.getTypeName();
+    let id = shape.id;  
     setTimeout(() => {
-        if(!name.match(new RegExp('^[a-zA-Z0-9_.-]*$'))){
-            changeClass('sTriples'+id,'hidden');
-            changeClass('msgTriples'+id,'shapeNameNeeded','Wrong Shape name');
-            return;
+        if(!name.match(new RegExp('^[a-zA-Z0-9_.-]*$')) && type == 'prefixedIri'){
+            return changeClass('sTriples'+id,'hidden');
         }
 
-        if(name ==''){
-            changeClass('sTriples'+id,'hidden');
-            changeClass('msgTriples'+id,'shapeNameNeeded','First, write a name for your Shape');
-            return;
-        }
+        if(name =='')return changeClass('sTriples'+id,'hidden');
+        
 
         changeClass('sTriples'+id,'triples');
-        changeClass('msgTriples'+id,'hidden');
+
     }, 0);
         
-    }
-
-function changeClass(before,after,msg){
-    let triples = document.getElementsByClassName(before)[0];
-    if(triples){
-        triples.className = before+' '+after;
-        if(msg)triples.textContent = msg;
-    }
 }
 
 
-/*
-
- setTimeout(() => {
-            
-        }, 0);
-*/
+function changeClass(before,after){
+    let triples = document.getElementsByClassName(before)[0];
+    if(triples)triples.className = before+' '+after;
+    
+}
 

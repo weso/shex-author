@@ -98,9 +98,6 @@ function ShapeComponent (props) {
               
                 </div>
 
-                <div className={"msgTriples"+shape.id+" hidden"}>
-                    <p>First, write a name for your shape</p>
-                </div>
             </Collapse> 
         </div>
     );
