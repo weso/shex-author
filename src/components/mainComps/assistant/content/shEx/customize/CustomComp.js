@@ -1,11 +1,11 @@
 import React,{useState,useContext} from 'react';
 import { Collapse } from 'reactstrap';
-import {AppContext} from '../../../../../App';
+import {AppContext} from '../../../../../../App';
 import TypeConfig from './config/TypeConfig';
 import PrefixConfig from './config/PrefixConfig';
 import QualifierConfig from './config/QualifierConfig';
 
-import '../../../../../css/shexComponents/customize/Custom.css'
+import '../../../../../../css/shexComponents/customize/Custom.css'
 
 function CustomComp (props) {
 

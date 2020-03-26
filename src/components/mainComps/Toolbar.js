@@ -1,18 +1,18 @@
 import React, {useContext} from 'react';
 import { Collapse } from 'reactstrap';
-import {AppContext} from '../../../App'; 
-import ShowAssist from './btns/ShowAssist';
-import VisualizeBtn from './btns/VisualizeBtn';
-import UndoBtn from './btns/UndoBtn';
-import RedoBtn from './btns/RedoBtn';
-import UploadBtn from './btns/UploadBtn';
-import DownloadBtn from './btns/DownloadBtn';
-import ChangeThemeBtn from './btns/ChangeThemeBtn';
-import GaleryBtn from './btns/GaleryBtn';
-import DeleteAllBtn from './btns/DeleteAllBtn';
-import ScrollBtn from './btns/ScrollBtn';
+import {AppContext} from '../../App'; 
+import AssistBtn from './toolbar/AssistBtn';
+import VisualizeBtn from './toolbar/VisualizeBtn';
+import UndoBtn from './toolbar/UndoBtn';
+import RedoBtn from './toolbar/RedoBtn';
+import UploadBtn from './toolbar/UploadBtn';
+import DownloadBtn from './toolbar/DownloadBtn';
+import ChangeThemeBtn from './toolbar/ChangeThemeBtn';
+import GaleryBtn from './toolbar/GaleryBtn';
+import DeleteAllBtn from './toolbar/DeleteAllBtn';
+import ScrollBtn from './toolbar/ScrollBtn';
 
-import '../../../css/navComponents/Toolbar.css';
+import '../../css/navComponents/Toolbar.css';
 
 
 function Toolbar () {
@@ -23,7 +23,7 @@ function Toolbar () {
     <Collapse isOpen={context.isToolBarOpen} className="col-xs-1 toolbarCollapse">
         <div className='toolbar'>
                 <div className='toolbarTop'>                    
-                    <ShowAssist/>
+                    <AssistBtn/>
                     <VisualizeBtn/>
                     <UndoBtn/>
                     <RedoBtn/>

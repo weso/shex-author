@@ -1,6 +1,6 @@
 import React,{useContext} from 'react';
-import {AppContext} from '../../../../App';
-import {loadExample} from '../../../../utils/toolbarUtils';
+import {AppContext} from '../../../App';
+import {loadExample} from '../../../utils/toolbarUtils';
 
 function GaleryBtn () {
 

@@ -1,7 +1,7 @@
 import React,{useContext} from 'react';
 import Codemirror from 'codemirror';
-import {AppContext} from '../../../../App';
-import  Editor from '../../../../entities/editor';
+import {AppContext} from '../../../App';
+import  Editor from '../../../entities/editor';
 
 function DeleteAllBtn () {
 

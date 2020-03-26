@@ -1,7 +1,7 @@
 import React,{useState,useContext} from 'react';
-import {AppContext} from '../../../../../../App';
+import {AppContext} from '../../../../../../../App';
 import NumericInput from 'react-numeric-input';
-import shexUtils from '../../../../../../utils/shexUtils';
+import shexUtils from '../../../../../../../utils/shexUtils';
 import FacetComp from './FacetComp';
 
 function FacetContainer (props) {

@@ -2,7 +2,7 @@ import React,{useState} from 'react';
 import { Collapse } from 'reactstrap';
 import TripleHeader from './headers/TripleHeader';
 import CustomComp from './customize/CustomComp';
-import ConstraintComponent from './ConstraintComponent';
+import ConstraintComp from './customize/ConstraintComp';
 import ShapeRefComp from './customize/ShapeRefComp';
 import FacetContainer from './customize/facets/FacetContainer';
 import CardinalityComp from './customize/CardinalityComp';
@@ -124,7 +124,7 @@ function TripleComponent (props) {
                           customClass="customTriple"/>
 
             <Collapse   isOpen={isConstraintsOpen}>
-                <ConstraintComponent  triple={triple} />           
+                <ConstraintComp  triple={triple} />           
             </Collapse> 
 
             <Collapse   isOpen={isFacetOpen}>

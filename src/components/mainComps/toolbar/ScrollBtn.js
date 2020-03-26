@@ -1,7 +1,7 @@
 import React,{useContext} from 'react';
-import {AppContext} from '../../../../App';
-import  Editor from '../../../../entities/editor';
-import {scrollTop} from '../../../../utils/toolbarUtils';
+import {AppContext} from '../../../App';
+import  Editor from '../../../entities/editor';
+import {scrollTop} from '../../../utils/toolbarUtils';
 
 function ScrollBtn () {
 

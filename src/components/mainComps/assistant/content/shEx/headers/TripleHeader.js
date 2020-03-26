@@ -1,9 +1,9 @@
 import React,{useState,useContext} from 'react';
-import {AppContext} from '../../../../../App';
+import {AppContext} from '../../../../../../App';
 import {ShapeContext} from '../ShapeComponent';
-import yasheUtils from '../../../../../utils/yasheUtils';
+import yasheUtils from '../../../../../../utils/yasheUtils';
 
-import '../../../../../css/shexComponents/headers/TripleHeader.css';
+import '../../../../../../css/shexComponents/headers/TripleHeader.css';
 
 
 const primitives = ['String','Integer','Date','Boolean','Custom'];

@@ -1,7 +1,7 @@
 import React,{useState,useContext} from 'react';
-import {AppContext} from '../../../../../App';
+import {AppContext} from '../../../../../../App';
 import { Collapse } from 'reactstrap';
-import shexUtils from '../../../../../utils/shexUtils';
+import shexUtils from '../../../../../../utils/shexUtils';
 
 function ShapeRefComp (props) {
     

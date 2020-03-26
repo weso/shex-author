@@ -101,6 +101,12 @@
     background-color: #C6E2FF;
 }
 
+label{
+	font-weight: bold;
+	margin-top: 10px;
+	margin-left:10px;
+	margin-right:-50px; 
+}
 
 .xs-label{
     margin-left: 0px;

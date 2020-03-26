@@ -1,7 +1,6 @@
 import React,{useContext,useState} from 'react';
 import {AppContext} from '../../../App';
 import { Collapse } from 'reactstrap';
-import ShapeComponent from './shEx/ShapeComponent';
 import Prefixes from './content/Prefixes';
 import Shapes from './content/Shapes';
 

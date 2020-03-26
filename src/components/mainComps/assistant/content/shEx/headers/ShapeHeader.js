@@ -1,8 +1,9 @@
 import React,{useState,useContext} from 'react';
 import { Textbox } from 'react-inputs-validation';
-import {AppContext} from '../../../../../App';
+import {AppContext} from '../../../../../../App';
 import {ShapeContext} from '../ShapeComponent';
-import '../../../../../css/shexComponents/headers/ShapeHeader.css';
+import {PN_LOCAL,IRI_REF} from '../../../../../../utils/regExpUtils';
+import '../../../../../../css/shexComponents/headers/ShapeHeader.css';
 
 
 function ShapeHeader (props) {
@@ -13,6 +14,10 @@ function ShapeHeader (props) {
     
     const {shape,customizeShape,collapseTriples,colapseBtn} = props;
     const [name,setName] = useState(shape.type.value);
+
+    let initialRegExp = new RegExp("^" +PN_LOCAL);
+    if(shape.type.getTypeName()=='iriRef') initialRegExp = new RegExp("^" +IRI_REF);;
+    const [regExp,setRegExp] = useState(initialRegExp);
 
     const handleChange = function(name){
         shape.type.setValue(name);
@@ -32,7 +37,7 @@ function ShapeHeader (props) {
 
     return (
         <div className='header'>            
-            <label  className="shapeNameLabel">Shape</label>
+            <label>Shape</label>
             <Textbox
                     attributesInput={{ 
                         id: 'Name',
@@ -44,7 +49,7 @@ function ShapeHeader (props) {
                     onChange={(e)=>handleChange(e)}
                     onKeyUp={(e)=>handleKeyUp(e)}
                     validationOption={{
-                        reg: /^[a-zA-Z0-9_.-]*$/, 
+                        reg: regExp, 
                         regMsg: 'Invalid name'
                     }}
                     title="Shape Name"
@@ -60,7 +65,6 @@ function ShapeHeader (props) {
 
             <button className="deleteShapeBtn mdc-icon-button material-icons" 
                     onClick={()=>context.deleteShape(shape.id)}
-                    disabled={disabled} 
                     title="Delete Shape">
                     delete
             </button>

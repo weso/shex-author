@@ -1,6 +1,6 @@
 import React,{useContext,useState,useEffect} from 'react';
 import {AppContext} from '../../../../App';
-import PrefixComp from './PrefixComp';
+import PrefixComp from './prefix/PrefixComp';
 
 import '../../../../css/shexComponents/headers/PrefixHeader.css';
 

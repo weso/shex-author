@@ -1,7 +1,7 @@
 import React,{useContext} from 'react';
-import {AppContext} from '../../../../App';
+import {AppContext} from '../../../App';
 
-function VisualizeBtn () {
+function AssistBtn () {
 
     const context = useContext(AppContext);
 
@@ -17,5 +17,5 @@ function VisualizeBtn () {
 }
 
 
-export default VisualizeBtn;
+export default AssistBtn;
 
