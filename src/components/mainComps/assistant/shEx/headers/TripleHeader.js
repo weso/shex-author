@@ -1,5 +1,6 @@
 import React,{useState,useContext} from 'react';
 import {AppContext} from '../../../../../App';
+import {ShapeContext} from '../ShapeComponent';
 import yasheUtils from '../../../../../utils/yasheUtils';
 
 import '../../../../../css/shexComponents/headers/TripleHeader.css';
@@ -11,6 +12,9 @@ const primitives = ['String','Integer','Date','Boolean','Custom'];
 function TripleHeader (props) {
 
     const context = useContext(AppContext);
+    const shapeContext = useContext(ShapeContext);
+    const disabled = shapeContext.disabled;
+
     const { triple,
             deleteTriple,
             customizeTriple,
@@ -20,8 +24,8 @@ function TripleHeader (props) {
             customizeContraints,
             customizeCardinality,
             collapseToggle,
-            colapseBtn,
-            rounded} = props;
+            colapseBtn
+            } = props;
 
     const [name,setName] = useState(triple.type.value);
     const [cardinality,setCardinality] = useState(triple.cardinality);
@@ -78,47 +82,55 @@ function TripleHeader (props) {
                     value={name}
                     onChange={handleNameChange}
                     placeholder="eg: name"
+                    disabled={disabled}
                     title="Triple Constraint Name"/>
 
             <button className="tripleBtns buildTriple buildBtn buildTripleBtn mdc-icon-button material-icons"
-                    onClick={customizeTriple} 
+                    onClick={customizeTriple}
+                    disabled={disabled} 
                     title="Customize Triple">
                     build
             </button>
 
             <button className="tripleBtns buildConstraint buildBtn buildTripleBtn mdc-icon-button material-icons"
-                    onClick={handleCollapse} 
+                    onClick={handleCollapse}
+                    disabled={disabled} 
                     title="Customize Constraint">
                     build
             </button>
 
              <button className="tripleBtns buildFacet buildBtn buildTripleBtn mdc-icon-button material-icons"
                     onClick={customizeFacet}
+                    disabled={disabled}
                     title="Customize Facets">
                     build
             </button>
 
             <button className="tripleBtns buildInlineRef buildBtn buildTripleBtn mdc-icon-button material-icons"  
-                    onClick={customizeRef} 
+                    onClick={customizeRef}
+                    disabled={disabled} 
                     title="Customize Shape Reference">
                     build
             </button>
 
            
             <button className="tripleBtns buildCardinality buildBtn buildTripleBtn mdc-icon-button material-icons" 
-                    onClick={customizeCardinality} 
+                    onClick={customizeCardinality}
+                    disabled={disabled} 
                     title="Customize Cardinality">
                     build
             </button>
 
             <button className="tripleBtns deleteTripleBtn mdc-icon-button material-icons"
-                    onClick={()=>deleteTriple(triple.id)} 
+                    onClick={()=>deleteTriple(triple.id)}
+                    disabled={disabled} 
                     title="Delete Triple Constraint">
                     delete
             </button>
 
             <button className="collapseBtn mdc-icon-button material-icons" 
-                    onClick={collapseToggle} 
+                    onClick={collapseToggle}
+                    disabled={disabled} 
                     title="Customize all">
                     {colapseBtn}
             </button>

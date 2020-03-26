@@ -7,6 +7,7 @@ import TripleComponent from './TripleComponent';
 
 import Triple from '../../../../entities/shexEntities/triple';
 
+export const ShapeContext = React.createContext();
 
 function ShapeComponent (props) {
 
@@ -67,45 +68,45 @@ function ShapeComponent (props) {
     }
 
     return (
-        <div className="shape">
-            <ShapeHeader shape={shape} 
-                         customizeShape={customizeShape} 
-                         collapseTriples={collapseTriples} 
-                         colapseBtn={colapseBtn}
-                         disabled={disabled}
-                         setDisabled={setDisabled}/>
 
-            <CustomComp  entity={shape}
-                         isCustomOpen={isCustomOpen}
-                         qualifier={true}
-                         bnode={true}
-                         customClass="customShape"/>
-                 
-            <Collapse   isOpen={isTriplesOpen}>
+        <ShapeContext.Provider value={{disabled:disabled,setDisabled:setDisabled}}>
+            <div className="shape">
+                <ShapeHeader shape={shape} 
+                            customizeShape={customizeShape} 
+                            collapseTriples={collapseTriples} 
+                            colapseBtn={colapseBtn}/>
 
-                     
-                <div className=" triples">
-                    {triples.map(triple =>
-                        <TripleComponent key={triple.id}
-                                         shape={shape} 
-                                         triple={triple}
-                                         deleteTriple={deleteTriple}
-                        /> 
-                    )}
+                <CustomComp  entity={shape}
+                            isCustomOpen={isCustomOpen}
+                            qualifier={true}
+                            bnode={true}
+                            customClass="customShape"/>
+                    
+                <Collapse   isOpen={isTriplesOpen}>
+
+                        
+                    <div className=" triples">
+                        {triples.map(triple =>
+                            <TripleComponent key={triple.id}
+                                            shape={shape} 
+                                            triple={triple}
+                                            deleteTriple={deleteTriple}/> 
+                        )}
+                    
+                        <button className="addTripleButton" 
+                                onClick={addTriple} 
+                                disabled={disabled}
+                                title="Add Triple">
+                                + Triple Constraint
+                        </button>        
+                    
                 
-                    <button className="addTripleButton" 
-                            onClick={addTriple} 
-                            disabled={disabled}
-                            title="Add Triple">
-                            + Triple Constraint
-                    </button>        
-                   
-              
-                </div>
+                    </div>
 
 
-            </Collapse> 
-        </div>
+                </Collapse> 
+            </div>
+        </ShapeContext.Provider>
     );
                                    
     

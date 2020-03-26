@@ -1,13 +1,17 @@
 import React,{useState,useContext} from 'react';
 import { Textbox } from 'react-inputs-validation';
 import {AppContext} from '../../../../../App';
+import {ShapeContext} from '../ShapeComponent';
 import '../../../../../css/shexComponents/headers/ShapeHeader.css';
 
 
 function ShapeHeader (props) {
 
     const context = useContext(AppContext);
-    const {shape,customizeShape,collapseTriples,colapseBtn,disabled,setDisabled} = props;
+    const shapeContext = useContext(ShapeContext);
+    const disabled = shapeContext.disabled;
+    
+    const {shape,customizeShape,collapseTriples,colapseBtn} = props;
     const [name,setName] = useState(shape.type.value);
 
     const handleChange = function(name){
@@ -17,13 +21,10 @@ function ShapeHeader (props) {
     }
 
     const handleKeyUp = function(e){
-        // DO nothing
-        // It works better with the onChange 
-        // But this is needed to validate always
         if(e.target.value==''){
-            setDisabled(true);
+            shapeContext.setDisabled(true);
         }else{
-            setDisabled(false);
+            shapeContext.setDisabled(false);
         }
     }
 
@@ -43,9 +44,8 @@ function ShapeHeader (props) {
                     onChange={(e)=>handleChange(e)}
                     onKeyUp={(e)=>handleKeyUp(e)}
                     validationOption={{
-                        name: 'Name', 
-                        check: true, 
-                        required: true 
+                        reg: /^[a-zA-Z0-9_.-]*$/, 
+                        regMsg: 'Invalid name'
                     }}
                     title="Shape Name"
                     /> 
