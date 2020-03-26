@@ -5,7 +5,7 @@ function QualifierConfig (props) {
 
     const context = useContext(AppContext);
     const {shape} = props;
-    const [qualifier,setQualifier] = useState(shape.qualifier)
+    const [qualifier,setQualifier] = useState(shape.qualifier.getTypeName())
 
     const handleQualifierChange = function(e){
         let newType = e.target.value;

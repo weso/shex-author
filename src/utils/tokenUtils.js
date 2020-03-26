@@ -28,7 +28,7 @@ import Prefix from '../entities/shexEntities/shexUtils/prefix';
 import ShapeRef from '../entities/shexEntities/shexUtils/shapeRef';
 
 
-//HAY QUE METER TODOS (Update... ya no estoy tan seguro)
+//HAY QUE METER TODOS (Update... igual no hace falta...)
 const PRIMITIVES = ['string','integer','date','boolean'];
 
 
@@ -64,6 +64,7 @@ function getDefinedShapes(tokens){
     let shape=[];
     let defShapes = [];
     let shapeCont = 0;
+    let hasTripleStarted = false;
     //Separate shapes in arrays
     tokens.forEach(element =>{
         //If we find a Shape then we start a new Array of tokens
@@ -73,14 +74,24 @@ function getDefinedShapes(tokens){
             defShapes[shapeCont]=shape;
             shapeCont++;
         }else{
-             
-             //Get the tokens while it's from the inside of the shape
-            if(element.string == '{')brackets++;
-            if(element.string == '}')brackets--;
-            if(brackets!=0)shape.push(element);
+            // IMPORTANT 
+            // We could do just shape.push(element) but if there 
+            // are directives between shapes we will push that directives into the shape   
 
-            // We could do just shape.push but if there are directives between shapes
-            // you will push that directives into the shape     
+            if(element.string == '{'){
+                hasTripleStarted=true;
+            }
+             
+            if(hasTripleStarted){
+                //Get the tokens while it's from the inside of the shape
+                if(element.string == '{')brackets++;
+                if(element.string == '}')brackets--;
+                if(brackets!=0)shape.push(element);
+             }else{
+                 //Get the previous tokens before the triples
+                 shape.push(element);
+             }
+       
         }
     })
     return defShapes;
@@ -140,14 +151,14 @@ function getType(def) {
 *   @return {Type}
 *
 */
-function getQualifier(shape) {
-    if(shape){
-        if(shape.type == 'keyword'){
-            let type = shape[1].string.toLowerCase();
+function getQualifier(qualifier) {
+    if(qualifier){
+        if(qualifier.type == 'constraintKeyword'){
+            let type = qualifier.string.toLowerCase();
             return new TypesFactory().createType(type);
         }
     }
-    
+ 
     return new BlankKind();
 }
 

@@ -19,6 +19,8 @@ const DEFAULT_SHAPE = 'PREFIX :       <http://example.org/>\n'+
     let tokens = tokenUtils.getTokens();
     let defShapes = tokenUtils.getDefinedShapes(tokens);
     let newShapes = tokenUtils.getShapes(defShapes);
+
+    console.log(newShapes)
  
     tokenUtils.updateShapeRefs(newShapes);
 
