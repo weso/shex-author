@@ -7,7 +7,7 @@ class NonLiteral extends Type{
     }
 
     getTypeName(){
-        return 'nonliteralKind';
+        return 'nonliteral';
     }
 
     toString(){
