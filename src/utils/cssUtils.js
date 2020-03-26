@@ -25,15 +25,6 @@ export function makeItResponsive(width){
             adSClass += ' xs-addShapeButton';
             grClass += ' xs-gridBox';
             prClass += ' xs-prefixHeader';
-        }else{
-            //Why this is needed?
-            tabClass = 'tabs';
-            shClass = 'header';
-            thClass = 'tripleHeader';
-            adTClass = 'addTripleButton';
-            adSClass = 'addShapeButton';
-            grClass = 'gridBox';
-            prClass = 'prefixHeader';
         }
 
         
