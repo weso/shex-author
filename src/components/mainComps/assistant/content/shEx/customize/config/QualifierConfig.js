@@ -6,7 +6,7 @@ function QualifierConfig (props) {
     const context = useContext(AppContext);
     const {shape} = props;
     const [qualifier,setQualifier] = useState(shape.qualifier)
-  
+
     const handleQualifierChange = function(e){
         let newType = e.target.value;
         shape.setQualifier(newType);
@@ -19,7 +19,7 @@ function QualifierConfig (props) {
          <div className="gridBox">
             <label className="customLabel">Qualifier </label>
             <select className="customSelector" value={qualifier} onChange={handleQualifierChange}>
-                <option value="shape">None</option>
+                <option value="">None</option>
                 <option value="iri">Iri</option>
                 <option value="literal">Literal</option>
                 <option value="nonliteral">NonLiteral</option>
