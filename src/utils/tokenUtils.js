@@ -14,6 +14,7 @@ import PrefixedIri from '../entities/shexEntities/types/concreteTypes/prefixedIr
 import IriRef from '../entities/shexEntities/types/concreteTypes/iriRef';
 import BNode from '../entities/shexEntities/types/concreteTypes/bNode';
 import Primitive from '../entities/shexEntities/types/concreteTypes/primitive';
+import ValueSet from '../entities/shexEntities/types/concreteTypes/valueSet';
 
 import Literal from '../entities/shexEntities/types/concreteTypes/kinds/literal';
 import NonLiteral from '../entities/shexEntities/types/concreteTypes/kinds/nonLiteral';
@@ -24,8 +25,9 @@ import BlankKind from '../entities/shexEntities/types/concreteTypes/kinds/blankK
 
 
 import Prefix from '../entities/shexEntities/shexUtils/prefix';
-
 import ShapeRef from '../entities/shexEntities/shexUtils/shapeRef';
+import ValueSetValue from '../entities/shexEntities/shexUtils/valueSetValue';
+
 
 
 //HAY QUE METER TODOS (Update... igual no hace falta...)
@@ -95,7 +97,6 @@ function getDefinedShapes(tokens){
        
         }
     })
-        console.log(defShapes)
     return defShapes;
 }
 
@@ -117,9 +118,7 @@ function getShapes(defShapes){
 
         shapes.push(new Shape(id,shapeType,triples,qualifier));
     })
-    
     return shapes;
-
 }
 
 /**
@@ -143,7 +142,6 @@ function getType(def) {
         let prefix = new Prefix(prefixName,prefixValue);
         return new PrefixedIri(prefix,value);
     }
-    
 }
 
 
@@ -160,7 +158,6 @@ function getQualifier(qualifier) {
             return new TypesFactory().createType(type);
         }
     }
- 
     return new BlankKind();
 }
 
@@ -178,10 +175,10 @@ function getTriples(shapeId,shape) {
         let start = getStart(shape);
         for(let i=start;i<shape.length;i++){
             singleTriple.push(shape[i])
-            if(shape[i].type == 'punc'  // finish of the triple ';' 
+            if((shape[i].type == 'punc' &&  shape[i].string!='[' &&  shape[i].string!=']')// finish of the triple ';' 
                 || i==shape.length-1){  // finish of the last triple without ';'
                 if(singleTriple.length!=1){ //This line is neccesary when last triple of the shape ends with ';'
-                    triples.push(getTriple(triples,singleTriple,shapeId));
+                    triples.push(getTriple(triples.length,singleTriple,shapeId));
                     singleTriple = [];
                 }
             }
@@ -196,10 +193,10 @@ function getTriples(shapeId,shape) {
 *    @param {Array} LineTokens
 *    @param {Integer} ShapeId
 */
-function getTriple(triples,singleTriple,shapeId) {   
-    let id = triples.length;
+function getTriple(id,singleTriple,shapeId) {   
     let type;
     let constraint;
+    let valueSet = [];
     let facets = [];
     let cardinality= new TypesFactory().createType('');
     let shapeRef = new ShapeRef();
@@ -210,6 +207,10 @@ function getTriple(triples,singleTriple,shapeId) {
         }
         if(token.type == 'constraint' || token.type == 'constraintKeyword' ){
             constraint = getConstraint(token.string);
+        }
+
+        if(token.type == 'valueSet'){
+            valueSet.push(new ValueSetValue(valueSet.length,token.string));
         }
 
         if(token.type == 'at' ){
@@ -236,16 +237,23 @@ function getTriple(triples,singleTriple,shapeId) {
           cardinality=getCardinality(token.string);
         }
         
-        if(token.type != 'string-2' && token.type != 'constraint' && token.type != 'constraintKeyword' && token.type != 'at' && token.type != 'facet' && token.type != 'cardinality' && token.type != 'punc' ){
+        if( token.type != 'string-2' && 
+            token.type != 'constraint' && 
+            token.type != 'constraintKeyword' && 
+            token.type != 'valueSet' && 
+            token.type != 'at' && 
+            token.type != 'facet' && 
+            token.type != 'cardinality' && 
+            token.type != 'punc' ){
            Codemirror.signal(Editor.getInstance().getYashe(),'forceError');
         }
 
-        if(token.string == '{' || token.string == '['){
+        if(token.string == '{'){
             Codemirror.signal(Editor.getInstance().getYashe(),'forceError');
         }
   
     }
-
+    if(valueSet.length>0)constraint=new ValueSet(valueSet);
     return new Triple(id,type,constraint,shapeRef,facets,cardinality);
 }
 
@@ -317,7 +325,6 @@ function getCardinality(card){
 
 function updateShapeRefs(shapes) {
     for(let r in refs){
-
         let shapeId = refs[r].shapeId;
         let tripleId = refs[r].tripleId;
         let ref = refs[r].shapeRef;

@@ -9,8 +9,6 @@ function ValueSetComp (props) {
     const [value,setValue]=useState(valueSetValue);
     const [name,setName]=useState(valueSetValue.value);
     
-   
-
     const handleNameChange = function(e){
         let newName = e.target.value;
         setName(newName);

@@ -4,20 +4,20 @@ import shexUtils from '../../../../../../../utils/shexUtils';
 import ValueSetComp from './ValueSetComp';
 
 function ValueSetContainer (props) {
-    const {triple} = props;
+    const {triple,valueSet} = props;
     const context = useContext(AppContext);
-    const [valueSet,setValueSet]=useState([]);
+    const [values,setValues]=useState(valueSet);
 
     const deleteValue= function(id){
         const newValues = valueSet.filter(v => v.id != id);
-        setValueSet(newValues);
+        setValues(newValues);
         triple.constraint.setValues(newValues);
         context.emit(); 
     }
 
     const addValue = function(){
         const value = shexUtils.addValueSetValue(valueSet);
-        setValueSet([...valueSet,value]);
+        setValues([...values,value]);
         triple.constraint.addValue(value);
         context.emit(); 
     }
@@ -25,7 +25,7 @@ function ValueSetContainer (props) {
     return (<div className='customConstraint'>
                 <label >ValueSet</label>
                 <div className="valueSetsCont">
-                    {valueSet.map(v =>{                                        
+                    {values.map(v =>{                                        
                             return (<ValueSetComp 
                                     key={v.id}
                                     valueSetValue={v}

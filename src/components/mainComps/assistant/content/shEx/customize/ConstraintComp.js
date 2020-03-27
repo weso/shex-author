@@ -45,15 +45,22 @@ function ConstraintComp (props) {
         initialOpenName = true;
     }
 
-
+    let initialValueSet = [];
+    let initialValueSetOpen = false;
+    if(constraint == 'valueSet'){
+        initialOpenName = false;
+        initialValueSet = triple.constraint.getValues();
+        initialValueSetOpen = true;
+    }
+    
     const [name,setName] = useState(triple.constraint.value);
     const [isNameOpen,setNameOpen] = useState(initialOpenName);
+    const [valueSet,setValueSet] = useState(initialValueSet);
+    const [isValueSetOpen,setValueSetOpen] = useState(initialValueSetOpen);
 
 
-    const [valueSet,setValueSet] = useState([]);
-    const [isValueSetOpen,setValueSetOpen] = useState(false);
 
-
+   
 
     const handlePrefixChange = function(e){ 
         let prefix = getPrefix(e.target.value);
@@ -198,7 +205,7 @@ function ConstraintComp (props) {
 
 
                         <Collapse isOpen={isValueSetOpen}>
-                            <ValueSetContainer  triple={triple}/>
+                            <ValueSetContainer  triple={triple} valueSet={valueSet}/>
                         </Collapse>
                     </Collapse>                                                         
                 </div>

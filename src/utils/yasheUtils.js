@@ -13,14 +13,21 @@ const DEFAULT_SHAPE = 'PREFIX :       <http://example.org/>\n'+
 '  schema:knows          @:User*  \n'+
 '}';
   
+const VALUESET_SHAPE = 'PREFIX :       <http://example.org/>\n'+
+'PREFIX schema: <http://schema.org/>\n'+
+'PREFIX xsd:    <http://www.w3.org/2001/XMLSchema#>\n\n'+
+
+':User IRI {\n'+ 
+'  schema:name          [xsd:string ] ;\n'+
+'}';
+  
+
   let prefixCount = 0;
   
   function replaceShapes(){
     let tokens = tokenUtils.getTokens();
     let defShapes = tokenUtils.getDefinedShapes(tokens);
     let newShapes = tokenUtils.getShapes(defShapes);
-
-    console.log(newShapes)
  
     tokenUtils.updateShapeRefs(newShapes);
 
@@ -48,6 +55,7 @@ function getSchema(){
 
  const yasheUtils = {
       DEFAULT_SHAPE:DEFAULT_SHAPE,
+      VALUESET_SHAPE:VALUESET_SHAPE,
       replaceShapes:replaceShapes,
       updatePrefixes:updatePrefixes,
       getSchema:getSchema
