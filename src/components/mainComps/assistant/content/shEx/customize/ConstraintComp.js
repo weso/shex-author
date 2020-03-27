@@ -5,7 +5,7 @@ import {getPrefix} from '../../../../../../utils/prefixUtils';
 import shexUtils from '../../../../../../utils/shexUtils';
 import yasheUtils from '../../../../../../utils/yasheUtils';
 import PrefixConfig from './config/PrefixConfig';
-import ValueSetComp from './constraint/ValueSetComp';
+import ValueSetContainer from './constraint/ValueSetContainer';
 
 const primitives = ['String','Integer','Date','Boolean'];
 const iriStr ='<...>';
@@ -52,7 +52,7 @@ function ConstraintComp (props) {
     const [isNameOpen,setNameOpen] = useState(initialOpenName);
 
 
-    const [valueSet,setValueSet] = useState(triple.constraint);
+    const [valueSet,setValueSet] = useState(['A','B','C']);
     const [isValueSetOpen,setValueSetOpen] = useState(false);
 
 
@@ -199,12 +199,8 @@ function ConstraintComp (props) {
                         </Collapse>
 
 
-                        <Collapse isOpen={isValueSetOpen} className='customConstraint'>
-                            <label >ValueSet</label>
-                            <div className="valueSetsCont">
-                                <ValueSetComp/>
-                                <button className="addFacet" title="Add Value">+ Value</button>      
-                            </div>    
+                        <Collapse isOpen={isValueSetOpen}>
+                            <ValueSetContainer  triple={triple}/>
                         </Collapse>
                     </Collapse>                                                         
                 </div>

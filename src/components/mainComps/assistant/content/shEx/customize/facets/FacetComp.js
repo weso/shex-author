@@ -3,7 +3,7 @@ import {AppContext} from '../../../../../../../App';
 import NumericInput from 'react-numeric-input';
 
 function FacetComp (props) {
-    const {facet,addFacet,deleteFacet,updateFacets} = props;
+    const {facet,deleteFacet} = props;
     const context = useContext(AppContext);
     const [type,setType]=useState(facet.type);
     const [value,setValue]=useState(facet.value);

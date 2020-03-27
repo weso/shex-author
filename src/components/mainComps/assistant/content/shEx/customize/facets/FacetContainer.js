@@ -30,7 +30,6 @@ function FacetContainer (props) {
                                 return (<FacetComp 
                                         key={f.id} 
                                         facet={f}
-                                        addFacet={addFacet}
                                         deleteFacet={deleteFacet} />)
                         })}
                         <button className="addFacet" title="Add Facet" onClick={addFacet}>+ Facet</button>      

@@ -3,11 +3,11 @@ import {AppContext} from '../../../../../../../App';
 
 function ValueSetComp (props) {
     
-    const {facet,addFacet,deleteFacet,updateFacets} = props;
+    const {valueSetValue,deleteValue} = props;
     const context = useContext(AppContext);
     
 
-    const [value,setValue]=useState('');
+    const [value,setValue]=useState(valueSetValue);
    
     const handleValueChange = function(value){
         /* facet.setValue(value);
@@ -21,6 +21,7 @@ function ValueSetComp (props) {
                         value={value}
                         onChange={handleValueChange}/>
                 <button className="tripleBtns deleteValueSetBtn mdc-icon-button material-icons" 
+                    onClick={()=>deleteValue(value.id)}
                     title="Delete Value">
                     delete
                 </button>
