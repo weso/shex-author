@@ -104,6 +104,7 @@ function ConstraintComp (props) {
 
         setNameOpen(false);
         setPrefixOpen(false);
+        setValueSetOpen(false);
 
     
         if(newConstraint == 'iriRef'){
