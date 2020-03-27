@@ -5,6 +5,7 @@ import {getPrefix} from '../../../../../../utils/prefixUtils';
 import shexUtils from '../../../../../../utils/shexUtils';
 import yasheUtils from '../../../../../../utils/yasheUtils';
 import PrefixConfig from './config/PrefixConfig';
+import ValueSetComp from './constraint/ValueSetComp';
 
 const primitives = ['String','Integer','Date','Boolean'];
 const iriStr ='<...>';
@@ -52,7 +53,7 @@ function ConstraintComp (props) {
 
 
     const [valueSet,setValueSet] = useState(triple.constraint);
-    const [isValueSetOpen,setValueSetOpen] = useState(true);
+    const [isValueSetOpen,setValueSetOpen] = useState(false);
 
 
 
@@ -117,7 +118,13 @@ function ConstraintComp (props) {
         if(newConstraint == 'primitive'){
             setCustomOpen(false);  
             triple.setConstraint('primitive');
+            triple.constraint.value = 'string';
+            setPrimitive('string');
             context.emit(); 
+        }
+
+        if(newConstraint == 'valueSet'){
+            setValueSetOpen(true);
         }
 
     }
@@ -152,13 +159,14 @@ function ConstraintComp (props) {
 
                     <Collapse isOpen={isCustomOpen} className='constraintCollapse'>
                         <div className="customConstraint">
-                        <label>Kind</label>
+                        <label>Type</label>
                         <select className="customSelector"
                                 value={constraint}
                                 onChange={handleConstraintChange}>
                             <option value="primitive">Primitive</option>
                             <option value="iriRef">{iriStr}</option>
                             <option value="prefixedIri">QName</option>
+                            <option value="valueSet">ValueSet</option>
                             <option value="literal">Literal</option>
                             <option value="nonliteral">NonLiteral</option>
                             <option value="iri">IRI</option>
@@ -191,19 +199,10 @@ function ConstraintComp (props) {
 
 
                         <Collapse isOpen={isValueSetOpen} className='customConstraint'>
-                            <label className="valueSetLabel">ValueSet</label>
+                            <label >ValueSet</label>
                             <div className="valueSetsCont">
-                                <div className="valueSets">
-                                    <input  type="text" 
-                                            className="name"
-                                            value={name}
-                                            onChange={handleNameChange}/>
-                                    <button className="tripleBtns deleteValueSetBtn mdc-icon-button material-icons" 
-                                        title="Delete Value">
-                                        delete
-                                    </button>
-                                </div> 
-                                <button className="addFacet" title="Add Facet">+ Value</button>      
+                                <ValueSetComp/>
+                                <button className="addFacet" title="Add Value">+ Value</button>      
                             </div>    
                         </Collapse>
                     </Collapse>                                                         
