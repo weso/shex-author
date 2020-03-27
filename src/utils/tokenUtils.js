@@ -87,6 +87,7 @@ function getDefinedShapes(tokens){
                 if(element.string == '{')brackets++;
                 if(element.string == '}')brackets--;
                 if(brackets!=0)shape.push(element);
+                //if(brackets==0)hasTripleStarted = false
              }else{
                  //Get the previous tokens before the triples
                  shape.push(element);
@@ -94,6 +95,7 @@ function getDefinedShapes(tokens){
        
         }
     })
+        console.log(defShapes)
     return defShapes;
 }
 

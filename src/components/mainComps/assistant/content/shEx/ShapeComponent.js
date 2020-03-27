@@ -6,6 +6,7 @@ import CustomComp from './customize/CustomComp';
 import TripleComponent from './TripleComponent';
 
 import Triple from '../../../../../entities/shexEntities/triple';
+import axios from 'axios';
 
 export const ShapeContext = React.createContext();
 
@@ -31,7 +32,7 @@ function ShapeComponent (props) {
         setTriples([...triples,triple]);
         
         shape.addTriple(triple);
-        context.emit();        
+        context.emit();       
     }
 
     const deleteTriple = function(tripleId){
@@ -85,7 +86,9 @@ function ShapeComponent (props) {
                 <Collapse   isOpen={isTriplesOpen}>
 
                         
-                    <div className=" triples">
+                    
+
+                     <div className="triples">
                         {triples.map(triple =>
                             <TripleComponent key={triple.id}
                                             shape={shape} 
@@ -100,8 +103,11 @@ function ShapeComponent (props) {
                                 + Triple Constraint
                         </button>        
                     
-                
-                    </div>
+                        </div>
+           
+
+
+                    
 
 
                 </Collapse> 
@@ -114,3 +120,46 @@ function ShapeComponent (props) {
 
 
 export default ShapeComponent;
+
+/*
+
+
+                     <div className="triples">
+                        <div className="tripleSlot">
+                        <label>TripleSlot</label>
+                        {triples.map(triple =>
+                            <TripleComponent key={triple.id}
+                                            shape={shape} 
+                                            triple={triple}
+                                            deleteTriple={deleteTriple}/> 
+                        )}
+                    
+                        <button className="addTripleButton" 
+                                onClick={addTriple} 
+                                disabled={disabled}
+                                title="Add Triple">
+                                + Triple Constraint
+                        </button>        
+                    
+                        </div>
+                    </div> <div className="triples">
+                        <div className="tripleSlot">
+                        <label>TripleSlot</label>
+                        {triples.map(triple =>
+                            <TripleComponent key={triple.id}
+                                            shape={shape} 
+                                            triple={triple}
+                                            deleteTriple={deleteTriple}/> 
+                        )}
+                    
+                        <button className="addTripleButton" 
+                                onClick={addTriple} 
+                                disabled={disabled}
+                                title="Add Triple">
+                                + Triple Constraint
+                        </button>        
+                    
+                        </div>
+                    </div>
+
+                    */

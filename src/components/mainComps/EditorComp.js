@@ -9,8 +9,8 @@ import yasheUtils from '../../utils/yasheUtils';
 import Prefix from '../../entities/shexEntities/shexUtils/prefix';
 
 import '../../css/Yashe.css';
-import '../../css/author.css';
-import '../../css/author-dark.css';
+import '../../css/themes/author.css';
+import '../../css/themes/author-dark.css';
 
 const errorMsg = 'Ops... There are some errors in the editor';
 const complexMsg = 'Sorry that Shape is too complex for me';
@@ -86,7 +86,7 @@ function EditorComp() {
             };
            
 
-            
+           
             y.on('keyup',debounce(function( e ) {
                     if(!y.hasErrors(y)){
                                 hideError();
@@ -103,8 +103,8 @@ function EditorComp() {
                                 showError(errorMsg);
                             }   
                 }, 500)   
-            );
-            
+            ); 
+        
    
 
             y.on('delete', function() {
@@ -140,7 +140,7 @@ function EditorComp() {
                     updatePrefixes(getNewPrefixes());
                 }
             });
-
+ 
             
 
             //Load example from Galery

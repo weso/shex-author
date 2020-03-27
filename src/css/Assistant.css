@@ -120,7 +120,22 @@ label{
     border-radius: 0px 0px 10px 10px ;
     display: grid;
     grid-template-columns: 100%; 
+
 }
+
+
+.tripleSlot{
+    border-top: 1px solid #acaaaa;
+    background: #EFDECD;
+    color: black;
+    text-align: left;
+    border-radius: 0px 0px 10px 10px ;
+    display: grid;
+    grid-template-columns: 100%; 
+    margin-bottom: 10px;
+}
+
+
 
 
 .hidden{
