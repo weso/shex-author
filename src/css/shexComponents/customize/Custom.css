@@ -24,7 +24,7 @@
 .customConstraint{
     display: grid;
     grid-template-columns: 33% 67%;
-    margin-bottom: 2px;
+    margin-bottom: 1px;
 }
 
 

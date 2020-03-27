@@ -4,6 +4,7 @@ import {AppContext} from '../../../../../../App';
 import {getPrefix} from '../../../../../../utils/prefixUtils';
 import shexUtils from '../../../../../../utils/shexUtils';
 import yasheUtils from '../../../../../../utils/yasheUtils';
+import PrefixConfig from './config/PrefixConfig';
 
 const primitives = ['String','Integer','Date','Boolean'];
 
@@ -168,21 +169,12 @@ function ConstraintComp (props) {
                                     onChange={handleNameChange}/> 
                         </Collapse>
 
-                        <Collapse isOpen={isPrefixOpen} className='customConstraint'>
-                            <label  >Prefix</label>
-                            <select className="customSelector" 
-                                    value={prefix}
-                                    onChange={handlePrefixChange}>
-                                <option value="example">example</option>
-                                { 
-                                context.prefixes.map((pre) =>{
-                                     if(pre.prefixName!=''){
-                                        return <option key={pre.id} value={pre.prefixValue}>{pre.prefixName}</option>
-                                    }                         
-                                })
-                            }
-                            </select>
-                        </Collapse>
+                        <div/><div/>
+                        <PrefixConfig   entity={triple}
+                                        isPrefixOpen={isPrefixOpen}
+                                        prefix={prefix}
+                                        setPrefix={setPrefix}
+                                        isConstraint={true}/>
                     </Collapse>                                                         
                 </div>
   

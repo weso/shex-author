@@ -12,8 +12,8 @@ import '../../css/Yashe.css';
 import '../../css/themes/author.css';
 import '../../css/themes/author-dark.css';
 
-const errorMsg = 'Ops... There are some errors in the editor';
-const complexMsg = 'Sorry that Shape is too complex for me';
+const ERROR_EDITOR_MSG = 'Ops... There are some errors in the editor';
+const COMPLEX_SHAPE_MSG = 'Sorry that Shape is too complex for me';
 
 function EditorComp() {
 
@@ -63,7 +63,7 @@ function EditorComp() {
                 loading();
                 setTimeout(function() {
                     loaded();  
-                    showError(complexMsg);
+                    showError(COMPLEX_SHAPE_MSG);
                 },500)
             });
 
@@ -100,7 +100,7 @@ function EditorComp() {
                                     updateAssist();
                                 } 
                             }else{
-                                showError(errorMsg);
+                                showError(ERROR_EDITOR_MSG);
                             }   
                 }, 500)   
             ); 
@@ -126,14 +126,13 @@ function EditorComp() {
                     updateAssist();
                     updatePrefixes(getNewPrefixes());
                 }else{
-                    showError(errorMsg);
+                    showError(ERROR_EDITOR_MSG);
                 }   
             });
             
 
             //Fired after a key is handled through a key map
             //(for example "Ctrl-Z")
-            
             y.on('keyHandled', function() {
                 if(!y.hasErrors()){
                     oldShapes = replaceShapes(getNewShapes());
