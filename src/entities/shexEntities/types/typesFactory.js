@@ -3,27 +3,29 @@ import IriRef from'./concreteTypes/iriRef';
 import BNode from'./concreteTypes/bNode';
 import BlankType from'./concreteTypes/blankType';
 import Primitive from'./concreteTypes/primitive';
+import ValueSet from'./concreteTypes/valueSet';
 
 import Literal from'./concreteTypes/kinds/literal';
 import NonLiteral from'./concreteTypes/kinds/nonLiteral';
 import IriKind from'./concreteTypes/kinds/iriKind';
 import BNodeKind from'./concreteTypes/kinds/bNodeKind';
 
+
 class TypesFactory{
 
-    createType(type,context){
+    createType(type){
 
         let retType;
         if(type == 'iriRef'){
-            retType = new IriRef(context);
+            retType = new IriRef();
         }
         
         if(type == 'prefixedIri'){
-            retType = new PrefixedIri(context);
+            retType = new PrefixedIri();
         }
         
         if(type == 'bnodeType'){
-            retType = new BNode(context);
+            retType = new BNode();
         }
 
         if(type == 'blankType'){
@@ -35,19 +37,23 @@ class TypesFactory{
         }
 
         if(type == 'literal'){
-            retType = new Literal(context);
+            retType = new Literal();
         }
 
         if(type == 'nonliteral'){
-            retType = new NonLiteral(context);
+            retType = new NonLiteral();
         }
 
         if(type == 'iri'){
-            retType = new IriKind(context);
+            retType = new IriKind();
         }
 
         if(type == 'bnode'){
-            retType = new BNodeKind(context);
+            retType = new BNodeKind();
+        }
+
+        if(type == 'valueSet'){
+            retType = new ValueSet();
         }
  
 

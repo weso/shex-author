@@ -50,6 +50,12 @@ function ConstraintComp (props) {
     const [name,setName] = useState(triple.constraint.value);
     const [isNameOpen,setNameOpen] = useState(initialOpenName);
 
+
+    const [valueSet,setValueSet] = useState(triple.constraint);
+    const [isValueSetOpen,setValueSetOpen] = useState(true);
+
+
+
     const handlePrefixChange = function(e){ 
         let prefix = getPrefix(e.target.value);
         triple.constraint.setPrefix(prefix);
@@ -169,12 +175,20 @@ function ConstraintComp (props) {
                                     onChange={handleNameChange}/> 
                         </Collapse>
 
-                        <div/><div/>
                         <PrefixConfig   entity={triple}
                                         isPrefixOpen={isPrefixOpen}
                                         prefix={prefix}
                                         setPrefix={setPrefix}
                                         isConstraint={true}/>
+
+
+                        <Collapse isOpen={isValueSetOpen} className='customConstraint'>
+                            <label  >ValueSet</label>
+                            <input  type="text" 
+                                    className="name"
+                                    value={name}
+                                    onChange={handleNameChange}/> 
+                        </Collapse>
                     </Collapse>                                                         
                 </div>
   
