@@ -7,7 +7,7 @@ import yasheUtils from '../../../../../../utils/yasheUtils';
 import PrefixConfig from './config/PrefixConfig';
 
 const primitives = ['String','Integer','Date','Boolean'];
-
+const iriStr ='<...>';
 
 function ConstraintComp (props) {
 
@@ -157,8 +157,8 @@ function ConstraintComp (props) {
                                 value={constraint}
                                 onChange={handleConstraintChange}>
                             <option value="primitive">Primitive</option>
-                            <option value="iriRef">IriRef</option>
-                            <option value="prefixedIri">PrefixedIri</option>
+                            <option value="iriRef">{iriStr}</option>
+                            <option value="prefixedIri">QName</option>
                             <option value="literal">Literal</option>
                             <option value="nonliteral">NonLiteral</option>
                             <option value="iri">IRI</option>
@@ -175,19 +175,36 @@ function ConstraintComp (props) {
                                     onChange={handleNameChange}/> 
                         </Collapse>
 
-                        <PrefixConfig   entity={triple}
-                                        isPrefixOpen={isPrefixOpen}
-                                        prefix={prefix}
-                                        setPrefix={setPrefix}
-                                        isConstraint={true}/>
+                         <Collapse isOpen={isPrefixOpen} className="customConstraint">
+                            <label >Prefix </label>
+                            <select className="customSelector" value={prefix} onChange={handlePrefixChange}>
+                                <option value="example">example</option>
+                                { 
+                                context.prefixes.map((pre) =>{
+                                    if(pre.prefixName!=''){
+                                        return <option key={pre.id} value={pre.prefixValue}>{pre.prefixName}</option>
+                                    }                        
+                                })
+                            }
+                            </select>
+                        </Collapse>
 
 
                         <Collapse isOpen={isValueSetOpen} className='customConstraint'>
-                            <label  >ValueSet</label>
-                            <input  type="text" 
-                                    className="name"
-                                    value={name}
-                                    onChange={handleNameChange}/> 
+                            <label className="valueSetLabel">ValueSet</label>
+                            <div className="valueSetsCont">
+                                <div className="valueSets">
+                                    <input  type="text" 
+                                            className="name"
+                                            value={name}
+                                            onChange={handleNameChange}/>
+                                    <button className="tripleBtns deleteValueSetBtn mdc-icon-button material-icons" 
+                                        title="Delete Value">
+                                        delete
+                                    </button>
+                                </div> 
+                                <button className="addFacet" title="Add Facet">+ Value</button>      
+                            </div>    
                         </Collapse>
                     </Collapse>                                                         
                 </div>

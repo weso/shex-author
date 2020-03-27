@@ -40,10 +40,10 @@ function FacetComp (props) {
                 value={value}
                 onChange={(e)=>handleValueChange(e)} 
                 />
-                    <button className="tripleBtns deleteFacetBtn mdc-icon-button material-icons" 
-                        onClick={()=>deleteFacet(facet.id)} 
-                        title="Delete Facet">
-                        delete
+                <button className="tripleBtns deleteFacetBtn mdc-icon-button material-icons" 
+                    onClick={()=>deleteFacet(facet.id)} 
+                    title="Delete Facet">
+                    delete
                 </button>
                 
         </div>);                          

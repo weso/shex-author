@@ -23,6 +23,7 @@
 
 .customConstraint{
     display: grid;
+    align-items: center;
     grid-template-columns: 33% 67%;
     margin-bottom: 1px;
 }
@@ -59,4 +60,28 @@
     color:#222;
     border: 1px solid #acaaaa !important;
     height: 60%;
+}
+
+.valueSetsCont{
+    display: grid;
+    margin-top: 10px;
+}
+
+.valueSets{
+    display: grid;
+    grid-template-columns: 85% 15%;
+    gap: 1px;
+}
+
+.deleteValueSetBtn{
+    background: #a1db6a;
+    color: white;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    padding:2px;
+}
+
+.valueSetLabel{
+    
 }

@@ -2,7 +2,7 @@ import Type from '../type';
 
 class ValueSet extends Type{
 
-     constructor(value){
+     constructor(value=[]){
         super(value);
     }
 

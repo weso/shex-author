@@ -10,8 +10,6 @@ class NonLiteral extends Type{
         return 'NONLITERAL';
     }
 
-
-
 }
 
 export default NonLiteral;
