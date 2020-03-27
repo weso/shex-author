@@ -64,6 +64,7 @@ function App() {
 
 
     const emit = function(){
+      console.log(shapes)
       shexUtils.emit(shapes,width);
       visualize();
     }

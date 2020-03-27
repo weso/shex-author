@@ -5,21 +5,24 @@ function ValueSetComp (props) {
     
     const {valueSetValue,deleteValue} = props;
     const context = useContext(AppContext);
-    
 
     const [value,setValue]=useState(valueSetValue);
+    const [name,setName]=useState(valueSetValue.value);
+    
    
-    const handleValueChange = function(value){
-        /* facet.setValue(value);
-        setValue(value);
-        context.emit(); */
+
+    const handleNameChange = function(e){
+        let newName = e.target.value;
+        setName(newName);
+        value.setValue(newName);
+        context.emit(); 
     }
 
     return (  <div className="valueSets">
                 <input  type="text" 
                         className="name"
-                        value={value}
-                        onChange={handleValueChange}/>
+                        value={name}
+                        onChange={handleNameChange}/>
                 <button className="tripleBtns deleteValueSetBtn mdc-icon-button material-icons" 
                     onClick={()=>deleteValue(value.id)}
                     title="Delete Value">
