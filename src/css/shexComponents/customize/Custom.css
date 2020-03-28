@@ -64,12 +64,13 @@
 
 .valueSetsCont{
     display: grid;
+    grid-template-columns: 100%;
     margin-top: 10px;
 }
 
 .valueSets{
     display: grid;
-    grid-template-columns: 85% 15%;
+    grid-template-columns: 31% 57% auto;
     padding-top: 4px;
     gap: 1px;
 }
