@@ -5,7 +5,7 @@ import NumericInput from 'react-numeric-input';
 
 function NumberValue (props) {
     
-    const {value,isOpen} = props;
+    const {type,isOpen} = props;
     const context = useContext(AppContext);
     const [number,setNumber]=useState(0);
 

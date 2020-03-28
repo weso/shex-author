@@ -1,4 +1,4 @@
-import React,{useState,useContext} from 'react';
+import React,{useState,useContext,useEffect} from 'react';
 import {AppContext} from '../../../../../../../App';
 import { Collapse } from 'reactstrap';
 import QNameValue from './valueSetValues/QNameValue';
@@ -13,9 +13,7 @@ function ValueSetComp (props) {
     const context = useContext(AppContext);
     const iriStr = '<...>';
 
-    console.log(valueSetValue)
-    const [value,setValue]=useState(valueSetValue);
-    const [type,setType]=useState('iriRef');
+    const [type,setType]=useState(valueSetValue.type.getTypeName());
    
     const [isIriRef,setIriRef]=useState(true);
     const [isQName,setQName]=useState(false);
@@ -24,33 +22,36 @@ function ValueSetComp (props) {
     const [isBoolean,setBoolean]=useState(false);
 
     const handleTypeChange = function(e){
-       let newType = e.target.value;
-       setType(newType);
+        let newType = e.target.value;
+        setType(newType);
+        checkCollapses();
+    }
 
+    const checkCollapses = function(){
         setIriRef(false);
         setQName(false);
         setString(false);
         setNumber(false);
         setBoolean(false);
         
-    
-        if(newType=='iriRef'){
+
+        if(type=='iriRef'){
             setIriRef(true);
         }
 
-        if(newType=='prefixedIri'){
+        if(type=='prefixedIri'){
             setQName(true);
         }
 
-        if(newType=='stringLiteral'){
+        if(type=='stringLiteral'){
             setString(true);
         }
 
-        if(newType=='numericLiteral'){
+        if(type=='numericLiteral'){
             setNumber(true);
         }
 
-        if(newType=='booleanLiteral'){
+        if(type=='booleanLiteral'){
             setBoolean(true);
         }
     }
@@ -58,6 +59,10 @@ function ValueSetComp (props) {
     const handleValueChange = function(){
 
     }
+
+    useEffect(() => {
+        checkCollapses();
+    });
     
 
 
@@ -73,18 +78,18 @@ function ValueSetComp (props) {
                 </select>
 
                 <div>
-                <InputValue value={value} isOpen={isIriRef}/>
+                <InputValue type={type} isOpen={isIriRef}/>
 
-                <QNameValue value={value} isOpen={isQName}/>
+                <QNameValue type={type} isOpen={isQName}/>
 
-                <InputValue value={value} isOpen={isString}/>
+                <InputValue type={type} isOpen={isString}/>
 
-                <NumberValue value={value} isOpen={isNumber}/>
+                <NumberValue type={type} isOpen={isNumber}/>
 
-                <BooleanValue value={value} isOpen={isBoolean}/>
+                <BooleanValue type={type} isOpen={isBoolean}/>
                 </div>
                 <button className="tripleBtns deleteValueSetBtn mdc-icon-button material-icons" 
-                    onClick={()=>deleteValue(value.id)}
+                    onClick={()=>deleteValue(valueSetValue.id)}
                     title="Delete Value">
                     delete
                 </button>

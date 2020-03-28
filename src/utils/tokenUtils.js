@@ -210,7 +210,10 @@ function getTriple(id,singleTriple,shapeId) {
         }
 
         if(token.type == 'valueSet'){
-            valueSet.push(new ValueSetValue(valueSet.length,token.string));
+            //valueSet.push(new ValueSetValue(valueSet.length,token.string));
+            let def=new PrefixedIri(new Prefix('schema','http://schema.org/'));
+            valueSet.push(new ValueSetValue(valueSet.length,def));
+            
         }
 
         if(token.type == 'at' ){

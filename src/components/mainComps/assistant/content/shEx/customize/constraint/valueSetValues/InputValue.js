@@ -4,7 +4,7 @@ import { Collapse } from 'reactstrap';
 
 function InputValue (props) {
     
-    const {value,isOpen} = props;
+    const {type,isOpen} = props;
     const context = useContext(AppContext);
     const [name,setName]=useState('');
 

@@ -4,7 +4,7 @@ import { Collapse } from 'reactstrap';
 
 function BooleanValue (props) {
     
-    const {value,isOpen} = props;
+    const {type,isOpen} = props;
     const context = useContext(AppContext);
     const [boolean,setBoolean]=useState('');
 

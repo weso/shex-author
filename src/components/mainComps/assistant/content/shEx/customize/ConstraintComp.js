@@ -1,4 +1,4 @@
-import React,{useState,useContext} from 'react';
+import React,{useState,useContext,useEffect} from 'react';
 import { Collapse } from 'reactstrap';
 import {AppContext} from '../../../../../../App';
 import {getPrefix} from '../../../../../../utils/prefixUtils';
@@ -17,46 +17,31 @@ function ConstraintComp (props) {
     
     let constValue = triple.constraint.getTypeName();
     let primValue = triple.constraint.value;
-    let customOpen = false;
     
     if(constValue!='primitive'){
         primValue = 'custom';
-        customOpen = true;
     }
 
-    const [primitive,setPrimitive] = useState(primValue);    
-    const [constraint,setConstraint] = useState(constValue);
-    const [isCustomOpen,setCustomOpen] = useState(customOpen);
-        
-    
     let initialPrefix = 'example';
-    let initialOpenPrefix = false;
     if(triple.constraint.prefix!=undefined){
         initialPrefix = triple.constraint.prefix.prefixValue;
-        initialOpenPrefix = true;
-    }
-
-    const [prefix,setPrefix] = useState(initialPrefix);
-    const [isPrefixOpen,setPrefixOpen] = useState(initialOpenPrefix);
-
-
-    let initialOpenName = false;
-    if(triple.constraint.value!='' && constraint!='primitive'){
-        initialOpenName = true;
     }
 
     let initialValueSet = [];
-    let initialValueSetOpen = false;
     if(constraint == 'valueSet'){
-        initialOpenName = false;
         initialValueSet = triple.constraint.getValues();
-        initialValueSetOpen = true;
     }
     
     const [name,setName] = useState(triple.constraint.value || '');
-    const [isNameOpen,setNameOpen] = useState(initialOpenName);
+    const [prefix,setPrefix] = useState(initialPrefix);
     const [valueSet,setValueSet] = useState(initialValueSet);
-    const [isValueSetOpen,setValueSetOpen] = useState(initialValueSetOpen);
+    const [primitive,setPrimitive] = useState(primValue);    
+    const [constraint,setConstraint] = useState(constValue);
+    const [isCustomOpen,setCustomOpen] = useState(false);
+    const [isValueSetOpen,setValueSetOpen] = useState(false);
+    const [isNameOpen,setNameOpen] = useState(false);
+    const [isPrefixOpen,setPrefixOpen] = useState(false);
+        
    
 
     const handlePrefixChange = function(e){ 
@@ -75,24 +60,12 @@ function ConstraintComp (props) {
     }
 
       const handlePrimitiveChange = function(e){
-        const primitive = e.target.value;
+        const newPrimitive = e.target.value;
         triple.setConstraint('primitive');
-        triple.constraint.setValue(primitive);
-        setConstraint('primitive')
-        setPrimitive(primitive);
-        setCustomOpen(false);
-        if(primitive =='custom'){
-            triple.setConstraint('primitive');
-            triple.constraint.setValue('');
-            setConstraint('primitive');
-            setName('');
-            setCustomOpen(true);
-            setNameOpen(false);
-            setPrefixOpen(false);
-            setValueSetOpen(false);
-        }
-
-        checkRefs(primitive);     
+        triple.constraint.setValue(newPrimitive);
+        setConstraint('primitive');
+        setPrimitive(newPrimitive);
+        checkRefs(newPrimitive);     
         context.emit();
     }
 
@@ -103,32 +76,42 @@ function ConstraintComp (props) {
         triple.constraint.setValue(name);
         context.emit();
         setConstraint(newConstraint);
+    }
 
+    const checkCollapses = function(){
+        setCustomOpen(true);  
         setNameOpen(false);
         setPrefixOpen(false);
         setValueSetOpen(false);
-
-    
-        if(newConstraint == 'iriRef'){
+        
+        if(constraint == 'iriRef'){
             setNameOpen(true);
         }
 
-        if(newConstraint == 'prefixedIri'){
+        if(constraint == 'prefixedIri'){
             setNameOpen(true);
             setPrefixOpen(true);
         }
 
-        if(newConstraint == 'primitive'){
-            setCustomOpen(false);  
-            triple.setConstraint('primitive');
-            triple.constraint.value = 'string';
-            setPrimitive('string');
-            context.emit(); 
+        if(constraint == 'primitive'){
+            if(primitive!='custom'){
+                setCustomOpen(false);
+            }else{
+                setConstraint('prefixedIri');
+                triple.setConstraint('prefixedIri');
+                context.emit();
+            }
         }
 
-        if(newConstraint == 'valueSet'){
+        if(constraint == 'valueSet'){
             setValueSetOpen(true);
         }
+
+/*
+        if(triple.constraint.value!='' && constraint!='primitive'){
+            setNameOpen(true);
+        }
+        */
 
     }
 
@@ -143,6 +126,10 @@ function ConstraintComp (props) {
 
     checkRefs(primitive);
 
+
+    useEffect(() => {
+        checkCollapses();
+    });
 
     return (
                 <div className="gridBox constraint">
@@ -166,7 +153,7 @@ function ConstraintComp (props) {
                         <select className="customSelector"
                                 value={constraint}
                                 onChange={handleConstraintChange}>
-                            <option value="primitive">Primitive</option>
+                            
                             <option value="iriRef">{iriStr}</option>
                             <option value="prefixedIri">QName</option>
                             <option value="valueSet">ValueSet</option>

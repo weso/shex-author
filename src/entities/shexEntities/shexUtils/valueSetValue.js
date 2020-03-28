@@ -22,8 +22,6 @@ class ValueSetValue {
         return this.type;
     }
 
-
-
 }
 
 export default ValueSetValue;
