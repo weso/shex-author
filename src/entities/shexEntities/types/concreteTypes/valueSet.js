@@ -4,7 +4,7 @@ class ValueSet extends Type{
 
      constructor(values=[],value){
         // If we use 'value' instead of 'values' it doesn't work 
-        // I don't know why...
+        // I am not sure why...
         super(value);
         this.values = values;
     }

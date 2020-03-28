@@ -1,20 +1,25 @@
+import TypesFactory from '../types/typesFactory';
+import PrefixedIri from '../types/concreteTypes/prefixedIri';
+import Prefix from './prefix';
+
 class ValueSetValue {
 
-     constructor(id,value=''){
+     constructor(id,type=new PrefixedIri(new Prefix('schema','http://schema.org/'))){
         this.id = id;
-        this.value = value;
+        this.type = type;
+        this.factory = new TypesFactory();
     }
 
-    getValue(){
-        return this.value;
+    getType(){
+        return this.type;
     }
 
-    setValue(value){
-        this.value = value;
-    }
+    setType(type){
+       this.type = this.factory.createType(type);
+     }
 
     toString(){
-        return this.value;
+        return this.type;
     }
 
 

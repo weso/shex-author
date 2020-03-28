@@ -13,6 +13,7 @@ function ValueSetComp (props) {
     const context = useContext(AppContext);
     const iriStr = '<...>';
 
+    console.log(valueSetValue)
     const [value,setValue]=useState(valueSetValue);
     const [type,setType]=useState('iriRef');
    
@@ -32,29 +33,29 @@ function ValueSetComp (props) {
         setNumber(false);
         setBoolean(false);
         
-        setTimeout(() => {
-            if(newType=='iriRef'){
-                setIriRef(true);
-            }
+    
+        if(newType=='iriRef'){
+            setIriRef(true);
+        }
 
-            if(newType=='prefixedIri'){
-                setQName(true);
-            }
+        if(newType=='prefixedIri'){
+            setQName(true);
+        }
 
-            if(newType=='stringLiteral'){
-                setString(true);
-            }
+        if(newType=='stringLiteral'){
+            setString(true);
+        }
 
-            if(newType=='numericLiteral'){
-                setNumber(true);
-            }
+        if(newType=='numericLiteral'){
+            setNumber(true);
+        }
 
-            if(newType=='booleanLiteral'){
-                setBoolean(true);
-            }
+        if(newType=='booleanLiteral'){
+            setBoolean(true);
+        }
+    }
 
-        }, 400);
-       
+    const handleValueChange = function(){
 
     }
     
