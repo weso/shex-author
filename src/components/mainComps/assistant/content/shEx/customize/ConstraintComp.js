@@ -28,7 +28,7 @@ function ConstraintComp (props) {
     }
 
     let initialValueSet = [];
-    if(constraint == 'valueSet'){
+    if(constValue == 'valueSet'){
         initialValueSet = triple.constraint.getValues();
     }
     
