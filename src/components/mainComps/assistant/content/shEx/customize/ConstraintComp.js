@@ -53,13 +53,10 @@ function ConstraintComp (props) {
         initialValueSetOpen = true;
     }
     
-    const [name,setName] = useState(triple.constraint.value);
+    const [name,setName] = useState(triple.constraint.value || '');
     const [isNameOpen,setNameOpen] = useState(initialOpenName);
     const [valueSet,setValueSet] = useState(initialValueSet);
     const [isValueSetOpen,setValueSetOpen] = useState(initialValueSetOpen);
-
-
-
    
 
     const handlePrefixChange = function(e){ 
@@ -81,7 +78,8 @@ function ConstraintComp (props) {
         const primitive = e.target.value;
         triple.setConstraint('primitive');
         triple.constraint.setValue(primitive);
-        setPrimitive(primitive)
+        setConstraint('primitive')
+        setPrimitive(primitive);
         setCustomOpen(false);
         if(primitive =='custom'){
             triple.setConstraint('primitive');
@@ -91,6 +89,7 @@ function ConstraintComp (props) {
             setCustomOpen(true);
             setNameOpen(false);
             setPrefixOpen(false);
+            setValueSetOpen(false);
         }
 
         checkRefs(primitive);     
@@ -102,8 +101,6 @@ function ConstraintComp (props) {
         let newConstraint = e.target.value;
         triple.setConstraint(newConstraint);
         triple.constraint.setValue(name);
-       
-        triple.constraint.setValue('');
         context.emit();
         setConstraint(newConstraint);
 
