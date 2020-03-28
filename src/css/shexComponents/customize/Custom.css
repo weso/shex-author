@@ -24,7 +24,7 @@
 .customConstraint{
     display: grid;
     align-items: center;
-    grid-template-columns: 33% 67%;
+    grid-template-columns: 29% 71%;
     margin-bottom: 1px;
 }
 
@@ -32,7 +32,7 @@
 .gridBox{ 
     display: grid;
     align-items: center;
-    grid-template-columns: 10% 20% 40%;
+    grid-template-columns: 10% 20% 48%;
 }
 
 .xs-gridBox{
@@ -84,3 +84,12 @@
     padding:2px;
 }
 
+.imputSetCollapse{
+    display: grid;
+    grid-template-columns: 100%;
+}
+
+.qnameSetCollapse{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}

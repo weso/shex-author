@@ -1,0 +1,28 @@
+import React,{useState,useContext} from 'react';
+import {AppContext} from '../../../../../../../../App';
+import { Collapse } from 'reactstrap';
+import NumericInput from 'react-numeric-input';
+
+function NumberValue (props) {
+    
+    const {value,isOpen} = props;
+    const context = useContext(AppContext);
+    const [number,setNumber]=useState(0);
+
+    const handleNumberChange = function(e){
+        let newNumber = e.target.value;
+        setNumber(newNumber);
+    }
+
+    return (<Collapse isOpen={isOpen} className='imputSetCollapse'>
+                    <NumericInput   className="form-control" 
+                                    min={0} 
+                                    value={number}
+                                    onChange={handleNumberChange}/>
+
+                </Collapse>);                          
+}
+
+
+
+export default NumberValue;

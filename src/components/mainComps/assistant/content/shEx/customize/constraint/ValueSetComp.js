@@ -1,5 +1,11 @@
 import React,{useState,useContext} from 'react';
 import {AppContext} from '../../../../../../../App';
+import { Collapse } from 'reactstrap';
+import QNameValue from './valueSetValues/QNameValue';
+import InputValue from './valueSetValues/InputValue';
+import NumberValue from './valueSetValues/NumberValue';
+import BooleanValue from './valueSetValues/BooleanValue';
+
 
 function ValueSetComp (props) {
     
@@ -9,19 +15,50 @@ function ValueSetComp (props) {
 
     const [value,setValue]=useState(valueSetValue);
     const [type,setType]=useState('iriRef');
-    const [name,setName]=useState(valueSetValue.value);
+   
+    const [isIriRef,setIriRef]=useState(true);
+    const [isQName,setQName]=useState(false);
+    const [isString,setString]=useState(false);
+    const [isNumber,setNumber]=useState(false);
+    const [isBoolean,setBoolean]=useState(false);
 
     const handleTypeChange = function(e){
        let newType = e.target.value;
        setType(newType);
+
+        setIriRef(false);
+        setQName(false);
+        setString(false);
+        setNumber(false);
+        setBoolean(false);
+        
+        setTimeout(() => {
+            if(newType=='iriRef'){
+                setIriRef(true);
+            }
+
+            if(newType=='prefixedIri'){
+                setQName(true);
+            }
+
+            if(newType=='stringLiteral'){
+                setString(true);
+            }
+
+            if(newType=='numericLiteral'){
+                setNumber(true);
+            }
+
+            if(newType=='booleanLiteral'){
+                setBoolean(true);
+            }
+
+        }, 400);
+       
+
     }
     
-    const handleNameChange = function(e){
-        let newName = e.target.value;
-        setName(newName);
-        value.setValue(newName);
-        context.emit(); 
-    }
+
 
     return (  <div className="valueSets">
                 <select className="customSelector"
@@ -33,10 +70,18 @@ function ValueSetComp (props) {
                     <option value="numericLiteral">Number</option>
                     <option value="booleanLiteral">Boolean</option>
                 </select>
-                <input  type="text" 
-                        className="name"
-                        value={name}
-                        onChange={handleNameChange}/>
+
+                <div>
+                <InputValue value={value} isOpen={isIriRef}/>
+
+                <QNameValue value={value} isOpen={isQName}/>
+
+                <InputValue value={value} isOpen={isString}/>
+
+                <NumberValue value={value} isOpen={isNumber}/>
+
+                <BooleanValue value={value} isOpen={isBoolean}/>
+                </div>
                 <button className="tripleBtns deleteValueSetBtn mdc-icon-button material-icons" 
                     onClick={()=>deleteValue(value.id)}
                     title="Delete Value">
