@@ -98,6 +98,7 @@ function ConstraintComp (props) {
                 setCustomOpen(false);
             }else{
                 setConstraint('prefixedIri');
+                setName('');
                 triple.setConstraint('prefixedIri');
                 context.emit();
             }
@@ -117,7 +118,6 @@ function ConstraintComp (props) {
 
     const checkRefs = function(prim){
         if(prim =='none'){
-            
             if(triple.shapeRef.shape != null){
                 triple.setConstraint('blankType');
             }
