@@ -108,12 +108,6 @@ function ConstraintComp (props) {
             setValueSetOpen(true);
         }
 
-/*
-        if(triple.constraint.value!='' && constraint!='primitive'){
-            setNameOpen(true);
-        }
-        */
-
     }
 
     const checkRefs = function(prim){

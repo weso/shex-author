@@ -8,6 +8,7 @@ export function makeItResponsive(width){
         let addTripleBtns = document.getElementsByClassName("addTripleButton");
         let addShapeBtns = document.getElementsByClassName("addShapeButton");
         let grids = document.getElementsByClassName("gridBox");
+        let customs = document.getElementsByClassName("customConstraint");
         let prefixes = document.getElementsByClassName("prefixHeader");
 
         let tabClass = 'tabs';
@@ -16,6 +17,7 @@ export function makeItResponsive(width){
         let adTClass = 'addTripleButton';
         let adSClass = 'addShapeButton';
         let grClass = 'gridBox';
+        let ccClass = 'customConstraint';
         let prClass = 'prefixHeader';
         if(width<600){
             tabClass += ' xs-tabs';
@@ -23,7 +25,8 @@ export function makeItResponsive(width){
             thClass += ' xs-tripleHeader';
             adTClass += ' xs-addTripleButton';
             adSClass += ' xs-addShapeButton';
-            grClass += ' xs-gridBox';
+            grClass  = ' xs-gridBox';
+            ccClass += ' xs-customConstraint';
             prClass += ' xs-prefixHeader';
         }
 
@@ -45,8 +48,21 @@ export function makeItResponsive(width){
             addShapeBtns[i].className = adSClass;
         }
 
+
         for(let i=0;i<grids.length;i++){
-            grids[i].className = grids[i].className.replace('gridBox',grClass);
+            let c = grids[i].className;
+            if(c.includes('gridBox')){
+                let asd  = c.replace('gridBox','');
+                
+                grids[i].className = asd+' '+grClass;
+                console.log(grids[i].className)
+            }else{
+                grids[i].className = c.replace('xs-gridBox','')+' '+grClass;
+            }
+        }
+
+        for(let i=0;i<customs.length;i++){
+            customs[i].className = ccClass;
         }
 
         for(let i=0;i<prefixes.length;i++){

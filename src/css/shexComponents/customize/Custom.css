@@ -28,6 +28,11 @@
     margin-bottom: 1px;
 }
 
+.xs-customConstraint{
+    grid-template-columns: 33% 68%;
+}
+
+
 
 .gridBox{ 
     display: grid;
@@ -36,7 +41,9 @@
 }
 
 .xs-gridBox{
-    grid-template-columns: 10% 25% 49%;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 4% 25% 69%;
 }
 
 

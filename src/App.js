@@ -1,22 +1,16 @@
 
 import React, {useState} from 'react';
 import axios from 'axios';
-import './css/App.css';
-
 import Nav from './components/Nav';
 import MainContainer from './components/MainContainer';
 import Visualizer from './components/Visualizer';
-
 import shexUtils from './utils/shexUtils';
 import {emitPrefixes} from './utils/prefixUtils';
 import {makeItResponsive,checkShapeName} from './utils/cssUtils';
 import yasheUtils from './utils/yasheUtils';
-
-
 import Editor from './entities/editor';
-
 import {addPrefixComp,deletePrefixComp} from './utils/prefixUtils';
-
+import './css/App.css';
 
 export const AppContext = React.createContext();
 
@@ -29,9 +23,7 @@ function App() {
     const [isPrefixesOpen, setPrefixesOpen] = useState(false);
     const [isVisualizeOpen, setVisualizeOpen] = useState(true);
     const [isToolBarOpen, setToolBarOpen] = useState(true);
-
     const [width,setWidth] = useState(700);
-
 
     const assistantToggle = () => setAssistantOpen(!isAssistantOpen);
     const visualizeToggle = () => setVisualizeOpen(!isVisualizeOpen);
@@ -61,7 +53,6 @@ function App() {
     const deletePrefix = function(prefixId){
       setPrefixes(deletePrefixComp(prefixes,prefixId,width));
     }
-
 
     const emit = function(){
       shexUtils.emit(shapes,width);
@@ -120,10 +111,10 @@ function App() {
 
     }
       
-      const handleResize = function(e, data){
-          setWidth(data.size.width)
-          makeItResponsive(data.size.width); 
-      }
+    const handleResize = function(e, data){
+        setWidth(data.size.width)
+        makeItResponsive(data.size.width); 
+    }
 
 
     return (

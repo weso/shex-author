@@ -78,16 +78,17 @@ function ValueSetComp (props) {
                 </select>
 
                 <div>
-                <InputValue type={type} isOpen={isIriRef}/>
+                    <InputValue type={type} isOpen={isIriRef}/>
 
-                <QNameValue type={type} isOpen={isQName}/>
+                    <QNameValue type={type} isOpen={isQName}/>
 
-                <InputValue type={type} isOpen={isString}/>
+                    <InputValue type={type} isOpen={isString}/>
 
-                <NumberValue type={type} isOpen={isNumber}/>
+                    <NumberValue type={type} isOpen={isNumber}/>
 
-                <BooleanValue type={type} isOpen={isBoolean}/>
+                    <BooleanValue type={type} isOpen={isBoolean}/>
                 </div>
+                
                 <button className="tripleBtns deleteValueSetBtn mdc-icon-button material-icons" 
                     onClick={()=>deleteValue(valueSetValue.id)}
                     title="Delete Value">
