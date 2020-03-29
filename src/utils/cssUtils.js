@@ -25,7 +25,7 @@ export function makeItResponsive(width){
             thClass += ' xs-tripleHeader';
             adTClass += ' xs-addTripleButton';
             adSClass += ' xs-addShapeButton';
-            grClass  = ' xs-gridBox';
+            grClass  += ' xs-gridBox';
             ccClass += ' xs-customConstraint';
             prClass += ' xs-prefixHeader';
         }
@@ -50,15 +50,9 @@ export function makeItResponsive(width){
 
 
         for(let i=0;i<grids.length;i++){
-            let c = grids[i].className;
-            if(c.includes('gridBox')){
-                let asd  = c.replace('gridBox','');
-                
-                grids[i].className = asd+' '+grClass;
-                console.log(grids[i].className)
-            }else{
-                grids[i].className = c.replace('xs-gridBox','')+' '+grClass;
-            }
+            let c = grids[i].className.replace('gridBox','').replace('xs-gridBox','');
+            
+            grids[i].className = c+' '+grClass;
         }
 
         for(let i=0;i<customs.length;i++){
