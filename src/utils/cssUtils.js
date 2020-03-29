@@ -51,8 +51,7 @@ export function makeItResponsive(width){
 
         for(let i=0;i<grids.length;i++){
             let c = grids[i].className.replace('gridBox','').replace('xs-gridBox','');
-            
-            grids[i].className = c+' '+grClass;
+            grids[i].className = grClass+' '+c;
         }
 
         for(let i=0;i<customs.length;i++){
