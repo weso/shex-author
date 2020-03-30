@@ -76,7 +76,7 @@ class Triple {
 
 
 
-    toString(separator){
+    toString(tripleSeparator,constSeparator){
         let str='';
         let type=this.getType();
         let constraint = this.getConstraint();
@@ -84,14 +84,14 @@ class Triple {
         let shapeRef = this.getShapeRef();
         let cardinality = this.getCardinality();
         if(type.value!=''){
-            str+= '  '+type+separator;
+            str+= '  '+type+tripleSeparator;
             str+= this.checkFacets();
             if(facets){
                 facets.map(f=>{
                     str+=' '+f+' ';
                 })
             }
-            str+= shapeRef+' '+cardinality+'  ;\n';
+            str+= constSeparator+shapeRef+' '+cardinality+'  ;\n';
         }
         return str;
 

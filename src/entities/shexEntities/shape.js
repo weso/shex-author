@@ -43,10 +43,16 @@ class Shape {
         if(this.checkContent()){
           str+=' {\n';
           let longestTriple = this.getLongestTriple();
+          let longestConstraint = this.getLongestConstraint();
+          console.log(longestTriple)
           this.triples.forEach(triple => {
             let tripleLength = triple.type.toString().length;
             let diference = longestTriple - tripleLength;
-            str+=triple.toString(this.getSeparator(diference));
+
+            let constLength = triple.constraint.toString().length;
+            let consDiference = longestConstraint - constLength;
+
+            str+=triple.toString(this.getSeparator(diference),this.getSeparator(consDiference));
           });
           str+="}\n\n"
         }
@@ -78,9 +84,19 @@ class Shape {
       return size;
     }
 
+    getLongestConstraint(){
+      let size=0;
+      this.triples.forEach(triple => {
+          let value = triple.constraint.toString().length;
+          console.log(triple.constraint.toString())
+          if(value>size)size = value;
+      });
+      return size;
+    }
+
     getSeparator(size){
       let space = ' ';
-      let separator = '    ';
+      let separator = '  ';
       for(let i=0;i<size;i++){
         separator+=space;
       }

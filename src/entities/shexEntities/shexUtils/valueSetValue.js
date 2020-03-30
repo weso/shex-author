@@ -19,7 +19,7 @@ class ValueSetValue {
      }
 
     toString(){
-        return this.type;
+        return this.type.toString();
     }
 
 }
