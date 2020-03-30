@@ -351,7 +351,7 @@ function getValueSetValue(def) {
     }
 
     if(def.startsWith('"')){
-        return new StringLiteral(def);
+        return new StringLiteral(def.substring(1,def.length-1));//remove the ""
     }
 
     let minus = def.toLowerCase();

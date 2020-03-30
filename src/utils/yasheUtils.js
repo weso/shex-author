@@ -18,7 +18,7 @@ const VALUESET_SHAPE = 'PREFIX :       <http://example.org/>\n'+
 'PREFIX xsd:    <http://www.w3.org/2001/XMLSchema#>\n\n'+
 
 ':User IRI {\n'+ 
-'  schema:name          [xsd:string 34 "esd"@Es <asds> false ] ;\n'+
+'  schema:name          [xsd:string 34 "esd" <asds> false ] ;\n'+
 '}';
   
 
