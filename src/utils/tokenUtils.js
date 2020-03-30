@@ -22,6 +22,10 @@ import IriKind from '../entities/shexEntities/types/concreteTypes/kinds/iriKind'
 import BNodeKind from '../entities/shexEntities/types/concreteTypes/kinds/bNodeKind';
 import BlankKind from '../entities/shexEntities/types/concreteTypes/kinds/blankKind';
 
+import NumberLiteral from '../entities/shexEntities/types/concreteTypes/literal/numberLiteral';
+import StringLiteral from '../entities/shexEntities/types/concreteTypes/literal/stringLiteral';
+import BooleanLiteral from '../entities/shexEntities/types/concreteTypes/literal/booleanLiteral';
+
 
 
 import Prefix from '../entities/shexEntities/shexUtils/prefix';
@@ -210,10 +214,7 @@ function getTriple(id,singleTriple,shapeId) {
         }
 
         if(token.type == 'valueSet'){
-            //valueSet.push(new ValueSetValue(valueSet.length,token.string));
-            let def=new PrefixedIri(new Prefix('schema','http://schema.org/'));
-            valueSet.push(new ValueSetValue(valueSet.length,def));
-            
+            valueSet.push(new ValueSetValue(valueSet.length,getValueSetValue(token.string)));
         }
 
         if(token.type == 'at' ){
@@ -322,6 +323,32 @@ function getCardinality(card){
 
     return factory.createCardinality(context,min,max);
 }
+
+
+/**
+* Get the type of a valueSetValue
+* @param {String} Token
+* @return {Type} ValueSetValue
+*
+ */
+function getValueSetValue(def) {
+
+    if(!isNaN(def)){
+        return new NumberLiteral(def);
+    }
+
+    if(def.startsWith('"')){
+        return new StringLiteral(def);
+    }
+
+    let minus = def.toLowerCase();
+    if(minus == 'true' || minus == 'false'){
+        return new BooleanLiteral(minus);
+    }
+
+    return getType(def);
+}
+
 
 
 
