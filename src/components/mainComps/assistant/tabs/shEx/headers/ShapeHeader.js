@@ -1,6 +1,7 @@
 import React,{useState,useContext} from 'react';
 import { Textbox } from 'react-inputs-validation';
 import {AppContext} from '../../../../../../App';
+import {AssistContext} from '../../../../Assistant';
 import {ShapeContext} from '../ShapeComponent';
 import {PN_LOCAL,IRI_REF} from '../../../../../../utils/regExpUtils';
 import '../../../../../../css/shexComponents/headers/ShapeHeader.css';
@@ -10,6 +11,7 @@ function ShapeHeader (props) {
 
     const context = useContext(AppContext);
     const shapeContext = useContext(ShapeContext);
+    const asssistContext = useContext(AssistContext);
     const disabled = shapeContext.disabled;
     
     const {shape,customizeShape,collapseTriples,colapseBtn} = props;
@@ -34,7 +36,7 @@ function ShapeHeader (props) {
     }
 
     const myStyle ={
-        background: '#C6E2FF' 
+        background: asssistContext.color
     }
 
 

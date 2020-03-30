@@ -19,6 +19,8 @@ function AssistantComp (props) {
         const [isPrefixesOpen, setPrefixesOpen] = useState(false);
         const [isConfigOpen, setConfigOpen] = useState(false);
 
+        const [color,setColor] = useState('#C6E2FF');
+
         return (
                 <AssistContext.Provider
                 value={
@@ -29,6 +31,8 @@ function AssistantComp (props) {
                         setShapesOpen:setShapesOpen,
                         setPrefixesOpen:setPrefixesOpen,
                         setConfigOpen:setConfigOpen,
+                        color:color,
+                        setColor:setColor
                         }
                 }>
                         <Collapse isOpen={context.isAssistantOpen} className='assistCollapse'>

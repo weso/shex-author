@@ -6,6 +6,7 @@
   "dependencies": {
     "gh-pages": "^2.1.1",
     "react": "^16.11.0",
+    "react-color": "^2.18.0",
     "react-dom": "^16.11.0",
     "react-inputs-validation": "^4.4.1",
     "react-resizable": "^1.10.1",
