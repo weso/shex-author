@@ -94,9 +94,14 @@
 .imputSetCollapse{
     display: grid;
     grid-template-columns: 100%;
+   
 }
 
 .qnameSetCollapse{
     display: grid;
     grid-template-columns: 50% 50%;
+}
+
+.boolSelect{
+    height: 40px !important;
 }

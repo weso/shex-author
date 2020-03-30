@@ -14,7 +14,7 @@ function BooleanValue (props) {
     }
 
     return (<Collapse isOpen={isOpen} className='imputSetCollapse'>
-                <select className="customSelector"
+                <select className="customSelector boolSelect"
                         value={boolean}
                         onChange={handleBooleanChange}>
                     <option value="true">True</option>
