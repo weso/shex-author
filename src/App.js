@@ -20,9 +20,8 @@ function App() {
     const [prefixes,setPrefixes] = useState([]);
     const [svg,setSvg] = useState('');
     const [isAssistantOpen, setAssistantOpen] = useState(true);
-    const [isPrefixesOpen, setPrefixesOpen] = useState(false);
-    const [isVisualizeOpen, setVisualizeOpen] = useState(true);
     const [isToolBarOpen, setToolBarOpen] = useState(true);
+    const [isVisualizeOpen, setVisualizeOpen] = useState(true);
     const [width,setWidth] = useState(470);
 
     const assistantToggle = () => setAssistantOpen(!isAssistantOpen);
@@ -140,10 +139,8 @@ function App() {
                   visualize:visualize,
                   isToolBarOpen:isToolBarOpen,
                   isAssistantOpen:isAssistantOpen,
-                  isPrefixesOpen:isPrefixesOpen,
                   isVisualizeOpen:isVisualizeOpen,
                   assistantToggle:assistantToggle,
-                  setPrefixesOpen:setPrefixesOpen,
                   visualizeToggle:visualizeToggle,
                   handleResize:handleResize,
                   width:width

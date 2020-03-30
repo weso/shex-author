@@ -1,22 +1,27 @@
 import React,{useContext,useState} from 'react';
-import {AppContext} from '../../../App';
+import {AssistContext} from '../Assistant';
 import { Collapse } from 'reactstrap';
-import Prefixes from './content/Prefixes';
-import Shapes from './content/Shapes';
+import Shapes from './tabs/Shapes';
+import Prefixes from './tabs/Prefixes';
+import Config from './tabs/Config';
 
 function AssistContent (props) {
 
-    const context = useContext(AppContext);
+    const asssistContext = useContext(AssistContext);
 
     return ( 
     <div className='showAsist'>
         <div id='assistant-container' className='assistantContainer'> 
-                <Collapse isOpen={!context.isPrefixesOpen}>
+                <Collapse isOpen={asssistContext.isShapesOpen}>
                     <Shapes/>
                 </Collapse>
-                <Collapse isOpen={context.isPrefixesOpen}>
+                <Collapse isOpen={asssistContext.isPrefixesOpen}>
                     <Prefixes/>
                 </Collapse>
+                <Collapse isOpen={asssistContext.isConfigOpen}>
+                    <Config/>
+                </Collapse>
+                
             </div>
         </div>);
 }

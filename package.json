@@ -9,7 +9,8 @@
     "react-dom": "^16.11.0",
     "react-inputs-validation": "^4.4.1",
     "react-resizable": "^1.10.1",
-    "react-scripts": "3.2.0"
+    "react-scripts": "3.2.0",
+    "react-toggle": "^4.1.1"
   },
   "scripts": {
     "predeploy": "npm run build",

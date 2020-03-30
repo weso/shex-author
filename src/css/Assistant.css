@@ -37,19 +37,20 @@
 
 .tabs{
     display: grid;
-    grid-template-columns: 28% 15% 53% 10%;
+    grid-template-columns: 28% 15% 10% 53% 10%;
     border-bottom: 1px solid #bdbcbc;
     font-size: 20px;
     color:#666565;
-    max-height: 40px;
+    max-height: 34px;
 }
 
 .asisTitleClose{
-    grid-column: 4/4;
+    display: grid;
+    grid-template-columns: 72% 10%;
 }
 
 .xs-tabs{
-    grid-template-columns: 35% 25% 35% 10%;
+    grid-template-columns: 35% 25% 10% 35% 10%;
 }
 
 .activeTab {
@@ -76,7 +77,7 @@
 .closeAsisBtn{
     background-color: transparent;
     border:none;
-    grid-column: 2/3;
+    grid-column: 2/2;
 }
 
 .closeAsisBtn:focus{

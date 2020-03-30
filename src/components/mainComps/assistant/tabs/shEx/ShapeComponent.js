@@ -1,6 +1,7 @@
 import React,{useContext,useState} from 'react';
 import { Collapse } from 'reactstrap';
 import {AppContext} from '../../../../../App';
+import {AssistContext} from '../../../Assistant';
 import ShapeHeader from  './headers/ShapeHeader';
 import CustomComp from './customize/CustomComp';
 import TripleComponent from './TripleComponent';
@@ -13,6 +14,7 @@ export const ShapeContext = React.createContext();
 function ShapeComponent (props) {
 
     const context = useContext(AppContext);
+    const asssistContext = useContext(AssistContext);
     const {shape} = props;
 
     const [triples,setTriples] = useState(shape.triples);
@@ -44,17 +46,25 @@ function ShapeComponent (props) {
     }
 
     const customizeShape = function(){
-        //Completly collapsed shape open just customShape
-        if(!isCustomOpen && !isTriplesOpen ){
-            setCustomOpen(true);
-            setTriplesOpen(false);
+        console.log(asssistContext)
+        if(asssistContext.isConfigOpen){
+            console.log('yuhuuu')
         }else{
-            //CustomShape opened  opens triples on collapse
-            setCustomOpen(!isCustomOpen);
-            setTriplesOpen(!isTriplesOpen);
-        }
 
-        setColapseBtn('menu');
+            //Completly collapsed shape open just customShape
+            if(!isCustomOpen && !isTriplesOpen ){
+                setCustomOpen(true);
+                setTriplesOpen(false);
+            }else{
+                //CustomShape opened  opens triples on collapse
+                setCustomOpen(!isCustomOpen);
+                setTriplesOpen(!isTriplesOpen);
+            }
+
+            setColapseBtn('menu');
+
+        }
+        
     }
 
     const collapseTriples = function(){

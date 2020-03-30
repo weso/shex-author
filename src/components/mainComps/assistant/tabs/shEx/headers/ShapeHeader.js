@@ -33,10 +33,14 @@ function ShapeHeader (props) {
         }
     }
 
+    const myStyle ={
+        background: '#C6E2FF' 
+    }
+
 
 
     return (
-        <div className='header'>            
+        <div className='header' style={myStyle}>            
             <label>Shape</label>
             <Textbox
                     attributesInput={{ 

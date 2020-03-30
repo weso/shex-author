@@ -84,14 +84,14 @@ class Triple {
         let shapeRef = this.getShapeRef();
         let cardinality = this.getCardinality();
         if(type.value!=''){
-            str+= '  '+type+tripleSeparator;
+            str+= '  '+type+' ';
             str+= this.checkFacets();
             if(facets){
                 facets.map(f=>{
                     str+=' '+f+' ';
                 })
             }
-            str+= constSeparator+shapeRef+refSeparator+cardinality+'  ;\n';
+            str+= ' '+shapeRef+' '+cardinality+'  ;\n';
         }
         return str;
 
