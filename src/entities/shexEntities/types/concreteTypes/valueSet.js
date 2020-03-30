@@ -29,7 +29,7 @@ class ValueSet extends Type{
     toString(){
         let str ='[';
         this.values.map(v=>{
-            str+=v.value+' ';
+            str+=v.toString()+' ';
         })
         str+=']';
         return str;

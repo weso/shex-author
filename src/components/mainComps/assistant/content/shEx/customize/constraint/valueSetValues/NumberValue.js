@@ -10,7 +10,9 @@ function NumberValue (props) {
     const [number,setNumber]=useState(0);
 
     const handleNumberChange = function(e){
-        let newNumber = e.target.value;
+        let newNumber = e;
+        type.setValue(newNumber);
+        context.emit();
         setNumber(newNumber);
     }
 

@@ -10,6 +10,8 @@ function InputValue (props) {
 
     const handleNameChange = function(e){
         let newName = e.target.value;
+        type.setValue(newName);
+        context.emit();
         setName(newName);
     }
 

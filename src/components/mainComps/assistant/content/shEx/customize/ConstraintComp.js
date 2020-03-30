@@ -38,7 +38,7 @@ function ConstraintComp (props) {
     const [primitive,setPrimitive] = useState(primValue);    
     const [constraint,setConstraint] = useState(constValue);
     const [isCustomOpen,setCustomOpen] = useState(false);
-    const [isValueSetOpen,setValueSetOpen] = useState(false);
+    const [isValueSetOpen,setValueSetOpen] = useState(true);
     const [isNameOpen,setNameOpen] = useState(false);
     const [isPrefixOpen,setPrefixOpen] = useState(false);
         
