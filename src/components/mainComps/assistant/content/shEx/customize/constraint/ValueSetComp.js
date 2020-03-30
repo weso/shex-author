@@ -24,6 +24,7 @@ function ValueSetComp (props) {
     const handleTypeChange = function(e){
         let newType = e.target.value;
         setType(newType);
+        valueSetValue.setType(newType);
         checkCollapses();
     }
 
@@ -47,7 +48,7 @@ function ValueSetComp (props) {
             setString(true);
         }
 
-        if(type=='numericLiteral'){
+        if(type=='numberLiteral'){
             setNumber(true);
         }
 
@@ -73,7 +74,7 @@ function ValueSetComp (props) {
                     <option value="iriRef">{iriStr}</option>
                     <option value="prefixedIri">QName</option>
                     <option value="stringLiteral">String</option>
-                    <option value="numericLiteral">Number</option>
+                    <option value="numberLiteral">Number</option>
                     <option value="booleanLiteral">Boolean</option>
                 </select>
 

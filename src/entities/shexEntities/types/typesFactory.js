@@ -11,6 +11,12 @@ import IriKind from'./concreteTypes/kinds/iriKind';
 import BNodeKind from'./concreteTypes/kinds/bNodeKind';
 
 
+import StringLiteral from'./concreteTypes/literal/stringLiteral';
+import NumberLiteral from'./concreteTypes/literal/numberLiteral';
+import BooleanLiteral from'./concreteTypes/literal/booleanLiteral';
+
+
+
 class TypesFactory{
 
     createType(type){
@@ -54,6 +60,18 @@ class TypesFactory{
 
         if(type == 'valueSet'){
             retType = new ValueSet();
+        }
+
+        if(type == 'stringLiteral'){
+            retType = new StringLiteral();
+        }
+
+        if(type == 'numberLiteral'){
+            retType = new NumberLiteral();
+        }
+
+        if(type == 'booleanLiteral'){
+            retType = new BooleanLiteral();
         }
  
 
