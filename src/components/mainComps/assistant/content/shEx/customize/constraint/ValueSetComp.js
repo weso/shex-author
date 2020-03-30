@@ -12,9 +12,7 @@ function ValueSetComp (props) {
     const {valueSetValue,deleteValue} = props;
     const context = useContext(AppContext);
     const iriStr = '<...>';
-
     const [type,setType]=useState(valueSetValue.type.getTypeName());
-   
     const [isIriRef,setIriRef]=useState(true);
     const [isQName,setQName]=useState(false);
     const [isString,setString]=useState(false);
@@ -25,6 +23,7 @@ function ValueSetComp (props) {
         let newType = e.target.value;
         setType(newType);
         valueSetValue.setType(newType);
+        context.emit();
         checkCollapses();
     }
 
@@ -57,9 +56,6 @@ function ValueSetComp (props) {
         }
     }
 
-    const handleValueChange = function(){
-
-    }
 
     useEffect(() => {
         checkCollapses();

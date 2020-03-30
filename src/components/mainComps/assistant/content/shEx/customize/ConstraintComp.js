@@ -18,7 +18,6 @@ function ConstraintComp (props) {
     let constValue = triple.constraint.getTypeName();
     let primValue = triple.constraint.value;
 
-
     if(constValue!='primitive'){
         primValue = 'custom';
     }

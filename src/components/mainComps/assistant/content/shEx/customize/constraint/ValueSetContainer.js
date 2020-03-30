@@ -9,7 +9,7 @@ function ValueSetContainer (props) {
     const [values,setValues]=useState(valueSet);
 
     const deleteValue= function(id){
-        const newValues = valueSet.filter(v => v.id != id);
+        const newValues = values.filter(v => v.id != id);
         setValues(newValues);
         triple.constraint.setValues(newValues);
         context.emit(); 
