@@ -17,7 +17,8 @@ function ConstraintComp (props) {
     
     let constValue = triple.constraint.getTypeName();
     let primValue = triple.constraint.value;
-    
+
+
     if(constValue!='primitive'){
         primValue = 'custom';
     }
@@ -67,35 +68,25 @@ function ConstraintComp (props) {
         setPrimitive(newPrimitive);
         checkRefs(newPrimitive);     
         context.emit();
-        checkCustom(newPrimitive);
     }
 
 
     const handleConstraintChange = function(e){
         let newConstraint = e.target.value;
+        setConstraint(newConstraint);
         triple.setConstraint(newConstraint);
         triple.constraint.setValue(name);
         context.emit();
-        setConstraint(newConstraint);
-        checkCollapses(newConstraint);
     }
 
-    const checkCustom = function(primitive){
-        if(primitive=='custom'){
-            setCustomOpen(true);
-            setConstraint('prefixedIri');
-            setName('');
-            triple.setConstraint('prefixedIri');
-            context.emit();
-        }
-    }
+ 
 
-    const checkCollapses = function(constraint){
-        
+    const checkCollapses = function(){
+        setCustomOpen(true);  
         setNameOpen(false);
         setPrefixOpen(false);
         setValueSetOpen(false);
-
+        
         if(constraint == 'iriRef'){
             setNameOpen(true);
         }
@@ -105,11 +96,7 @@ function ConstraintComp (props) {
             setPrefixOpen(true);
         }
 
-                /*
-
         if(constraint == 'primitive'){
-            console.log(constraint)
-            console.log(primitive)
             if(primitive!='custom'){
                 setCustomOpen(false);
             }else{
@@ -123,7 +110,6 @@ function ConstraintComp (props) {
         if(constraint == 'valueSet'){
             setValueSetOpen(true);
         }
-        */
 
     }
 
@@ -137,6 +123,9 @@ function ConstraintComp (props) {
 
     checkRefs(primitive);
 
+    useEffect(() => {
+        checkCollapses();
+    })
 
     return (
                 <div className="gridBox constraint">
