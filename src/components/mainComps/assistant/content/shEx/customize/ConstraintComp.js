@@ -38,7 +38,7 @@ function ConstraintComp (props) {
     const [primitive,setPrimitive] = useState(primValue);    
     const [constraint,setConstraint] = useState(constValue);
     const [isCustomOpen,setCustomOpen] = useState(false);
-    const [isValueSetOpen,setValueSetOpen] = useState(true);
+    const [isValueSetOpen,setValueSetOpen] = useState(false);
     const [isNameOpen,setNameOpen] = useState(false);
     const [isPrefixOpen,setPrefixOpen] = useState(false);
         
@@ -67,6 +67,7 @@ function ConstraintComp (props) {
         setPrimitive(newPrimitive);
         checkRefs(newPrimitive);     
         context.emit();
+        checkCustom(newPrimitive);
     }
 
 
@@ -76,14 +77,25 @@ function ConstraintComp (props) {
         triple.constraint.setValue(name);
         context.emit();
         setConstraint(newConstraint);
+        checkCollapses(newConstraint);
     }
 
-    const checkCollapses = function(){
-        setCustomOpen(true);  
+    const checkCustom = function(primitive){
+        if(primitive=='custom'){
+            setCustomOpen(true);
+            setConstraint('prefixedIri');
+            setName('');
+            triple.setConstraint('prefixedIri');
+            context.emit();
+        }
+    }
+
+    const checkCollapses = function(constraint){
+        
         setNameOpen(false);
         setPrefixOpen(false);
         setValueSetOpen(false);
-        
+
         if(constraint == 'iriRef'){
             setNameOpen(true);
         }
@@ -93,7 +105,11 @@ function ConstraintComp (props) {
             setPrefixOpen(true);
         }
 
+                /*
+
         if(constraint == 'primitive'){
+            console.log(constraint)
+            console.log(primitive)
             if(primitive!='custom'){
                 setCustomOpen(false);
             }else{
@@ -107,6 +123,7 @@ function ConstraintComp (props) {
         if(constraint == 'valueSet'){
             setValueSetOpen(true);
         }
+        */
 
     }
 
@@ -120,10 +137,6 @@ function ConstraintComp (props) {
 
     checkRefs(primitive);
 
-
-    useEffect(() => {
-        checkCollapses();
-    });
 
     return (
                 <div className="gridBox constraint">
@@ -143,42 +156,46 @@ function ConstraintComp (props) {
 
                     <Collapse isOpen={isCustomOpen} className='constraintCollapse'>
                         <div className="customConstraint">
-                        <label>Type</label>
-                        <select className="customSelector"
-                                value={constraint}
-                                onChange={handleConstraintChange}>
-                            
-                            <option value="iriRef">{iriStr}</option>
-                            <option value="prefixedIri">QName</option>
-                            <option value="valueSet">ValueSet</option>
-                            <option value="literal">Literal</option>
-                            <option value="nonliteral">NonLiteral</option>
-                            <option value="iri">IRI</option>
-                            <option value="bnode">BNode</option>
-                        </select>
+                            <label>Type</label>
+                            <select className="customSelector"
+                                    value={constraint}
+                                    onChange={handleConstraintChange}>
+                                
+                                <option value="iriRef">{iriStr}</option>
+                                <option value="prefixedIri">QName</option>
+                                <option value="valueSet">ValueSet</option>
+                                <option value="literal">Literal</option>
+                                <option value="nonliteral">NonLiteral</option>
+                                <option value="iri">IRI</option>
+                                <option value="bnode">BNode</option>
+                            </select>
                         </div>     
 
             
-                        <Collapse isOpen={isNameOpen} className='customConstraint'>
-                            <label  >Name</label>
-                            <input  type="text" 
-                                    className="name"
-                                    value={name}
-                                    onChange={handleNameChange}/> 
+                        <Collapse isOpen={isNameOpen}>
+                            <div className="customConstraint">
+                                <label  >Name</label>
+                                <input  type="text" 
+                                        className="name"
+                                        value={name}
+                                        onChange={handleNameChange}/>
+                            </div> 
                         </Collapse>
 
-                         <Collapse isOpen={isPrefixOpen} className="customConstraint">
-                            <label >Prefix </label>
-                            <select className="customSelector" value={prefix} onChange={handlePrefixChange}>
-                                <option value="example">example</option>
-                                { 
-                                context.prefixes.map((pre) =>{
-                                    if(pre.prefixName!=''){
-                                        return <option key={pre.id} value={pre.prefixValue}>{pre.prefixName}</option>
-                                    }                        
-                                })
-                            }
-                            </select>
+                         <Collapse isOpen={isPrefixOpen}>
+                            <div className="customConstraint">
+                                <label >Prefix </label>
+                                <select className="customSelector" value={prefix} onChange={handlePrefixChange}>
+                                    <option value="example">example</option>
+                                    { 
+                                    context.prefixes.map((pre) =>{
+                                        if(pre.prefixName!=''){
+                                            return <option key={pre.id} value={pre.prefixValue}>{pre.prefixName}</option>
+                                        }                        
+                                    })
+                                }
+                                </select>
+                            </div>
                         </Collapse>
 
 
