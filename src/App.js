@@ -1,5 +1,5 @@
 
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import axios from 'axios';
 import Nav from './components/Nav';
 import MainContainer from './components/MainContainer';
@@ -23,7 +23,7 @@ function App() {
     const [isPrefixesOpen, setPrefixesOpen] = useState(false);
     const [isVisualizeOpen, setVisualizeOpen] = useState(true);
     const [isToolBarOpen, setToolBarOpen] = useState(true);
-    const [width,setWidth] = useState(700);
+    const [width,setWidth] = useState(470);
 
     const assistantToggle = () => setAssistantOpen(!isAssistantOpen);
     const visualizeToggle = () => setVisualizeOpen(!isVisualizeOpen);
@@ -115,6 +115,11 @@ function App() {
         setWidth(data.size.width)
         makeItResponsive(data.size.width); 
     }
+
+
+    useEffect(() => {
+      makeItResponsive(width);
+    })
 
 
     return (
