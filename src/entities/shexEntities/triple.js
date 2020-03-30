@@ -76,7 +76,7 @@ class Triple {
 
 
 
-    toString(tripleSeparator,constSeparator){
+    toString(tripleSeparator,constSeparator,refSeparator){
         let str='';
         let type=this.getType();
         let constraint = this.getConstraint();
@@ -91,7 +91,7 @@ class Triple {
                     str+=' '+f+' ';
                 })
             }
-            str+= constSeparator+shapeRef+' '+cardinality+'  ;\n';
+            str+= constSeparator+shapeRef+refSeparator+cardinality+'  ;\n';
         }
         return str;
 
