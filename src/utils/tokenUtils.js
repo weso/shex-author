@@ -212,15 +212,14 @@ function getTriple(id,singleTriple,shapeId) {
         if(token.type == 'constraint' || token.type == 'constraintKeyword' ){
             constraint = getConstraint(token.string);
         }
+        
 
         if(token.type == 'valueSet'){
-            if(!token.string.startsWith('@')){// LANTAG NOT SUPPORTED AT THE MOMENT
-                valueSet.push(new ValueSetValue(valueSet.length,getValueSetValue(token.string)));
+            if(token.string.startsWith('@')){// LANTAG NOT SUPPORTED AT THE MOMENT
+                Codemirror.signal(Editor.getInstance().getYashe(),'forceError','LANTAG_ERR');
             }else{
-                console.log('asd    ')
-                Codemirror.signal(Editor.getInstance().getYashe(),'forceError');
+                 valueSet.push(new ValueSetValue(valueSet.length,getValueSetValue(token.string)));
             }
-            
         }
 
         if(token.type == 'at' ){
@@ -259,6 +258,12 @@ function getTriple(id,singleTriple,shapeId) {
 
             Codemirror.signal(Editor.getInstance().getYashe(),'forceError');
         }
+
+       
+        if(token.string == '~'){
+            Codemirror.signal(Editor.getInstance().getYashe(),'forceError','EXCLUSION_ERR');
+        }
+            
 
         if(token.string == '{'){
             Codemirror.signal(Editor.getInstance().getYashe(),'forceError');
