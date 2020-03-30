@@ -6,7 +6,7 @@ function BooleanValue (props) {
     
     const {type,isOpen} = props;
     const context = useContext(AppContext);
-    const [boolean,setBoolean]=useState('');
+    const [boolean,setBoolean]=useState(type.value);
 
     const handleBooleanChange = function(e){
         let newBoolean = e.target.value;

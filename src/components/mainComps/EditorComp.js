@@ -85,7 +85,7 @@ function EditorComp() {
                 };
             };
            
-
+/*
            
             y.on('keyup',debounce(function( e ) {
                     if(!y.hasErrors(y)){
@@ -105,7 +105,7 @@ function EditorComp() {
                 }, 500)   
             ); 
         
-   
+   */
 
             y.on('delete', function() {
                 oldShapes = replaceShapes(getNewShapes());
@@ -133,12 +133,12 @@ function EditorComp() {
 
             //Fired after a key is handled through a key map
             //(for example "Ctrl-Z")
-            y.on('keyHandled', function() {
+        /*     y.on('keyHandled', function() {
                 if(!y.hasErrors()){
                     oldShapes = replaceShapes(getNewShapes());
                     updatePrefixes(getNewPrefixes());
                 }
-            });
+            }); */
  
             
 

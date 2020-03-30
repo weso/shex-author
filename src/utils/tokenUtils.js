@@ -179,7 +179,7 @@ function getTriples(shapeId,shape) {
         let start = getStart(shape);
         for(let i=start;i<shape.length;i++){
             singleTriple.push(shape[i])
-            if((shape[i].type == 'punc' &&  shape[i].string!='[' &&  shape[i].string!=']')// finish of the triple ';' 
+            if((shape[i].type == 'punc' &&  shape[i].string==';')// finish of the triple ';' 
                 || i==shape.length-1){  // finish of the last triple without ';'
                 if(singleTriple.length!=1){ //This line is neccesary when last triple of the shape ends with ';'
                     triples.push(getTriple(triples.length,singleTriple,shapeId));
@@ -214,7 +214,13 @@ function getTriple(id,singleTriple,shapeId) {
         }
 
         if(token.type == 'valueSet'){
-            valueSet.push(new ValueSetValue(valueSet.length,getValueSetValue(token.string)));
+            if(!token.string.startsWith('@')){// LANTAG NOT SUPPORTED AT THE MOMENT
+                valueSet.push(new ValueSetValue(valueSet.length,getValueSetValue(token.string)));
+            }else{
+                console.log('asd    ')
+                Codemirror.signal(Editor.getInstance().getYashe(),'forceError');
+            }
+            
         }
 
         if(token.type == 'at' ){
@@ -248,8 +254,10 @@ function getTriple(id,singleTriple,shapeId) {
             token.type != 'at' && 
             token.type != 'facet' && 
             token.type != 'cardinality' && 
-            token.type != 'punc' ){
-           Codemirror.signal(Editor.getInstance().getYashe(),'forceError');
+            token.type != 'punc' &&
+            token.type !='comment'){
+
+            Codemirror.signal(Editor.getInstance().getYashe(),'forceError');
         }
 
         if(token.string == '{'){

@@ -6,7 +6,7 @@ function InputValue (props) {
     
     const {type,isOpen} = props;
     const context = useContext(AppContext);
-    const [name,setName]=useState('');
+    const [name,setName]=useState(type.value);
 
     const handleNameChange = function(e){
         let newName = e.target.value;

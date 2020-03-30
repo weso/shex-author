@@ -7,7 +7,7 @@ function NumberValue (props) {
     
     const {type,isOpen} = props;
     const context = useContext(AppContext);
-    const [number,setNumber]=useState(0);
+    const [number,setNumber]=useState(type.value);
 
     const handleNumberChange = function(e){
         let newNumber = e;
