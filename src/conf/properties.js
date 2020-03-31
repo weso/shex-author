@@ -1,5 +1,5 @@
 export const SHAPE_COLORS = {
-        label:'#C6E2FF',
+        label:'#222',
         header:'#C6E2FF',
         custom:'#C6E2FF',
         customFilled:'#C6E2FF',

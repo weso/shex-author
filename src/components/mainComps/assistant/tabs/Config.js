@@ -9,30 +9,42 @@ import ColorComp from './color/ColorComp';
 
 
 import {SHAPE_COLORS} from '../../../../conf/properties';
+import { ChromePicker } from 'react-color';
+import reactCSS from 'reactcss';
 
+import ShapeView from './color/ShapeView';
+import ColorPicker from './color/ColorPicker';
 function Config (props) {
 
         const context = useContext(AppContext);
         const asssistContext = useContext(AssistContext);
   
-        const handle = function(e){
-            console.log(SHAPE_COLORS)
-            SHAPE_COLORS.label = 'red';
-            //asssistContext.setColor(e.hex)
-        }
+        const [color,setColor] = useState('#222');
+        const [isDisplay,setDisplay] = useState(false);
 
         //const [color,setColor] = useState(asssistContext.colors[element].color);
 
+        const colors={
+            label:{color:SHAPE_COLORS.label},
+            header:{background:SHAPE_COLORS.header},
+        }
+
+       
+
+        const handleChange = function(color,element){
+            setColor(color)
+
+            SHAPE_COLORS[element] = color;
+            
+        }
+
+
         return ( <div className="shape">
-                    <div className='header' >            
-                        <label>Shape</label>
-                        <Textbox/> 
-                        <button className="buildBtn mdc-icon-button material-icons">build</button>
-                        <button className="deleteShapeBtn mdc-icon-button material-icons" >delete</button>
-                        <button className="collapseBtn mdc-icon-button material-icons">menu</button>
-                    </div>
-                    <ColorComp customClass="customShape"/>
-                    <button onClick={handle}>STFU MIREK</button>
+                    <ShapeView colors={colors}/>
+                    <ColorPicker customClass='customShape' 
+                    element='label' handleChange={handleChange}/>
+                    <ChromePicker color={color} onChange={(e)=>handleChange(e.hex,'label')} />
+                    
                 </div>);
 }
 

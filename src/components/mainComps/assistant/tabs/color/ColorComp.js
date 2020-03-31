@@ -15,7 +15,7 @@ function ColorComp (props) {
 
     const context = useContext(AppContext);
     const asssistContext = useContext(AssistContext);
-    const {customClass} = props;
+    const {customClass,colors} = props;
     
    
     return (
@@ -24,11 +24,11 @@ function ColorComp (props) {
                  <div className='customZone'>
                     <div className='customElement'>
                         <label>Label</label>
-                        <ColorPicker element='label'/>
+                        <ColorPicker colors={colors} element='label'/>
                     </div>
                     <div className='customElement'>
                         <label>Header</label>
-                        <ColorPicker element='header'/>
+                        <ColorPicker colors={colors} element='header'/>
                     </div>
                     
                 </div>

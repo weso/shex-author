@@ -10,11 +10,13 @@ import '../../../../../css/color/colors.css'
 import { ChromePicker } from 'react-color';
 import reactCSS from 'reactcss';
 
+import {SHAPE_COLORS} from '../../../../../conf/properties';
+
 function ColorPicker (props) {
 
     const context = useContext(AppContext);
     const asssistContext = useContext(AssistContext);
-    const {customClass,element} = props;
+    const {customClass,element,handleChange} = props;
     const [color,setColor] = useState(asssistContext.colors[element].color);
     const [isDisplay,setDisplay] = useState(false);
 
@@ -26,16 +28,11 @@ function ColorPicker (props) {
          setDisplay(false);
     };
 
-    const handleChange = (e) => {
-        setColor(e.hex);
-        //aux.label.color = e.hex;
-        asssistContext.colors.label = {color:e.hex}
-       // console.log(asssistContext.colors.label)
-        let h  = document.getElementsByClassName('header');
+    const handle = (e) => {
+      setColor(e.hex);
 
-        for(let i=0;i<h.length;i++){
-            h[i].style.background = e.hex
-        }
+      handleChange(e.hex,element)
+      
     };
 
     const styles = reactCSS({
@@ -78,7 +75,7 @@ function ColorPicker (props) {
                 { isDisplay ? 
                     <div style={ styles.popover }>
                         <div style={ styles.cover } onClick={handleClose}/>
-                        <ChromePicker color={color} onChange={handleChange} />
+                        <ChromePicker color={color} onChange={handle} />
                     </div> 
                     
                     : null 
