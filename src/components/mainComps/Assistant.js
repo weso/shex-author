@@ -19,7 +19,36 @@ function AssistantComp (props) {
         const [isPrefixesOpen, setPrefixesOpen] = useState(false);
         const [isConfigOpen, setConfigOpen] = useState(true);
 
-        const [color,setColor] = useState('#C6E2FF');
+        const assistColors = {
+                shape:{
+                        label:'#C6E2FF',
+                        header:'#C6E2FF',
+                        custom:'#C6E2FF',
+                        customFilled:'#C6E2FF',
+                        delete:'#C6E2FF',
+                        deleteFilled:'#C6E2FF'
+                },
+                triple:{
+                        label:'#C6E2FF',
+                        header:'#C6E2FF',
+                        custom:'#C6E2FF',
+                        customFilled:'#C6E2FF',
+                        delete:'#C6E2FF',
+                        deleteFilled:'#C6E2FF'
+                }
+                
+
+        }
+        const [colors,setColors] = useState(assistColors);
+        
+        let as = colors;
+        as.shape.label='red'
+
+        const aux = function(){
+                setColors([...colors,{shape:{label:'red'}}]);
+console.log(colors)
+        }
+        
 
         return (
                 <AssistContext.Provider
@@ -31,8 +60,8 @@ function AssistantComp (props) {
                         setShapesOpen:setShapesOpen,
                         setPrefixesOpen:setPrefixesOpen,
                         setConfigOpen:setConfigOpen,
-                        color:color,
-                        setColor:setColor
+                        colors:colors,
+
                         }
                 }>
                         <Collapse isOpen={context.isAssistantOpen} className='assistCollapse'>
@@ -45,6 +74,7 @@ function AssistantComp (props) {
                                 <div className='containerAssist'>                                    
                                         <AssistNav/>
                                         <AssistContent/>
+                                        <button onClick={aux}>asdasds</button>
                                         <AssistLoader/>
                                         <AssistError/>                               
                                 </div>
