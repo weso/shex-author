@@ -106,6 +106,7 @@ function ShapeHeader (props) {
                         regMsg: 'Invalid name'
                     }}
                     title="Shape Name"
+                    disabled={asssistContext.isConfigOpen}
                     /> 
 
             
@@ -114,7 +115,7 @@ function ShapeHeader (props) {
           
                     <button style={customStyle} className="buildBtn mdc-icon-button material-icons" 
                     onClick={pickle}
-                    disabled={disabled} 
+                    disabled={disabled || asssistContext.isConfigOpen}
                     title="Customize Shape">
                     build
 
@@ -137,13 +138,14 @@ function ShapeHeader (props) {
 
             <button className="deleteShapeBtn mdc-icon-button material-icons" 
                     onClick={()=>context.deleteShape(shape.id)}
+                    disabled={asssistContext.isConfigOpen}
                     title="Delete Shape">
                     delete
             </button>
 
             <button className="collapseBtn mdc-icon-button material-icons" 
                     onClick={collapseTriples} 
-                    disabled={disabled} 
+                    disabled={disabled || asssistContext.isConfigOpen}
                     title="Triple Constraints">
                     {colapseBtn}
             </button>

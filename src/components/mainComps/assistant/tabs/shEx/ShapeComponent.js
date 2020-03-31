@@ -99,7 +99,7 @@ function ShapeComponent (props) {
 
                 <ColorComp customClass="customShape"/>
                     
-                <Collapse   isOpen={isTriplesOpen}>
+                <Collapse  isOpen={isTriplesOpen}>
 
                         
                     
