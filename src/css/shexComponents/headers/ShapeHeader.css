@@ -62,8 +62,6 @@
 }
 
 .deleteShapeBtn{
-    background: #79aff5;
-    color: white;
     border-radius: 10px;
     outline: none;
     border: none;
@@ -87,7 +85,6 @@
 
 .collapseBtn{
     background: transparent;
-    color:#222;
     border-radius: 10px;
     border: none;
     height: 100%;

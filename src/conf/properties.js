@@ -1,10 +1,11 @@
 export const SHAPE_COLORS = {
         label:'#222',
         header:'#C6E2FF',
-        custom:'#C6E2FF',
-        customFill:'#C6E2FF',
-        delete:'#C6E2FF',
-        deleteFill:'#C6E2FF',
-        collapse:'#C6E2FF',
+        custom:'#3d3d3d',
+        customFill:'#79aff5',
+        delete:'#79aff5',
+        deleteFill:'#FFFFFF',
+        collapse:'#222',
+        body:'#EBF4FF'
 }
 

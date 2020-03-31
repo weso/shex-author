@@ -40,7 +40,6 @@ function ShapeHeader (props) {
     const styles ={
         header:asssistContext.styles.header,
         label:asssistContext.styles.label,
-
         delete:asssistContext.styles.delete,
         collapse:asssistContext.styles.collapse
     }

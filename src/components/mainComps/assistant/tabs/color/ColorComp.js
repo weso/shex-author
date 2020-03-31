@@ -19,7 +19,7 @@ function ColorComp (props) {
     
     return (
         <div className='customColapse'>
-            <div className={customClass}>
+            <div className={customClass} style={asssistContext.styles.body}>
                  <div className='customZone'>
                     <div className='customElement'>
                         <label>Label</label>
@@ -45,7 +45,14 @@ function ColorComp (props) {
                         <label>DeleteFill Btn</label>
                         <ColorPicker element='deleteFill'/>
                     </div>
-                    
+                    <div className='customElement'>
+                        <label>Collapse Btn</label>
+                        <ColorPicker element='collapse'/>
+                    </div>
+                    <div className='customElement'>
+                        <label>Shape Body</label>
+                        <ColorPicker element='body'/>
+                    </div>
                     
                 </div>
             </div> 

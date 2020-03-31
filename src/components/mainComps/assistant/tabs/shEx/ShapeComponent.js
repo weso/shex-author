@@ -69,6 +69,9 @@ function ShapeComponent (props) {
         }
     }
 
+    const styles ={
+        body:asssistContext.styles.body,
+    }
 
 
     return (
@@ -88,7 +91,7 @@ function ShapeComponent (props) {
 
                     
                 <Collapse  isOpen={isTriplesOpen}>
-                     <div className="triples">
+                     <div className="triples" style={styles.body}>
                         {triples.map(triple =>
                             <TripleComponent key={triple.id}
                                             shape={shape} 

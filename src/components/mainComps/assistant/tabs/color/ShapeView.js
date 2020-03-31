@@ -19,7 +19,8 @@ function ShapeView (props) {
                         className="buildBtn mdc-icon-button material-icons">build</button>
                         <button style={asssistContext.styles.delete} 
                         className="deleteShapeBtn mdc-icon-button material-icons" >delete</button>
-                        <button className="collapseBtn mdc-icon-button material-icons">menu</button>
+                        <button style={asssistContext.styles.collapse} 
+                        className="collapseBtn mdc-icon-button material-icons">menu</button>
                     </div>);
 }
 

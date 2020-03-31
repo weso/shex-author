@@ -33,6 +33,7 @@ function AssistantComp (props) {
                         background:SHAPE_COLORS.delete
                 },
                 collapse:{color:SHAPE_COLORS.collapse},
+                body:{background:SHAPE_COLORS.body},
         
         }
         const [color,setColor] = useState('red');
