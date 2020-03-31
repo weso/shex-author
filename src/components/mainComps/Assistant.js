@@ -25,12 +25,12 @@ function AssistantComp (props) {
                 label:{color:SHAPE_COLORS.label},
                 header:{background:SHAPE_COLORS.header},
                 custom:{
-                        color:SHAPE_COLORS.custom,
-                        background:SHAPE_COLORS.customFill
+                        color:SHAPE_COLORS.customFill,
+                        background:SHAPE_COLORS.custom
                 },
                 delete:{
-                        color:SHAPE_COLORS.delete,
-                        background:SHAPE_COLORS.deleteFilled
+                        color:SHAPE_COLORS.deleteFill,
+                        background:SHAPE_COLORS.delete
                 },
                 collapse:{color:SHAPE_COLORS.collapse},
         

@@ -4,7 +4,7 @@ export const SHAPE_COLORS = {
         custom:'#C6E2FF',
         customFill:'#C6E2FF',
         delete:'#C6E2FF',
-        deleteFilled:'#C6E2FF',
+        deleteFill:'#C6E2FF',
         collapse:'#C6E2FF',
 }
 

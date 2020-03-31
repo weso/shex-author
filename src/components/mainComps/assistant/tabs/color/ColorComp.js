@@ -37,6 +37,14 @@ function ColorComp (props) {
                         <label>CustomFill Btn</label>
                         <ColorPicker element='customFill'/>
                     </div>
+                    <div className='customElement'>
+                        <label>Delete Btn</label>
+                        <ColorPicker element='delete'/>
+                    </div>
+                    <div className='customElement'>
+                        <label>DeleteFill Btn</label>
+                        <ColorPicker element='deleteFill'/>
+                    </div>
                     
                     
                 </div>
