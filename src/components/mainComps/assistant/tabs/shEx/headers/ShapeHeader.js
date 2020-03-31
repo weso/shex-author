@@ -5,6 +5,11 @@ import {AssistContext} from '../../../../Assistant';
 import {ShapeContext} from '../ShapeComponent';
 import {PN_LOCAL,IRI_REF} from '../../../../../../utils/regExpUtils';
 import '../../../../../../css/shexComponents/headers/ShapeHeader.css';
+import { 
+
+    TwitterPicker,
+        ChromePicker,CustomPicker
+        } from 'react-color';
 
 
 function ShapeHeader (props) {
@@ -12,7 +17,7 @@ function ShapeHeader (props) {
     const context = useContext(AppContext);
     const shapeContext = useContext(ShapeContext);
     const asssistContext = useContext(AssistContext);
-    const disabled = shapeContext.disabled;
+    const disabled = shapeContext ? shapeContext.disabled : false;
     
     const {shape,customizeShape,collapseTriples,colapseBtn} = props;
     const [name,setName] = useState(shape.type.value);
@@ -28,6 +33,7 @@ function ShapeHeader (props) {
     }
 
     const handleKeyUp = function(e){
+       
         if(e.target.value==''){
             shapeContext.setDisabled(true);
         }else{
@@ -39,9 +45,50 @@ function ShapeHeader (props) {
         background: asssistContext.color
     }
 
+   
+
+
+
+    const popover = {
+      position: 'absolute',
+      margin:'10px'
+    }
+
+     const cover = {
+      position: 'fixed',
+      top: '0px',
+      right: '0px',
+      bottom: '0px',
+      left: '0px',
+    }
+  
+
+    const [picker,setPicker] = useState(false);
+
+    const pickle = function(){
+        setPicker(!picker);
+        customizeShape();
+    
+    }
+
+    const  handleClose = () => {
+        setPicker(false)
+    };
+
+    const handle = function(e){
+
+            asssistContext.setColor(e.hex)
+    }
+
+    const [customColor,setColor] = useState('#C6E2FF');
+    const customStyle = {
+        color:customColor
+    }
 
 
     return (
+
+        
         <div className='header' style={myStyle}>            
             <label>Shape</label>
             <Textbox
@@ -62,12 +109,31 @@ function ShapeHeader (props) {
                     /> 
 
             
-            <button className="buildBtn mdc-icon-button material-icons" 
-                    onClick={customizeShape}
+           
+
+          
+                    <button style={customStyle} className="buildBtn mdc-icon-button material-icons" 
+                    onClick={pickle}
                     disabled={disabled} 
                     title="Customize Shape">
                     build
-            </button>
+
+
+                    { picker ? <div
+                        style={{
+                        position: 'absolute',
+         
+                        transform: 'translateX(-80%)',
+                        marginTop: 15,
+                        }}
+                    >
+                       <ChromePicker
+                       
+                         color={customColor}
+                        onChange={(e)=>{setColor(e.hex)}}/>
+                    </div> : null }
+                  </button>
+                 
 
             <button className="deleteShapeBtn mdc-icon-button material-icons" 
                     onClick={()=>context.deleteShape(shape.id)}

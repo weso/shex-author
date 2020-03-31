@@ -5,9 +5,9 @@ import {AssistContext} from '../../../Assistant';
 import ShapeHeader from  './headers/ShapeHeader';
 import CustomComp from './customize/CustomComp';
 import TripleComponent from './TripleComponent';
-
 import Triple from '../../../../../entities/shexEntities/triple';
-import axios from 'axios';
+
+import ColorComp from './color/ColorComp';
 
 export const ShapeContext = React.createContext();
 
@@ -45,6 +45,7 @@ function ShapeComponent (props) {
         
     }
 
+
     const customizeShape = function(){
         console.log(asssistContext)
         if(asssistContext.isConfigOpen){
@@ -78,6 +79,8 @@ function ShapeComponent (props) {
         }
     }
 
+
+
     return (
 
         <ShapeContext.Provider value={{disabled:disabled,setDisabled:setDisabled}}>
@@ -92,6 +95,9 @@ function ShapeComponent (props) {
                             qualifier={true}
                             bnode={true}
                             customClass="customShape"/>
+
+
+                <ColorComp customClass="customShape"/>
                     
                 <Collapse   isOpen={isTriplesOpen}>
 

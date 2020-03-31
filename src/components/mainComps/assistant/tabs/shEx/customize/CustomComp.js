@@ -1,6 +1,7 @@
 import React,{useState,useContext} from 'react';
 import { Collapse } from 'reactstrap';
 import {AppContext} from '../../../../../../App';
+import {AssistContext} from '../../../../Assistant';
 import TypeConfig from './config/TypeConfig';
 import PrefixConfig from './config/PrefixConfig';
 import QualifierConfig from './config/QualifierConfig';
@@ -10,6 +11,7 @@ import '../../../../../../css/shexComponents/customize/Custom.css'
 function CustomComp (props) {
 
     const context = useContext(AppContext);
+    const asssistContext = useContext(AssistContext);
     const {entity,isCustomOpen,qualifier,bnode,customClass} = props;
 
     let initialPrefix = 'example';

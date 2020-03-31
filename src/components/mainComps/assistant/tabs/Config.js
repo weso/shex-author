@@ -6,7 +6,14 @@ import ShapeComponent from './shEx/ShapeComponent';
 import Shape from '../../../../entities/shexEntities/shape';
 import Triple from '../../../../entities/shexEntities/triple';
 import "react-toggle/style.css";
-import { SketchPicker } from 'react-color';
+
+import { Textbox } from 'react-inputs-validation';
+import ShapeHeader from  './shEx/headers/ShapeHeader';
+import { 
+
+    TwitterPicker,
+        ChromePicker,
+        } from 'react-color';
 
 
 // UN COMPONENTE PA ESTO?
@@ -22,20 +29,15 @@ function Config (props) {
             asssistContext.setColor(e.hex)
         }
 
-        return ( 
-                <div>
+        return (  <div>
                     {context.shapes.map(shape =>{return  <ShapeComponent shape={shape} key={shape.id}/> })}
-                        <div className="addCont">
-                            <button className="addShapeButton"
-                                    onClick={context.addShape}
-                                    title="Add Shape">
-                                    + Shape
-                            </button>
-                        </div>
-                        <SketchPicker 
-                        
-                        color={asssistContext.color}
-                        onChangeComplete={handle}/>;
+                    <div className="addCont">
+                        <button className="addShapeButton"
+                                onClick={context.addShape}
+                                title="Add Shape">
+                                + Shape
+                        </button>
+                    </div>
                 </div>);
 }
 
