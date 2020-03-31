@@ -40,8 +40,8 @@ function ShapeHeader (props) {
     return (
 
 
-        <div className='header' style={{background:SHAPE_COLORS.header}}>            
-            <label style={{color:SHAPE_COLORS.label}}>Shape</label>
+        <div className='header' style={asssistContext.styles.header}>            
+            <label style={asssistContext.styles.label}>Shape</label>
             <Textbox
                     attributesInput={{ 
                         id: 'Name',

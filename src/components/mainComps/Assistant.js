@@ -46,6 +46,7 @@ function AssistantComp (props) {
                         setShapesOpen:setShapesOpen,
                         setPrefixesOpen:setPrefixesOpen,
                         setConfigOpen:setConfigOpen,
+                        styles:styles,
                         handleChange:handleChange
                         }
                 }>
