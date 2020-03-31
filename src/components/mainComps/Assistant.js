@@ -18,7 +18,7 @@ function AssistantComp (props) {
         const [isShapesOpen, setShapesOpen] = useState(false);
         const [isPrefixesOpen, setPrefixesOpen] = useState(false);
         const [isConfigOpen, setConfigOpen] = useState(true);
-
+/*
         const assistColors = {
                 shape:{
                         label:'#C6E2FF',
@@ -39,7 +39,16 @@ function AssistantComp (props) {
                 
 
         }
-        const [colors,setColors] = useState(assistColors);
+        */
+
+          const styles = {
+                label:{color:'red'},
+                header:{background:'black'}
+        
+        }
+        const [colors,setColors] = useState(styles);
+
+
      
 
         return (
