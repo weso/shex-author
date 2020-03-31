@@ -10,6 +10,8 @@ import '../../css/resizable/react-resizable.css';
 
 import { Resizable, ResizableBox } from 'react-resizable';
 
+import {SHAPE_COLORS} from '../../conf/properties';
+
 export const AssistContext = React.createContext();
 
 function AssistantComp (props) {
@@ -18,36 +20,19 @@ function AssistantComp (props) {
         const [isShapesOpen, setShapesOpen] = useState(false);
         const [isPrefixesOpen, setPrefixesOpen] = useState(false);
         const [isConfigOpen, setConfigOpen] = useState(true);
-/*
-        const assistColors = {
-                shape:{
-                        label:'#C6E2FF',
-                        header:'#C6E2FF',
-                        custom:'#C6E2FF',
-                        customFilled:'#C6E2FF',
-                        delete:'#C6E2FF',
-                        deleteFilled:'#C6E2FF'
-                },
-                triple:{
-                        label:'#C6E2FF',
-                        header:'#C6E2FF',
-                        custom:'#C6E2FF',
-                        customFilled:'#C6E2FF',
-                        delete:'#C6E2FF',
-                        deleteFilled:'#C6E2FF'
-                }
-                
 
-        }
-        */
 
-          const styles = {
-                label:{color:'red'},
-                header:{background:'black'}
+        const styles = {
+                label:{color:SHAPE_COLORS.label},
+                header:{background:SHAPE_COLORS.header},
         
         }
-        const [colors,setColors] = useState(styles);
+        const [color,setColor] = useState('red');
 
+         const handleChange = function(color,element){
+            setColor(color);//NECESSARY TO  FORCE RENDER
+            SHAPE_COLORS[element] = color;
+        }
 
      
 
@@ -61,8 +46,7 @@ function AssistantComp (props) {
                         setShapesOpen:setShapesOpen,
                         setPrefixesOpen:setPrefixesOpen,
                         setConfigOpen:setConfigOpen,
-                        colors:colors,
-                        setColors:setColors
+                        handleChange:handleChange
                         }
                 }>
                         <Collapse isOpen={context.isAssistantOpen} className='assistCollapse'>
