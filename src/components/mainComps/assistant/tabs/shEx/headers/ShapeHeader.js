@@ -36,20 +36,24 @@ function ShapeHeader (props) {
             shapeContext.setDisabled(false);
         }
     }
-    const cHeader = asssistContext.colors.shape.header;
+
     const styles = {
-        header:{
-            background:cHeader
-        }
+        label:{color:asssistContext.colors.shape.label},
+        header:{background:asssistContext.colors.shape.header}
         
+    }
+
+    const hande = function(){
+        console.log(styles)
+        console.log(asssistContext.colors.shape)
     }
 
  
     return (
 
-        
-        <div className='header' style={styles.header}>            
-            <label>Shape</label>
+
+        <div className='header' style={{background:asssistContext.colors.shape.header}}>            
+            <label style={styles.label}>Shape</label>
             <Textbox
                     attributesInput={{ 
                         id: 'Name',
@@ -74,8 +78,11 @@ function ShapeHeader (props) {
             title="Customize Shape">
             build
             </button>
-                 
-
+            <button className="buildBtn mdc-icon-button material-icons" 
+            onClick={hande}
+            title="Customize Shape">
+            build
+            </button>
             <button className="deleteShapeBtn mdc-icon-button material-icons" 
                     onClick={()=>context.deleteShape(shape.id)}
                     disabled={asssistContext.isConfigOpen}

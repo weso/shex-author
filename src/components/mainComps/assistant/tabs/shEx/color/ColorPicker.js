@@ -17,9 +17,8 @@ function ColorPicker (props) {
 
     const context = useContext(AppContext);
     const asssistContext = useContext(AssistContext);
-    const {customClass} = props;
-    
-    const [color,setColor] = useState('#C6E2FF');
+    const {customClass,element} = props;
+    const [color,setColor] = useState(asssistContext.colors.shape[element]);
     const [isDisplay,setDisplay] = useState(false);
 
     const handleClick = () => {
@@ -31,8 +30,10 @@ function ColorPicker (props) {
     };
 
     const handleChange = (e) => {
-        console.log(e)
-         setColor(e.hex);
+        setColor(e.hex);
+        let aux = asssistContext.colors;
+        aux.shape[element] = e.hex; 
+        asssistContext.setColors(aux);
     };
 
     const styles = reactCSS({

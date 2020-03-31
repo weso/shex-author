@@ -29,9 +29,26 @@ function ColorComp (props) {
                  <div className='customZone'>
                     <div className='customElement'>
                         <label>Label</label>
-                        <ColorPicker/>
+                        <ColorPicker element='label'/>
                     </div>
                     <div className='customElement'>
+                        <label>Header</label>
+                        <ColorPicker element='header'/>
+                    </div>
+                    
+                </div>
+            </div>
+        </Collapse>                 
+    );
+                                   
+    
+}
+
+
+export default ColorComp;
+
+/*
+<div className='customElement'>
                         <label>Header</label>
                         <ColorPicker/>
                     </div>
@@ -50,15 +67,4 @@ function ColorComp (props) {
                     <div className='customElement'>
                         <label>Collapse Btn</label>
                         <ColorPicker/>
-                    </div>
-                </div>
-            </div>
-        </Collapse>                 
-    );
-                                   
-    
-}
-
-
-export default ColorComp;
-
+                    </div>*/

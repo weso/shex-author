@@ -40,15 +40,7 @@ function AssistantComp (props) {
 
         }
         const [colors,setColors] = useState(assistColors);
-        
-        let as = colors;
-        as.shape.label='red'
-
-        const aux = function(){
-                setColors([...colors,{shape:{label:'red'}}]);
-console.log(colors)
-        }
-        
+     
 
         return (
                 <AssistContext.Provider
@@ -61,7 +53,7 @@ console.log(colors)
                         setPrefixesOpen:setPrefixesOpen,
                         setConfigOpen:setConfigOpen,
                         colors:colors,
-
+                        setColors:setColors
                         }
                 }>
                         <Collapse isOpen={context.isAssistantOpen} className='assistCollapse'>
@@ -74,7 +66,6 @@ console.log(colors)
                                 <div className='containerAssist'>                                    
                                         <AssistNav/>
                                         <AssistContent/>
-                                        <button onClick={aux}>asdasds</button>
                                         <AssistLoader/>
                                         <AssistError/>                               
                                 </div>
