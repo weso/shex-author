@@ -36,9 +36,8 @@ function AssistantComp (props) {
                 body:{background:SHAPE_COLORS.body},
         
         }
-        const [color,setColor] = useState('red');
-
-         const handleChange = function(color,element){
+        const [color,setColor] = useState('#fffff');
+        const handleChange = function(color,element){
             setColor(color);//NECESSARY TO  FORCE RENDER
             SHAPE_COLORS[element] = color;
         }

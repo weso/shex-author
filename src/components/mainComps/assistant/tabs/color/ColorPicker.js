@@ -73,7 +73,7 @@ function ColorPicker (props) {
                 { isDisplay ? 
                     <div style={ styles.popover }>
                         <div style={ styles.cover } onClick={handleClose}/>
-                        <ChromePicker color={color} onChange={handle} />
+                        <ChromePicker color={color} onChange={handle} onChangeComplete={handleClose} />
                     </div> 
                     
                     : null 

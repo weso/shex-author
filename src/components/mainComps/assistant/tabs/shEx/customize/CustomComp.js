@@ -32,12 +32,15 @@ function CustomComp (props) {
         }    
     }
     
+    const styles ={
+        body:asssistContext.styles.body,
+    }
 
     return (
         <Collapse isOpen={isCustomOpen}
                   className='customColapse'>
 
-            <div className={customClass}>
+            <div className={customClass} style={styles.body}>
                 <TypeConfig 
                     entity={entity}
                     setPrefix={setPrefix}
