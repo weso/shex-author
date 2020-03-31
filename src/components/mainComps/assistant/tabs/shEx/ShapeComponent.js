@@ -70,6 +70,7 @@ function ShapeComponent (props) {
     }
 
     const styles ={
+        header:asssistContext.styles.header,
         body:asssistContext.styles.body,
     }
 
@@ -77,7 +78,7 @@ function ShapeComponent (props) {
     return (
 
         <ShapeContext.Provider value={{disabled:disabled,setDisabled:setDisabled}}>
-            <div className="shape">
+            <div className="shape" style={styles.header}>
                 <ShapeHeader shape={shape} 
                             customizeShape={customizeShape} 
                             collapseTriples={collapseTriples} 
