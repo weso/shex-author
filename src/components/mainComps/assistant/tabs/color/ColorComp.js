@@ -15,7 +15,7 @@ function ColorComp (props) {
 
     const context = useContext(AppContext);
     const asssistContext = useContext(AssistContext);
-    const {customClass,handleChange} = props;
+    const {customClass} = props;
     
     return (
         <div className='customColapse'>
@@ -23,12 +23,21 @@ function ColorComp (props) {
                  <div className='customZone'>
                     <div className='customElement'>
                         <label>Label</label>
-                        <ColorPicker  element='label' handleChange={handleChange}/>
+                        <ColorPicker  element='label'/>
                     </div>
                     <div className='customElement'>
                         <label>Header</label>
-                        <ColorPicker  element='header' handleChange={handleChange}/>
+                        <ColorPicker  element='header'/>
                     </div>
+                    <div className='customElement'>
+                        <label>Custom Btn</label>
+                        <ColorPicker element='custom'/>
+                    </div>
+                    <div className='customElement'>
+                        <label>CustomFill Btn</label>
+                        <ColorPicker element='customFill'/>
+                    </div>
+                    
                     
                 </div>
             </div> 

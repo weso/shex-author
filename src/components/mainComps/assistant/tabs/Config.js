@@ -16,25 +16,10 @@ import ShapeView from './color/ShapeView';
 
 function Config (props) {
 
-        const context = useContext(AppContext);
-        const asssistContext = useContext(AssistContext);
-  
-        const colors={
-            label:{color:SHAPE_COLORS.label},
-            header:{background:SHAPE_COLORS.header},
-        }
-
-       
-        const [color,setColor] = useState('#222');
-        const handleChange = function(color,element){
-            setColor(color);//I don't know why is needed
-            SHAPE_COLORS[element] = color;
-        }
-
 
         return ( <div className="shape">
-                    <ShapeView colors={colors}/>
-                    <ColorComp customClass='customShape' handleChange={handleChange}/>
+                    <ShapeView/>
+                    <ColorComp customClass='customShape'/>
                 </div>);
 }
 

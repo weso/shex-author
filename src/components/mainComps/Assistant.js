@@ -21,10 +21,18 @@ function AssistantComp (props) {
         const [isPrefixesOpen, setPrefixesOpen] = useState(false);
         const [isConfigOpen, setConfigOpen] = useState(true);
 
-
         const styles = {
                 label:{color:SHAPE_COLORS.label},
                 header:{background:SHAPE_COLORS.header},
+                custom:{
+                        color:SHAPE_COLORS.custom,
+                        background:SHAPE_COLORS.customFill
+                },
+                delete:{
+                        color:SHAPE_COLORS.delete,
+                        background:SHAPE_COLORS.deleteFilled
+                },
+                collapse:{color:SHAPE_COLORS.collapse},
         
         }
         const [color,setColor] = useState('red');

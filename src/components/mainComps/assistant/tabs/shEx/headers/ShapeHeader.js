@@ -37,11 +37,19 @@ function ShapeHeader (props) {
         }
     }
 
+    const styles ={
+        header:asssistContext.styles.header,
+        label:asssistContext.styles.label,
+
+        delete:asssistContext.styles.delete,
+        collapse:asssistContext.styles.collapse
+    }
+
     return (
 
 
-        <div className='header' style={asssistContext.styles.header}>            
-            <label style={asssistContext.styles.label}>Shape</label>
+        <div className='header' style={styles.header}>            
+            <label style={styles.label}>Shape</label>
             <Textbox
                     attributesInput={{ 
                         id: 'Name',
@@ -60,6 +68,7 @@ function ShapeHeader (props) {
                     /> 
 
             <button className="buildBtn mdc-icon-button material-icons" 
+                    style={asssistContext.styles.custom} 
                     onClick={customizeShape}
                     disabled={disabled}
                     title="Customize Shape">
@@ -67,6 +76,7 @@ function ShapeHeader (props) {
             </button>
            
             <button className="deleteShapeBtn mdc-icon-button material-icons" 
+                    style={styles.delete}
                     onClick={()=>context.deleteShape(shape.id)}
                     title="Delete Shape">
                     delete
@@ -74,6 +84,7 @@ function ShapeHeader (props) {
             
 
             <button className="collapseBtn mdc-icon-button material-icons" 
+                    style={styles.collapse}
                     onClick={collapseTriples} 
                     disabled={disabled}
                     title="Triple Constraints">
