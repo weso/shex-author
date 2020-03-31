@@ -7,8 +7,6 @@ import CustomComp from './customize/CustomComp';
 import TripleComponent from './TripleComponent';
 import Triple from '../../../../../entities/shexEntities/triple';
 
-import ColorComp from './color/ColorComp';
-
 export const ShapeContext = React.createContext();
 
 function ShapeComponent (props) {
@@ -47,25 +45,17 @@ function ShapeComponent (props) {
 
 
     const customizeShape = function(){
-        console.log(asssistContext)
-        if(asssistContext.isConfigOpen){
-            console.log('yuhuuu')
+        //Completly collapsed shape open just customShape
+        if(!isCustomOpen && !isTriplesOpen ){
+            setCustomOpen(true);
+            setTriplesOpen(false);
         }else{
-
-            //Completly collapsed shape open just customShape
-            if(!isCustomOpen && !isTriplesOpen ){
-                setCustomOpen(true);
-                setTriplesOpen(false);
-            }else{
-                //CustomShape opened  opens triples on collapse
-                setCustomOpen(!isCustomOpen);
-                setTriplesOpen(!isTriplesOpen);
-            }
-
-            setColapseBtn('menu');
-
+            //CustomShape opened  opens triples on collapse
+            setCustomOpen(!isCustomOpen);
+            setTriplesOpen(!isTriplesOpen);
         }
-        
+
+        setColapseBtn('menu');
     }
 
     const collapseTriples = function(){
@@ -96,14 +86,8 @@ function ShapeComponent (props) {
                             bnode={true}
                             customClass="customShape"/>
 
-
-                <ColorComp customClass="customShape"/>
                     
                 <Collapse  isOpen={isTriplesOpen}>
-
-                        
-                    
-
                      <div className="triples">
                         {triples.map(triple =>
                             <TripleComponent key={triple.id}
@@ -120,12 +104,6 @@ function ShapeComponent (props) {
                         </button>        
                     
                         </div>
-           
-
-
-                    
-
-
                 </Collapse> 
             </div>
         </ShapeContext.Provider>

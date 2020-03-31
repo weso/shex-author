@@ -1,13 +1,10 @@
 import React,{useState,useContext} from 'react';
 import { Collapse } from 'reactstrap';
-import {AppContext} from '../../../../../../App';
-import {AssistContext} from '../../../../Assistant';
-import TypeConfig from '../customize/config/TypeConfig';
-import PrefixConfig from '../customize/config/PrefixConfig';
-import QualifierConfig from '../customize/config/QualifierConfig';
+import {AppContext} from '../../../../../App';
+import {AssistContext} from '../../../Assistant';
 
-import '../../../../../../css/shexComponents/customize/Custom.css'
-import '../../../../../../css/color/colors.css'
+import '../../../../../css/shexComponents/customize/Custom.css'
+import '../../../../../css/color/colors.css'
 
 
 import { SketchPicker } from 'react-color';
@@ -22,9 +19,7 @@ function ColorComp (props) {
     
    
     return (
-        <Collapse isOpen={asssistContext.isConfigOpen}
-                  className='customColapse'>
-
+        <div className='customColapse'>
             <div className={customClass}>
                  <div className='customZone'>
                     <div className='customElement'>
@@ -37,8 +32,8 @@ function ColorComp (props) {
                     </div>
                     
                 </div>
-            </div>
-        </Collapse>                 
+            </div> 
+        </div>               
     );
                                    
     

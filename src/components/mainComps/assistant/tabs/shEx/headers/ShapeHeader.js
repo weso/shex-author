@@ -5,6 +5,7 @@ import {AssistContext} from '../../../../Assistant';
 import {ShapeContext} from '../ShapeComponent';
 import {PN_LOCAL,IRI_REF} from '../../../../../../utils/regExpUtils';
 import '../../../../../../css/shexComponents/headers/ShapeHeader.css';
+import {SHAPE_COLORS} from '../../../../../../conf/properties';
 
 
 function ShapeHeader (props) {
@@ -29,7 +30,6 @@ function ShapeHeader (props) {
     }
 
     const handleKeyUp = function(e){
-       
         if(e.target.value==''){
             shapeContext.setDisabled(true);
         }else{
@@ -37,14 +37,11 @@ function ShapeHeader (props) {
         }
     }
 
-   
-
- 
     return (
 
 
-        <div className='header' >            
-            <label style={asssistContext.colors.label}>Shape</label>
+        <div className='header' style={{background:SHAPE_COLORS.label}}>            
+            <label>Shape</label>
             <Textbox
                     attributesInput={{ 
                         id: 'Name',
@@ -60,26 +57,25 @@ function ShapeHeader (props) {
                         regMsg: 'Invalid name'
                     }}
                     title="Shape Name"
-                    disabled={asssistContext.isConfigOpen}
                     /> 
 
             <button className="buildBtn mdc-icon-button material-icons" 
                     onClick={customizeShape}
-                    disabled={disabled || asssistContext.isConfigOpen}
+                    disabled={disabled}
                     title="Customize Shape">
                     build
             </button>
            
             <button className="deleteShapeBtn mdc-icon-button material-icons" 
                     onClick={()=>context.deleteShape(shape.id)}
-                    disabled={asssistContext.isConfigOpen}
                     title="Delete Shape">
                     delete
             </button>
+            
 
             <button className="collapseBtn mdc-icon-button material-icons" 
                     onClick={collapseTriples} 
-                    disabled={disabled || asssistContext.isConfigOpen}
+                    disabled={disabled}
                     title="Triple Constraints">
                     {colapseBtn}
             </button>

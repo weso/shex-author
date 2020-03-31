@@ -1,13 +1,10 @@
 import React,{useState,useContext} from 'react';
 import { Collapse } from 'reactstrap';
-import {AppContext} from '../../../../../../App';
-import {AssistContext} from '../../../../Assistant';
-import TypeConfig from '../customize/config/TypeConfig';
-import PrefixConfig from '../customize/config/PrefixConfig';
-import QualifierConfig from '../customize/config/QualifierConfig';
+import {AppContext} from '../../../../../App';
+import {AssistContext} from '../../../Assistant';
 
-import '../../../../../../css/shexComponents/customize/Custom.css'
-import '../../../../../../css/color/colors.css'
+import '../../../../../css/shexComponents/customize/Custom.css'
+import '../../../../../css/color/colors.css'
 
 
 import { ChromePicker } from 'react-color';
@@ -32,9 +29,13 @@ function ColorPicker (props) {
     const handleChange = (e) => {
         setColor(e.hex);
         //aux.label.color = e.hex;
-        asssistContext.colors.label.color = e.hex; 
-        console.log(asssistContext.colors)
-       
+        asssistContext.colors.label = {color:e.hex}
+       // console.log(asssistContext.colors.label)
+        let h  = document.getElementsByClassName('header');
+
+        for(let i=0;i<h.length;i++){
+            h[i].style.background = e.hex
+        }
     };
 
     const styles = reactCSS({

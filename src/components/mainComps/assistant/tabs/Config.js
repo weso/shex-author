@@ -2,22 +2,13 @@ import React,{useContext,useState} from 'react';
 import {AppContext} from '../../../../App';
 import {AssistContext} from '../../Assistant';
 import Toggle from 'react-toggle';
-import ShapeComponent from './shEx/ShapeComponent';
-import Shape from '../../../../entities/shexEntities/shape';
-import Triple from '../../../../entities/shexEntities/triple';
 import "react-toggle/style.css";
 
 import { Textbox } from 'react-inputs-validation';
-import ShapeHeader from  './shEx/headers/ShapeHeader';
-import { 
-
-    TwitterPicker,
-        ChromePicker,
-        } from 'react-color';
+import ColorComp from './color/ColorComp';
 
 
-// UN COMPONENTE PA ESTO?
-// PA REPETIR EXACTAMENTE LO MISMO QUE EN SHAPES?
+import {SHAPE_COLORS} from '../../../../conf/properties';
 
 function Config (props) {
 
@@ -25,19 +16,23 @@ function Config (props) {
         const asssistContext = useContext(AssistContext);
   
         const handle = function(e){
-            console.log(e.hex)
-            asssistContext.setColor(e.hex)
+            console.log(SHAPE_COLORS)
+            SHAPE_COLORS.label = 'red';
+            //asssistContext.setColor(e.hex)
         }
 
-        return (  <div>
-                    {context.shapes.map(shape =>{return  <ShapeComponent shape={shape} key={shape.id}/> })}
-                    <div className="addCont">
-                        <button className="addShapeButton"
-                                onClick={context.addShape}
-                                title="Add Shape">
-                                + Shape
-                        </button>
+        //const [color,setColor] = useState(asssistContext.colors[element].color);
+
+        return ( <div className="shape">
+                    <div className='header' >            
+                        <label>Shape</label>
+                        <Textbox/> 
+                        <button className="buildBtn mdc-icon-button material-icons">build</button>
+                        <button className="deleteShapeBtn mdc-icon-button material-icons" >delete</button>
+                        <button className="collapseBtn mdc-icon-button material-icons">menu</button>
                     </div>
+                    <ColorComp customClass="customShape"/>
+                    <button onClick={handle}>STFU MIREK</button>
                 </div>);
 }
 
