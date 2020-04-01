@@ -133,7 +133,8 @@ const Styles = (()=> {
                         color:PREFIX_COLORS.addFill,
                         background:PREFIX_COLORS.add
                 },
-                body:{background:PREFIX_COLORS.header}
+                specialLabel:{color:PREFIX_COLORS.specialLabel},
+                body:{background:PREFIX_COLORS.body}
             };  
         }
     

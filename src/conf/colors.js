@@ -67,4 +67,6 @@ export const PREFIX_COLORS = {
         addFill:'#222',
         delete:'#222',
         deleteFill:'#ffff',
+        specialLabel:'#222',
+        body:'#ffff'
 };
