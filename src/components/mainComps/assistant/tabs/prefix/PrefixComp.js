@@ -1,10 +1,12 @@
 import React,{useContext,useState,useEffect} from 'react';
 import {AppContext} from '../../../../../App';
+import Styles from '../../../../../conf/styles';
 
 function PrefixComp (props) {
 
         const context = useContext(AppContext);
         const {prefix} = props;
+        const styles = Styles.getInstance().getPrefixStyle();
         const [name,setName] = useState(prefix.prefixName);
         const [value,setValue] = useState(prefix.prefixValue);
         const open = '<';
@@ -23,23 +25,24 @@ function PrefixComp (props) {
         }
       
         return (
-                <div className='prefixHeader'>            
+                <div className='prefixHeader' style={styles.header}>            
                     <input  type="text" 
                             className="prefixName prefixInput"
                             placeholder="eg: schema"
                             value={name}
                             onChange={(e)=>handleAlias(e,prefix)}
                             title="Alias"/>
-                    <label  className="prefixLabel">:</label>
-                    <label  className="prefixLabel">{open}</label>
+                    <label  className="prefixLabel" style={styles.label}>:</label>
+                    <label  className="prefixLabel" style={styles.label}>{open}</label>
                     <input  type="text" 
                             className="prefixInput"
                             value={value}
                             placeholder="eg: http://schema.org/"
                             onChange={(e)=>handleIri(e,prefix)}
                             title="IRI"/>
-                    <label  className={context.shapeLabel+" prefixLabel"}>{close}</label>
+                    <label  className="prefixLabel" style={styles.label}>{close}</label>
                     <button className="deletePrefix mdc-icon-button material-icons" 
+                            style={styles.delete}
                             onClick={()=>context.deletePrefix(prefix.id)}
                             title="Delete Prefix">
                             delete

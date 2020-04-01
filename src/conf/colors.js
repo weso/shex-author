@@ -59,3 +59,12 @@ export const CARDINALITY_COLORS = {
         label:'#222',
         body:'#fae2f8',
 };
+
+export const PREFIX_COLORS = {
+        label:'#222',
+        header:'#fdd5d5',
+        add:'#fdd5d5',
+        addFill:'#222',
+        delete:'#222',
+        deleteFill:'#ffff',
+};

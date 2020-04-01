@@ -3,7 +3,8 @@ import {SHAPE_COLORS,
         CONSTRAINT_COLORS,
         FACET_COLORS,
         SHAPEREF_COLORS,
-        CARDINALITY_COLORS} from './colors';
+        CARDINALITY_COLORS,
+        PREFIX_COLORS} from './colors';
         
 //Singleton Pattern
 const Styles = (()=> {
@@ -117,6 +118,22 @@ const Styles = (()=> {
             return {
                 label:{color:CARDINALITY_COLORS.label},
                 body:{background:CARDINALITY_COLORS.body}
+            };  
+        }
+
+        this.getPrefixStyle = function(){
+            return {
+                label:{color:PREFIX_COLORS.label},
+                header:{background:PREFIX_COLORS.header},
+                delete:{
+                        color:PREFIX_COLORS.deleteFill,
+                        background:PREFIX_COLORS.delete
+                },
+                add:{
+                        color:PREFIX_COLORS.addFill,
+                        background:PREFIX_COLORS.add
+                },
+                body:{background:PREFIX_COLORS.header}
             };  
         }
     

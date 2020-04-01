@@ -1,5 +1,4 @@
 .prefixHeader{
-    background: #fdd5d5 ;
     padding: 8px;
     color: black;
     text-align: left;
@@ -33,8 +32,6 @@
 }
 
 .deletePrefix{
-    background: #000000;
-    color: rgb(255, 255, 255);
     border-radius: 10px;
     outline: none;
     border: none;

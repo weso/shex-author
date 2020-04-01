@@ -55,3 +55,11 @@ export const BTNS_PICKERS = [
         {tag:'Add Triple Constraint Fill',element:'addTripleFill'},
         {tag:'Add Shape',element:'addShape'},
         {tag:'Add Shape Fill',element:'addShapeFill'},];
+
+export const PREFIX_PICKERS = [
+        {tag:'Labels',element:'label'},
+        {tag:'Header',element:'header'},
+        {tag:'Delete',element:'delete'},
+        {tag:'Delete Fill',element:'deleteFill'},
+        {tag:'Add Prefix',element:'add'},
+        {tag:'Add Prefix Fill',element:'addFill'},,];
