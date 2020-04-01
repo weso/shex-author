@@ -6,7 +6,7 @@ import '../../../../../../css/shexComponents/customize/Custom.css'
 import '../../../../../../css/color/colors.css'
 import { ChromePicker } from 'react-color';
 import reactCSS from 'reactcss';
-import {SHAPE_COLORS,TRIPLE_COLORS} from '../../../../../../conf/properties';
+import {SHAPE_COLORS,TRIPLE_COLORS} from '../../../../../../conf/colors';
 
 function ColorPicker (props) {
 

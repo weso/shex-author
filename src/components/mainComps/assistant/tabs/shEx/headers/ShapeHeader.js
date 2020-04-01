@@ -5,7 +5,6 @@ import {AssistContext} from '../../../../Assistant';
 import {ShapeContext} from '../ShapeComponent';
 import {PN_LOCAL,IRI_REF} from '../../../../../../utils/regExpUtils';
 import '../../../../../../css/shexComponents/headers/ShapeHeader.css';
-import {SHAPE_COLORS} from '../../../../../../conf/properties';
 
 
 function ShapeHeader (props) {

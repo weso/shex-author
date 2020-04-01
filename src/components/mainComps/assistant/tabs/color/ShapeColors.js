@@ -8,7 +8,7 @@ import {SHAPE_PICKERS,
         CONSTRAINT_PICKERS,
         FACET_PICKERS,
         SHAPEREF_PICKERS,
-        CARDINALITY_PICKERS} from '../../../../../conf/properties';
+        CARDINALITY_PICKERS} from '../../../../../conf/pickers';
 
 function ShapeColors (props) {
 
