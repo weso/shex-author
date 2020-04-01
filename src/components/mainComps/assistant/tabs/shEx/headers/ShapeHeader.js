@@ -49,7 +49,7 @@ function ShapeHeader (props) {
 
         <div className='header' style={styles.header}>            
             <label style={styles.label}>Shape</label>
-            <Textbox
+            <Textbox 
                     attributesInput={{ 
                         id: 'Name',
                         name: 'Name',

@@ -9,6 +9,14 @@ function Config (props) {
         return ( <div className="shape" style={assistContext.styles.header}>
                     <ShapeView/>
                     <ColorComp customClass='customShape'/>
+                     <div className="triples" style={assistContext.styles.body}>
+                        <button className="addTripleButton" 
+                                title="Add Triple">
+                                + Triple Constraint
+                        </button>
+                    </div>
+                    <ShapeView/>
+                    <ColorComp customClass='customTriple'/>
                 </div>);
 }
 

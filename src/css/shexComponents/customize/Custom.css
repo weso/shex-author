@@ -1,8 +1,6 @@
 .customShape{
-    background: #EBF4FF;
     padding: 10px;
     color: black;
-    border-top: 1px solid #acaaaa;
     border-radius: 0px 0px 10px 10px;
     display: grid;
     grid-template-columns: 100%;
@@ -12,7 +10,6 @@
 
 
 .customTriple{
-    background: #EFE8E1;
     padding: 10px;
     color: black;
     border-top: 1px solid #acaaaa;

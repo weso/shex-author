@@ -99,7 +99,6 @@
     border: 1px solid #acaaaa;
     border-radius: 10px;
     margin-bottom: 15px;
-    background-color: #C6E2FF;
 }
 
 label{
@@ -115,7 +114,6 @@ label{
 
 
 .triples{
-    background: #EBF4FF;
     color: black;
     text-align: left;
     border-radius: 0px 0px 10px 10px ;
@@ -124,7 +122,7 @@ label{
 
 }
 
-
+/*
 .tripleSlot{
     border-top: 1px solid #acaaaa;
     background: #EFDECD;
@@ -134,7 +132,7 @@ label{
     display: grid;
     grid-template-columns: 100%; 
     margin-bottom: 10px;
-}
+}*/
 
 
 

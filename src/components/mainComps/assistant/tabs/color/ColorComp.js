@@ -14,46 +14,65 @@ import ColorPicker from './ColorPicker';
 function ColorComp (props) {
 
     const context = useContext(AppContext);
-    const asssistContext = useContext(AssistContext);
+    const assistContext = useContext(AssistContext);
     const {customClass} = props;
+
+    const pickers = [
+        {
+            tag:'Label',
+            element:'label'
+        },
+        {
+            tag:'Header',
+            element:'header'
+        },
+        {
+            tag:'Custom Btn',
+            element:'custom'
+        },
+        {
+            tag:'Custom Btn Fill',
+            element:'customFill'
+        },
+         {
+            tag:'Delete Btn',
+            element:'delete'
+        },
+        {
+            tag:'Delete Btn Fill',
+            element:'deleteFill'
+        },
+        {
+            tag:'Collapse Btn',
+            element:'collapse'
+        },
+       
+        {
+            tag:'Shape Body',
+            element:'body'
+        },
+        {
+            tag:'+Triple Btn',
+            element:'addTriple'
+        },
+        {
+            tag:'+Triple Btn Fill',
+            element:'addTripleFill'
+        }
+        
+        
+        ];
     
     return (
-        <div className='customColapse'>
-            <div className={customClass} style={asssistContext.styles.body}>
+        <div className='customColapse' style={assistContext.styles.body}>       
+            <div className={customClass} style={assistContext.styles.body}>
                  <div className='customZone'>
-                    <div className='customElement'>
-                        <label>Label</label>
-                        <ColorPicker  element='label'/>
-                    </div>
-                    <div className='customElement'>
-                        <label>Header</label>
-                        <ColorPicker  element='header'/>
-                    </div>
-                    <div className='customElement'>
-                        <label>Custom Btn</label>
-                        <ColorPicker element='custom'/>
-                    </div>
-                    <div className='customElement'>
-                        <label>CustomFill Btn</label>
-                        <ColorPicker element='customFill'/>
-                    </div>
-                    <div className='customElement'>
-                        <label>Delete Btn</label>
-                        <ColorPicker element='delete'/>
-                    </div>
-                    <div className='customElement'>
-                        <label>DeleteFill Btn</label>
-                        <ColorPicker element='deleteFill'/>
-                    </div>
-                    <div className='customElement'>
-                        <label>Collapse Btn</label>
-                        <ColorPicker element='collapse'/>
-                    </div>
-                    <div className='customElement'>
-                        <label>Shape Body</label>
-                        <ColorPicker element='body'/>
-                    </div>
-                    
+                    {pickers.map(p=>{
+                        return(<div className='customElement'>
+                                    <label>{p.tag}</label>
+                                    <ColorPicker  element={p.element}/>
+                                </div>)
+                    })}
                 </div>
             </div> 
         </div>               
