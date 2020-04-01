@@ -1,20 +1,20 @@
 .customShape{
-    padding: 10px;
+
     color: black;
     border-radius: 0px 0px 10px 10px;
     display: grid;
     grid-template-columns: 100%;
-    gap: 5px;
+
 }
 
 
 
 .customTriple{
-    padding: 10px;
+    padding: 5px;
     color: black;
     display: grid;
     grid-template-columns: 100%;
-    gap: 5px;
+
 }
 
 .customConstraint{
@@ -31,6 +31,7 @@
 
 
 .gridBox{ 
+    padding: 5px;
     display: grid;
     align-items: center;
     grid-template-columns: 10% 20% 48%;

@@ -84,7 +84,7 @@ class Triple {
         let shapeRef = this.getShapeRef();
         let cardinality = this.getCardinality();
         if(type.value!=''){
-            str+= '  '+type+' ';
+            str+= '  '+type+tripleSeparator;
             str+= this.checkFacets();
             if(facets){
                 facets.map(f=>{

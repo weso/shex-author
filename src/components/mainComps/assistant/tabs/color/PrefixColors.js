@@ -9,9 +9,12 @@ function PrefixColors (props) {
 
         const styles = Styles.getInstance().getPrefixStyle();
    
-        return (<div>
+        return (<div className='prefixColorContainer' style={styles.body}>
                     <PrefixView/>
-                    
+                    <ColorComp  namespace={PREFIX_COLORS} 
+                                pickers={PREFIX_PICKERS} 
+                                labelType={styles.specialLabel}
+                                bodyType={styles.body}/> 
 
                     <div className="addCont">
                     <button className="addPrefixBtn" 
@@ -20,10 +23,7 @@ function PrefixColors (props) {
                             + Prefix
                     </button>
                     </div>   
-                    <ColorComp  namespace={PREFIX_COLORS} 
-                                pickers={PREFIX_PICKERS} 
-                                labelType={styles.specialLabel}
-                                bodyType={styles.body}/> 
+                    
                 </div>);
 }
 

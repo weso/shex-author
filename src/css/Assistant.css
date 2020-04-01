@@ -150,7 +150,6 @@ label{
 
 .constraintCollapse{
     grid-column: 2/4;
-    padding: 2px;
     color: black;
     display: grid;
     grid-template-columns: 100%;
@@ -220,10 +219,6 @@ label{
 
 
 /* ADD BUTTONS */
-
-
-
-
 
 .addCont{
     display: grid;
