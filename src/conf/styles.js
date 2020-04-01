@@ -25,6 +25,14 @@ const Styles = (()=> {
                 },
                 collapse:{color:SHAPE_COLORS.collapse},
                 body:{background:SHAPE_COLORS.body},
+                addTriple:{
+                        color:SHAPE_COLORS.addTripleFill,
+                        background:SHAPE_COLORS.addTriple
+                },
+                addShape:{
+                        color:SHAPE_COLORS.addShapeFill,
+                        background:SHAPE_COLORS.addShape
+                },
             };  
         }
 
@@ -95,6 +103,13 @@ const Styles = (()=> {
             return {
                 label:{color:SHAPEREF_COLORS.label}, 
                 body:{background:SHAPEREF_COLORS.body}
+            };  
+        }
+
+        this.getCardinalityStyle = function(){
+            return {
+                label:{color:CARDINALITY_COLORS.label},
+                body:{background:CARDINALITY_COLORS.body}
             };  
         }
 

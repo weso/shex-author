@@ -67,23 +67,23 @@ function ShapeColors (props) {
                                         labelType={cardinalityStyles.label} 
                                         bodyType={cardinalityStyles.body}/>
 
-                        <ColorComp      namespace={BTNS_COLORS} 
+                        <ColorComp      namespace={SHAPE_COLORS} 
                                         pickers={BTNS_PICKERS} 
                                         labelType={shapeStyles.label}
                                         bodyType={shapeStyles.body}/>   
 
                     <div className="triples" style={shapeStyles.body}>
                         <button className="addTripleButton"
+                                style={shapeStyles.addTriple}
                                 title="Add Triple">
                                 + Triple Constraint
                         </button>
                     </div>
 
-                    
-                    
                 </div>
                 <div className="addCont">
                     <button className="addShapeButton"
+                            style={shapeStyles.addShape}
                             title="Add Shape">
                             + Shape
                     </button>

@@ -6,7 +6,11 @@ export const SHAPE_COLORS = {
         delete:'#79aff5',
         deleteFill:'#FFFFFF',
         collapse:'#222',
-        body:'#EBF4FF'
+        body:'#EBF4FF',
+        addTriple:'#EFDECD',
+        addTripleFill:'#222',
+        addShape:'#ddeafa',
+        addShapeFill:'#222',
 };
 
 export const TRIPLE_COLORS = {
@@ -54,11 +58,4 @@ export const SHAPEREF_COLORS = {
 export const CARDINALITY_COLORS = {
         label:'#222',
         body:'#fae2f8',
-};
-
-export const BTNS_COLORS = {
-        addTriple:'#222',
-        addTripleFill:'#222',
-        addShape:'#222',
-        addShapeFill:'#222',
 };

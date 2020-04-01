@@ -1,7 +1,6 @@
 import React,{useContext,useState} from 'react';
 import { Collapse } from 'reactstrap';
 import {AppContext} from '../../../../../App';
-import {AssistContext} from '../../../Assistant';
 import ShapeHeader from  './headers/ShapeHeader';
 import CustomComp from './customize/CustomComp';
 import TripleComponent from './TripleComponent';
@@ -13,7 +12,6 @@ export const ShapeContext = React.createContext();
 function ShapeComponent (props) {
 
     const context = useContext(AppContext);
-    const asssistContext = useContext(AssistContext);
     const {shape} = props;
     const styles = Styles.getInstance().getShapeStyle();
 
@@ -97,7 +95,7 @@ function ShapeComponent (props) {
                         )}
                     
                         <button className="addTripleButton"
-                                style={styles.triple} 
+                                style={styles.addTriple} 
                                 onClick={addTriple} 
                                 disabled={disabled}
                                 title="Add Triple">

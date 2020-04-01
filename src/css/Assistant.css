@@ -231,7 +231,6 @@ label{
 }
 
 .addShapeButton{
-    background: #ddeafa;
     border-radius: 10px;
     margin-top:10px;
     font-weight: bold;
@@ -257,7 +256,6 @@ label{
 }
 
 .addTripleButton{
-    background: #EFDECD;
     border-radius: 10px;
     font-weight: bold;
     padding: 1px;

@@ -54,4 +54,4 @@ export const BTNS_PICKERS = [
         {tag:'Add Triple Constraint',element:'addTriple'},
         {tag:'Add Triple Constraint Fill',element:'addTripleFill'},
         {tag:'Add Shape',element:'addShape'},
-        {tag:'Add Shape Fill',element:'addShapeFill'},
+        {tag:'Add Shape Fill',element:'addShapeFill'},];
