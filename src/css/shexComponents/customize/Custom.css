@@ -12,7 +12,7 @@
 .customTriple{
     padding: 10px;
     color: black;
-    border-top: 1px solid #acaaaa;
+  
     display: grid;
     grid-template-columns: 100%;
     gap: 5px;
