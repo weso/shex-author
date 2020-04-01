@@ -33,6 +33,6 @@ export const CONSTRAINT_PICKERS = [
         ];
 export const FACET_PICKERS = [
         {tag:'Facet Body',element:'body'},
-        {tag:'Delete ValueSetValue',element:'delete'}];
+        {tag:'Delete Facet',element:'delete'}];
 export const SHAPEREF_PICKERS = [{tag:'Shape Ref Body',element:'body'}];
 export const CARDINALITY_PICKERS = [{tag:'Cardinality Body',element:'body'}];

@@ -1,11 +1,11 @@
 import React,{useState,useContext} from 'react';
 import {AppContext} from '../../../../../../../App';
-import {AssistContext} from '../../../../../Assistant';
+import Styles from '../../../../../../../conf/styles';
 
 function QualifierConfig (props) {
 
     const context = useContext(AppContext);
-    const assistContext = useContext(AssistContext);
+    const styles = Styles.getInstance().getShapesStyle();
     const {shape} = props;
     const [qualifier,setQualifier] = useState(shape.qualifier.getTypeName())
 
@@ -16,10 +16,9 @@ function QualifierConfig (props) {
         setQualifier(newType);
     }
 
-
     return (
          <div className="gridBox">
-            <label className="customLabel" style={assistContext.shapeStyles.label}>Qualifier </label>
+            <label className="customLabel" style={styles.label}>Qualifier </label>
             <select className="customSelector" value={qualifier} onChange={handleQualifierChange}>
                 <option value="">None</option>
                 <option value="iri">Iri</option>

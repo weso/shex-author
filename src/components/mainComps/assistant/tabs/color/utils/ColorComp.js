@@ -10,7 +10,6 @@ function ColorComp (props) {
     const context = useContext(AppContext);
     const {namespace,pickers,bodyType} = props;
     const shapeStyles = Styles.getInstance().getShapesStyle();
-    const c = Styles.getInstance().getConstraintStyle();
     const styles ={
             label:shapeStyles.label,
             body: bodyType,

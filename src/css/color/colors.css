@@ -8,6 +8,6 @@
     display:grid;
     grid-template-columns: 50% 50%;
     align-items: center;
-    gap: 25px;
+    gap: 35px;
 }
 

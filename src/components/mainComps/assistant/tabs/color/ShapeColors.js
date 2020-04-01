@@ -50,7 +50,7 @@ function ShapeColors (props) {
                     <ColorComp  namespace={TRIPLE_COLORS} 
                                 pickers={TRIPLE_PICKERS} 
                                 bodyType={styles.tripleBody}/>
-
+                                
                     <ColorComp  namespace={CONSTRAINT_COLORS} 
                                 pickers={CONSTRAINT_PICKERS} 
                                 bodyType={styles.constraintBody}/>

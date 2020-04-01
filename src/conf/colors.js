@@ -29,7 +29,7 @@ export const TRIPLE_COLORS = {
 };
 
 export const CONSTRAINT_COLORS = {
-        body:'#d6ffc654',
+        body:'red',
         delete:'#a1db6a',
         deleteFill:'#ffff',
 };

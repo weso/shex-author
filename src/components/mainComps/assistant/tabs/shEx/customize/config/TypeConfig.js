@@ -1,11 +1,11 @@
 import React,{useState,useContext} from 'react';
 import {AppContext} from '../../../../../../../App';
-import {AssistContext} from '../../../../../Assistant';
+import Styles from '../../../../../../../conf/styles';
 
 function TypeConfig (props) {
 
     const context = useContext(AppContext);
-    const assistContext = useContext(AssistContext);
+    const styles = Styles.getInstance().getShapesStyle();
     const {entity,setPrefix,collapsePrefix,bnode} = props;
     const [type,setType] = useState(entity.type.getTypeName());
     const iri ='<...>';
@@ -25,7 +25,7 @@ function TypeConfig (props) {
 
     return (
         <div className="gridBox">
-            <label className="customLabel" style={assistContext.shapeStyles.label}>Type </label>
+            <label className="customLabel" style={styles.label}>Type </label>
             <select className="customSelector" value={type} onChange={handleTypeChange}>
                 <option value="iriRef">{iri}</option>
                 <option value="prefixedIri">QName</option>
