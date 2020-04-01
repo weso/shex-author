@@ -37,7 +37,7 @@ function EditorComp() {
                 lineNumbers: true,
                 showTooltip:true,
                 theme:'author-dark',
-                value:yasheUtils.VALUESET_SHAPE
+                value:yasheUtils.DEFAULT_SHAPE
             }
             
             const y = YASHE(divRef.current,options);
