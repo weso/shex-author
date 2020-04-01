@@ -7,14 +7,16 @@ import {SHAPE_PICKERS,
         CONSTRAINT_PICKERS,
         FACET_PICKERS,
         SHAPEREF_PICKERS,
-        CARDINALITY_PICKERS} from '../../../../../conf/pickers';
+        CARDINALITY_PICKERS,
+        BTNS_PICKERS} from '../../../../../conf/pickers';
 
 import {SHAPE_COLORS,
         TRIPLE_COLORS,
         CONSTRAINT_COLORS,
         FACET_COLORS,
         SHAPEREF_COLORS,
-        CARDINALITY_COLORS} from '../../../../../conf/colors';
+        CARDINALITY_COLORS,
+        BTNS_COLORS} from '../../../../../conf/colors';
 
 
 import Styles from '../../../../../conf/styles';
@@ -28,40 +30,47 @@ function ShapeColors (props) {
         const shapeRefStyles = Styles.getInstance().getShapeRefStyle();
         const cardinalityStyles = Styles.getInstance().getCardinalityStyle();
 
-        return ( <div className="shape" style={shapeStyles.header}>
+        return ( 
+        <div>
+                <div className="shape" style={shapeStyles.header}>
         
-                    <ShapeView/>
-                    <TripleView/>
+                        <ShapeView/>
+                        <TripleView/>
 
-                    <ColorComp  namespace={SHAPE_COLORS} 
-                                pickers={SHAPE_PICKERS} 
-                                labelType={shapeStyles.label}
-                                bodyType={shapeStyles.body}/>   
+                        <ColorComp      namespace={SHAPE_COLORS} 
+                                        pickers={SHAPE_PICKERS} 
+                                        labelType={shapeStyles.label}
+                                        bodyType={shapeStyles.body}/>   
 
-                    <ColorComp  namespace={TRIPLE_COLORS} 
-                                pickers={TRIPLE_PICKERS}
-                                labelType={tripleStyles.label} 
-                                bodyType={tripleStyles.body}/>
-                                
-                    <ColorComp  namespace={CONSTRAINT_COLORS} 
-                                pickers={CONSTRAINT_PICKERS}
-                                labelType={constraintStyles.label} 
-                                bodyType={constraintStyles.body}/>
+                        <ColorComp      namespace={TRIPLE_COLORS} 
+                                        pickers={TRIPLE_PICKERS}
+                                        labelType={tripleStyles.label} 
+                                        bodyType={tripleStyles.body}/>
+                                        
+                        <ColorComp      namespace={CONSTRAINT_COLORS} 
+                                        pickers={CONSTRAINT_PICKERS}
+                                        labelType={constraintStyles.label} 
+                                        bodyType={constraintStyles.body}/>
 
-                    <ColorComp  namespace={FACET_COLORS} 
-                                pickers={FACET_PICKERS}
-                                labelType={facetStyles.label} 
-                                bodyType={facetStyles.body}/>
+                        <ColorComp      namespace={FACET_COLORS} 
+                                        pickers={FACET_PICKERS}
+                                        labelType={facetStyles.label} 
+                                        bodyType={facetStyles.body}/>
 
-                    <ColorComp  namespace={SHAPEREF_COLORS} 
-                                pickers={SHAPEREF_PICKERS} 
-                                labelType={shapeRefStyles.label}
-                                bodyType={shapeRefStyles.body}/>
-                                
-                    <ColorComp  namespace={CARDINALITY_COLORS} 
-                                pickers={CARDINALITY_PICKERS}
-                                labelType={cardinalityStyles.label} 
-                                bodyType={cardinalityStyles.body}/>
+                        <ColorComp      namespace={SHAPEREF_COLORS} 
+                                        pickers={SHAPEREF_PICKERS} 
+                                        labelType={shapeRefStyles.label}
+                                        bodyType={shapeRefStyles.body}/>
+                                        
+                        <ColorComp      namespace={CARDINALITY_COLORS} 
+                                        pickers={CARDINALITY_PICKERS}
+                                        labelType={cardinalityStyles.label} 
+                                        bodyType={cardinalityStyles.body}/>
+
+                        <ColorComp      namespace={BTNS_COLORS} 
+                                        pickers={BTNS_PICKERS} 
+                                        labelType={shapeStyles.label}
+                                        bodyType={shapeStyles.body}/>   
 
                     <div className="triples" style={shapeStyles.body}>
                         <button className="addTripleButton"
@@ -69,8 +78,17 @@ function ShapeColors (props) {
                                 + Triple Constraint
                         </button>
                     </div>
+
                     
-                </div>);
+                    
+                </div>
+                <div className="addCont">
+                    <button className="addShapeButton"
+                            title="Add Shape">
+                            + Shape
+                    </button>
+                </div>
+        </div>);
 }
 
 export default ShapeColors;

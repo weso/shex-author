@@ -55,3 +55,10 @@ export const CARDINALITY_COLORS = {
         label:'#222',
         body:'#fae2f8',
 };
+
+export const BTNS_COLORS = {
+        addTriple:'#222',
+        addTripleFill:'#222',
+        addShape:'#222',
+        addShapeFill:'#222',
+};
