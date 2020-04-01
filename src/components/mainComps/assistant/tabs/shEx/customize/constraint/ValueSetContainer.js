@@ -35,7 +35,7 @@ function ValueSetContainer (props) {
                                     />)
                     })}
                     
-                    <button className="addFacet" title="Add Value" onClick={addValue}>+ Value</button>      
+                    <button className="addFacet" style={styles.add}  title="Add Value" onClick={addValue}>+ Value</button>      
                 </div>
             </div>);                          
 }

@@ -31,15 +31,15 @@ export const TRIPLE_PICKERS = [
 export const CONSTRAINT_PICKERS = [
         {tag:'Labels',element:'label'},
         {tag:'Constraint Body',element:'body'},
-        {tag:'Add Value',element:'addValue'},
-        {tag:'Add Value Fill',element:'addValueFill'},
+        {tag:'Add Value',element:'add'},
+        {tag:'Add Value Fill',element:'addFill'},
         {tag:'Delete Value',element:'delete'}];
 
 export const FACET_PICKERS = [
         {tag:'Labels',element:'label'},
         {tag:'Facet Body',element:'body'},
-        {tag:'Add Facet',element:'addFacet'},
-        {tag:'Add Facet Fill',element:'addFacetFill'},
+        {tag:'Add Facet',element:'add'},
+        {tag:'Add Facet Fill',element:'addFill'},
         {tag:'Delete Facet',element:'delete'}];
 
 export const SHAPEREF_PICKERS = [

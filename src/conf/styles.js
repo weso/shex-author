@@ -65,6 +65,10 @@ const Styles = (()=> {
             return {
                 label:{color:CONSTRAINT_COLORS.label}, 
                 body:{background:CONSTRAINT_COLORS.body},
+                add:{
+                        color:CONSTRAINT_COLORS.addFill,
+                        background:CONSTRAINT_COLORS.add
+                },
                 delete:{
                         color:CONSTRAINT_COLORS.deleteFill,
                         background:CONSTRAINT_COLORS.delete
@@ -76,6 +80,10 @@ const Styles = (()=> {
             return {
                 label:{color:FACET_COLORS.label}, 
                 body:{background:FACET_COLORS.body},
+                add:{
+                        color:FACET_COLORS.addFill,
+                        background:FACET_COLORS.add
+                },
                 delete:{
                         color:FACET_COLORS.deleteFill,
                         background:FACET_COLORS.delete

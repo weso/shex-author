@@ -34,7 +34,7 @@ function FacetContainer (props) {
                                         facet={f}
                                         deleteFacet={deleteFacet} />)
                         })}
-                        <button className="addFacet" title="Add Facet" onClick={addFacet}>+ Facet</button>      
+                        <button className="addFacet" style={styles.add} title="Add Facet" onClick={addFacet}>+ Facet</button>      
                     </div>        
             </div>);                          
 }

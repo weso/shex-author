@@ -31,6 +31,8 @@ export const TRIPLE_COLORS = {
 export const CONSTRAINT_COLORS = {
         label:'#222',
         body:'#E8FAE4',
+        add:'#ffff',
+        addFill:'#222',
         delete:'#a1db6a',
         deleteFill:'#ffff',
 };
@@ -38,6 +40,8 @@ export const CONSTRAINT_COLORS = {
 export const FACET_COLORS = {
         label:'#222',
         body:'#f5d6d6',
+        add:'#ffff',
+        addFill:'#222',
         delete:'#fd9090',
         deleteFill:'#ffff',
 };
