@@ -70,9 +70,9 @@ function ShapeComponent (props) {
     }
 
     const styles ={
-        header:asssistContext.styles.header,
-        body:asssistContext.styles.body,
-        triple:asssistContext.styles.triple
+        header:asssistContext.shapeStyles.header,
+        body:asssistContext.shapeStyles.body,
+        triple:asssistContext.shapeStyles.triple
     }
 
 

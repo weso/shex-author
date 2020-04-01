@@ -21,7 +21,7 @@ function AssistantComp (props) {
         const [isPrefixesOpen, setPrefixesOpen] = useState(false);
         const [isConfigOpen, setConfigOpen] = useState(true);
 
-        const styles = {
+        const shapeStyles = {
                 label:{color:SHAPE_COLORS.label},
                 header:{background:SHAPE_COLORS.header},
                 custom:{
@@ -34,12 +34,22 @@ function AssistantComp (props) {
                 },
                 collapse:{color:SHAPE_COLORS.collapse},
                 body:{background:SHAPE_COLORS.body},
-                triple:{
-                        color:SHAPE_COLORS.addTriple,
-                        background:SHAPE_COLORS.addTripleFill
-                },
-        
         }
+
+        const tripleStyles = {
+                header:{background:SHAPE_COLORS.header},
+                custom:{
+                        color:SHAPE_COLORS.customFill,
+                        background:SHAPE_COLORS.custom
+                },
+                delete:{
+                        color:SHAPE_COLORS.deleteFill,
+                        background:SHAPE_COLORS.delete
+                },
+                collapse:{color:SHAPE_COLORS.collapse},
+                body:{background:SHAPE_COLORS.body},
+        }
+        
         const [color,setColor] = useState('#fffff');
         const handleChange = function(color,element){
             setColor(color);//NECESSARY TO  FORCE RENDER
@@ -58,7 +68,8 @@ function AssistantComp (props) {
                         setShapesOpen:setShapesOpen,
                         setPrefixesOpen:setPrefixesOpen,
                         setConfigOpen:setConfigOpen,
-                        styles:styles,
+                        shapeStyles:shapeStyles,
+                        tripleStyles:tripleStyles,
                         handleChange:handleChange
                         }
                 }>

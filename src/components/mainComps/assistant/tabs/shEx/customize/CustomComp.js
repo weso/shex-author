@@ -33,7 +33,7 @@ function CustomComp (props) {
     }
     
     const styles ={
-        body:asssistContext.styles.body,
+        body:asssistContext.shapeStyles.body,
     }
 
     return (

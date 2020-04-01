@@ -25,7 +25,7 @@ function TypeConfig (props) {
 
     return (
         <div className="gridBox">
-            <label className="customLabel" style={assistContext.styles.label}>Type </label>
+            <label className="customLabel" style={assistContext.shapeStyles.label}>Type </label>
             <select className="customSelector" value={type} onChange={handleTypeChange}>
                 <option value="iriRef">{iri}</option>
                 <option value="prefixedIri">QName</option>

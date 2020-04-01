@@ -13,13 +13,18 @@ function ColorComp (props) {
     const assistContext = useContext(AssistContext);
     const {customClass,pickers} = props;
 
+    const styles ={
+            label:assistContext.shapeStyles.label,
+            body:assistContext.shapeStyles.body,
+        }  
+
     return (
-        <div className='customColapse' style={assistContext.styles.body}>             
-            <div className={customClass} style={assistContext.styles.body}>
+        <div className='customColapse' style={styles.body}>             
+            <div className={customClass} style={styles.body}>
                  <div className='customZone'>
                     {pickers.map(p=>{
                         return(<div className='customElement' key={p.element}>
-                                    <label style={assistContext.styles.label}>{p.tag}</label>
+                                    <label style={styles.label}>{p.tag}</label>
                                     <ColorPicker type={customClass} element={p.element}/>
                                 </div>)
                     })}

@@ -38,10 +38,11 @@ function ShapeHeader (props) {
     }
 
     const styles ={
-        header:asssistContext.styles.header,
-        label:asssistContext.styles.label,
-        delete:asssistContext.styles.delete,
-        collapse:asssistContext.styles.collapse
+        header:asssistContext.shapeStyles.header,
+        label:asssistContext.shapeStyles.label,
+        custom:asssistContext.shapeStyles.custom,
+        delete:asssistContext.shapeStyles.delete,
+        collapse:asssistContext.shapeStyles.collapse
     }
 
     return (
@@ -67,7 +68,7 @@ function ShapeHeader (props) {
                     /> 
 
             <button className="buildBtn mdc-icon-button material-icons" 
-                    style={asssistContext.styles.custom} 
+                    style={styles.custom} 
                     onClick={customizeShape}
                     disabled={disabled}
                     title="Customize Shape">
