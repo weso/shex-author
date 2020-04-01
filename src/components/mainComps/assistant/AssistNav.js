@@ -44,9 +44,9 @@ function AssistTitle (props) {
                         Prefixes 
                 </button>
                 <button className="tablink material-icons" 
-                        title="Configuration Tab" 
+                        title="Colors Tab" 
                         onClick={(e)=>handleConfig(e)}>
-                        settings
+                        format_paint
                 </button>
        
                 <div className="asisTitleClose">

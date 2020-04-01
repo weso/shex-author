@@ -23,23 +23,23 @@ function ColorComp (props) {
             element:'header'
         },
         {
-            tag:'Custom Btn',
+            tag:'Custom',
             element:'custom'
         },
         {
-            tag:'Custom Btn Fill',
+            tag:'Custom Fill',
             element:'customFill'
         },
          {
-            tag:'Delete Btn',
+            tag:'Delete',
             element:'delete'
         },
         {
-            tag:'Delete Btn Fill',
+            tag:'Delete Fill',
             element:'deleteFill'
         },
         {
-            tag:'Collapse Btn',
+            tag:'Collapse',
             element:'collapse'
         },
        
@@ -48,11 +48,11 @@ function ColorComp (props) {
             element:'body'
         },
         {
-            tag:'+Triple Btn',
+            tag:'+Triple',
             element:'addTriple'
         },
         {
-            tag:'+Triple Btn Fill',
+            tag:'+Triple Fill',
             element:'addTripleFill'
         }
         
