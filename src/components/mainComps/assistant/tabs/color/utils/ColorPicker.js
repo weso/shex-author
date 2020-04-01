@@ -1,20 +1,17 @@
 import React,{useState,useContext} from 'react';
-import { Collapse } from 'reactstrap';
 import {AppContext} from '../../../../../../App';
 import {AssistContext} from '../../../../Assistant';
 import '../../../../../../css/shexComponents/customize/Custom.css'
 import '../../../../../../css/color/colors.css'
 import { ChromePicker } from 'react-color';
 import reactCSS from 'reactcss';
-import {SHAPE_COLORS,TRIPLE_COLORS} from '../../../../../../conf/colors';
 
 function ColorPicker (props) {
 
     const context = useContext(AppContext);
     const asssistContext = useContext(AssistContext);
-    const {customClass,element,type} = props;
-    let NAMESPACE = type=='customShape' ? SHAPE_COLORS : TRIPLE_COLORS;
-    const [color,setColor] = useState(NAMESPACE[element]);
+    const {namespace,element} = props;
+    const [color,setColor] = useState(namespace[element]);
     const [isDisplay,setDisplay] = useState(false);
 
     const handleClick = () => {
@@ -27,7 +24,7 @@ function ColorPicker (props) {
 
     const handle = (e) => {
       setColor(e.hex);
-      asssistContext.handleChange(e.hex,element,NAMESPACE)
+      asssistContext.handleChange(e.hex,element,namespace)
     };
 
     const styles = reactCSS({

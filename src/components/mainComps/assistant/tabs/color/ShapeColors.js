@@ -9,6 +9,14 @@ import {SHAPE_PICKERS,
         SHAPEREF_PICKERS,
         CARDINALITY_PICKERS} from '../../../../../conf/pickers';
 
+import {SHAPE_COLORS,
+        TRIPLE_COLORS,
+        CONSTRAINT_COLORS,
+        FACET_COLORS,
+        SHAPEREF_COLORS,
+        CARDINALITY_COLORS} from '../../../../../conf/colors';
+
+
 import Styles from '../../../../../conf/styles';
 
 function ShapeColors (props) {
@@ -29,16 +37,21 @@ function ShapeColors (props) {
             shapeRefBody:shapeRefStyles.body,
             cardinalityBody:cardinalityStyles.body,            
         }  
+
+            console.log(constraintStyles.body)
+            console.log(facetStyles.body)
+            console.log(shapeRefStyles.body)
+            console.log(cardinalityStyles.body)
         
         return ( <div className="shape" style={styles.header}>
                     <ShapeView/>
                     <TripleView/>
-                    <ColorComp customClass='customShape' pickers={SHAPE_PICKERS} bodyType={styles.shapeBody}/>                    
-                    <ColorComp customClass='customTriple' pickers={TRIPLE_PICKERS} bodyType={styles.tripleBody}/>
-                    <ColorComp customClass='constraintBody' pickers={CONSTRAINT_PICKERS} bodyType={styles.constraintBody}/>
-                    <ColorComp customClass='facetBody' pickers={FACET_PICKERS} bodyType={styles.facetBody}/>
-                    <ColorComp customClass='shapeRefBody' pickers={SHAPEREF_PICKERS} bodyType={styles.shapeRefBody}/>
-                    <ColorComp customClass='cardinalityBody' pickers={CARDINALITY_PICKERS} bodyType={styles.cardinalityBody}/>
+                    <ColorComp namespace={SHAPE_COLORS} customClass='customShape' pickers={SHAPE_PICKERS} bodyType={styles.shapeBody}/>                    
+                    <ColorComp namespace={TRIPLE_COLORS} customClass='customTriple' pickers={TRIPLE_PICKERS} bodyType={styles.tripleBody}/>
+                    <ColorComp namespace={CONSTRAINT_COLORS} customClass='constraintBody' pickers={CONSTRAINT_PICKERS} bodyType={styles.constraintBody}/>
+                    <ColorComp namespace={FACET_COLORS} customClass='facetBody' pickers={FACET_PICKERS} bodyType={styles.facetBody}/>
+                    <ColorComp namespace={SHAPEREF_COLORS} customClass='shapeRefBody' pickers={SHAPEREF_PICKERS} bodyType={styles.shapeRefBody}/>
+                    <ColorComp namespace={CARDINALITY_COLORS} customClass='cardinalityBody' pickers={CARDINALITY_PICKERS} bodyType={styles.cardinalityBody}/>
                     <div className="triples" style={styles.body}>
                         <button className="addTripleButton"
                                 title="Add Triple">

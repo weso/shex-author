@@ -1,4 +1,9 @@
-import {SHAPE_COLORS,TRIPLE_COLORS} from './colors';
+import {SHAPE_COLORS,
+        TRIPLE_COLORS,
+        CONSTRAINT_COLORS,
+        FACET_COLORS,
+        SHAPEREF_COLORS,
+        CARDINALITY_COLORS} from './colors';
 //Singleton Pattern
 const Styles = (()=> {
 
@@ -56,25 +61,25 @@ const Styles = (()=> {
 
         this.getConstraintStyle = function(){
             return {
-                body:{color:SHAPE_COLORS.label}
+                body:{background:CONSTRAINT_COLORS.body}
             };  
         }
 
         this.getFacetStyle = function(){
             return {
-                body:{color:SHAPE_COLORS.label}
+                body:{background:FACET_COLORS.body}
             };  
         }
 
         this.getShapeRefStyle = function(){
             return {
-                body:{color:SHAPE_COLORS.label}
+                body:{background:SHAPEREF_COLORS.body}
             };  
         }
 
         this.getCardinalityStyle = function(){
             return {
-                body:{color:SHAPE_COLORS.label}
+                body:{background:CARDINALITY_COLORS.body}
             };  
         }
     

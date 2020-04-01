@@ -18,7 +18,6 @@ function AssistantComp (props) {
         const [isShapesOpen, setShapesOpen] = useState(false);
         const [isPrefixesOpen, setPrefixesOpen] = useState(false);
         const [isConfigOpen, setConfigOpen] = useState(true);
-
         const [color,setColor] = useState('#fffff');
 
         const handleChange = function(color,element,NAMESPACE){

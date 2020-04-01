@@ -1,5 +1,4 @@
 import React,{useState,useContext} from 'react';
-import { Collapse } from 'reactstrap';
 import {AppContext} from '../../../../../../App';
 import ColorPicker from './ColorPicker';
 import Styles from '../../../../../../conf/styles';
@@ -9,11 +8,12 @@ import '../../../../../../css/color/colors.css'
 function ColorComp (props) {
 
     const context = useContext(AppContext);
-    const {customClass,pickers,bodyType} = props;
+    const {customClass,namespace,pickers,bodyType} = props;
     const shapeStyles = Styles.getInstance().getShapesStyle();
+    const c = Styles.getInstance().getConstraintStyle();
     const styles ={
             label:shapeStyles.label,
-            body: bodyType,
+            body: shapeStyles.body,
     }  
 
     return (
@@ -23,7 +23,7 @@ function ColorComp (props) {
                     {pickers.map(p=>{
                         return(<div className='customElement' key={p.element}>
                                     <label style={styles.label}>{p.tag}</label>
-                                    <ColorPicker type={customClass} element={p.element}/>
+                                    <ColorPicker namespace={namespace} element={p.element}/>
                                 </div>)
                     })}
                 </div>
