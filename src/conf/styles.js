@@ -29,7 +29,8 @@ const Styles = (()=> {
         }
 
         this.getTriplesStyle = function(){
-            return {       
+            return {      
+                label:{color:TRIPLE_COLORS.label}, 
                 header:{background:TRIPLE_COLORS.header},
                 custom:{
                         color:TRIPLE_COLORS.customFill,
@@ -62,6 +63,7 @@ const Styles = (()=> {
 
         this.getConstraintStyle = function(){
             return {
+                label:{color:CONSTRAINT_COLORS.label}, 
                 body:{background:CONSTRAINT_COLORS.body},
                 delete:{
                         color:CONSTRAINT_COLORS.deleteFill,
@@ -72,6 +74,7 @@ const Styles = (()=> {
 
         this.getFacetStyle = function(){
             return {
+                label:{color:FACET_COLORS.label}, 
                 body:{background:FACET_COLORS.body},
                 delete:{
                         color:FACET_COLORS.deleteFill,
@@ -82,12 +85,14 @@ const Styles = (()=> {
 
         this.getShapeRefStyle = function(){
             return {
+                label:{color:SHAPEREF_COLORS.label}, 
                 body:{background:SHAPEREF_COLORS.body}
             };  
         }
 
         this.getCardinalityStyle = function(){
             return {
+                label:{color:CARDINALITY_COLORS.label},
                 body:{background:CARDINALITY_COLORS.body}
             };  
         }

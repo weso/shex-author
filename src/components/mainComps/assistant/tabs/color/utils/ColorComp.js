@@ -1,27 +1,21 @@
 import React,{useState,useContext} from 'react';
 import {AppContext} from '../../../../../../App';
 import ColorPicker from './ColorPicker';
-import Styles from '../../../../../../conf/styles';
 import '../../../../../../css/shexComponents/customize/Custom.css'
 import '../../../../../../css/color/colors.css'
 
 function ColorComp (props) {
 
     const context = useContext(AppContext);
-    const {namespace,pickers,bodyType} = props;
-    const shapeStyles = Styles.getInstance().getShapesStyle();
-    const styles ={
-            label:shapeStyles.label,
-            body: bodyType,
-    }  
+    const {namespace,pickers,labelType,bodyType} = props;
 
     return (
-        <div className='customColapse' style={styles.body}>             
-            <div style={styles.body}>
+        <div className='customColapse' style={bodyType}>             
+            <div style={bodyType}>
                  <div className='customZone'>
                     {pickers.map(p=>{
                         return(<div className='customElement' key={p.element}>
-                                    <label style={styles.label}>{p.tag}</label>
+                                    <label style={labelType}>{p.tag}</label>
                                     <ColorPicker namespace={namespace} element={p.element}/>
                                 </div>)
                     })}

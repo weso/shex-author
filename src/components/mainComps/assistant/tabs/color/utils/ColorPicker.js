@@ -15,11 +15,11 @@ function ColorPicker (props) {
     const [isDisplay,setDisplay] = useState(false);
 
     const handleClick = () => {
-        setDisplay(!isDisplay);
+      setDisplay(!isDisplay);
     };
 
     const handleClose = () => {
-         setDisplay(false);
+      setDisplay(false);
     };
 
     const handle = (e) => {
@@ -46,7 +46,7 @@ function ColorPicker (props) {
         popover: {
           position: 'absolute',
           transform: 'translateX(-80%)',
-          zIndex: '2',
+          zIndex: '5000',
         },
         cover: {
           position: 'fixed',
@@ -67,7 +67,7 @@ function ColorPicker (props) {
                 { isDisplay ? 
                     <div style={ styles.popover }>
                         <div style={ styles.cover } onClick={handleClose}/>
-                        <ChromePicker color={color} onChange={handle} onChangeComplete={handleClose} />
+                        <ChromePicker  color={color} onChange={handle}/>
                     </div> 
                     
                     : null 

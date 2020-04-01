@@ -29,21 +29,25 @@ export const TRIPLE_COLORS = {
 };
 
 export const CONSTRAINT_COLORS = {
+        label:'#222',
         body:'#E8FAE4',
         delete:'#a1db6a',
         deleteFill:'#ffff',
 };
 
 export const FACET_COLORS = {
+        label:'#222',
         body:'#f5d6d6',
         delete:'#fd9090',
         deleteFill:'#ffff',
 };
 
 export const SHAPEREF_COLORS = {
+        label:'#222',
         body:'#f5fac8',
 };
 
 export const CARDINALITY_COLORS = {
+        label:'#222',
         body:'#fae2f8',
 };
