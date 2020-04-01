@@ -31,3 +31,19 @@ export const TRIPLE_COLORS = {
         shapeRefBody:'#f5fac8',
         cardinalityBody:'#fae2f8',
 };
+
+export const CONSTRAINT_COLORS = {
+        body:'#EFE8E1',
+};
+
+export const FACET_COLORS = {
+        body:'#EFE8E1',
+};
+
+export const SHAPEREF_COLORS = {
+        body:'#EFE8E1',
+};
+
+export const CARDINALITY_COLORS = {
+        body:'#EFE8E1',
+};

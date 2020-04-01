@@ -1,6 +1,6 @@
 import {SHAPE_COLORS,TRIPLE_COLORS} from './colors';
 //Singleton Pattern
-const Style = (()=> {
+const Styles = (()=> {
 
     function StyleClass(){
 
@@ -53,6 +53,30 @@ const Style = (()=> {
                 body:{background:TRIPLE_COLORS.body},
             }
         }
+
+        this.getConstraintStyle = function(){
+            return {
+                body:{color:SHAPE_COLORS.label}
+            };  
+        }
+
+        this.getFacetStyle = function(){
+            return {
+                body:{color:SHAPE_COLORS.label}
+            };  
+        }
+
+        this.getShapeRefStyle = function(){
+            return {
+                body:{color:SHAPE_COLORS.label}
+            };  
+        }
+
+        this.getCardinalityStyle = function(){
+            return {
+                body:{color:SHAPE_COLORS.label}
+            };  
+        }
     
     }
 
@@ -73,4 +97,4 @@ const Style = (()=> {
 })();
 
 
-export default Style;
+export default Styles;

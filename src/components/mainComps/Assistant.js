@@ -5,13 +5,10 @@ import AssistNav from './assistant/AssistNav';
 import AssistContent from './assistant/AssistContent';
 import AssistLoader from './assistant/AssistLoader';
 import AssistError from './assistant/AssistError';
+import { Resizable, ResizableBox } from 'react-resizable';
+import Styles from '../../conf/styles';
 import '../../css/Assistant.css';
 import '../../css/resizable/react-resizable.css';
-
-import { Resizable, ResizableBox } from 'react-resizable';
-
-import Style from '../../conf/styles';
-import {TRIPLE_COLORS} from '../../conf/colors';
 
 export const AssistContext = React.createContext();
 
@@ -22,18 +19,13 @@ function AssistantComp (props) {
         const [isPrefixesOpen, setPrefixesOpen] = useState(false);
         const [isConfigOpen, setConfigOpen] = useState(true);
 
-        const shapeStyles = Style.getInstance().getShapesStyle();
-        const tripleStyles = Style.getInstance().getTriplesStyle()
-         
         const [color,setColor] = useState('#fffff');
+
         const handleChange = function(color,element,NAMESPACE){
             setColor(color);//NECESSARY TO  FORCE RENDER
             NAMESPACE[element] = color;
-            console.log(shapeStyles.header)
-            
         }
 
-     
 
         return (
                 <AssistContext.Provider
@@ -45,8 +37,8 @@ function AssistantComp (props) {
                         setShapesOpen:setShapesOpen,
                         setPrefixesOpen:setPrefixesOpen,
                         setConfigOpen:setConfigOpen,
-                        shapeStyles:shapeStyles,
-                        tripleStyles:tripleStyles,
+                        shapeStyles:{},
+                        tripleStyles:{},
                         handleChange:handleChange
                         }
                 }>

@@ -2,19 +2,13 @@ import React,{useContext,useState} from 'react';
 import { Textbox } from 'react-inputs-validation';
 import {AssistContext} from '../../../../Assistant';
 
+import Styles from '../../../../../../conf/styles';
+
 function ShapeView (props) {
 
         const {colors} = props;
-        const assistContext = useContext(AssistContext);
+        const styles = Styles.getInstance().getShapesStyle();
         
-        const styles ={
-            header:assistContext.shapeStyles.header,
-            label:assistContext.shapeStyles.label,
-            custom:assistContext.shapeStyles.custom,
-            delete:assistContext.shapeStyles.delete,
-            collapse:assistContext.shapeStyles.collapse,
-        }   
-    
         return ( <div className='header' style={styles.header}>            
                         <label style={styles.label}>Shape</label>
                         <Textbox/> 

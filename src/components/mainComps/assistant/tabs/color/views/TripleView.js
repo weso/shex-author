@@ -1,20 +1,12 @@
 import React,{useContext,useState} from 'react';
 import {AssistContext} from '../../../../Assistant';
 
+import Styles from '../../../../../../conf/styles';
+
 function TripleView (props) {
 
         const assistContext = useContext(AssistContext);
-
-        const styles ={
-                header:assistContext.tripleStyles.header,
-                custom:assistContext.tripleStyles.custom,
-                constraint:assistContext.tripleStyles.constraint,
-                facet:assistContext.tripleStyles.facet,
-                shapeRef:assistContext.tripleStyles.shapeRef,
-                cardinality:assistContext.tripleStyles.cardinality,
-                delete:assistContext.tripleStyles.delete,
-                collapse:assistContext.tripleStyles.collapse
-        }
+        const styles = Styles.getInstance().getTriplesStyle();
 
         return (  <div className="tripleHeader" style={styles.header}>            
             <input  type="text" 

@@ -10,18 +10,26 @@ import {SHAPE_PICKERS,
         SHAPEREF_PICKERS,
         CARDINALITY_PICKERS} from '../../../../../conf/pickers';
 
+import Styles from '../../../../../conf/styles';
+
 function ShapeColors (props) {
 
         const assistContext = useContext(AssistContext);
+        const shapeStyles = Styles.getInstance().getShapesStyle();
+        const tripleStyles = Styles.getInstance().getTriplesStyle();
+        const constraintStyles = Styles.getInstance().getConstraintStyle();
+        const facetStyles = Styles.getInstance().getFacetStyle();
+        const shapeRefStyles = Styles.getInstance().getShapeRefStyle();
+        const cardinalityStyles = Styles.getInstance().getCardinalityStyle();
 
         const styles ={
-            header:assistContext.shapeStyles.header,
-            shapeBody:assistContext.shapeStyles.body,
-            tripleBody:assistContext.tripleStyles.body,
-            constraintBody:assistContext.tripleStyles.constraintBody,
-            facetBody:assistContext.tripleStyles.facetBody,
-            shapeRefBody:assistContext.tripleStyles.shapeRefBody,
-            cardinalityBody:assistContext.tripleStyles.cardinalityBody,            
+            header:shapeStyles.header,
+            shapeBody:shapeStyles.body,
+            tripleBody:tripleStyles.body,
+            constraintBody:constraintStyles.body,
+            facetBody:facetStyles.body,
+            shapeRefBody:shapeRefStyles.body,
+            cardinalityBody:cardinalityStyles.body,            
         }  
         
         return ( <div className="shape" style={styles.header}>
