@@ -11,8 +11,8 @@ function CustomComp (props) {
 
     const context = useContext(AppContext);
     const {entity,isCustomOpen,qualifier,bnode,customClass} = props;
-    const shapeStyles = Styles.getInstance().getShapesStyle();
-    const tripleStyles = Styles.getInstance().getTriplesStyle();
+    const shapeStyles = Styles.getInstance().getShapeStyle();
+    const tripleStyles = Styles.getInstance().getTripleStyle();
     const styles = customClass == 'customShape' ? shapeStyles:tripleStyles;
 
     let initialPrefix = 'example';

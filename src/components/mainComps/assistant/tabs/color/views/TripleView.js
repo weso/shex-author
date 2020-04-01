@@ -3,7 +3,7 @@ import Styles from '../../../../../../conf/styles';
 
 function TripleView (props) {
 
-        const styles = Styles.getInstance().getTriplesStyle();
+        const styles = Styles.getInstance().getTripleStyle();
 
         return (  <div className="tripleHeader" style={styles.header}>            
             <input  type="text" 

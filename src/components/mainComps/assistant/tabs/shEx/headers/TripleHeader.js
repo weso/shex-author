@@ -13,7 +13,7 @@ function TripleHeader (props) {
 
     const context = useContext(AppContext);
     const shapeContext = useContext(ShapeContext);
-    const styles = Styles.getInstance().getTriplesStyle();
+    const styles = Styles.getInstance().getTripleStyle();
     const disabled = shapeContext.disabled;
 
     const { triple,

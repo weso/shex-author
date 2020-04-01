@@ -21,8 +21,8 @@ import Styles from '../../../../../conf/styles';
 
 function ShapeColors (props) {
 
-        const shapeStyles = Styles.getInstance().getShapesStyle();
-        const tripleStyles = Styles.getInstance().getTriplesStyle();
+        const shapeStyles = Styles.getInstance().getShapeStyle();
+        const tripleStyles = Styles.getInstance().getTripleStyle();
         const constraintStyles = Styles.getInstance().getConstraintStyle();
         const facetStyles = Styles.getInstance().getFacetStyle();
         const shapeRefStyles = Styles.getInstance().getShapeRefStyle();

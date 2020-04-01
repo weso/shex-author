@@ -11,7 +11,7 @@ const Styles = (()=> {
     function StyleClass(){
 
         
-        this.getShapesStyle = function(){
+        this.getShapeStyle = function(){
             return {
                 label:{color:SHAPE_COLORS.label},
                 header:{background:SHAPE_COLORS.header},
@@ -28,7 +28,7 @@ const Styles = (()=> {
             };  
         }
 
-        this.getTriplesStyle = function(){
+        this.getTripleStyle = function(){
             return {      
                 label:{color:TRIPLE_COLORS.label}, 
                 header:{background:TRIPLE_COLORS.header},

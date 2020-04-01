@@ -15,7 +15,7 @@ function ShapeComponent (props) {
     const context = useContext(AppContext);
     const asssistContext = useContext(AssistContext);
     const {shape} = props;
-    const styles = Styles.getInstance().getShapesStyle();
+    const styles = Styles.getInstance().getShapeStyle();
 
     const [triples,setTriples] = useState(shape.triples);
     const [isCustomOpen,setCustomOpen] = useState(false);

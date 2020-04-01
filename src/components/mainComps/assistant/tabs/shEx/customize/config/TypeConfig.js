@@ -5,8 +5,10 @@ import Styles from '../../../../../../../conf/styles';
 function TypeConfig (props) {
 
     const context = useContext(AppContext);
-    const styles = Styles.getInstance().getShapesStyle();
     const {entity,setPrefix,collapsePrefix,bnode} = props;
+    const shapeStyles = Styles.getInstance().getShapeStyle();
+    const tripleStyles = Styles.getInstance().getTripleStyle();
+    const styles = entity.triples ? shapeStyles : tripleStyles; //is a Shape or a Triple?
     const [type,setType] = useState(entity.type.getTypeName());
     const iri ='<...>';
 

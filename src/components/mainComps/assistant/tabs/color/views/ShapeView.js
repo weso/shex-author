@@ -5,7 +5,7 @@ import Styles from '../../../../../../conf/styles';
 function ShapeView (props) {
 
         const {colors} = props;
-        const styles = Styles.getInstance().getShapesStyle();
+        const styles = Styles.getInstance().getShapeStyle();
 
         return ( <div className='header' style={styles.header}>            
                         <label style={styles.label}>Shape</label>

@@ -10,8 +10,8 @@ function PrefixConfig (props) {
     const context = useContext(AppContext);
     const assistContext = useContext(AssistContext);
     const {entity,isPrefixOpen,prefix,setPrefix} = props;
-    const shapeStyles = Styles.getInstance().getShapesStyle();
-    const tripleStyles = Styles.getInstance().getTriplesStyle();
+    const shapeStyles = Styles.getInstance().getShapeStyle();
+    const tripleStyles = Styles.getInstance().getTripleStyle();
     const styles = entity.triples ? shapeStyles : tripleStyles; //is a Shape or a Triple?
 
     const handlePrefixChange = function(e){

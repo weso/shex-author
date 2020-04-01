@@ -11,7 +11,7 @@ function ShapeHeader (props) {
     const context = useContext(AppContext);
     const shapeContext = useContext(ShapeContext);
     const disabled = shapeContext ? shapeContext.disabled : false;
-    const styles = Styles.getInstance().getShapesStyle();
+    const styles = Styles.getInstance().getShapeStyle();
     
     const {shape,customizeShape,collapseTriples,colapseBtn} = props;
     const [name,setName] = useState(shape.type.value);

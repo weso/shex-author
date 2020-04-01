@@ -5,7 +5,7 @@ import Styles from '../../../../../../../conf/styles';
 function QualifierConfig (props) {
 
     const context = useContext(AppContext);
-    const styles = Styles.getInstance().getShapesStyle();
+    const styles = Styles.getInstance().getShapeStyle();
     const {shape} = props;
     const [qualifier,setQualifier] = useState(shape.qualifier.getTypeName())
 
