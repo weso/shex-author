@@ -1,6 +1,4 @@
 .tripleHeader{
-    /*background: #faf1e7 ;*/
-    background: #EFDECD;
     padding:5px;
     padding-right: 10px;
     color: black;
@@ -12,15 +10,10 @@
 
 }
 
-
 .xs-tripleHeader{
     gap: 8px;
     grid-template-columns: 33% 8% 8% 8% 8% 8% 8% 4%;
 }
-
-
-
-
 
 .deleteTripleBtn{
     border-radius: 10px;

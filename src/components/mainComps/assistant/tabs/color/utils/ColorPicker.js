@@ -27,7 +27,7 @@ function ColorPicker (props) {
 
     const handle = (e) => {
       setColor(e.hex);
-      asssistContext.handleChange(e.hex,element)
+      asssistContext.handleChange(e.hex,element,NAMESPACE)
     };
 
     const styles = reactCSS({

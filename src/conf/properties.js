@@ -11,7 +11,7 @@ export const SHAPE_COLORS = {
 
 export const TRIPLE_COLORS = {
         label:'#222',
-        header:'#C6E2FF',
+        header:'#EFDECD',
         custom:'#3d3d3d',
         customFill:'#f8a252',
         constraint:'#3d3d3d',
@@ -22,8 +22,8 @@ export const TRIPLE_COLORS = {
         shapeRefFill:'#f8fa95',
         cardinality:'#3d3d3d',
         cardinalityFill:'#f7adea',
-        delete:'#fffff',
-        deleteFill:'#f8a252',
+        delete:'#f8a252',
+        deleteFill:'#ffff',
         collapse:'#222',
         body:'',
 }
@@ -72,6 +72,10 @@ export const TRIPLE_PICKERS = [
         {
             tag:'Header',
             element:'header'
+        },
+        {
+            tag:'Triple Body',
+            element:'body'
         },
         {
             tag:'Custom',
@@ -127,9 +131,4 @@ export const TRIPLE_PICKERS = [
         {
             tag:'Collapse',
             element:'collapse'
-        },
-       
-        {
-            tag:'Triple Body',
-            element:'body'
-        }];
+        },];

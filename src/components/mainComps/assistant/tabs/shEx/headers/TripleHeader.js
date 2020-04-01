@@ -1,6 +1,7 @@
 import React,{useState,useContext} from 'react';
 import {AppContext} from '../../../../../../App';
 import {ShapeContext} from '../ShapeComponent';
+import {AssistContext} from '../../../../Assistant';
 import yasheUtils from '../../../../../../utils/yasheUtils';
 
 import '../../../../../../css/shexComponents/headers/TripleHeader.css';
@@ -13,6 +14,7 @@ function TripleHeader (props) {
 
     const context = useContext(AppContext);
     const shapeContext = useContext(ShapeContext);
+    const assistContext = useContext(AssistContext);
     const disabled = shapeContext.disabled;
 
     const { triple,
@@ -74,9 +76,20 @@ function TripleHeader (props) {
         customizeContraints();
     }
    
+    const styles ={
+        header:assistContext.tripleStyles.header,
+        custom:assistContext.tripleStyles.custom,
+        constraint:assistContext.tripleStyles.constraint,
+        facet:assistContext.tripleStyles.facet,
+        shapeRef:assistContext.tripleStyles.shapeRef,
+        cardinality:assistContext.tripleStyles.cardinality,
+        delete:assistContext.tripleStyles.delete,
+        collapse:assistContext.tripleStyles.collapse
+    }
+    
    
     return (
-        <div className="tripleHeader">            
+        <div className="tripleHeader" style={styles.header}>            
             <input  type="text" 
                     className="name"
                     value={name}
@@ -86,6 +99,7 @@ function TripleHeader (props) {
                     title="Triple Constraint Name"/>
 
             <button className="tripleBtns buildTriple buildBtn buildTripleBtn mdc-icon-button material-icons"
+                    style={styles.custom}
                     onClick={customizeTriple}
                     disabled={disabled} 
                     title="Customize Triple">
@@ -93,6 +107,7 @@ function TripleHeader (props) {
             </button>
 
             <button className="tripleBtns buildConstraint buildBtn buildTripleBtn mdc-icon-button material-icons"
+                    style={styles.constraint}
                     onClick={handleCollapse}
                     disabled={disabled} 
                     title="Customize Constraint">
@@ -100,6 +115,7 @@ function TripleHeader (props) {
             </button>
 
              <button className="tripleBtns buildFacet buildBtn buildTripleBtn mdc-icon-button material-icons"
+                    style={styles.facet}
                     onClick={customizeFacet}
                     disabled={disabled}
                     title="Customize Facets">
@@ -107,6 +123,7 @@ function TripleHeader (props) {
             </button>
 
             <button className="tripleBtns buildInlineRef buildBtn buildTripleBtn mdc-icon-button material-icons"  
+                    style={styles.shapeRef}
                     onClick={customizeRef}
                     disabled={disabled} 
                     title="Customize Shape Reference">
@@ -115,6 +132,7 @@ function TripleHeader (props) {
 
            
             <button className="tripleBtns buildCardinality buildBtn buildTripleBtn mdc-icon-button material-icons" 
+                    style={styles.cardinality}
                     onClick={customizeCardinality}
                     disabled={disabled} 
                     title="Customize Cardinality">
@@ -122,6 +140,7 @@ function TripleHeader (props) {
             </button>
 
             <button className="tripleBtns deleteTripleBtn mdc-icon-button material-icons"
+                    style={styles.delete}
                     onClick={()=>deleteTriple(triple.id)}
                     disabled={disabled} 
                     title="Delete Triple Constraint">
@@ -129,6 +148,7 @@ function TripleHeader (props) {
             </button>
 
             <button className="collapseBtn mdc-icon-button material-icons" 
+                    style={styles.collapse}
                     onClick={collapseToggle}
                     disabled={disabled} 
                     title="Customize all">

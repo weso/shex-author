@@ -15,7 +15,7 @@ function ColorComp (props) {
 
     const styles ={
             label:assistContext.shapeStyles.label,
-            body:assistContext.shapeStyles.body,
+            body: customClass=='customShape' ? assistContext.shapeStyles.body :assistContext.tripleStyles.body,
         }  
 
     return (
