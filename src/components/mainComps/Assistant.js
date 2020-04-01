@@ -15,9 +15,9 @@ export const AssistContext = React.createContext();
 function AssistantComp (props) {
 
         const context = useContext(AppContext);
-        const [isShapesOpen, setShapesOpen] = useState(false);
+        const [isShapesOpen, setShapesOpen] = useState(true);
         const [isPrefixesOpen, setPrefixesOpen] = useState(false);
-        const [isConfigOpen, setConfigOpen] = useState(true);
+        const [isConfigOpen, setConfigOpen] = useState(false);
         const [color,setColor] = useState('#fffff');
 
         const handleChange = function(color,element,NAMESPACE){
