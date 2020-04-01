@@ -1,14 +1,14 @@
 import React,{useContext,useState} from 'react';
 import ShapeColors from './color/ShapeColors';
 
-function Config (props) {
+function Colors (props) {
 
         return ( <div>
                     <ShapeColors/>
                 </div>);
 }
 
-export default Config;
+export default Colors;
 
 /*
 

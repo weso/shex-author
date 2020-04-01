@@ -1,7 +1,7 @@
 import React,{useContext,useState} from 'react';
 import {AssistContext} from '../../../Assistant';
 import ShapeView from './views/ShapeView';
-import ColorComp from './ColorComp';
+import ColorComp from './utils/ColorComp';
 
 function ShapeColors (props) {
 

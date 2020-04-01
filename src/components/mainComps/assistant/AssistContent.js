@@ -3,7 +3,7 @@ import {AssistContext} from '../Assistant';
 import { Collapse } from 'reactstrap';
 import Shapes from './tabs/Shapes';
 import Prefixes from './tabs/Prefixes';
-import Config from './tabs/Config';
+import Colors from './tabs/Colors';
 
 function AssistContent (props) {
 
@@ -19,7 +19,7 @@ function AssistContent (props) {
                     <Prefixes/>
                 </Collapse>
                 <Collapse isOpen={asssistContext.isConfigOpen}>
-                    <Config/>
+                    <Colors/>
                 </Collapse>
                 
             </div>

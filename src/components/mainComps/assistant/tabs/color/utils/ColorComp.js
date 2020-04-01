@@ -1,14 +1,10 @@
 import React,{useState,useContext} from 'react';
 import { Collapse } from 'reactstrap';
-import {AppContext} from '../../../../../App';
-import {AssistContext} from '../../../Assistant';
+import {AppContext} from '../../../../../../App';
+import {AssistContext} from '../../../../Assistant';
+import '../../../../../../css/shexComponents/customize/Custom.css'
+import '../../../../../../css/color/colors.css'
 
-import '../../../../../css/shexComponents/customize/Custom.css'
-import '../../../../../css/color/colors.css'
-
-
-import { SketchPicker } from 'react-color';
-import reactCSS from 'reactcss';
 import ColorPicker from './ColorPicker';
 
 function ColorComp (props) {
