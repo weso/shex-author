@@ -1,6 +1,6 @@
 import React,{useContext,useState} from 'react';
 import { Textbox } from 'react-inputs-validation';
-import {AssistContext} from '../../../Assistant';
+import {AssistContext} from '../../../../Assistant';
 
 function ShapeView (props) {
 
