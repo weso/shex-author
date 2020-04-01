@@ -1,9 +1,8 @@
 import React,{useState,useContext} from 'react';
 import {AppContext} from '../../../../../../App';
 import {ShapeContext} from '../ShapeComponent';
-import {AssistContext} from '../../../../Assistant';
 import yasheUtils from '../../../../../../utils/yasheUtils';
-
+import Styles from '../../../../../../conf/styles';
 import '../../../../../../css/shexComponents/headers/TripleHeader.css';
 
 
@@ -14,7 +13,7 @@ function TripleHeader (props) {
 
     const context = useContext(AppContext);
     const shapeContext = useContext(ShapeContext);
-    const assistContext = useContext(AssistContext);
+    const styles = Styles.getInstance().getTriplesStyle();
     const disabled = shapeContext.disabled;
 
     const { triple,
@@ -76,17 +75,6 @@ function TripleHeader (props) {
         customizeContraints();
     }
    
-    const styles ={
-        header:assistContext.tripleStyles.header,
-        custom:assistContext.tripleStyles.custom,
-        constraint:assistContext.tripleStyles.constraint,
-        facet:assistContext.tripleStyles.facet,
-        shapeRef:assistContext.tripleStyles.shapeRef,
-        cardinality:assistContext.tripleStyles.cardinality,
-        delete:assistContext.tripleStyles.delete,
-        collapse:assistContext.tripleStyles.collapse
-    }
-    
    
     return (
         <div className="tripleHeader" style={styles.header}>            

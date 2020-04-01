@@ -1,11 +1,8 @@
 import React,{useContext,useState} from 'react';
-import {AssistContext} from '../../../../Assistant';
-
 import Styles from '../../../../../../conf/styles';
 
 function TripleView (props) {
 
-        const assistContext = useContext(AssistContext);
         const styles = Styles.getInstance().getTriplesStyle();
 
         return (  <div className="tripleHeader" style={styles.header}>            

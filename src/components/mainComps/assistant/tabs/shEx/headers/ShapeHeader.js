@@ -1,19 +1,17 @@
 import React,{useState,useContext} from 'react';
 import { Textbox } from 'react-inputs-validation';
 import {AppContext} from '../../../../../../App';
-import {AssistContext} from '../../../../Assistant';
 import {ShapeContext} from '../ShapeComponent';
 import {PN_LOCAL,IRI_REF} from '../../../../../../utils/regExpUtils';
 import '../../../../../../css/shexComponents/headers/ShapeHeader.css';
-
+import Styles from '../../../../../../conf/styles';
 
 function ShapeHeader (props) {
 
     const context = useContext(AppContext);
     const shapeContext = useContext(ShapeContext);
-    const asssistContext = useContext(AssistContext);
     const disabled = shapeContext ? shapeContext.disabled : false;
-    
+    const styles = Styles.getInstance().getShapesStyle();
     
     const {shape,customizeShape,collapseTriples,colapseBtn} = props;
     const [name,setName] = useState(shape.type.value);
@@ -36,14 +34,7 @@ function ShapeHeader (props) {
         }
     }
 
-    const styles ={
-        header:asssistContext.shapeStyles.header,
-        label:asssistContext.shapeStyles.label,
-        custom:asssistContext.shapeStyles.custom,
-        delete:asssistContext.shapeStyles.delete,
-        collapse:asssistContext.shapeStyles.collapse
-    }
-
+    
     return (
         <div className='header' style={styles.header}>            
             <label style={styles.label}>Shape</label>

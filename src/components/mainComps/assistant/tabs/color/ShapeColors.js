@@ -1,5 +1,4 @@
 import React,{useContext,useState} from 'react';
-import {AssistContext} from '../../../Assistant';
 import ShapeView from './views/ShapeView';
 import TripleView from './views/TripleView';
 import ColorComp from './utils/ColorComp';
@@ -14,7 +13,6 @@ import Styles from '../../../../../conf/styles';
 
 function ShapeColors (props) {
 
-        const assistContext = useContext(AssistContext);
         const shapeStyles = Styles.getInstance().getShapesStyle();
         const tripleStyles = Styles.getInstance().getTriplesStyle();
         const constraintStyles = Styles.getInstance().getConstraintStyle();
