@@ -26,7 +26,7 @@ function FacetContainer (props) {
     }
 
     return (<div className="gridBox" style={styles.body}>
-                    <label className="gridLabel">Facet</label>
+                    <label className="gridLabel" style={styles.label}>Facet</label>
                     <div className="facetCont">
                         {facets.map(f =>{
                                 return (<FacetComp 

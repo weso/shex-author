@@ -73,7 +73,7 @@ function CardinalityComp (props) {
 
         return ( 
                 <div className=" gridBox" style={styles.body}>
-                        <label className='gridLabel'>Cardinality</label>
+                        <label className='gridLabel' style={styles.label}>Cardinality</label>
                         <select className="customSelector" 
                                 value={cardinality} 
                                 onChange={handleCardinalityChange} 
@@ -89,7 +89,7 @@ function CardinalityComp (props) {
 
                     
                         <Collapse isOpen={isExactly} className="rangeCardinality">
-                                <label className="tripleNameLabel">Value</label>
+                                <label className="tripleNameLabel" style={styles.label}>Value</label>
                                 <NumericInput   className="form-control" 
                                                 min={0} 
                                                 value={min}
@@ -98,13 +98,13 @@ function CardinalityComp (props) {
 
                         
                         <Collapse isOpen={isRange} className="rangeCardinality">
-                                <label className="tripleNameLabel">Min</label>
+                                <label className="tripleNameLabel" style={styles.label}>Min</label>
                                 <NumericInput   className="form-control" 
                                                 min={0} 
                                                 value={min}
                                                 onChange={(value)=>{handleMinChange(value,'range')}}/>
 
-                                <label className="tripleNameLabel">Max</label>
+                                <label className="tripleNameLabel" style={styles.label}>Max</label>
                                 <NumericInput   className="form-control" 
                                                 min={0} 
                                                 value={max}

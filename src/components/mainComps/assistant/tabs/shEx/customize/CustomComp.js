@@ -1,7 +1,6 @@
 import React,{useState,useContext} from 'react';
 import { Collapse } from 'reactstrap';
 import {AppContext} from '../../../../../../App';
-import {AssistContext} from '../../../../Assistant';
 import TypeConfig from './config/TypeConfig';
 import PrefixConfig from './config/PrefixConfig';
 import QualifierConfig from './config/QualifierConfig';
@@ -11,8 +10,10 @@ import '../../../../../../css/shexComponents/customize/Custom.css'
 function CustomComp (props) {
 
     const context = useContext(AppContext);
-    const assistContext = useContext(AssistContext);
     const {entity,isCustomOpen,qualifier,bnode,customClass} = props;
+    const shapeStyles = Styles.getInstance().getShapesStyle();
+    const tripleStyles = Styles.getInstance().getTriplesStyle();
+    const styles = customClass == 'customShape' ? shapeStyles:tripleStyles;
 
     let initialPrefix = 'example';
     let initialOpenPrefix = false;
@@ -31,11 +32,7 @@ function CustomComp (props) {
             setPrefixOpen(false);
         }    
     }
-    
-    const shapeStyles = Styles.getInstance().getShapesStyle();
-    const tripleStyles = Styles.getInstance().getTriplesStyle();
 
-    const styles = customClass == 'customShape' ? shapeStyles:tripleStyles;
 
     return (
         <Collapse isOpen={isCustomOpen}

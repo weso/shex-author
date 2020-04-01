@@ -2,11 +2,13 @@ import React,{useState,useContext} from 'react';
 import {AppContext} from '../../../../../../../App';
 import shexUtils from '../../../../../../../utils/shexUtils';
 import ValueSetComp from './ValueSetComp';
+import Styles from '../../../../../../../conf/styles';
 
 function ValueSetContainer (props) {
     const {triple,valueSet} = props;
     const context = useContext(AppContext);
     const [values,setValues]=useState(valueSet);
+    const styles = Styles.getInstance().getConstraintStyle();
 
     const deleteValue= function(id){
         const newValues = values.filter(v => v.id != id);
@@ -23,7 +25,7 @@ function ValueSetContainer (props) {
     }
 
     return (<div className='customConstraint'>
-                <label >ValueSet</label>
+                <label style={styles.label}>ValueSet</label>
                 <div className="valueSetsCont">
                     {values.map(v =>{                                        
                             return (<ValueSetComp 
