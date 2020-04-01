@@ -6,9 +6,7 @@ export const SHAPE_COLORS = {
         delete:'#79aff5',
         deleteFill:'#FFFFFF',
         collapse:'#222',
-        body:'#EBF4FF',
-        addTriple:'#222',
-        addTripleFill:'#EFDECD',
+        body:'#EBF4FF'
 }
 
 export const TRIPLE_COLORS = {
@@ -24,6 +22,11 @@ export const TRIPLE_COLORS = {
         addTripleFill:'#EFDECD',
 }
 
+/*
+        addTriple:'#222',
+        addTripleFill:'#EFDECD',
+
+        */
 
 export const SHAPE_PICKERS = [
         {
@@ -54,18 +57,9 @@ export const SHAPE_PICKERS = [
             tag:'Collapse',
             element:'collapse'
         },
-       
         {
             tag:'Shape Body',
             element:'body'
-        },
-        {
-            tag:'+Triple',
-            element:'addTriple'
-        },
-        {
-            tag:'+Triple Fill',
-            element:'addTripleFill'
         }];
 
 export const TRIPLE_PICKERS = [
