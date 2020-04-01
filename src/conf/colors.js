@@ -25,25 +25,21 @@ export const TRIPLE_COLORS = {
         delete:'#f8a252',
         deleteFill:'#ffff',
         collapse:'#222',
-        body:'#EFE8E1',
-        constraintBody:'#d6ffc654',
-        facetBody:'#f5d6d6',
-        shapeRefBody:'#f5fac8',
-        cardinalityBody:'#fae2f8',
+        body:'#EFE8E1'
 };
 
 export const CONSTRAINT_COLORS = {
-        body:'#EFE8E1',
+        body:'#d6ffc654',
 };
 
 export const FACET_COLORS = {
-        body:'#EFE8E1',
+        body:'#f5d6d6',
 };
 
 export const SHAPEREF_COLORS = {
-        body:'#EFE8E1',
+        body:'#f5fac8',
 };
 
 export const CARDINALITY_COLORS = {
-        body:'#EFE8E1',
+        body:'#fae2f8',
 };

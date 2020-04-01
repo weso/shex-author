@@ -97,7 +97,7 @@ export const TRIPLE_PICKERS = [
             element:'collapse'
         },];
 
-export const CONSTRAINT_PICKERS = [{tag:'Constraint Body',element:'constraintBody'}];
-export const FACET_PICKERS = [{tag:'Facet Body',element:'facetBody'}];
-export const SHAPEREF_PICKERS = [{tag:'ShapeRefrence Body',element:'shapeRefBody'}];
-export const CARDINALITY_PICKERS = [{tag:'Cardinality Body',element:'cardinalityBody'}];
+export const CONSTRAINT_PICKERS = [{tag:'Constraint Body',element:'body'}];
+export const FACET_PICKERS = [{tag:'Facet Body',element:'body'}];
+export const SHAPEREF_PICKERS = [{tag:'ShapeRefrence Body',element:'body'}];
+export const CARDINALITY_PICKERS = [{tag:'Cardinality Body',element:'body'}];

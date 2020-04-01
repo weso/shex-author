@@ -8,12 +8,12 @@ import '../../../../../../css/color/colors.css'
 function ColorComp (props) {
 
     const context = useContext(AppContext);
-    const {customClass,namespace,pickers,bodyType} = props;
+    const {namespace,pickers,bodyType} = props;
     const shapeStyles = Styles.getInstance().getShapesStyle();
     const c = Styles.getInstance().getConstraintStyle();
     const styles ={
             label:shapeStyles.label,
-            body: shapeStyles.body,
+            body: bodyType,
     }  
 
     return (
