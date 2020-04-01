@@ -26,6 +26,10 @@ export const TRIPLE_COLORS = {
         deleteFill:'#ffff',
         collapse:'#222',
         body:'#EFE8E1',
+        constraintBody:'#d6ffc654',
+        facetBody:'#EFE8E1',
+        shapeRefBody:'#EFE8E1',
+        cardinalityBody:'#EFE8E1',
 }
 
 /*

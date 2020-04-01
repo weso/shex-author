@@ -11,16 +11,16 @@ function ColorComp (props) {
 
     const context = useContext(AppContext);
     const assistContext = useContext(AssistContext);
-    const {customClass,pickers} = props;
+    const {customClass,pickers,bodyType} = props;
 
     const styles ={
             label:assistContext.shapeStyles.label,
-            body: customClass=='customShape' ? assistContext.shapeStyles.body :assistContext.tripleStyles.body,
+            body: bodyType,
         }  
 
     return (
         <div className='customColapse' style={styles.body}>             
-            <div className={customClass} style={styles.body}>
+            <div style={styles.body}>
                  <div className='customZone'>
                     {pickers.map(p=>{
                         return(<div className='customElement' key={p.element}>

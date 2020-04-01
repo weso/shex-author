@@ -1,6 +1,7 @@
 .customZone{
     display:grid;
     grid-template-columns: 50% 50%;
+    padding: 0%;
 }
 
 .customElement{
@@ -9,3 +10,4 @@
     align-items: center;
     gap: 25px;
 }
+
