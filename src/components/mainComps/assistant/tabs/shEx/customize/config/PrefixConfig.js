@@ -1,12 +1,14 @@
 import React,{useState,useContext} from 'react';
 import { Collapse } from 'reactstrap';
 import {AppContext} from '../../../../../../../App';
+import {AssistContext} from '../../../../../Assistant';
 
 import {getPrefix} from '../../../../../../../utils/prefixUtils';
 
 function PrefixConfig (props) {
 
     const context = useContext(AppContext);
+    const assistContext = useContext(AssistContext);
     const {entity,isPrefixOpen,prefix,setPrefix} = props;
 
   
@@ -19,7 +21,7 @@ function PrefixConfig (props) {
 
     return (
          <Collapse isOpen={isPrefixOpen} className="gridBox">
-            <label className="customLabel">Prefix </label>
+            <label className="customLabel" style={assistContext.styles.label}>Prefix </label>
             <select className="customSelector" value={prefix} onChange={handlePrefixChange}>
                 <option value="example">example</option>
                 { 

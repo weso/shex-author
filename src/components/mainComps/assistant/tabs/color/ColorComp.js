@@ -19,7 +19,7 @@ function ColorComp (props) {
 
     const pickers = [
         {
-            tag:'Label',
+            tag:'Labels',
             element:'label'
         },
         {
@@ -69,7 +69,7 @@ function ColorComp (props) {
                  <div className='customZone'>
                     {pickers.map(p=>{
                         return(<div className='customElement'>
-                                    <label>{p.tag}</label>
+                                    <label style={assistContext.styles.label}>{p.tag}</label>
                                     <ColorPicker  element={p.element}/>
                                 </div>)
                     })}
