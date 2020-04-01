@@ -62,13 +62,21 @@ const Styles = (()=> {
 
         this.getConstraintStyle = function(){
             return {
-                body:{background:CONSTRAINT_COLORS.body}
+                body:{background:CONSTRAINT_COLORS.body},
+                delete:{
+                        color:CONSTRAINT_COLORS.deleteFill,
+                        background:CONSTRAINT_COLORS.delete
+                },
             };  
         }
 
         this.getFacetStyle = function(){
             return {
-                body:{background:FACET_COLORS.body}
+                body:{background:FACET_COLORS.body},
+                delete:{
+                        color:FACET_COLORS.deleteFill,
+                        background:FACET_COLORS.delete
+                },
             };  
         }
 
