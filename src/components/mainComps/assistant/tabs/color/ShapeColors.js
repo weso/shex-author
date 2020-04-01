@@ -67,7 +67,7 @@ function ShapeColors (props) {
                                 pickers={CARDINALITY_PICKERS} 
                                 bodyType={styles.cardinalityBody}/>
 
-                    <div className="triples" style={styles.body}>
+                    <div className="triples" style={styles.shapeBody}>
                         <button className="addTripleButton"
                                 title="Add Triple">
                                 + Triple Constraint
