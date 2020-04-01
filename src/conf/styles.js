@@ -4,6 +4,7 @@ import {SHAPE_COLORS,
         FACET_COLORS,
         SHAPEREF_COLORS,
         CARDINALITY_COLORS} from './colors';
+        
 //Singleton Pattern
 const Styles = (()=> {
 
