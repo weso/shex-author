@@ -6,6 +6,7 @@ import ShapeHeader from  './headers/ShapeHeader';
 import CustomComp from './customize/CustomComp';
 import TripleComponent from './TripleComponent';
 import Triple from '../../../../../entities/shexEntities/triple';
+import Styles from '../../../../../conf/styles';
 
 export const ShapeContext = React.createContext();
 
@@ -14,6 +15,7 @@ function ShapeComponent (props) {
     const context = useContext(AppContext);
     const asssistContext = useContext(AssistContext);
     const {shape} = props;
+    const styles = Styles.getInstance().getShapesStyle();
 
     const [triples,setTriples] = useState(shape.triples);
     const [isCustomOpen,setCustomOpen] = useState(false);
@@ -68,13 +70,6 @@ function ShapeComponent (props) {
             setColapseBtn('menu');
         }
     }
-
-    const styles ={
-        header:asssistContext.shapeStyles.header,
-        body:asssistContext.shapeStyles.body,
-        triple:asssistContext.shapeStyles.triple
-    }
-
 
     return (
 

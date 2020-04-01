@@ -33,7 +33,7 @@ function ShapeColors (props) {
         return ( <div className="shape" style={styles.header}>
                     <ShapeView/>
                     <TripleView/>
-                    <ColorComp customClass='customShape' pickers={SHAPE_PICKERS} bodyType={styles.body}/>                    
+                    <ColorComp customClass='customShape' pickers={SHAPE_PICKERS} bodyType={styles.shapeBody}/>                    
                     <ColorComp customClass='customTriple' pickers={TRIPLE_PICKERS} bodyType={styles.tripleBody}/>
                     <ColorComp customClass='constraintBody' pickers={CONSTRAINT_PICKERS} bodyType={styles.constraintBody}/>
                     <ColorComp customClass='facetBody' pickers={FACET_PICKERS} bodyType={styles.facetBody}/>

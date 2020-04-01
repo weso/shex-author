@@ -5,7 +5,7 @@ import {AssistContext} from '../../../../Assistant';
 import TypeConfig from './config/TypeConfig';
 import PrefixConfig from './config/PrefixConfig';
 import QualifierConfig from './config/QualifierConfig';
-
+import Styles from '../../../../../../conf/styles';
 import '../../../../../../css/shexComponents/customize/Custom.css'
 
 function CustomComp (props) {
@@ -32,9 +32,10 @@ function CustomComp (props) {
         }    
     }
     
-    const styles ={
-        body: customClass=='customShape' ? assistContext.shapeStyles.body :assistContext.tripleStyles.body,
-    }
+    const shapeStyles = Styles.getInstance().getShapesStyle();
+    const tripleStyles = Styles.getInstance().getTriplesStyle();
+
+    const styles = customClass == 'customShape' ? shapeStyles:tripleStyles;
 
     return (
         <Collapse isOpen={isCustomOpen}
