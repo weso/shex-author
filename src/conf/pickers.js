@@ -1,103 +1,38 @@
+/** COLOR PICKERS */
+
 export const SHAPE_PICKERS = [
-        {
-            tag:'Labels',
-            element:'label'
-        },
-        {
-            tag:'Header',
-            element:'header'
-        },
-        {
-            tag:'Custom',
-            element:'custom'
-        },
-        {
-            tag:'Custom Fill',
-            element:'customFill'
-        },
-         {
-            tag:'Delete',
-            element:'delete'
-        },
-        {
-            tag:'Delete Fill',
-            element:'deleteFill'
-        },
-        {
-            tag:'Collapse',
-            element:'collapse'
-        },
-        {
-            tag:'Shape Body',
-            element:'body'
-        }];
+        {tag:'Labels',element:'label'},
+        {tag:'Header',element:'header'},
+        {tag:'Custom',element:'custom'},
+        {tag:'Custom Fill',element:'customFill'},
+        {tag:'Delete',element:'delete'},
+        {tag:'Delete Fill',element:'deleteFill'},
+        {tag:'Collapse',element:'collapse'},
+        {tag:'Shape Body',element:'body'}];
 
 export const TRIPLE_PICKERS = [
-        {
-            tag:'Header',
-            element:'header'
-        },
-        {
-            tag:'Triple Body',
-            element:'body'
-        },
-        {
-            tag:'Custom',
-            element:'custom'
-        },
-        {
-            tag:'Custom Fill',
-            element:'customFill'
-        },
-        {
-            tag:'Constraint',
-            element:'constraint'
-        },
-        {
-            tag:'Constraint Fill',
-            element:'constraintFill'
-        },
+        {tag:'Header',element:'header'},
+        {tag:'Triple Body',element:'body'},
+        {tag:'Custom',element:'custom'},
+        {tag:'Custom Fill',element:'customFill'},
+        {tag:'Constraint',element:'constraint'},
+        {tag:'Constraint Fill',element:'constraintFill'},
+        {tag:'Facet',element:'facet'},
+        {tag:'Facet Fill',element:'facetFill'},
+        {tag:'Shape Ref',element:'shapeRef'},
+        {tag:'Shape Ref Fill',element:'shapeRefFill'},
+        {tag:'Cardinality',element:'cardinality'},
+        {tag:'Cardinality Fill',element:'cardinalityFill'},
+        {tag:'Delete',element:'delete'},
+        {tag:'Delete Fill',element:'deleteFill'},
+        {tag:'Collapse',element:'collapse'},];
 
-        {
-            tag:'Facet',
-            element:'facet'
-        },
-        {
-            tag:'Facet Fill',
-            element:'facetFill'
-        },
-
-        {
-            tag:'Shape Ref',
-            element:'shapeRef'
-        },
-        {
-            tag:'Shape Ref Fill',
-            element:'shapeRefFill'
-        },
-
-        {
-            tag:'Cardinality',
-            element:'cardinality'
-        },
-        {
-            tag:'Cardinality Fill',
-            element:'cardinalityFill'
-        },
-         {
-            tag:'Delete',
-            element:'delete'
-        },
-        {
-            tag:'Delete Fill',
-            element:'deleteFill'
-        },
-        {
-            tag:'Collapse',
-            element:'collapse'
-        },];
-
-export const CONSTRAINT_PICKERS = [{tag:'Constraint Body',element:'body'}];
-export const FACET_PICKERS = [{tag:'Facet Body',element:'body'}];
+export const CONSTRAINT_PICKERS = [
+        {tag:'Constraint Body',element:'body'},
+        {tag:'Delete ValueSetValue',element:'delete'}
+        ];
+export const FACET_PICKERS = [
+        {tag:'Facet Body',element:'body'},
+        {tag:'Delete ValueSetValue',element:'delete'}];
 export const SHAPEREF_PICKERS = [{tag:'Shape Ref Body',element:'body'}];
 export const CARDINALITY_PICKERS = [{tag:'Cardinality Body',element:'body'}];
