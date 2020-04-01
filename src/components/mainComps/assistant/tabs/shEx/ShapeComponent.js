@@ -72,6 +72,7 @@ function ShapeComponent (props) {
     const styles ={
         header:asssistContext.styles.header,
         body:asssistContext.styles.body,
+        triple:asssistContext.styles.triple
     }
 
 
@@ -100,7 +101,8 @@ function ShapeComponent (props) {
                                             deleteTriple={deleteTriple}/> 
                         )}
                     
-                        <button className="addTripleButton" 
+                        <button className="addTripleButton"
+                                style={styles.triple} 
                                 onClick={addTriple} 
                                 disabled={disabled}
                                 title="Add Triple">

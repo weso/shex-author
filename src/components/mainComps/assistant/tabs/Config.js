@@ -10,7 +10,8 @@ function Config (props) {
                     <ShapeView/>
                     <ColorComp customClass='customShape'/>
                      <div className="triples" style={assistContext.styles.body}>
-                        <button className="addTripleButton" 
+                        <button className="addTripleButton"
+                                style={assistContext.styles.triple} 
                                 title="Add Triple">
                                 + Triple Constraint
                         </button>

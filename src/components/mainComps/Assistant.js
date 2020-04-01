@@ -34,6 +34,10 @@ function AssistantComp (props) {
                 },
                 collapse:{color:SHAPE_COLORS.collapse},
                 body:{background:SHAPE_COLORS.body},
+                triple:{
+                        color:SHAPE_COLORS.addTriple,
+                        background:SHAPE_COLORS.addTripleFill
+                },
         
         }
         const [color,setColor] = useState('#fffff');

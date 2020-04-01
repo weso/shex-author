@@ -6,6 +6,8 @@ export const SHAPE_COLORS = {
         delete:'#79aff5',
         deleteFill:'#FFFFFF',
         collapse:'#222',
-        body:'#EBF4FF'
+        body:'#EBF4FF',
+        addTriple:'#222',
+        addTripleFill:'#EFDECD',
 }
 
