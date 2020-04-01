@@ -18,9 +18,9 @@ function ColorComp (props) {
             <div className={customClass} style={assistContext.styles.body}>
                  <div className='customZone'>
                     {pickers.map(p=>{
-                        return(<div className='customElement'>
+                        return(<div className='customElement' key={p.element}>
                                     <label style={assistContext.styles.label}>{p.tag}</label>
-                                    <ColorPicker  element={p.element}/>
+                                    <ColorPicker type={customClass} element={p.element}/>
                                 </div>)
                     })}
                 </div>

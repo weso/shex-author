@@ -6,14 +6,15 @@ import '../../../../../../css/shexComponents/customize/Custom.css'
 import '../../../../../../css/color/colors.css'
 import { ChromePicker } from 'react-color';
 import reactCSS from 'reactcss';
-import {SHAPE_COLORS} from '../../../../../../conf/properties';
+import {SHAPE_COLORS,TRIPLE_COLORS} from '../../../../../../conf/properties';
 
 function ColorPicker (props) {
 
     const context = useContext(AppContext);
     const asssistContext = useContext(AssistContext);
-    const {customClass,element} = props;
-    const [color,setColor] = useState(SHAPE_COLORS[element]);
+    const {customClass,element,type} = props;
+    let NAMESPACE = type=='customShape' ? SHAPE_COLORS : TRIPLE_COLORS;
+    const [color,setColor] = useState(NAMESPACE[element]);
     const [isDisplay,setDisplay] = useState(false);
 
     const handleClick = () => {
