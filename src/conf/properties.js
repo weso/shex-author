@@ -27,9 +27,9 @@ export const TRIPLE_COLORS = {
         collapse:'#222',
         body:'#EFE8E1',
         constraintBody:'#d6ffc654',
-        facetBody:'#EFE8E1',
-        shapeRefBody:'#EFE8E1',
-        cardinalityBody:'#EFE8E1',
+        facetBody:'#f5d6d6',
+        shapeRefBody:'#f5fac8',
+        cardinalityBody:'#fae2f8',
 }
 
 /*
@@ -136,3 +136,8 @@ export const TRIPLE_PICKERS = [
             tag:'Collapse',
             element:'collapse'
         },];
+
+export const CONSTRAINT_PICKERS = [{tag:'Constraint Body',element:'constraintBody'}]
+export const FACET_PICKERS = [{tag:'Facet Body',element:'facetBody'}]
+export const SHAPEREF_PICKERS = [{tag:'ShapeRefrence Body',element:'shapeRefBody'}]
+export const CARDINALITY_PICKERS = [{tag:'Cardinality Body',element:'cardinalityBody'}]
