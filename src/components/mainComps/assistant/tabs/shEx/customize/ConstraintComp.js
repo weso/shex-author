@@ -6,6 +6,7 @@ import shexUtils from '../../../../../../utils/shexUtils';
 import yasheUtils from '../../../../../../utils/yasheUtils';
 import PrefixConfig from './config/PrefixConfig';
 import ValueSetContainer from './constraint/ValueSetContainer';
+import Styles from '../../../../../../conf/styles';
 
 const primitives = ['String','Integer','Date','Boolean'];
 const iriStr ='<...>';
@@ -14,6 +15,7 @@ function ConstraintComp (props) {
 
     const context = useContext(AppContext);
     const {triple} = props;
+    const styles = Styles.getInstance().getConstraintStyle();
     
     let constValue = triple.constraint.getTypeName();
     let primValue = triple.constraint.value;
@@ -127,7 +129,7 @@ function ConstraintComp (props) {
     })
 
     return (
-                <div className="gridBox constraint">
+                <div className="gridBox" style={styles.body}>
                     <label className='gridLabel'>Constraint</label>
                     <select className="customSelector" 
                         value={primitive} 

@@ -2,12 +2,13 @@ import React,{useState,useContext} from 'react';
 import {AppContext} from '../../../../../../App';
 import { Collapse } from 'reactstrap';
 import shexUtils from '../../../../../../utils/shexUtils';
+import Styles from '../../../../../../conf/styles';
 
 function ShapeRefComp (props) {
     
     const {triple} = props;
     const context = useContext(AppContext);
-
+    const styles = Styles.getInstance().getShapeRefStyle();
 
     let refValue = '';
     let refOpen = false;
@@ -45,7 +46,7 @@ function ShapeRefComp (props) {
     }
      
     return ( 
-            <div className="gridBox shapeRef">
+            <div className="gridBox" style={styles.body}>
                     <label className="customLabel">Shape <br/><span>Reference</span></label>
                     <select className="shapeRefSelector"
                             value={shapeRef}

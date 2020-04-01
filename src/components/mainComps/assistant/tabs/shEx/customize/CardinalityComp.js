@@ -2,12 +2,13 @@ import React,{useState,useContext} from 'react';
 import {AppContext} from '../../../../../../App';
 import { Collapse } from 'reactstrap';
 import NumericInput from 'react-numeric-input';
-
+import Styles from '../../../../../../conf/styles';
 
 function CardinalityComp (props) {
     
         const {triple} = props;
         const context = useContext(AppContext);
+        const styles = Styles.getInstance().getCardinalityStyle();
 
         let cardValue = triple.cardinality.getCardType();
         let initialExactly = false;
@@ -71,7 +72,7 @@ function CardinalityComp (props) {
         }
 
         return ( 
-                <div className=" gridBox cardinality">
+                <div className=" gridBox" style={styles.body}>
                         <label className='gridLabel'>Cardinality</label>
                         <select className="customSelector" 
                                 value={cardinality} 

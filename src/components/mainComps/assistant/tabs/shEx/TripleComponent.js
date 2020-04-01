@@ -4,7 +4,7 @@ import TripleHeader from './headers/TripleHeader';
 import CustomComp from './customize/CustomComp';
 import ConstraintComp from './customize/ConstraintComp';
 import ShapeRefComp from './customize/ShapeRefComp';
-import FacetContainer from './customize/facets/FacetContainer';
+import FacetContainer from './customize/FacetContainer';
 import CardinalityComp from './customize/CardinalityComp';
 
 
