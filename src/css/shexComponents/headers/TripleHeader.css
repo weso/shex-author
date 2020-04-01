@@ -33,7 +33,7 @@
 
 .buildInlineRef{
     background: #3d3d3d !important;
-    color:rgb(248, 250, 149) !important;
+    color:#f8fa95 !important;
 }
 
 .buildFacet{
@@ -43,7 +43,7 @@
 
 .buildCardinality{
     background: #3d3d3d !important;
-    color:rgb(247, 173, 234) !important;
+    color:#f7adea !important;
 }
 
 
