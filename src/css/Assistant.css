@@ -265,6 +265,7 @@ label{
 }
 
 .addTripleButton{
+    background: #EFDECD;
     border-radius: 10px;
     font-weight: bold;
     padding: 1px;

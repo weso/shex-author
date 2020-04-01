@@ -25,7 +25,7 @@ export const TRIPLE_COLORS = {
         delete:'#f8a252',
         deleteFill:'#ffff',
         collapse:'#222',
-        body:'',
+        body:'#EFE8E1',
 }
 
 /*

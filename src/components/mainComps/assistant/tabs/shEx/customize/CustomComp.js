@@ -11,7 +11,7 @@ import '../../../../../../css/shexComponents/customize/Custom.css'
 function CustomComp (props) {
 
     const context = useContext(AppContext);
-    const asssistContext = useContext(AssistContext);
+    const assistContext = useContext(AssistContext);
     const {entity,isCustomOpen,qualifier,bnode,customClass} = props;
 
     let initialPrefix = 'example';
@@ -33,7 +33,7 @@ function CustomComp (props) {
     }
     
     const styles ={
-        body:asssistContext.shapeStyles.body,
+        body: customClass=='customShape' ? assistContext.shapeStyles.body :assistContext.tripleStyles.body,
     }
 
     return (
