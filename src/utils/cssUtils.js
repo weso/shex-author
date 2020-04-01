@@ -48,10 +48,8 @@ export function makeItResponsive(width){
             addShapeBtns[i].className = adSClass;
         }
 
-
         for(let i=0;i<grids.length;i++){
-            let c = grids[i].className.replace('gridBox','').replace('xs-gridBox','');
-            grids[i].className = grClass+' '+c;
+            grids[i].className = grClass;
         }
 
         for(let i=0;i<customs.length;i++){
