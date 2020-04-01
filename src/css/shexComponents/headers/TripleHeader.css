@@ -21,37 +21,8 @@
 
 
 
-.buildTriple{
-    background: #3d3d3d !important;
-    color:#f8a252 !important;
-}
-
-.buildConstraint{
-    background: #3d3d3d !important;
-    color:#b1e086 !important;
-}
-
-.buildInlineRef{
-    background: #3d3d3d !important;
-    color:#f8fa95 !important;
-}
-
-.buildFacet{
-    background: #3d3d3d !important;
-    color:#f5817f !important;
-}
-
-.buildCardinality{
-    background: #3d3d3d !important;
-    color:#f7adea !important;
-}
-
-
-
 
 .deleteTripleBtn{
-    background: #f8a252;
-    color: white;
     border-radius: 10px;
     outline: none;
     border: none;
