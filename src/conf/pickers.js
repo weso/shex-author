@@ -68,11 +68,11 @@ export const TRIPLE_PICKERS = [
         },
 
         {
-            tag:'ShapeRef',
+            tag:'Shape Ref',
             element:'shapeRef'
         },
         {
-            tag:'ShapeRef Fill',
+            tag:'Shape Ref Fill',
             element:'shapeRefFill'
         },
 
@@ -99,5 +99,5 @@ export const TRIPLE_PICKERS = [
 
 export const CONSTRAINT_PICKERS = [{tag:'Constraint Body',element:'body'}];
 export const FACET_PICKERS = [{tag:'Facet Body',element:'body'}];
-export const SHAPEREF_PICKERS = [{tag:'ShapeRefrence Body',element:'body'}];
+export const SHAPEREF_PICKERS = [{tag:'Shape Ref Body',element:'body'}];
 export const CARDINALITY_PICKERS = [{tag:'Cardinality Body',element:'body'}];
