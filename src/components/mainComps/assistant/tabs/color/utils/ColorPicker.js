@@ -5,7 +5,8 @@ import '../../../../../../css/shexComponents/customize/Custom.css'
 import '../../../../../../css/color/colors.css'
 import { ChromePicker } from 'react-color';
 import reactCSS from 'reactcss';
-
+import { useCookies } from 'react-cookie';
+import {SHAPE_COLORS} from '../../../../../../conf/colors';
 function ColorPicker (props) {
 
     const context = useContext(AppContext);
@@ -14,12 +15,17 @@ function ColorPicker (props) {
     const [color,setColor] = useState(namespace[element]);
     const [isDisplay,setDisplay] = useState(false);
 
+    
+    const [cookies, setCookie] = useCookies('shapeColors');
+    
+
     const handleClick = () => {
       setDisplay(!isDisplay);
     };
 
     const handleClose = () => {
-      setDisplay(false);
+      //setDisplay(false);
+      setCookie('shapeColors', SHAPE_COLORS, { path: '/' });
     };
 
     const handle = (e) => {
@@ -67,7 +73,7 @@ function ColorPicker (props) {
                 { isDisplay ? 
                     <div style={ styles.popover }>
                         <div style={ styles.cover } onClick={handleClose}/>
-                        <ChromePicker  color={color} onChange={handle}/>
+                        <ChromePicker  color={color} onChange={handle} onChangeComplete={handleClose}/>
                     </div> 
                     
                     : null 

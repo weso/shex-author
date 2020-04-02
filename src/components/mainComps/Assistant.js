@@ -1,4 +1,4 @@
-import React,{useContext,useState} from 'react';
+import React,{useContext,useState,useEffect} from 'react';
 import {AppContext} from '../../App';
 import { Collapse } from 'reactstrap';
 import AssistNav from './assistant/AssistNav';
@@ -25,7 +25,6 @@ function AssistantComp (props) {
             NAMESPACE[element] = color;
         }
 
-
         return (
                 <AssistContext.Provider
                 value={
@@ -50,10 +49,12 @@ function AssistantComp (props) {
                                         <AssistNav/>
                                         <AssistContent/>
                                         <AssistLoader/>
-                                        <AssistError/>                               
+                                        <AssistError/>
+                                                           
                                 </div>
+                                
                         </ResizableBox>
-                        </Collapse>
+                        </Collapse>      
                 </AssistContext.Provider>);
 }
 

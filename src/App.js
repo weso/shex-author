@@ -1,6 +1,7 @@
 
 import React, {useState,useEffect} from 'react';
 import axios from 'axios';
+import { CookiesProvider } from 'react-cookie';
 import Nav from './components/Nav';
 import MainContainer from './components/MainContainer';
 import Visualizer from './components/Visualizer';
@@ -11,7 +12,8 @@ import yasheUtils from './utils/yasheUtils';
 import Editor from './entities/editor';
 import {addPrefixComp,deletePrefixComp} from './utils/prefixUtils';
 import './css/App.css';
-
+import { useCookies } from 'react-cookie';
+import {SHAPE_COLORS} from './conf/colors';
 export const AppContext = React.createContext();
 
 function App() {
@@ -109,20 +111,24 @@ function App() {
         });
 
     }
-      
+
     const handleResize = function(e, data){
         setWidth(data.size.width)
         makeItResponsive(data.size.width); 
     }
-
+const [cookies, setCookie] = useCookies(['shapeColors']);
 
     useEffect(() => {
       makeItResponsive(width);
+      let colors = cookies['shapeColors'];
+        Object.keys(colors).map(c=>{
+                SHAPE_COLORS[c]=colors[c];
+        })
     })
 
 
     return (
-      
+      <CookiesProvider>
           <AppContext.Provider
                 value={
                   {
@@ -151,7 +157,8 @@ function App() {
               <MainContainer/>
               <Visualizer svg={svg} isVisualizeOpen={isVisualizeOpen}/>
                                                   
-            </AppContext.Provider>);
+          </AppContext.Provider>
+      </CookiesProvider>);
 
 }  
            

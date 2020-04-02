@@ -3,7 +3,6 @@ import {AppContext} from '../../../App';
 import {AssistContext} from '../Assistant';
 import {activeTab} from '../../../utils/cssUtils';
 
-
 function AssistTitle (props) {
 
     const context = useContext(AppContext);
@@ -29,7 +28,6 @@ function AssistTitle (props) {
         asssistContext.setConfigOpen(true);
         activeTab(evt);
     }
-
     
    
     return (<div className="tabs">
