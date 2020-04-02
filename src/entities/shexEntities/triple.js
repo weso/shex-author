@@ -84,7 +84,7 @@ class Triple {
         let facets = this.getFacets();
         let shapeRef = this.getShapeRef();
         let cardinality = this.getCardinality();
-        if(!DEFAULTS.prettyPrint){
+        if(!DEFAULTS.pretty){
             tripleSeparator = ' '; 
             constSeparator = ' '; 
             refSeparator = ' '; 

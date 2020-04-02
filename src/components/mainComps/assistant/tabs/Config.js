@@ -2,8 +2,15 @@ import React,{useContext,useState} from 'react';
 import Toggle from 'react-toggle';
 import "react-toggle/style.css";
 import '../../../../css/conf/config.css';
+import {DEFAULTS} from '../../../../conf/config';
 
 function Config (props) {
+
+        const [pretty, setPretty] = useState(true)
+        const handlePrettyChange = function(){
+            DEFAULTS.pretty = !pretty;
+            setPretty(!pretty);
+        }
 
         return ( <div>
                     
@@ -16,7 +23,7 @@ function Config (props) {
                     <div className='option'>
                         <span>Pretty Print</span>
                         <div className='togleContainer'>
-                            <Toggle checked icons={false}/>
+                            <Toggle checked={pretty} icons={false}  onChange={handlePrettyChange}/>
                         </div>
                     </div>
                     <div className='option'>
