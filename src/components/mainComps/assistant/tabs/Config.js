@@ -23,14 +23,14 @@ function Config (props) {
             let newPretty = e.target.value;
             DEFAULTS.pretty = newPretty;
             setPretty(newPretty);
-            setCookie('pretty', newPretty, { path: '/' });     
+            setCookie('conf', DEFAULTS, { path: '/' });     
             context.emit();
             
         }
 
         const handleSaveColorsChange = function(){
             DEFAULTS.saveColors = !saveColors;
-            setCookie('saveColors', !saveColors, { path: '/' });
+            setCookie('conf', DEFAULTS, { path: '/' });
             setSaveColors(!saveColors);
         }
 

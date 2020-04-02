@@ -146,39 +146,50 @@ const Properties = (()=> {
 
 
         this.loadCookies = function(){
+            //Colors
             this.loadCookie('shapeColors',SHAPE_COLORS);
             this.loadCookie('tripleColors',TRIPLE_COLORS);
             this.loadCookie('constraintColors',CONSTRAINT_COLORS);
             this.loadCookie('facetColors',FACET_COLORS);
             this.loadCookie('shapeRefColors',SHAPEREF_COLORS);
             this.loadCookie('cardinalityColors',CARDINALITY_COLORS);
-          
+
+            //Config
+            this.loadCookie('conf',DEFAULTS);
+            
          }
 
         this.loadCookie = function(cookie,namespace){
-            let colors = cookies[cookie];
-            if(!colors){
+            let properties = cookies[cookie];
+            //console.log(properties)
+            if(!properties){
                 setCookie(cookie, namespace, { path: '/' });
             }else{
-                this.load(colors,namespace);
+                this.load(properties,namespace);
             }
         }
 
-        this.load = function(colors,namespace){
+        this.load = function(propeties,namespace){
             //namespace = colors; It doesn't work
-            Object.keys(colors).map(c=>{
-                namespace[c]=colors[c];
+            console.log(cookies)
+            Object.keys(propeties).map(c=>{
+                //console.log(propeties[c])
+                namespace[c]=propeties[c];
             });
         }
 
 
         this.removeCookies = function(){
+            //Colors
             removeCookie('shapeColors');
             removeCookie('tripleColors');
             removeCookie('constraintColors');
             removeCookie('facetColors');
             removeCookie('shapeRefColors');
             removeCookie('cardinalityColors');
+            removeCookie('cardinalityColors');
+            //Config
+            removeCookie('conf');
         }
 
         this.saveDefaultColors = function(){
