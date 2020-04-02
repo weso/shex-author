@@ -49,7 +49,7 @@ function Config (props) {
 
         return ( <div>
                     <div className='option'>
-                        <span>Sincronize Editor (In progress...)</span>
+                        <span>Sincronize (In progress...)</span>
                         <div className='togleContainer'>
                             <Toggle  checked={sinc}  icons={false} onChange={handleSincChange}/>
                         </div>

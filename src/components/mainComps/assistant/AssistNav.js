@@ -10,7 +10,7 @@ function AssistTitle (props) {
 
     const handleShapes = function(evt){
         closeAll();
-        asssistContext.setShapesOpen(true);
+        asssistContext.setAssistOpen(true);
         activeTab(evt);
     }
 
@@ -33,7 +33,7 @@ function AssistTitle (props) {
     }
 
     const closeAll = function(){
-        asssistContext.setShapesOpen(false);
+        asssistContext.setAssistOpen(false);
         asssistContext.setPrefixesOpen(false);
         asssistContext.setColorsOpen(false);
         asssistContext.setConfigOpen(false);
