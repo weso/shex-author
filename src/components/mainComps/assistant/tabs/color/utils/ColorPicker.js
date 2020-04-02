@@ -3,7 +3,7 @@ import {AppContext} from '../../../../../../App';
 import {AssistContext} from '../../../../Assistant';
 import '../../../../../../css/shexComponents/customize/Custom.css'
 import '../../../../../../css/color/colors.css'
-import { ChromePicker } from 'react-color';
+import { ChromePicker,SketchPicker } from 'react-color';
 import reactCSS from 'reactcss';
 import { useCookies } from 'react-cookie';
 import {SHAPE_COLORS} from '../../../../../../conf/colors';
@@ -16,11 +16,8 @@ function ColorPicker (props) {
     const {namespace,element,cookie} = props;
     const [color,setColor] = useState(namespace[element]);
     const [isDisplay,setDisplay] = useState(false);
-
-    
     const [cookies, setCookie] = useCookies('colors');
     
-
     const handleClick = () => {
       setDisplay(!isDisplay);
     };

@@ -71,14 +71,14 @@ function ShapeColors (props) {
                                         pickers={CARDINALITY_PICKERS}
                                         labelType={cardinalityStyles.label} 
                                         bodyType={cardinalityStyles.body}
-                                        cookie='cardinalityColors'/>/>
+                                        cookie='cardinalityColors'/>
 
                         <ColorComp      namespace={SHAPE_COLORS} 
                                         pickers={BTNS_PICKERS} 
                                         labelType={shapeStyles.label}
                                         bodyType={shapeStyles.body}
                                         cookie='constraintColors'/> 
-                                          
+
 
                     <div className="triples" style={shapeStyles.body}>
                         <button className="addTripleButton"

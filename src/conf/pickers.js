@@ -62,4 +62,4 @@ export const PREFIX_PICKERS = [
         {tag:'Delete',element:'delete'},
         {tag:'Delete Fill',element:'deleteFill'},
         {tag:'Add Prefix',element:'add'},
-        {tag:'Add Prefix Fill',element:'addFill'},,];
+        {tag:'Add Prefix Fill',element:'addFill'},];
