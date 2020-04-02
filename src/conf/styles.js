@@ -1,4 +1,5 @@
 import React,{useState,useContext} from 'react';
+import { useCookies } from 'react-cookie';
 import {SHAPE_COLORS,
         TRIPLE_COLORS,
         CONSTRAINT_COLORS,
@@ -7,7 +8,7 @@ import {SHAPE_COLORS,
         CARDINALITY_COLORS,
         PREFIX_COLORS} from './colors';
 
-import { useCookies } from 'react-cookie';        
+import {DEFAULTS} from './config'       ;
 //Singleton Pattern
 const Styles = (()=> {
 
@@ -178,8 +179,8 @@ const Styles = (()=> {
             removeCookie('cardinalityColors');
         }
 
-
-         this.loadCookies();
+        this.loadCookies();
+                
     }
 
    

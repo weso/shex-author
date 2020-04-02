@@ -7,6 +7,8 @@ import { ChromePicker } from 'react-color';
 import reactCSS from 'reactcss';
 import { useCookies } from 'react-cookie';
 import {SHAPE_COLORS} from '../../../../../../conf/colors';
+import {DEFAULTS} from '../../../../../../conf/config';
+
 function ColorPicker (props) {
 
     const context = useContext(AppContext);
@@ -31,7 +33,9 @@ function ColorPicker (props) {
     const handle = (e) => {
       setColor(e.hex);
       asssistContext.handleChange(e.hex,element,namespace)
-      setCookie(cookie, namespace, { path: '/' });
+      if(DEFAULTS.saveColors){
+        setCookie(cookie, namespace, { path: '/' });     
+      }
     };
 
     const styles = reactCSS({
