@@ -45,18 +45,21 @@ class Shape {
           let longestTriple = this.getLongestElement('type');
           let longestConstraint = this.getLongestElement('constraint');
           let longestRef = this.getLongestElement('shapeRef');
+          let longestCRef = longestConstraint >= longestRef ? longestConstraint : longestRef;//constraint+shapeRef
           this.triples.forEach(triple => {
             let tripleLength = triple.type.toString().length;
             let constLength = triple.constraint.toString().length;
             let refLength = triple.shapeRef.toString().length;
+            let CRefLength = constLength >= refLength ? constLength : refLength;
 
             let tripleDiference = longestTriple - tripleLength;
             let constDiference = longestConstraint - constLength;
             let refDiference = longestRef - refLength;
+            let CRefDiference = longestCRef - CRefLength;
 
 
             str+=triple.toString( 
-              this.getSeparators(tripleDiference,constDiference,refDiference));
+              this.getSeparators(tripleDiference,constDiference,refDiference,CRefDiference));
           });
           str+="}\n\n"
         }
@@ -89,11 +92,12 @@ class Shape {
     }
 
 
-    getSeparators(tripleSize,constraintSize,refSize){
+    getSeparators(tripleSize,constraintSize,refSize,CRefSize){
       return{
         triple:this.getSeparator(tripleSize),
         constraint:this.getSeparator(constraintSize),
         ref:this.getSeparator(refSize),
+        CRef:this.getSeparator(CRefSize),
       }
     }
 

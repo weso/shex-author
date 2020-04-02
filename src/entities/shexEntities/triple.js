@@ -105,10 +105,22 @@ class Triple {
     }
 
     checkPrettyOptions(separators){
+
+        if(DEFAULTS.pretty=='none'){
+            separators.triple=' ';
+            separators.constraint=' ';
+            separators.ref=' ';
+        }
         if(DEFAULTS.pretty=='pretty1'){
             separators.constraint=' ';
             separators.ref=' ';
         }
+        if(DEFAULTS.pretty=='pretty2'){
+            separators.constraint=' ';
+            separators.ref=separators.CRef;
+        }
+        
+        //default pretty3
         return separators;
     }
 
