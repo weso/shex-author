@@ -12,10 +12,3 @@ function Colors (props) {
 }
 
 export default Colors;
-
-/*
-
-import Toggle from 'react-toggle';
-import "react-toggle/style.css";
-
-*/
