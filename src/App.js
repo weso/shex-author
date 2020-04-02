@@ -12,8 +12,7 @@ import yasheUtils from './utils/yasheUtils';
 import Editor from './entities/editor';
 import {addPrefixComp,deletePrefixComp} from './utils/prefixUtils';
 import './css/App.css';
-import { useCookies } from 'react-cookie';
-import {SHAPE_COLORS} from './conf/colors';
+
 export const AppContext = React.createContext();
 
 function App() {
@@ -116,14 +115,9 @@ function App() {
         setWidth(data.size.width)
         makeItResponsive(data.size.width); 
     }
-const [cookies, setCookie] = useCookies(['shapeColors']);
-
+    
     useEffect(() => {
       makeItResponsive(width);
-      let colors = cookies['shapeColors'];
-        Object.keys(colors).map(c=>{
-                SHAPE_COLORS[c]=colors[c];
-        })
     })
 
 

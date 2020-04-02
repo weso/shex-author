@@ -1,3 +1,4 @@
+import React,{useState,useContext} from 'react';
 import {SHAPE_COLORS,
         TRIPLE_COLORS,
         CONSTRAINT_COLORS,
@@ -5,13 +6,20 @@ import {SHAPE_COLORS,
         SHAPEREF_COLORS,
         CARDINALITY_COLORS,
         PREFIX_COLORS} from './colors';
-        
+
+import { useCookies } from 'react-cookie';        
 //Singleton Pattern
 const Styles = (()=> {
 
     function StyleClass(){
 
-        
+        const [cookies, setCookie] = useCookies('shapeColors');
+        let colors = cookies['shapeColors'];
+        console.log(colors)
+            Object.keys(colors).map(c=>{
+                    SHAPE_COLORS[c]=colors[c];
+            })
+
         this.getShapeStyle = function(){
             return {
                 label:{color:SHAPE_COLORS.label},

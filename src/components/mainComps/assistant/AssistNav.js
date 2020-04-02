@@ -28,6 +28,7 @@ function AssistTitle (props) {
         asssistContext.setConfigOpen(true);
         activeTab(evt);
     }
+
     
    
     return (<div className="tabs">

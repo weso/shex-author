@@ -25,12 +25,13 @@ function ColorPicker (props) {
 
     const handleClose = () => {
       //setDisplay(false);
-      setCookie('shapeColors', SHAPE_COLORS, { path: '/' });
+     // setCookie('shapeColors', SHAPE_COLORS, { path: '/' });
     };
 
     const handle = (e) => {
       setColor(e.hex);
       asssistContext.handleChange(e.hex,element,namespace)
+      setCookie('shapeColors', SHAPE_COLORS, { path: '/' });
     };
 
     const styles = reactCSS({
