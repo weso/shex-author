@@ -4,14 +4,24 @@ import "react-toggle/style.css";
 import '../../../../css/conf/config.css';
 import {DEFAULTS} from '../../../../conf/config';
 import Styles from '../../../../conf/styles';
+import {AppContext} from '../../../../App';
 
 function Config (props) {
 
-        const [pretty, setPretty] = useState(DEFAULTS.pretty)
+        const context = useContext(AppContext);
+        const [sinc, setSinc] = useState(true);
+        const [pretty, setPretty] = useState(DEFAULTS.pretty);
         const [saveColors, setSaveColors] = useState(DEFAULTS.saveColors)
-        const handlePrettyChange = function(){
-            DEFAULTS.pretty = !pretty;
-            setPretty(!pretty);
+
+        const handleSincChange = function(e){
+            //TO-DO
+        }
+
+        const handlePrettyChange = function(e){
+            let newPretty = e.target.value;
+            DEFAULTS.pretty = newPretty;
+            setPretty(newPretty);
+            context.emit();
         }
 
         const handleSaveColorsChange = function(){
@@ -25,14 +35,12 @@ function Config (props) {
         }
 
         return ( <div>
-                    
                     <div className='option'>
-                        <span>Sincronize Editor</span>
+                        <span>Sincronize Editor (In progress...)</span>
                         <div className='togleContainer'>
-                            <Toggle  icons={false}/>
+                            <Toggle  checked={sinc}  icons={false} onChange={handleSincChange}/>
                         </div>
                     </div>
-                    
                     <div className='option'>
                         <span>Save Color Preferences</span>
                         <div className='togleContainer'>
@@ -42,11 +50,13 @@ function Config (props) {
                     <div className='option'>
                         <span>Pretty Print</span>
                         <div className='togleContainer'>
-                            <select className='customPretty'>
-                                <option>None</option>
-                                <option>Pretty1</option>
-                                <option>Pretty2</option>
-                                <option>Pretty3</option>
+                            <select className='customPretty'
+                                value={pretty}
+                                onChange={handlePrettyChange}>
+                                <option value='none'>None</option>
+                                <option value='pretty1'>Pretty1</option>
+                                <option value='pretty2'>Pretty2</option>
+                                <option value='pretty3'>Pretty3</option>
                             </select>
                         </div>
                     </div>
@@ -67,4 +77,3 @@ function Config (props) {
 }
 
 export default Config;
-

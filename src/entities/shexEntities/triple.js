@@ -98,7 +98,7 @@ class Triple {
                     str+=' '+f+' ';
                 })
             }
-            if(constraint.value=='' && DEFAULTS.pretty=='pretty2'){
+            if(constraint.value=='' && DEFAULTS.pretty!='pretty3' ){
                 constSeparator='';
                 refSeparator+=' ';
             }

@@ -1,5 +1,5 @@
 export const DEFAULTS = {
     sincronize:true,
-    pretty:'none',
+    pretty:'pretty2',
     saveColors:true,
 }
