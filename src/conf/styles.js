@@ -146,7 +146,6 @@ const Styles = (()=> {
 
 
         this.loadCookies = function(){
-            console.log(cookies)
             this.load('shapeColors',SHAPE_COLORS);
             this.load('tripleColors',TRIPLE_COLORS);
             this.load('constraintColors',CONSTRAINT_COLORS);
@@ -169,6 +168,17 @@ const Styles = (()=> {
             
         }
 
+        this.load2 = function(colors,namespace){
+                console.log(colors)
+                console.log(namespace)
+                //namespace = colors; It doesn't work
+                Object.keys(colors).map(c=>{
+                    namespace[c]=colors[c];
+                });
+            
+            
+        }
+
 
         this.removeCookies = function(){
             removeCookie('shapeColors');
@@ -179,26 +189,26 @@ const Styles = (()=> {
             removeCookie('cardinalityColors');
         }
 
-        this.saveDefaults = function(){
-            this.defaultShape = SHAPE_COLORS;
-            this.defaultTriple = TRIPLE_COLORS;
-            this.defaultConstraint = CONSTRAINT_COLORS;
-            this.defaultFacet = FACET_COLORS;
-            this.defaultShapeRef = SHAPEREF_COLORS;
-            this.defaultCardinality = CARDINALITY_COLORS;
+        this.saveDefaultColors = function(){
+            this.defaultShape = Object.assign({}, SHAPE_COLORS);
+            this.defaultTriple = Object.assign({}, TRIPLE_COLORS);
+            this.defaultConstraint = Object.assign({}, CONSTRAINT_COLORS);
+            this.defaultFacet = Object.assign({}, FACET_COLORS);
+            this.defaultShapeRef = Object.assign({}, SHAPEREF_COLORS);
+            this.defaultCardinality = Object.assign({}, CARDINALITY_COLORS);
         }
 
-        this.restoreDefaults = function(){
-            SHAPE_COLORS = this.defaultShape;
-            TRIPLE_COLORS = this.defaultTriple;
+        this.restoreDefaultColors = function(){
+            this.load2(this.defaultShape,SHAPE_COLORS);
+            /* TRIPLE_COLORS = this.defaultTriple;
             CONSTRAINT_COLORS = this.defaultConstraint;
             FACET_COLORS = this.defaultFacet;
             SHAPEREF_COLORS = this.defaultShapeRef;
-            CARDINALITY_COLORS = this.defaultCardinality;
+            CARDINALITY_COLORS = this.defaultCardinality;  */
         }
 
 
-        this.saveDefaults();
+        this.saveDefaultColors();
         this.loadCookies();
                 
     }

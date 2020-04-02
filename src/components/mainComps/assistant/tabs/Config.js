@@ -3,6 +3,7 @@ import Toggle from 'react-toggle';
 import "react-toggle/style.css";
 import '../../../../css/conf/config.css';
 import {DEFAULTS} from '../../../../conf/config';
+import Styles from '../../../../conf/styles';
 
 function Config (props) {
 
@@ -16,6 +17,10 @@ function Config (props) {
         const handleSaveColorsChange = function(){
             DEFAULTS.saveColors = !saveColors;
             setSaveColors(!saveColors);
+        }
+
+        const restoreColors = function(){
+            Styles.getInstance().restoreDefaultColors();
         }
 
         return ( <div>
@@ -41,7 +46,7 @@ function Config (props) {
                     <div className='option'>
                         <span>Restore Default Colors</span>
                         <div className='togleContainer'>
-                             <button className='aplyBtn'>Apply</button>
+                             <button className='aplyBtn' onClick={restoreColors}>Apply</button>
                         </div>
                     </div>
                     <div className='option'>
