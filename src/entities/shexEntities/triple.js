@@ -87,7 +87,8 @@ class Triple {
         separators = this.checkPrettyOptions(separators);
         let tripleSeparator = separators.triple; 
         let constSeparator = separators.constraint; 
-        let refSeparator = separators.ref; 
+        let refSeparator = separators.ref;
+        let cardSeparator = separators.card;
  
         if(type.value!=''){
             str+= '  '+type+tripleSeparator;
@@ -101,7 +102,9 @@ class Triple {
                 constSeparator='';
                 refSeparator+=' ';
             }
-            str+=constSeparator+shapeRef+refSeparator+cardinality+'   ;\n';
+            str+=constSeparator+shapeRef
+                +refSeparator+cardinality
+                +cardSeparator+';\n';
         }
         return str;
 

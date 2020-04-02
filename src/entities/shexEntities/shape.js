@@ -54,20 +54,27 @@ class Shape {
         let longestTriple = this.getLongestElement('type');
         let longestConstraint = this.getLongestElement('constraint');
         let longestRef = this.getLongestElement('shapeRef');
+        let longestCard = this.getLongestElement('cardinality');
         let longestCRef = this.getLongestCR();//constraint+shapeRef
         this.triples.forEach(triple => {
           let tripleLength = triple.type.toString().length;
           let constLength = triple.constraint.toString().length;
           let refLength = triple.shapeRef.toString().length;
+          let cardLength = triple.cardinality.toString().length;
           let CRefLength = constLength + refLength;
 
           let tripleDiference = longestTriple - tripleLength;
           let constDiference = longestConstraint - constLength;
           let refDiference = longestRef - refLength;
+          let cardDiference = longestCard - cardLength;
           let CRefDiference = longestCRef - CRefLength;
 
           str+=triple.toString( 
-            this.getSeparators(tripleDiference,constDiference,refDiference,CRefDiference));
+                      this.getSeparators(tripleDiference,
+                                          constDiference,
+                                          refDiference,
+                                          cardDiference,
+                                          CRefDiference));
         });
         return str;
      }
@@ -110,18 +117,19 @@ class Shape {
 
 
 
-    getSeparators(tripleSize,constraintSize,refSize,CRefSize){
+    getSeparators(tripleSize,constraintSize,refSize,cardSize,CRefSize){
       return{
         triple:this.getSeparator(tripleSize),
         constraint:this.getSeparator(constraintSize),
         ref:this.getSeparator(refSize),
+        card:this.getSeparator(cardSize),
         CRef:this.getSeparator(CRefSize),
       }
     }
 
     getSeparator(size){
       let space = ' ';
-      let separator = '  ';
+      let separator = ' ';
       for(let i=0;i<size;i++){
         separator+=space;
       }
