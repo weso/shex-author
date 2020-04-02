@@ -5,6 +5,7 @@ import PrefixedIri from './types/concreteTypes/prefixedIri';
 import Primitive from './types/concreteTypes/primitive';
 import ShapeRef from './shexUtils/shapeRef';
 import Prefix from './shexUtils/prefix';
+import {DEFAULTS} from '../../conf/config.js';
 
 class Triple {
 
@@ -83,6 +84,12 @@ class Triple {
         let facets = this.getFacets();
         let shapeRef = this.getShapeRef();
         let cardinality = this.getCardinality();
+        if(!DEFAULTS.prettyPrint){
+            tripleSeparator = ' '; 
+            constSeparator = ' '; 
+            refSeparator = ' '; 
+        }
+
         if(type.value!=''){
             str+= '  '+type+tripleSeparator;
             str+= this.checkFacets();
@@ -91,7 +98,7 @@ class Triple {
                     str+=' '+f+' ';
                 })
             }
-            str+= ' '+shapeRef+' '+cardinality+'  ;\n';
+            str+=constSeparator+shapeRef+refSeparator+cardinality+';\n';
         }
         return str;
 
