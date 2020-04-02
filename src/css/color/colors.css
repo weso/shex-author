@@ -1,13 +1,16 @@
-.customZone{
+.pickers{
     display:grid;
-    grid-template-columns: 50% 50%;
-    padding: 0%;
+    grid-template-columns: 33.3% 33.3% 33.3% ;
 }
 
-.customElement{
+.xs-pickers{
+    grid-template-columns: 50% 50% ;
+}
+
+.picker{
     display:grid;
     grid-template-columns: 50% 50%;
     align-items: center;
-    gap: 35px;
+    gap: 38px;
 }
 

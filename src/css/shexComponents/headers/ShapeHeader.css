@@ -12,7 +12,7 @@
 
 .xs-header{
     display: grid;
-    grid-template-columns: 12% 55% 9% 9% 9%;
+    grid-template-columns: 12% 54.5% 9% 9% 9%;
 }
 
 .name{

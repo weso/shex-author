@@ -22,7 +22,7 @@ function App() {
     const [isAssistantOpen, setAssistantOpen] = useState(true);
     const [isToolBarOpen, setToolBarOpen] = useState(true);
     const [isVisualizeOpen, setVisualizeOpen] = useState(true);
-    const [width,setWidth] = useState(470);
+    const [width,setWidth] = useState(700);//470
 
     const assistantToggle = () => setAssistantOpen(!isAssistantOpen);
     const visualizeToggle = () => setVisualizeOpen(!isVisualizeOpen);

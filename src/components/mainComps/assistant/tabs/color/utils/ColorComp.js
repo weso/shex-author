@@ -12,9 +12,9 @@ function ColorComp (props) {
     return (
         <div className='customColapse' style={bodyType}>             
             <div style={bodyType}>
-                 <div className='customZone'>
+                 <div className='pickers'>
                     {pickers.map(p=>{
-                        return(<div className='customElement' key={p.element}>
+                        return(<div className='picker' key={p.element}>
                                     <label style={labelType}>{p.tag}</label>
                                     <ColorPicker namespace={namespace} element={p.element}/>
                                 </div>)

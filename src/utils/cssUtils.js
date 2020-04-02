@@ -11,6 +11,7 @@ export function makeItResponsive(width){
         let customs = document.getElementsByClassName("customConstraint");
         let prefixes = document.getElementsByClassName("prefixHeader");
         let prefixesColors = document.getElementsByClassName("prefixHeaderColors");
+        let pickers = document.getElementsByClassName("pickers");
 
         let tabClass = 'tabs';
         let shClass = 'header';
@@ -21,6 +22,7 @@ export function makeItResponsive(width){
         let ccClass = 'customConstraint';
         let prClass = 'prefixHeader';
         let prcClass = 'prefixHeaderColors';
+        let picClass = 'pickers';
         if(width<600){
             tabClass += ' xs-tabs';
             shClass += ' xs-header';
@@ -31,6 +33,7 @@ export function makeItResponsive(width){
             ccClass += ' xs-customConstraint';
             prClass += ' xs-prefixHeader';
             prcClass += ' xs-prefixHeaderColors';
+            picClass += ' xs-pickers';
         }
 
         
@@ -65,6 +68,10 @@ export function makeItResponsive(width){
 
         for(let i=0;i<prefixesColors.length;i++){
             prefixesColors[i].className = prcClass;
+        }
+
+        for(let i=0;i<pickers.length;i++){
+            pickers[i].className = picClass;
         }
 
     }, 0);
