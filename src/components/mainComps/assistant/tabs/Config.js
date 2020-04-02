@@ -6,10 +6,16 @@ import {DEFAULTS} from '../../../../conf/config';
 
 function Config (props) {
 
-        const [pretty, setPretty] = useState(true)
+        const [pretty, setPretty] = useState(DEFAULTS.pretty)
+        const [saveColors, setSaveColors] = useState(DEFAULTS.saveColors)
         const handlePrettyChange = function(){
             DEFAULTS.pretty = !pretty;
             setPretty(!pretty);
+        }
+
+        const handleSaveColorsChange = function(){
+            DEFAULTS.saveColors = !saveColors;
+            setSaveColors(!saveColors);
         }
 
         return ( <div>
@@ -29,7 +35,7 @@ function Config (props) {
                     <div className='option'>
                         <span>Save Color Preferences</span>
                         <div className='togleContainer'>
-                            <Toggle checked icons={false}/>
+                            <Toggle checked={saveColors}  icons={false} onChange={handleSaveColorsChange}/>
                         </div>
                     </div>
                     <div className='option'>
