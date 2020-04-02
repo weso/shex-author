@@ -43,23 +43,23 @@ function AssistTitle (props) {
    
     return (<div className="tabs">
                 <button className="tablink activeTab" 
-                        title="ShEx Assistant Tab" 
+                        title="ShEx Assistant" 
                         onClick={(e)=>handleShapes(e)}>
                         ShEx Assistant
                 </button>
                 <button className="tablink" 
-                        title="Prefixes Tab" 
+                        title="Prefixes" 
                         onClick={(e)=>handlePrefixes(e)}>
                         Prefixes 
                 </button>
                 <button className="tablink material-icons" 
-                        title="Colors Tab" 
+                        title="Colors" 
                         onClick={(e)=>handleColors(e)}>
                         format_paint
                 </button>
 
                 <button className="tablink material-icons" 
-                        title="Colors Tab" 
+                        title="Config" 
                         onClick={(e)=>handleConfig(e)}>
                         settings
                 </button>

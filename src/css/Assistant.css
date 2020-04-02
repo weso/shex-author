@@ -37,7 +37,7 @@
 
 .tabs{
     display: grid;
-    grid-template-columns: 28% 15% 10% 53% 10%;
+    grid-template-columns: 28% 15% 6% 6% 55% 10%;
     border-bottom: 1px solid #bdbcbc;
     font-size: 20px;
     color:#666565;
@@ -50,7 +50,7 @@
 }
 
 .xs-tabs{
-    grid-template-columns: 35% 25% 10% 35% 10%;
+    grid-template-columns: 35% 25% 8% 8% 25% 10%;
 }
 
 .activeTab {
