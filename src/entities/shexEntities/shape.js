@@ -55,9 +55,8 @@ class Shape {
             let refDiference = longestRef - refLength;
 
 
-            str+=triple.toString( this.getSeparator(tripleDiference),
-                                  this.getSeparator(constDiference),
-                                  this.getSeparator(refDiference));
+            str+=triple.toString( 
+              this.getSeparators(tripleDiference,constDiference,refDiference));
           });
           str+="}\n\n"
         }
@@ -87,6 +86,15 @@ class Shape {
           if(value>size)size = value;
       });
       return size;
+    }
+
+
+    getSeparators(tripleSize,constraintSize,refSize){
+      return{
+        triple:this.getSeparator(tripleSize),
+        constraint:this.getSeparator(constraintSize),
+        ref:this.getSeparator(refSize),
+      }
     }
 
     getSeparator(size){

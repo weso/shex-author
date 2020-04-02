@@ -32,16 +32,22 @@ function Config (props) {
                             <Toggle checked icons={false}/>
                         </div>
                     </div>
-                    <div className='option'>
-                        <span>Pretty Print</span>
-                        <div className='togleContainer'>
-                            <Toggle checked={pretty} icons={false}  onChange={handlePrettyChange}/>
-                        </div>
-                    </div>
+                    
                     <div className='option'>
                         <span>Save Color Preferences</span>
                         <div className='togleContainer'>
                             <Toggle checked={saveColors}  icons={false} onChange={handleSaveColorsChange}/>
+                        </div>
+                    </div>
+                    <div className='option'>
+                        <span>Pretty Print</span>
+                        <div className='togleContainer'>
+                            <select className='customPretty'>
+                                <option>None</option>
+                                <option>Pretty1</option>
+                                <option>Pretty2</option>
+                                <option>Pretty3</option>
+                            </select>
                         </div>
                     </div>
                     <div className='option'>

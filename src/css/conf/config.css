@@ -18,6 +18,17 @@
     
 }
 
+
+
 .aplyBtn:focus{
     outline: none;
+}
+
+.customToggle{
+}
+
+.customPretty{
+    background: white;
+    border-radius: 6px;
+    height: 30px;
 }

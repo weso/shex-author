@@ -77,18 +77,18 @@ class Triple {
 
 
 
-    toString(tripleSeparator,constSeparator,refSeparator){
+    toString(separators){
         let str='';
         let type=this.getType();
         let constraint = this.getConstraint();
         let facets = this.getFacets();
         let shapeRef = this.getShapeRef();
         let cardinality = this.getCardinality();
-        if(!DEFAULTS.pretty){
-            tripleSeparator = ' '; 
-            constSeparator = ' '; 
-            refSeparator = ' '; 
-        }
+        separators = this.checkPrettyOptions(separators);
+        let tripleSeparator = separators.triple; 
+        let constSeparator = separators.constraint; 
+        let refSeparator = separators.ref; 
+    
 
         if(type.value!=''){
             str+= '  '+type+tripleSeparator;
@@ -102,6 +102,14 @@ class Triple {
         }
         return str;
 
+    }
+
+    checkPrettyOptions(separators){
+        if(DEFAULTS.pretty=='pretty1'){
+            separators.constraint=' ';
+            separators.ref=' ';
+        }
+        return separators;
     }
 
     /**
