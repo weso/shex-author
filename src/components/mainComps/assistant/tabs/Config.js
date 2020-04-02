@@ -29,7 +29,7 @@ function Config (props) {
                     <div className='option'>
                         <span>Sincronize Editor</span>
                         <div className='togleContainer'>
-                            <Toggle checked icons={false}/>
+                            <Toggle  icons={false}/>
                         </div>
                     </div>
                     

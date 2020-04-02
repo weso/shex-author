@@ -1,6 +1,6 @@
 class CardinalitySimple{
 
-    constructor(value=''){
+    constructor(value=' '){
         this.value = value;
     }
 

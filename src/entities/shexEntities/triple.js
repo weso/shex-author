@@ -88,8 +88,7 @@ class Triple {
         let tripleSeparator = separators.triple; 
         let constSeparator = separators.constraint; 
         let refSeparator = separators.ref; 
-    
-
+ 
         if(type.value!=''){
             str+= '  '+type+tripleSeparator;
             str+= this.checkFacets();
@@ -98,7 +97,11 @@ class Triple {
                     str+=' '+f+' ';
                 })
             }
-            str+=constSeparator+shapeRef+refSeparator+cardinality+';\n';
+            if(constraint.value==''){
+                constSeparator='';
+                refSeparator+=' ';
+            }
+            str+=constSeparator+shapeRef+refSeparator+cardinality+'   ;\n';
         }
         return str;
 
@@ -129,6 +132,7 @@ class Triple {
      */
     checkFacets(){
         let constraint = this.getConstraint();
+        let shapeRef = this.getShapeRef();
         if(this.facets.length>0){
              if(constraint.getTypeName()!='Primitive' 
                 && constraint.value!='none'){
@@ -136,7 +140,7 @@ class Triple {
                 }
             return '';
         }
-        return constraint+' ';
+        return constraint;
     }
 
 
