@@ -9,24 +9,34 @@ function AssistTitle (props) {
     const asssistContext = useContext(AssistContext);
 
     const handleShapes = function(evt){
+        closeAll();
         asssistContext.setShapesOpen(true);
-        asssistContext.setPrefixesOpen(false);
-        asssistContext.setConfigOpen(false);
         activeTab(evt);
     }
 
     const handlePrefixes = function(evt){
-        asssistContext.setShapesOpen(false);
+        closeAll();
         asssistContext.setPrefixesOpen(true);
-        asssistContext.setConfigOpen(false);
+        activeTab(evt);
+    }
+
+    const handleColors = function(evt){
+        closeAll();
+        asssistContext.setColorsOpen(true);
         activeTab(evt);
     }
 
     const handleConfig = function(evt){
-        asssistContext.setShapesOpen(false);
-        asssistContext.setPrefixesOpen(false);
+        closeAll();
         asssistContext.setConfigOpen(true);
         activeTab(evt);
+    }
+
+    const closeAll = function(){
+        asssistContext.setShapesOpen(false);
+        asssistContext.setPrefixesOpen(false);
+        asssistContext.setColorsOpen(false);
+        asssistContext.setConfigOpen(false);
     }
 
     
@@ -44,8 +54,14 @@ function AssistTitle (props) {
                 </button>
                 <button className="tablink material-icons" 
                         title="Colors Tab" 
-                        onClick={(e)=>handleConfig(e)}>
+                        onClick={(e)=>handleColors(e)}>
                         format_paint
+                </button>
+
+                <button className="tablink material-icons" 
+                        title="Colors Tab" 
+                        onClick={(e)=>handleConfig(e)}>
+                        settings
                 </button>
        
                 <div className="asisTitleClose">
@@ -53,6 +69,7 @@ function AssistTitle (props) {
                             title="Close Assistant" 
                             onClick={context.assistantToggle}>x</button>
                 </div>
+                
             </div>);
 }
 

@@ -4,6 +4,7 @@ import { Collapse } from 'reactstrap';
 import Shapes from './tabs/Shapes';
 import Prefixes from './tabs/Prefixes';
 import Colors from './tabs/Colors';
+import Config from './tabs/Config';
 
 function AssistContent (props) {
 
@@ -18,8 +19,11 @@ function AssistContent (props) {
                 <Collapse isOpen={asssistContext.isPrefixesOpen}>
                     <Prefixes/>
                 </Collapse>
-                <Collapse isOpen={asssistContext.isConfigOpen}>
+                <Collapse isOpen={asssistContext.isColorsOpen}>
                     <Colors/>
+                </Collapse>
+                <Collapse isOpen={asssistContext.isConfigOpen}>
+                    <Config/>
                 </Collapse>
                 
             </div>

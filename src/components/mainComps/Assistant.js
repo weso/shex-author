@@ -17,6 +17,7 @@ function AssistantComp (props) {
         const context = useContext(AppContext);
         const [isShapesOpen, setShapesOpen] = useState(true);
         const [isPrefixesOpen, setPrefixesOpen] = useState(false);
+        const [isColorsOpen, setColorsOpen] = useState(false);
         const [isConfigOpen, setConfigOpen] = useState(false);
         const [color,setColor] = useState('#fffff')
 
@@ -30,10 +31,12 @@ function AssistantComp (props) {
                 value={
                         {
                         isShapesOpen:isShapesOpen,
-                        isPrefixesOpen:isPrefixesOpen,                  
+                        isPrefixesOpen:isPrefixesOpen,
+                        isColorsOpen:isColorsOpen,                  
                         isConfigOpen:isConfigOpen,
                         setShapesOpen:setShapesOpen,
                         setPrefixesOpen:setPrefixesOpen,
+                        setColorsOpen:setColorsOpen,
                         setConfigOpen:setConfigOpen,
                         handleChange:handleChange
                         }

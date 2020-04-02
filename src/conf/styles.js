@@ -160,6 +160,7 @@ const Styles = (()=> {
             if(!colors){
                 setCookie(cookie, namespace, { path: '/' });
             }else{
+                //namespace = colors; It doesn't work
                 Object.keys(colors).map(c=>{
                     namespace[c]=colors[c];
                 });
