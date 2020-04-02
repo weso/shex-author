@@ -7,7 +7,7 @@ import '../../../../../../css/color/colors.css'
 function ColorComp (props) {
 
     const context = useContext(AppContext);
-    const {namespace,pickers,labelType,bodyType} = props;
+    const {namespace,pickers,labelType,bodyType,cookie} = props;
 
     return (
         <div className='customColapse' style={bodyType}>             
@@ -16,7 +16,7 @@ function ColorComp (props) {
                     {pickers.map(p=>{
                         return(<div className='picker' key={p.element}>
                                     <label style={labelType}>{p.tag}</label>
-                                    <ColorPicker namespace={namespace} element={p.element}/>
+                                    <ColorPicker namespace={namespace} element={p.element} cookie={cookie}/>
                                 </div>)
                     })}
                 </div>

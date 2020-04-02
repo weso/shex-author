@@ -11,12 +11,12 @@ function ColorPicker (props) {
 
     const context = useContext(AppContext);
     const asssistContext = useContext(AssistContext);
-    const {namespace,element} = props;
+    const {namespace,element,cookie} = props;
     const [color,setColor] = useState(namespace[element]);
     const [isDisplay,setDisplay] = useState(false);
 
     
-    const [cookies, setCookie] = useCookies('shapeColors');
+    const [cookies, setCookie] = useCookies('colors');
     
 
     const handleClick = () => {
@@ -31,7 +31,7 @@ function ColorPicker (props) {
     const handle = (e) => {
       setColor(e.hex);
       asssistContext.handleChange(e.hex,element,namespace)
-      setCookie('shapeColors', SHAPE_COLORS, { path: '/' });
+      setCookie(cookie, namespace, { path: '/' });
     };
 
     const styles = reactCSS({

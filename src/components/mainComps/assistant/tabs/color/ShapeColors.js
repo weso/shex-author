@@ -40,37 +40,45 @@ function ShapeColors (props) {
                         <ColorComp      namespace={SHAPE_COLORS} 
                                         pickers={SHAPE_PICKERS} 
                                         labelType={shapeStyles.label}
-                                        bodyType={shapeStyles.body}/>   
+                                        bodyType={shapeStyles.body}
+                                        cookie='shapeColors'/>   
 
                         <ColorComp      namespace={TRIPLE_COLORS} 
                                         pickers={TRIPLE_PICKERS}
                                         labelType={tripleStyles.label} 
-                                        bodyType={tripleStyles.body}/>
+                                        bodyType={tripleStyles.body}
+                                        cookie='tripleColors'/>
                                         
                         <ColorComp      namespace={CONSTRAINT_COLORS} 
                                         pickers={CONSTRAINT_PICKERS}
                                         labelType={constraintStyles.label} 
-                                        bodyType={constraintStyles.body}/>
+                                        bodyType={constraintStyles.body}
+                                        cookie='constraintColors'/>
 
                         <ColorComp      namespace={FACET_COLORS} 
                                         pickers={FACET_PICKERS}
                                         labelType={facetStyles.label} 
-                                        bodyType={facetStyles.body}/>
+                                        bodyType={facetStyles.body}
+                                        cookie='facetColors'/>
 
                         <ColorComp      namespace={SHAPEREF_COLORS} 
                                         pickers={SHAPEREF_PICKERS} 
                                         labelType={shapeRefStyles.label}
-                                        bodyType={shapeRefStyles.body}/>
+                                        bodyType={shapeRefStyles.body}
+                                        cookie='shapeRefColors'/>
                                         
                         <ColorComp      namespace={CARDINALITY_COLORS} 
                                         pickers={CARDINALITY_PICKERS}
                                         labelType={cardinalityStyles.label} 
-                                        bodyType={cardinalityStyles.body}/>
+                                        bodyType={cardinalityStyles.body}
+                                        cookie='cardinalityColors'/>/>
 
                         <ColorComp      namespace={SHAPE_COLORS} 
                                         pickers={BTNS_PICKERS} 
                                         labelType={shapeStyles.label}
-                                        bodyType={shapeStyles.body}/>   
+                                        bodyType={shapeStyles.body}
+                                        cookie='constraintColors'/> 
+                                          
 
                     <div className="triples" style={shapeStyles.body}>
                         <button className="addTripleButton"

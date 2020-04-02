@@ -13,13 +13,8 @@ const Styles = (()=> {
 
     function StyleClass(){
 
-        const [cookies, setCookie] = useCookies('shapeColors');
-        let colors = cookies['shapeColors'];
-        console.log(colors)
-            Object.keys(colors).map(c=>{
-                    SHAPE_COLORS[c]=colors[c];
-            })
-
+        const [cookies, setCookie,removeCookie] = useCookies('colors');
+       
         this.getShapeStyle = function(){
             return {
                 label:{color:SHAPE_COLORS.label},
@@ -145,7 +140,45 @@ const Styles = (()=> {
                 body:{background:PREFIX_COLORS.body}
             };  
         }
-    
+
+
+
+
+        this.loadCookies = function(){
+            console.log(cookies)
+            this.load('shapeColors',SHAPE_COLORS);
+            this.load('tripleColors',TRIPLE_COLORS);
+            this.load('constraintColors',CONSTRAINT_COLORS);
+            this.load('facetColors',FACET_COLORS);
+            this.load('shapeRefColors',SHAPEREF_COLORS);
+            this.load('cardinalityColors',CARDINALITY_COLORS);
+          
+         }
+
+        this.load = function(cookie,namespace){
+            let colors = cookies[cookie];
+            if(!colors){
+                setCookie(cookie, namespace, { path: '/' });
+            }else{
+                Object.keys(colors).map(c=>{
+                    namespace[c]=colors[c];
+                });
+            }
+            
+        }
+
+
+        this.removeCookies = function(){
+            removeCookie('shapeColors');
+            removeCookie('tripleColors');
+            removeCookie('constraintColors');
+            removeCookie('facetColors');
+            removeCookie('shapeRefColors');
+            removeCookie('cardinalityColors');
+        }
+
+
+         this.loadCookies();
     }
 
    
