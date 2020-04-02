@@ -4,15 +4,15 @@ import {AppContext} from '../../../../../../App';
 import TypeConfig from './config/TypeConfig';
 import PrefixConfig from './config/PrefixConfig';
 import QualifierConfig from './config/QualifierConfig';
-import Styles from '../../../../../../conf/styles';
+import Properties from '../../../../../../conf/properties';
 import '../../../../../../css/shexComponents/customize/Custom.css'
 
 function CustomComp (props) {
 
     const context = useContext(AppContext);
     const {entity,isCustomOpen,qualifier,bnode,customClass} = props;
-    const shapeStyles = Styles.getInstance().getShapeStyle();
-    const tripleStyles = Styles.getInstance().getTripleStyle();
+    const shapeStyles = Properties.getInstance().getShapeStyle();
+    const tripleStyles = Properties.getInstance().getTripleStyle();
     const styles = customClass == 'customShape' ? shapeStyles:tripleStyles;
 
     let initialPrefix = 'example';

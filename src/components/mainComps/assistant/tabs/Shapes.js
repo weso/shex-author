@@ -1,12 +1,12 @@
 import React,{useContext} from 'react';
 import {AppContext} from '../../../../App';
 import ShapeComponent from './shEx/ShapeComponent';
-import Styles from '../../../../conf/styles';
+import Properties from '../../../../conf/properties';
 
 function Shapes (props) {
 
     const context = useContext(AppContext);
-    const styles = Styles.getInstance().getShapeStyle();
+    const styles = Properties.getInstance().getShapeStyle();
 
     return ( 
         <div>

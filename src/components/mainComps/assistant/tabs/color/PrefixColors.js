@@ -3,11 +3,11 @@ import PrefixView from './views/PrefixView';
 import ColorComp from './utils/ColorComp';
 import {PREFIX_PICKERS} from '../../../../../conf/pickers';
 import {PREFIX_COLORS} from '../../../../../conf/colors';
-import Styles from '../../../../../conf/styles';
+import Properties from '../../../../../conf/properties';
 
 function PrefixColors (props) {
 
-        const styles = Styles.getInstance().getPrefixStyle();
+        const styles = Properties.getInstance().getPrefixStyle();
    
         return (<div className='prefixColorContainer' style={styles.body}>
                     <PrefixView/>

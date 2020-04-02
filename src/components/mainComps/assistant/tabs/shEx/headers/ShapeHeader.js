@@ -4,14 +4,14 @@ import {AppContext} from '../../../../../../App';
 import {ShapeContext} from '../ShapeComponent';
 import {PN_LOCAL,IRI_REF} from '../../../../../../utils/regExpUtils';
 import '../../../../../../css/shexComponents/headers/ShapeHeader.css';
-import Styles from '../../../../../../conf/styles';
+import Properties from '../../../../../../conf/properties';
 
 function ShapeHeader (props) {
 
     const context = useContext(AppContext);
     const shapeContext = useContext(ShapeContext);
     const disabled = shapeContext ? shapeContext.disabled : false;
-    const styles = Styles.getInstance().getShapeStyle();
+    const styles = Properties.getInstance().getShapeStyle();
     
     const {shape,customizeShape,collapseTriples,colapseBtn} = props;
     const [name,setName] = useState(shape.type.value);

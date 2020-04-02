@@ -1,11 +1,11 @@
 import React,{useContext,useState} from 'react';
 import { Textbox } from 'react-inputs-validation';
-import Styles from '../../../../../../conf/styles';
+import Properties from '../../../../../../conf/properties';
 
 function ShapeView (props) {
 
         const {colors} = props;
-        const styles = Styles.getInstance().getShapeStyle();
+        const styles = Properties.getInstance().getShapeStyle();
 
         return ( <div className='header' style={styles.header}>            
                         <label style={styles.label}>Shape</label>

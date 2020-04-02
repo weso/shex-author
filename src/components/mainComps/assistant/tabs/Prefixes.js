@@ -1,13 +1,13 @@
 import React,{useContext,useState,useEffect} from 'react';
 import {AppContext} from '../../../../App';
 import PrefixComp from './prefix/PrefixComp';
-import Styles from '../../../../conf/styles';
+import Properties from '../../../../conf/properties';
 import '../../../../css/shexComponents/headers/PrefixHeader.css';
 
 function Prefixes (props) {
 
         const context = useContext(AppContext);
-        const styles = Styles.getInstance().getPrefixStyle();
+        const styles = Properties.getInstance().getPrefixStyle();
         return (
                 <div>
                         {context.prefixes.map(prefix =>{

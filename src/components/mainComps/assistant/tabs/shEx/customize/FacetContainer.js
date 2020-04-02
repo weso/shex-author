@@ -3,13 +3,13 @@ import {AppContext} from '../../../../../../App';
 import NumericInput from 'react-numeric-input';
 import shexUtils from '../../../../../../utils/shexUtils';
 import FacetComp from './facets/FacetComp';
-import Styles from '../../../../../../conf/styles';
+import Properties from '../../../../../../conf/properties';
 
 function FacetContainer (props) {
     const {triple} = props;
     const context = useContext(AppContext);
     const [facets,setFacets]=useState(triple.facets);
-    const styles = Styles.getInstance().getFacetStyle();
+    const styles = Properties.getInstance().getFacetStyle();
 
     const deleteFacet= function(id){
         const newFacets = facets.filter(f => f.id != id);

@@ -1,12 +1,12 @@
 import React,{useContext,useState,useEffect} from 'react';
 import {AppContext} from '../../../../../App';
-import Styles from '../../../../../conf/styles';
+import Properties from '../../../../../conf/properties';
 
 function PrefixComp (props) {
 
         const context = useContext(AppContext);
         const {prefix} = props;
-        const styles = Styles.getInstance().getPrefixStyle();
+        const styles = Properties.getInstance().getPrefixStyle();
         const [name,setName] = useState(prefix.prefixName);
         const [value,setValue] = useState(prefix.prefixValue);
         const open = '<';

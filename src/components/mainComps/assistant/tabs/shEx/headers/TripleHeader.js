@@ -2,7 +2,7 @@ import React,{useState,useContext} from 'react';
 import {AppContext} from '../../../../../../App';
 import {ShapeContext} from '../ShapeComponent';
 import yasheUtils from '../../../../../../utils/yasheUtils';
-import Styles from '../../../../../../conf/styles';
+import Properties from '../../../../../../conf/properties';
 import '../../../../../../css/shexComponents/headers/TripleHeader.css';
 
 
@@ -13,7 +13,7 @@ function TripleHeader (props) {
 
     const context = useContext(AppContext);
     const shapeContext = useContext(ShapeContext);
-    const styles = Styles.getInstance().getTripleStyle();
+    const styles = Properties.getInstance().getTripleStyle();
     const disabled = shapeContext.disabled;
 
     const { triple,

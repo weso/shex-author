@@ -16,7 +16,7 @@ function ColorPicker (props) {
     const {namespace,element,cookie} = props;
     const [color,setColor] = useState(namespace[element]);
     const [isDisplay,setDisplay] = useState(false);
-    const [cookies, setCookie] = useCookies('colors');
+    const [cookies, setCookie] = useCookies('cookies');
     
     const handleClick = () => {
       setDisplay(!isDisplay);

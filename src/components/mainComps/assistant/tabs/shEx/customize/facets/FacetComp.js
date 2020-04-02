@@ -1,14 +1,14 @@
 import React,{useState,useContext} from 'react';
 import {AppContext} from '../../../../../../../App';
 import NumericInput from 'react-numeric-input';
-import Styles from '../../../../../../../conf/styles';
+import Properties from '../../../../../../../conf/properties';
 
 function FacetComp (props) {
     const {facet,deleteFacet} = props;
     const context = useContext(AppContext);
     const [type,setType]=useState(facet.type);
     const [value,setValue]=useState(facet.value);
-    const styles = Styles.getInstance().getFacetStyle();
+    const styles = Properties.getInstance().getFacetStyle();
    
     const handleTypeChange = function(type){
         facet.setType(type);

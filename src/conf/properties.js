@@ -10,9 +10,9 @@ import {SHAPE_COLORS,
 
 import {DEFAULTS} from './config'       ;
 //Singleton Pattern
-const Styles = (()=> {
+const Properties = (()=> {
 
-    function StyleClass(){
+    function PropertyClass(){
 
         const [cookies, setCookie,removeCookie] = useCookies('colors');
        
@@ -214,7 +214,7 @@ const Styles = (()=> {
     return{
         getInstance: ()=>{
             if(!instance){
-                instance = new StyleClass();
+                instance = new PropertyClass();
             }
             return instance;
         }
@@ -224,4 +224,4 @@ const Styles = (()=> {
 })();
 
 
-export default Styles;
+export default Properties;

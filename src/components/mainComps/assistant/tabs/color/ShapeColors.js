@@ -19,16 +19,16 @@ import {SHAPE_COLORS,
         BTNS_COLORS} from '../../../../../conf/colors';
 
 
-import Styles from '../../../../../conf/styles';
+import Properties from '../../../../../conf/properties';
 
 function ShapeColors (props) {
 
-        const shapeStyles = Styles.getInstance().getShapeStyle();
-        const tripleStyles = Styles.getInstance().getTripleStyle();
-        const constraintStyles = Styles.getInstance().getConstraintStyle();
-        const facetStyles = Styles.getInstance().getFacetStyle();
-        const shapeRefStyles = Styles.getInstance().getShapeRefStyle();
-        const cardinalityStyles = Styles.getInstance().getCardinalityStyle();
+        const shapeStyles = Properties.getInstance().getShapeStyle();
+        const tripleStyles = Properties.getInstance().getTripleStyle();
+        const constraintStyles = Properties.getInstance().getConstraintStyle();
+        const facetStyles = Properties.getInstance().getFacetStyle();
+        const shapeRefStyles = Properties.getInstance().getShapeRefStyle();
+        const cardinalityStyles = Properties.getInstance().getCardinalityStyle();
 
         return ( 
         <div>

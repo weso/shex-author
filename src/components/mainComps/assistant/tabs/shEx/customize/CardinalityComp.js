@@ -2,13 +2,13 @@ import React,{useState,useContext} from 'react';
 import {AppContext} from '../../../../../../App';
 import { Collapse } from 'reactstrap';
 import NumericInput from 'react-numeric-input';
-import Styles from '../../../../../../conf/styles';
+import Properties from '../../../../../../conf/properties';
 
 function CardinalityComp (props) {
     
         const {triple} = props;
         const context = useContext(AppContext);
-        const styles = Styles.getInstance().getCardinalityStyle();
+        const styles = Properties.getInstance().getCardinalityStyle();
 
         let cardValue = triple.cardinality.getCardType();
         let initialExactly = false;

@@ -2,13 +2,13 @@ import React,{useState,useContext} from 'react';
 import {AppContext} from '../../../../../../../App';
 import shexUtils from '../../../../../../../utils/shexUtils';
 import ValueSetComp from './ValueSetComp';
-import Styles from '../../../../../../../conf/styles';
+import Properties from '../../../../../../../conf/properties';
 
 function ValueSetContainer (props) {
     const {triple,valueSet} = props;
     const context = useContext(AppContext);
     const [values,setValues]=useState(valueSet);
-    const styles = Styles.getInstance().getConstraintStyle();
+    const styles = Properties.getInstance().getConstraintStyle();
 
     const deleteValue= function(id){
         const newValues = values.filter(v => v.id != id);

@@ -5,7 +5,7 @@ import ShapeHeader from  './headers/ShapeHeader';
 import CustomComp from './customize/CustomComp';
 import TripleComponent from './TripleComponent';
 import Triple from '../../../../../entities/shexEntities/triple';
-import Styles from '../../../../../conf/styles';
+import Properties from '../../../../../conf/properties';
 
 export const ShapeContext = React.createContext();
 
@@ -13,7 +13,7 @@ function ShapeComponent (props) {
 
     const context = useContext(AppContext);
     const {shape} = props;
-    const styles = Styles.getInstance().getShapeStyle();
+    const styles = Properties.getInstance().getShapeStyle();
 
     const [triples,setTriples] = useState(shape.triples);
     const [isCustomOpen,setCustomOpen] = useState(false);

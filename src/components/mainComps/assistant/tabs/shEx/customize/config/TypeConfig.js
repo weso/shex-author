@@ -1,13 +1,13 @@
 import React,{useState,useContext} from 'react';
 import {AppContext} from '../../../../../../../App';
-import Styles from '../../../../../../../conf/styles';
+import Properties from '../../../../../../../conf/properties';
 
 function TypeConfig (props) {
 
     const context = useContext(AppContext);
     const {entity,setPrefix,collapsePrefix,bnode} = props;
-    const shapeStyles = Styles.getInstance().getShapeStyle();
-    const tripleStyles = Styles.getInstance().getTripleStyle();
+    const shapeStyles = Properties.getInstance().getShapeStyle();
+    const tripleStyles = Properties.getInstance().getTripleStyle();
     const styles = entity.triples ? shapeStyles : tripleStyles; //is a Shape or a Triple?
     const [type,setType] = useState(entity.type.getTypeName());
     const iri ='<...>';

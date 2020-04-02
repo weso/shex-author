@@ -6,7 +6,7 @@ import shexUtils from '../../../../../../utils/shexUtils';
 import yasheUtils from '../../../../../../utils/yasheUtils';
 import PrefixConfig from './config/PrefixConfig';
 import ValueSetContainer from './constraint/ValueSetContainer';
-import Styles from '../../../../../../conf/styles';
+import Properties from '../../../../../../conf/properties';
 
 const primitives = ['String','Integer','Date','Boolean'];
 const iriStr ='<...>';
@@ -15,7 +15,7 @@ function ConstraintComp (props) {
 
     const context = useContext(AppContext);
     const {triple} = props;
-    const styles = Styles.getInstance().getConstraintStyle();
+    const styles = Properties.getInstance().getConstraintStyle();
     
     let constValue = triple.constraint.getTypeName();
     let primValue = triple.constraint.value;

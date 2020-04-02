@@ -2,13 +2,13 @@ import React,{useState,useContext} from 'react';
 import {AppContext} from '../../../../../../App';
 import { Collapse } from 'reactstrap';
 import shexUtils from '../../../../../../utils/shexUtils';
-import Styles from '../../../../../../conf/styles';
+import Properties from '../../../../../../conf/properties';
 
 function ShapeRefComp (props) {
     
     const {triple} = props;
     const context = useContext(AppContext);
-    const styles = Styles.getInstance().getShapeRefStyle();
+    const styles = Properties.getInstance().getShapeRefStyle();
 
     let refValue = '';
     let refOpen = false;

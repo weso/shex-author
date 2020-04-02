@@ -3,15 +3,17 @@ import Toggle from 'react-toggle';
 import "react-toggle/style.css";
 import '../../../../css/conf/config.css';
 import {DEFAULTS} from '../../../../conf/config';
-import Styles from '../../../../conf/styles';
+import Properties from '../../../../conf/properties';
 import {AppContext} from '../../../../App';
+import { useCookies } from 'react-cookie';
 
 function Config (props) {
 
         const context = useContext(AppContext);
         const [sinc, setSinc] = useState(true);
         const [pretty, setPretty] = useState(DEFAULTS.pretty);
-        const [saveColors, setSaveColors] = useState(DEFAULTS.saveColors)
+        const [saveColors, setSaveColors] = useState(DEFAULTS.saveColors);
+        const [cookies, setCookie] = useCookies('cookies');
 
         const handleSincChange = function(e){
             //TO-DO
@@ -21,17 +23,20 @@ function Config (props) {
             let newPretty = e.target.value;
             DEFAULTS.pretty = newPretty;
             setPretty(newPretty);
+            setCookie('pretty', newPretty, { path: '/' });     
             context.emit();
+            
         }
 
         const handleSaveColorsChange = function(){
             DEFAULTS.saveColors = !saveColors;
+            setCookie('saveColors', !saveColors, { path: '/' });
             setSaveColors(!saveColors);
         }
 
         const restoreColors = function(){
             let confirm = window.confirm('Are you sure?');
-            if(confirm)Styles.getInstance().restoreDefaultColors();
+            if(confirm)Properties.getInstance().restoreDefaultColors();
         }
 
         return ( <div>

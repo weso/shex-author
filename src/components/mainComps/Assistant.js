@@ -6,7 +6,7 @@ import AssistContent from './assistant/AssistContent';
 import AssistLoader from './assistant/AssistLoader';
 import AssistError from './assistant/AssistError';
 import { Resizable, ResizableBox } from 'react-resizable';
-import Styles from '../../conf/styles';
+import Properties from '../../conf/properties';
 import '../../css/Assistant.css';
 import '../../css/resizable/react-resizable.css';
 

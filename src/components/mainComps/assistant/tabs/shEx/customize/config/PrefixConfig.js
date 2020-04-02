@@ -3,15 +3,15 @@ import { Collapse } from 'reactstrap';
 import {AppContext} from '../../../../../../../App';
 import {AssistContext} from '../../../../../Assistant';
 import {getPrefix} from '../../../../../../../utils/prefixUtils';
-import Styles from '../../../../../../../conf/styles';
+import Properties from '../../../../../../../conf/properties';
 
 function PrefixConfig (props) {
 
     const context = useContext(AppContext);
     const assistContext = useContext(AssistContext);
     const {entity,isPrefixOpen,prefix,setPrefix} = props;
-    const shapeStyles = Styles.getInstance().getShapeStyle();
-    const tripleStyles = Styles.getInstance().getTripleStyle();
+    const shapeStyles = Properties.getInstance().getShapeStyle();
+    const tripleStyles = Properties.getInstance().getTripleStyle();
     const styles = entity.triples ? shapeStyles : tripleStyles; //is a Shape or a Triple?
 
     const handlePrefixChange = function(e){

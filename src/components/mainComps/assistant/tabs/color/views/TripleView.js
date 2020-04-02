@@ -1,9 +1,9 @@
 import React,{useContext,useState} from 'react';
-import Styles from '../../../../../../conf/styles';
+import Properties from '../../../../../../conf/properties';
 
 function TripleView (props) {
 
-        const styles = Styles.getInstance().getTripleStyle();
+        const styles = Properties.getInstance().getTripleStyle();
 
         return (  <div className="tripleHeader" style={styles.header}>            
             <input  type="text" 

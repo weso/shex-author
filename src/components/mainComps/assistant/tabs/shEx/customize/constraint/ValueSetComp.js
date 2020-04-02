@@ -5,13 +5,13 @@ import QNameValue from './valueSetValues/QNameValue';
 import InputValue from './valueSetValues/InputValue';
 import NumberValue from './valueSetValues/NumberValue';
 import BooleanValue from './valueSetValues/BooleanValue';
-import Styles from '../../../../../../../conf/styles';
+import Properties from '../../../../../../../conf/properties';
 
 function ValueSetComp (props) {
     
     const {valueSetValue,deleteValue} = props;
     const context = useContext(AppContext);
-    const styles = Styles.getInstance().getConstraintStyle();
+    const styles = Properties.getInstance().getConstraintStyle();
     const iriStr = '<...>';
     const [type,setType]=useState(valueSetValue.type.getTypeName());
     const [isIriRef,setIriRef]=useState(true);

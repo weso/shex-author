@@ -1,10 +1,10 @@
 import React,{useContext,useState} from 'react';
-import Styles from '../../../../../../conf/styles';
+import Properties from '../../../../../../conf/properties';
 
 function PrefixView (props) {
 
         const {colors} = props;
-        const styles = Styles.getInstance().getPrefixStyle();
+        const styles = Properties.getInstance().getPrefixStyle();
         const open = '<';
         const close = '>';
 
