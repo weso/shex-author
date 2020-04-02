@@ -44,6 +44,12 @@ function Config (props) {
                              <button className='aplyBtn'>Apply</button>
                         </div>
                     </div>
+                    <div className='option'>
+                        <span>Restore Default Config</span>
+                        <div className='togleContainer'>
+                             <button className='aplyBtn'>Apply</button>
+                        </div>
+                    </div>
                     
                 </div>);
 }

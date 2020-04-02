@@ -179,6 +179,26 @@ const Styles = (()=> {
             removeCookie('cardinalityColors');
         }
 
+        this.saveDefaults = function(){
+            this.defaultShape = SHAPE_COLORS;
+            this.defaultTriple = TRIPLE_COLORS;
+            this.defaultConstraint = CONSTRAINT_COLORS;
+            this.defaultFacet = FACET_COLORS;
+            this.defaultShapeRef = SHAPEREF_COLORS;
+            this.defaultCardinality = CARDINALITY_COLORS;
+        }
+
+        this.restoreDefaults = function(){
+            SHAPE_COLORS = this.defaultShape;
+            TRIPLE_COLORS = this.defaultTriple;
+            CONSTRAINT_COLORS = this.defaultConstraint;
+            FACET_COLORS = this.defaultFacet;
+            SHAPEREF_COLORS = this.defaultShapeRef;
+            CARDINALITY_COLORS = this.defaultCardinality;
+        }
+
+
+        this.saveDefaults();
         this.loadCookies();
                 
     }
