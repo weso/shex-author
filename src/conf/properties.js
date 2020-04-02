@@ -192,13 +192,16 @@ const Properties = (()=> {
             removeCookie('conf');
         }
 
-        this.saveDefaultColors = function(){
+        this.saveDefaults = function(){
+            //Colors
             this.defaultShape = Object.assign({}, SHAPE_COLORS);
             this.defaultTriple = Object.assign({}, TRIPLE_COLORS);
             this.defaultConstraint = Object.assign({}, CONSTRAINT_COLORS);
             this.defaultFacet = Object.assign({}, FACET_COLORS);
             this.defaultShapeRef = Object.assign({}, SHAPEREF_COLORS);
             this.defaultCardinality = Object.assign({}, CARDINALITY_COLORS);
+            //Config
+            this.defaultConfig = Object.assign({}, DEFAULTS);
         }
 
         this.restoreDefaultColors = function(){
@@ -211,9 +214,14 @@ const Properties = (()=> {
             this.removeCookies();
         }
 
+        this.restoreDefaultConfig = function(){
+            this.load(this.defaultConfig,DEFAULTS);
+            this.removeCookies();
+        }
 
 
-        this.saveDefaultColors();
+
+        this.saveDefaults();
         this.loadCookies();
                 
     }

@@ -13,7 +13,7 @@ function Config (props) {
         const [sinc, setSinc] = useState(true);
         const [pretty, setPretty] = useState(DEFAULTS.pretty);
         const [saveColors, setSaveColors] = useState(DEFAULTS.saveColors);
-        const [cookies, setCookie] = useCookies('cookies');
+        const [cookies, setCookies] = useCookies('cookies');
 
         const handleSincChange = function(e){
             //TO-DO
@@ -23,20 +23,28 @@ function Config (props) {
             let newPretty = e.target.value;
             DEFAULTS.pretty = newPretty;
             setPretty(newPretty);
-            setCookie('conf', DEFAULTS, { path: '/' });     
+            setCookies('conf', DEFAULTS, { path: '/' });     
             context.emit();
-            
         }
 
         const handleSaveColorsChange = function(){
             DEFAULTS.saveColors = !saveColors;
-            setCookie('conf', DEFAULTS, { path: '/' });
+            setCookies('conf', DEFAULTS, { path: '/' });
             setSaveColors(!saveColors);
         }
 
         const restoreColors = function(){
             let confirm = window.confirm('Are you sure?');
             if(confirm)Properties.getInstance().restoreDefaultColors();
+        }
+
+        const restoreConfig = function(){
+            let confirm = window.confirm('Are you sure?');
+            if(confirm){
+                Properties.getInstance().restoreDefaultConfig();
+                setPretty(DEFAULTS.pretty);
+                setSaveColors(DEFAULTS.saveColors);
+            }
         }
 
         return ( <div>
@@ -74,7 +82,7 @@ function Config (props) {
                     <div className='option'>
                         <span>Restore Default Config</span>
                         <div className='togleContainer'>
-                             <button className='aplyBtn'>Apply</button>
+                             <button className='aplyBtn' onClick={restoreConfig}>Apply</button>
                         </div>
                     </div>
                     
