@@ -20,7 +20,8 @@ function Config (props) {
         }
 
         const restoreColors = function(){
-            Styles.getInstance().restoreDefaultColors();
+            let confirm = window.confirm('Are you sure?');
+            if(confirm)Styles.getInstance().restoreDefaultColors();
         }
 
         return ( <div>

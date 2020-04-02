@@ -146,37 +146,29 @@ const Styles = (()=> {
 
 
         this.loadCookies = function(){
-            this.load('shapeColors',SHAPE_COLORS);
-            this.load('tripleColors',TRIPLE_COLORS);
-            this.load('constraintColors',CONSTRAINT_COLORS);
-            this.load('facetColors',FACET_COLORS);
-            this.load('shapeRefColors',SHAPEREF_COLORS);
-            this.load('cardinalityColors',CARDINALITY_COLORS);
+            this.loadCookie('shapeColors',SHAPE_COLORS);
+            this.loadCookie('tripleColors',TRIPLE_COLORS);
+            this.loadCookie('constraintColors',CONSTRAINT_COLORS);
+            this.loadCookie('facetColors',FACET_COLORS);
+            this.loadCookie('shapeRefColors',SHAPEREF_COLORS);
+            this.loadCookie('cardinalityColors',CARDINALITY_COLORS);
           
          }
 
-        this.load = function(cookie,namespace){
+        this.loadCookie = function(cookie,namespace){
             let colors = cookies[cookie];
             if(!colors){
                 setCookie(cookie, namespace, { path: '/' });
             }else{
-                //namespace = colors; It doesn't work
-                Object.keys(colors).map(c=>{
-                    namespace[c]=colors[c];
-                });
+                this.load(colors,namespace);
             }
-            
         }
 
-        this.load2 = function(colors,namespace){
-                console.log(colors)
-                console.log(namespace)
-                //namespace = colors; It doesn't work
-                Object.keys(colors).map(c=>{
-                    namespace[c]=colors[c];
-                });
-            
-            
+        this.load = function(colors,namespace){
+            //namespace = colors; It doesn't work
+            Object.keys(colors).map(c=>{
+                namespace[c]=colors[c];
+            });
         }
 
 
@@ -199,13 +191,15 @@ const Styles = (()=> {
         }
 
         this.restoreDefaultColors = function(){
-            this.load2(this.defaultShape,SHAPE_COLORS);
-            /* TRIPLE_COLORS = this.defaultTriple;
-            CONSTRAINT_COLORS = this.defaultConstraint;
-            FACET_COLORS = this.defaultFacet;
-            SHAPEREF_COLORS = this.defaultShapeRef;
-            CARDINALITY_COLORS = this.defaultCardinality;  */
+            this.load(this.defaultShape,SHAPE_COLORS);
+            this.load(this.defaultTriple,TRIPLE_COLORS);
+            this.load(this.defaultConstraint,CONSTRAINT_COLORS);
+            this.load(this.defaultFacet,FACET_COLORS);
+            this.load(this.defaultShapeRef,SHAPEREF_COLORS);
+            this.load(this.defaultCardinality,CARDINALITY_COLORS);
+            this.removeCookies();
         }
+
 
 
         this.saveDefaultColors();
