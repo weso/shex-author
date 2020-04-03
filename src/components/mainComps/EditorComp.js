@@ -23,6 +23,7 @@ function EditorComp() {
     const divRef = useRef(null);
     const context = useContext(AppContext);
     let oldShapes = [];
+    let isComplex = false;
     
 
     const defaultPrefixes = [
@@ -48,6 +49,7 @@ function EditorComp() {
             y.on('humanEvent', function(shapes,width) {
                 Editor.getInstance().draw(shapes);
                 //console.log(shapes)
+                isComplex=false;
                 oldShapes = shapes;
                 let data={size:{width:width}};
                 context.handleResize(null,data);
@@ -73,12 +75,18 @@ function EditorComp() {
             //Otherwise it will be desactivated
             y.on('sinc', function(sinc) {
                 if(sinc){
+                    y._handlers.focus = null;
+                    hideConvert();
+                    if(isComplex)showError(COMPLEX_SHAPE_MSG);
+                    if(y.hasErrors(y))showError(ERROR_EDITOR_MSG);
+        
                     y.on('keyup',yasheUtils.debounce(function( e ) {
                         if(!y.hasErrors(y)){
                             hideError();
                             let newShapes = getNewShapes();
                             if(oldShapes.length == newShapes.length){ //Any new shape?
                                 if(newShapes.toString()!=oldShapes.toString()){ //Any cupdate?
+                                    isComplex=false;
                                     oldShapes = replaceShapes(newShapes);
                                 }
                             }else{
@@ -93,6 +101,7 @@ function EditorComp() {
                     //(for example "Ctrl-Z")
                     y.on('keyHandled', function() {
                         if(!y.hasErrors()){
+                            isComplex=false;
                             oldShapes = replaceShapes(getNewShapes());
                             updatePrefixes(getNewPrefixes());
                         }
@@ -103,10 +112,9 @@ function EditorComp() {
                     //Not really elegant I know     
                     y._handlers.keyup = null; 
                     y._handlers.keyHandled = null; 
-
-                     y.on('focus', function() {
-                       // showConvert();
-                       //showError(COMPLEX_SHAPE_MSG);
+                    if(y.hasErrors(y))showConvert();
+                    if(isComplex)showConvert();
+                    y.on('focus', function() {
                        showConvert();
                     });       
                 }
@@ -120,16 +128,18 @@ function EditorComp() {
             });
 
             y.on('forceError', function(prefixes) {
+                isComplex=true;
                 hideError();
                 loading();
                 setTimeout(function() {
                     loaded(); 
-                    showConvert(); 
                     showError(COMPLEX_SHAPE_MSG);
+                    if(!DEFAULTS.sincronize)showConvert();
                 },500)
             });
 
             y.on('delete', function() {
+                isComplex=false;
                 oldShapes = replaceShapes(getNewShapes());
                 updatePrefixes(defaultPrefixes);
             });
@@ -189,7 +199,8 @@ function EditorComp() {
     const updateAssist = function(){
         hideConvert();
         loading();
-        setTimeout(function() {  
+        setTimeout(function() {
+            isComplex=false;  
             oldShapes = replaceShapes(getNewShapes());                
             loaded();
         },500)
@@ -227,6 +238,7 @@ function EditorComp() {
     const hideConvert = function(){
         animate('showConvert','hideConvert','hideAsist','showAsist');
     }
+
 
     return  (<div className="col edit" ref={divRef}/>);
 

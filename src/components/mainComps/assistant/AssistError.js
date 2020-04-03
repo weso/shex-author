@@ -13,21 +13,20 @@ function AssistError (props) {
         CodeMirror.signal(yashe,'convert');
     }
 
-    return (<div className='hideConvert'>
+    return (<div>
                 <div className='hideError'>
                     <div className='shapeErrorCont'>
                         <div className='shapeError'></div>
                         <p className='errorMsg'></p>
                     </div>
                 </div>
-                
-                 <a class="button">
-                    <span onClick={handle}>Convert</span>
-                </a>
+                <div className='hideConvert'>
+                    <a class="button">
+                        <span onClick={handle}>Convert</span>
+                    </a>
+                </div>
             </div>);
 }
 
 
 export default AssistError;
-/*
-<button className='convertBtn' onClick={handle}>Convert</button>*/
