@@ -23,10 +23,7 @@ function GaleryBtn () {
                                 onClick={()=>loadExample('default')}>
                                 User
                         </button>
-                        <button className="form-control" 
-                                onClick={()=>loadExample('wiki')}>
-                                Wikidata
-                        </button>
+                       
                     </div>
                 </li>
             </ul>
@@ -38,3 +35,9 @@ function GaleryBtn () {
 export default GaleryBtn;
 
 
+/*
+
+ <button className="form-control" 
+                                onClick={()=>loadExample('wiki')}>
+                                Wikidata
+                        </button>*/
