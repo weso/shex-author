@@ -359,6 +359,23 @@ label{
     display: none;
 }
 
+.hideConvert{
+    display: none;
+}
+
+.showConvert{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    height: 100% !important;
+    width: 100% !important;
+}
+
+.convertBtn{
+    height: 50px;
+    width:  300px;
+    border-radius: 10px;
+}
 
 .collapse .show{
     height: 90% !important;
@@ -369,17 +386,15 @@ label{
     display: grid;
     justify-content: center;
     align-items: center;
-    height: 100% !important;
+    height: 90% !important;
     width: 100% !important;
 }
 
 
 .shapeErrorCont{
     display: grid;
-    grid-template-rows: 60% 30%;
-    height: 300px;
-    
-
+    grid-template-rows: 85% 20%;
+    height: 200px;
 }
 
 .shapeError{

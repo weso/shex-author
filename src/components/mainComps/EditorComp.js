@@ -53,6 +53,22 @@ function EditorComp() {
                 context.handleResize(null,data);
             });
 
+            y.on('convert',function(){
+                if(!y.hasErrors(y)){
+                    hideError();
+                    updateAssist();
+                }else{
+                    hideError();
+                    hideConvert();
+                    loading();
+                    setTimeout(function() {
+                        loaded();  
+                        showConvert();
+                        showError(ERROR_EDITOR_MSG);
+                    },500) 
+                }
+            })
+
             //When the sinc is activated we activate the appropriate handlers 
             //Otherwise it will be desactivated
             y.on('sinc', function(sinc) {
@@ -98,7 +114,9 @@ function EditorComp() {
                     y._handlers.keyHandled = null; 
 
                      y.on('focus', function() {
-                        showError(ERROR_EDITOR_MSG);
+                       // showConvert();
+                       //showError(COMPLEX_SHAPE_MSG);
+                       showConvert();
                     });       
                 }
                 
@@ -114,7 +132,8 @@ function EditorComp() {
                 hideError();
                 loading();
                 setTimeout(function() {
-                    loaded();  
+                    loaded(); 
+                    showConvert(); 
                     showError(COMPLEX_SHAPE_MSG);
                 },500)
             });
@@ -177,6 +196,7 @@ function EditorComp() {
 
 
     const updateAssist = function(){
+        hideConvert();
         loading();
         setTimeout(function() {  
             oldShapes = replaceShapes(getNewShapes());                
@@ -205,8 +225,16 @@ function EditorComp() {
         document.getElementsByClassName('errorMsg')[0].textContent = err;
     }
 
+    const showConvert = function(err){
+        animate('hideConvert','showConvert','showAsist','hideAsist');
+    }
+
     const hideError = function(){
         animate('showError','hideError','hideAsist','showAsist');
+    }
+
+    const hideConvert = function(){
+        animate('showConvert','hideConvert','hideAsist','showAsist');
     }
 
     return  (<div className="col edit" ref={divRef}/>);

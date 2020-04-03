@@ -3,7 +3,7 @@ import {AppContext} from '../../../App';
 import CodeMirror from 'codemirror';
 import Editor from '../../../entities/editor';
 
-function AssistError (props) {
+function AssistConvert (props) {
 
     const context = useContext(AppContext);
 
@@ -13,15 +13,9 @@ function AssistError (props) {
     }
 
     return (<div className='hideConvert'>
-                <div className='hideError'>
-                    <div className='shapeErrorCont'>
-                        <div className='shapeError'></div>
-                        <p className='errorMsg'></p>
-                    </div>
-                </div>
                 <button className='convertBtn' onClick={handle}>Convert</button>
             </div>);
 }
 
 
-export default AssistError;
+export default AssistConvert;
