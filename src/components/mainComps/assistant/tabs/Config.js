@@ -20,7 +20,6 @@ function Config (props) {
         const handleSincChange = function(e){
             setSinc(!sinc);
             let yashe = Editor.getInstance().getYashe();
-            //yashe._handlers.blur = null;
             CodeMirror.signal(yashe,'sinc',!sinc);
         }
 
@@ -54,7 +53,7 @@ function Config (props) {
 
         return ( <div>
                     <div className='option'>
-                        <span>Sincronize (In progress...)</span>
+                        <span>Sincronize Editor</span>
                         <div className='togleContainer'>
                             <Toggle  checked={sinc}  icons={false} onChange={handleSincChange}/>
                         </div>

@@ -51,19 +51,49 @@ function EditorComp() {
                 context.handleResize(null,data);
             });
 
+            //When the sinc is activated we activate the appropriate handlers 
+            //Otherwise it will be desactivated
             y.on('sinc', function(sinc) {
                 if(sinc){
-                    y.on('blur', function() {
+                    y.on('keyup',yasheUtils.debounce(function( e ) {
+                        if(!y.hasErrors(y)){
+                            hideError();
+                            let newShapes = getNewShapes();
+                            if(oldShapes.length == newShapes.length){ //Any new shape?
+                                if(newShapes.toString()!=oldShapes.toString()){ //Any cupdate?
+                                    oldShapes = replaceShapes(newShapes);
+                                }
+                            }else{
+                                updateAssist();
+                            } 
+                        }else{
+                            showError(ERROR_EDITOR_MSG);
+                        }   
+                    }, 500));
+
+                     //Fired after a key is handled through a key map
+                    //(for example "Ctrl-Z")
+                    y.on('keyHandled', function() {
+                        if(!y.hasErrors()){
+                            oldShapes = replaceShapes(getNewShapes());
+                            updatePrefixes(getNewPrefixes());
+                        }
+                    }); 
+
+                   /*  y.on('blur', function() {
                         if(!y.hasErrors()){                   
                             updateAssist();
                             updatePrefixes(getNewPrefixes());
                         }else{
                             showError(ERROR_EDITOR_MSG);
                         }   
-                    });
+                    }); */
 
                 }else{
-                    y._handlers.blur = null;//Not very elegant I know        
+                    //Not really elegant I know  
+                    y._handlers.blur = null;      
+                    y._handlers.keyup = null; 
+                    y._handlers.keyHandled = null;       
                 }
                 
             });
@@ -83,47 +113,6 @@ function EditorComp() {
                 },500)
             });
 
-            
-            //Get this out
-            const debounce = function(func, wait, immediate) {
-                let timeout; let result;
-                return function() {
-                    const context = this; 
-                    const args = arguments;
-                    const later = function() {
-                    timeout = null;
-                    if (!immediate) result = func.apply(context, args);
-                    };
-                    const callNow = immediate && !timeout;
-                    clearTimeout(timeout);
-                    timeout = setTimeout(later, wait);
-                    if (callNow) result = func.apply(context, args);
-                    return result;
-                };
-            };
-           
-
-           
-            y.on('keyup',debounce(function( e ) {
-                    if(!y.hasErrors(y)){
-                                hideError();
-                                let newShapes = getNewShapes();
-                                //console.log(newShapes)
-                                if(oldShapes.length == newShapes.length){ //Any new shape?
-                                    if(newShapes.toString()!=oldShapes.toString()){ //Any cupdate?
-                                        oldShapes = replaceShapes(newShapes);
-                                    }
-                                }else{
-                                    updateAssist();
-                                } 
-                            }else{
-                                showError(ERROR_EDITOR_MSG);
-                            }   
-                }, 500)   
-            ); 
-        
-   
-
             y.on('delete', function() {
                 oldShapes = replaceShapes(getNewShapes());
                 updatePrefixes(defaultPrefixes);
@@ -136,18 +125,7 @@ function EditorComp() {
                 }
             });
 
-           
-
-            //Fired after a key is handled through a key map
-            //(for example "Ctrl-Z")
-            y.on('keyHandled', function() {
-                if(!y.hasErrors()){
-                    oldShapes = replaceShapes(getNewShapes());
-                    updatePrefixes(getNewPrefixes());
-                }
-            }); 
- 
-            
+        
 
             //Load example from Galery
             y.on('galery', function() {

@@ -53,12 +53,31 @@ function getSchema(){
   }
 
 
+//Get this out
+function debounce(func, wait, immediate) {
+    let timeout; let result;
+    return function() {
+        const context = this; 
+        const args = arguments;
+        const later = function() {
+        timeout = null;
+        if (!immediate) result = func.apply(context, args);
+        };
+        const callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) result = func.apply(context, args);
+        return result;
+    };
+};
+
  const yasheUtils = {
       DEFAULT_SHAPE:DEFAULT_SHAPE,
       VALUESET_SHAPE:VALUESET_SHAPE,
       replaceShapes:replaceShapes,
       updatePrefixes:updatePrefixes,
-      getSchema:getSchema
+      getSchema:getSchema,
+      debounce:debounce
   }
 
   export default yasheUtils;
