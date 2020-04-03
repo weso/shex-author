@@ -15,6 +15,7 @@ function AssistContent (props) {
     return ( 
     <div>
         <div id='assistant-container' className='assistantContainer'> 
+                
                 <Collapse isOpen={asssistContext.isAssistOpen}>
                     <Shapes/>
                     <AssistLoader/>

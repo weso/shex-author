@@ -28,15 +28,18 @@
 }
 
 .assistantContainer{
-    display: grid;
-  
-    background-color: red;
+
     height: 94% !important;
-    
+   
 }
 
 
+.showAsist{
+    padding: 2%;
+    height: 100% !important;
+    width: 100% !important;
 
+}
 
 
 .asisTitleClose{
@@ -87,13 +90,6 @@
 
 .closeAsisBtn:focus{
     outline: none;
-}
-
-
-.showAsist{
-    padding: 2%;
-    height: 100% !important;
-    width: 100% !important;
 }
 
 
@@ -325,6 +321,7 @@ label{
 
 
 .showLoader{
+    margin-top: 200px;
     display: grid;
     justify-content: center;
     align-items: center;
@@ -365,6 +362,7 @@ label{
 }
 
 .showConvert{
+    margin-top: 50px;
     display: grid;
     justify-content: center;
     align-items: center;
@@ -375,6 +373,7 @@ label{
 
 
 .infoAssist{
+    margin-top: 150px;
     display: grid;
     justify-content: center;
     align-items: center;
