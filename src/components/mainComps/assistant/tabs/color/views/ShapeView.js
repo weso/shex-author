@@ -7,7 +7,7 @@ function ShapeView (props) {
         const {colors} = props;
         const styles = Properties.getInstance().getShapeStyle();
 
-        return ( <div className='header' style={styles.header}>            
+        return ( <div className='xs-header' style={styles.header}>            
                         <label style={styles.label}>Shape</label>
                         <Textbox/> 
                         <button style={styles.custom} 

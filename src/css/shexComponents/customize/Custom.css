@@ -19,19 +19,19 @@
 
 .customConstraint{
     display: grid;
-    align-items: center;
     grid-template-columns: 29% 71%;
-    margin-bottom: 1px;
 }
 
 .xs-customConstraint{
+    display: grid;
     grid-template-columns: 26% 74%;
+    align-items: center;
+    margin-bottom: 1px;
 }
 
 
 
 .gridBox{ 
-    padding: 5px;
     display: grid;
     align-items: center;
     grid-template-columns: 10% 20% 48%;
@@ -41,6 +41,7 @@
     display: grid;
     align-items: center;
     grid-template-columns: 4% 25% 69%;
+    padding: 5px;
 }
 
 

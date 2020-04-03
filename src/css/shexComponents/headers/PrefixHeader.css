@@ -1,38 +1,41 @@
-.prefixHeader{
+.xs-prefixHeader{
     padding: 8px;
     color: black;
     text-align: left;
     border: 1px solid grey;
     border-radius: 10px;
     display: grid;
-    grid-template-columns: 0.5% 20% 2% 4% 53% 5% 6%;
+    grid-template-columns: 0% 20% 1% 4% 48% 4% 8%;
     gap: 10px;
 }
 
+.prefixHeader{
+    grid-template-columns: 0.5% 20% 2% 4% 53% 5% 6%;
+}
 
-.prefixHeaderColors{
+.xs-prefixHeaderColors{
     padding: 8px;
     color: black;
     text-align: left;
     border-bottom: 1px solid grey;
     border-radius: 10px 10px;
-    display: grid;
-    grid-template-columns: 0.5% 20% 2% 4% 53% 5% 6%;
+    grid-template-columns: 0% 20% 1% 4% 48% 4% 8%;
     gap: 10px;
 }
 
-.xs-prefixHeaderColors{
-    grid-template-columns: 0% 20% 1% 4% 48% 4% 8%;
+
+.prefixHeaderColors{
+    display: grid;
+    grid-template-columns: 0.5% 20% 2% 4% 53% 5% 6%;
 }
+
 
 .prefixColorContainer{
     border: 1px solid grey;
     border-radius: 10px;
 }
 
-.xs-prefixHeader{
-    grid-template-columns: 0% 20% 1% 4% 48% 4% 8%;
-}
+
 
 .prefixName{
     grid-column: 2/3;
