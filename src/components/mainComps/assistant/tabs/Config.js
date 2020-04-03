@@ -12,14 +12,16 @@ import CodeMirror from 'codemirror';
 function Config (props) {
 
         const context = useContext(AppContext);
-        const [sinc, setSinc] = useState(true);
+        const [sinc, setSinc] = useState(DEFAULTS.sincronize);
         const [pretty, setPretty] = useState(DEFAULTS.pretty);
         const [saveColors, setSaveColors] = useState(DEFAULTS.saveColors);
         const [cookies, setCookies] = useCookies('cookies');
 
         const handleSincChange = function(e){
             setSinc(!sinc);
-            let yashe = Editor.getInstance().getYashe();
+            DEFAULTS.sincronize = !sinc;
+            setCookies('conf', DEFAULTS, { path: '/' }); 
+            let yashe = Editor.getInstance().getYashe();    
             CodeMirror.signal(yashe,'sinc',!sinc);
         }
 
@@ -46,8 +48,9 @@ function Config (props) {
             let confirm = window.confirm('Are you sure?');
             if(confirm){
                 Properties.getInstance().restoreDefaultConfig();
-                setPretty(DEFAULTS.pretty);
+                setSinc(DEFAULTS.sincronize);
                 setSaveColors(DEFAULTS.saveColors);
+                setPretty(DEFAULTS.pretty);
             }
         }
 

@@ -161,7 +161,6 @@ const Properties = (()=> {
 
         this.loadCookie = function(cookie,namespace){
             let properties = cookies[cookie];
-            //console.log(properties)
             if(!properties){
                 setCookie(cookie, namespace, { path: '/' });
             }else{
@@ -218,11 +217,8 @@ const Properties = (()=> {
             this.removeCookies();
         }
 
-
-
         this.saveDefaults();
-        this.loadCookies();
-                
+        this.loadCookies();                
     }
 
    

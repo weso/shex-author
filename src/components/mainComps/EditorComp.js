@@ -1,7 +1,9 @@
 import React, {useState,useContext,useEffect,useRef} from 'react';
 import 'yashe/dist/yashe.min.css';
 import {AppContext} from '../../App';
+import {DEFAULTS} from '../../conf/config';
 
+import CodeMirror from 'codemirror';
 import YASHE from 'yashe';
 import Editor from '../../entities/editor';
 
@@ -143,6 +145,8 @@ function EditorComp() {
 
             oldShapes = replaceShapes(getNewShapes());
             updatePrefixes(defaultPrefixes)
+
+            CodeMirror.signal(Editor.getInstance().getYashe(),'sinc',DEFAULTS.sincronize);
         }
     }, [yashe]
     );
