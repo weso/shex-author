@@ -1,0 +1,36 @@
+/* authorº THEME */
+
+.cm-s-author .cm-keyword {color: rgb(243, 76, 76);}
+.cm-s-author .cm-atom {color: #219;}
+.cm-s-author .cm-number {color: #085;}
+.cm-s-author .cm-def {color: #00f;}
+.cm-s-author .cm-variable,
+.cm-s-default .cm-punctuation,
+.cm-s-author .cm-property,
+.cm-s-author .cm-operator {color: #05a;}
+.cm-s-author .cm-variable-2 {color: #0F7A50;}
+.cm-s-author .cm-comment {color: #999;}
+.cm-s-author .cm-string {color: #b98003;}
+.cm-s-author .cm-constraint {color: #05a;}
+.cm-s-author .cm-valueSet {color: #05a;}
+.cm-s-author .cm-constraintKeyword {color: #05a;}
+.cm-s-author .cm-meta {color: #555;}
+.cm-s-author .cm-qualifier {color: #555;}
+.cm-s-author .cm-builtin {color: #30a;}
+.cm-s-author .cm-bracket {color: #997;}
+.cm-s-author .cm-tag {color: #170;}
+.cm-s-author .cm-attribute {color: #00c;}
+.cm-s-author .cm-hr {color: #999;}
+.cm-s-author .cm-link {color: #00c;}
+.cm-s-author .cm-logical {color:#f00;}
+
+
+.cm-s-author .cm-shape {color:#3d9cfa;}
+.cm-s-author .cm-punc {color: #3d9cfa;}
+.cm-s-author .cm-string-2 {color: #f89626;}
+.cm-s-author .cm-variable-3 {color: #f89626;}
+.cm-s-author .cm-constraint {color: #04be4c;}
+.cm-s-author .cm-at {color:#bbb517;}
+.cm-s-author .cm-cardinality {color:#f174eb;}
+.cm-s-author .cm-prefixDelc {color:#f8acac;}
+

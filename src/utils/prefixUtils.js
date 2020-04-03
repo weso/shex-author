@@ -1,8 +1,9 @@
 import Codemirror from 'codemirror';
 import Editor from '../entities/editor';
-import Prefix from '../entities/shexEntities/shexUtils/prefix.js';
-
+import Prefix from '../entities/shexEntities/shexUtils/prefix';
 import {ALL_PREFIXES} from './rdfUtils';
+
+let prefixCount = 0;
 
 export function getPrefix(prefix){
     let defined = Editor.getInstance().getYashe().getDefinedPrefixes();
@@ -13,6 +14,25 @@ export function getPrefix(prefix){
     }
     return new Prefix();
 }
+
+
+
+export function addPrefixComp(prefixes,width){
+    const id = prefixes.length + prefixCount++;
+    let newPrefix = new Prefix('','',id);
+    let newPrefixes = [];
+    newPrefixes = Object.assign(newPrefixes, prefixes);
+    newPrefixes.push(newPrefix);
+    emitPrefixes(newPrefixes,width);
+    return newPrefix;
+}
+
+export function deletePrefixComp(prefixes,prefixId,width) {
+    let newPrefixes = prefixes.filter(prefix => prefix.id != prefixId);
+    emitPrefixes(newPrefixes,width);
+    return newPrefixes;
+}
+
 
 export function addPrefix(prefix){
         let namespaces = ALL_PREFIXES;
@@ -40,4 +60,20 @@ export function getUri(prefix,namespaces){
     }
   }
   return 'http://example.org/';
+}
+
+
+function getPrefixesStr(prefixes){
+  let str='';
+  prefixes.map(prefix =>{
+    str += 'PREFIX ' + prefix.prefixName + ': <' + prefix.prefixValue + '>\n';
+  })
+  return str;
+}
+
+export function emitPrefixes(newPrefixes,width) {
+    const yashe = Editor.getInstance().getYashe();
+    if(yashe!=undefined){
+        Codemirror.signal(yashe,'prefixChange',getPrefixesStr(newPrefixes),width);
+    }
 }

@@ -4,16 +4,18 @@
   "private": true,
   "homepage": "https://weso.github.io/shex-author",
   "dependencies": {
+    "codemirror": "^5.52.2",
     "gh-pages": "^2.1.1",
     "jquery": "^3.4.1",
     "react": "^16.11.0",
-    "react-data-grid": "^7.0.0-alpha.24",
+    "react-color": "^2.18.0",
+    "react-cookie": "^4.0.3",
     "react-dom": "^16.11.0",
-    "react-redux": "^7.1.1",
+    "react-inputs-validation": "^4.4.1",
     "react-resizable": "^1.10.1",
-    "react-resizable-grid": "^1.0.1",
     "react-scripts": "3.2.0",
-    "redux": "^4.0.4"
+    "react-toggle": "^4.1.1",
+    "reactcss": "^1.2.3"
   },
   "scripts": {
     "predeploy": "npm run build",
@@ -48,6 +50,6 @@
     "react-resize-panel": "^0.3.5",
     "react-slide-toggle": "^0.3.3",
     "reactstrap": "^8.1.1",
-    "yashe": "^1.2.6"
+    "yashe": "^1.2.22"
   }
 }

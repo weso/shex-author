@@ -1,17 +1,20 @@
-import shexUtils from './shexUtils';
 
+import Codemirror from 'codemirror';
 import Editor from '../entities/editor';
+import shexUtils from './shexUtils';
 
 import  Shape from '../entities/shexEntities/shape';
 import  Triple from '../entities/shexEntities/triple';
 
 import TypesFactory from '../entities/shexEntities/types/typesFactory';
+import CardinalityFactory from '../entities/shexEntities/shexUtils/cardinality/cardinalityFactory';
+import Facet from '../entities/shexEntities/shexUtils/facet';
 
 import PrefixedIri from '../entities/shexEntities/types/concreteTypes/prefixedIri';
 import IriRef from '../entities/shexEntities/types/concreteTypes/iriRef';
 import BNode from '../entities/shexEntities/types/concreteTypes/bNode';
 import Primitive from '../entities/shexEntities/types/concreteTypes/primitive';
-import ShapeReference from '../entities/shexEntities/types/concreteTypes/shapeReference';
+import ValueSet from '../entities/shexEntities/types/concreteTypes/valueSet';
 
 import Literal from '../entities/shexEntities/types/concreteTypes/kinds/literal';
 import NonLiteral from '../entities/shexEntities/types/concreteTypes/kinds/nonLiteral';
@@ -19,26 +22,33 @@ import IriKind from '../entities/shexEntities/types/concreteTypes/kinds/iriKind'
 import BNodeKind from '../entities/shexEntities/types/concreteTypes/kinds/bNodeKind';
 import BlankKind from '../entities/shexEntities/types/concreteTypes/kinds/blankKind';
 
+import NumberLiteral from '../entities/shexEntities/types/concreteTypes/literal/numberLiteral';
+import StringLiteral from '../entities/shexEntities/types/concreteTypes/literal/stringLiteral';
+import BooleanLiteral from '../entities/shexEntities/types/concreteTypes/literal/booleanLiteral';
+
 
 
 import Prefix from '../entities/shexEntities/shexUtils/prefix';
+import ShapeRef from '../entities/shexEntities/shexUtils/shapeRef';
+import ValueSetValue from '../entities/shexEntities/shexUtils/valueSetValue';
 
-import InlineShape from '../entities/shexEntities/shexUtils/inlineShape';
 
 
-//HAY QUE METER TODOS
+//HAY QUE METER TODOS (Update... igual no hace falta...)
 const PRIMITIVES = ['string','integer','date','boolean'];
 
 
-let inlines;
-let isValid = true;
-
+let refs;
+/**
+*   Obtains all the current tokens in the editor
+*   @return {Array} tokens
+*
+ */
 function getTokens(){
     let yashe = Editor.getInstance().getYashe();
     let tokens =[];
     if(yashe!=undefined){
-        let numPrefixes = Object.keys(yashe.getDefinedPrefixes()).length;
-        for (var l = numPrefixes+1; l < yashe.lineCount(); ++l) {
+        for (var l = 0; l < yashe.lineCount(); ++l) {
             let lineTokens = getNonWsTokens(yashe.getLineTokens(l));
             lineTokens.forEach(token =>{
                 tokens.push(token);
@@ -46,68 +56,122 @@ function getTokens(){
 
         }
     }
-    
-    /*
-    if(!isValid){
-        return null;
-    }
-
-    */
-
     return tokens;
 }
 
+/**
+*   Split the tokens into Shapes
+*   @param {Array} Tokens
+*   @return {Array} Defined Shapes (Array of Token's arrays)
+*
+ */
 function getDefinedShapes(tokens){
     let brackets=0
     let shape=[];
     let defShapes = [];
+    let shapeCont = 0;
+    let hasTripleStarted = false;
     //Separate shapes in arrays
     tokens.forEach(element =>{
-        shape.push(element);
-        if(element.string == '{'){
-            brackets++;
-        }
+        //If we find a Shape then we start a new Array of tokens
+        if(element.type == 'shape'){
+            shape = [];
+            shape.push(element)
+            defShapes[shapeCont]=shape;
+            shapeCont++;
+        }else{
+            // IMPORTANT 
+            // We could do just shape.push(element) but if there 
+            // are directives between shapes we will push that directives into the shape   
 
-        if(element.string == '}'){
-            brackets--;
-            //Is the last } ?
-            if(brackets==0){
-                defShapes.push(shape);
-                shape = [];
+            if(element.string == '{'){
+                hasTripleStarted=true;
             }
+             
+            if(hasTripleStarted){
+                //Get the tokens while it's from the inside of the shape
+                if(element.string == '{')brackets++;
+                if(element.string == '}')brackets--;
+                if(brackets!=0)shape.push(element);
+                //if(brackets==0)hasTripleStarted = false
+             }else{
+                 //Get the previous tokens before the triples
+                 shape.push(element);
+             }
+       
         }
-
     })
     return defShapes;
 }
 
-
+/**
+* Get the Shapes objects
+* @param {Array} Shapes (Array of Token's arrays)
+*
+ */
 function getShapes(defShapes){
-    inlines = [];
+    refs = [];
     let shapes = [];
     let yashe = Editor.getInstance().getYashe();
-
     defShapes.forEach(shape => {
-        let id = shapes.length;
+        let id  = shapes.length;
         let shapeDef = shape[0].string;
-        let shapeType = getType(shapeDef,'shapeName');
-        let qualifier = getQualifier(shape);
+        let shapeType = getType(shapeDef);
+        let qualifier = getQualifier(shape[1]);
         let triples = getTriples(id,shape);
 
         shapes.push(new Shape(id,shapeType,triples,qualifier));
     })
     return shapes;
-
 }
 
-function getQualifier(shape) {
-    if(shape[1].type == 'keyword'){
-        let type = shape[1].string.toLowerCase();
-        return new TypesFactory().createType(type);
+/**
+* Get the type of the Shape or Triple
+* @param {String} Shape or Triple
+*
+ */
+function getType(def) {
+    let value;
+    let yashe = Editor.getInstance().getYashe();
+    if(def.startsWith('<')){
+        value = def.split('<')[1].split('>')[0];
+        return new IriRef(value);
+    }else if(def.startsWith('_:')){
+        value = def.split(':')[1];
+        return new BNode(value);
+    }else{
+        value = def.split(':')[1];
+        let prefixName = def.split(':')[0];
+        let prefixValue = getPrefixValue(yashe.getDefinedPrefixes(),prefixName)
+        let prefix = new Prefix(prefixName,prefixValue);
+        return new PrefixedIri(prefix,value);
+    }
+}
+
+
+/**
+*   Get the Qualifier
+*   @param {Token} First token next to the ShapeExprLabel
+*   @return {Type}
+*
+*/
+function getQualifier(qualifier) {
+    if(qualifier){
+        if(qualifier.type == 'constraintKeyword'){
+            let type = qualifier.string.toLowerCase();
+            return new TypesFactory().createType(type);
+        }
     }
     return new BlankKind();
 }
 
+
+/**
+*   Get an array of Triples
+*   @param {Integer} shapeId
+*   @param {Array} Shape (Tokens)
+*
+* */
 function getTriples(shapeId,shape) {
         let triples = [];
         let singleTriple = [];
@@ -115,10 +179,10 @@ function getTriples(shapeId,shape) {
         let start = getStart(shape);
         for(let i=start;i<shape.length;i++){
             singleTriple.push(shape[i])
-            if(shape[i].type == 'punc'){// finish of the triple ';'
+            if((shape[i].type == 'punc' &&  shape[i].string==';')// finish of the triple ';' 
+                || i==shape.length-1){  // finish of the last triple without ';'
                 if(singleTriple.length!=1){ //This line is neccesary when last triple of the shape ends with ';'
-           
-                    triples.push(getTriple(triples,singleTriple,shapeId));
+                    triples.push(getTriple(triples.length,singleTriple,shapeId));
                     singleTriple = [];
                 }
             }
@@ -127,63 +191,95 @@ function getTriples(shapeId,shape) {
     return triples;
 }
 
-function getTriple(triples,singleTriple,shapeId) {
-    
-    if(singleTriple.length>5){
-        isValid = false;
-    }
-   
-    let id = triples.length;
+/**
+*    Get a Triple Object from a line of tokens
+*    @param {Array} Triples
+*    @param {Array} LineTokens
+*    @param {Integer} ShapeId
+*/
+function getTriple(id,singleTriple,shapeId) {   
     let type;
-    let value;
-    let cardinality;
-    let inlineShape = new InlineShape();
-    let inlineName;
-    let index = 0;
-    for(let s in singleTriple){
-        let token = singleTriple[s];
-        if(index == 0){
-            type = getType(token.string,'tripleName');
+    let constraint;
+    let valueSet = [];
+    let facets = [];
+    let cardinality= new TypesFactory().createType('');
+    let shapeRef = new ShapeRef();
+    for(let i=0;i<singleTriple.length;i++){
+        let token = singleTriple[i];
+        if(token.type == 'string-2' || token.type == 'variable-3'){
+            type = getType(token.string);
+        }
+        if(token.type == 'constraint' || token.type == 'constraintKeyword' ){
+            constraint = getConstraint(token.string);
+        }
+        
+
+        if(token.type == 'valueSet'){
+            if(token.string.startsWith('@')){// LANTAG NOT SUPPORTED AT THE MOMENT
+                Codemirror.signal(Editor.getInstance().getYashe(),'forceError','LANTAG_ERR');
+            }else{
+                 valueSet.push(new ValueSetValue(valueSet.length,getValueSetValue(token.string)));
+            }
+        }
+
+        if(token.type == 'at' ){
+            let ref = getRefName(token.string);
+            refs.push(
+                    {
+                        shapeId:shapeId,
+                        tripleId:id,
+                        shapeRef:ref
+                    }
+                );
+        }
+
+        if(token.type == 'facet'){
+            i++;//Need the value
+            let value = singleTriple[i].string;
+            let id =facets.length;
+            let type = token.string.toLowerCase();
+            facets.push(new Facet(id,type,value));
+        }
+
+
+        if(token.type == 'cardinality'){
+          cardinality=getCardinality(token.string);
+        }
+        
+        if( token.type != 'string-2' && 
+            token.type != 'constraint' && 
+            token.type != 'constraintKeyword' && 
+            token.type != 'valueSet' && 
+            token.type != 'at' && 
+            token.type != 'facet' && 
+            token.type != 'cardinality' && 
+            token.type != 'punc' &&
+            token.type !='comment'){
+
+            Codemirror.signal(Editor.getInstance().getYashe(),'forceError');
+        }
+
+       
+        if(token.string == '~'){
+            Codemirror.signal(Editor.getInstance().getYashe(),'forceError','EXCLUSION_ERR');
+        }
             
-        }else{
-   
-            if(token.type == 'string-2' || token.type == 'keyword' || token.type == 'variable-3'){
-                value = getValue(token.string);
-            }
-    
-            if(token.type == 'at' ){
-                
-                inlineName = getInlineName(token.string);
-                inlines.push(
-                        {
-                            shapeId:shapeId,
-                            tripleId:id,
-                            inlineName:inlineName
-                        }
-                    );
-            }
 
-            if(token.type == 'card' ){
-                cardinality = token.string;
-            }
-
+        if(token.string == '{'){
+            Codemirror.signal(Editor.getInstance().getYashe(),'forceError');
         }
-        index++;
+  
     }
-
-
-    //ShapeRef
-    if(inlineName != undefined){
-        let ref;
-        if(value!= undefined){
-           ref = value.getTypeName();
-        }
-        value = new ShapeReference(ref); 
-    }
-
-    return new Triple(id,type,value,inlineShape,cardinality);
+    if(valueSet.length>0)constraint=new ValueSet(valueSet);
+    return new Triple(id,type,constraint,shapeRef,facets,cardinality);
 }
 
+/**
+*   Get the start of the triple tokens
+*   @param {Array} Shape (Tokens)
+*   @return {Integer} Position
+*
+ */
 function getStart(shape){
     for(let i=0;i<shape.length;i++){
         if(shape[i].string=='{'){
@@ -193,75 +289,98 @@ function getStart(shape){
 }
 
 
-
-function getValue(def) {
-
+/**
+*   Get the constraint of the Triple
+*   @param {String} Token
+*   @return {Type}
+*/
+function getConstraint(def) {
     let factory = new TypesFactory();
     let type = factory.createType(def.toLowerCase());
-
+    //Isn't it a Prefixed/Iri/Primitive?
     if(type!=undefined){
         return type;
     }
-
-
-    if(def.startsWith('<')){
-        let value = def.split('<')[1].split('>')[0];
-        return new IriRef('valueName',value);
+    type = getType(def);
+    //Is it a Primitive?
+    if(type.getTypeName() == 'prefixedIri' && isPrimitive(type.value)){
+        let kind = def.split(':')[1];
+        return new Primitive(kind);
     }
-
-    let token = def.split(':');
-    let yashe = Editor.getInstance().getYashe();
-
-    if(token.length==2){
-        //At this point it can be Prefixed,Primitive or ShapeRef
-        if(isPrimitive(token[1])){
-            return new Primitive(token[1]);
-        }else{
-            let prefixName = token[0];
-            let prefixValue = getPrefixValue(yashe.getDefinedPrefixes(),prefixName)
-            let prefix = new Prefix(prefixName,prefixValue);
-            return  new PrefixedIri('valueName',prefix,token[1]);
-        }
-
-    }
- 
-}
-
-function getType(def,context) {
-    let value;
-    let yashe = Editor.getInstance().getYashe();
-    if(def.startsWith('<')){
-        value = def.split('<')[1].split('>')[0];
-        return new IriRef(context,value);
-    }else if(def.startsWith('_:')){
-        value = def.split(':')[1];
-        return new BNode(context,value);
-    }else{
-        value = def.split(':')[1];
-        let prefixName = def.split(':')[0];
-        let prefixValue = getPrefixValue(yashe.getDefinedPrefixes(),prefixName)
-        let prefix = new Prefix(prefixName,prefixValue);
-        return new PrefixedIri(context,prefix,value);
-    }
+    return type;
 }
 
 
-function updateInlines(shapes) {
+/**
+*   Get the Cardinality Object
+*   @param {String} Cardinality
+*   @return {Cardinality|String} Cardinality
+* */
+function getCardinality(card){
+    let factory = new CardinalityFactory();
+    if(card.length==1)return factory.createCardinality(card);//Is it a simple card?
+    let range = card.split('{')[1].split('}')[0].split(','); //I know...
+    let min = range[0];
+    let max;
+    if(range.length>1){
+        max = range[1];
+    }
 
-    for(let inShape in inlines){
-  
-        let shapeId = inlines[inShape].shapeId;
-        let tripleId = inlines[inShape].tripleId;
-        let name = inlines[inShape].inlineName;
+    let context = 'range';
+    if(max == undefined){
+        context = 'exactly';
+    }
+    if(max == '' || max == '*'){
+        context = 'minLimit';
+    }
+
+    return factory.createCardinality(context,min,max);
+}
+
+
+/**
+* Get the type of a valueSetValue
+* @param {String} Token
+* @return {Type} ValueSetValue
+*
+ */
+function getValueSetValue(def) {
+
+    if(!isNaN(def)){
+        return new NumberLiteral(def);
+    }
+
+    if(def.startsWith('"')){
+        return new StringLiteral(def.substring(1,def.length-1));//remove the ""
+    }
+
+    let minus = def.toLowerCase();
+    if(minus == 'true' || minus == 'false'){
+        return new BooleanLiteral(minus);
+    }
+
+    return getType(def);
+}
+
+
+
+
+
+function updateShapeRefs(shapes) {
+    for(let r in refs){
+        let shapeId = refs[r].shapeId;
+        let tripleId = refs[r].tripleId;
+        let ref = refs[r].shapeRef;
 
         let shape = shexUtils.getShapeById(shapes,shapeId);
         let triple = shexUtils.getTripleById(shape,tripleId);
+        let shapeRef = shexUtils.getShapeByName(shapes,ref);
 
-        let shapeRef = shexUtils.getShapeByName(shapes,name);
-        triple.getInlineShape().setShape(shapeRef);
-
+        triple.shapeRef.setShape(shapeRef);
     }
 }
+
+
 
 
 
@@ -286,11 +405,8 @@ function isPrimitive(value) {
 }
 
 
-function getInlineName(token) {
-    if(token.startsWith('@<')){
-        return token.split('<')[1].split('>')[0];
-    }
-    return token.split(':')[1];
+function getRefName(token) {
+    return token.split('@')[1];
 }
 
 
@@ -304,7 +420,7 @@ const tokenUtils = {
     getTokens:getTokens,
     getDefinedShapes:getDefinedShapes,
     getShapes:getShapes,
-    updateInlines:updateInlines
+    updateShapeRefs:updateShapeRefs
 }
 
 export default tokenUtils;

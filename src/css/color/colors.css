@@ -1,0 +1,16 @@
+.pickers{
+    display:grid;
+    grid-template-columns: 33.3% 33.3% 33.3% ;
+}
+
+.xs-pickers{
+    grid-template-columns: 50% 50% ;
+}
+
+.picker{
+    display:grid;
+    grid-template-columns: 50% 50%;
+    align-items: center;
+    gap: 38px;
+}
+

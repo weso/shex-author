@@ -1,5 +1,5 @@
 import React from 'react';
-import Toolbar from './mainComps/toolbar/Toolbar';
+import Toolbar from './mainComps/Toolbar';
 import AssistantComp from './mainComps/Assistant';
 import EditorComp from './mainComps/EditorComp';
 

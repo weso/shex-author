@@ -2,19 +2,13 @@ import Type from '../../type';
 
 class NonLiteral extends Type{
 
-     constructor(value=''){
-        super(value);
-    }
-
     getTypeName(){
-        return 'nonliteralKind';
+        return 'nonliteral';
     }
 
     toString(){
         return 'NONLITERAL';
     }
-
-
 
 }
 

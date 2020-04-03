@@ -1,0 +1,88 @@
+.prefixHeader{
+    padding: 8px;
+    color: black;
+    text-align: left;
+    border: 1px solid grey;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 0.5% 20% 2% 4% 53% 5% 6%;
+    gap: 10px;
+}
+
+
+.prefixHeaderColors{
+    padding: 8px;
+    color: black;
+    text-align: left;
+    border-bottom: 1px solid grey;
+    border-radius: 10px 10px;
+    display: grid;
+    grid-template-columns: 0.5% 20% 2% 4% 53% 5% 6%;
+    gap: 10px;
+}
+
+.xs-prefixHeaderColors{
+    grid-template-columns: 0% 20% 1% 4% 48% 4% 8%;
+}
+
+.prefixColorContainer{
+    border: 1px solid grey;
+    border-radius: 10px;
+}
+
+.xs-prefixHeader{
+    grid-template-columns: 0% 20% 1% 4% 48% 4% 8%;
+}
+
+.prefixName{
+    grid-column: 2/3;
+}
+
+.prefixLabel{
+    font-weight: bold;
+	margin-top: 10px;
+	margin-left:10px;
+	margin-right:-50px; 
+}
+
+.prefixInput{
+    border-radius: 4px;
+    padding-left: 10px;
+    color:#222;
+    border: 1px solid #acaaaa !important;
+}
+
+.deletePrefix{
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    font-size: 20px;
+}
+
+.deletePrefix:focus{
+    outline: none;
+}
+
+
+.deletePrefix:hover{
+    transform: scale(1.1);
+}
+
+.deletePrefix:active {
+    transform: translateY(4px);
+}
+
+.addPrefixBtn{
+    background: #fdd5d5;
+    border-radius: 10px;
+    font-weight: bold;
+    margin-left:150px;
+    margin-right: 150px;
+    margin-top: 6px;
+}
+
+.addPrefixBtn:focus{
+    outline: none;
+}
+
+

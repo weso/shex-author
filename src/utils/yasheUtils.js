@@ -1,6 +1,6 @@
 import Editor from '../entities/editor';
 import tokenUtils from './tokenUtils';
-
+import Prefix from '../entities/shexEntities/shexUtils/prefix';
 
 const DEFAULT_SHAPE = 'PREFIX :       <http://example.org/>\n'+
 'PREFIX schema: <http://schema.org/>\n'+
@@ -13,43 +13,36 @@ const DEFAULT_SHAPE = 'PREFIX :       <http://example.org/>\n'+
 '  schema:knows          @:User*  \n'+
 '}';
   
+const VALUESET_SHAPE = 'PREFIX :       <http://example.org/>\n'+
+'PREFIX schema: <http://schema.org/>\n'+
+'PREFIX xsd:    <http://www.w3.org/2001/XMLSchema#>\n\n'+
+
+':User IRI {\n'+ 
+'  schema:name          [xsd:string 34 "esd" <asds> false ] ;\n'+
+'}';
+  
+
+  let prefixCount = 0;
   
   function replaceShapes(){
     let tokens = tokenUtils.getTokens();
-
-    /*
-    if(tokens==null){
-      return tokens;
-    }
-
-    */
-
-
     let defShapes = tokenUtils.getDefinedShapes(tokens);
     let newShapes = tokenUtils.getShapes(defShapes);
  
-    tokenUtils.updateInlines(newShapes);
+    tokenUtils.updateShapeRefs(newShapes);
 
     return newShapes;
   }
 
-  function updatePrefixes(){
-    let newPrefixes = [];
-    let prefix = {};
-    let yashe = Editor.getInstance().getYashe();
-    if(yashe!=undefined){
-      let keys = Object.keys(yashe.getDefinedPrefixes());
-      let values = Object.values(yashe.getDefinedPrefixes());
-
-      for(let i=0;i<keys.length;i++){
-          prefix = {};
-          prefix.key=keys[i];
-          prefix.val=values[i];
-          newPrefixes.push(prefix);
-      }
-    }
-    return newPrefixes;
-  }
+ function updatePrefixes(prefix){
+    let defined = Editor.getInstance().getYashe().getDefinedPrefixes();
+    let prefixes = [];
+    Object.keys(defined).map(p =>{
+      let id = prefixes.length + prefixCount++;
+      prefixes.push(new Prefix(p,defined[p],id));
+    })
+    return prefixes;
+}
 
 function getSchema(){
     let yashe = Editor.getInstance().getYashe();
@@ -62,6 +55,7 @@ function getSchema(){
 
  const yasheUtils = {
       DEFAULT_SHAPE:DEFAULT_SHAPE,
+      VALUESET_SHAPE:VALUESET_SHAPE,
       replaceShapes:replaceShapes,
       updatePrefixes:updatePrefixes,
       getSchema:getSchema

@@ -4,7 +4,7 @@ const PRIMITIVES = ['String','Integer','Date','Boolean'];
 
 class Primitive extends Type{
 
-     constructor(value='string'){
+     constructor(value='none'){
         super(value);
     }
 
@@ -13,6 +13,9 @@ class Primitive extends Type{
     }
 
     toString(){
+        if(this.value=='none'){
+            return '.';
+        }
         return 'xsd:'+this.getValue();
     }
 

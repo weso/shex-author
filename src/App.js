@@ -1,46 +1,31 @@
 
 import React, {useState,useEffect} from 'react';
 import axios from 'axios';
-import './css/App.css';
-
+import { CookiesProvider } from 'react-cookie';
 import Nav from './components/Nav';
 import MainContainer from './components/MainContainer';
 import Visualizer from './components/Visualizer';
-
 import shexUtils from './utils/shexUtils';
+import {emitPrefixes} from './utils/prefixUtils';
+import {makeItResponsive,checkShapeName} from './utils/cssUtils';
 import yasheUtils from './utils/yasheUtils';
-
-
 import Editor from './entities/editor';
-
+import {addPrefixComp,deletePrefixComp} from './utils/prefixUtils';
+import './css/App.css';
 
 export const AppContext = React.createContext();
 
 function App() {
 
     const [shapes,setShapes] = useState([]);
+    const [prefixes,setPrefixes] = useState([]);
     const [svg,setSvg] = useState('');
-    const [prefixes,setPrefixes] = useState([{key:'',val:'http://example.org/'}]);
     const [isAssistantOpen, setAssistantOpen] = useState(true);
-    const [isVisualizeOpen, setVisualizeOpen] = useState(true);
     const [isToolBarOpen, setToolBarOpen] = useState(true);
+    const [isVisualizeOpen, setVisualizeOpen] = useState(true);
+    const [width,setWidth] = useState(470);//700
 
-    const [width,setWidth] = useState(700);
-
-    const [loading,setLoading] = useState('hideLoader');
-    const [asist,setAsist] = useState('showAsist');
-
-    //Responsive
-    const [shapeHeader,setShapeHeader] = useState('header');
-    const [tripleHeader,setTripleHeader] = useState('tripleHeader');
-    const [triplesContainer,setTriplesContainer] = useState('triples');
-    const [shapeLabel,setShapeLabel] = useState('shapeNameLabel');
-    const [tripleLabel,setTripleLabel] = useState('tripleNameLabel');
-    const [tripleBtns,setTripleBtns] = useState('tripleBtns');
-    const [addBtns,setAddBtns] = useState('addBtns');
-    const [gridClass,setGridClass] = useState('gridBox');    
-  
-    const assistantToggle = () => setAssistantOpen(!isAssistantOpen); 
+    const assistantToggle = () => setAssistantOpen(!isAssistantOpen);
     const visualizeToggle = () => setVisualizeOpen(!isVisualizeOpen);
     const toolbarToggle = () => setToolBarOpen(!isToolBarOpen);
     const colapseAll = () =>{
@@ -50,32 +35,50 @@ function App() {
     }
 
     const addShape = () =>{
-      setShapes([...shapes,shexUtils.addShape(shapes)]);
+      let shape = shexUtils.addShape(shapes,width);
+      setShapes([...shapes,shape]);
+      checkShapeName(shape)
       visualize();
     }
 
     const deleteShape = (shapeId) =>{
-      setShapes(shexUtils.deleteShape(shapes,shapeId,false));
+      setShapes(shexUtils.deleteShape(shapes,shapeId,false,width));
       visualize();
     }
 
-    const emit = ()=>{
-      shexUtils.emit(shapes);
+    const addPrefix = function(){
+      setPrefixes([...prefixes,addPrefixComp(prefixes,width)]);
+    }
+      
+    const deletePrefix = function(prefixId){
+      setPrefixes(deletePrefixComp(prefixes,prefixId,width));
+    }
+
+    const emit = function(){
+      shexUtils.emit(shapes,width);
+      visualize();
+    }
+
+    const emitPref = function(){
+      emitPrefixes(prefixes,width);
       visualize();
     }
 
     const replaceShapes = (newShapes) =>{
       //This allows to render all the shapes when a property is updated.
       //Best Glitch Ever
-      //In fact... I would like to render only the property component...
+      //In fact... I would like to render just the property component...
       setShapes([]); 
+      
       setShapes(newShapes);
       visualize();
     }
-    
-    const updatePrefixes = (newPrefixes)=>{
-      setPrefixes([])
+
+    const replacePrefixes = (newPrefixes) =>{
+      
+      setPrefixes([]); 
       setPrefixes(newPrefixes);
+  
     }
     
 
@@ -108,74 +111,39 @@ function App() {
 
     }
 
-    const handleResize = function(e, direction, ref, d){
-        makeItResponsive(d.width);
+    const handleResize = function(e, data){
+        setWidth(data.size.width)
+        makeItResponsive(data.size.width); 
     }
-
-    const makeItResponsive = function(newWidht){
-          setWidth(width+newWidht);
-          if(width+newWidht<710){
-                  setShapeHeader('xs-header');
-                  setTripleHeader('xs-tripleHeader');
-                  setTripleBtns('xs-tripleBtns');
-                  setTriplesContainer('xs-triples');
-                  setShapeLabel('xs-label');
-                  setTripleLabel('xs-label');
-                  setAddBtns('xs-addBtns');
-                  setGridClass('xs-gridBox');
-                  return;
-          }
-                  
-          setShapeHeader('header')                                          
-          setTripleHeader('tripleHeader');
-          setTripleBtns('tripleBtns');
-          setTriplesContainer('triples');
-          setShapeLabel('shapeNameLabel');
-          setTripleLabel('tripleNameLabel');
-          setAddBtns('addBtns');
-          setGridClass('gridBox');
-    }
-
-    useEffect(() => {
-      makeItResponsive(0);
-    });
     
+    useEffect(() => {
+      makeItResponsive(width);
+    })
+
+
     return (
-      
+      <CookiesProvider>
           <AppContext.Provider
                 value={
                   {
                   shapes:shapes,
                   addShape:addShape,
                   deleteShape:deleteShape,
+                  addPrefix:addPrefix,
+                  deletePrefix:deletePrefix,
                   replaceShapes:replaceShapes,
+                  replacePrefixes:replacePrefixes,
                   prefixes:prefixes,
-                  updatePrefixes:updatePrefixes,
                   emit:emit,
+                  emitPref:emitPref,
                   visualize:visualize,
                   isToolBarOpen:isToolBarOpen,
                   isAssistantOpen:isAssistantOpen,
                   isVisualizeOpen:isVisualizeOpen,
                   assistantToggle:assistantToggle,
                   visualizeToggle:visualizeToggle,
-
-                  //responsive
-                  width:width,
                   handleResize:handleResize,
-                  shapeHeader:shapeHeader,
-                  tripleHeader:tripleHeader,
-                  triplesContainer:triplesContainer,
-                  shapeLabel:shapeLabel,
-                  tripleLabel:tripleLabel,
-                  tripleBtns:tripleBtns,
-                  addBtns:addBtns,
-                  gridClass:gridClass,
-                  loading:loading,
-                  setLoading:setLoading,
-                  asist:asist,
-                  setAsist:setAsist,
-
-                    
+                  width:width
                   }
                 }>
 
@@ -183,7 +151,8 @@ function App() {
               <MainContainer/>
               <Visualizer svg={svg} isVisualizeOpen={isVisualizeOpen}/>
                                                   
-            </AppContext.Provider>);
+          </AppContext.Provider>
+      </CookiesProvider>);
 
 }  
            

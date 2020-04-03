@@ -1,78 +1,29 @@
 .assistCollapse{
     border-bottom: 1px solid #acaaaa;
     border-top:1px solid #acaaaa;
-  
     margin-left: 0px;
-   
 }
 
-/*
-@media (max-width: 1300px) {
-    .assistCollapse{
-        border-bottom: 1px solid #acaaaa;
-        border-top:1px solid #acaaaa;
-        max-width: 500px !important;
-        min-width: 500px !important;
-        margin-left: 0px;
-        background-color: red;
-    }
-
-    .resizable{
-        height: 100% !important;
-        max-width: 490px !important;
-
-    }
-
-
-  }
-
-  */
-
-.resizable{
-    height: 100% !important;
-    /*border-right:4px double #95b2d6;*/
-
-    border-right:4px double #bdbcbc;
-    margin-right: 14px;
-    margin-left: 0px;
-    z-index: 100;
-    padding: 0px;
-    
-}
-
-
-.react-resizable {
-    position: relative;
-}
-.react-resizable-handle {
-    position: absolute;
-    
-    width: 1em;
-    height: 100% !important;
-
-    background: #ddeafa;
-    background-image: url( data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAhCAQAAABOpSL+AAAAIklEQVR4AWMwbb/PdR+JZDD9f1/oPhI5sgVGBSruc9xHIgGdSQqqQJGkRgAAAABJRU5ErkJggg== );
-    background-position: center center;
-    background-repeat: no-repeat;
-    
+.containerAssist{
+    display: grid;
+    grid-template-rows: auto 100%;
 }
 
 .edit{
-
     border-top: 1px solid #acaaaa;
     border-bottom: 1px solid #acaaaa;
     border-right: 1px solid #acaaaa;
     border-radius: 0px 10px 10px 0px!important;
-    
 }
 
 
 .containerAssist{
     width: 100% !important;
+    height: 100% !important;
     display: grid;
     grid-template-columns: 100%;
     padding: 0px;
-    background-color: white;
+    background-color: #ffffff;
     
 }
 
@@ -83,22 +34,50 @@
 }
 
 
-.assisTitle{
+
+.tabs{
     display: grid;
-    grid-template-columns: 95% 10%;
-    padding-top: 2px;
-    padding-left: 14px;
+    grid-template-columns: 28% 15% 6% 6% 55% 10%;
     border-bottom: 1px solid #bdbcbc;
     font-size: 20px;
     color:#666565;
-  
+    max-height: 34px;
 }
 
+.asisTitleClose{
+    display: grid;
+    grid-template-columns: 72% 10%;
+}
+
+.xs-tabs{
+    grid-template-columns: 35% 25% 8% 8% 25% 10%;
+}
+
+.activeTab {
+    /*fce8e8*/
+    background-color: #f1f4f5 !important;
+  }
+
+.tablink{
+    background-color: transparent;
+    border:none;
+    text-align: start;
+    border-radius: 0px 0px 8px 0px;
+    border-right: 1px double gray;
+}
+
+.tablink:hover{
+    background-color: #f1f1f1;
+}
+
+.tablink:focus{
+    outline: none;
+}
 
 .closeAsisBtn{
     background-color: transparent;
     border:none;
-    grid-column: 2/3;
+    grid-column: 2/2;
 }
 
 .closeAsisBtn:focus{
@@ -114,19 +93,20 @@
 
 
 
-.assisTitle{
-	font-weight: bold !important;
-}
-
 
 
 .shape{
     border: 1px solid #acaaaa;
     border-radius: 10px;
-    margin-top: 10px;
-    background-color: #C6E2FF;
+    margin-bottom: 15px;
 }
 
+label{
+	font-weight: bold;
+	margin-top: 10px;
+	margin-left:10px;
+	margin-right:-50px; 
+}
 
 .xs-label{
     margin-left: 0px;
@@ -134,56 +114,111 @@
 
 
 .triples{
-    background: #EBF4FF;
     color: black;
     text-align: left;
     border-radius: 0px 0px 10px 10px ;
     display: grid;
     grid-template-columns: 100%; 
+
 }
 
-.xs-triples{
-  padding: 1px;
+/*
+.tripleSlot{
+    border-top: 1px solid #acaaaa;
+    background: #EFDECD;
+    color: black;
+    text-align: left;
+    border-radius: 0px 0px 10px 10px ;
+    display: grid;
+    grid-template-columns: 100%; 
+    margin-bottom: 10px;
+}*/
+
+
+
+
+.hidden{
+    display: none;
 }
 
 
-
-.customConstraint{
-    background:#d6ffc654;
-    padding: 10px;
+.constraint{
+    padding: 8px;
     color: black;
     border-top: 1px solid #acaaaa;
+}
+
+.constraintCollapse{
+    grid-column: 2/4;
+    color: black;
     display: grid;
     grid-template-columns: 100%;
-    gap: 5px;
+}
+
+.shapeRef{
+    padding: 8px;
+    color: black;
+    border-top: 1px solid #acaaaa;
+}
+
+.globalFacet{
+    border-top: 1px solid #acaaaa;
+    padding: 8px; 
+}
+
+.facetCont{
+    display: grid;
+}
+
+.facetInputs{
+    display: grid;
+    grid-template-columns: 55% 33% 12%;
+    padding-top: 4px;
+}
+
+.deleteFacetBtn{
+    border-radius: 10px;
+    outline: none;
+    border: none;
+
+}
+
+.deleteFacetBtn:focus{
+    outline: none;
+}
+
+
+.deleteFacetBtn:hover{
+    transform: scale(1.1);
+}
+
+.deleteFacetBtn:active {
+    transform: translateY(4px);
+}
+
+
+.cardinality{
+    padding: 8px;
+    color: black;
+    border-top: 1px solid #acaaaa;
+}
+
+.gridLabel{
+    grid-column: 2/3;
+}
+
+
+.rangeCardinality{
+    grid-column: 2/4;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 28% 71%;
+    gap:5px;
+    margin-top: 5px;
 }
 
 
 /* ADD BUTTONS */
-
-.addBtns{
-    margin-left:200px;
-    margin-right: 200px;
-    -webkit-transition: margin 0.5s ease-in-out;
-    transition: margin 0.5s ease-in-out;
-}
-
-.addBtns:hover{
-    margin-left:0px;
-    margin-right: 0px;
-}
-
-.xs-addBtns{
-    margin-left:100px;
-    margin-right: 100px;
-    -webkit-transition: margin 0.5s ease-in-out;
-    transition: margin 0.5s ease-in-out;
-}
-
-.xs-addBtns:hover{
-    margin-left:0px;
-    margin-right: 0px;
-}
 
 .addCont{
     display: grid;
@@ -191,25 +226,45 @@
 }
 
 .addShapeButton{
-    background: #ddeafa;
     border-radius: 10px;
-    margin-top:20px;
+    margin-top:10px;
     font-weight: bold;
-    margin-left:150px;
-    margin-right: 150px;
+    margin-left:200px;
+    margin-right: 200px;
+    -webkit-transition: margin 0.5s ease-in-out;
+    transition: margin 0.5s ease-in-out;
 }
+
+.xs-addShapeButton{
+    margin-left:100px;
+    margin-right: 100px;
+}
+
+.addShapeButton:hover{
+    margin-left:0px;
+    margin-right: 0px;
+}
+
 
 .addShapeButton:focus{
     outline: none;
 }
 
 .addTripleButton{
-    margin-top: 3px;
-    background: #EFDECD;
     border-radius: 10px;
     font-weight: bold;
     padding: 1px;
+    margin-top: 3px;
     margin-bottom: 3px;
+    margin-left:200px;
+    margin-right: 200px;
+    -webkit-transition: margin 0.5s ease-in-out;
+    transition: margin 0.5s ease-in-out;
+}
+
+.xs-addTripleButton{
+    margin-left:130px;
+    margin-right: 130px;
 }
 
 .addTripleButton:hover{
@@ -223,6 +278,18 @@
 }
 
 
+
+.addFacet{ 
+    background:white;
+    color: #222;
+    border-radius: 10px;
+/*    background:#f7bebe;*/
+    margin-top:6px;
+}
+
+.addFacet:focus{
+    outline: none;
+}
 
 
 .shape{
@@ -281,6 +348,39 @@
 .hideLoader{
     display: none;
 }
+
+
+.hideError{
+    display: none;
+}
+
+.showError{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    width: 100% !important;
+    height: 93% !important;
+}
+
+
+.shapeErrorCont{
+   
+    display: grid;
+    height: 50% !important;
+    grid-template-rows:60% auto;
+}
+
+.shapeError{
+    background: url('./imgs/error--v1.png');
+    background-position: center; 
+    background-repeat: no-repeat;
+    height: 100%;
+   
+}
+
+
+
+
 /*
 
 

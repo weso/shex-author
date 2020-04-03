@@ -1,24 +1,32 @@
 import TypesFactory from './types/typesFactory';
+import CardinalityFactory from './shexUtils/cardinality/cardinalityFactory';
+import CardinalitySimple from './shexUtils/cardinality/cardinalitySimple';
 import PrefixedIri from './types/concreteTypes/prefixedIri';
 import Primitive from './types/concreteTypes/primitive';
-import InlineShape from './shexUtils/inlineShape';
+import ShapeRef from './shexUtils/shapeRef';
 import Prefix from './shexUtils/prefix';
+import {DEFAULTS} from '../../conf/config.js';
 
 class Triple {
 
-
-    constructor(id,type=new PrefixedIri('tripleName',new Prefix('schema','http://schema.org/')),value=new Primitive(),inlineShape=new InlineShape(),cardinality='') {
+    constructor(id,type=new PrefixedIri(new Prefix('schema','http://schema.org/')),constraint=new Primitive(),shapeRef=new ShapeRef(),facets=[],cardinality=new CardinalitySimple()) {
         this.id = id;
         this.type = type;
-        this.value = value;
+        this.constraint = constraint;
+        this.shapeRef = shapeRef;
+        this.facets = facets;
         this.cardinality = cardinality;
-        this.inlineShape = inlineShape;
         this.factory = new TypesFactory();
+        this.cardFactory = new CardinalityFactory();
       }
       
-    addValue(value){
-        this.values.push(value);
-        this.valuesCount++;
+    addValue(constraint){
+        this.constraints.push(constraint);
+        this.constraintsCount++;
+    }
+    
+    addFacet(facet){
+        this.facets.push(facet);
     }
 
     getId(){
@@ -30,28 +38,36 @@ class Triple {
     }
 
     setType(type){
-       this.type = this.factory.createType(type,'tripleName');
+       this.type = this.factory.createType(type);
      }
 
-    setValue(value){
-        this.value = this.factory.createType(value,'valueName');;
+    setConstraint(constraint){
+        this.constraint = this.factory.createType(constraint);
     }
 
-    setCardinality(cardinality){
-        this.cardinality = cardinality;
+    setCardinality(cardinality,min,max){
+        this.cardinality = this.cardFactory.createCardinality(cardinality,min,max);
     }
 
-    getInlineShape(){
-        return this.inlineShape;
+    getShapeRef(){
+        return this.shapeRef;
     }
 
-    setInlineShape(inlineShape){
-        this.inlineShape = inlineShape;
+    setShapeRef(shapeRef){
+        this.shapeRef = shapeRef;
     }
 
 
-    getValue(){
-       return this.value;
+    getFacets(){
+        return this.facets;
+    }
+
+    setFacets(facets){
+        this.facets = facets;
+    }
+
+    getConstraint(){
+       return this.constraint;
     }
 
 
@@ -61,13 +77,76 @@ class Triple {
 
 
 
-    toString(){
-        return '  '+this.getType().toString()+'          '+
-        this.getValue().toString() +' '+
-        this.getInlineShape().toString()+
-        this.getCardinality()+'  ;\n';
+    toString(separators){
+        let str='';
+        let type=this.getType();
+        let constraint = this.getConstraint();
+        let facets = this.getFacets();
+        let shapeRef = this.getShapeRef();
+        let cardinality = this.getCardinality();
+        separators = this.checkPrettyOptions(separators);
+        let tripleSeparator = separators.triple; 
+        let constSeparator = separators.constraint; 
+        let refSeparator = separators.ref;
+        let cardSeparator = separators.card;
+ 
+        if(type.value!=''){
+            str+= '  '+type+tripleSeparator;
+            str+= this.checkFacets();
+            if(facets){
+                facets.map(f=>{
+                    str+=' '+f+' ';
+                })
+            }
+            if(constraint.value=='' && DEFAULTS.pretty!='pretty3' ){
+                constSeparator='';
+                refSeparator+=' ';
+            }
+            str+=constSeparator+shapeRef
+                +refSeparator+cardinality
+                +cardSeparator+';\n';
+        }
+        return str;
 
     }
+
+    checkPrettyOptions(separators){
+
+        if(DEFAULTS.pretty=='none'){
+            separators.triple=' ';
+            separators.constraint=' ';
+            separators.ref=' ';
+        }
+        if(DEFAULTS.pretty=='pretty1'){
+            separators.constraint=' ';
+            separators.ref=' ';
+        }
+        if(DEFAULTS.pretty=='pretty2'){
+            separators.constraint=' ';
+            separators.ref=separators.CRef;
+        }
+        
+        //default pretty3
+        return separators;
+    }
+
+    /**
+    * If none constraint and there are facets don't print the '.'
+     */
+    checkFacets(){
+        let constraint = this.getConstraint();
+        let shapeRef = this.getShapeRef();
+        if(this.facets.length>0){
+             if(constraint.getTypeName()!='Primitive' 
+                && constraint.value!='none'){
+                    return constraint+' ';
+                }
+            return '';
+        }
+        return constraint;
+    }
+
+
 
 
 }

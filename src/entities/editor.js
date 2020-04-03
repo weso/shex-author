@@ -26,8 +26,12 @@ const Editor = (()=> {
                 return prefixes;
         }
 
-        this.draw = function(shapes){
-            let newContent = this.getPrefixes();
+        this.draw = function(shapes,prefixes){
+            let newContent=prefixes;
+            if(!prefixes){
+                newContent = this.getPrefixes();
+            }
+             
             shapes.forEach(element =>{
                 newContent += element.toString()
             });

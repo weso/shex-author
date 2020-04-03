@@ -1,34 +1,46 @@
 .customShape{
-    background: #EBF4FF;
-    padding: 10px;
+
     color: black;
-    border-top: 1px solid #acaaaa;
     border-radius: 0px 0px 10px 10px;
     display: grid;
     grid-template-columns: 100%;
-    gap: 5px;
+
 }
 
 
 
 .customTriple{
-    background: #EFE8E1;
-    padding: 10px;
+    padding: 5px;
     color: black;
-    border-top: 1px solid #acaaaa;
     display: grid;
     grid-template-columns: 100%;
-    gap: 5px;
+
 }
+
+.customConstraint{
+    display: grid;
+    align-items: center;
+    grid-template-columns: 29% 71%;
+    margin-bottom: 1px;
+}
+
+.xs-customConstraint{
+    grid-template-columns: 26% 74%;
+}
+
 
 
 .gridBox{ 
+    padding: 5px;
     display: grid;
-    grid-template-columns: 12% 15% 49%;
+    align-items: center;
+    grid-template-columns: 10% 20% 48%;
 }
 
 .xs-gridBox{
-    grid-template-columns: 10% 25% 49%;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 4% 25% 69%;
 }
 
 
@@ -42,5 +54,49 @@
     outline: none;
     color:#222;
     border: 1px solid #acaaaa !important;
+    height: 100%;
 }
 
+.shapeRefSelector{
+    border-radius: 5px;
+    background: white;
+    outline: none;
+    color:#222;
+    border: 1px solid #acaaaa !important;
+    height: 60%;
+}
+
+.valueSetsCont{
+    display: grid;
+    grid-template-columns: 100%;
+    margin-top: 10px;
+}
+
+.valueSets{
+    display: grid;
+    grid-template-columns: 31% 57% auto;
+    padding-top: 4px;
+    gap: 1px;
+}
+
+.deleteValueSetBtn{
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    padding:2px;
+}
+
+.imputSetCollapse{
+    display: grid;
+    grid-template-columns: 100%;
+   
+}
+
+.qnameSetCollapse{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.boolSelect{
+    height: 40px !important;
+}

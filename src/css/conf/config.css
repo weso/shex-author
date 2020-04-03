@@ -1,0 +1,32 @@
+.option{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-items: center;
+    border: 1px solid #222;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.togleContainer{
+    display: grid;
+    justify-content: flex-end;
+}
+
+.aplyBtn{
+    border-radius: 8px;
+    background: white;
+    
+}
+
+
+
+.aplyBtn:focus{
+    outline: none;
+}
+
+
+.customPretty{
+    background: white;
+    border-radius: 6px;
+    height: 30px;
+}

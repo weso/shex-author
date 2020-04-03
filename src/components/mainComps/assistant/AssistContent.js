@@ -1,22 +1,31 @@
-import React,{useContext} from 'react';
-import {AppContext} from '../../../App';
-import ShapeComponent from './shEx/ShapeComponent';
+import React,{useContext,useState} from 'react';
+import {AssistContext} from '../Assistant';
+import { Collapse } from 'reactstrap';
+import Shapes from './tabs/Shapes';
+import Prefixes from './tabs/Prefixes';
+import Colors from './tabs/Colors';
+import Config from './tabs/Config';
 
 function AssistContent (props) {
 
-    const context = useContext(AppContext);
+    const asssistContext = useContext(AssistContext);
 
     return ( 
-    <div className={context.asist}>
+    <div className='showAsist'>
         <div id='assistant-container' className='assistantContainer'> 
-            {context.shapes.map(shape =>{return  <ShapeComponent shape={shape} key={shape.id}/> })}
-                <div className="addCont">
-                    <button className={context.addBtns+" addShapeButton"} 
-                            onClick={context.addShape}
-                            title="Add Shape">
-                            + Shape
-                    </button>
-                </div>
+                <Collapse isOpen={asssistContext.isAssistOpen}>
+                    <Shapes/>
+                </Collapse>
+                <Collapse isOpen={asssistContext.isPrefixesOpen}>
+                    <Prefixes/>
+                </Collapse>
+                <Collapse isOpen={asssistContext.isColorsOpen}>
+                    <Colors/>
+                </Collapse>
+                <Collapse isOpen={asssistContext.isConfigOpen}>
+                    <Config/>
+                </Collapse>
+                
             </div>
         </div>);
 }
