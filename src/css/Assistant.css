@@ -28,9 +28,11 @@
 }
 
 .assistantContainer{
-    height: 100% !important;
-    width: 100% !important;
-    gap: 10px;
+    display: grid;
+  
+    background-color: red;
+    height: 94% !important;
+    
 }
 
 
@@ -370,10 +372,7 @@ label{
     width: 100% !important;
 }
 
-.collapse .show{
-    height: 90% !important;
-    width: 100% !important;
-}
+
 
 .infoAssist{
     display: grid;
