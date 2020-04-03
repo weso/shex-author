@@ -35,10 +35,7 @@
 
 
 
-.tabs{
-    display: grid;
-    grid-template-columns: 28% 15% 6% 6% 55% 10%;
-}
+
 
 .asisTitleClose{
     display: grid;
@@ -52,6 +49,11 @@
     font-size: 20px;
     color:#666565;
     max-height: 34px;
+}
+
+.tabs{
+    display: grid;
+    grid-template-columns: 28% 15% 6% 6% 55% 10%;
 }
 
 .activeTab {
@@ -226,10 +228,7 @@ label{
     grid-template-columns: 100%;
 }
 
-.addShapeButton{
-    margin-left:200px;
-    margin-right: 200px;
-}
+
 
 .xs-addShapeButton{
     margin-left:100px;
@@ -250,7 +249,7 @@ label{
     outline: none;
 }
 
-.addTripleButton{
+.addShapeButton{
     margin-left:200px;
     margin-right: 200px;
 }
@@ -276,6 +275,13 @@ label{
 .xs-addTripleButton:focus{
     outline: none;
 }
+
+
+.addTripleButton{
+    margin-left:200px;
+    margin-right: 200px;
+}
+
 
 
 

@@ -1,39 +1,39 @@
 export function makeItResponsive(width){
         
         //TimeOut need to take all the elements after render the DOM
-      /*   setTimeout(() => {
-        let tabs = document.getElementsByClassName("tabs")[0];
-        let shapeHeaders = document.getElementsByClassName("header");
-        let tripleHeaders = document.getElementsByClassName("tripleHeader");
-        let addTripleBtns = document.getElementsByClassName("addTripleButton");
-        let addShapeBtns = document.getElementsByClassName("addShapeButton");
-        let grids = document.getElementsByClassName("gridBox");
-        let customs = document.getElementsByClassName("customConstraint");
-        let prefixes = document.getElementsByClassName("prefixHeader");
-        let prefixesColors = document.getElementsByClassName("prefixHeaderColors");
-        let pickers = document.getElementsByClassName("pickers");
+        setTimeout(() => {
+        let tabs = document.getElementsByClassName("xs-tabs")[0];
+        let shapeHeaders = document.getElementsByClassName("xs-header");
+        let tripleHeaders = document.getElementsByClassName("xs-tripleHeader");
+        let addTripleBtns = document.getElementsByClassName("xs-addTripleButton");
+        let addShapeBtns = document.getElementsByClassName("xs-addShapeButton");
+        let grids = document.getElementsByClassName("xs-gridBox");
+        let customs = document.getElementsByClassName("xs-customConstraint");
+        let prefixes = document.getElementsByClassName("xs-prefixHeader");
+        let prefixesColors = document.getElementsByClassName("xs-prefixHeaderColors");
+        let pickers = document.getElementsByClassName("xs-pickers");
 
-        let tabClass = 'tabs';
-        let shClass = 'header';
-        let thClass = 'tripleHeader';
-        let adTClass = 'addTripleButton';
-        let adSClass = 'addShapeButton';
-        let grClass = 'gridBox';
-        let ccClass = 'customConstraint';
-        let prClass = 'prefixHeader';
-        let prcClass = 'prefixHeaderColors';
-        let picClass = 'pickers';
-        if(width<600){
-            tabClass += ' xs-tabs';
-            shClass += ' xs-header';
-            thClass += ' xs-tripleHeader';
-            adTClass += ' xs-addTripleButton';
-            adSClass += ' xs-addShapeButton';
-            grClass  += ' xs-gridBox';
-            ccClass += ' xs-customConstraint';
-            prClass += ' xs-prefixHeader';
-            prcClass += ' xs-prefixHeaderColors';
-            picClass += ' xs-pickers';
+        let tabClass = 'xs-tabs';
+        let shClass = 'xs-header';
+        let thClass = 'xs-tripleHeader';
+        let adTClass = 'xs-addTripleButton';
+        let adSClass = 'xs-addShapeButton';
+        let grClass = 'xs-gridBox';
+        let ccClass = 'xs-customConstraint';
+        let prClass = 'xs-prefixHeader';
+        let prcClass = 'xs-prefixHeaderColors';
+        let picClass = 'xs-pickers';
+        if(width>600){
+            tabClass += ' tabs';
+            shClass += ' header';
+            thClass += ' tripleHeader';
+            adTClass += ' addTripleButton';
+            adSClass += ' addShapeButton';
+            grClass  += ' gridBox';
+            ccClass += ' customConstraint';
+            prClass += ' prefixHeader';
+            prcClass += ' prefixHeaderColors';
+            picClass += ' pickers';
         }
 
         
@@ -74,7 +74,7 @@ export function makeItResponsive(width){
             pickers[i].className = picClass;
         }
 
-    }, 0); */
+    }, 0);
         
 }
 
