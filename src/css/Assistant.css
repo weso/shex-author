@@ -371,12 +371,6 @@ label{
     width: 100% !important;
 }
 
-.convertBtn{
-    height: 50px;
-    width:  300px;
-    border-radius: 10px;
-}
-
 .collapse .show{
     height: 90% !important;
     width: 100% !important;
@@ -404,9 +398,6 @@ label{
     height: 100%;
    
 }
-
-
-
 
 /*
 

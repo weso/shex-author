@@ -2,6 +2,7 @@ import React,{useContext} from 'react';
 import {AppContext} from '../../../App';
 import CodeMirror from 'codemirror';
 import Editor from '../../../entities/editor';
+import '../../../css/btn/button.css';
 
 function AssistError (props) {
 
@@ -19,9 +20,14 @@ function AssistError (props) {
                         <p className='errorMsg'></p>
                     </div>
                 </div>
-                <button className='convertBtn' onClick={handle}>Convert</button>
+                
+                 <a class="button">
+                    <span onClick={handle}>Convert</span>
+                </a>
             </div>);
 }
 
 
 export default AssistError;
+/*
+<button className='convertBtn' onClick={handle}>Convert</button>*/

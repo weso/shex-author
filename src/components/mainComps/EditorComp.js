@@ -98,18 +98,9 @@ function EditorComp() {
                         }
                     }); 
 
-                   /*  y.on('blur', function() {
-                        if(!y.hasErrors()){                   
-                            updateAssist();
-                            updatePrefixes(getNewPrefixes());
-                        }else{
-                            showError(ERROR_EDITOR_MSG);
-                        }   
-                    }); */
 
                 }else{
-                    //Not really elegant I know  
-                    y._handlers.blur = null;      
+                    //Not really elegant I know     
                     y._handlers.keyup = null; 
                     y._handlers.keyHandled = null; 
 
