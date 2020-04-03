@@ -95,7 +95,11 @@ function EditorComp() {
                     //Not really elegant I know  
                     y._handlers.blur = null;      
                     y._handlers.keyup = null; 
-                    y._handlers.keyHandled = null;       
+                    y._handlers.keyHandled = null; 
+
+                     y.on('focus', function() {
+                        showError(ERROR_EDITOR_MSG);
+                    });       
                 }
                 
             });

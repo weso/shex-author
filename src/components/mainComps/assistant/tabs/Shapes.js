@@ -9,7 +9,7 @@ function Shapes (props) {
     const styles = Properties.getInstance().getShapeStyle();
 
     return ( 
-        <div>
+        <div className='showAsist'>
             {context.shapes.map(shape =>{return  <ShapeComponent shape={shape} key={shape.id}/> })}
                 <div className="addCont">
                     <button className="xs-addShapeButton"
@@ -19,7 +19,8 @@ function Shapes (props) {
                             + Shape
                     </button>
                 </div>
-        </div>);
+        </div>
+        );
 }
 
 

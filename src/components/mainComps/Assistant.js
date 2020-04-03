@@ -3,8 +3,6 @@ import {AppContext} from '../../App';
 import { Collapse } from 'reactstrap';
 import AssistNav from './assistant/AssistNav';
 import AssistContent from './assistant/AssistContent';
-import AssistLoader from './assistant/AssistLoader';
-import AssistError from './assistant/AssistError';
 import { Resizable, ResizableBox } from 'react-resizable';
 import Properties from '../../conf/properties';
 import '../../css/Assistant.css';
@@ -50,10 +48,7 @@ function Assistant (props) {
                                 
                                 <div className='containerAssist'>                                    
                                         <AssistNav/>
-                                        <AssistContent/>
-                                        <AssistLoader/>
-                                        <AssistError/>
-                                                           
+                                        <AssistContent/>              
                                 </div>
                                 
                         </ResizableBox>

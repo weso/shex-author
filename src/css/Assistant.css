@@ -96,8 +96,6 @@
 
 
 
-
-
 .shape{
     border: 1px solid #acaaaa;
     border-radius: 10px;
@@ -356,24 +354,32 @@ label{
 }
 
 
+
 .hideError{
     display: none;
+}
+
+
+.collapse .show{
+    height: 90% !important;
+    width: 100% !important;
 }
 
 .showError{
     display: grid;
     justify-content: center;
     align-items: center;
+    height: 100% !important;
     width: 100% !important;
-    height: 93% !important;
 }
 
 
 .shapeErrorCont{
-   
     display: grid;
-    height: 50% !important;
-    grid-template-rows:60% auto;
+    grid-template-rows: 60% 30%;
+    height: 300px;
+    
+
 }
 
 .shapeError{
