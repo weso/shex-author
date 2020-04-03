@@ -12,7 +12,7 @@ import '../../css/resizable/react-resizable.css';
 
 export const AssistContext = React.createContext();
 
-function AssistantComp (props) {
+function Assistant (props) {
 
         const context = useContext(AppContext);
         const [isAssistOpen, setAssistOpen] = useState(true);
@@ -62,4 +62,4 @@ function AssistantComp (props) {
 }
 
 
-export default AssistantComp;
+export default Assistant;

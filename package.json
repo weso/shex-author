@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://weso.github.io/shex-author",
   "dependencies": {
+    "codemirror": "^5.52.2",
     "gh-pages": "^2.1.1",
     "react": "^16.11.0",
     "react-color": "^2.18.0",
@@ -48,6 +49,6 @@
     "react-resize-panel": "^0.3.5",
     "react-slide-toggle": "^0.3.3",
     "reactstrap": "^8.1.1",
-    "yashe": "^1.2.17"
+    "yashe": "^1.2.22"
   }
 }
