@@ -171,7 +171,6 @@ const Properties = (()=> {
 
         this.load = function(propeties,namespace){
             //namespace = colors; It doesn't work
-            console.log(cookies)
             Object.keys(propeties).map(c=>{
                 //console.log(propeties[c])
                 namespace[c]=propeties[c];

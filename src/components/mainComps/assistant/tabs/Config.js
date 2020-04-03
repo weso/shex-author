@@ -6,6 +6,8 @@ import {DEFAULTS} from '../../../../conf/config';
 import Properties from '../../../../conf/properties';
 import {AppContext} from '../../../../App';
 import { useCookies } from 'react-cookie';
+import Editor from '../../../../entities/editor';
+import CodeMirror from 'codemirror';
 
 function Config (props) {
 
@@ -16,7 +18,10 @@ function Config (props) {
         const [cookies, setCookies] = useCookies('cookies');
 
         const handleSincChange = function(e){
-            //TO-DO
+            setSinc(!sinc);
+            let yashe = Editor.getInstance().getYashe();
+            //yashe._handlers.blur = null;
+            CodeMirror.signal(yashe,'sinc',!sinc);
         }
 
         const handlePrettyChange = function(e){

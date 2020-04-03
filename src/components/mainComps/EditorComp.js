@@ -51,9 +51,25 @@ function EditorComp() {
                 context.handleResize(null,data);
             });
 
+            y.on('sinc', function(sinc) {
+                if(sinc){
+                    y.on('blur', function() {
+                        if(!y.hasErrors()){                   
+                            updateAssist();
+                            updatePrefixes(getNewPrefixes());
+                        }else{
+                            showError(ERROR_EDITOR_MSG);
+                        }   
+                    });
+
+                }else{
+                    y._handlers.blur = null;//Not very elegant I know        
+                }
+                
+            });
+
             y.on('prefixChange', function(prefixes,width) {
                 Editor.getInstance().draw(oldShapes,prefixes);
-                console.log(width)
                 let data={size:{width:width}};
                 context.handleResize(null,data);
             });
@@ -68,6 +84,7 @@ function EditorComp() {
             });
 
             
+            //Get this out
             const debounce = function(func, wait, immediate) {
                 let timeout; let result;
                 return function() {
@@ -85,7 +102,7 @@ function EditorComp() {
                 };
             };
            
-/*
+
            
             y.on('keyup',debounce(function( e ) {
                     if(!y.hasErrors(y)){
@@ -105,7 +122,7 @@ function EditorComp() {
                 }, 500)   
             ); 
         
-   */
+   
 
             y.on('delete', function() {
                 oldShapes = replaceShapes(getNewShapes());
@@ -120,25 +137,15 @@ function EditorComp() {
             });
 
            
-            
-            y.on('blur', function() {
-                if(!y.hasErrors()){                   
-                    updateAssist();
-                    updatePrefixes(getNewPrefixes());
-                }else{
-                    showError(ERROR_EDITOR_MSG);
-                }   
-            });
-            
 
             //Fired after a key is handled through a key map
             //(for example "Ctrl-Z")
-        /*     y.on('keyHandled', function() {
+            y.on('keyHandled', function() {
                 if(!y.hasErrors()){
                     oldShapes = replaceShapes(getNewShapes());
                     updatePrefixes(getNewPrefixes());
                 }
-            }); */
+            }); 
  
             
 
@@ -215,8 +222,6 @@ function EditorComp() {
     const hideError = function(){
         animate('showError','hideError','hideAsist','showAsist');
     }
-
-
 
     return  (<div className="col edit" ref={divRef}/>);
 
