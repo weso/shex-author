@@ -375,6 +375,14 @@ label{
     width: 100% !important;
 }
 
+.infoAssist{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    height: 100% !important;
+    width: 100% !important;
+}
+
 .showError{
     display: grid;
     justify-content: center;

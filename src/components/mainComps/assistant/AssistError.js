@@ -13,7 +13,7 @@ function AssistError (props) {
         CodeMirror.signal(yashe,'convert');
     }
 
-    return (<div>
+    return (<div class='infoAssist'>
                 <div className='hideError'>
                     <div className='shapeErrorCont'>
                         <div className='shapeError'></div>

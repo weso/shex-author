@@ -4,7 +4,6 @@ import { Collapse } from 'reactstrap';
 import Shapes from './tabs/Shapes';
 import AssistLoader from './AssistLoader';
 import AssistError from './AssistError';
-import AssistConvert from './AssistConvert';
 import Prefixes from './tabs/Prefixes';
 import Colors from './tabs/Colors';
 import Config from './tabs/Config';
