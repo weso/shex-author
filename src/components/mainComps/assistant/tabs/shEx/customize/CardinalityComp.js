@@ -72,7 +72,7 @@ function CardinalityComp (props) {
         }
 
         return ( 
-                <div className=" gridBox" style={styles.body}>
+                <div className=" xs-gridBox" style={styles.body}>
                         <label className='gridLabel' style={styles.label}>Cardinality</label>
                         <select className="customSelector" 
                                 value={cardinality} 

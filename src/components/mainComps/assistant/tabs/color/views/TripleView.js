@@ -5,7 +5,7 @@ function TripleView (props) {
 
         const styles = Properties.getInstance().getTripleStyle();
 
-        return (  <div className="tripleHeader" style={styles.header}>            
+        return (  <div className="xs-tripleHeader" style={styles.header}>            
             <input  type="text" 
                     className="name"
                     placeholder="eg: name"

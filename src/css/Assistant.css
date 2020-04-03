@@ -38,10 +38,6 @@
 .tabs{
     display: grid;
     grid-template-columns: 28% 15% 6% 6% 55% 10%;
-    border-bottom: 1px solid #bdbcbc;
-    font-size: 20px;
-    color:#666565;
-    max-height: 34px;
 }
 
 .asisTitleClose{
@@ -50,7 +46,12 @@
 }
 
 .xs-tabs{
+    display: grid;
     grid-template-columns: 35% 25% 8% 8% 25% 10%;
+    border-bottom: 1px solid #bdbcbc;
+    font-size: 20px;
+    color:#666565;
+    max-height: 34px;
 }
 
 .activeTab {
@@ -226,54 +227,53 @@ label{
 }
 
 .addShapeButton{
-    border-radius: 10px;
-    margin-top:10px;
-    font-weight: bold;
     margin-left:200px;
     margin-right: 200px;
-    -webkit-transition: margin 0.5s ease-in-out;
-    transition: margin 0.5s ease-in-out;
 }
 
 .xs-addShapeButton{
     margin-left:100px;
     margin-right: 100px;
+    border-radius: 10px;
+    font-weight: bold;
+    -webkit-transition: margin 0.5s ease-in-out;
+    transition: margin 0.5s ease-in-out;
 }
 
-.addShapeButton:hover{
+.xs-addShapeButton:hover{
     margin-left:0px;
     margin-right: 0px;
 }
 
 
-.addShapeButton:focus{
+.xs-addShapeButton:focus{
     outline: none;
 }
 
 .addTripleButton{
-    border-radius: 10px;
-    font-weight: bold;
-    padding: 1px;
-    margin-top: 3px;
-    margin-bottom: 3px;
     margin-left:200px;
     margin-right: 200px;
-    -webkit-transition: margin 0.5s ease-in-out;
-    transition: margin 0.5s ease-in-out;
 }
 
 .xs-addTripleButton{
     margin-left:130px;
     margin-right: 130px;
+    border-radius: 10px;
+    font-weight: bold;
+    padding: 1px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    -webkit-transition: margin 0.5s ease-in-out;
+    transition: margin 0.5s ease-in-out;
 }
 
-.addTripleButton:hover{
+.xs-addTripleButton:hover{
     margin-left:0px;
     margin-right: 0px;
 }
 
 
-.addTripleButton:focus{
+.xs-addTripleButton:focus{
     outline: none;
 }
 

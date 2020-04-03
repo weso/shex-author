@@ -1,7 +1,7 @@
 export function makeItResponsive(width){
         
         //TimeOut need to take all the elements after render the DOM
-        setTimeout(() => {
+      /*   setTimeout(() => {
         let tabs = document.getElementsByClassName("tabs")[0];
         let shapeHeaders = document.getElementsByClassName("header");
         let tripleHeaders = document.getElementsByClassName("tripleHeader");
@@ -74,7 +74,7 @@ export function makeItResponsive(width){
             pickers[i].className = picClass;
         }
 
-    }, 0);
+    }, 0); */
         
 }
 

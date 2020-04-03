@@ -129,7 +129,7 @@ function ConstraintComp (props) {
     })
 
     return (
-                <div className="gridBox" style={styles.body}>
+                <div className="xs-gridBox" style={styles.body}>
                     <label className='gridLabel' style={styles.label}>Constraint</label>
                     <select className="customSelector" 
                         value={primitive} 
@@ -145,7 +145,7 @@ function ConstraintComp (props) {
                     </select>    
 
                     <Collapse isOpen={isCustomOpen} className='constraintCollapse'>
-                        <div className="customConstraint">
+                        <div className="xs-customConstraint">
                             <label style={styles.label}>Type</label>
                             <select className="customSelector"
                                     value={constraint}
@@ -163,7 +163,7 @@ function ConstraintComp (props) {
 
             
                         <Collapse isOpen={isNameOpen}>
-                            <div className="customConstraint">
+                            <div className="xs-customConstraint">
                                 <label style={styles.label}>Name</label>
                                 <input  type="text" 
                                         className="name"
@@ -173,7 +173,7 @@ function ConstraintComp (props) {
                         </Collapse>
 
                          <Collapse isOpen={isPrefixOpen}>
-                            <div className="customConstraint">
+                            <div className="xs-customConstraint">
                                 <label style={styles.label}>Prefix </label>
                                 <select className="customSelector" value={prefix} onChange={handlePrefixChange}>
                                     <option value="example">example</option>

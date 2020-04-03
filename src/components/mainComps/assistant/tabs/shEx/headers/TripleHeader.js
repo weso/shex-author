@@ -77,7 +77,7 @@ function TripleHeader (props) {
    
    
     return (
-        <div className="tripleHeader" style={styles.header}>            
+        <div className="xs-tripleHeader" style={styles.header}>            
             <input  type="text" 
                     className="name"
                     value={name}

@@ -1,9 +1,4 @@
 .tripleHeader{
-    padding:5px;
-    padding-right: 10px;
-    color: black;
-    border-top: 1px solid #acaaaa;
-    text-align: left;
     display: grid;
     grid-template-columns:  48% 6% 6% 6% 6% 6% 6% 7%;
     gap: 10px;
@@ -11,8 +6,14 @@
 }
 
 .xs-tripleHeader{
-    gap: 8px;
+    padding:5px;
+    padding-right: 10px;
+    color: black;
+    border-top: 1px solid #acaaaa;
+    text-align: left;
+    display: grid;
     grid-template-columns: 33% 8% 8% 8% 8% 8% 8% 4%;
+    gap: 8px;
 }
 
 .deleteTripleBtn{

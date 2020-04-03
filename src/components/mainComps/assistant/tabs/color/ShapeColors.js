@@ -81,7 +81,7 @@ function ShapeColors (props) {
 
 
                     <div className="triples" style={shapeStyles.body}>
-                        <button className="addTripleButton"
+                        <button className="xs-addTripleButton"
                                 style={shapeStyles.addTriple}
                                 title="Add Triple">
                                 + Triple Constraint
@@ -90,7 +90,7 @@ function ShapeColors (props) {
 
                 </div>
                 <div className="addCont">
-                    <button className="addShapeButton"
+                    <button className="xs-addShapeButton"
                             style={shapeStyles.addShape}
                             title="Add Shape">
                             + Shape

@@ -24,7 +24,7 @@ function ValueSetContainer (props) {
         context.emit(); 
     }
 
-    return (<div className='customConstraint'>
+    return (<div className='xs-customConstraint'>
                 <label style={styles.label}>ValueSet</label>
                 <div className="valueSetsCont">
                     {values.map(v =>{                                        

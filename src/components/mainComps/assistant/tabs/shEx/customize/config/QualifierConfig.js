@@ -17,7 +17,7 @@ function QualifierConfig (props) {
     }
 
     return (
-         <div className="gridBox">
+         <div className="xs-gridBox">
             <label className="customLabel" style={styles.label}>Qualifier </label>
             <select className="customSelector" value={qualifier} onChange={handleQualifierChange}>
                 <option value="">None</option>

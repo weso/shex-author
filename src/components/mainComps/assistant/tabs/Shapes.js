@@ -12,7 +12,7 @@ function Shapes (props) {
         <div>
             {context.shapes.map(shape =>{return  <ShapeComponent shape={shape} key={shape.id}/> })}
                 <div className="addCont">
-                    <button className="addShapeButton"
+                    <button className="xs-addShapeButton"
                             style={styles.addShape} 
                             onClick={context.addShape}
                             title="Add Shape">

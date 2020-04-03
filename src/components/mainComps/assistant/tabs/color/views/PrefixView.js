@@ -8,7 +8,7 @@ function PrefixView (props) {
         const open = '<';
         const close = '>';
 
-        return (<div className='prefixHeaderColors' style={styles.header}>            
+        return (<div className='xs-prefixHeaderColors' style={styles.header}>            
                     <input  type="text" 
                             className="prefixName prefixInput"
                             placeholder="eg: schema"

@@ -25,7 +25,7 @@ function PrefixComp (props) {
         }
       
         return (
-                <div className='prefixHeader' style={styles.header}>            
+                <div className='xs-prefixHeader' style={styles.header}>            
                     <input  type="text" 
                             className="prefixName prefixInput"
                             placeholder="eg: schema"

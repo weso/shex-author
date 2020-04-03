@@ -94,7 +94,7 @@ function ShapeComponent (props) {
                                             deleteTriple={deleteTriple}/> 
                         )}
                     
-                        <button className="addTripleButton"
+                        <button className="xs-addTripleButton"
                                 style={styles.addTriple} 
                                 onClick={addTriple} 
                                 disabled={disabled}
@@ -127,7 +127,7 @@ export default ShapeComponent;
                                             deleteTriple={deleteTriple}/> 
                         )}
                     
-                        <button className="addTripleButton" 
+                        <button className="xs-addTripleButton" 
                                 onClick={addTriple} 
                                 disabled={disabled}
                                 title="Add Triple">
@@ -145,7 +145,7 @@ export default ShapeComponent;
                                             deleteTriple={deleteTriple}/> 
                         )}
                     
-                        <button className="addTripleButton" 
+                        <button className="xs-addTripleButton" 
                                 onClick={addTriple} 
                                 disabled={disabled}
                                 title="Add Triple">
