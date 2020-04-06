@@ -28,7 +28,8 @@
 .cm-s-author-dark .cm-shapeRef {color: #f3fca2;}
 .cm-s-author-dark .cm-facet {color:#ff5f5f;}
 .cm-s-author-dark .cm-cardinality {color:#faaaf6;}
-.cm-s-author-dark .cm-prefixDelc {color:#f8acac;}
+.cm-s-author-dark .cm-prefixDelcAlias {color:#f8acac;}
+.cm-s-author-dark .cm-prefixDelcIRI {color:#f8acac;}
 
 .cm-s-author-dark .CodeMirror-cursor { border-left: 1px solid #A9B7C6; }  
 .cm-s-author-dark .CodeMirror-activeline-background { background: #323232; } 

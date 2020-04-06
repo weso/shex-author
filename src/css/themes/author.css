@@ -22,7 +22,10 @@
 .cm-s-author .cm-logical {color:#f00;}
 
 
+
 .cm-s-author .cm-shape {color:#3d9cfa;}
+.cm-s-author .cm-prefixDelcAlias {color:#f8acac;}
+.cm-s-author .cm-prefixDelcIRI {color:#f8acac;}
 .cm-s-author .cm-punc {color: #3d9cfa;}
 .cm-s-author .cm-string-2 {color: #f89626;}
 .cm-s-author .cm-variable-3 {color: #f89626;}
@@ -31,5 +34,4 @@
 .cm-s-author .cm-valueSet {color: #05a;}
 .cm-s-author .cm-shapeRef {color: #bbb517;}
 .cm-s-author .cm-cardinality {color:#f174eb;}
-.cm-s-author .cm-prefixDelc {color:#f8acac;}
 
