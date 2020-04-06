@@ -222,7 +222,7 @@ function getTriple(id,singleTriple,shapeId) {
             }
         }
 
-        if(token.type == 'at' ){
+        if(token.type == 'shapeRef' ){
             let ref = getRefName(token.string);
             refs.push(
                     {
@@ -250,7 +250,7 @@ function getTriple(id,singleTriple,shapeId) {
             token.type != 'constraint' && 
             token.type != 'constraintKeyword' && 
             token.type != 'valueSet' && 
-            token.type != 'at' && 
+            token.type != 'shapeRef' && 
             token.type != 'facet' && 
             token.type != 'cardinality' && 
             token.type != 'punc' &&
