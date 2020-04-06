@@ -11,9 +11,6 @@
 .cm-s-author .cm-variable-2 {color: #0F7A50;}
 .cm-s-author .cm-comment {color: #999;}
 .cm-s-author .cm-string {color: #b98003;}
-.cm-s-author .cm-constraint {color: #05a;}
-.cm-s-author .cm-valueSet {color: #05a;}
-.cm-s-author .cm-constraintKeyword {color: #05a;}
 .cm-s-author .cm-meta {color: #555;}
 .cm-s-author .cm-qualifier {color: #555;}
 .cm-s-author .cm-builtin {color: #30a;}
@@ -30,7 +27,9 @@
 .cm-s-author .cm-string-2 {color: #f89626;}
 .cm-s-author .cm-variable-3 {color: #f89626;}
 .cm-s-author .cm-constraint {color: #04be4c;}
-.cm-s-author .cm-at {color:#bbb517;}
+.cm-s-author .cm-constraintKeyword {color: #05a;}
+.cm-s-author .cm-valueSet {color: #05a;}
+.cm-s-author .cm-shapeRef {color: #bbb517;}
 .cm-s-author .cm-cardinality {color:#f174eb;}
 .cm-s-author .cm-prefixDelc {color:#f8acac;}
 
