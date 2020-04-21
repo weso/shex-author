@@ -17,27 +17,14 @@ function CustomComp (props) {
 
     let initialPrefix = 'example';
     let initialOpenPrefix = false;
-    console.log(entity.type.prefix)
     if(entity.type.prefix!=undefined){
         initialPrefix = entity.type.prefix.prefixValue;
         initialOpenPrefix = true;
     }
 
-    console.log(initialOpenPrefix)
-
     const [prefix,setPrefix] = useState(initialPrefix);
     const [isPrefixOpen,setPrefixOpen] = useState(initialOpenPrefix);
  
-    const collapsePrefix = function(e){
-        console.log(e.target.value)
-        if(e.target.value=='prefixedIri'){
-            setPrefixOpen(true);
-        }else{
-            console.log('close')
-            setPrefixOpen(false);
-        }    
-    }
-
 
     return (
         <Collapse isOpen={isCustomOpen}
@@ -47,14 +34,16 @@ function CustomComp (props) {
                 <TypeConfig 
                     entity={entity}
                     setPrefix={setPrefix}
-                    collapsePrefix={collapsePrefix}
+                    setPrefixOpen={setPrefixOpen}
                     bnode={bnode}/>
-               
+            
+            <Collapse isOpen={isPrefixOpen}>
                 <PrefixConfig 
                     entity={entity}
                     isPrefixOpen={isPrefixOpen}
                     prefix={prefix}
                     setPrefix={setPrefix}/> 
+            </Collapse> 
 
                  <Qualifier 
                     isQualifier={qualifier}

@@ -5,7 +5,7 @@ import Properties from '../../../../../../../conf/properties';
 function TypeConfig (props) {
 
     const context = useContext(AppContext);
-    const {entity,setPrefix,collapsePrefix,bnode} = props;
+    const {entity,setPrefix,bnode,setPrefixOpen} = props;
     const shapeStyles = Properties.getInstance().getShapeStyle();
     const tripleStyles = Properties.getInstance().getTripleStyle();
     const styles = entity.triples ? shapeStyles : tripleStyles; //is a Shape or a Triple?
@@ -20,7 +20,13 @@ function TypeConfig (props) {
         context.emit();
         setType(type);
         setPrefix('example');
-    //    collapsePrefix(e)
+
+        if(type=='prefixedIri'){
+            setPrefixOpen(true);
+        }else{
+           
+            setPrefixOpen(false);
+        }
     }
 
     

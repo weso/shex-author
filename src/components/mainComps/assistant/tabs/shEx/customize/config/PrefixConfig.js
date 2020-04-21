@@ -22,7 +22,7 @@ function PrefixConfig (props) {
     }
 
     return (
-         <Collapse isOpen={isPrefixOpen} className="xs-gridBox">
+         <div className="xs-gridBox">
             <label className="customLabel" style={styles.label}>Prefix </label>
             <select className="customSelector" value={prefix} onChange={handlePrefixChange}>
                 <option value="example">example</option>
@@ -34,7 +34,7 @@ function PrefixConfig (props) {
                 })
             }
             </select>
-         </Collapse>
+         </div>
     );
                                    
     
