@@ -247,6 +247,7 @@ function getTriple(id,singleTriple,shapeId) {
         }
         
         if( token.type != 'string-2' && 
+            token.type != 'variable-3' &&
             token.type != 'constraint' && 
             token.type != 'constraintKeyword' && 
             token.type != 'valueSet' && 

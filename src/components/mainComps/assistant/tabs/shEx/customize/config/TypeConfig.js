@@ -20,7 +20,7 @@ function TypeConfig (props) {
         context.emit();
         setType(type);
         setPrefix('example');
-        collapsePrefix(e)
+    //    collapsePrefix(e)
     }
 
     

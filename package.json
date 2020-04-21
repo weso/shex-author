@@ -1,6 +1,6 @@
 {
-  "name": "my-app",
-  "version": "0.1.0",
+  "name": "shex-author",
+  "version": "1.0.0",
   "private": true,
   "homepage": "https://weso.github.io/shex-author",
   "dependencies": {
