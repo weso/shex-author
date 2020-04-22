@@ -209,7 +209,7 @@ label{
     grid-column: 2/4;
     display: grid;
     justify-content: center;
-    grid-template-columns: 28% 71%;
+    grid-template-columns: 26% 73%;
     gap:5px;
     margin-top: 5px;
 }
