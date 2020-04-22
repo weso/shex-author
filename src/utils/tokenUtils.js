@@ -266,7 +266,7 @@ function getTriple(id,singleTriple,shapeId) {
         }
 
         if(token.string == '('){
-            Codemirror.signal(Editor.getInstance().getYashe(),'forceError','EXCLUSION_ERR');
+            Codemirror.signal(Editor.getInstance().getYashe(),'forceError','PARENTHESIS_ERR');
         }
             
 
