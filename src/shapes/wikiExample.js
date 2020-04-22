@@ -1,46 +1,37 @@
 
 export const wikiExample = 
+'PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n'+
+'PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n'+
 'PREFIX wd: <http://www.wikidata.org/entity/>\n'+
-'PREFIX wdt:  <http://www.wikidata.org/prop/direct/>\n'+
-'PREFIX p:    <http://www.wikidata.org/prop/>\n'+
-'PREFIX prov:    <http://www.w3.org/ns/prov#>\n'+
-'PREFIX pq:    <http://www.wikidata.org/prop/qualifier/>\n'+
-'PREFIX xsd:    <http://www.w3.org/2001/XMLSchema#>\n'+
-'PREFIX prv:    <http://www.wikidata.org/prop/reference/value/>\n'+
-'PREFIX pr:    <http://www.wikidata.org/prop/reference/>\n'+
-'PREFIX ps:    <http://www.wikidata.org/prop/statement/>\n'+
-'PREFIX interpro:    <http://micel.io/genewiki/interpro/>\n\n'+
+'PREFIX wdt: <http://www.wikidata.org/prop/direct/>\n\n'+
 
-'<#wikidata-human-protein>  {\n'+
-  'p:P703           @<#P703_found_in_taxon_human>  ;\n'+
-  'p:P352           @<#P352_uniprot_id>+  ;\n'+
-  'p:P527           @<#P527_has_part>*  ;\n'+
-  'p:P637           @<#P637_RefSeq_Protein_ID>*  ;\n'+
-  'p:P639           @<#P639_RefSeq_RNA_ID>*  ;\n'+
+'start = @<human>\n\n'+
+
+'<human> EXTRA wdt:P31 {\n'+
+'  wdt:P31    [wd:Q5];\n'+
+'  wdt:P21    [wd:Q6581097 wd:Q6581072 wd:Q1097630 wd:Q1052281 wd:Q2449503 wd:Q48270]?;   # gender\n'+
+'  wdt:P19    . ?;                     # place of birth\n'+
+'  wdt:P569   . ? ;                 # date of birth\n'+
+'  wdt:P735   . * ;                 # given name\n'+
+'  wdt:P734   . * ;                 # family name\n'+
+'  wdt:P106   . * ;                 # occupation\n'+
+'  wdt:P27    @<country> *;  # country of citizenship\n'+
+'  wdt:P22    @<human> *;           # father\n'+
+'  wdt:P25    @<human> *;           # mother\n'+
+'  wdt:P3373  @<human> *;         # sibling\n'+
+'  wdt:P26    @<human> *;           # husband/wife\n'+
+'  wdt:P40    @<human> *;           # children\n'+
+'  wdt:P1038  @<human> *;         # relatives\n'+
+'  wdt:P103   @<language> *;\n'+
+'  wdt:P1412  @<language> *;\n'+
+'  wdt:P6886  @<language> *;\n'+
+'  rdfs:label rdf:langString+;\n'+
 '}\n\n'+
 
-'<#P703_found_in_taxon_human>  {\n'+
-  'ps:P703          wd:Q15978631   ;\n'+
-  'prov:wasDerivedFrom          IRI +  ;\n'+
+'<country> EXTRA wdt:P31 {\n'+
+'  wdt:P31 [wd:Q6256 wd:Q3024240 wd:Q3624078] +;\n'+
 '}\n\n'+
 
-'<#P352_uniprot_id>  {\n'+
-  'ps:P352          Literal   ;\n'+
-  'prov:wasDerivedFrom          IRI   ;\n'+
-'}\n\n'+
-
-'<#P527_has_part>  {\n'+
-  'ps:P527          IRI   ;\n'+
-  'prov:wasDerivedFrom          IRI   ;\n'+
-'}\n\n'+
-
-'<#P637_RefSeq_Protein_ID>  {\n'+
-  'ps:P637          Literal   ;\n'+
-  'prov:wasDerivedFrom          IRI   ;\n'+
-'}\n\n'+
-
-'<#P639_RefSeq_RNA_ID>  {\n'+
-  'ps:P637          Literal   ;\n'+
-  'prov:wasDerivedFrom          IRI   ;\n'+
-'}\n\n';
-
+'<language> EXTRA wdt:P31 {\n'+
+'  wdt:P31 [wd:Q34770 wd:Q1288568] +;\n'+
+'}';

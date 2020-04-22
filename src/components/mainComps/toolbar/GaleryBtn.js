@@ -23,7 +23,10 @@ function GaleryBtn () {
                                 onClick={()=>loadExample('default')}>
                                 User
                         </button>
-                       
+                       <button className="form-control"
+                                onClick={()=>loadExample('wiki')}>
+                                E10: Human
+                        </button>
                     </div>
                 </li>
             </ul>

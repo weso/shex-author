@@ -75,9 +75,6 @@ function TripleComponent (props) {
         
     }
 
-    const forceCollapse = function(collapse){
-        setConstraintsOpen(collapse);
-    }
 
     const collapseAll = function(collapse){
         setTripleCustomOpen(collapse);
@@ -112,7 +109,6 @@ function TripleComponent (props) {
                           customizeRef={customizeRef}
                           customizeFacet={customizeFacet}
                           customizeCardinality={customizeCardinality}
-                          forceCollapse={forceCollapse}
                           collapseToggle={collapseToggle}
                           colapseBtn={colapseBtn}/>
 
