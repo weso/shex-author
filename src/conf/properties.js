@@ -203,13 +203,13 @@ const Properties = (()=> {
         }
 
         this.restoreDefaultColors = function(){
+            this.removeCookies();
             this.load(this.defaultShape,SHAPE_COLORS);
             this.load(this.defaultTriple,TRIPLE_COLORS);
             this.load(this.defaultConstraint,CONSTRAINT_COLORS);
             this.load(this.defaultFacet,FACET_COLORS);
             this.load(this.defaultShapeRef,SHAPEREF_COLORS);
             this.load(this.defaultCardinality,CARDINALITY_COLORS);
-            this.removeCookies();
         }
 
         this.restoreDefaultConfig = function(){
