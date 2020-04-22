@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/shex-author/static/css/main.8d84328a.chunk.css",
-    "main.js": "/shex-author/static/js/main.9757e798.chunk.js",
-    "main.js.map": "/shex-author/static/js/main.9757e798.chunk.js.map",
-    "runtime-main.js": "/shex-author/static/js/runtime-main.95ebbff4.js",
-    "runtime-main.js.map": "/shex-author/static/js/runtime-main.95ebbff4.js.map",
-    "static/css/2.2b45f3a0.chunk.css": "/shex-author/static/css/2.2b45f3a0.chunk.css",
-    "static/js/2.3116fae2.chunk.js": "/shex-author/static/js/2.3116fae2.chunk.js",
-    "static/js/2.3116fae2.chunk.js.map": "/shex-author/static/js/2.3116fae2.chunk.js.map",
+    "main.css": "/shex-author/static/css/main.290501f9.chunk.css",
+    "main.js": "/shex-author/static/js/main.aee08e24.chunk.js",
+    "main.js.map": "/shex-author/static/js/main.aee08e24.chunk.js.map",
+    "runtime-main.js": "/shex-author/static/js/runtime-main.70f546b6.js",
+    "runtime-main.js.map": "/shex-author/static/js/runtime-main.70f546b6.js.map",
+    "static/css/2.e053c324.chunk.css": "/shex-author/static/css/2.e053c324.chunk.css",
+    "static/js/2.b94928c2.chunk.js": "/shex-author/static/js/2.b94928c2.chunk.js",
+    "static/js/2.b94928c2.chunk.js.map": "/shex-author/static/js/2.b94928c2.chunk.js.map",
     "index.html": "/shex-author/index.html",
-    "precache-manifest.d7d7e5b0a0aa4654ef140312028aaa98.js": "/shex-author/precache-manifest.d7d7e5b0a0aa4654ef140312028aaa98.js",
+    "precache-manifest.c0430367aa1ecd2595e26678d9955928.js": "/shex-author/precache-manifest.c0430367aa1ecd2595e26678d9955928.js",
     "service-worker.js": "/shex-author/service-worker.js",
-    "static/css/2.2b45f3a0.chunk.css.map": "/shex-author/static/css/2.2b45f3a0.chunk.css.map",
-    "static/css/main.8d84328a.chunk.css.map": "/shex-author/static/css/main.8d84328a.chunk.css.map"
+    "static/css/2.e053c324.chunk.css.map": "/shex-author/static/css/2.e053c324.chunk.css.map",
+    "static/css/main.290501f9.chunk.css.map": "/shex-author/static/css/main.290501f9.chunk.css.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.95ebbff4.js",
-    "static/css/2.2b45f3a0.chunk.css",
-    "static/js/2.3116fae2.chunk.js",
-    "static/css/main.8d84328a.chunk.css",
-    "static/js/main.9757e798.chunk.js"
+    "static/js/runtime-main.70f546b6.js",
+    "static/css/2.e053c324.chunk.css",
+    "static/js/2.b94928c2.chunk.js",
+    "static/css/main.290501f9.chunk.css",
+    "static/js/main.aee08e24.chunk.js"
   ]
 }
