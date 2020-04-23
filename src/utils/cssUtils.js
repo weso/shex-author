@@ -38,44 +38,52 @@ export function makeItResponsive(width){
 
         
         tabs.className = tabClass;
-        for(let i=0;i<shapeHeaders.length;i++){
-            shapeHeaders[i].className = shClass;
-        }
 
-        for(let i=0;i<tripleHeaders.length;i++){
-            tripleHeaders[i].className = thClass;
-        }
 
-        for(let i=0;i<addTripleBtns.length;i++){
-            addTripleBtns[i].className = adTClass;
-        }
+        getKeys(shapeHeaders).forEach(element => {
+            shapeHeaders[element].className = shClass;
+        });
+        
+        getKeys(tripleHeaders).forEach(element => {
+            tripleHeaders[element].className = thClass;
+        });
 
-        for(let i=0;i<addShapeBtns.length;i++){
-            addShapeBtns[i].className = adSClass;
-        }
+        getKeys(addTripleBtns).forEach(element => {
+            addTripleBtns[element].className = adTClass;
+        });
 
-        for(let i=0;i<grids.length;i++){
-            grids[i].className = grClass;
-        }
+        getKeys(addShapeBtns).forEach(element => {
+            addShapeBtns[element].className = adSClass;
+        });
 
-        for(let i=0;i<customs.length;i++){
-            customs[i].className = ccClass;
-        }
+        getKeys(grids).forEach(element => {
+            grids[element].className = grClass;
+        });
 
-        for(let i=0;i<prefixes.length;i++){
-            prefixes[i].className = prClass;
-        }
+        getKeys(customs).forEach(element => {
+            customs[element].className = ccClass;
+        });
 
-        for(let i=0;i<prefixesColors.length;i++){
-            prefixesColors[i].className = prcClass;
-        }
+        getKeys(prefixes).forEach(element => {
+            prefixes[element].className = prClass;
+        });
 
-        for(let i=0;i<pickers.length;i++){
-            pickers[i].className = picClass;
-        }
+        getKeys(prefixesColors).forEach(element => {
+            prefixesColors[element].className = prcClass;
+        });
+
+        getKeys(pickers).forEach(element => {
+            pickers[element].className = picClass;
+        });
+
 
     }, 0);
         
+}
+
+
+function getKeys(collection){
+    return Object.keys(collection);
 }
 
 export function activeTab(evt){

@@ -38,7 +38,8 @@ const VALUESET_SHAPE = 'PREFIX :       <http://example.org/>\n'+
     let defP = Editor.getYashe().getDefinedPrefixes();
     return Object.keys(defP).reduce((acc,p)=>{
       let id = acc.length + prefixCount++;
-      return acc.push(new Prefix(p,defP[p],id))
+      acc.push(new Prefix(p,defP[p],id))
+      return acc;
     },[]);
 }
 

@@ -44,7 +44,7 @@ function getShapeById(shapes,shapeId) {
 function getShapeByName(shapes,name) {
     return shapes.filter(s=>{
         return s.getType().toString() == name;
-    })
+    })[0];
 }
 
 

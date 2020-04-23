@@ -19,7 +19,7 @@ class ShapeRef{
     toString(){
         if(this.shape){
            let shapeRef = this.shape.getType().toString();
-            return '@'+shapeRef;
+           return '@'+shapeRef;
         }
 
         return '';
