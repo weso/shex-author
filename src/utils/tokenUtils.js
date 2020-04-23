@@ -82,7 +82,6 @@ function getDefinedShapes(tokens){
             // IMPORTANT 
             // We could do just shape.push(element) but if there 
             // are directives between shapes we will push that directives into the shape   
-
             if(element.string == '{'){
                 hasTripleStarted=true;
             }
@@ -97,14 +96,12 @@ function getDefinedShapes(tokens){
                  //Get the previous tokens before the triples
                  shape.push(element);
              }
-       
         }
 
         return acc;
 
     },[]);
 }
-
 
 /**
 * Get the Shapes objects
@@ -176,20 +173,19 @@ function getTriples(shapeId,shape) {
         let triples = [];
         let singleTriple = [];
         let yashe = Editor.getInstance().getYashe();
-        let start = getStart(shape);
-        for(let i=start;i<shape.length;i++){
-            singleTriple.push(shape[i])
-            if((shape[i].type == 'punc' &&  shape[i].string==';')// finish of the triple ';' 
-                || i==shape.length-1){  // finish of the last triple without ';'
-                if(singleTriple.length!=1){ //This line is neccesary when last triple of the shape ends with ';'
-                    triples.push(getTriple(triples.length,singleTriple,shapeId));
-                    singleTriple = [];
-                }
+        let tTokens = getTripleTokens(shape);
+        let index=0;
+        return tTokens.reduce((acc,token)=>{
+            singleTriple.push(token);
+            if(isEndOfTriple(token,index,tTokens,singleTriple)){
+                acc.push(getTriple(acc.length,singleTriple,shapeId));
+                singleTriple = [];
             }
-
-        }
-    return triples;
+        index++;
+        return acc;
+        },[])
 }
+
 
 /**
 *    Get a Triple Object from a line of tokens
@@ -280,17 +276,29 @@ function getTriple(id,singleTriple,shapeId) {
 }
 
 /**
-*   Get the start of the triple tokens
+*   Get the triple tokens
 *   @param {Array} Shape (Tokens)
-*   @return {Integer} Position
+*   @return {Array} Tokens
 *
- */
-function getStart(shape){
-    for(let i=0;i<shape.length;i++){
-        if(shape[i].string=='{'){
-            return i+1;
+*/
+function getTripleTokens(shape){
+    let start=false;
+    return shape.reduce((acc,t)=>{
+        if(start)acc.push(t);
+        if(t.string=='{')start=true;
+        return acc;
+    },[])
+}
+
+function isEndOfTriple(token,index,tTokens,singleTriple){
+    if((token.type == 'punc' &&  token.string==';')// finish of the triple ';' 
+        || index==tTokens.length-1){  // finish of the last triple without ';'
+
+        if(singleTriple.length!=1){ //This line is neccesary when last triple of the shape ends with ';'
+            return true;
         }
     }
+    return false;
 }
 
 
