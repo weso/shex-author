@@ -113,20 +113,18 @@ function getDefinedShapes(tokens){
  */
 function getShapes(defShapes){
     refs = [];
-    let shapes = [];
-    let yashe = Editor.getInstance().getYashe();
-    defShapes.forEach(shape => {
-        let id  = shapes.length;
+    return defShapes.reduce((acc,shape)=>{
+        let id  = acc.length;
         let shapeDef = shape[0].string;
         let shapeType = getType(shapeDef);
         let qualifier = getQualifier(shape[1]);
         let triples = getTriples(id,shape);
 
-        shapes.push(new Shape(id,shapeType,triples,qualifier));
-    })
-    return shapes;
-}
+        acc.push(new Shape(id,shapeType,triples,qualifier));
+        return acc;
 
+    },[])
+}
 /**
 * Get the type of the Shape or Triple
 * @param {String} Shape or Triple
