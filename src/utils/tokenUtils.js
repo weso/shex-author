@@ -198,6 +198,8 @@ function getTriple(id,singleTriple,shapeId) {
     let facets = [];
     let cardinality= new TypesFactory().createType('');
     let shapeRef = new ShapeRef();
+
+    //I am using a for loop just because of the facets (see line 233)
     for(let i=0;i<singleTriple.length;i++){
         let token = singleTriple[i];
         if(token.type == 'string-2' || token.type == 'variable-3'){
@@ -228,7 +230,7 @@ function getTriple(id,singleTriple,shapeId) {
         }
 
         if(token.type == 'facet'){
-            i++;//Need the value
+            i++;//I Need the next value
             let value = singleTriple[i].string;
             let id =facets.length;
             let type = token.string.toLowerCase();
@@ -255,6 +257,8 @@ function getTriple(id,singleTriple,shapeId) {
         }
 
        
+        // Force errors in case to find one of the following tokens
+
         if(token.string == '~'){
             Codemirror.signal(Editor.getInstance().getYashe(),'forceError','EXCLUSION_ERR');
         }
@@ -265,7 +269,7 @@ function getTriple(id,singleTriple,shapeId) {
             
 
         if(token.string == '{'){
-            Codemirror.signal(Editor.getInstance().getYashe(),'forceError');
+            Codemirror.signal(Editor.getInstance().getYashe(),'forceError','INLINESHAPE_ERR');
         }
   
     }
@@ -288,6 +292,13 @@ function getTripleTokens(shape){
     },[])
 }
 
+/**
+ * Returns true in case the token represent the end of a Triple
+ * @param {Object} Token
+ * @param {Integer} Index
+ * @param {Array} TripleTokens
+ *
+ */
 function isEndOfTriple(token,index,tTokens){
     if((token.type == 'punc' &&  token.string==';')// finish of the triple ';' 
         || index==tTokens.length-1){  // finish of the last triple without ';'
@@ -306,16 +317,16 @@ function isEndOfTriple(token,index,tTokens){
 function getConstraint(def) {
     let factory = new TypesFactory();
     let type = factory.createType(def.toLowerCase());
-    //Isn't it a Prefixed/Iri/Primitive?
-    if(type!=undefined){
-        return type;
-    }
+    //Isn't a Prefixed/Iri/Primitive?
+    if(type!=undefined)return type;
+
     type = getType(def);
-    //Is it a Primitive?
+    //Is a Primitive?
     if(type.getTypeName() == 'prefixedIri' && isPrimitive(type.value)){
         let kind = def.split(':')[1];
         return new Primitive(kind);
     }
+
     return type;
 }
 
@@ -354,25 +365,12 @@ function getCardinality(card){
 *
  */
 function getValueSetValue(def) {
-
-    if(!isNaN(def)){
-        return new NumberLiteral(def);
-    }
-
-    if(def.startsWith('"')){
-        return new StringLiteral(def.substring(1,def.length-1));//remove the ""
-    }
-
-    let minus = def.toLowerCase();
-    if(minus == 'true' || minus == 'false'){
-        return new BooleanLiteral(minus);
-    }
-
+    let value = def.toLowerCase();
+    if(!isNaN(def)) return new NumberLiteral(def);
+    if(def.startsWith('"')) return new StringLiteral(def.substring(1,def.length-1));//remove the ""
+    if(value == 'true' || value == 'false') return new BooleanLiteral(value);
     return getType(def);
 }
-
-
-
 
 
 function updateShapeRefs(shapes) {
@@ -391,8 +389,6 @@ function updateShapeRefs(shapes) {
 
 
 
-
-
 function getPrefixValue(defPrefixes,prefixName){
     let prefixValue;
     for(let pre in defPrefixes){
@@ -404,13 +400,18 @@ function getPrefixValue(defPrefixes,prefixName){
 }
 
 
+/**
+ * Returns true if the value is a primitive Type: 
+ * ['string','integer','date','boolean']
+ * @param {String} Value
+ * @return {Boolean} 
+ *
+ */
 function isPrimitive(value) {
-    for(let prim in PRIMITIVES){
-        if(PRIMITIVES[prim] == value){
-            return true;
-        }
-    }
-    return false;
+    return PRIMITIVES.reduce((acc,p)=>{
+        if(p == value) acc=true;
+        return acc;
+    },false)
 }
 
 
@@ -419,6 +420,12 @@ function getRefName(token) {
 }
 
 
+/**
+ * Returns all the tokens except ws tokens (eg: WhiteSpaces)
+ * @param {Array} Tokens
+ * @return {Array} Tokens
+ *
+*/
 function getNonWsTokens(tokens){
     return tokens.filter(function(obj){
         return obj.type != 'ws';
