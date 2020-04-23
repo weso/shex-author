@@ -5,21 +5,20 @@ import ValueSetComp from './ValueSetComp';
 import Properties from '../../../../../../../conf/properties';
 
 function ValueSetContainer (props) {
-    const {triple,valueSet} = props;
+    const {triple,valueSet,setValueSet} = props;
     const context = useContext(AppContext);
-    const [values,setValues]=useState(valueSet);
     const styles = Properties.getInstance().getConstraintStyle();
 
     const deleteValue= function(id){
-        const newValues = values.filter(v => v.id != id);
-        setValues(newValues);
+        const newValues = valueSet.filter(v => v.id != id);
+        setValueSet(newValues);
         triple.constraint.setValues(newValues);
         context.emit(); 
     }
 
     const addValue = function(){
         const value = shexUtils.addValueSetValue(valueSet);
-        setValues([...values,value]);
+        setValueSet([...valueSet,value]);
         triple.constraint.addValue(value);
         context.emit(); 
     }
@@ -27,7 +26,7 @@ function ValueSetContainer (props) {
     return (<div className='xs-customConstraint'>
                 <label style={styles.label}>ValueSet</label>
                 <div className="valueSetsCont">
-                    {values.map(v =>{                                        
+                    {valueSet.map(v =>{                                        
                             return (<ValueSetComp 
                                     key={v.id}
                                     valueSetValue={v}

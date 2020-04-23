@@ -78,6 +78,7 @@ function ConstraintComp (props) {
         triple.setConstraint(newConstraint);
         triple.constraint.setValue(name);
         context.emit();
+        checkValueSet();
     }
 
  
@@ -112,6 +113,12 @@ function ConstraintComp (props) {
             setValueSetOpen(true);
         }
 
+    }
+
+    const checkValueSet = function(){
+        if(triple.constraint.getTypeName=='valueSet'){
+            setValueSet([]);
+        }
     }
 
     const checkRefs = function(prim){
@@ -190,7 +197,7 @@ function ConstraintComp (props) {
 
 
                         <Collapse isOpen={isValueSetOpen}>
-                            <ValueSetContainer  triple={triple} valueSet={valueSet}/>
+                            <ValueSetContainer  triple={triple} valueSet={valueSet} setValueSet={setValueSet}/>
                         </Collapse>
                     </Collapse>                                                         
                 </div>
