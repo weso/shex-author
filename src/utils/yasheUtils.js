@@ -35,7 +35,7 @@ const VALUESET_SHAPE = 'PREFIX :       <http://example.org/>\n'+
   }
 
  function updatePrefixes(prefix){
-    let defined = Editor.getInstance().getYashe().getDefinedPrefixes();
+    let defined = Editor.getYashe().getDefinedPrefixes();
     let prefixes = [];
     Object.keys(defined).map(p =>{
       let id = prefixes.length + prefixCount++;
@@ -45,7 +45,7 @@ const VALUESET_SHAPE = 'PREFIX :       <http://example.org/>\n'+
 }
 
 function getSchema(){
-    let yashe = Editor.getInstance().getYashe();
+    let yashe = Editor.getYashe();
     if(yashe){
         return yashe.getValue();
     }

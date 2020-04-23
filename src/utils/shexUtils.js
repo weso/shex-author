@@ -58,7 +58,7 @@ function getTripleById(shape,tripleId) {
 
 
 function emit(newShapes,width) {
-    const yashe = Editor.getInstance().getYashe();
+    const yashe = Editor.getYashe();
     if(yashe!=undefined){
         Codemirror.signal(yashe,'humanEvent',newShapes,width);
         checkPrefixes();
@@ -66,7 +66,7 @@ function emit(newShapes,width) {
 }
 
 function checkPrefixes(){
-    const yashe = Editor.getInstance().getYashe();
+    const yashe = Editor.getYashe();
     let isExampleDef = false;
     let isSchemaDef = false;
     let isXsdDef = false;

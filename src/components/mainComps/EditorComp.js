@@ -98,7 +98,7 @@ function EditorComp() {
                         }else{
                             showError(ERROR_EDITOR_MSG);
                         }   
-                    }, 10));
+                    }, 500));
 
 
                 }else{
@@ -217,7 +217,7 @@ function EditorComp() {
         loading();
         setTimeout(function() {
             isComplex=false;  
-            //y.oldShapes = replaceShapes(getNewShapes());  
+            Editor.getYashe().oldShapes = replaceShapes(getNewShapes());  
             replaceShapes(getNewShapes());              
             loaded();
         },500)

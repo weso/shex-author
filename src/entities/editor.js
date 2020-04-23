@@ -23,6 +23,10 @@ const Editor = (()=> {
                 instance = new EditorClass();
             }
             return instance;
+        },
+
+        getYashe: ()=>{
+            return instance.getYashe();
         }
 
     }

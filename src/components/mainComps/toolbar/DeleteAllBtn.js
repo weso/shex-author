@@ -17,7 +17,7 @@ function DeleteAllBtn () {
             // like another call to change shapes state
             // I don't know exactly the reason...
             // It's something about react state
-            let yashe = Editor.getInstance().getYashe();
+            let yashe = Editor.getYashe();
             yashe.setValue('');
             Codemirror.signal(yashe,'delete');
         }

@@ -6,7 +6,7 @@ import {ALL_PREFIXES} from './rdfUtils';
 let prefixCount = 0;
 
 export function getPrefix(prefix){
-    let defined = Editor.getInstance().getYashe().getDefinedPrefixes();
+    let defined = Editor.getYashe().getDefinedPrefixes();
     for(let def in defined){
         if(defined[def] == prefix){
           return new Prefix(def,defined[def]);
@@ -36,7 +36,7 @@ export function deletePrefixComp(prefixes,prefixId,width) {
 
 export function addPrefix(prefix){
         let namespaces = ALL_PREFIXES;
-        let yashe = Editor.getInstance().getYashe();
+        let yashe = Editor.getYashe();
         let current = yashe.getValue();
         let defined = yashe.getDefinedPrefixes();
         let uri = 'http://example.org/';
@@ -72,7 +72,7 @@ function getPrefixesStr(prefixes){
 }
 
 export function emitPrefixes(newPrefixes,width) {
-    const yashe = Editor.getInstance().getYashe();
+    const yashe = Editor.getYashe();
     if(yashe!=undefined){
         Codemirror.signal(yashe,'prefixChange',getPrefixesStr(newPrefixes),width);
     }

@@ -9,7 +9,7 @@ function getBodyFormData() {
 }
 
 function getSchema () {
-    let yashe = Editor.getInstance().getYashe();
+    let yashe = Editor.getYashe();
     if(yashe){
         return yashe.getValue();
     }

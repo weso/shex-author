@@ -17,15 +17,15 @@ export function readFile(files){
     }
     var reader = new FileReader();
     reader.onload = function(event) {
-        Editor.getInstance().getYashe().setValue(event.target.result)
+        Editor.getYashe().setValue(event.target.result)
     };
 
     reader.readAsText(file);
-    Codemirror.signal(Editor.getInstance().getYashe(),'upload');
+    Codemirror.signal(Editor.getYashe(),'upload');
 }
 
 export function downloadFile(){
-    var textFileAsBlob = new Blob([ Editor.getInstance().getYashe().getValue() ], { type: 'text/shex' });
+    var textFileAsBlob = new Blob([ Editor.getYashe().getValue() ], { type: 'text/shex' });
     var fileNameToSaveAs = "document.shex";
 
     var downloadLink = document.createElement("a");
@@ -44,7 +44,7 @@ export function downloadFile(){
 }
 
 export function changeTheme(){
-    let yashe = Editor.getInstance().getYashe();
+    let yashe = Editor.getYashe();
     var themeValue = 'wiki'
     var color = 'black'
     if(yashe.getOption('theme') == 'wiki'){
@@ -73,7 +73,7 @@ export function changeTheme(){
 }
 
 export function loadExample(example){
-    let yashe = Editor.getInstance().getYashe();
+    let yashe = Editor.getYashe();
     if(example=='default'){
         yashe.setValue(defaultExample)
     }else{
@@ -90,11 +90,11 @@ export function scrollTop(){
 
 
 export function undo(){
-    let yashe = Editor.getInstance().getYashe();
+    let yashe = Editor.getYashe();
     yashe.undo();
 }
 
 export function redo(){
-    let yashe = Editor.getInstance().getYashe();
+    let yashe = Editor.getYashe();
     yashe.redo();
 }

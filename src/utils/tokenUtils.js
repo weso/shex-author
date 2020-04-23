@@ -45,7 +45,7 @@ let refs;
 *
  */
 function getTokens(){
-    let yashe = Editor.getInstance().getYashe();
+    let yashe = Editor.getYashe();
     let tokens =[];
     if(yashe!=undefined){
         for (var l = 0; l < yashe.lineCount(); ++l) {
@@ -112,7 +112,7 @@ function getDefinedShapes(tokens){
 function getShapes(defShapes){
     refs = [];
     let shapes = [];
-    let yashe = Editor.getInstance().getYashe();
+    let yashe = Editor.getYashe();
     defShapes.forEach(shape => {
         let id  = shapes.length;
         let shapeDef = shape[0].string;
@@ -132,7 +132,7 @@ function getShapes(defShapes){
  */
 function getType(def) {
     let value;
-    let yashe = Editor.getInstance().getYashe();
+    let yashe = Editor.getYashe();
     if(def.startsWith('<')){
         value = def.split('<')[1].split('>')[0];
         return new IriRef(value);
@@ -175,7 +175,7 @@ function getQualifier(qualifier) {
 function getTriples(shapeId,shape) {
         let triples = [];
         let singleTriple = [];
-        let yashe = Editor.getInstance().getYashe();
+        let yashe = Editor.getYashe();
         let start = getStart(shape);
         for(let i=start;i<shape.length;i++){
             singleTriple.push(shape[i])
@@ -216,7 +216,7 @@ function getTriple(id,singleTriple,shapeId) {
 
         if(token.type == 'valueSet'){
             if(token.string.startsWith('@')){// LANTAG NOT SUPPORTED AT THE MOMENT
-                Codemirror.signal(Editor.getInstance().getYashe(),'forceError','LANTAG_ERR');
+                Codemirror.signal(Editor.getYashe(),'forceError','LANTAG_ERR');
             }else{
                  valueSet.push(new ValueSetValue(valueSet.length,getValueSetValue(token.string)));
             }
@@ -257,21 +257,21 @@ function getTriple(id,singleTriple,shapeId) {
             token.type != 'punc' &&
             token.type !='comment'){
 
-            Codemirror.signal(Editor.getInstance().getYashe(),'forceError');
+            Codemirror.signal(Editor.getYashe(),'forceError');
         }
 
        
         if(token.string == '~'){
-            Codemirror.signal(Editor.getInstance().getYashe(),'forceError','EXCLUSION_ERR');
+            Codemirror.signal(Editor.getYashe(),'forceError','EXCLUSION_ERR');
         }
 
         if(token.string == '('){
-            Codemirror.signal(Editor.getInstance().getYashe(),'forceError','PARENTHESIS_ERR');
+            Codemirror.signal(Editor.getYashe(),'forceError','PARENTHESIS_ERR');
         }
             
 
         if(token.string == '{'){
-            Codemirror.signal(Editor.getInstance().getYashe(),'forceError');
+            Codemirror.signal(Editor.getYashe(),'forceError');
         }
   
     }

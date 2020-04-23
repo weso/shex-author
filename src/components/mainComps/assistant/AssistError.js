@@ -9,7 +9,7 @@ function AssistError (props) {
     const context = useContext(AppContext);
 
     const handle = function(){
-        let yashe = Editor.getInstance().getYashe();
+        let yashe = Editor.getYashe();
         CodeMirror.signal(yashe,'convert');
     }
 

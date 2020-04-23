@@ -21,7 +21,7 @@ function Config (props) {
             setSinc(!sinc);
             DEFAULTS.sincronize = !sinc;
             setCookies('conf', DEFAULTS, { path: '/' }); 
-            let yashe = Editor.getInstance().getYashe();    
+            let yashe = Editor.getYashe();    
             CodeMirror.signal(yashe,'sinc',!sinc);
         }
 
