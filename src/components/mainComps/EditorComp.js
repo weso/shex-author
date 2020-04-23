@@ -19,10 +19,9 @@ const COMPLEX_SHAPE_MSG = 'Sorry that Shape is too complex for me';
 
 function EditorComp() {
 
+    const context = useContext(AppContext);
     const [yashe,setYashe] = useState(null);
     const divRef = useRef(null);
-    const context = useContext(AppContext);
-    let oldShapes = [];
     let isComplex = false;
     
 
@@ -47,10 +46,9 @@ function EditorComp() {
 
             
             y.on('humanEvent', function(shapes,width) {
-                Editor.getInstance().draw(shapes);
-                //console.log(shapes)
+                draw(y,shapes);
                 isComplex=false;
-                oldShapes = shapes;
+                y.oldShapes = shapes;
                 let data={size:{width:width}};
                 context.handleResize(null,data);
             });
@@ -84,10 +82,15 @@ function EditorComp() {
                         if(!y.hasErrors(y)){
                             hideError();
                             let newShapes = getNewShapes();
-                            if(oldShapes.length == newShapes.length){ //Any new shape?
-                                if(newShapes.toString()!=oldShapes.toString()){ //Any cupdate?
+
+                            console.table(newShapes);
+                            console.table(y.oldShapes);
+                            console.log(y.historySize(10))
+
+                            if(y.oldShapes.length == newShapes.length){ //Any new shape?
+                                if(newShapes.toString()!=y.oldShapes.toString()){ //Any cupdate?
                                     isComplex=false;
-                                    oldShapes = replaceShapes(newShapes);
+                                    y.oldShapes = replaceShapes(newShapes);
                                 }
                             }else{
                                 updateAssist();
@@ -95,17 +98,7 @@ function EditorComp() {
                         }else{
                             showError(ERROR_EDITOR_MSG);
                         }   
-                    }, 500));
-
-                     //Fired after a key is handled through a key map
-                    //(for example "Ctrl-Z")
-                    y.on('keyHandled', function() {
-                        if(!y.hasErrors()){
-                            isComplex=false;
-                            oldShapes = replaceShapes(getNewShapes());
-                            updatePrefixes(getNewPrefixes());
-                        }
-                    }); 
+                    }, 10));
 
 
                 }else{
@@ -122,7 +115,7 @@ function EditorComp() {
             });
 
             y.on('prefixChange', function(prefixes,width) {
-                Editor.getInstance().draw(oldShapes,prefixes);
+                draw(yashe,y.oldShapes,prefixes);
                 let data={size:{width:width}};
                 context.handleResize(null,data);
             });
@@ -140,7 +133,7 @@ function EditorComp() {
 
             y.on('delete', function() {
                 isComplex=false;
-                oldShapes = replaceShapes(getNewShapes());
+                y.oldShapes = replaceShapes(getNewShapes());
                 updatePrefixes(defaultPrefixes);
             });
 
@@ -167,18 +160,41 @@ function EditorComp() {
             
             Editor.getInstance().setYashe(y);
 
-            oldShapes = replaceShapes(getNewShapes());
+            y.oldShapes = replaceShapes(getNewShapes());
             updatePrefixes(defaultPrefixes)
 
-            CodeMirror.signal(Editor.getInstance().getYashe(),'sinc',DEFAULTS.sincronize);
+            CodeMirror.signal(y,'sinc',DEFAULTS.sincronize);
         }
     }, [yashe]
     );
 
     
 
+    const draw = function(yashe,shapes,prefixes){
+        let newContent=prefixes;
+        if(!prefixes){
+            newContent = getPrefixes(yashe);
+        }
+            
+        shapes.forEach(element =>{
+            newContent += element.toString()
+        });
+        yashe.setValue(newContent);
+    }
+
+    const getPrefixes = function (yashe) {
+        let definedPrefixes = yashe.getDefinedPrefixes();
+        let prefixes='';
+        for(let pre in definedPrefixes){
+            prefixes+='PREFIX '+pre+':    <'+definedPrefixes[pre]+'>\n';
+        }
+        prefixes+='\n';
+        return prefixes;
+    }
+
+
     const getNewShapes = function() {
-        return yasheUtils.replaceShapes();
+        return yasheUtils.getCurrentShapes();
     }
 
     const getNewPrefixes = function() {
@@ -201,7 +217,8 @@ function EditorComp() {
         loading();
         setTimeout(function() {
             isComplex=false;  
-            oldShapes = replaceShapes(getNewShapes());                
+            //y.oldShapes = replaceShapes(getNewShapes());  
+            replaceShapes(getNewShapes());              
             loaded();
         },500)
     }

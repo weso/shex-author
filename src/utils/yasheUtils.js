@@ -24,7 +24,7 @@ const VALUESET_SHAPE = 'PREFIX :       <http://example.org/>\n'+
 
   let prefixCount = 0;
   
-  function replaceShapes(){
+  function getCurrentShapes(){
     let tokens = tokenUtils.getTokens();
     let defShapes = tokenUtils.getDefinedShapes(tokens);
     let newShapes = tokenUtils.getShapes(defShapes);
@@ -53,7 +53,7 @@ function getSchema(){
   }
 
 
-//Get this out
+
 function debounce(func, wait, immediate) {
     let timeout; let result;
     return function() {
@@ -74,7 +74,7 @@ function debounce(func, wait, immediate) {
  const yasheUtils = {
       DEFAULT_SHAPE:DEFAULT_SHAPE,
       VALUESET_SHAPE:VALUESET_SHAPE,
-      replaceShapes:replaceShapes,
+      getCurrentShapes:getCurrentShapes,
       updatePrefixes:updatePrefixes,
       getSchema:getSchema,
       debounce:debounce
