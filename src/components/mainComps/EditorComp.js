@@ -8,7 +8,8 @@ import YASHE from 'yashe';
 import Editor from '../../entities/editor';
 
 import yasheUtils from '../../utils/yasheUtils';
-import Prefix from '../../entities/shexEntities/shexUtils/prefix';
+import {defaultExample} from '../../galery/defaultExample';
+import Prefix from '../../entities/shexEntities//others//prefix';
 
 import '../../css/Yashe.css';
 import '../../css/themes/author.css';
@@ -38,7 +39,7 @@ function EditorComp() {
                 lineNumbers: true,
                 showTooltip:true,
                 theme:'author-dark',
-                value:yasheUtils.DEFAULT_SHAPE
+                value:defaultExample
             }
             
             const y = YASHE(divRef.current,options);
@@ -80,11 +81,11 @@ function EditorComp() {
                     y.on('keyup',yasheUtils.debounce(function( e ) {
                         if(!y.hasErrors(y)){
                             hideError();
-                            let newShapes = getNewShapes();
+                            let newShapes = yasheUtils.getShapes();
                             if(y.oldShapes.length == newShapes.length){ //Any new shape?
                                 if(newShapes.toString()!=y.oldShapes.toString()){ //Any update?
                                     y.isComplex=false;
-                                    y.oldShapes = replaceShapes(newShapes);
+                                    y.oldShapes = replaceShapes();
                                 }
                             }else{
                                 updateAssist();
@@ -128,14 +129,14 @@ function EditorComp() {
 
             y.on('delete', function() {
                 y.isComplex=false;
-                y.oldShapes = replaceShapes(getNewShapes());
+                y.oldShapes = replaceShapes();
                 updatePrefixes(defaultPrefixes);
             });
 
             y.on('upload', function() {
                 if(!y.hasErrors()){                   
                     updateAssist();
-                    updatePrefixes(getNewPrefixes());
+                    updatePrefixes();
                 }
             });
 
@@ -143,7 +144,7 @@ function EditorComp() {
             y.on('galery', function() {
                 if(!y.hasErrors()){                   
                     updateAssist();
-                    updatePrefixes(getNewPrefixes());
+                    updatePrefixes();
                 }
             });
 
@@ -154,7 +155,7 @@ function EditorComp() {
 
             Editor.getInstance().setYashe(y);
 
-            y.oldShapes = replaceShapes(getNewShapes());
+            y.oldShapes = replaceShapes();
             updatePrefixes(defaultPrefixes)
 
             CodeMirror.signal(y,'sinc',DEFAULTS.sincronize);
@@ -164,25 +165,16 @@ function EditorComp() {
 
     
 
-    
-
-
-    const getNewShapes = function() {
-        return yasheUtils.getCurrentShapes();
-    }
-
-    const getNewPrefixes = function() {
-        return yasheUtils.updatePrefixes();
-    }
-
-    const replaceShapes = (newShapes)=>{
+    const replaceShapes = function(){
+        let newShapes = yasheUtils.getShapes();
         context.replaceShapes(newShapes);
         return newShapes;
     }
 
-    const updatePrefixes = (newPrefixes)=>{
-        context.replacePrefixes(newPrefixes);
-        return newPrefixes;
+    const updatePrefixes = function(prefixes){
+        if(!prefixes) prefixes = yasheUtils.getPrefixes();
+        context.replacePrefixes(prefixes);
+        return prefixes;
     }
 
 
@@ -192,8 +184,7 @@ function EditorComp() {
         loading();
         setTimeout(function() {
             yashe.isComplex=false;  
-            yashe.oldShapes = replaceShapes(getNewShapes());  
-            replaceShapes(getNewShapes());              
+            yashe.oldShapes = replaceShapes();               
             loaded();
         },500)
     }

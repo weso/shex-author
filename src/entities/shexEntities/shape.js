@@ -2,7 +2,7 @@ import TypesFactory from './types/typesFactory';
 
 import PrefixedIri from './types/concreteTypes/prefixedIri';
 import BlankKind from './types/concreteTypes/kinds/blankKind';
-import Prefix from './shexUtils/prefix';
+import Prefix from './others/prefix';
 
 class Shape {
 
@@ -27,7 +27,7 @@ class Shape {
     }
 
     setQualifier(qualifier){
-      this.qualifier = this.qualifier;
+      this.qualifier = this.factory.createType(qualifier);
     }
     
 
@@ -167,10 +167,6 @@ class Shape {
 
     getQualifier(){
       return this.qualifier;
-    }
-
-    setQualifier(qualifier){
-      this.qualifier = qualifier;
     }
 
   }

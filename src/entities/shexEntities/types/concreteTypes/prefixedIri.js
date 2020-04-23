@@ -1,5 +1,5 @@
 import Type from '../type';
-import Prefix from '../../shexUtils/prefix';
+import Prefix from '../..//others//prefix';
 
 class PrefixedIri extends Type{
 

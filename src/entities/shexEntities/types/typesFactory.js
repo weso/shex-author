@@ -50,6 +50,7 @@ class TypesFactory{
             retType = new NonLiteral();
         }
 
+
         if(type == 'iri'){
             retType = new IriKind();
         }

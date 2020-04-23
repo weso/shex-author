@@ -7,8 +7,8 @@ import  Shape from '../entities/shexEntities/shape';
 import  Triple from '../entities/shexEntities/triple';
 
 import TypesFactory from '../entities/shexEntities/types/typesFactory';
-import CardinalityFactory from '../entities/shexEntities/shexUtils/cardinality/cardinalityFactory';
-import Facet from '../entities/shexEntities/shexUtils/facet';
+import CardinalityFactory from '../entities/shexEntities/others/cardinality/cardinalityFactory';
+import Facet from '../entities/shexEntities/others/facet';
 
 import PrefixedIri from '../entities/shexEntities/types/concreteTypes/prefixedIri';
 import IriRef from '../entities/shexEntities/types/concreteTypes/iriRef';
@@ -28,9 +28,9 @@ import BooleanLiteral from '../entities/shexEntities/types/concreteTypes/literal
 
 
 
-import Prefix from '../entities/shexEntities/shexUtils/prefix';
-import ShapeRef from '../entities/shexEntities/shexUtils/shapeRef';
-import ValueSetValue from '../entities/shexEntities/shexUtils/valueSetValue';
+import Prefix from '../entities/shexEntities/others/prefix';
+import ShapeRef from '../entities/shexEntities/others/shapeRef';
+import ValueSetValue from '../entities/shexEntities/others/valueSetValue';
 
 
 

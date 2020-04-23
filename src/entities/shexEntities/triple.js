@@ -1,10 +1,10 @@
 import TypesFactory from './types/typesFactory';
-import CardinalityFactory from './shexUtils/cardinality/cardinalityFactory';
-import CardinalitySimple from './shexUtils/cardinality/cardinalitySimple';
+import CardinalityFactory from './others/cardinality/cardinalityFactory';
+import CardinalitySimple from './others/cardinality/cardinalitySimple';
 import PrefixedIri from './types/concreteTypes/prefixedIri';
 import Primitive from './types/concreteTypes/primitive';
-import ShapeRef from './shexUtils/shapeRef';
-import Prefix from './shexUtils/prefix';
+import ShapeRef from './others/shapeRef';
+import Prefix from './others/prefix';
 import {DEFAULTS} from '../../conf/config.js';
 
 class Triple {

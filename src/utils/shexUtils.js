@@ -1,9 +1,9 @@
 import Codemirror from 'codemirror';
 import Editor from '../entities/editor';
 import Shape from '../entities/shexEntities/shape';
-import Facet from '../entities/shexEntities/shexUtils/facet';
+import Facet from '../entities/shexEntities/others/facet';
 import {addPrefix} from './prefixUtils';
-import ValueSetValue from '../entities/shexEntities/shexUtils/valueSetValue';
+import ValueSetValue from '../entities/shexEntities/others/valueSetValue';
 
 let shapesCount = 0;
 let facetsCount = 0;
@@ -13,7 +13,7 @@ function addShape(shapes,width){
 
     const id = shapes.length + shapesCount++;
     const newShape = new Shape(id);
-    
+
     let newShapes = [];
     newShapes = Object.assign(newShapes, shapes);
     newShapes.push(newShape);

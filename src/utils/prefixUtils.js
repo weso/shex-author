@@ -1,6 +1,6 @@
 import Codemirror from 'codemirror';
 import Editor from '../entities/editor';
-import Prefix from '../entities/shexEntities/shexUtils/prefix';
+import Prefix from '../entities/shexEntities/others/prefix';
 import {ALL_PREFIXES} from './rdfUtils';
 
 let prefixCount = 0;
@@ -55,7 +55,7 @@ export function getUri(prefix,namespaces){
 function getPrefixesStr(prefixes){
   return prefixes.reduce((acc,p)=>{
     return acc += 'PREFIX ' + p.prefixName + ': <' + p.prefixValue + '>\n';
-  },'')
+  },'');
 }
 
 export function emitPrefixes(newPrefixes,width) {
