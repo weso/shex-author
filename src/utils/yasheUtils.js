@@ -35,13 +35,11 @@ const VALUESET_SHAPE = 'PREFIX :       <http://example.org/>\n'+
   }
 
  function updatePrefixes(prefix){
-    let defined = Editor.getYashe().getDefinedPrefixes();
-    let prefixes = [];
-    Object.keys(defined).map(p =>{
-      let id = prefixes.length + prefixCount++;
-      prefixes.push(new Prefix(p,defined[p],id));
-    })
-    return prefixes;
+    let defP = Editor.getYashe().getDefinedPrefixes();
+    return Object.keys(defP).reduce((acc,p)=>{
+      let id = acc.length + prefixCount++;
+      return acc.push(new Prefix(p,defP[p],id))
+    },[]);
 }
 
 function draw(yashe,shapes,prefixes){
@@ -52,18 +50,14 @@ function draw(yashe,shapes,prefixes){
 }
 
 function getPrefixes(yashe){
-    let defPrefixes = yashe.getDefinedPrefixes();
-    return Object.keys(defPrefixes).reduce((acc,p)=>{
-      return acc+='PREFIX '+p+':    <'+defPrefixes[p]+'>\n';
+    let defP = yashe.getDefinedPrefixes();
+    return Object.keys(defP).reduce((acc,p)=>{
+      return acc+='PREFIX '+p+':    <'+defP[p]+'>\n';
     },'');
 }
 
 function getSchema(){
-    let yashe = Editor.getYashe();
-    if(yashe){
-        return yashe.getValue();
-    }
-    return '';
+    return Editor.getYashe()?.getValue();
   }
 
 

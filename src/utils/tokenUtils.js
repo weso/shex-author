@@ -45,7 +45,7 @@ let refs;
 *
  */
 function getTokens(){
-    let yashe = Editor.getYashe();
+    let yashe = Editor.getInstance().getYashe();
     let tokens =[];
     if(yashe!=undefined){
         for (var l = 0; l < yashe.lineCount(); ++l) {
@@ -66,18 +66,17 @@ function getTokens(){
 *
  */
 function getDefinedShapes(tokens){
+    let shape = []
     let brackets=0
-    let shape=[];
-    let defShapes = [];
     let shapeCont = 0;
     let hasTripleStarted = false;
     //Separate shapes in arrays
-    tokens.forEach(element =>{
-        //If we find a Shape then we start a new Array of tokens
+    return tokens.reduce((acc,element)=>{
+
         if(element.type == 'shape'){
             shape = [];
             shape.push(element)
-            defShapes[shapeCont]=shape;
+            acc[shapeCont]=shape;
             shapeCont++;
         }else{
             // IMPORTANT 
@@ -100,9 +99,12 @@ function getDefinedShapes(tokens){
              }
        
         }
-    })
-    return defShapes;
+
+        return acc;
+
+    },[]);
 }
+
 
 /**
 * Get the Shapes objects
@@ -112,7 +114,7 @@ function getDefinedShapes(tokens){
 function getShapes(defShapes){
     refs = [];
     let shapes = [];
-    let yashe = Editor.getYashe();
+    let yashe = Editor.getInstance().getYashe();
     defShapes.forEach(shape => {
         let id  = shapes.length;
         let shapeDef = shape[0].string;
@@ -132,7 +134,7 @@ function getShapes(defShapes){
  */
 function getType(def) {
     let value;
-    let yashe = Editor.getYashe();
+    let yashe = Editor.getInstance().getYashe();
     if(def.startsWith('<')){
         value = def.split('<')[1].split('>')[0];
         return new IriRef(value);
@@ -175,7 +177,7 @@ function getQualifier(qualifier) {
 function getTriples(shapeId,shape) {
         let triples = [];
         let singleTriple = [];
-        let yashe = Editor.getYashe();
+        let yashe = Editor.getInstance().getYashe();
         let start = getStart(shape);
         for(let i=start;i<shape.length;i++){
             singleTriple.push(shape[i])
@@ -216,7 +218,7 @@ function getTriple(id,singleTriple,shapeId) {
 
         if(token.type == 'valueSet'){
             if(token.string.startsWith('@')){// LANTAG NOT SUPPORTED AT THE MOMENT
-                Codemirror.signal(Editor.getYashe(),'forceError','LANTAG_ERR');
+                Codemirror.signal(Editor.getInstance().getYashe(),'forceError','LANTAG_ERR');
             }else{
                  valueSet.push(new ValueSetValue(valueSet.length,getValueSetValue(token.string)));
             }
@@ -257,21 +259,21 @@ function getTriple(id,singleTriple,shapeId) {
             token.type != 'punc' &&
             token.type !='comment'){
 
-            Codemirror.signal(Editor.getYashe(),'forceError');
+            Codemirror.signal(Editor.getInstance().getYashe(),'forceError');
         }
 
        
         if(token.string == '~'){
-            Codemirror.signal(Editor.getYashe(),'forceError','EXCLUSION_ERR');
+            Codemirror.signal(Editor.getInstance().getYashe(),'forceError','EXCLUSION_ERR');
         }
 
         if(token.string == '('){
-            Codemirror.signal(Editor.getYashe(),'forceError','PARENTHESIS_ERR');
+            Codemirror.signal(Editor.getInstance().getYashe(),'forceError','PARENTHESIS_ERR');
         }
             
 
         if(token.string == '{'){
-            Codemirror.signal(Editor.getYashe(),'forceError');
+            Codemirror.signal(Editor.getInstance().getYashe(),'forceError');
         }
   
     }

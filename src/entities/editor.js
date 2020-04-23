@@ -26,7 +26,7 @@ const Editor = (()=> {
         },
 
         getYashe: ()=>{
-            return instance.getYashe();
+            return instance?.getYashe();
         }
 
     }

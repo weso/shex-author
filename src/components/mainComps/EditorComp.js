@@ -150,6 +150,7 @@ function EditorComp() {
             y.refresh();
             setYashe(y);
             
+
             Editor.getInstance().setYashe(y);
 
             y.oldShapes = replaceShapes(getNewShapes());
