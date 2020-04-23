@@ -43,7 +43,7 @@ function getShapeById(shapes,shapeId) {
 
 function getShapeByName(shapes,name) {
     return shapes.filter(s=>{
-        return s.getType().toString() == name
+        return s.getType().toString() == name;
     })
 }
 
@@ -64,31 +64,16 @@ function emit(newShapes,width) {
 }
 
 function checkPrefixes(){
-    const yashe = Editor.getYashe();
-    let isExampleDef = false;
-    let isSchemaDef = false;
-    let isXsdDef = false;
-    Object.keys(yashe.getDefinedPrefixes()).map(p=>{
-        if(p==''){
-            isExampleDef=true;
-        }
-        if(p=='schema'){
-            isSchemaDef = true;
-        } 
-        if(p=='xsd'){
-            isXsdDef = true;
-        }
-    })
+    if(!hasPrefix('')) addPrefix('');
+    if(!hasPrefix('schema')) addPrefix('schema');
+    if(!hasPrefix('xsd')) addPrefix('xsd');
+}
 
-    if(!isExampleDef){
-        addPrefix('');
-    } 
-    if(!isSchemaDef){
-        addPrefix('schema');
-    } 
-    if(!isXsdDef){
-        addPrefix('xsd');
-    }
+function hasPrefix(prefix){
+    const defs = Editor.getYashe().getDefinedPrefixes();
+    return Object.keys(defs).filter(p=>{
+        return p==prefix;
+    }).length > 0 ? true:false;
 }
 
 
