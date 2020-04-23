@@ -278,7 +278,7 @@ function getTriple(id,singleTriple,shapeId) {
 }
 
 /**
-*   Get the triple tokens
+*   Get the triple tokens. We start collecting the tokens after find '{' token
 *   @param {Array} Shape (Tokens)
 *   @return {Array} Tokens
 *
@@ -396,9 +396,9 @@ function updateShapeRefs(shapes) {
  */
 function getPrefixValue(prefixName){
     let defPrefixes = Editor.getYashe().getDefinedPrefixes();
-    return Object.keys(defPrefixes).filter(p=>{
-        return p==prefixName
-    });
+    return defPrefixes[Object.keys(defPrefixes).filter(p=>{
+        return p==prefixName;
+    })]; 
 }
 
 
@@ -416,9 +416,13 @@ function isPrimitive(value) {
     },false)
 }
 
-
-function getRefName(token) {
-    return token.split('@')[1];
+/**
+ * Returns the name of the shapeRef. It just remove the @
+ * @param {String} ShapeRef
+ * @return {String} ShapeName
+ */
+function getRefName(ref) {
+    return ref.split('@')[1];
 }
 
 

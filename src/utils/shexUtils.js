@@ -42,11 +42,9 @@ function getShapeById(shapes,shapeId) {
 }
 
 function getShapeByName(shapes,name) {
-    for(let s in shapes){
-        if(shapes[s].getType().toString() == name){
-            return shapes[s];
-        }
-    }
+    return shapes.filter(s=>{
+        return s.getType().toString() == name
+    })
 }
 
 
