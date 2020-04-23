@@ -174,15 +174,13 @@ function getTriples(shapeId,shape) {
         let singleTriple = [];
         let yashe = Editor.getInstance().getYashe();
         let tTokens = getTripleTokens(shape);
-        let index=0;
-        return tTokens.reduce((acc,token)=>{
+        return tTokens.reduce((acc,token,index)=>{
             singleTriple.push(token);
-            if(isEndOfTriple(token,index,tTokens,singleTriple)){
+            if(isEndOfTriple(token,index,tTokens)){
                 acc.push(getTriple(acc.length,singleTriple,shapeId));
                 singleTriple = [];
             }
-        index++;
-        return acc;
+            return acc;
         },[])
 }
 
@@ -290,13 +288,11 @@ function getTripleTokens(shape){
     },[])
 }
 
-function isEndOfTriple(token,index,tTokens,singleTriple){
+function isEndOfTriple(token,index,tTokens){
     if((token.type == 'punc' &&  token.string==';')// finish of the triple ';' 
         || index==tTokens.length-1){  // finish of the last triple without ';'
 
-        if(singleTriple.length!=1){ //This line is neccesary when last triple of the shape ends with ';'
-            return true;
-        }
+        return true;
     }
     return false;
 }
