@@ -45,7 +45,7 @@ let refs;
 *
  */
 function getTokens(){
-    let yashe = Editor.getInstance().getYashe();
+    let yashe = Editor.getYashe();
     let tokens =[];
     if(yashe!=undefined){
         for (var l = 0; l < yashe.lineCount(); ++l) {
@@ -129,7 +129,7 @@ function getShapes(defShapes){
  */
 function getType(def) {
     let value;
-    let yashe = Editor.getInstance().getYashe();
+    let yashe = Editor.getYashe();
     if(def.startsWith('<')){
         value = def.split('<')[1].split('>')[0];
         return new IriRef(value);
@@ -139,7 +139,7 @@ function getType(def) {
     }else{
         value = def.split(':')[1];
         let prefixName = def.split(':')[0];
-        let prefixValue = getPrefixValue(yashe.getDefinedPrefixes(),prefixName)
+        let prefixValue = getPrefixValue(prefixName)
         let prefix = new Prefix(prefixName,prefixValue);
         return new PrefixedIri(prefix,value);
     }
@@ -172,7 +172,7 @@ function getQualifier(qualifier) {
 function getTriples(shapeId,shape) {
         let triples = [];
         let singleTriple = [];
-        let yashe = Editor.getInstance().getYashe();
+        let yashe = Editor.getYashe();
         let tTokens = getTripleTokens(shape);
         return tTokens.reduce((acc,token,index)=>{
             singleTriple.push(token);
@@ -212,7 +212,7 @@ function getTriple(id,singleTriple,shapeId) {
 
         if(token.type == 'valueSet'){
             if(token.string.startsWith('@')){// LANTAG NOT SUPPORTED AT THE MOMENT
-                Codemirror.signal(Editor.getInstance().getYashe(),'forceError','LANTAG_ERR');
+                Codemirror.signal(Editor.getYashe(),'forceError','LANTAG_ERR');
             }else{
                  valueSet.push(new ValueSetValue(valueSet.length,getValueSetValue(token.string)));
             }
@@ -253,23 +253,23 @@ function getTriple(id,singleTriple,shapeId) {
             token.type != 'punc' &&
             token.type !='comment'){
 
-            Codemirror.signal(Editor.getInstance().getYashe(),'forceError');
+            Codemirror.signal(Editor.getYashe(),'forceError');
         }
 
        
         // Force errors in case to find one of the following tokens
 
         if(token.string == '~'){
-            Codemirror.signal(Editor.getInstance().getYashe(),'forceError','EXCLUSION_ERR');
+            Codemirror.signal(Editor.getYashe(),'forceError','EXCLUSION_ERR');
         }
 
         if(token.string == '('){
-            Codemirror.signal(Editor.getInstance().getYashe(),'forceError','PARENTHESIS_ERR');
+            Codemirror.signal(Editor.getYashe(),'forceError','PARENTHESIS_ERR');
         }
             
 
         if(token.string == '{'){
-            Codemirror.signal(Editor.getInstance().getYashe(),'forceError','INLINESHAPE_ERR');
+            Codemirror.signal(Editor.getYashe(),'forceError','INLINESHAPE_ERR');
         }
   
     }
@@ -388,15 +388,17 @@ function updateShapeRefs(shapes) {
 }
 
 
-
-function getPrefixValue(defPrefixes,prefixName){
-    let prefixValue;
-    for(let pre in defPrefixes){
-        if(pre==prefixName){
-            prefixValue = defPrefixes[pre]
-        }
-    }
-    return prefixValue;
+/**
+ * Returns the value of a specific prefix by its alias
+ * @param {String} prefixName
+ * @return {String} prefixValue
+ *
+ */
+function getPrefixValue(prefixName){
+    let defPrefixes = Editor.getYashe().getDefinedPrefixes();
+    return Object.keys(defPrefixes).filter(p=>{
+        return p==prefixName
+    });
 }
 
 
