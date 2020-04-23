@@ -109,9 +109,10 @@ function EditorComp() {
             });
 
             y.on('prefixChange', function(prefixes,width) {
-                yasheUtils.draw(yashe,y.oldShapes,prefixes);
+                console.log(prefixes)
+               /*  yasheUtils.draw(yashe,y.oldShapes,prefixes);
                 let data={size:{width:width}};
-                context.handleResize(null,data);
+                context.handleResize(null,data); */
             });
 
             y.on('forceError', function(prefixes) {

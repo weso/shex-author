@@ -7,14 +7,11 @@ let prefixCount = 0;
 
 export function getPrefix(prefix){
     let defined = Editor.getYashe().getDefinedPrefixes();
-    for(let def in defined){
-        if(defined[def] == prefix){
-          return new Prefix(def,defined[def]);
-        }
-    }
-    return new Prefix();
+    return Object.keys(defined).reduce((acc,p)=>{
+      if(defined[p]==prefix) acc = new Prefix(p,defined[p]);
+      return acc;
+    },new Prefix());
 }
-
 
 
 export function addPrefixComp(prefixes,width){
@@ -39,15 +36,7 @@ export function addPrefix(prefix){
         let yashe = Editor.getYashe();
         let current = yashe.getValue();
         let defined = yashe.getDefinedPrefixes();
-        let uri = 'http://example.org/';
-        //getUri
-        for(let def in namespaces){
-          for(let p in namespaces[def]){
-            if(p==prefix)
-              uri = namespaces[def][p];
-          }
-        }
-        yashe.setValue( 'PREFIX ' + prefix + ': <' + uri + '>\n' + current );
+        yashe.setValue( 'PREFIX ' + prefix + ': <' + getUri() + '>\n' + current );
         Codemirror.signal(yashe,'prefixUpdate');
   }
 
@@ -64,11 +53,9 @@ export function getUri(prefix,namespaces){
 
 
 function getPrefixesStr(prefixes){
-  let str='';
-  prefixes.map(prefix =>{
-    str += 'PREFIX ' + prefix.prefixName + ': <' + prefix.prefixValue + '>\n';
-  })
-  return str;
+  return prefixes.reduce((acc,p)=>{
+    return acc += 'PREFIX ' + p.prefixName + ': <' + p.prefixValue + '>\n';
+  },'')
 }
 
 export function emitPrefixes(newPrefixes,width) {
