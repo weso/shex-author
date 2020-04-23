@@ -22,7 +22,6 @@ function EditorComp() {
     const context = useContext(AppContext);
     const [yashe,setYashe] = useState(null);
     const divRef = useRef(null);
-    let isComplex = false;
     
 
     const defaultPrefixes = [
@@ -46,8 +45,8 @@ function EditorComp() {
 
             
             y.on('humanEvent', function(shapes,width) {
-                draw(y,shapes);
-                isComplex=false;
+                yasheUtils.draw(y,shapes);
+                y.isComplex=false;
                 y.oldShapes = shapes;
                 let data={size:{width:width}};
                 context.handleResize(null,data);
@@ -75,21 +74,16 @@ function EditorComp() {
                 if(sinc){
                     y._handlers.focus = null;
                     hideConvert();
-                    if(isComplex)showError(COMPLEX_SHAPE_MSG);
+                    if(y.isComplex)showError(COMPLEX_SHAPE_MSG);
                     if(y.hasErrors(y))showError(ERROR_EDITOR_MSG);
         
                     y.on('keyup',yasheUtils.debounce(function( e ) {
                         if(!y.hasErrors(y)){
                             hideError();
                             let newShapes = getNewShapes();
-
-                            console.table(newShapes);
-                            console.table(y.oldShapes);
-                            console.log(y.historySize(10))
-
                             if(y.oldShapes.length == newShapes.length){ //Any new shape?
-                                if(newShapes.toString()!=y.oldShapes.toString()){ //Any cupdate?
-                                    isComplex=false;
+                                if(newShapes.toString()!=y.oldShapes.toString()){ //Any update?
+                                    y.isComplex=false;
                                     y.oldShapes = replaceShapes(newShapes);
                                 }
                             }else{
@@ -106,7 +100,7 @@ function EditorComp() {
                     y._handlers.keyup = null; 
                     y._handlers.keyHandled = null; 
                     if(y.hasErrors(y))showConvert();
-                    if(isComplex)showConvert();
+                    if(y.isComplex)showConvert();
                     y.on('focus', function() {
                        showConvert();
                     });       
@@ -115,13 +109,13 @@ function EditorComp() {
             });
 
             y.on('prefixChange', function(prefixes,width) {
-                draw(yashe,y.oldShapes,prefixes);
+                yasheUtils.draw(yashe,y.oldShapes,prefixes);
                 let data={size:{width:width}};
                 context.handleResize(null,data);
             });
 
             y.on('forceError', function(prefixes) {
-                isComplex=true;
+                y.isComplex=true;
                 hideError();
                 loading();
                 setTimeout(function() {
@@ -132,7 +126,7 @@ function EditorComp() {
             });
 
             y.on('delete', function() {
-                isComplex=false;
+                y.isComplex=false;
                 y.oldShapes = replaceShapes(getNewShapes());
                 updatePrefixes(defaultPrefixes);
             });
@@ -143,8 +137,6 @@ function EditorComp() {
                     updatePrefixes(getNewPrefixes());
                 }
             });
-
-        
 
             //Load example from Galery
             y.on('galery', function() {
@@ -170,27 +162,7 @@ function EditorComp() {
 
     
 
-    const draw = function(yashe,shapes,prefixes){
-        let newContent=prefixes;
-        if(!prefixes){
-            newContent = getPrefixes(yashe);
-        }
-            
-        shapes.forEach(element =>{
-            newContent += element.toString()
-        });
-        yashe.setValue(newContent);
-    }
-
-    const getPrefixes = function (yashe) {
-        let definedPrefixes = yashe.getDefinedPrefixes();
-        let prefixes='';
-        for(let pre in definedPrefixes){
-            prefixes+='PREFIX '+pre+':    <'+definedPrefixes[pre]+'>\n';
-        }
-        prefixes+='\n';
-        return prefixes;
-    }
+    
 
 
     const getNewShapes = function() {
@@ -213,11 +185,12 @@ function EditorComp() {
 
 
     const updateAssist = function(){
+        let yashe = Editor.getYashe();
         hideConvert();
         loading();
         setTimeout(function() {
-            isComplex=false;  
-            Editor.getYashe().oldShapes = replaceShapes(getNewShapes());  
+            yashe.isComplex=false;  
+            yashe.oldShapes = replaceShapes(getNewShapes());  
             replaceShapes(getNewShapes());              
             loaded();
         },500)

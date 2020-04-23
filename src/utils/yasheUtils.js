@@ -44,6 +44,20 @@ const VALUESET_SHAPE = 'PREFIX :       <http://example.org/>\n'+
     return prefixes;
 }
 
+function draw(yashe,shapes,prefixes){
+    let newContent=prefixes;
+    if(!prefixes)newContent = getPrefixes(yashe);
+    newContent += shapes
+    yashe.setValue(newContent);
+}
+
+function getPrefixes(yashe){
+    let defPrefixes = yashe.getDefinedPrefixes();
+    return Object.keys(defPrefixes).reduce((acc,p)=>{
+      return acc+='PREFIX '+p+':    <'+defPrefixes[p]+'>\n';
+    },'');
+}
+
 function getSchema(){
     let yashe = Editor.getYashe();
     if(yashe){
@@ -76,6 +90,7 @@ function debounce(func, wait, immediate) {
       VALUESET_SHAPE:VALUESET_SHAPE,
       getCurrentShapes:getCurrentShapes,
       updatePrefixes:updatePrefixes,
+      draw:draw,
       getSchema:getSchema,
       debounce:debounce
   }

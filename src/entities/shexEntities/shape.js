@@ -37,7 +37,7 @@ class Shape {
 
  
     toString(){
-      let str='';
+      let str='\n';
       if(this.type.value!=''){
         str+=this.type+' '+this.qualifier;
         if(this.checkContent()){
