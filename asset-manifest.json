@@ -1,24 +1,25 @@
 {
   "files": {
-    "main.css": "/shex-author/static/css/main.0e936e77.chunk.css",
-    "main.js": "/shex-author/static/js/main.5df3b374.chunk.js",
-    "main.js.map": "/shex-author/static/js/main.5df3b374.chunk.js.map",
-    "runtime-main.js": "/shex-author/static/js/runtime-main.70f546b6.js",
-    "runtime-main.js.map": "/shex-author/static/js/runtime-main.70f546b6.js.map",
-    "static/css/2.e053c324.chunk.css": "/shex-author/static/css/2.e053c324.chunk.css",
-    "static/js/2.b94928c2.chunk.js": "/shex-author/static/js/2.b94928c2.chunk.js",
-    "static/js/2.b94928c2.chunk.js.map": "/shex-author/static/js/2.b94928c2.chunk.js.map",
+    "main.css": "/shex-author/static/css/main.e7cbbfa1.chunk.css",
+    "main.js": "/shex-author/static/js/main.1d3c653e.chunk.js",
+    "main.js.map": "/shex-author/static/js/main.1d3c653e.chunk.js.map",
+    "runtime-main.js": "/shex-author/static/js/runtime-main.dd7f7d21.js",
+    "runtime-main.js.map": "/shex-author/static/js/runtime-main.dd7f7d21.js.map",
+    "static/css/2.a3919c71.chunk.css": "/shex-author/static/css/2.a3919c71.chunk.css",
+    "static/js/2.cd413842.chunk.js": "/shex-author/static/js/2.cd413842.chunk.js",
+    "static/js/2.cd413842.chunk.js.map": "/shex-author/static/js/2.cd413842.chunk.js.map",
     "index.html": "/shex-author/index.html",
-    "precache-manifest.e3670ad56460df2e84d3df808173fe7f.js": "/shex-author/precache-manifest.e3670ad56460df2e84d3df808173fe7f.js",
+    "precache-manifest.1f890c6be500847380ce0690e08d3f0f.js": "/shex-author/precache-manifest.1f890c6be500847380ce0690e08d3f0f.js",
     "service-worker.js": "/shex-author/service-worker.js",
-    "static/css/2.e053c324.chunk.css.map": "/shex-author/static/css/2.e053c324.chunk.css.map",
-    "static/css/main.0e936e77.chunk.css.map": "/shex-author/static/css/main.0e936e77.chunk.css.map"
+    "static/css/2.a3919c71.chunk.css.map": "/shex-author/static/css/2.a3919c71.chunk.css.map",
+    "static/css/main.e7cbbfa1.chunk.css.map": "/shex-author/static/css/main.e7cbbfa1.chunk.css.map",
+    "static/js/2.cd413842.chunk.js.LICENSE.txt": "/shex-author/static/js/2.cd413842.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.70f546b6.js",
-    "static/css/2.e053c324.chunk.css",
-    "static/js/2.b94928c2.chunk.js",
-    "static/css/main.0e936e77.chunk.css",
-    "static/js/main.5df3b374.chunk.js"
+    "static/js/runtime-main.dd7f7d21.js",
+    "static/css/2.a3919c71.chunk.css",
+    "static/js/2.cd413842.chunk.js",
+    "static/css/main.e7cbbfa1.chunk.css",
+    "static/js/main.1d3c653e.chunk.js"
   ]
 }
