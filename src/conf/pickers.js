@@ -15,8 +15,17 @@ export const TRIPLE_PICKERS = [
         {tag:'Header',element:'header'},
         {tag:'Custom',element:'custom'},
         {tag:'Custom Fill',element:'customFill'},
+        {tag:'Constraint',element:'constraint'},
+        {tag:'Constraint Fill',element:'constraintFill'},
+        {tag:'Facet',element:'facet'},
+        {tag:'Facet Fill',element:'facetFill'},
+        {tag:'Shape Ref',element:'shapeRef'},
+        {tag:'Shape Ref Fill',element:'shapeRefFill'},
+        {tag:'Cardinality',element:'cardinality'},
+        {tag:'Cardinality Fill',element:'cardinalityFill'},
         {tag:'Delete',element:'delete'},
         {tag:'Delete Fill',element:'deleteFill'},
+        {tag:'Collapse',element:'collapse'},
         {tag:'Triple Body',element:'body'},];
 
 export const CONSTRAINT_PICKERS = [

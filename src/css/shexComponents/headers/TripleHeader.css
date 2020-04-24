@@ -37,7 +37,10 @@
 
 .zone{
     display: grid;
-    padding: 5px;
+    grid-template-columns: 12% 20% 12% 29% 20% 7%;
+    background-color: white;
+
+
 }
 
 .btnZone-collapse{
@@ -57,8 +60,26 @@
 }
 
 .btnZone{
-    border: none;
+    background-color: transparent;
+    border:none;
+    border-radius: 0px 4px 4px 0px;
+    border-right: 1px double gray;
+    border-top: 1px double gray;
+    
+    
 }
 .btnZone:focus{
    outline: none;
+}
+
+
+.collapseBtn-triple{
+    background: transparent;
+    border: none;
+    font-size: 25px;
+    border-top: 1px solid grey;
+}
+
+.collapseBtn-triple:focus{
+    outline: none;
 }

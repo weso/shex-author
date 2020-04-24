@@ -118,6 +118,13 @@ const Properties = (()=> {
             };  
         }
 
+        this.getCardinalityStyle = function(){
+            return {
+                label:{color:CARDINALITY_COLORS.label},
+                body:{background:CARDINALITY_COLORS.body}
+            };  
+        }
+
         this.getPrefixStyle = function(){
             return {
                 label:{color:PREFIX_COLORS.label},
