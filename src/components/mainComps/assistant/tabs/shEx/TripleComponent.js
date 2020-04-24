@@ -11,9 +11,9 @@ import Properties from '../../../../../conf/properties';
 function TripleComponent (props) {
     
     const {shape,triple,deleteTriple} = props;
-    const [isTripleOpen,setTripleOpen] = useState(true);
+    const [isTripleOpen,setTripleOpen] = useState(false);
     const [isTripleCustomOpen,setTripleCustomOpen] = useState(false);
-    const [isConstraintsOpen,setConstraintsOpen] = useState(false);
+    const [isConstraintsOpen,setConstraintsOpen] = useState(true);
     const [isRefOpen,setRefOpen] = useState(false);
     const [isFacetOpen,setFacetOpen] = useState(false);
     const [isCardinalityOpen,setCardinalityOpen] = useState(false);

@@ -40,13 +40,6 @@
 }
 
 
-.xs-gridBox-special{
-    display: grid;
-    align-items: center;
-    padding: 15px;
-    justify-content: center;
-   
-}
 
 .gridBox{ 
     display: grid;
@@ -68,16 +61,14 @@
     height: 100%;
 }
 
-.shapeRefSelector{
+.refSelector{
     border-radius: 5px;
     background: white;
     outline: none;
     color:#222;
     border: 1px solid #acaaaa !important;
-    height: 40px;
-    width: 100%;
+    height: 60%;
 }
-
 
 .valueSetsCont{
     display: grid;

@@ -26,8 +26,10 @@ function getPrefixes(){
 function draw(yashe,shapes,prefixes){
     let newContent=prefixes;
     if(!prefixes)newContent = getPrefixesStr(yashe);
-    newContent += shapes
-    yashe.setValue(newContent);
+  
+    yashe.setValue(shapes.reduce((acc,s) => {
+        return acc+=s.toString();
+    },newContent));
 }
 
 function getPrefixesStr(yashe){
