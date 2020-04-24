@@ -14,6 +14,7 @@ function TripleHeader (props) {
 
     const { triple,
             deleteTriple,
+            customize,
             customizeTriple,
             customizeRef,
             customizeFacet,
@@ -46,44 +47,13 @@ function TripleHeader (props) {
 
             <button className="tripleBtns buildTriple buildBtn buildTripleBtn mdc-icon-button material-icons"
                     style={styles.custom}
-                    onClick={customizeTriple}
+                    onClick={customize}
                     disabled={disabled} 
-                    title="Customize Triple">
+                    title="Customize Triple Constraint">
                     build
             </button>
 
-            <button className="tripleBtns buildConstraint buildBtn buildTripleBtn mdc-icon-button material-icons"
-                    style={styles.constraint}
-                    onClick={customizeContraints}
-                    disabled={disabled} 
-                    title="Customize Constraint">
-                    build
-            </button>
-
-             <button className="tripleBtns buildFacet buildBtn buildTripleBtn mdc-icon-button material-icons"
-                    style={styles.facet}
-                    onClick={customizeFacet}
-                    disabled={disabled}
-                    title="Customize Facets">
-                    build
-            </button>
-
-            <button className="tripleBtns buildInlineRef buildBtn buildTripleBtn mdc-icon-button material-icons"  
-                    style={styles.shapeRef}
-                    onClick={customizeRef}
-                    disabled={disabled} 
-                    title="Customize Shape Reference">
-                    build
-            </button>
-
-           
-            <button className="tripleBtns buildCardinality buildBtn buildTripleBtn mdc-icon-button material-icons" 
-                    style={styles.cardinality}
-                    onClick={customizeCardinality}
-                    disabled={disabled} 
-                    title="Customize Cardinality">
-                    build
-            </button>
+            
 
             <button className="tripleBtns deleteTripleBtn mdc-icon-button material-icons"
                     style={styles.delete}
@@ -92,14 +62,8 @@ function TripleHeader (props) {
                     title="Delete Triple Constraint">
                     delete
             </button>
+            
 
-            <button className="collapseBtn mdc-icon-button material-icons" 
-                    style={styles.collapse}
-                    onClick={collapseToggle}
-                    disabled={disabled} 
-                    title="Customize all">
-                    {colapseBtn}
-            </button>
         </div>
     );
                                    
@@ -108,4 +72,3 @@ function TripleHeader (props) {
 
 
 export default TripleHeader;
-
