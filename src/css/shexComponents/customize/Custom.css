@@ -44,6 +44,7 @@
     display: grid;
     align-items: center;
     padding: 15px;
+    justify-content: center;
    
 }
 
@@ -67,13 +68,7 @@
     height: 100%;
 }
 
-.refSelect{
-    display: grid;
-    grid-template-columns: 30% 40% 30%;
-}
-
 .shapeRefSelector{
-    grid-column: 2/3;
     border-radius: 5px;
     background: white;
     outline: none;

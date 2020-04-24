@@ -47,7 +47,7 @@ function ShapeRefComp (props) {
      
     return ( 
             <div className="xs-gridBox-special" style={styles.body}>
-                    <div className="refSelect">
+                   
                         <select className="shapeRefSelector"
                                 value={shapeRef}
                                 onChange={handleShapeRefChange}>
@@ -59,7 +59,7 @@ function ShapeRefComp (props) {
                             })
                         }
                         </select>  
-                    </div>
+                 
             </div>);                          
 }
 
