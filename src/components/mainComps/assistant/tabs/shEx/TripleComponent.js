@@ -104,7 +104,7 @@ function TripleComponent (props) {
 
     const changeCollapseBtn = function(){
         if(colapseBtn=='menu'){
-            setColapseBtn('menu_open');
+            setColapseBtn('-------------');
         }else{
             setColapseBtn('menu');
         }
@@ -124,7 +124,7 @@ function TripleComponent (props) {
 
                 <div className='zone'style={tripleStyles.body}> 
                     <button className='type-zone btnZone'
-                            onClick={customizeTriple}>Type </button>
+                            onClick={customizeTriple}>Triple </button>
                 </div>             
 
                 <CustomComp  entity={triple} 
