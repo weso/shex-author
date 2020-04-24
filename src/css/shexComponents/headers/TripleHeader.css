@@ -37,7 +37,7 @@
 
 .zone{
     display: grid;
- 
+    padding: 5px;
 }
 
 .btnZone{
@@ -62,7 +62,6 @@
 .ref-zone{
     background-color: #f5fac8;
 }
-
 
 .cardinality-zone{
     background-color: #fae2f8;

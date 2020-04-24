@@ -25,8 +25,8 @@ function FacetContainer (props) {
         context.emit();
     }
 
-    return (<div className="xs-gridBox" style={styles.body}>
-                    <label className="gridLabel" style={styles.label}>Facet</label>
+    return (<div className="xs-gridBox-special" style={styles.body}>
+                   
                     <div className="facetCont">
                         {facets.map(f =>{
                                 return (<FacetComp 

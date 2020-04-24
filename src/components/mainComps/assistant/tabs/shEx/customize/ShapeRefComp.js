@@ -46,19 +46,20 @@ function ShapeRefComp (props) {
     }
      
     return ( 
-            <div className="xs-gridBox" style={styles.body}>
-                    <label className="customLabel" style={styles.label}>Shape <br/><span>Reference</span></label>
-                    <select className="shapeRefSelector"
-                            value={shapeRef}
-                            onChange={handleShapeRefChange}>
-                    <option value=''>none</option>
-                
-                    { 
-                    context.shapes.map(shape =>{
-                        return <option key={shape.id} value={shape.id}>{'@'+shape.type}</option>
-                        })
-                    }
-                    </select>  
+            <div className="xs-gridBox-special" style={styles.body}>
+                    <div className="refSelect">
+                        <select className="shapeRefSelector"
+                                value={shapeRef}
+                                onChange={handleShapeRefChange}>
+                        <option value=''>none</option>
+                    
+                        { 
+                        context.shapes.map(shape =>{
+                            return <option key={shape.id} value={shape.id}>{'@'+shape.type}</option>
+                            })
+                        }
+                        </select>  
+                    </div>
             </div>);                          
 }
 

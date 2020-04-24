@@ -39,6 +39,7 @@ function TripleComponent (props) {
             setTripleCustomOpen(true);
             changeCollapseBtn();
         }
+
     }
 
     const customizeContraints = function(){
@@ -115,12 +116,7 @@ function TripleComponent (props) {
         <div>
             <TripleHeader triple={triple} 
                           deleteTriple={deleteTriple}
-                          customize={customize} 
-                          customizeTriple={customizeTriple}
-                          customizeContraints={customizeContraints}
-                          customizeRef={customizeRef}
-                          customizeFacet={customizeFacet}
-                          customizeCardinality={customizeCardinality}
+                          customize={customize}
                           collapseToggle={collapseToggle}
                           colapseBtn={colapseBtn}/>
 
@@ -157,7 +153,7 @@ function TripleComponent (props) {
 
                 <div className='zone' style={refStyles.body}>
                     <button className='ref-zone btnZone'
-                            onClick={customizeRef}>ShapeRef </button>  
+                            onClick={customizeRef}>Shape Reference </button>  
                 </div>
                 <Collapse  isOpen={isRefOpen}>
                     <ShapeRefComp triple={triple}/>      
