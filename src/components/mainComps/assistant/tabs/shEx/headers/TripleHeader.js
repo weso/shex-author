@@ -14,6 +14,7 @@ function TripleHeader (props) {
 
     const { triple,
             deleteTriple,
+            customize,
             customizeTriple,
             customizeRef,
             customizeFacet,
@@ -46,7 +47,7 @@ function TripleHeader (props) {
 
             <button className="tripleBtns buildTriple buildBtn buildTripleBtn mdc-icon-button material-icons"
                     style={styles.custom}
-                    onClick={customizeTriple}
+                    onClick={customize}
                     disabled={disabled} 
                     title="Customize Triple">
                     build
