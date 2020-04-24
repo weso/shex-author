@@ -98,13 +98,15 @@ function TripleComponent (props) {
 
     const collapseToggle = function(){
         collapseAll(!allCollased);
+        
+
         setAllCollapsed(!allCollased);
         changeCollapseBtn();
     }
 
     const changeCollapseBtn = function(){
         if(colapseBtn=='menu'){
-            setColapseBtn('-------------');
+            setColapseBtn('menu_open');
         }else{
             setColapseBtn('menu');
         }
@@ -122,8 +124,13 @@ function TripleComponent (props) {
 
             <Collapse   isOpen={isTripleOpen}> 
 
+                 <div className='zone-collapse-btn'style={tripleStyles.body}> 
+                    <button className='type-zone btnZone-collapse mdc-icon-button material-icons'
+                            onClick={collapseToggle}>{colapseBtn} </button>
+                </div>             
+
                 <div className='zone'style={tripleStyles.body}> 
-                    <button className='type-zone btnZone'
+                    <button className='type-zone btnZone '
                             onClick={customizeTriple}>Triple </button>
                 </div>             
 

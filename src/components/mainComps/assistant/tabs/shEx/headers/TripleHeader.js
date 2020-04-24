@@ -62,6 +62,7 @@ function TripleHeader (props) {
                     title="Delete Triple Constraint">
                     delete
             </button>
+            
 
         </div>
     );

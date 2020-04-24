@@ -40,6 +40,22 @@
     padding: 5px;
 }
 
+.btnZone-collapse{
+    border: none;
+    text-align: right;
+    padding: 1px;
+    height: 10px;
+}
+
+.btnZone-collapse:focus{
+    outline: none;
+ }
+
+
+.zone-collapse-btn{
+    height: 15px;
+}
+
 .btnZone{
     border: none;
 }
