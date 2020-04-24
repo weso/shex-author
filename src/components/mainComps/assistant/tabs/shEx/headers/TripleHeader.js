@@ -52,7 +52,28 @@ function TripleHeader (props) {
                     build
             </button>
 
-            <button className="tripleBtns buildConstraint buildBtn buildTripleBtn mdc-icon-button material-icons"
+            
+
+            <button className="tripleBtns deleteTripleBtn mdc-icon-button material-icons"
+                    style={styles.delete}
+                    onClick={()=>deleteTriple(triple.id)}
+                    disabled={disabled} 
+                    title="Delete Triple Constraint">
+                    delete
+            </button>
+
+        </div>
+    );
+                                   
+    
+}
+
+
+export default TripleHeader;
+
+
+/*
+<button className="tripleBtns buildConstraint buildBtn buildTripleBtn mdc-icon-button material-icons"
                     style={styles.constraint}
                     onClick={customizeContraints}
                     disabled={disabled} 
@@ -85,27 +106,11 @@ function TripleHeader (props) {
                     build
             </button>
 
-            <button className="tripleBtns deleteTripleBtn mdc-icon-button material-icons"
-                    style={styles.delete}
-                    onClick={()=>deleteTriple(triple.id)}
-                    disabled={disabled} 
-                    title="Delete Triple Constraint">
-                    delete
-            </button>
-
-            <button className="collapseBtn mdc-icon-button material-icons" 
+               <button className="collapseBtn mdc-icon-button material-icons" 
                     style={styles.collapse}
                     onClick={collapseToggle}
                     disabled={disabled} 
                     title="Customize all">
                     {colapseBtn}
             </button>
-        </div>
-    );
-                                   
-    
-}
-
-
-export default TripleHeader;
-
+*/
