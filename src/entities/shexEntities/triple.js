@@ -6,6 +6,7 @@ import Primitive from './types/concreteTypes/primitive';
 import ShapeRef from './others/shapeRef';
 import Prefix from './others/prefix';
 import {DEFAULTS} from '../../conf/config.js';
+import Shape from './shape';
 
 class Triple {
 

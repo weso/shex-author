@@ -130,7 +130,7 @@ function TripleComponent (props) {
                 </div>             
 
                 <div className='zone'style={tripleStyles.body}> 
-                    <button className='type-zone btnZone '
+                    <button className='btnZone 'style={tripleStyles.body}
                             onClick={customizeTriple}>Triple </button>
                 </div>             
 
@@ -141,7 +141,7 @@ function TripleComponent (props) {
                             customClass="customTriple"/>
 
                 <div className='zone' style={constStyles.body}>
-                    <button className='constraint-zone btnZone'
+                    <button className='btnZone' style={constStyles.body}
                             onClick={customizeContraints}>Constraint </button>  
                 </div>
 
@@ -150,7 +150,7 @@ function TripleComponent (props) {
                 </Collapse> 
                 
                 <div className='zone' style={facetStyles.body}>
-                    <button className='facet-zone btnZone'
+                    <button className='btnZone' style={facetStyles.body}
                     onClick={customizeFacet}>Facet </button>  
                 </div>
 
@@ -159,7 +159,7 @@ function TripleComponent (props) {
                 </Collapse> 
 
                 <div className='zone' style={refStyles.body}>
-                    <button className='ref-zone btnZone'
+                    <button className='btnZone' style={refStyles.body}
                             onClick={customizeRef}>Shape Reference </button>  
                 </div>
                 <Collapse  isOpen={isRefOpen}>
@@ -167,7 +167,7 @@ function TripleComponent (props) {
                 </Collapse> 
 
                 <div className='zone' style={cardStyles.body}>
-                    <button className='cardinality-zone btnZone'
+                    <button className='btnZone' style={cardStyles.body}
                             onClick={customizeCardinality}>Cardinality </button>  
                 </div>
                 <Collapse  isOpen={isCardinalityOpen}>

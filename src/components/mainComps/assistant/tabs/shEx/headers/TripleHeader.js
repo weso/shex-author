@@ -49,7 +49,7 @@ function TripleHeader (props) {
                     style={styles.custom}
                     onClick={customize}
                     disabled={disabled} 
-                    title="Customize Triple">
+                    title="Customize Triple Constraint">
                     build
             </button>
 
@@ -72,47 +72,3 @@ function TripleHeader (props) {
 
 
 export default TripleHeader;
-
-
-/*
-<button className="tripleBtns buildConstraint buildBtn buildTripleBtn mdc-icon-button material-icons"
-                    style={styles.constraint}
-                    onClick={customizeContraints}
-                    disabled={disabled} 
-                    title="Customize Constraint">
-                    build
-            </button>
-
-             <button className="tripleBtns buildFacet buildBtn buildTripleBtn mdc-icon-button material-icons"
-                    style={styles.facet}
-                    onClick={customizeFacet}
-                    disabled={disabled}
-                    title="Customize Facets">
-                    build
-            </button>
-
-            <button className="tripleBtns buildInlineRef buildBtn buildTripleBtn mdc-icon-button material-icons"  
-                    style={styles.shapeRef}
-                    onClick={customizeRef}
-                    disabled={disabled} 
-                    title="Customize Shape Reference">
-                    build
-            </button>
-
-           
-            <button className="tripleBtns buildCardinality buildBtn buildTripleBtn mdc-icon-button material-icons" 
-                    style={styles.cardinality}
-                    onClick={customizeCardinality}
-                    disabled={disabled} 
-                    title="Customize Cardinality">
-                    build
-            </button>
-
-               <button className="collapseBtn mdc-icon-button material-icons" 
-                    style={styles.collapse}
-                    onClick={collapseToggle}
-                    disabled={disabled} 
-                    title="Customize all">
-                    {colapseBtn}
-            </button>
-*/
