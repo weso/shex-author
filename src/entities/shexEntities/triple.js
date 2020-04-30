@@ -10,7 +10,7 @@ import {DEFAULTS} from '../../conf/config.js';
 
 class Triple extends Node{
 
-    constructor(id,type=new PrefixedIri(new Prefix('schema','http://schema.org/')),constraint=new Primitive(),shapeRef=new ShapeRef(),facets=[],cardinality=new CardinalitySimple(),triples=[]) {
+    constructor(id,type=new PrefixedIri(new Prefix('schema','http://schema.org/')),constraint=new Primitive(),facets=[],shapeRef=new ShapeRef(),cardinality=new CardinalitySimple(),triples=[]) {
         super(id,type,constraint,facets,shapeRef,triples);
         this.cardinality = cardinality;
         this.cardFactory = new CardinalityFactory();

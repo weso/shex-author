@@ -50,6 +50,6 @@
     "react-resize-panel": "^0.3.5",
     "react-slide-toggle": "^0.3.3",
     "reactstrap": "^8.1.1",
-    "yashe": "^1.3.6"
+    "yashe": "^1.3.7"
   }
 }

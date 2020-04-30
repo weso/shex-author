@@ -8,7 +8,7 @@ import ShapeRef from './others/shapeRef';
 
 class Shape extends Node{
 
-  constructor(id,type=new PrefixedIri(new Prefix('','http:/example.org/')),constraint=new Primitive(),shapeRef=new ShapeRef(),facets=[],triples=[]) {
+  constructor(id,type=new PrefixedIri(new Prefix('','http:/example.org/')),constraint=new Primitive(),facets=[],shapeRef=new ShapeRef(),triples=[]) {
       super(id,type,constraint,facets,shapeRef,triples);
     }
 

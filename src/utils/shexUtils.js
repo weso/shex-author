@@ -43,13 +43,13 @@ function getShapeById(shapes,shapeId) {
 
 function getShapeByName(shapes,name) {
     return shapes.filter(s=>{
-        return s.getType().toString() == name;
+        return s.type.toString() == name;
     })[0];
 }
 
 
 function getTripleById(shape,tripleId) {
-    return shape.getTriples().filter(function( obj ) {
+    return shape.triples.filter(function( obj ) {
         return obj.id == tripleId
     })[0];
 }
