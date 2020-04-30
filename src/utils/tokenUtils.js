@@ -114,10 +114,9 @@ function getShapes(defShapes){
         let id  = acc.length;
         let shapeDef = shape[0].string;
         let shapeType = getType(shapeDef);
-        let qualifier = getQualifier(shape[1]);
         let triples = getTriples(id,shape);
 
-        acc.push(new Shape(id,shapeType,triples,qualifier));
+        acc.push(new Shape(id,shapeType,new Primitive(),new ShapeRef(),[],triples));
         return acc;
 
     },[])
@@ -146,21 +145,6 @@ function getType(def) {
 }
 
 
-/**
-*   Get the Qualifier
-*   @param {Token} First token next to the ShapeExprLabel
-*   @return {Type}
-*
-*/
-function getQualifier(qualifier) {
-    if(qualifier){
-        if(qualifier.type == 'constraintKeyword'){
-            let type = qualifier.string.toLowerCase();
-            return new TypesFactory().createType(type);
-        }
-    }
-    return new BlankKind();
-}
 
 
 /**

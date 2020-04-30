@@ -29,7 +29,11 @@ function ShapeRefComp (props) {
             shapeRef = shexUtils.getShapeById(context.shapes,shapeId);
             refSelector = shapeRef.id;
         }
+
         entity.shapeRef.shape = shapeRef;
+        
+        //If there is a shapeRef it can't be an inlineShape
+        entity.triples = [];
 
         context.emit();
         setShapeRef(refSelector);

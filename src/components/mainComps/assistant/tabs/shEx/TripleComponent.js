@@ -30,9 +30,13 @@ function TripleComponent (props) {
         const id = triple.triplesCount;
         const subTriple = new Triple(id);
 
+         // If there is a inline shape it can't be a shapeRef
+        triple.shapeRef.shape = null;
+
         setTriples([...triples,subTriple]);
-        
         triple.addTriple(subTriple);
+
+      
         context.emit();       
     }
 

@@ -107,6 +107,16 @@ function NodeComponent (props) {
         }
     }
 
+    const getCardinalityIfNeeded = function(){
+        console.log(entity)
+        if(entity.cardinality){
+            return(
+                <Collapse  isOpen={isCardinalityOpen}>
+                    <CardinalityComp triple={entity}/>      
+                </Collapse> 
+            )
+        }
+    }
     
 
     return ( 
@@ -148,7 +158,8 @@ function NodeComponent (props) {
                 <Collapse  isOpen={isRefOpen}>
                     <ShapeRefComp entity={entity}/>      
                 </Collapse> 
-     
+                
+                {getCardinalityIfNeeded()}
 
             </Collapse>  );                          
 }
