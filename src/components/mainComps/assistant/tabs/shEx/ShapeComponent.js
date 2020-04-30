@@ -1,6 +1,6 @@
 import React,{useContext,useState} from 'react';
-import { Collapse } from 'reactstrap';
 import {AppContext} from '../../../../../App';
+import { Collapse } from 'reactstrap';
 import ShapeHeader from  './headers/ShapeHeader';
 import CustomComp from './customize/CustomComp';
 import TripleComponent from './TripleComponent';
@@ -87,7 +87,6 @@ function ShapeComponent (props) {
                      <div className="triples" style={styles.body}>
                         {triples.map(triple =>
                             <TripleComponent key={triple.id}
-                                            shape={shape} 
                                             triple={triple}
                                             deleteTriple={deleteTriple}/> 
                         )}

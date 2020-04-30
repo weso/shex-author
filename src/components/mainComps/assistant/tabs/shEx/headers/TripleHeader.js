@@ -15,12 +15,7 @@ function TripleHeader (props) {
     const { triple,
             deleteTriple,
             customize,
-            customizeTriple,
-            customizeRef,
-            customizeFacet,
-            customizeContraints,
-            customizeCardinality,
-            collapseToggle,
+            collapseTriples,
             colapseBtn
             } = props;
 
@@ -61,6 +56,13 @@ function TripleHeader (props) {
                     disabled={disabled} 
                     title="Delete Triple Constraint">
                     delete
+            </button>
+
+             <button className="collapseBtn mdc-icon-button material-icons" 
+                    style={styles.collapse}
+                    onClick={collapseTriples} 
+                    title="Triple Constraints">
+                    menu
             </button>
             
 
