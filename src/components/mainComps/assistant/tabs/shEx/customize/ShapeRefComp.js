@@ -30,17 +30,7 @@ function ShapeRefComp (props) {
             refSelector = shapeRef.id;
         }
         entity.shapeRef.shape = shapeRef;
-        if(entity.constraint.value=='none'){
-            entity.setConstraint('blankType');
-            
-        }
-        
-        if(shapeId=='' && entity.constraint.getTypeName() == 'blankType'){
-            entity.setConstraint('primitive');
-            entity.constraint.value = 'none';
-        }
-        
-      
+
         context.emit();
         setShapeRef(refSelector);
     }
