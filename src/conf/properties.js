@@ -107,6 +107,10 @@ const Properties = (()=> {
                         color:SUB_TRIPLE_COLORS.deleteFill,
                         background:SUB_TRIPLE_COLORS.delete
                 },
+                addSubTriple:{
+                        color:SUB_TRIPLE_COLORS.addSubTripleFill,
+                        background:SUB_TRIPLE_COLORS.addSubTriple
+                },
                 collapse:{color:TRIPLE_COLORS.collapse},
                 body:{background:TRIPLE_COLORS.body},
             }

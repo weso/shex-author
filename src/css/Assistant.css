@@ -125,7 +125,8 @@ label{
     border-radius: 10px;
     display: grid;
     grid-template-columns: 100%; 
-    padding: 10px 10px;
+    padding-left: 10px;
+    padding-right: 10px;
 
 
 }

@@ -1,4 +1,4 @@
-import Node from '../node';
+import Node from './node';
 
 import CardinalityFactory from './others/cardinality/cardinalityFactory';
 import CardinalitySimple from './others/cardinality/cardinalitySimple';
@@ -22,11 +22,16 @@ class Triple extends Node{
     }
 
 
+    subString(){
+        return ''+this.type+' '+this.constraint+' '+this.facets+' '+this.shapeRef+' '+this.cardinality+";";
+    }
+
 
     toString(separators){
         let str='';
         let type=this.type;
         let constraint = this.constraint;
+        if(this.triples.length>0)constraint.value='';
         let facets = this.facets;
         let shapeRef = this.shapeRef;
         let cardinality = this.cardinality;
@@ -50,10 +55,69 @@ class Triple extends Node{
             }
             str+=constSeparator+shapeRef
                 +refSeparator+cardinality
-                +cardSeparator+';\n';
+                +cardSeparator;
+       
+
+            if(this.triples.length>0){
+                str+=' {';
+                this.triples.forEach(subTriple => {
+                    str+=subTriple.subString();
+                });
+                str+='}';
+            }
+
+            str+=';\n';
+
         }
+        
         return str;
 
+    }
+
+
+    getLongestElement(element){
+      let size=0;
+      this.triples.forEach(triple => {
+          let value = triple[element].toString().length;
+          if(value>size)size = value;
+      });
+      return size;
+    }
+
+    /**
+    * Get the longest Constraint+ShapeRef
+    * */
+    getLongestCR(){
+      let size=0;
+      this.triples.forEach(triple => {
+          let cValue = triple.constraint.toString().length;
+          let rValue = triple.shapeRef.toString().length;
+          let value = cValue+rValue;
+          if(value>size)size = value;
+      });
+      return size;
+    }
+
+
+
+
+    getSeparators(tripleSize,constraintSize,refSize,cardSize,CRefSize){
+      return{
+        triple:this.getSeparator(tripleSize),
+        constraint:this.getSeparator(constraintSize),
+        ref:this.getSeparator(refSize),
+        card:this.getSeparator(cardSize),
+        CRef:this.getSeparator(CRefSize),
+      }
+    }
+
+    getSeparator(size){
+      let space = ' ';
+      let separator = ' ';
+      for(let i=0;i<size;i++){
+        separator+=space;
+      }
+      return separator;
     }
 
     checkPrettyOptions(separators){

@@ -1,4 +1,4 @@
-import Node from '../node';
+import Node from './node';
 
 import PrefixedIri from './types/concreteTypes/prefixedIri';
 import BlankKind from './types/concreteTypes/kinds/blankKind';

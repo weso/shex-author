@@ -39,7 +39,9 @@ export const SUB_TRIPLE_COLORS = {
         custom:'#3d3d3d',
         customFill:'#F48D81',
         delete:'#F48D81',
-        deleteFill:'#ffff'
+        deleteFill:'#ffff',
+        addSubTriple:'#ffd0ca',
+        addSubTripleFill:'#222'
 };
 
 

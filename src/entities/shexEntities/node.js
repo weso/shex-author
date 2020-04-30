@@ -1,4 +1,4 @@
-import TypesFactory from './shexEntities/types/typesFactory';
+import TypesFactory from './types/typesFactory';
 
 class Node {
 
