@@ -162,10 +162,24 @@ function getTriples(shapeId,tokens) {
         let triples = [];
         let singleTriple = [];
         let yashe = Editor.getYashe();
+        let start = false;
+        let open = 0;
         return tokens.reduce((acc,token,index)=>{
            // console.log(singleTriple)
             singleTriple.push(token);
-            if(isEndOfTriple(token,index,tokens)){
+             console.log(Object.assign({},singleTriple))
+
+            if(token.string == '{'){
+                open++;
+                start = true;
+            }
+
+            if(token.string == '}'){
+                open--;
+                start = true;
+            }
+
+            if((open == 0 && start==true) || (isEndOfTriple(token,index,tokens) && start == false)){
                 let bTokens = getBeforeTripleTokens(singleTriple);
                 let content = getContent(acc.length,bTokens,shapeId);
                 let stTokens = getTripleTokens(singleTriple);
@@ -173,8 +187,12 @@ function getTriples(shapeId,tokens) {
                 let triple = new Triple(acc.length,content.type,content.constraint,content.facets,content.shapeRef,content.cardinality,subTriples);
                 references.push({entity:triple,ref:content.ref});
                 acc.push(triple);
+
+                console.log(singleTriple)
                 singleTriple = [];
+                start = false;
             }
+            
             return acc;
         },[])
 }
@@ -263,9 +281,9 @@ function getContent(id,tokens,entityId) {
 *   @return {Array} Tokens
 *
 */
-function getBeforeTripleTokens(shape){
+function getBeforeTripleTokens(tokens){
     let start=true;
-    return shape.reduce((acc,t)=>{
+    return tokens.reduce((acc,t)=>{
         if(t.string=='{')start=false;
         if(start)acc.push(t);
         return acc;
@@ -278,10 +296,10 @@ function getBeforeTripleTokens(shape){
 *   @return {Array} Tokens
 *
 */
-function getTripleTokens(shape){
+function getTripleTokens(tokens){
     let start=false;
     let open = 0;
-    return shape.reduce((acc,t)=>{
+    return tokens.reduce((acc,t)=>{
         if(start)acc.push(t);
         if(t.string=='{'){
             open++;
@@ -290,7 +308,6 @@ function getTripleTokens(shape){
 
         if(t.string=='}'){
             open--;
-            start=true;
         }
 
         if(open == 0 && start==true)start=false;
