@@ -37,10 +37,10 @@ function TripleComponent (props) {
     }
 
      const subDeleteTriple = function(tripleId){
-    /*     const newTriples = shape.triples.filter( triple => triple.id != tripleId);
+        const newTriples = triple.triples.filter( subTriple => subTriple.id != tripleId);
         setTriples(newTriples)
-        shape.triples = newTriples;
-        context.emit(); */
+        triple.triples = newTriples;
+        context.emit(); 
         
     }
 
