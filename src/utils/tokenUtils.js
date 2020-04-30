@@ -114,7 +114,15 @@ function getShapes(defShapes){
         let id  = acc.length;
         let shapeDef = shape[0].string;
         let shapeType = getType(shapeDef);
-        let triples = getTriples(id,shape);
+        let sTokens = getShapeTokens(shape);
+        let customs =  getCustoms(id,sTokens,id);
+
+        console.log(customs)
+
+        let tTokens = getTripleTokens(shape);
+
+       // let triples = getTriples(id,tTokens);
+        let triples = [];
 
         acc.push(new Shape(id,shapeType,new Primitive(),new ShapeRef(),[],triples));
         return acc;
@@ -153,14 +161,13 @@ function getType(def) {
 *   @param {Array} Shape (Tokens)
 *
 * */
-function getTriples(shapeId,shape) {
+function getTriples(shapeId,tokens) {
         let triples = [];
         let singleTriple = [];
         let yashe = Editor.getYashe();
-        let tTokens = getTripleTokens(shape);
-        return tTokens.reduce((acc,token,index)=>{
+        return tokens.reduce((acc,token,index)=>{
             singleTriple.push(token);
-            if(isEndOfTriple(token,index,tTokens)){
+            if(isEndOfTriple(token,index,tokens)){
                 acc.push(getTriple(acc.length,singleTriple,shapeId));
                 singleTriple = [];
             }
@@ -259,6 +266,110 @@ function getTriple(id,singleTriple,shapeId) {
     }
     if(valueSet.length>0)constraint=new ValueSet(valueSet);
     return new Triple(id,type,constraint,shapeRef,facets,cardinality);
+}
+
+
+function getCustoms(id,tokens,entityId) {   
+    let type;
+    let constraint;
+    let valueSet = [];
+    let facets = [];
+    let cardinality= new TypesFactory().createType('');
+    let shapeRef = new ShapeRef();
+
+    //I am using a for loop just because of the facets (see line 233)
+    for(let i=0;i<tokens.length;i++){
+        let token = tokens[i];
+        if(token.type == 'string-2' || token.type == 'variable-3' || token.type=='shape'){
+            type = getType(token.string);
+        }
+        if(token.type == 'constraint' || token.type == 'constraintKeyword' ){
+            constraint = getConstraint(token.string);
+        }
+        
+
+        if(token.type == 'valueSet'){
+            if(token.string.startsWith('@')){// LANTAG NOT SUPPORTED AT THE MOMENT
+                Codemirror.signal(Editor.getYashe(),'forceError','LANTAG_ERR');
+            }else{
+                 valueSet.push(new ValueSetValue(valueSet.length,getValueSetValue(token.string)));
+            }
+        }
+
+        if(token.type == 'shapeRef' ){
+            let ref = getRefName(token.string);
+            refs.push(
+                    {
+                        entityId:entityId,
+                        tripleId:id,
+                        shapeRef:ref
+                    }
+                );
+        }
+
+        if(token.type == 'facet'){
+            i++;//I Need the next value
+            let value = tokens[i].string;
+            let id =facets.length;
+            let type = token.string.toLowerCase();
+            facets.push(new Facet(id,type,value));
+        }
+
+
+        if(token.type == 'cardinality'){
+          cardinality=getCardinality(token.string);
+        }
+        
+        if( token.type != 'string-2' && 
+            token.type != 'variable-3' &&
+            token.type != 'shape' &&
+            token.type != 'constraint' && 
+            token.type != 'constraintKeyword' && 
+            token.type != 'valueSet' && 
+            token.type != 'shapeRef' && 
+            token.type != 'facet' && 
+            token.type != 'cardinality' && 
+            token.type != 'punc' &&
+            token.type !='comment'){
+
+            Codemirror.signal(Editor.getYashe(),'forceError');
+        }
+
+       
+        // Force errors in case to find one of the following tokens
+
+        if(token.string == '~'){
+            Codemirror.signal(Editor.getYashe(),'forceError','EXCLUSION_ERR');
+        }
+
+        if(token.string == '('){
+            Codemirror.signal(Editor.getYashe(),'forceError','PARENTHESIS_ERR');
+        }
+            
+
+        if(token.string == '{'){
+            Codemirror.signal(Editor.getYashe(),'forceError','INLINESHAPE_ERR');
+        }
+  
+    }
+    if(valueSet.length>0)constraint=new ValueSet(valueSet);
+    return {type:type,constraint:constraint,facets:facets,shapeRef:shapeRef,cardinality:cardinality};
+}
+
+
+/**
+*   Get the shape tokens. We start collecting the tokens before find '{' token
+*   @param {Array} Shape (Tokens)
+*   @return {Array} Tokens
+*
+*/
+function getShapeTokens(shape){
+    let start=true;
+    return shape.reduce((acc,t)=>{
+        if(t.string=='{')start=false;
+        if(start)acc.push(t);
+        return acc;
+    },[])
 }
 
 /**
