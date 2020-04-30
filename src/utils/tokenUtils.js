@@ -92,7 +92,6 @@ function getDefinedShapes(tokens){
                 if(element.string == '{')brackets++;
                 if(element.string == '}')brackets--;
                 if(brackets!=0)shape.push(element);
-                //if(brackets==0)hasTripleStarted = false
              }else{
                  //Get the previous tokens before the triples
                  shape.push(element);
@@ -120,11 +119,9 @@ function getShapes(defShapes){
         let tTokens = getTripleTokens(shape);
         let triples = getTriples(id,tTokens);
 
-       // let triples = [];
-
-
-
-        acc.push(new Shape(id,content.type,content.constraint,content.facets,content.shapeRef,triples));
+        let s = new Shape(id,content.type,content.constraint,content.facets,content.shapeRef,triples);
+        references.push({entity:s,ref:content.ref});
+        acc.push(s);
         return acc;
 
     },[])
