@@ -107,8 +107,21 @@ function NodeComponent (props) {
         }
     }
 
+    const getCardinalityStyleIfNeeded = function(){
+        if(entity.cardinality)return 'zone-card';
+        return 'zone';
+    }
+
     const getCardinalityIfNeeded = function(){
-        console.log(entity)
+        if(entity.cardinality){
+            return(
+                <button className='btnZone'style={cardStyles.body}
+                onClick={customizeCardinality}>Cardinality</button>
+            )
+        }
+    }
+
+    const getCardinalityCompIfNeeded = function(){
         if(entity.cardinality){
             return(
                 <Collapse  isOpen={isCardinalityOpen}>
@@ -118,11 +131,12 @@ function NodeComponent (props) {
         }
     }
     
+    
 
     return ( 
             <Collapse  isOpen={isCustomOpen}> 
 
-                <div className='zone' style={tripleStyles.body}>
+                <div className={getCardinalityStyleIfNeeded()} style={tripleStyles.body}>
                     <button className='btnZone'style={tripleStyles.body}
                     onClick={customizeTriple}>Triple</button>
                    <button className='btnZone'style={constStyles.body}
@@ -131,9 +145,7 @@ function NodeComponent (props) {
                     onClick={customizeFacet}>Facet</button>
                     <button className='btnZone'style={refStyles.body}
                     onClick={customizeRef}>ShapeReference</button>
-                    <button className='btnZone'style={cardStyles.body}
-                    onClick={customizeCardinality}>Cardinality</button>
-
+                    {getCardinalityIfNeeded()}
                     <button className="collapseBtn-triple mdc-icon-button material-icons" 
                     style={tripleStyles.collapse}
                     onClick={collapseToggle}
@@ -159,7 +171,7 @@ function NodeComponent (props) {
                     <ShapeRefComp entity={entity}/>      
                 </Collapse> 
                 
-                {getCardinalityIfNeeded()}
+                {getCardinalityCompIfNeeded()}
 
             </Collapse>  );                          
 }
