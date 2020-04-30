@@ -5,12 +5,14 @@ import Prefix from '../entities/shexEntities/others/prefix';
 let prefixCount = 0;
 
 function getShapes(){
+  
   let tokens = tokenUtils.getTokens();
   let defShapes = tokenUtils.getDefinedShapes(tokens);
   let newShapes = tokenUtils.getShapes(defShapes);
 
   tokenUtils.updateShapeRefs(newShapes);
 
+  
 
   console.log(newShapes)
   return newShapes; 

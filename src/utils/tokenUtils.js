@@ -38,7 +38,8 @@ import ValueSetValue from '../entities/shexEntities/others/valueSetValue';
 const PRIMITIVES = ['string','integer','date','boolean'];
 
 
-let refs;
+
+let references;
 /**
 *   Obtains all the current tokens in the editor
 *   @return {Array} tokens
@@ -109,12 +110,12 @@ function getDefinedShapes(tokens){
 *
  */
 function getShapes(defShapes){
-    refs = [];
+    references = [];
     return defShapes.reduce((acc,shape)=>{
         let id  = acc.length;
         let shapeDef = shape[0].string;
-        let sTokens = getShapeTokens(shape);
-        let customs =  getCustoms(id,sTokens,id);
+        let sTokens = getBeforeTripleTokens(shape);
+        let content =  getContent(id,sTokens,id);
 
         let tTokens = getTripleTokens(shape);
         let triples = getTriples(id,tTokens);
@@ -123,7 +124,7 @@ function getShapes(defShapes){
 
 
 
-        acc.push(new Shape(id,customs.type,customs.constraint,customs.facets,customs.shapeRef,triples));
+        acc.push(new Shape(id,content.type,content.constraint,content.facets,content.shapeRef,triples));
         return acc;
 
     },[])
@@ -165,24 +166,30 @@ function getTriples(shapeId,tokens) {
         let singleTriple = [];
         let yashe = Editor.getYashe();
         return tokens.reduce((acc,token,index)=>{
+           // console.log(singleTriple)
             singleTriple.push(token);
             if(isEndOfTriple(token,index,tokens)){
-                let customs = getCustoms(acc.length,singleTriple,shapeId);
-                let t = new Triple(acc.length,customs.type,customs.constraint,customs.facets,customs.shapeRef,customs.cardinality);
-                acc.push(t);
+                let bTokens = getBeforeTripleTokens(singleTriple);
+                let content = getContent(acc.length,bTokens,shapeId);
+                let stTokens = getTripleTokens(singleTriple);
+                let subTriples = getTriples(acc.length,stTokens);
+                let triple = new Triple(acc.length,content.type,content.constraint,content.facets,content.shapeRef,content.cardinality,subTriples);
+                references.push({entity:triple,ref:content.ref});
+                acc.push(triple);
                 singleTriple = [];
             }
             return acc;
         },[])
 }
 
-function getCustoms(id,tokens,entityId) {   
+function getContent(id,tokens,entityId) {   
     let type;
     let constraint;
     let valueSet = [];
     let facets = [];
     let cardinality= new TypesFactory().createType('');
     let shapeRef = new ShapeRef();
+    let ref;
 
     //I am using a for loop just because of the facets (see line 233)
     for(let i=0;i<tokens.length;i++){
@@ -204,14 +211,7 @@ function getCustoms(id,tokens,entityId) {
         }
 
         if(token.type == 'shapeRef' ){
-            let ref = getRefName(token.string);
-            refs.push(
-                    {
-                        shapeId:entityId,
-                        tripleId:id,
-                        shapeRef:ref
-                    }
-                );
+            ref = getRefName(token.string);
         }
 
         if(token.type == 'facet'){
@@ -253,24 +253,20 @@ function getCustoms(id,tokens,entityId) {
             Codemirror.signal(Editor.getYashe(),'forceError','PARENTHESIS_ERR');
         }
             
-
-        if(token.string == '{'){
-            Codemirror.signal(Editor.getYashe(),'forceError','INLINESHAPE_ERR');
-        }
   
     }
     if(valueSet.length>0)constraint=new ValueSet(valueSet);
-    return {type:type,constraint:constraint,facets:facets,shapeRef:shapeRef,cardinality:cardinality};
+    return {type:type,constraint:constraint,facets:facets,shapeRef:shapeRef,ref:ref,cardinality:cardinality};
 }
 
 
 /**
-*   Get the shape tokens. We start collecting the tokens before find '{' token
+*   Get the tokens before a tripleExpr. We start collecting the tokens before find '{' token
 *   @param {Array} Shape (Tokens)
 *   @return {Array} Tokens
 *
 */
-function getShapeTokens(shape){
+function getBeforeTripleTokens(shape){
     let start=true;
     return shape.reduce((acc,t)=>{
         if(t.string=='{')start=false;
@@ -280,16 +276,27 @@ function getShapeTokens(shape){
 }
 
 /**
-*   Get the triple tokens. We start collecting the tokens after find '{' token
+*   Get the triple tokens. We start collecting the tokens after find '{' token until find the correspondig '}'
 *   @param {Array} Shape (Tokens)
 *   @return {Array} Tokens
 *
 */
 function getTripleTokens(shape){
     let start=false;
+    let open = 0;
     return shape.reduce((acc,t)=>{
         if(start)acc.push(t);
-        if(t.string=='{')start=true;
+        if(t.string=='{'){
+            open++;
+            start=true;
+        }
+
+        if(t.string=='}'){
+            open--;
+            start=true;
+        }
+
+        if(open == 0 && start==true)start=false;
         return acc;
     },[])
 }
@@ -376,17 +383,12 @@ function getValueSetValue(def) {
 
 
 function updateShapeRefs(shapes) {
-    for(let r in refs){
-        let shapeId = refs[r].shapeId;
-        let tripleId = refs[r].tripleId;
-        let ref = refs[r].shapeRef;
-
-        let shape = shexUtils.getShapeById(shapes,shapeId);
-        console.log(shape)
-        let triple = shexUtils.getTripleById(shape,tripleId);
-        let shapeRef = shexUtils.getShapeByName(shapes,ref);
-
-        triple.shapeRef.shape = shapeRef;
+    for(let r in references){
+        let element = references[r];
+        if(element.ref!=undefined){
+            let shapeRef = shexUtils.getShapeByName(shapes,element.ref);
+            element.entity.shapeRef.shape = shapeRef;
+        }
     }
 }
 
