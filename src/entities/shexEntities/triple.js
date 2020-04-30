@@ -31,7 +31,6 @@ class Triple extends Node{
         let str='';
         let type=this.type;
         let constraint = this.constraint;
-        if(this.triples.length>0)constraint.value='';
         let facets = this.facets;
         let shapeRef = this.shapeRef;
         let cardinality = this.cardinality;
@@ -43,7 +42,7 @@ class Triple extends Node{
  
         if(type.value!=''){
             str+= '  '+type+tripleSeparator;
-            str+= this.checkFacets();
+            str+= this.checkConstraint();
             if(facets){
                 facets.map(f=>{
                     str+=' '+f+' ';
@@ -69,7 +68,7 @@ class Triple extends Node{
             str+=';\n';
 
         }
-        
+
         return str;
 
     }
@@ -140,20 +139,26 @@ class Triple extends Node{
         return separators;
     }
 
-    /**
-    * If none constraint and there are facets don't print the '.'
-     */
-    checkFacets(){
-        if(this.facets.length>0){
-             if(this.constraint.getTypeName()!='Primitive' 
+    checkConstraint(){
+        //If there are facets and there is no constraint  don't print the '.'
+       if(this.facets.length>0){
+             if(this.constraint.getTypeName()!='primitive' 
                 && this.constraint.value!='none'){
                     return this.constraint+' ';
                 }
             return '';
         }
+
+        //If there is a inline shape and there is no constraint  don't print the '.'
+        if(this.triples.length>0){
+            if(this.constraint.getTypeName()=='primitive' 
+                && this.constraint.value=='none'){
+                return '';
+            }
+        }
+
         return this.constraint;
     }
-
 
 
 }
