@@ -1,4 +1,5 @@
-import TypesFactory from './types/typesFactory';
+import Node from '../node';
+
 import CardinalityFactory from './others/cardinality/cardinalityFactory';
 import CardinalitySimple from './others/cardinality/cardinalitySimple';
 import PrefixedIri from './types/concreteTypes/prefixedIri';
@@ -6,85 +7,29 @@ import Primitive from './types/concreteTypes/primitive';
 import ShapeRef from './others/shapeRef';
 import Prefix from './others/prefix';
 import {DEFAULTS} from '../../conf/config.js';
-import Shape from './shape';
 
-class Triple {
+class Triple extends Node{
 
-    constructor(id,type=new PrefixedIri(new Prefix('schema','http://schema.org/')),constraint=new Primitive(),shapeRef=new ShapeRef(),facets=[],cardinality=new CardinalitySimple()) {
-        this.id = id;
-        this.type = type;
-        this.constraint = constraint;
-        this.shapeRef = shapeRef;
-        this.facets = facets;
+    constructor(id,type=new PrefixedIri(new Prefix('schema','http://schema.org/')),constraint=new Primitive(),shapeRef=new ShapeRef(),facets=[],cardinality=new CardinalitySimple(),triples=[]) {
+        super(id,type,constraint,facets,shapeRef,triples);
         this.cardinality = cardinality;
-        this.factory = new TypesFactory();
         this.cardFactory = new CardinalityFactory();
-      }
+    }
       
-    addValue(constraint){
-        this.constraints.push(constraint);
-        this.constraintsCount++;
-    }
-    
-    addFacet(facet){
-        this.facets.push(facet);
-    }
-
-    getId(){
-        return this.id;
-    }
-
-    getType(){
-      return this.type; 
-    }
-
-    setType(type){
-       this.type = this.factory.createType(type);
-     }
-
-    setConstraint(constraint){
-        this.constraint = this.factory.createType(constraint);
-    }
 
     setCardinality(cardinality,min,max){
         this.cardinality = this.cardFactory.createCardinality(cardinality,min,max);
-    }
-
-    getShapeRef(){
-        return this.shapeRef;
-    }
-
-    setShapeRef(shapeRef){
-        this.shapeRef = shapeRef;
-    }
-
-
-    getFacets(){
-        return this.facets;
-    }
-
-    setFacets(facets){
-        this.facets = facets;
-    }
-
-    getConstraint(){
-       return this.constraint;
-    }
-
-
-    getCardinality(){
-        return this.cardinality;
     }
 
 
 
     toString(separators){
         let str='';
-        let type=this.getType();
-        let constraint = this.getConstraint();
-        let facets = this.getFacets();
-        let shapeRef = this.getShapeRef();
-        let cardinality = this.getCardinality();
+        let type=this.type;
+        let constraint = this.constraint;
+        let facets = this.facets;
+        let shapeRef = this.shapeRef;
+        let cardinality = this.cardinality;
         separators = this.checkPrettyOptions(separators);
         let tripleSeparator = separators.triple; 
         let constSeparator = separators.constraint; 
@@ -135,18 +80,15 @@ class Triple {
     * If none constraint and there are facets don't print the '.'
      */
     checkFacets(){
-        let constraint = this.getConstraint();
-        let shapeRef = this.getShapeRef();
         if(this.facets.length>0){
-             if(constraint.getTypeName()!='Primitive' 
-                && constraint.value!='none'){
-                    return constraint+' ';
+             if(this.constraint.getTypeName()!='Primitive' 
+                && this.constraint.value!='none'){
+                    return this.constraint+' ';
                 }
             return '';
         }
-        return constraint;
+        return this.constraint;
     }
-
 
 
 

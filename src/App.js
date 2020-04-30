@@ -117,7 +117,7 @@ function App() {
     }
     
     useEffect(() => {
-      makeItResponsive(width);
+      //makeItResponsive(width);
     })
 
 

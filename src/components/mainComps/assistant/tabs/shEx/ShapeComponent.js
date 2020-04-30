@@ -26,7 +26,7 @@ function ShapeComponent (props) {
 
 
     const addTriple = function(){
-        const id = shape.getTriplesCount();
+        const id = shape.triplesCount;
         const triple = new Triple(id);
 
         setTriples([...triples,triple]);
@@ -113,46 +113,3 @@ function ShapeComponent (props) {
 
 
 export default ShapeComponent;
-
-/*
-
-
-                     <div className="triples">
-                        <div className="tripleSlot">
-                        <label>TripleSlot</label>
-                        {triples.map(triple =>
-                            <TripleComponent key={triple.id}
-                                            shape={shape} 
-                                            triple={triple}
-                                            deleteTriple={deleteTriple}/> 
-                        )}
-                    
-                        <button className="xs-addTripleButton" 
-                                onClick={addTriple} 
-                                disabled={disabled}
-                                title="Add Triple">
-                                + Triple Constraint
-                        </button>        
-                    
-                        </div>
-                    </div> <div className="triples">
-                        <div className="tripleSlot">
-                        <label>TripleSlot</label>
-                        {triples.map(triple =>
-                            <TripleComponent key={triple.id}
-                                            shape={shape} 
-                                            triple={triple}
-                                            deleteTriple={deleteTriple}/> 
-                        )}
-                    
-                        <button className="xs-addTripleButton" 
-                                onClick={addTriple} 
-                                disabled={disabled}
-                                title="Add Triple">
-                                + Triple Constraint
-                        </button>        
-                    
-                        </div>
-                    </div>
-
-                    */
