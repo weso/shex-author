@@ -6,22 +6,22 @@ import FacetComp from './facets/FacetComp';
 import Properties from '../../../../../../conf/properties';
 
 function FacetContainer (props) {
-    const {triple} = props;
+    const {entity} = props;
     const context = useContext(AppContext);
-    const [facets,setFacets]=useState(triple.facets);
+    const [facets,setFacets]=useState(entity.facets);
     const styles = Properties.getInstance().getFacetStyle();
 
     const deleteFacet= function(id){
         const newFacets = facets.filter(f => f.id != id);
         setFacets(newFacets);
-        triple.facets = newFacets;
+        entity.facets = newFacets;
         context.emit();
     }
 
     const addFacet = function(){
         const facet = shexUtils.addFacet(facets);
         setFacets([...facets,facet]);
-        triple.addFacet(facet);
+        entity.addFacet(facet);
         context.emit();
     }
 

@@ -8,10 +8,9 @@ import FacetContainer from './customize/FacetContainer';
 import CardinalityComp from './customize/CardinalityComp';
 import Properties from '../../../../../conf/properties';
 
-function TripleComponent (props) {
+function NodeComponent (props) {
     
-    const {shape,triple,deleteTriple} = props;
-    const [isTripleOpen,setTripleOpen] = useState(false);
+    const {entity,isCustomOpen} = props;
     const [isTripleCustomOpen,setTripleCustomOpen] = useState(false);
     const [isConstraintsOpen,setConstraintsOpen] = useState(true);
     const [isRefOpen,setRefOpen] = useState(false);
@@ -25,10 +24,6 @@ function TripleComponent (props) {
     const facetStyles = Properties.getInstance().getFacetStyle();
     const refStyles = Properties.getInstance().getShapeRefStyle();
     const cardStyles = Properties.getInstance().getCardinalityStyle();
-
-    const customize  = function(){
-        setTripleOpen(!isTripleOpen);
-    }
 
     const customizeTriple = function(){
         collapseAll(false);
@@ -115,14 +110,7 @@ function TripleComponent (props) {
     
 
     return ( 
-        <div>
-            <TripleHeader triple={triple} 
-                          deleteTriple={deleteTriple}
-                          customize={customize}
-                          collapseToggle={collapseToggle}
-                          colapseBtn={colapseBtn}/>
-
-            <Collapse   isOpen={isTripleOpen}> 
+            <Collapse  isOpen={isCustomOpen}> 
 
                 <div className='zone' style={tripleStyles.body}>
                     <button className='btnZone'style={tripleStyles.body}
@@ -144,90 +132,26 @@ function TripleComponent (props) {
                     </button>
                 </div> 
 
-                <CustomComp  entity={triple} 
+                <CustomComp  entity={entity} 
                         isCustomOpen={isTripleCustomOpen}
                         bnode={false}
                         customClass="customTriple"/>
 
                 <Collapse   isOpen={isConstraintsOpen}>
-                    <ConstraintComp  triple={triple} />           
+                    <ConstraintComp  entity={entity} />           
                 </Collapse> 
 
                 <Collapse   isOpen={isFacetOpen}>
-                    <FacetContainer triple={triple}/> 
+                    <FacetContainer entity={entity}/> 
                 </Collapse> 
 
                 <Collapse  isOpen={isRefOpen}>
-                    <ShapeRefComp triple={triple}/>      
+                    <ShapeRefComp entity={entity}/>      
                 </Collapse> 
+     
 
-                <Collapse  isOpen={isCardinalityOpen}>
-                    <CardinalityComp triple={triple}/>      
-                </Collapse>         
-                
-              
-
-            </Collapse>  
-           
-        </div>);                          
+            </Collapse>  );                          
 }
 
 
-export default TripleComponent;
-
-
-/*   <div className='zone-collapse-btn'style={tripleStyles.body}> 
-                    <button className='type-zone btnZone-collapse mdc-icon-button material-icons'
-                            onClick={collapseToggle}>{colapseBtn} </button>
-                </div> */
-
-
-                /*  <div className='zone'style={tripleStyles.body}> 
-                    <button className='btnZone mdc-icon-button material-icons'style={tripleStyles.body}
-                            onClick={customizeTriple}>menu</button>
-                     <label>Triple</label>
-                </div>             
-
-                <CustomComp  entity={triple} 
-                            isCustomOpen={isTripleCustomOpen}
-                            qualifier={false}
-                            bnode={false}
-                            customClass="customTriple"/>
-
-                <div className='zone' style={constStyles.body}>
-                    <button className='btnZone mdc-icon-button material-icons'style={constStyles.body}
-                            onClick={customizeContraints}>menu</button>
-                    <label>Constraint</label>  
-                </div>
-
-                <Collapse   isOpen={isConstraintsOpen}>
-                    <ConstraintComp  triple={triple} />           
-                </Collapse> 
-                
-                <div className='zone' style={facetStyles.body}>
-                    <button className='btnZone mdc-icon-button material-icons' style={facetStyles.body}
-                    onClick={customizeFacet}>menu </button> 
-                     <label>Facet</label> 
-                </div>
-
-                <Collapse   isOpen={isFacetOpen}>
-                    <FacetContainer triple={triple}/> 
-                </Collapse> 
-
-                <div className='zone' style={refStyles.body}>
-                    <button className='btnZone mdc-icon-button material-icons' style={refStyles.body}
-                            onClick={customizeRef}>menu </button>
-                             <label>Shape Reference</label>  
-                </div>
-                <Collapse  isOpen={isRefOpen}>
-                    <ShapeRefComp triple={triple}/>      
-                </Collapse> 
-
-                <div className='zone' style={cardStyles.body}>
-                    <button className='btnZone mdc-icon-button material-icons' style={cardStyles.body}
-                            onClick={customizeCardinality}>menu </button>  
-                     <label>Cardinality</label>  
-                </div>
-                <Collapse  isOpen={isCardinalityOpen}>
-                    <CardinalityComp triple={triple}/>      
-                </Collapse>*/
+export default NodeComponent;

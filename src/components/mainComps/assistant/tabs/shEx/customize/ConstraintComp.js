@@ -14,27 +14,27 @@ const iriStr ='<...>';
 function ConstraintComp (props) {
 
     const context = useContext(AppContext);
-    const {triple} = props;
+    const {entity} = props;
     const styles = Properties.getInstance().getConstraintStyle();
     
-    let constValue = triple.constraint.getTypeName();
-    let primValue = triple.constraint.value;
+    let constValue = entity.constraint.getTypeName();
+    let primValue = entity.constraint.value;
 
     if(constValue!='primitive'){
         primValue = 'custom';
     }
 
     let initialPrefix = 'example';
-    if(triple.constraint.prefix!=undefined){
-        initialPrefix = triple.constraint.prefix.prefixValue;
+    if(entity.constraint.prefix!=undefined){
+        initialPrefix = entity.constraint.prefix.prefixValue;
     }
 
     let initialValueSet = [];
     if(constValue == 'valueSet'){
-        initialValueSet = triple.constraint.values;
+        initialValueSet = entity.constraint.values;
     }
     
-    const [name,setName] = useState(triple.constraint.value || '');
+    const [name,setName] = useState(entity.constraint.value || '');
     const [prefix,setPrefix] = useState(initialPrefix);
     const [valueSet,setValueSet] = useState(initialValueSet);
     const [primitive,setPrimitive] = useState(primValue);    
@@ -48,7 +48,7 @@ function ConstraintComp (props) {
 
     const handlePrefixChange = function(e){ 
         let prefix = getPrefix(e.target.value);
-        triple.constraint.prefix = prefix;
+        entity.constraint.prefix = prefix;
         context.emit();
         setPrefix(e.target.value);
 
@@ -56,15 +56,15 @@ function ConstraintComp (props) {
 
     const handleNameChange = function(e){
         let newName = e.target.value;
-        triple.constraint.value = newName;
+        entity.constraint.value = newName;
         context.emit();
         setName(newName);
     }
 
       const handlePrimitiveChange = function(e){
         const newPrimitive = e.target.value;
-        triple.setConstraint('primitive');
-        triple.constraint.value = newPrimitive;
+        entity.setConstraint('primitive');
+        entity.constraint.value = newPrimitive;
         setConstraint('primitive');
         setPrimitive(newPrimitive);
         checkRefs(newPrimitive);     
@@ -75,8 +75,8 @@ function ConstraintComp (props) {
     const handleConstraintChange = function(e){
         let newConstraint = e.target.value;
         setConstraint(newConstraint);
-        triple.setConstraint(newConstraint);
-        triple.constraint.value = name;
+        entity.setConstraint(newConstraint);
+        entity.constraint.value = name;
         context.emit();
         checkValueSet();
     }
@@ -104,7 +104,7 @@ function ConstraintComp (props) {
             }else{
                 setConstraint('prefixedIri');
                 setName('');
-                triple.setConstraint('prefixedIri');
+                entity.setConstraint('prefixedIri');
                 context.emit();
             }
         }
@@ -116,15 +116,15 @@ function ConstraintComp (props) {
     }
 
     const checkValueSet = function(){
-        if(triple.constraint.getTypeName()=='valueSet'){
+        if(entity.constraint.getTypeName()=='valueSet'){
             setValueSet([]);
         }
     }
 
     const checkRefs = function(prim){
         if(prim =='none'){
-            if(triple.shapeRef.shape != null){
-                triple.setConstraint('blankType');
+            if(entity.shapeRef.shape != null){
+                entity.setConstraint('blankType');
             }
         }
     }
@@ -197,7 +197,7 @@ function ConstraintComp (props) {
 
 
                         <Collapse isOpen={isValueSetOpen}>
-                            <ValueSetContainer  triple={triple} valueSet={valueSet} setValueSet={setValueSet}/>
+                            <ValueSetContainer  entity={entity} valueSet={valueSet} setValueSet={setValueSet}/>
                         </Collapse>
                     </Collapse>                                                         
                 </div>

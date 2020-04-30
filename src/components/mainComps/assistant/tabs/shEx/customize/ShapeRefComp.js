@@ -6,14 +6,14 @@ import Properties from '../../../../../../conf/properties';
 
 function ShapeRefComp (props) {
     
-    const {triple} = props;
+    const {entity} = props;
     const context = useContext(AppContext);
     const styles = Properties.getInstance().getShapeRefStyle();
 
     let refValue = '';
     let refOpen = false;
-    if(triple.shapeRef.shape != null){
-        refValue = triple.shapeRef.shape.id;
+    if(entity.shapeRef.shape != null){
+        refValue = entity.shapeRef.shape.id;
         refOpen = true;
     }
 
@@ -29,15 +29,15 @@ function ShapeRefComp (props) {
             shapeRef = shexUtils.getShapeById(context.shapes,shapeId);
             refSelector = shapeRef.id;
         }
-        triple.shapeRef.shape = shapeRef;
-        if(triple.constraint.value=='none'){
-            triple.setConstraint('blankType');
+        entity.shapeRef.shape = shapeRef;
+        if(entity.constraint.value=='none'){
+            entity.setConstraint('blankType');
             
         }
         
-        if(shapeId=='' && triple.constraint.getTypeName() == 'blankType'){
-            triple.setConstraint('primitive');
-            triple.constraint.value = 'none';
+        if(shapeId=='' && entity.constraint.getTypeName() == 'blankType'){
+            entity.setConstraint('primitive');
+            entity.constraint.value = 'none';
         }
         
       

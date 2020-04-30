@@ -3,10 +3,12 @@ import Node from '../node';
 import PrefixedIri from './types/concreteTypes/prefixedIri';
 import BlankKind from './types/concreteTypes/kinds/blankKind';
 import Prefix from './others/prefix';
+import Primitive from './types/concreteTypes/primitive';
+import ShapeRef from './others/shapeRef';
 
 class Shape extends Node{
 
-  constructor(id,type=new PrefixedIri(new Prefix('','http://example.org/')),constraint,facets,shapeRef,triples=[]) {
+  constructor(id,type=new PrefixedIri(new Prefix('','http:/example.org/')),constraint=new Primitive(),shapeRef=new ShapeRef(),facets=[],triples=[]) {
       super(id,type,constraint,facets,shapeRef,triples);
     }
 

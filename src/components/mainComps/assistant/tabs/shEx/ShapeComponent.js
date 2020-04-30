@@ -7,6 +7,8 @@ import TripleComponent from './TripleComponent';
 import Triple from '../../../../../entities/shexEntities/triple';
 import Properties from '../../../../../conf/properties';
 
+import NodeComponent from './NodeComponent';
+
 export const ShapeContext = React.createContext();
 
 function ShapeComponent (props) {
@@ -78,13 +80,9 @@ function ShapeComponent (props) {
                             collapseTriples={collapseTriples} 
                             colapseBtn={colapseBtn}/>
 
-                <CustomComp  entity={shape}
-                            isCustomOpen={isCustomOpen}
-                            qualifier={true}
-                            bnode={true}
-                            customClass="customShape"/>
 
-                    
+                <NodeComponent  entity={shape} isCustomOpen={isCustomOpen}/> 
+
                 <Collapse  isOpen={isTriplesOpen}>
                      <div className="triples" style={styles.body}>
                         {triples.map(triple =>
@@ -104,6 +102,8 @@ function ShapeComponent (props) {
                     
                         </div>
                 </Collapse> 
+
+
             </div>
         </ShapeContext.Provider>
     );
