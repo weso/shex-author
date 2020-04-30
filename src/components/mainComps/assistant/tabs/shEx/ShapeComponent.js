@@ -38,7 +38,7 @@ function ShapeComponent (props) {
     const deleteTriple = function(tripleId){
         const newTriples = shape.triples.filter( triple => triple.id != tripleId);
         setTriples(newTriples)
-        shape.setTriples(newTriples);
+        shape.triples = newTriples;
         context.emit();
         
     }

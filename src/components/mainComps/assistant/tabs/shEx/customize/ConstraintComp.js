@@ -31,7 +31,7 @@ function ConstraintComp (props) {
 
     let initialValueSet = [];
     if(constValue == 'valueSet'){
-        initialValueSet = triple.constraint.getValues();
+        initialValueSet = triple.constraint.values;
     }
     
     const [name,setName] = useState(triple.constraint.value || '');
@@ -48,7 +48,7 @@ function ConstraintComp (props) {
 
     const handlePrefixChange = function(e){ 
         let prefix = getPrefix(e.target.value);
-        triple.constraint.setPrefix(prefix);
+        triple.constraint.prefix = prefix;
         context.emit();
         setPrefix(e.target.value);
 
@@ -56,7 +56,7 @@ function ConstraintComp (props) {
 
     const handleNameChange = function(e){
         let newName = e.target.value;
-        triple.constraint.setValue(newName);
+        triple.constraint.value = newName;
         context.emit();
         setName(newName);
     }
@@ -64,7 +64,7 @@ function ConstraintComp (props) {
       const handlePrimitiveChange = function(e){
         const newPrimitive = e.target.value;
         triple.setConstraint('primitive');
-        triple.constraint.setValue(newPrimitive);
+        triple.constraint.value = newPrimitive;
         setConstraint('primitive');
         setPrimitive(newPrimitive);
         checkRefs(newPrimitive);     
@@ -76,7 +76,7 @@ function ConstraintComp (props) {
         let newConstraint = e.target.value;
         setConstraint(newConstraint);
         triple.setConstraint(newConstraint);
-        triple.constraint.setValue(name);
+        triple.constraint.value = name;
         context.emit();
         checkValueSet();
     }
@@ -116,7 +116,7 @@ function ConstraintComp (props) {
     }
 
     const checkValueSet = function(){
-        if(triple.constraint.getTypeName=='valueSet'){
+        if(triple.constraint.getTypeName()=='valueSet'){
             setValueSet([]);
         }
     }

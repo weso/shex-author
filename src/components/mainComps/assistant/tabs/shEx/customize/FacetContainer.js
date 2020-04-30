@@ -14,7 +14,7 @@ function FacetContainer (props) {
     const deleteFacet= function(id){
         const newFacets = facets.filter(f => f.id != id);
         setFacets(newFacets);
-        triple.setFacets(newFacets);
+        triple.facets = newFacets;
         context.emit();
     }
 

@@ -10,7 +10,7 @@ function BooleanValue (props) {
 
     const handleBooleanChange = function(e){
         let newBoolean = e.target.value;
-        type.setValue(newBoolean);
+        type.value = newBoolean;
         context.emit();
         setBoolean(newBoolean);
     }

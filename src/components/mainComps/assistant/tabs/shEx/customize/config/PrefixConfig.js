@@ -16,7 +16,7 @@ function PrefixConfig (props) {
 
     const handlePrefixChange = function(e){
         let prefix = getPrefix(e.target.value);
-        entity.type.setPrefix(prefix);
+        entity.type.prefix = prefix;
         context.emit();
         setPrefix(e.target.value);
     }

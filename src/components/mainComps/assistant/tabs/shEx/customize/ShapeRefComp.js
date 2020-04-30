@@ -29,7 +29,7 @@ function ShapeRefComp (props) {
             shapeRef = shexUtils.getShapeById(context.shapes,shapeId);
             refSelector = shapeRef.id;
         }
-        triple.getShapeRef().setShape(shapeRef);
+        triple.shapeRef.shape = shapeRef;
         if(triple.constraint.value=='none'){
             triple.setConstraint('blankType');
             
@@ -37,7 +37,7 @@ function ShapeRefComp (props) {
         
         if(shapeId=='' && triple.constraint.getTypeName() == 'blankType'){
             triple.setConstraint('primitive');
-            triple.constraint.setValue('none');
+            triple.constraint.value = 'none';
         }
         
       

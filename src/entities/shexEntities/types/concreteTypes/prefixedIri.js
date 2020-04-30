@@ -14,7 +14,7 @@ class PrefixedIri extends Type{
 
 
     toString(){
-        return this.getPrefix().getPrefixName()+':'+this.getValue();
+        return this.prefix.getPrefixName()+':'+this.getValue();
     }
 
 }

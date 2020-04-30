@@ -11,7 +11,7 @@ function NumberValue (props) {
 
     const handleNumberChange = function(e){
         let newNumber = e;
-        type.setValue(newNumber);
+        type.value = newNumber;
         context.emit();
         setNumber(newNumber);
     }
