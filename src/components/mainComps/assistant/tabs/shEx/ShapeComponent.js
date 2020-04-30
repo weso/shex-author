@@ -16,7 +16,8 @@ function ShapeComponent (props) {
     const context = useContext(AppContext);
     const {shape} = props;
     const styles = Properties.getInstance().getShapeStyle();
-
+    const tripleStyles = Properties.getInstance().getTripleStyle();
+    
     const [triples,setTriples] = useState(shape.triples);
     const [isCustomOpen,setCustomOpen] = useState(false);
     const [isTriplesOpen,setTriplesOpen] = useState(true);
@@ -88,7 +89,8 @@ function ShapeComponent (props) {
                         {triples.map(triple =>
                             <TripleComponent key={triple.id}
                                             triple={triple}
-                                            deleteTriple={deleteTriple}/> 
+                                            deleteTriple={deleteTriple}
+                                            styles={tripleStyles}/> 
                         )}
                     
                         <button className="xs-addTripleButton"

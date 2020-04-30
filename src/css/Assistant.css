@@ -119,6 +119,17 @@ label{
 
 }
 
+.subTriples{
+    color: black;
+    text-align: left;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 100%; 
+    padding: 10px 10px;
+
+
+}
+
 /*
 .tripleSlot{
     border-top: 1px solid #acaaaa;
@@ -225,12 +236,12 @@ label{
 
 
 .xs-addShapeButton{
-    margin-left:100px;
-    margin-right: 100px;
+    margin-left:40px;
+    margin-right: 40px;
     border-radius: 10px;
     font-weight: bold;
-    -webkit-transition: margin 0.5s ease-in-out;
-    transition: margin 0.5s ease-in-out;
+    -webkit-transition: margin 0.2s ease-in-out;
+    transition: margin 0.2s ease-in-out;
 }
 
 .xs-addShapeButton:hover{
@@ -249,15 +260,15 @@ label{
 }
 
 .xs-addTripleButton{
-    margin-left:130px;
-    margin-right: 130px;
+    margin-left:70px;
+    margin-right: 70px;
     border-radius: 10px;
     font-weight: bold;
     padding: 1px;
     margin-top: 3px;
     margin-bottom: 3px;
-    -webkit-transition: margin 0.5s ease-in-out;
-    transition: margin 0.5s ease-in-out;
+    -webkit-transition: margin 0.3s ease-in-out;
+    transition: margin 0.3s ease-in-out;
 }
 
 .xs-addTripleButton:hover{
@@ -270,6 +281,28 @@ label{
     outline: none;
 }
 
+
+.xs-addSubTripleButton{
+    margin-left:100px;
+    margin-right: 100px;
+    border-radius: 10px;
+    font-weight: bold;
+    padding: 1px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    -webkit-transition: margin 0.4s ease-in-out;
+    transition: margin 0.4s ease-in-out;
+}
+
+.xs-addSubTripleButton:hover{
+    margin-left:0px;
+    margin-right: 0px;
+}
+
+
+.xs-addSubTripleButton:focus{
+    outline: none;
+}
 
 .addTripleButton{
     margin-left:200px;

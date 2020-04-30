@@ -9,14 +9,14 @@ function TripleHeader (props) {
 
     const context = useContext(AppContext);
     const shapeContext = useContext(ShapeContext);
-    const styles = Properties.getInstance().getTripleStyle();
     const disabled = shapeContext.disabled;
 
     const { triple,
             deleteTriple,
             customize,
             collapseTriples,
-            colapseBtn
+            colapseBtn,
+            styles
             } = props;
 
     const [name,setName] = useState(triple.type.value);

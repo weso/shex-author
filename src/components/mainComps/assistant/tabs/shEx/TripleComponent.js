@@ -14,13 +14,13 @@ import Triple from '../../../../../entities/shexEntities/triple';
 function TripleComponent (props) {
     
     const context = useContext(AppContext);
-    const {triple,deleteTriple} = props;
+    const {triple,deleteTriple,styles} = props;
     const [isCustomOpen,setCustomOpen] = useState(false);
     const [isTriplesOpen,setTriplesOpen] = useState(false);
     const [colapseBtn,setColapseBtn] = useState('menu_open');
     const [triples,setTriples] = useState(triple.triples);
 
-    const styles = Properties.getInstance().getTripleStyle();
+    const subTripleStyles = Properties.getInstance().getSubTripleStyle();
 
     const customize  = function(){
         setCustomOpen(!isCustomOpen);
@@ -62,20 +62,22 @@ function TripleComponent (props) {
                           deleteTriple={deleteTriple}
                           customize={customize}
                           collapseTriples={collapseTriples} 
-                          colapseBtn={colapseBtn}/>
+                          colapseBtn={colapseBtn}
+                          styles={styles}/>
 
             <NodeComponent entity={triple} isCustomOpen={isCustomOpen} /> 
            
             <Collapse  isOpen={isTriplesOpen}>
-                     <div className="triples" style={styles.body}>
+                     <div className="subTriples" style={styles.body}>
                         {triples.map(subTriple =>
                             <TripleComponent key={subTriple.id}
                                             triple={subTriple}
-                                            deleteTriple={subDeleteTriple}/> 
+                                            deleteTriple={subDeleteTriple}
+                                            styles={subTripleStyles}/> 
                         )}
                     
-                        <button className="xs-addTripleButton"
-                                style={styles.addTriple} 
+                        <button className="xs-addSubTripleButton"
+                                style={styles.addSubTriple} 
                                 onClick={addTriple} 
                                 title="Add Triple">
                                 + Triple Constraint

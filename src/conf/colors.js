@@ -29,8 +29,19 @@ export const TRIPLE_COLORS = {
         delete:'#f8a252',
         deleteFill:'#ffff',
         collapse:'#222',
-        body:'#EFE8E1'
+        body:'#EFE8E1',
+        addSubTriple:'#ffd0ca',
+        addSubTripleFill:'#222'
 };
+
+export const SUB_TRIPLE_COLORS = {
+        header:'#ffd0ca',
+        custom:'#3d3d3d',
+        customFill:'#F48D81',
+        delete:'#F48D81',
+        deleteFill:'#ffff'
+};
+
 
 export const CONSTRAINT_COLORS = {
         label:'#222',
