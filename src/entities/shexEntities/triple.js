@@ -23,7 +23,17 @@ class Triple extends Node{
 
 
     subString(){
-        return ''+this.type+' '+this.constraint+' '+this.facets+' '+this.shapeRef+' '+this.cardinality+";";
+        let str = ''+this.type+' '+this.checkConstraint()+' '+this.facets+' '+this.shapeRef+' '+this.cardinality+"";
+        if(this.triples.length>0){
+                str+=' {';
+                this.triples.forEach(subTriple => {
+                    str+=subTriple.subString();
+                });
+                str+='}';
+            }
+
+        str+=';';
+        return str;
     }
 
 
