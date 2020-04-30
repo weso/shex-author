@@ -10,10 +10,6 @@ class ValueSetValue {
         this.factory = new TypesFactory();
     }
 
-    getType(){
-        return this.type;
-    }
-
     setType(type){
        this.type = this.factory.createType(type);
      }
