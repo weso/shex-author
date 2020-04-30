@@ -69,7 +69,7 @@ function TripleComponent (props) {
                           colapseBtn={colapseBtn}
                           styles={styles}/>
 
-            <NodeComponent entity={triple} isCustomOpen={isCustomOpen} /> 
+            <NodeComponent entity={triple} isCustomOpen={isCustomOpen} customClass={'customTriple'} /> 
            
             <Collapse  isOpen={isTriplesOpen}>
                      <div className="subTriples" style={styles.body}>

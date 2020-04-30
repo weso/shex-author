@@ -159,6 +159,11 @@ class Triple extends Node{
     }
 
 
+    getEntityName(){
+      return 'Triple';
+    }
+
+
 }
 
 export default Triple;

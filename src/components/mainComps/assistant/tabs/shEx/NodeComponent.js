@@ -10,7 +10,7 @@ import Properties from '../../../../../conf/properties';
 
 function NodeComponent (props) {
     
-    const {entity,isCustomOpen} = props;
+    const {entity,isCustomOpen,customClass} = props;
     const [isTripleCustomOpen,setTripleCustomOpen] = useState(false);
     const [isConstraintsOpen,setConstraintsOpen] = useState(true);
     const [isRefOpen,setRefOpen] = useState(false);
@@ -19,6 +19,8 @@ function NodeComponent (props) {
     const [allCollased,setAllCollapsed] = useState(false);
     const [colapseBtn,setColapseBtn] = useState('menu');
 
+
+    const shapeStyles = Properties.getInstance().getShapeStyle();
     const tripleStyles = Properties.getInstance().getTripleStyle();
     const constStyles = Properties.getInstance().getConstraintStyle();
     const facetStyles = Properties.getInstance().getFacetStyle();
@@ -131,14 +133,21 @@ function NodeComponent (props) {
         }
     }
     
+
+    const getEntityStyle = function(){
+        if(entity.cardinality){//Is a triple? (Not really elegant I know...)
+            return tripleStyles;
+        }
+        return shapeStyles;
+    }
     
 
     return ( 
             <Collapse  isOpen={isCustomOpen}> 
 
-                <div className={getCardinalityStyleIfNeeded()} style={tripleStyles.body}>
-                    <button className='btnZone'style={tripleStyles.body}
-                    onClick={customizeTriple}>Triple</button>
+                <div className={getCardinalityStyleIfNeeded()} style={getEntityStyle().body}>
+                    <button className='btnZone'style={getEntityStyle().body}
+                    onClick={customizeTriple}>{entity.getEntityName()}</button>
                    <button className='btnZone'style={constStyles.body}
                     onClick={customizeContraints}>Constraint</button>
                     <button className='btnZone'style={facetStyles.body}
@@ -147,7 +156,7 @@ function NodeComponent (props) {
                     onClick={customizeRef}>ShapeReference</button>
                     {getCardinalityIfNeeded()}
                     <button className="collapseBtn-triple mdc-icon-button material-icons" 
-                    style={tripleStyles.collapse}
+                    style={getEntityStyle().collapse}
                     onClick={collapseToggle}
                     title="ShowAll">
                     {colapseBtn}
@@ -157,7 +166,7 @@ function NodeComponent (props) {
                 <CustomComp  entity={entity} 
                         isCustomOpen={isTripleCustomOpen}
                         bnode={false}
-                        customClass="customTriple"/>
+                        customClass={customClass}/>
 
                 <Collapse   isOpen={isConstraintsOpen}>
                     <ConstraintComp  entity={entity} />           

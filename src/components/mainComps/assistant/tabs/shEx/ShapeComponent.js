@@ -82,7 +82,7 @@ function ShapeComponent (props) {
                             colapseBtn={colapseBtn}/>
 
 
-                <NodeComponent  entity={shape} isCustomOpen={isCustomOpen}/> 
+                <NodeComponent  entity={shape} isCustomOpen={isCustomOpen} customClass={'customShape'}/> 
 
                 <Collapse  isOpen={isTriplesOpen}>
                      <div className="triples" style={styles.body}>

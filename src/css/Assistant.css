@@ -440,7 +440,7 @@ label{
 
 .zone{
     display: grid;
-    grid-template-columns: 12% 20% 12% 29% 27%;
+    grid-template-columns: 15% 20% 12% 29% 24%;
     background-color: white;
 }
 

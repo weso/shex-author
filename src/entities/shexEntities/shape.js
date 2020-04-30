@@ -113,6 +113,10 @@ class Shape extends Node{
       return separator;
     }
 
+    getEntityName(){
+      return 'Shape';
+    }
+
 
   }
 
