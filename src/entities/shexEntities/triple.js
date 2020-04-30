@@ -140,24 +140,22 @@ class Triple extends Node{
     }
 
     checkConstraint(){
-        //If there are facets and there is no constraint  don't print the '.'
-       if(this.facets.length>0){
-             if(this.constraint.getTypeName()!='primitive' 
-                && this.constraint.value!='none'){
-                    return this.constraint+' ';
-                }
-            return '';
-        }
-
-        //If there is a inline shape and there is no constraint  don't print the '.'
-        if(this.triples.length>0){
-            if(this.constraint.getTypeName()=='primitive' 
+    
+        // If there is no constraint
+        if(this.constraint.getTypeName()=='primitive' 
                 && this.constraint.value=='none'){
-                return '';
-            }
+        
+            // If there are facets don't print the '.'
+            if(this.facets.length>0)return '';
+            // If there is a shapeRef don't print the '.'
+            if(this.shapeRef.shape != null) return '';    
+            // If there is a inline shape don't print the '.'
+            if(this.triples.length>0)return '';
+        
         }
 
-        return this.constraint;
+
+        return this.constraint+' ';
     }
 
 

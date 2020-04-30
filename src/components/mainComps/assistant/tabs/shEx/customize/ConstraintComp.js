@@ -67,7 +67,6 @@ function ConstraintComp (props) {
         entity.constraint.value = newPrimitive;
         setConstraint('primitive');
         setPrimitive(newPrimitive);
-        checkRefs(newPrimitive);     
         context.emit();
     }
 
@@ -121,15 +120,6 @@ function ConstraintComp (props) {
         }
     }
 
-    const checkRefs = function(prim){
-        if(prim =='none'){
-            if(entity.shapeRef.shape != null){
-                entity.setConstraint('blankType');
-            }
-        }
-    }
-
-    checkRefs(primitive);
 
     useEffect(() => {
         checkCollapses();
