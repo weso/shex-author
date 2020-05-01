@@ -63,8 +63,7 @@ class Triple extends Node{
                 refSeparator+=' ';
             }
             str+=constSeparator+shapeRef
-                +refSeparator+cardinality
-                +cardSeparator;
+                +refSeparator;
        
 
             if(this.triples.length>0){
@@ -72,10 +71,14 @@ class Triple extends Node{
                 this.triples.forEach(subTriple => {
                     str+=subTriple.subString();
                 });
-                str+='}';
+                str+='} ';
             }
 
-            str+=';\n';
+          
+
+
+            str+=cardinality
+                +cardSeparator+' \n';
 
         }
 
