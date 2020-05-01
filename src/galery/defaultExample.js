@@ -18,6 +18,5 @@ export const defaultExample =
 'PREFIX xsd:    <http://www.w3.org/2001/XMLSchema#>\n\n'+
 
 ':User IRI {\n'+
-'  schema:0 xsd:string {schema:1 {schema:2 {schema:3 .}}};\n '+
-'  schema:knows         @:User     *  \n'+
+'  schema:0 xsd:string {schema:1 . ; schema:2 .}\n '+
 '}\n';
