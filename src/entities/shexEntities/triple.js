@@ -78,7 +78,7 @@ class Triple extends Node{
 
 
             str+=cardinality
-                +cardSeparator+' \n';
+                +cardSeparator+';\n';
 
         }
 
