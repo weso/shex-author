@@ -113,11 +113,12 @@ function getShapes(defShapes){
     return defShapes.reduce((acc,shape)=>{
         let id  = acc.length;
         let shapeDef = shape[0].string;
-        let sTokens = getBeforeTripleTokens(shape);
+        let sTokens = getBeforeTriplesTokens(shape);
         let content =  getContent(id,sTokens,id);
 
         let tTokens = getTripleTokens(shape);
         let triples = getTriples(id,tTokens);
+
 
         let s = new Shape(id,content.type,content.constraint,content.facets,content.shapeRef,triples);
         references.push({entity:s,ref:content.ref});
@@ -164,11 +165,42 @@ function getTriples(shapeId,tokens) {
         let yashe = Editor.getYashe();
         let start = false;
         let open = 0;
+       //  console.log({tokens:tokens,lenght:tokens.length})
         return tokens.reduce((acc,token,index)=>{
-           // console.log(singleTriple)
-            singleTriple.push(token);
-             console.log(Object.assign({},singleTriple))
+             singleTriple.push(token);
+           if( (token.string == ';' && open==0 && start) || index == tokens.length-1){
+               //singleTriple.push(token);
+                let before = getBeforeTriplesTokens(singleTriple);
+                let content = getContent(acc.length,before,shapeId);
+                let after = getTripleTokens(singleTriple);
+                let subTriples = getTriples(acc.length,after);
+              // let tples = getTriples(after);
+               console.log({singleTriple:singleTriple,before:before,after:after})
+                let triple = new Triple(acc.length,content.type,content.constraint,content.facets,content.shapeRef,content.cardinality,subTriples);
+                references.push({entity:triple,ref:content.ref});
+                acc.push(triple);
+                singleTriple = [];
+           }
 
+          if(token.string=='{'){
+               open++;
+               start = true;
+           }
+            
+
+          if(token.string=='}'){
+               open--;
+            
+           }
+     
+           //console.log(token.string)
+
+           //console.log(Object.assign({},singleTriple))
+
+          /*   let aux = getBTriplesTokens(tokens);
+            console.log(aux) */
+           
+/* 
             if(token.string == '{'){
                 open++;
                 start = true;
@@ -179,19 +211,20 @@ function getTriples(shapeId,tokens) {
                 start = true;
             }
 
-            if((open == 0 && start==true) || (isEndOfTriple(token,index,tokens) && start == false)){
-                let bTokens = getBeforeTripleTokens(singleTriple);
+            if((open == 0 && start==true) || (isEndOfTriple(token,index,tokens) && start == false) || index==tokens.lenght-1){
+               //  console.log(Object.assign({},singleTriple))
+                let bTokens = getBeforeTriplesTokens(singleTriple);
                 let content = getContent(acc.length,bTokens,shapeId);
                 let stTokens = getTripleTokens(singleTriple);
                 let subTriples = getTriples(acc.length,stTokens);
                 let triple = new Triple(acc.length,content.type,content.constraint,content.facets,content.shapeRef,content.cardinality,subTriples);
                 references.push({entity:triple,ref:content.ref});
                 acc.push(triple);
-
-                console.log(singleTriple)
                 singleTriple = [];
                 start = false;
-            }
+            } */
+
+            //console.log({token:token.string,open:open,start:start})
             
             return acc;
         },[])
@@ -281,13 +314,29 @@ function getContent(id,tokens,entityId) {
 *   @return {Array} Tokens
 *
 */
-function getBeforeTripleTokens(tokens){
+function getBeforeTriplesTokens(tokens){
     let start=true;
     return tokens.reduce((acc,t)=>{
         if(t.string=='{')start=false;
         if(start)acc.push(t);
         return acc;
     },[])
+}
+
+function getBTriplesTokens(tokens){
+    let start=true;
+    let isSimple = false;
+    let btokens = tokens.reduce((acc,t)=>{
+        if(t.string==';'){
+            isSimple=true;
+            start = false;
+        }
+        if(t.string=='{')start=false;
+        if(start)acc.push(t);
+        return acc;
+    },[])
+
+    return {tokens:btokens,isSimple:isSimple}
 }
 
 /**
@@ -297,6 +346,25 @@ function getBeforeTripleTokens(tokens){
 *
 */
 function getTripleTokens(tokens){
+    let start=false;
+    let open = 0;
+    return tokens.reduce((acc,t)=>{
+        if(start)acc.push(t);
+        if(t.string=='{'){
+            open++;
+            start=true;
+        }
+
+        if(t.string=='}'){
+            open--;
+        }
+
+        if(open == 0 && start==true)start=false;
+        return acc;
+    },[])
+}
+
+function getTTokens(tokens){
     let start=false;
     let open = 0;
     return tokens.reduce((acc,t)=>{
