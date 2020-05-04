@@ -2,6 +2,7 @@ import React,{useState,useContext} from 'react';
 import { useCookies } from 'react-cookie';
 import {SHAPE_COLORS,
         TRIPLE_COLORS,
+        SUB_TRIPLE_COLORS,
         CONSTRAINT_COLORS,
         FACET_COLORS,
         SHAPEREF_COLORS,
@@ -68,6 +69,47 @@ const Properties = (()=> {
                 delete:{
                         color:TRIPLE_COLORS.deleteFill,
                         background:TRIPLE_COLORS.delete
+                },
+                addSubTriple:{
+                        color:TRIPLE_COLORS.addSubTripleFill,
+                        background:TRIPLE_COLORS.addSubTriple
+                },
+                collapse:{color:TRIPLE_COLORS.collapse},
+                body:{background:TRIPLE_COLORS.body},
+            }
+        }
+
+        this.getSubTripleStyle = function(){
+            return {      
+                label:{color:TRIPLE_COLORS.label}, 
+                header:{background:SUB_TRIPLE_COLORS.header},
+                custom:{
+                        color:SUB_TRIPLE_COLORS.customFill,
+                        background:SUB_TRIPLE_COLORS.custom
+                },
+                constraint:{
+                        color:TRIPLE_COLORS.constraintFill,
+                        background:TRIPLE_COLORS.constraint
+                },
+                facet:{
+                        color:TRIPLE_COLORS.facetFill,
+                        background:TRIPLE_COLORS.facet
+                },
+                shapeRef:{
+                        color:TRIPLE_COLORS.shapeRefFill,
+                        background:TRIPLE_COLORS.shapeRef
+                },
+                cardinality:{
+                        color:TRIPLE_COLORS.cardinalityFill,
+                        background:TRIPLE_COLORS.cardinality
+                },
+                delete:{
+                        color:SUB_TRIPLE_COLORS.deleteFill,
+                        background:SUB_TRIPLE_COLORS.delete
+                },
+                addSubTriple:{
+                        color:SUB_TRIPLE_COLORS.addSubTripleFill,
+                        background:SUB_TRIPLE_COLORS.addSubTriple
                 },
                 collapse:{color:TRIPLE_COLORS.collapse},
                 body:{background:TRIPLE_COLORS.body},

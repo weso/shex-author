@@ -1,4 +1,5 @@
-import React,{useState} from 'react';
+import React,{useState,useContext} from 'react';
+import {AppContext} from '../../../../../App';
 import { Collapse } from 'reactstrap';
 import TripleHeader from './headers/TripleHeader';
 import CustomComp from './customize/CustomComp';
@@ -7,104 +8,50 @@ import ShapeRefComp from './customize/ShapeRefComp';
 import FacetContainer from './customize/FacetContainer';
 import CardinalityComp from './customize/CardinalityComp';
 import Properties from '../../../../../conf/properties';
+import NodeComponent from './NodeComponent';
+import Triple from '../../../../../entities/shexEntities/triple';
 
 function TripleComponent (props) {
     
-    const {shape,triple,deleteTriple} = props;
-    const [isTripleOpen,setTripleOpen] = useState(false);
-    const [isTripleCustomOpen,setTripleCustomOpen] = useState(false);
-    const [isConstraintsOpen,setConstraintsOpen] = useState(true);
-    const [isRefOpen,setRefOpen] = useState(false);
-    const [isFacetOpen,setFacetOpen] = useState(false);
-    const [isCardinalityOpen,setCardinalityOpen] = useState(false);
-    const [allCollased,setAllCollapsed] = useState(false);
-    const [colapseBtn,setColapseBtn] = useState('menu');
+    const context = useContext(AppContext);
+    const {triple,deleteTriple,styles} = props;
+    const [isCustomOpen,setCustomOpen] = useState(false);
+    const [isTriplesOpen,setTriplesOpen] = useState(false);
+    const [colapseBtn,setColapseBtn] = useState('menu_open');
+    const [triples,setTriples] = useState(triple.triples);
 
-    const tripleStyles = Properties.getInstance().getTripleStyle();
-    const constStyles = Properties.getInstance().getConstraintStyle();
-    const facetStyles = Properties.getInstance().getFacetStyle();
-    const refStyles = Properties.getInstance().getShapeRefStyle();
-    const cardStyles = Properties.getInstance().getCardinalityStyle();
+    const subTripleStyles = Properties.getInstance().getSubTripleStyle();
 
     const customize  = function(){
-        setTripleOpen(!isTripleOpen);
+        setCustomOpen(!isCustomOpen);
     }
 
-    const customizeTriple = function(){
-        collapseAll(false);
-        setTripleCustomOpen(!isTripleCustomOpen);
-        setAllCollapsed(false);
+    const addTriple = function(){
+        const id = triple.triplesCount;
+        const subTriple = new Triple(id);
 
-        if(allCollased){
-            setTripleCustomOpen(true);
-            changeCollapseBtn();
-        }
+         // If there is a inline shape it can't be a shapeRef
+        triple.shapeRef.shape = null;
 
+        setTriples([...triples,subTriple]);
+        triple.addTriple(subTriple);
+
+      
+        context.emit();       
     }
 
-    const customizeContraints = function(){
-        collapseAll(false);
-        setConstraintsOpen(!isConstraintsOpen);
-        setAllCollapsed(false);
-
-        if(allCollased){
-            setConstraintsOpen(true);
-            changeCollapseBtn();
-        }
-    }
-
-    const customizeRef = function(){
-        collapseAll(false);
-        setRefOpen(!isRefOpen);
-        setAllCollapsed(false);
-
-        if(allCollased){
-            setRefOpen(true);
-            changeCollapseBtn();
-        }  
-    }
-
-      const customizeFacet = function(){
-        collapseAll(false);
-        setFacetOpen(!isFacetOpen);
-        setAllCollapsed(false);
-
-        if(allCollased){
-            setFacetOpen(true);
-            changeCollapseBtn();
-        }  
-    }
-
-    const customizeCardinality = function(){
-        collapseAll(false);
-        setCardinalityOpen(!isCardinalityOpen);
-        setAllCollapsed(false);
-
-        if(allCollased){
-            setCardinalityOpen(true);
-            changeCollapseBtn();
-        } 
+     const subDeleteTriple = function(tripleId){
+        const newTriples = triple.triples.filter( subTriple => subTriple.id != tripleId);
+        setTriples(newTriples)
+        triple.triples = newTriples;
+        context.emit(); 
         
     }
 
-
-    const collapseAll = function(collapse){
-        setTripleCustomOpen(collapse);
-        setConstraintsOpen(collapse);
-        setRefOpen(collapse);
-        setFacetOpen(collapse);
-        setCardinalityOpen(collapse);
-    }
-
-    const collapseToggle = function(){
-        collapseAll(!allCollased);
+     const collapseTriples = function(){
+        setCustomOpen(false);
+        setTriplesOpen(!isTriplesOpen);
         
-
-        setAllCollapsed(!allCollased);
-        changeCollapseBtn();
-    }
-
-    const changeCollapseBtn = function(){
         if(colapseBtn=='menu'){
             setColapseBtn('menu_open');
         }else{
@@ -112,123 +59,40 @@ function TripleComponent (props) {
         }
     }
 
-    
 
     return ( 
         <div>
             <TripleHeader triple={triple} 
                           deleteTriple={deleteTriple}
                           customize={customize}
-                          collapseToggle={collapseToggle}
-                          colapseBtn={colapseBtn}/>
+                          collapseTriples={collapseTriples} 
+                          colapseBtn={colapseBtn}
+                          styles={styles}/>
 
-            <Collapse   isOpen={isTripleOpen}> 
-
-                <div className='zone' style={tripleStyles.body}>
-                    <button className='btnZone'style={tripleStyles.body}
-                    onClick={customizeTriple}>Triple</button>
-                   <button className='btnZone'style={constStyles.body}
-                    onClick={customizeContraints}>Constraint</button>
-                    <button className='btnZone'style={facetStyles.body}
-                    onClick={customizeFacet}>Facet</button>
-                    <button className='btnZone'style={refStyles.body}
-                    onClick={customizeRef}>ShapeReference</button>
-                    <button className='btnZone'style={cardStyles.body}
-                    onClick={customizeCardinality}>Cardinality</button>
-
-                    <button className="collapseBtn-triple mdc-icon-button material-icons" 
-                    style={tripleStyles.collapse}
-                    onClick={collapseToggle}
-                    title="ShowAll">
-                    {colapseBtn}
-                    </button>
-                </div> 
-
-                <CustomComp  entity={triple} 
-                        isCustomOpen={isTripleCustomOpen}
-                        qualifier={false}
-                        bnode={false}
-                        customClass="customTriple"/>
-
-                <Collapse   isOpen={isConstraintsOpen}>
-                    <ConstraintComp  triple={triple} />           
-                </Collapse> 
-
-                <Collapse   isOpen={isFacetOpen}>
-                    <FacetContainer triple={triple}/> 
-                </Collapse> 
-
-                <Collapse  isOpen={isRefOpen}>
-                    <ShapeRefComp triple={triple}/>      
-                </Collapse> 
-
-                <Collapse  isOpen={isCardinalityOpen}>
-                    <CardinalityComp triple={triple}/>      
-                </Collapse>         
-                
-              
-
-            </Collapse>  
+            <NodeComponent entity={triple} isCustomOpen={isCustomOpen} customClass={'customTriple'} /> 
            
+            <Collapse  isOpen={isTriplesOpen}>
+                     <div className="subTriples" style={styles.body}>
+                        {triples.map(subTriple =>
+                            <TripleComponent key={subTriple.id}
+                                            triple={subTriple}
+                                            deleteTriple={subDeleteTriple}
+                                            styles={subTripleStyles}/> 
+                        )}
+                    
+                        <button className="xs-addSubTripleButton"
+                                style={styles.addSubTriple} 
+                                onClick={addTriple} 
+                                title="Add Triple">
+                                + Triple Constraint
+                        </button>        
+                    
+                        </div>
+                </Collapse> 
+
+
         </div>);                          
 }
 
 
 export default TripleComponent;
-
-
-/*   <div className='zone-collapse-btn'style={tripleStyles.body}> 
-                    <button className='type-zone btnZone-collapse mdc-icon-button material-icons'
-                            onClick={collapseToggle}>{colapseBtn} </button>
-                </div> */
-
-
-                /*  <div className='zone'style={tripleStyles.body}> 
-                    <button className='btnZone mdc-icon-button material-icons'style={tripleStyles.body}
-                            onClick={customizeTriple}>menu</button>
-                     <label>Triple</label>
-                </div>             
-
-                <CustomComp  entity={triple} 
-                            isCustomOpen={isTripleCustomOpen}
-                            qualifier={false}
-                            bnode={false}
-                            customClass="customTriple"/>
-
-                <div className='zone' style={constStyles.body}>
-                    <button className='btnZone mdc-icon-button material-icons'style={constStyles.body}
-                            onClick={customizeContraints}>menu</button>
-                    <label>Constraint</label>  
-                </div>
-
-                <Collapse   isOpen={isConstraintsOpen}>
-                    <ConstraintComp  triple={triple} />           
-                </Collapse> 
-                
-                <div className='zone' style={facetStyles.body}>
-                    <button className='btnZone mdc-icon-button material-icons' style={facetStyles.body}
-                    onClick={customizeFacet}>menu </button> 
-                     <label>Facet</label> 
-                </div>
-
-                <Collapse   isOpen={isFacetOpen}>
-                    <FacetContainer triple={triple}/> 
-                </Collapse> 
-
-                <div className='zone' style={refStyles.body}>
-                    <button className='btnZone mdc-icon-button material-icons' style={refStyles.body}
-                            onClick={customizeRef}>menu </button>
-                             <label>Shape Reference</label>  
-                </div>
-                <Collapse  isOpen={isRefOpen}>
-                    <ShapeRefComp triple={triple}/>      
-                </Collapse> 
-
-                <div className='zone' style={cardStyles.body}>
-                    <button className='btnZone mdc-icon-button material-icons' style={cardStyles.body}
-                            onClick={customizeCardinality}>menu </button>  
-                     <label>Cardinality</label>  
-                </div>
-                <Collapse  isOpen={isCardinalityOpen}>
-                    <CardinalityComp triple={triple}/>      
-                </Collapse>*/

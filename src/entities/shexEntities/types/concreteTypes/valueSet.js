@@ -12,11 +12,6 @@ class ValueSet extends Type{
     addValue(value){
         this.values.push(value);
     }
-       
-
-    getValues(){
-        return this.values;
-    }
 
     setValues(values){
         this.values = values;

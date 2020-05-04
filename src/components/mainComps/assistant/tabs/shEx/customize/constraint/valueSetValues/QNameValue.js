@@ -19,8 +19,7 @@ function QNameValue (props) {
     const handlePrefixChange = function(e){
         let prefixName = e.target.value;
         let newPrefix = getPrefix(prefixName);
-        console.log(prefix)
-        type.setPrefix(newPrefix);
+        type.prefix = newPrefix;
         context.emit();
         setPrefix(prefixName);
     }
@@ -28,7 +27,7 @@ function QNameValue (props) {
     const handleNameChange = function(e){
         let newName = e.target.value;
         setName(newName);
-        type.setValue(newName);
+        type.value = newName;
         context.emit();
     }
 

@@ -1,4 +1,5 @@
-import TypesFactory from './types/typesFactory';
+import Node from './node';
+
 import CardinalityFactory from './others/cardinality/cardinalityFactory';
 import CardinalitySimple from './others/cardinality/cardinalitySimple';
 import PrefixedIri from './types/concreteTypes/prefixedIri';
@@ -6,85 +7,43 @@ import Primitive from './types/concreteTypes/primitive';
 import ShapeRef from './others/shapeRef';
 import Prefix from './others/prefix';
 import {DEFAULTS} from '../../conf/config.js';
-import Shape from './shape';
 
-class Triple {
+class Triple extends Node{
 
-    constructor(id,type=new PrefixedIri(new Prefix('schema','http://schema.org/')),constraint=new Primitive(),shapeRef=new ShapeRef(),facets=[],cardinality=new CardinalitySimple()) {
-        this.id = id;
-        this.type = type;
-        this.constraint = constraint;
-        this.shapeRef = shapeRef;
-        this.facets = facets;
+    constructor(id,type=new PrefixedIri(new Prefix('schema','http://schema.org/')),constraint=new Primitive(),facets=[],shapeRef=new ShapeRef(),cardinality=new CardinalitySimple(),triples=[]) {
+        super(id,type,constraint,facets,shapeRef,triples);
         this.cardinality = cardinality;
-        this.factory = new TypesFactory();
         this.cardFactory = new CardinalityFactory();
-      }
+    }
       
-    addValue(constraint){
-        this.constraints.push(constraint);
-        this.constraintsCount++;
-    }
-    
-    addFacet(facet){
-        this.facets.push(facet);
-    }
-
-    getId(){
-        return this.id;
-    }
-
-    getType(){
-      return this.type; 
-    }
-
-    setType(type){
-       this.type = this.factory.createType(type);
-     }
-
-    setConstraint(constraint){
-        this.constraint = this.factory.createType(constraint);
-    }
 
     setCardinality(cardinality,min,max){
         this.cardinality = this.cardFactory.createCardinality(cardinality,min,max);
     }
 
-    getShapeRef(){
-        return this.shapeRef;
+
+    subString(){
+        let str = ''+this.type+' '+this.checkConstraint()+' '+this.facets+' '+this.shapeRef+' '+this.cardinality+"";
+        if(this.triples.length>0){
+                str+=' {';
+                this.triples.forEach(subTriple => {
+                    str+=subTriple.subString();
+                });
+                str+='}';
+            }
+
+        str+=';';
+        return str;
     }
-
-    setShapeRef(shapeRef){
-        this.shapeRef = shapeRef;
-    }
-
-
-    getFacets(){
-        return this.facets;
-    }
-
-    setFacets(facets){
-        this.facets = facets;
-    }
-
-    getConstraint(){
-       return this.constraint;
-    }
-
-
-    getCardinality(){
-        return this.cardinality;
-    }
-
 
 
     toString(separators){
         let str='';
-        let type=this.getType();
-        let constraint = this.getConstraint();
-        let facets = this.getFacets();
-        let shapeRef = this.getShapeRef();
-        let cardinality = this.getCardinality();
+        let type=this.type;
+        let constraint = this.constraint;
+        let facets = this.facets;
+        let shapeRef = this.shapeRef;
+        let cardinality = this.cardinality;
         separators = this.checkPrettyOptions(separators);
         let tripleSeparator = separators.triple; 
         let constSeparator = separators.constraint; 
@@ -93,7 +52,7 @@ class Triple {
  
         if(type.value!=''){
             str+= '  '+type+tripleSeparator;
-            str+= this.checkFacets();
+            str+= this.checkConstraint();
             if(facets){
                 facets.map(f=>{
                     str+=' '+f+' ';
@@ -104,11 +63,70 @@ class Triple {
                 refSeparator+=' ';
             }
             str+=constSeparator+shapeRef
-                +refSeparator+cardinality
+                +refSeparator;
+       
+
+            if(this.triples.length>0){
+                str+=' {';
+                this.triples.forEach(subTriple => {
+                    str+=subTriple.subString();
+                });
+                str+='} ';
+            }
+
+            str+=cardinality
                 +cardSeparator+';\n';
+
         }
+
         return str;
 
+    }
+
+
+    getLongestElement(element){
+      let size=0;
+      this.triples.forEach(triple => {
+          let value = triple[element].toString().length;
+          if(value>size)size = value;
+      });
+      return size;
+    }
+
+    /**
+    * Get the longest Constraint+ShapeRef
+    * */
+    getLongestCR(){
+      let size=0;
+      this.triples.forEach(triple => {
+          let cValue = triple.constraint.toString().length;
+          let rValue = triple.shapeRef.toString().length;
+          let value = cValue+rValue;
+          if(value>size)size = value;
+      });
+      return size;
+    }
+
+
+
+
+    getSeparators(tripleSize,constraintSize,refSize,cardSize,CRefSize){
+      return{
+        triple:this.getSeparator(tripleSize),
+        constraint:this.getSeparator(constraintSize),
+        ref:this.getSeparator(refSize),
+        card:this.getSeparator(cardSize),
+        CRef:this.getSeparator(CRefSize),
+      }
+    }
+
+    getSeparator(size){
+      let space = ' ';
+      let separator = ' ';
+      for(let i=0;i<size;i++){
+        separator+=space;
+      }
+      return separator;
     }
 
     checkPrettyOptions(separators){
@@ -131,23 +149,29 @@ class Triple {
         return separators;
     }
 
-    /**
-    * If none constraint and there are facets don't print the '.'
-     */
-    checkFacets(){
-        let constraint = this.getConstraint();
-        let shapeRef = this.getShapeRef();
-        if(this.facets.length>0){
-             if(constraint.getTypeName()!='Primitive' 
-                && constraint.value!='none'){
-                    return constraint+' ';
-                }
-            return '';
+    checkConstraint(){
+    
+        // If there is no constraint
+        if(this.constraint.getTypeName()=='primitive' 
+                && this.constraint.value=='none'){
+        
+            // If there are facets don't print the '.'
+            if(this.facets.length>0)return '';
+            // If there is a shapeRef don't print the '.'
+            if(this.shapeRef.shape != null) return '';    
+            // If there is a inline shape don't print the '.'
+            if(this.triples.length>0)return '';
+        
         }
-        return constraint;
+
+
+        return this.constraint+' ';
     }
 
 
+    getEntityName(){
+      return 'Triple';
+    }
 
 
 }

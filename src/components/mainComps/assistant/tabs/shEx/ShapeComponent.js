@@ -1,11 +1,13 @@
 import React,{useContext,useState} from 'react';
-import { Collapse } from 'reactstrap';
 import {AppContext} from '../../../../../App';
+import { Collapse } from 'reactstrap';
 import ShapeHeader from  './headers/ShapeHeader';
 import CustomComp from './customize/CustomComp';
 import TripleComponent from './TripleComponent';
 import Triple from '../../../../../entities/shexEntities/triple';
 import Properties from '../../../../../conf/properties';
+
+import NodeComponent from './NodeComponent';
 
 export const ShapeContext = React.createContext();
 
@@ -14,7 +16,8 @@ function ShapeComponent (props) {
     const context = useContext(AppContext);
     const {shape} = props;
     const styles = Properties.getInstance().getShapeStyle();
-
+    const tripleStyles = Properties.getInstance().getTripleStyle();
+    
     const [triples,setTriples] = useState(shape.triples);
     const [isCustomOpen,setCustomOpen] = useState(false);
     const [isTriplesOpen,setTriplesOpen] = useState(true);
@@ -26,7 +29,7 @@ function ShapeComponent (props) {
 
 
     const addTriple = function(){
-        const id = shape.getTriplesCount();
+        const id = shape.triplesCount;
         const triple = new Triple(id);
 
         setTriples([...triples,triple]);
@@ -38,7 +41,7 @@ function ShapeComponent (props) {
     const deleteTriple = function(tripleId){
         const newTriples = shape.triples.filter( triple => triple.id != tripleId);
         setTriples(newTriples)
-        shape.setTriples(newTriples);
+        shape.triples = newTriples;
         context.emit();
         
     }
@@ -78,20 +81,16 @@ function ShapeComponent (props) {
                             collapseTriples={collapseTriples} 
                             colapseBtn={colapseBtn}/>
 
-                <CustomComp  entity={shape}
-                            isCustomOpen={isCustomOpen}
-                            qualifier={true}
-                            bnode={true}
-                            customClass="customShape"/>
 
-                    
+                <NodeComponent  entity={shape} isCustomOpen={isCustomOpen} customClass={'customShape'}/> 
+
                 <Collapse  isOpen={isTriplesOpen}>
                      <div className="triples" style={styles.body}>
                         {triples.map(triple =>
                             <TripleComponent key={triple.id}
-                                            shape={shape} 
                                             triple={triple}
-                                            deleteTriple={deleteTriple}/> 
+                                            deleteTriple={deleteTriple}
+                                            styles={tripleStyles}/> 
                         )}
                     
                         <button className="xs-addTripleButton"
@@ -104,6 +103,8 @@ function ShapeComponent (props) {
                     
                         </div>
                 </Collapse> 
+
+
             </div>
         </ShapeContext.Provider>
     );
@@ -113,46 +114,3 @@ function ShapeComponent (props) {
 
 
 export default ShapeComponent;
-
-/*
-
-
-                     <div className="triples">
-                        <div className="tripleSlot">
-                        <label>TripleSlot</label>
-                        {triples.map(triple =>
-                            <TripleComponent key={triple.id}
-                                            shape={shape} 
-                                            triple={triple}
-                                            deleteTriple={deleteTriple}/> 
-                        )}
-                    
-                        <button className="xs-addTripleButton" 
-                                onClick={addTriple} 
-                                disabled={disabled}
-                                title="Add Triple">
-                                + Triple Constraint
-                        </button>        
-                    
-                        </div>
-                    </div> <div className="triples">
-                        <div className="tripleSlot">
-                        <label>TripleSlot</label>
-                        {triples.map(triple =>
-                            <TripleComponent key={triple.id}
-                                            shape={shape} 
-                                            triple={triple}
-                                            deleteTriple={deleteTriple}/> 
-                        )}
-                    
-                        <button className="xs-addTripleButton" 
-                                onClick={addTriple} 
-                                disabled={disabled}
-                                title="Add Triple">
-                                + Triple Constraint
-                        </button>        
-                    
-                        </div>
-                    </div>
-
-                    */

@@ -38,7 +38,8 @@ import ValueSetValue from '../entities/shexEntities/others/valueSetValue';
 const PRIMITIVES = ['string','integer','date','boolean'];
 
 
-let refs;
+
+let references;
 /**
 *   Obtains all the current tokens in the editor
 *   @return {Array} tokens
@@ -91,7 +92,6 @@ function getDefinedShapes(tokens){
                 if(element.string == '{')brackets++;
                 if(element.string == '}')brackets--;
                 if(brackets!=0)shape.push(element);
-                //if(brackets==0)hasTripleStarted = false
              }else{
                  //Get the previous tokens before the triples
                  shape.push(element);
@@ -109,15 +109,20 @@ function getDefinedShapes(tokens){
 *
  */
 function getShapes(defShapes){
-    refs = [];
+    references = [];
     return defShapes.reduce((acc,shape)=>{
         let id  = acc.length;
         let shapeDef = shape[0].string;
-        let shapeType = getType(shapeDef);
-        let qualifier = getQualifier(shape[1]);
-        let triples = getTriples(id,shape);
+        let sTokens = getBeforeTriplesTokens(shape);
+        let content =  getContent(id,sTokens,id);
 
-        acc.push(new Shape(id,shapeType,triples,qualifier));
+        let tTokens = getTripleTokens(shape);
+        let triples = getTriples(id,tTokens);
+
+
+        let s = new Shape(id,content.type,content.constraint,content.facets,content.shapeRef,triples);
+        references.push({entity:s,ref:content.ref});
+        acc.push(s);
         return acc;
 
     },[])
@@ -146,21 +151,6 @@ function getType(def) {
 }
 
 
-/**
-*   Get the Qualifier
-*   @param {Token} First token next to the ShapeExprLabel
-*   @return {Type}
-*
-*/
-function getQualifier(qualifier) {
-    if(qualifier){
-        if(qualifier.type == 'constraintKeyword'){
-            let type = qualifier.string.toLowerCase();
-            return new TypesFactory().createType(type);
-        }
-    }
-    return new BlankKind();
-}
 
 
 /**
@@ -169,40 +159,61 @@ function getQualifier(qualifier) {
 *   @param {Array} Shape (Tokens)
 *
 * */
-function getTriples(shapeId,shape) {
+function getTriples(shapeId,tokens) {
         let triples = [];
         let singleTriple = [];
         let yashe = Editor.getYashe();
-        let tTokens = getTripleTokens(shape);
-        return tTokens.reduce((acc,token,index)=>{
-            singleTriple.push(token);
-            if(isEndOfTriple(token,index,tTokens)){
-                acc.push(getTriple(acc.length,singleTriple,shapeId));
+        let start = false;
+        let finish = true;
+        let open = 0;
+       //  console.log({tokens:tokens,lenght:tokens.length})
+        return tokens.reduce((acc,token,index)=>{
+            singleTriple.push(token);             
+           if( (token.string == ';' && finish) || index == tokens.length-1){
+               if(singleTriple.length>1){
+                   let before = getBeforeTriplesTokens(singleTriple);
+                    let content = getContent(acc.length,before,shapeId);
+                    let after = getTripleTokens(singleTriple);
+                    let subTriples = getTriples(acc.length,after);
+                    let triple = new Triple(acc.length,content.type,content.constraint,content.facets,content.shapeRef,content.cardinality,subTriples);
+                    references.push({entity:triple,ref:content.ref});
+                    acc.push(triple);
+               }
                 singleTriple = [];
-            }
+           }
+
+          if(token.string=='{'){
+               open++;
+               start = true;
+               finish = false;
+           }
+            
+
+          if(token.string=='}'){
+               open--;
+            
+           }
+
+           if(open==0 && start)finish=true;
+     
+            
             return acc;
         },[])
 }
 
-
-/**
-*    Get a Triple Object from a line of tokens
-*    @param {Array} Triples
-*    @param {Array} LineTokens
-*    @param {Integer} ShapeId
-*/
-function getTriple(id,singleTriple,shapeId) {   
+function getContent(id,tokens,entityId) {   
     let type;
     let constraint;
     let valueSet = [];
     let facets = [];
     let cardinality= new TypesFactory().createType('');
     let shapeRef = new ShapeRef();
+    let ref;
 
     //I am using a for loop just because of the facets (see line 233)
-    for(let i=0;i<singleTriple.length;i++){
-        let token = singleTriple[i];
-        if(token.type == 'string-2' || token.type == 'variable-3'){
+    for(let i=0;i<tokens.length;i++){
+        let token = tokens[i];
+        if(token.type == 'string-2' || token.type == 'variable-3' || token.type=='shape'){
             type = getType(token.string);
         }
         if(token.type == 'constraint' || token.type == 'constraintKeyword' ){
@@ -219,19 +230,12 @@ function getTriple(id,singleTriple,shapeId) {
         }
 
         if(token.type == 'shapeRef' ){
-            let ref = getRefName(token.string);
-            refs.push(
-                    {
-                        shapeId:shapeId,
-                        tripleId:id,
-                        shapeRef:ref
-                    }
-                );
+            ref = getRefName(token.string);
         }
 
         if(token.type == 'facet'){
             i++;//I Need the next value
-            let value = singleTriple[i].string;
+            let value = tokens[i].string;
             let id =facets.length;
             let type = token.string.toLowerCase();
             facets.push(new Facet(id,type,value));
@@ -244,6 +248,7 @@ function getTriple(id,singleTriple,shapeId) {
         
         if( token.type != 'string-2' && 
             token.type != 'variable-3' &&
+            token.type != 'shape' &&
             token.type != 'constraint' && 
             token.type != 'constraintKeyword' && 
             token.type != 'valueSet' && 
@@ -267,27 +272,84 @@ function getTriple(id,singleTriple,shapeId) {
             Codemirror.signal(Editor.getYashe(),'forceError','PARENTHESIS_ERR');
         }
             
-
-        if(token.string == '{'){
-            Codemirror.signal(Editor.getYashe(),'forceError','INLINESHAPE_ERR');
-        }
   
     }
     if(valueSet.length>0)constraint=new ValueSet(valueSet);
-    return new Triple(id,type,constraint,shapeRef,facets,cardinality);
+    return {type:type,constraint:constraint,facets:facets,shapeRef:shapeRef,ref:ref,cardinality:cardinality};
 }
 
+
 /**
-*   Get the triple tokens. We start collecting the tokens after find '{' token
+*   Get the tokens before a tripleExpr. We start collecting the tokens before find '{' token
 *   @param {Array} Shape (Tokens)
 *   @return {Array} Tokens
 *
 */
-function getTripleTokens(shape){
-    let start=false;
-    return shape.reduce((acc,t)=>{
+function getBeforeTriplesTokens(tokens){
+    let start=true;
+    return tokens.reduce((acc,t)=>{
+        if(t.string=='{')start=false;
         if(start)acc.push(t);
-        if(t.string=='{')start=true;
+        return acc;
+    },[])
+}
+
+function getBTriplesTokens(tokens){
+    let start=true;
+    let isSimple = false;
+    let btokens = tokens.reduce((acc,t)=>{
+        if(t.string==';'){
+            isSimple=true;
+            start = false;
+        }
+        if(t.string=='{')start=false;
+        if(start)acc.push(t);
+        return acc;
+    },[])
+
+    return {tokens:btokens,isSimple:isSimple}
+}
+
+/**
+*   Get the triple tokens. We start collecting the tokens after find '{' token until find the correspondig '}'
+*   @param {Array} Shape (Tokens)
+*   @return {Array} Tokens
+*
+*/
+function getTripleTokens(tokens){
+    let start=false;
+    let open = 0;
+    return tokens.reduce((acc,t)=>{
+        if(start)acc.push(t);
+        if(t.string=='{'){
+            open++;
+            start=true;
+        }
+
+        if(t.string=='}'){
+            open--;
+        }
+
+        if(open == 0 && start==true)start=false;
+        return acc;
+    },[])
+}
+
+function getTTokens(tokens){
+    let start=false;
+    let open = 0;
+    return tokens.reduce((acc,t)=>{
+        if(start)acc.push(t);
+        if(t.string=='{'){
+            open++;
+            start=true;
+        }
+
+        if(t.string=='}'){
+            open--;
+        }
+
+        if(open == 0 && start==true)start=false;
         return acc;
     },[])
 }
@@ -374,16 +436,12 @@ function getValueSetValue(def) {
 
 
 function updateShapeRefs(shapes) {
-    for(let r in refs){
-        let shapeId = refs[r].shapeId;
-        let tripleId = refs[r].tripleId;
-        let ref = refs[r].shapeRef;
-
-        let shape = shexUtils.getShapeById(shapes,shapeId);
-        let triple = shexUtils.getTripleById(shape,tripleId);
-        let shapeRef = shexUtils.getShapeByName(shapes,ref);
-
-        triple.shapeRef.setShape(shapeRef);
+    for(let r in references){
+        let element = references[r];
+        if(element.ref!=undefined){
+            let shapeRef = shexUtils.getShapeByName(shapes,element.ref);
+            element.entity.shapeRef.shape = shapeRef;
+        }
     }
 }
 

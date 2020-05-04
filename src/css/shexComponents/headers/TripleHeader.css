@@ -5,13 +5,14 @@
     border-top: 1px solid #acaaaa;
     text-align: left;
     display: grid;
-    grid-template-columns: 80% 9% 9% ;
+    grid-template-columns: 70% 9% 9% 9%;
     gap: 8px;
+    /*background-color: #ffd0ca !important;*/
 }
 
 .tripleHeader{
     display: grid;
-    grid-template-columns:  84% 7% 7%;
+    grid-template-columns:  76% 7% 7% 7%;
     gap: 10px;
 }
 
@@ -35,51 +36,3 @@
     transform: translateY(4px);
 }
 
-.zone{
-    display: grid;
-    grid-template-columns: 12% 20% 12% 29% 20% 7%;
-    background-color: white;
-
-
-}
-
-.btnZone-collapse{
-    border: none;
-    text-align: right;
-    padding: 1px;
-    height: 10px;
-}
-
-.btnZone-collapse:focus{
-    outline: none;
- }
-
-
-.zone-collapse-btn{
-    height: 15px;
-}
-
-.btnZone{
-    background-color: transparent;
-    border:none;
-    border-radius: 0px 4px 4px 0px;
-    border-right: 1px double gray;
-    border-top: 1px double gray;
-    
-    
-}
-.btnZone:focus{
-   outline: none;
-}
-
-
-.collapseBtn-triple{
-    background: transparent;
-    border: none;
-    font-size: 25px;
-    border-top: 1px solid grey;
-}
-
-.collapseBtn-triple:focus{
-    outline: none;
-}

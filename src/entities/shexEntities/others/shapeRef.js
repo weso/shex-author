@@ -6,19 +6,9 @@ class ShapeRef{
         this.shape = shape;
     }
 
-
-    getShape(){
-        return this.shape;
-    }
-
-    setShape(shape){
-        this.shape = shape;
-    }
-
-
     toString(){
         if(this.shape){
-           let shapeRef = this.shape.getType().toString();
+           let shapeRef = this.shape.type.toString();
            return '@'+shapeRef;
         }
 

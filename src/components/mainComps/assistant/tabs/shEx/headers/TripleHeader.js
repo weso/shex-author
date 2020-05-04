@@ -9,19 +9,14 @@ function TripleHeader (props) {
 
     const context = useContext(AppContext);
     const shapeContext = useContext(ShapeContext);
-    const styles = Properties.getInstance().getTripleStyle();
     const disabled = shapeContext.disabled;
 
     const { triple,
             deleteTriple,
             customize,
-            customizeTriple,
-            customizeRef,
-            customizeFacet,
-            customizeContraints,
-            customizeCardinality,
-            collapseToggle,
-            colapseBtn
+            collapseTriples,
+            colapseBtn,
+            styles
             } = props;
 
     const [name,setName] = useState(triple.type.value);
@@ -61,6 +56,13 @@ function TripleHeader (props) {
                     disabled={disabled} 
                     title="Delete Triple Constraint">
                     delete
+            </button>
+
+             <button className="collapseBtn mdc-icon-button material-icons" 
+                    style={styles.collapse}
+                    onClick={collapseTriples} 
+                    title="Triple Constraints">
+                    menu
             </button>
             
 

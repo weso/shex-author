@@ -8,22 +8,13 @@ class PrefixedIri extends Type{
         this.prefix = prefix;
     }
 
-    getPrefix(){
-        return this.prefix;
-    }
-
-    setPrefix(prefix){
-        this.prefix = prefix;
-    }
-
-   
     getTypeName(){
         return 'prefixedIri';
     }
 
 
     toString(){
-        return this.getPrefix().getPrefixName()+':'+this.getValue();
+        return this.prefix.getPrefixName()+':'+this.getValue();
     }
 
 }

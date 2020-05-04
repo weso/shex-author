@@ -119,6 +119,18 @@ label{
 
 }
 
+.subTriples{
+    color: black;
+    text-align: left;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 100%; 
+    padding-left: 10px;
+    padding-right: 10px;
+
+
+}
+
 /*
 .tripleSlot{
     border-top: 1px solid #acaaaa;
@@ -225,12 +237,12 @@ label{
 
 
 .xs-addShapeButton{
-    margin-left:100px;
-    margin-right: 100px;
+    margin-left:40px;
+    margin-right: 40px;
     border-radius: 10px;
     font-weight: bold;
-    -webkit-transition: margin 0.5s ease-in-out;
-    transition: margin 0.5s ease-in-out;
+    -webkit-transition: margin 0.2s ease-in-out;
+    transition: margin 0.2s ease-in-out;
 }
 
 .xs-addShapeButton:hover{
@@ -249,15 +261,15 @@ label{
 }
 
 .xs-addTripleButton{
-    margin-left:130px;
-    margin-right: 130px;
+    margin-left:70px;
+    margin-right: 70px;
     border-radius: 10px;
     font-weight: bold;
     padding: 1px;
     margin-top: 3px;
     margin-bottom: 3px;
-    -webkit-transition: margin 0.5s ease-in-out;
-    transition: margin 0.5s ease-in-out;
+    -webkit-transition: margin 0.3s ease-in-out;
+    transition: margin 0.3s ease-in-out;
 }
 
 .xs-addTripleButton:hover{
@@ -270,6 +282,28 @@ label{
     outline: none;
 }
 
+
+.xs-addSubTripleButton{
+    margin-left:100px;
+    margin-right: 100px;
+    border-radius: 10px;
+    font-weight: bold;
+    padding: 1px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    -webkit-transition: margin 0.4s ease-in-out;
+    transition: margin 0.4s ease-in-out;
+}
+
+.xs-addSubTripleButton:hover{
+    margin-left:0px;
+    margin-right: 0px;
+}
+
+
+.xs-addSubTripleButton:focus{
+    outline: none;
+}
 
 .addTripleButton{
     margin-left:200px;
@@ -400,6 +434,62 @@ label{
     background-repeat: no-repeat;
     height: 100%;
    
+}
+
+
+
+.zone{
+    display: grid;
+    grid-template-columns: 15% 20% 12% 29% 24%;
+    background-color: white;
+}
+
+.zone-card{
+    display: grid;
+    grid-template-columns: 12% 20% 12% 29% 20% 7%;
+    background-color: white;
+}
+
+
+.btnZone-collapse{
+    border: none;
+    text-align: right;
+    padding: 1px;
+    height: 10px;
+}
+
+.btnZone-collapse:focus{
+    outline: none;
+ }
+
+
+.zone-collapse-btn{
+    height: 15px;
+}
+
+.btnZone{
+    background-color: transparent;
+    border:none;
+    border-radius: 0px 4px 4px 0px;
+    border-right: 1px double gray;
+    border-top: 1px double gray;
+    
+    
+}
+.btnZone:focus{
+   outline: none;
+}
+
+
+.collapseBtn-triple{
+    background: transparent;
+    border: none;
+    font-size: 25px;
+    border-top: 1px solid grey;
+}
+
+.collapseBtn-triple:focus{
+    outline: none;
 }
 
 /*

@@ -11,13 +11,13 @@ function FacetComp (props) {
     const styles = Properties.getInstance().getFacetStyle();
    
     const handleTypeChange = function(type){
-        facet.setType(type);
+        facet.type = type;
         setType(type);
         context.emit();
     }
 
     const handleValueChange = function(value){
-        facet.setValue(value);
+        facet.value = value;
         setValue(value);
         context.emit();
     }

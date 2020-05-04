@@ -1,45 +1,22 @@
-import TypesFactory from './types/typesFactory';
+import Node from './node';
 
 import PrefixedIri from './types/concreteTypes/prefixedIri';
 import BlankKind from './types/concreteTypes/kinds/blankKind';
 import Prefix from './others/prefix';
+import Primitive from './types/concreteTypes/primitive';
+import ShapeRef from './others/shapeRef';
 
-class Shape {
+class Shape extends Node{
 
-  constructor(id,type=new PrefixedIri(new Prefix('','http://example.org/')),triples = [],qualifier=new BlankKind()) {
-      this.id = id;
-      this.type = type;
-      this.triples = triples;
-      this.triplesCount = this.triples.length;
-      this.factory = new TypesFactory();
-      this.qualifier = qualifier;
+  constructor(id,type=new PrefixedIri(new Prefix('','http:/example.org/')),constraint=new Primitive(),facets=[],shapeRef=new ShapeRef(),triples=[]) {
+      super(id,type,constraint,facets,shapeRef,triples);
     }
-
-    addTriple(triple){
-        this.triples.push(triple);
-        this.triplesCount++;
-    }
-
-    removeTriple(tripleId){
-      this.triples = this.triples.filter(function( obj ) {
-        return obj.id != tripleId
-      });
-    }
-
-    setQualifier(qualifier){
-      this.qualifier = this.factory.createType(qualifier);
-    }
-    
-
-    setType(type){
-        this.type = this.factory.createType(type);
-     }
 
  
     toString(){
       let str='\n';
       if(this.type.value!=''){
-        str+=this.type+' '+this.qualifier;
+        str+=this.type;
         if(this.checkContent()){
           str+=' {\n';
           str+= this.getTriplesString();
@@ -83,7 +60,7 @@ class Shape {
      checkContent(){
        let isContent = false;
        this.triples.forEach(triple => {
-          if(triple.getType().value!=''){
+          if(triple.type.value!=''){
             isContent = true;
           }
         });
@@ -136,38 +113,10 @@ class Shape {
       return separator;
     }
 
-    //Getters and setters
-    getId(){
-      return this.id;
+    getEntityName(){
+      return 'Shape';
     }
 
-    setId(id){
-      this.id=id;
-    }
-
-    getType(){
-      return this.type;
-    }
-
-    getTriples(){
-      return this.triples;
-    }
-
-    setTriples(triples){
-      this.triples = triples;
-    }
-
-    getTriplesCount(){
-      return this.triplesCount;
-    }
-
-    setTriplesCount(triplesCount){
-      this.triplesCount = triplesCount;
-    }
-
-    getQualifier(){
-      return this.qualifier;
-    }
 
   }
 

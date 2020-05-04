@@ -1,5 +1,5 @@
 export function makeItResponsive(width){
-        
+       /*  
         //TimeOut need to take all the elements after render the DOM
         setTimeout(() => {
         let tabs = document.getElementsByClassName("xs-tabs")[0];
@@ -77,7 +77,7 @@ export function makeItResponsive(width){
         });
 
 
-    }, 0);
+    }, 0); */
         
 }
 
