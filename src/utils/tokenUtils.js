@@ -188,7 +188,7 @@ function isFinishOfTriple(tokens,token,index,finish){
 */
 function getCardinalityIfNeeded(cardinality,after){
     if(cardinality == undefined){
-        let cardToken = after[after.length-2];
+        let cardToken = after[after.length-1];
         if(cardToken!=undefined && cardToken.type == 'cardinality')cardinality = getCardinality(cardToken.string);
     }
     return cardinality;
