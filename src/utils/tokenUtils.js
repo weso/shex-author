@@ -166,16 +166,19 @@ function getTriples(shapeId,tokens) {
         let start = false;
         let finish = true;
         let open = 0;
-       //  console.log({tokens:tokens,lenght:tokens.length})
+
         return tokens.reduce((acc,token,index)=>{
+   
             singleTriple.push(token);             
            if( (token.string == ';' && finish) || index == tokens.length-1){
                if(singleTriple.length>1){
-                   let before = getBeforeTriplesTokens(singleTriple);
+                    let before = getBeforeTriplesTokens(singleTriple);
                     let content = getContent(acc.length,before,shapeId);
                     let after = getTripleTokens(singleTriple);
                     let subTriples = getTriples(acc.length,after);
-                    let triple = new Triple(acc.length,content.type,content.constraint,content.facets,content.shapeRef,content.cardinality,subTriples);
+                    //If there is a inlineShape the cardinality comes after it
+                    let cardinality = getCardinalityIfNeeded(content.cardinality,after);
+                    let triple = new Triple(acc.length,content.type,content.constraint,content.facets,content.shapeRef,cardinality,subTriples);
                     references.push({entity:triple,ref:content.ref});
                     acc.push(triple);
                }
@@ -201,6 +204,18 @@ function getTriples(shapeId,tokens) {
         },[])
 }
 
+/**
+    If there is a inlineShape the cardinality comes after it
+*/
+function getCardinalityIfNeeded(cardinality,after){
+    if(cardinality == undefined){
+        let cardToken = after[after.length-1];
+        if(cardToken!=undefined && cardToken.type == 'cardinality')cardinality = getCardinality(cardToken.string);
+    }
+    return cardinality;
+}
+
+
 function getContent(id,tokens,entityId) {   
     let type;
     let constraint;
@@ -209,7 +224,6 @@ function getContent(id,tokens,entityId) {
     let cardinality= new TypesFactory().createType('');
     let shapeRef = new ShapeRef();
     let ref;
-
     //I am using a for loop just because of the facets (see line 233)
     for(let i=0;i<tokens.length;i++){
         let token = tokens[i];
@@ -294,21 +308,6 @@ function getBeforeTriplesTokens(tokens){
     },[])
 }
 
-function getBTriplesTokens(tokens){
-    let start=true;
-    let isSimple = false;
-    let btokens = tokens.reduce((acc,t)=>{
-        if(t.string==';'){
-            isSimple=true;
-            start = false;
-        }
-        if(t.string=='{')start=false;
-        if(start)acc.push(t);
-        return acc;
-    },[])
-
-    return {tokens:btokens,isSimple:isSimple}
-}
 
 /**
 *   Get the triple tokens. We start collecting the tokens after find '{' token until find the correspondig '}'
@@ -330,29 +329,11 @@ function getTripleTokens(tokens){
             open--;
         }
 
-        if(open == 0 && start==true)start=false;
+        if(open == 0 && start==true && t.string==';')start=false;
         return acc;
     },[])
 }
 
-function getTTokens(tokens){
-    let start=false;
-    let open = 0;
-    return tokens.reduce((acc,t)=>{
-        if(start)acc.push(t);
-        if(t.string=='{'){
-            open++;
-            start=true;
-        }
-
-        if(t.string=='}'){
-            open--;
-        }
-
-        if(open == 0 && start==true)start=false;
-        return acc;
-    },[])
-}
 
 /**
  * Returns true in case the token represent the end of a Triple
