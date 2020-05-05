@@ -34,10 +34,6 @@ import ValueSetValue from '../entities/shexEntities/others/valueSetValue';
 
 
 
-//HAY QUE METER TODOS (Update... igual no hace falta...)
-const PRIMITIVES = ['string','integer','date','boolean'];
-
-
 
 let references;
 /**
@@ -301,8 +297,8 @@ function getContent(id,tokens,entityId) {
 */
 function getBeforeTriplesTokens(tokens){
     let start=true;
-    return tokens.reduce((acc,t)=>{
-        if(t.string=='{')start=false;
+    return tokens.reduce((acc,t,index)=>{
+        if(t.string=='{' || index == tokens.length-1)start=false;
         if(start)acc.push(t);
         return acc;
     },[])
@@ -476,6 +472,11 @@ function getNonWsTokens(tokens){
         return obj.type != 'ws';
     })
 }
+
+//HAY QUE METER TODOS (Update... igual no hace falta...)
+const PRIMITIVES = ['string','integer','date','boolean'];
+
+
 
 const tokenUtils = {
     getTokens:getTokens,
