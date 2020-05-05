@@ -77,20 +77,31 @@ function EditorComp() {
                     hideConvert();
                     if(y.isComplex)showError(COMPLEX_SHAPE_MSG);
                     if(y.hasErrors(y))showError(ERROR_EDITOR_MSG);
-        
+                    let isErrMsg=false;
                     y.on('keyup',yasheUtils.debounce(function( e ) {
                         if(!y.hasErrors(y)){
                             hideError();
-                            let newShapes = yasheUtils.getShapes();
-                            if(y.oldShapes.length == newShapes.length){ //Any new shape?
-                                if(newShapes.toString()!=y.oldShapes.toString()){ //Any update?
-                                    y.isComplex=false;
-                                    y.oldShapes = replaceShapes();
-                                }
-                            }else{
+                            updatePrefixes();
+                            if(isErrMsg){   
+                                isErrMsg=false;
                                 updateAssist();
-                            } 
+                            }else{
+                                let newShapes = yasheUtils.getShapes();
+                                if(y.oldShapes.length == newShapes.length){ //Any new shape?
+                                    //Nope
+                                    if(newShapes.toString()!=y.oldShapes.toString()){ //Any update?
+                                        //Yes
+                                        y.isComplex=false;
+                                        y.oldShapes = replaceShapes();
+                                    }
+                                }else{
+                                    updateAssist();
+                                } 
+
+                            }
+                            
                         }else{
+                            isErrMsg=true;
                             showError(ERROR_EDITOR_MSG);
                         }   
                     }, 500));

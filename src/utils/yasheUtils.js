@@ -18,8 +18,10 @@ function getShapes(){
 function getPrefixes(){
   let defP = Editor.getYashe().getDefinedPrefixes();
   return Object.keys(defP).reduce((acc,p)=>{
-    let id = acc.length + prefixCount++;
-    acc.push(new Prefix(p,defP[p],id))
+     if(isInDefPrefixes(p)){ //This is weird I know
+        let id = acc.length + prefixCount++;
+        acc.push(new Prefix(p,defP[p],id))
+     }
     return acc;
   },[]);
 }
@@ -44,7 +46,6 @@ function getSchema(){
   }
 
 
-
 function debounce(func, wait, immediate) {
     let timeout; let result;
     return function() {
@@ -61,6 +62,13 @@ function debounce(func, wait, immediate) {
         return result;
     };
 };
+
+function isInDefPrefixes(prefix){
+  return Editor.getYashe().defPrefixes.reduce((acc,p)=>{
+    if(prefix+':'==p)acc=true;
+    return acc;
+  },false);
+}
 
  const yasheUtils = {
       getShapes:getShapes,
