@@ -138,7 +138,6 @@ function getTriples(shapeId,tokens) {
         let start = false;
         let finish = true;
         let open = 0;
-
         return tokens.reduce((acc,token,index)=>{
             singleTriple.push(token);             
             if(isFinishOfTriple(tokens,token,index,finish)){
@@ -148,10 +147,13 @@ function getTriples(shapeId,tokens) {
                         let after = getTripleTokens(singleTriple);
                         let subTriples = getTriples(acc.length,after);
                         //If there is a inlineShape the cardinality comes after it
+                        console.log(after)
                         let cardinality = getCardinalityIfNeeded(content.cardinality,after);
-                        let triple = new Triple(acc.length,content.type,content.constraint,content.facets,content.shapeRef,cardinality,subTriples);
-                        references.push({entity:triple,ref:content.ref});
-                        acc.push(triple);
+                        if(content.type != undefined){//Needed when last triple of an inlineShape ends with ';'
+                            let triple = new Triple(acc.length,content.type,content.constraint,content.facets,content.shapeRef,cardinality,subTriples);
+                            references.push({entity:triple,ref:content.ref});
+                            acc.push(triple);
+                        }
                 }
                 singleTriple = [];
             }
@@ -186,7 +188,7 @@ function isFinishOfTriple(tokens,token,index,finish){
 */
 function getCardinalityIfNeeded(cardinality,after){
     if(cardinality == undefined){
-        let cardToken = after[after.length-1];
+        let cardToken = after[after.length-2];
         if(cardToken!=undefined && cardToken.type == 'cardinality')cardinality = getCardinality(cardToken.string);
     }
     return cardinality;
