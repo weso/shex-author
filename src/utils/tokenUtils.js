@@ -2,37 +2,27 @@
 import Codemirror from 'codemirror';
 import Editor from '../entities/editor';
 import shexUtils from './shexUtils';
-
-import  Shape from '../entities/shexEntities/shape';
-import  Triple from '../entities/shexEntities/triple';
-
+import Shape from '../entities/shexEntities/shape';
+import Triple from '../entities/shexEntities/triple';
 import TypesFactory from '../entities/shexEntities/types/typesFactory';
 import CardinalityFactory from '../entities/shexEntities/others/cardinality/cardinalityFactory';
 import Facet from '../entities/shexEntities/others/facet';
-
 import PrefixedIri from '../entities/shexEntities/types/concreteTypes/prefixedIri';
 import IriRef from '../entities/shexEntities/types/concreteTypes/iriRef';
 import BNode from '../entities/shexEntities/types/concreteTypes/bNode';
 import Primitive from '../entities/shexEntities/types/concreteTypes/primitive';
 import ValueSet from '../entities/shexEntities/types/concreteTypes/valueSet';
-
 import Literal from '../entities/shexEntities/types/concreteTypes/kinds/literal';
 import NonLiteral from '../entities/shexEntities/types/concreteTypes/kinds/nonLiteral';
 import IriKind from '../entities/shexEntities/types/concreteTypes/kinds/iriKind';
 import BNodeKind from '../entities/shexEntities/types/concreteTypes/kinds/bNodeKind';
 import BlankKind from '../entities/shexEntities/types/concreteTypes/kinds/blankKind';
-
 import NumberLiteral from '../entities/shexEntities/types/concreteTypes/literal/numberLiteral';
 import StringLiteral from '../entities/shexEntities/types/concreteTypes/literal/stringLiteral';
 import BooleanLiteral from '../entities/shexEntities/types/concreteTypes/literal/booleanLiteral';
-
-
-
 import Prefix from '../entities/shexEntities/others/prefix';
 import ShapeRef from '../entities/shexEntities/others/shapeRef';
 import ValueSetValue from '../entities/shexEntities/others/valueSetValue';
-
-
 
 
 let references;
@@ -76,7 +66,11 @@ function getDefinedShapes(tokens){
             acc[shapeCont]=shape;
             shapeCont++;
         }else{
-            // IMPORTANT 
+
+            shape.push(element);
+
+
+            /* // IMPORTANT  ( DEPRECATED)
             // We could do just shape.push(element) but if there 
             // are directives between shapes we will push that directives into the shape   
             if(element.string == '{'){
@@ -91,7 +85,7 @@ function getDefinedShapes(tokens){
              }else{
                  //Get the previous tokens before the triples
                  shape.push(element);
-             }
+             } */
         }
 
         return acc;
@@ -256,24 +250,9 @@ function getContent(id,tokens,entityId) {
           cardinality=getCardinality(token.string);
         }
         
-        if( token.type != 'string-2' && 
-            token.type != 'variable-3' &&
-            token.type != 'shape' &&
-            token.type != 'constraint' && 
-            token.type != 'constraintKeyword' && 
-            token.type != 'valueSet' && 
-            token.type != 'shapeRef' && 
-            token.type != 'facet' && 
-            token.type != 'cardinality' && 
-            token.type != 'punc' &&
-            token.type !='comment'){
-
-            Codemirror.signal(Editor.getYashe(),'forceError');
-        }
-
-       
+        if(isNotAllowed(token))Codemirror.signal(Editor.getYashe(),'forceError');
+        
         // Force errors in case to find one of the following tokens
-
         if(token.string == '~'){
             Codemirror.signal(Editor.getYashe(),'forceError','EXCLUSION_ERR');
         }
@@ -449,6 +428,28 @@ function isPrimitive(value) {
         if(p == value) acc=true;
         return acc;
     },false)
+}
+
+/**
+* Returns true if the token is not allowed in the assistant. False otherwise
+* @param {Object} Token
+* @return {Boolean} 
+*/
+function isNotAllowed(token){
+    return token.type != 'string-2' && 
+            token.type != 'variable-3' &&
+            token.type != 'shape' &&
+            token.type != 'constraint' && 
+            token.type != 'constraintKeyword' && 
+            token.type != 'valueSet' && 
+            token.type != 'shapeRef' && 
+            token.type != 'facet' && 
+            token.type != 'cardinality' && 
+            token.type != 'punc' &&
+            (token.type != 'keyword' && token.string.toLowerCase()=='prefix') &&
+            token.type != 'prefixDelcAlias' &&
+            token.type != 'prefixDelcIRI' &&
+            token.type !='comment' ;
 }
 
 /**
