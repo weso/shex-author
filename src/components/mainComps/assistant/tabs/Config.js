@@ -76,7 +76,6 @@ function Config (props) {
                                 <option value='none'>None</option>
                                 <option value='pretty1'>Pretty1</option>
                                 <option value='pretty2'>Pretty2</option>
-                                <option value='pretty3'>Pretty3</option>
                             </select>
                         </div>
                     </div>
