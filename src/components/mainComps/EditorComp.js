@@ -11,6 +11,8 @@ import yasheUtils from '../../utils/yasheUtils';
 import {defaultExample} from '../../galery/defaultExample';
 import Prefix from '../../entities/shexEntities//others//prefix';
 
+import {undo,redo} from '../../utils/toolbarUtils';
+
 import '../../css/Yashe.css';
 import '../../css/themes/author.css';
 import '../../css/themes/author-dark.css';
@@ -36,8 +38,7 @@ function EditorComp() {
         if (!yashe) {
             const options = {
                 persistent:false,
-                lineNumbers: true,
-                showTooltip:true,
+                showThemeButton:false,
                 theme:'author-dark',
                 value:defaultExample
             }
@@ -125,6 +126,17 @@ function EditorComp() {
                // let data={size:{width:width}};
                // context.handleResize(null,data); */
             });
+
+            y.on('undo', function(prefixes,width) {
+                undo();
+                updateAssist();
+            });
+
+             y.on('redo', function(prefixes,width) {
+                redo();
+                updateAssist();
+            });
+
 
             y.on('forceError', function(prefixes) {
                 y.isComplex=true;
@@ -233,7 +245,7 @@ function EditorComp() {
     }
 
 
-    return  (<div className="col edit" ref={divRef}/>);
+    return  (<div id='editorFill' className="col edit" ref={divRef}/>);
 
 }
 

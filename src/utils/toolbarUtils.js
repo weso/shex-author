@@ -45,23 +45,25 @@ export function downloadFile(){
 
 export function changeTheme(){
     let yashe = Editor.getYashe();
-    var themeValue = 'wiki'
+    var themeValue = 'author-dark'
     var color = 'black'
-    if(yashe.getOption('theme') == 'wiki'){
-        themeValue='dark'
+    if(yashe.getOption('theme') == 'author-dark'){
+        themeValue='wiki'
         color = 'white'
+        document.getElementById("editorFill").classList.add('white-fill');
+        document.getElementById("shareBtn").classList.add('light');
         document.getElementById("downloadBtn").classList.add('light');
         document.getElementById("copyBtn").classList.add('light');
         document.getElementById("deleteBtn").classList.add('light');
-        document.getElementById("themeBtn").classList.add('light');
         document.getElementById("smallBtn").classList.add('light');
         document.getElementById("fullBtn").classList.add('light');
         document.getElementById("uploadBntLabel").classList.add('light');
     }else{
+        document.getElementById("editorFill").classList.remove('white-fill');
+        document.getElementById("shareBtn").classList.remove('light');
         document.getElementById("downloadBtn").classList.remove('light');
         document.getElementById("copyBtn").classList.remove('light');
         document.getElementById("deleteBtn").classList.remove('light');
-        document.getElementById("themeBtn").classList.remove('light');
         document.getElementById("smallBtn").classList.remove('light');
         document.getElementById("fullBtn").classList.remove('light');
         document.getElementById("uploadBntLabel").classList.remove('light');
