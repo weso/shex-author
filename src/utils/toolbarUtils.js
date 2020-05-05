@@ -49,8 +49,7 @@ export function changeTheme(){
     var color = 'black'
     if(yashe.getOption('theme') == 'author-dark'){
         themeValue='wiki'
-        color = 'white'
-        document.getElementById("editorFill").classList.add('white-fill');
+        document.getElementById("editorComp").classList.add('white-fill');
         document.getElementById("shareBtn").classList.add('light');
         document.getElementById("downloadBtn").classList.add('light');
         document.getElementById("copyBtn").classList.add('light');
@@ -59,7 +58,7 @@ export function changeTheme(){
         document.getElementById("fullBtn").classList.add('light');
         document.getElementById("uploadBntLabel").classList.add('light');
     }else{
-        document.getElementById("editorFill").classList.remove('white-fill');
+        document.getElementById("editorComp").classList.remove('white-fill');
         document.getElementById("shareBtn").classList.remove('light');
         document.getElementById("downloadBtn").classList.remove('light');
         document.getElementById("copyBtn").classList.remove('light');

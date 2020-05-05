@@ -46,7 +46,7 @@ function Assistant (props) {
                                         resizeHandles={['e']}  
                                         minConstraints={[470, 100]} maxConstraints={[1000, 1000]}>
                                 
-                                <div className='containerAssist'>                                    
+                                <div id="assistant" className='containerAssist'>                                    
                                         <AssistNav/>
                                         <AssistContent/>              
                                 </div>

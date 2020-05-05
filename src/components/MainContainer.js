@@ -7,7 +7,7 @@ function MainContainer () {
 
     return (
       <div className="globalContainer">       
-        <div className="row comps">                     
+        <div id="mainCont" className="row comps">                     
            <Toolbar/>
            <AssistantComp/>                                              
            <EditorComp/>                       

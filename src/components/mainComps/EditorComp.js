@@ -245,7 +245,7 @@ function EditorComp() {
     }
 
 
-    return  (<div id='editorFill' className="col edit" ref={divRef}/>);
+    return  (<div id='editorComp' className="col edit" ref={divRef}/>);
 
 }
 
