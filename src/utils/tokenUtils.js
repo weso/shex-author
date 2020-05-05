@@ -146,9 +146,14 @@ function getTriples(shapeId,tokens) {
                         let content = getContent(acc.length,before);
                         let after = getTripleTokens(singleTriple);
                         let subTriples = getTriples(acc.length,after);
+
+                        let cardinality = content.cardinality;
                         //If there is a inlineShape the cardinality comes after it
-                        console.log(after)
-                        let cardinality = getCardinalityIfNeeded(content.cardinality,after);
+                        if(after.length>0){
+                            let possibleCardinality = getCardinalityIfExist(singleTriple);
+                            if(cardinality)cardinality=possibleCardinality;
+                        }
+              
                         if(content.type != undefined){//Needed when last triple of an inlineShape ends with ';'
                             let triple = new Triple(acc.length,content.type,content.constraint,content.facets,content.shapeRef,cardinality,subTriples);
                             references.push({entity:triple,ref:content.ref});
@@ -184,14 +189,38 @@ function isFinishOfTriple(tokens,token,index,finish){
 }
 
 /**
-    If there is a inlineShape the cardinality comes after it
-*/
-function getCardinalityIfNeeded(cardinality,after){
-    if(cardinality == undefined){
-        let cardToken = after[after.length-1];
-        if(cardToken!=undefined && cardToken.type == 'cardinality')cardinality = getCardinality(cardToken.string);
-    }
-    return cardinality;
+* Returns the cardinality after a inlineShapeIfExist 
+* @param {List} TripleTokens
+* @return {Cardinality}
+ */
+function getCardinalityIfExist(tokens){
+    return getCardiTokens(tokens).reduce((acc,t)=>{
+        if(t.type=='cardinality')acc=getCardinality(t.string);
+        return acc;
+    },null)
+}
+
+/**
+* Gets the tokens after the inlineShape
+* @param {List} Tokens
+* @param {List} Tokens after inlineShape
+* */
+function getCardiTokens(tokens){
+    let start=false;
+    let open = 0;
+    return tokens.reduce((acc,t)=>{
+        if(t.string=='{'){
+            open++;
+            start=true;
+        }
+
+        if(t.string=='}'){
+            open--;
+        }
+
+        if(open == 0 && start==true)acc.push(t);
+        return acc;
+    },[])
 }
 
 
@@ -206,7 +235,7 @@ function getContent(id,tokens) {
     let constraint;
     let valueSet = [];
     let facets = [];
-    let cardinality= new TypesFactory().createType('');
+    let cardinality= new CardinalityFactory().createCardinality();
     let shapeRef = new ShapeRef();
     let ref;
     //I am using a for loop just because of the facets (see line 233)
@@ -299,7 +328,7 @@ function getTripleTokens(tokens){
             open--;
         }
 
-        if(open == 0 && start==true && t.string==';')start=false;
+        if(open == 0 && start==true)start=false;
         return acc;
     },[])
 }
