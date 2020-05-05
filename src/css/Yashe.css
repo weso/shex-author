@@ -39,3 +39,11 @@ svg{
 .yashe_buttons{
 	fill:white !important;
 }
+
+.light{
+	fill: black;
+}
+
+.white-fill{
+	background-color: white;
+}

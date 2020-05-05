@@ -1,31 +1,20 @@
-import React,{useContext} from 'react';
-import {AppContext} from '../../../App';
-import yasheUtils from '../../../utils/yasheUtils';
-import {undo} from '../../../utils/toolbarUtils';
+import React from 'react';
+import Editor from '../../../entities/editor';
+import CodeMirror from 'codemirror';
+
 
 function UndoBtn () {
-
-    const context = useContext(AppContext);
-
-    const handleUndo = function(){
-        undo();
-        setTimeout(() => {//needed
-            context.replaceShapes(yasheUtils.replaceShapes());
-            //context.updatePrefixes(yasheUtils.updatePrefixes());
-        }, 10); 
-    }
 
     return (
         <button className="mdc-icon-button material-icons btns" 
                 type="button" 
                 title="Undo"
-                onClick={handleUndo}>
+                onClick={()=>CodeMirror.signal(Editor.getYashe(),'undo')}>
                 undo
         </button> );
     
   
 }
-
 
 export default UndoBtn;
 

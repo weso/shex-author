@@ -11,33 +11,30 @@ function getShapes(){
   let newShapes = tokenUtils.getShapes(defShapes);
 
   tokenUtils.updateShapeRefs(newShapes);
-
-  
-
   console.log(newShapes)
   return newShapes; 
-
 }
 
 function getPrefixes(){
   let defP = Editor.getYashe().getDefinedPrefixes();
   return Object.keys(defP).reduce((acc,p)=>{
-    let id = acc.length + prefixCount++;
-    acc.push(new Prefix(p,defP[p],id))
+     if(isInDefPrefixes(p)){ //This is weird I know
+        let id = acc.length + prefixCount++;
+        acc.push(new Prefix(p,defP[p],id))
+     }
     return acc;
   },[]);
 }
 
-function draw(yashe,shapes,prefixes){
-    let newContent=prefixes;
-    if(!prefixes)newContent = getPrefixesStr(yashe);
-  
-    yashe.setValue(shapes.reduce((acc,s) => {
-        return acc+=s.toString();
-    },newContent));
+function draw(shapes,prefixes){
+  let yashe = Editor.getInstance().getYashe();
+  yashe.setValue(shapes.reduce((acc,s) => {
+      return acc+=s.toString();
+  },getPrefixesStr(yashe,prefixes)));
 }
 
-function getPrefixesStr(yashe){
+function getPrefixesStr(yashe,prefixes){
+    if(prefixes!=undefined)return prefixes;
     let defP = yashe.getDefinedPrefixes();
     return Object.keys(defP).reduce((acc,p)=>{
       return acc+='PREFIX '+p+':    <'+defP[p]+'>\n';
@@ -47,7 +44,6 @@ function getPrefixesStr(yashe){
 function getSchema(){
     return Editor.getYashe()?.getValue();
   }
-
 
 
 function debounce(func, wait, immediate) {
@@ -66,6 +62,13 @@ function debounce(func, wait, immediate) {
         return result;
     };
 };
+
+function isInDefPrefixes(prefix){
+  return Editor.getYashe().defPrefixes.reduce((acc,p)=>{
+    if(prefix+':'==p)acc=true;
+    return acc;
+  },false);
+}
 
  const yasheUtils = {
       getShapes:getShapes,

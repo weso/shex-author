@@ -1,26 +1,14 @@
-import React,{useContext} from 'react';
-import {AppContext} from '../../../App';
-
-import {redo} from '../../../utils/toolbarUtils';
-import yasheUtils from '../../../utils/yasheUtils';
+import React from 'react';
+import Editor from '../../../entities/editor';
+import CodeMirror from 'codemirror';
 
 function RedoBtn () {
-
-    const context = useContext(AppContext);
-
-    const handleRedo = function(){
-        redo();
-        setTimeout(() => {//needed
-            context.replaceShapes(yasheUtils.replaceShapes());
-            //context.updatePrefixes(yasheUtils.updatePrefixes());
-        }, 10); 
-    }
 
     return (
         <button className="mdc-icon-button material-icons btns" 
                 type="button" 
                 title="Redo"
-                onClick={handleRedo}>
+                onClick={()=>CodeMirror.signal(Editor.getYashe(),'redo')}>
                 redo
         </button> );
     

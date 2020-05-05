@@ -15,7 +15,8 @@ export function getPrefix(prefix){
 
 
 export function addPrefixComp(prefixes,width){
-    const id = prefixes.length + prefixCount++;
+    prefixCount++ //We needed berfore
+    const id = prefixes.length + prefixCount; // +prefixCount++ doesn't work for this
     let newPrefix = new Prefix('','',id);
     let newPrefixes = [];
     newPrefixes = Object.assign(newPrefixes, prefixes);

@@ -26,32 +26,30 @@ class Shape extends Node{
       return str
      }
 
+
      getTriplesString(){
         let str='';
-        let longestTriple = this.getLongestElement('type');
+        let longestType = this.getLongestElement('type');
         let longestConstraint = this.getLongestElement('constraint');
+        let longestFacet = this.getLongestFacet('facet');
         let longestRef = this.getLongestElement('shapeRef');
         let longestCard = this.getLongestElement('cardinality');
-        let longestCRef = this.getLongestCR();//constraint+shapeRef
+        let longestBody = this.getLongestBody();
         this.triples.forEach(triple => {
-          let tripleLength = triple.type.toString().length;
+          let typeLength = triple.type.toString().length;
           let constLength = triple.constraint.toString().length;
+          let facetLength = this.getFacetsString(triple.facets).length;
           let refLength = triple.shapeRef.toString().length;
           let cardLength = triple.cardinality.toString().length;
-          let CRefLength = constLength + refLength;
+          let bodyLength = constLength+facetLength+refLength;
+          if(triple.constraint.toString()=='.')bodyLength-=2;
 
-          let tripleDiference = longestTriple - tripleLength;
-          let constDiference = longestConstraint - constLength;
-          let refDiference = longestRef - refLength;
+          let typeDiference = longestType - typeLength;
+          let bodyDiference = longestBody - bodyLength;
           let cardDiference = longestCard - cardLength;
-          let CRefDiference = longestCRef - CRefLength;
 
           str+=triple.toString( 
-                      this.getSeparators(tripleDiference,
-                                          constDiference,
-                                          refDiference,
-                                          cardDiference,
-                                          CRefDiference));
+                      this.getSeparators(typeDiference,bodyDiference,cardDiference));
         });
         return str;
      }
@@ -68,6 +66,13 @@ class Shape extends Node{
      }
 
 
+     getFacetsString(facets){
+       return facets.reduce((acc,f)=>{
+         return acc+=f.toString()+' ';
+       },'')+' ';
+     }
+
+
     getLongestElement(element){
       let size=0;
       this.triples.forEach(triple => {
@@ -77,15 +82,22 @@ class Shape extends Node{
       return size;
     }
 
-    /**
-    * Get the longest Constraint+ShapeRef
-    * */
-    getLongestCR(){
+    getLongestFacet(){
+      let size=0;
+      this.triples.forEach(triple => {
+          let value = this.getFacetsString(triple.facets).length;
+          if(value>size)size = value;
+      });
+      return size;
+    }
+ 
+    getLongestBody(){
       let size=0;
       this.triples.forEach(triple => {
           let cValue = triple.constraint.toString().length;
+          let fValue = this.getFacetsString(triple.facets).length;
           let rValue = triple.shapeRef.toString().length;
-          let value = cValue+rValue;
+          let value = cValue+fValue+rValue;
           if(value>size)size = value;
       });
       return size;
@@ -94,13 +106,11 @@ class Shape extends Node{
 
 
 
-    getSeparators(tripleSize,constraintSize,refSize,cardSize,CRefSize){
+    getSeparators(tripleSize,bodySize,cardSize){
       return{
-        triple:this.getSeparator(tripleSize),
-        constraint:this.getSeparator(constraintSize),
-        ref:this.getSeparator(refSize),
+        type:this.getSeparator(tripleSize),
+        body:this.getSeparator(bodySize),
         card:this.getSeparator(cardSize),
-        CRef:this.getSeparator(CRefSize),
       }
     }
 

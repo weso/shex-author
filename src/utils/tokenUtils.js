@@ -2,41 +2,27 @@
 import Codemirror from 'codemirror';
 import Editor from '../entities/editor';
 import shexUtils from './shexUtils';
-
-import  Shape from '../entities/shexEntities/shape';
-import  Triple from '../entities/shexEntities/triple';
-
+import Shape from '../entities/shexEntities/shape';
+import Triple from '../entities/shexEntities/triple';
 import TypesFactory from '../entities/shexEntities/types/typesFactory';
 import CardinalityFactory from '../entities/shexEntities/others/cardinality/cardinalityFactory';
 import Facet from '../entities/shexEntities/others/facet';
-
 import PrefixedIri from '../entities/shexEntities/types/concreteTypes/prefixedIri';
 import IriRef from '../entities/shexEntities/types/concreteTypes/iriRef';
 import BNode from '../entities/shexEntities/types/concreteTypes/bNode';
 import Primitive from '../entities/shexEntities/types/concreteTypes/primitive';
 import ValueSet from '../entities/shexEntities/types/concreteTypes/valueSet';
-
 import Literal from '../entities/shexEntities/types/concreteTypes/kinds/literal';
 import NonLiteral from '../entities/shexEntities/types/concreteTypes/kinds/nonLiteral';
 import IriKind from '../entities/shexEntities/types/concreteTypes/kinds/iriKind';
 import BNodeKind from '../entities/shexEntities/types/concreteTypes/kinds/bNodeKind';
 import BlankKind from '../entities/shexEntities/types/concreteTypes/kinds/blankKind';
-
 import NumberLiteral from '../entities/shexEntities/types/concreteTypes/literal/numberLiteral';
 import StringLiteral from '../entities/shexEntities/types/concreteTypes/literal/stringLiteral';
 import BooleanLiteral from '../entities/shexEntities/types/concreteTypes/literal/booleanLiteral';
-
-
-
 import Prefix from '../entities/shexEntities/others/prefix';
 import ShapeRef from '../entities/shexEntities/others/shapeRef';
 import ValueSetValue from '../entities/shexEntities/others/valueSetValue';
-
-
-
-//HAY QUE METER TODOS (Update... igual no hace falta...)
-const PRIMITIVES = ['string','integer','date','boolean'];
-
 
 
 let references;
@@ -80,22 +66,7 @@ function getDefinedShapes(tokens){
             acc[shapeCont]=shape;
             shapeCont++;
         }else{
-            // IMPORTANT 
-            // We could do just shape.push(element) but if there 
-            // are directives between shapes we will push that directives into the shape   
-            if(element.string == '{'){
-                hasTripleStarted=true;
-            }
-             
-            if(hasTripleStarted){
-                //Get the tokens while it's from the inside of the shape
-                if(element.string == '{')brackets++;
-                if(element.string == '}')brackets--;
-                if(brackets!=0)shape.push(element);
-             }else{
-                 //Get the previous tokens before the triples
-                 shape.push(element);
-             }
+            shape.push(element);
         }
 
         return acc;
@@ -114,7 +85,7 @@ function getShapes(defShapes){
         let id  = acc.length;
         let shapeDef = shape[0].string;
         let sTokens = getBeforeTriplesTokens(shape);
-        let content =  getContent(id,sTokens,id);
+        let content =  getContent(id,sTokens);
 
         let tTokens = getTripleTokens(shape);
         let triples = getTriples(id,tTokens);
@@ -127,6 +98,7 @@ function getShapes(defShapes){
 
     },[])
 }
+
 /**
 * Get the type of the Shape or Triple
 * @param {String} Shape or Triple
@@ -166,50 +138,106 @@ function getTriples(shapeId,tokens) {
         let start = false;
         let finish = true;
         let open = 0;
-       //  console.log({tokens:tokens,lenght:tokens.length})
         return tokens.reduce((acc,token,index)=>{
             singleTriple.push(token);             
-           if( (token.string == ';' && finish) || index == tokens.length-1){
-               if(singleTriple.length>1){
-                   let before = getBeforeTriplesTokens(singleTriple);
-                    let content = getContent(acc.length,before,shapeId);
-                    let after = getTripleTokens(singleTriple);
-                    let subTriples = getTriples(acc.length,after);
-                    let triple = new Triple(acc.length,content.type,content.constraint,content.facets,content.shapeRef,content.cardinality,subTriples);
-                    references.push({entity:triple,ref:content.ref});
-                    acc.push(triple);
-               }
+            if(isFinishOfTriple(tokens,token,index,finish)){
+                if(singleTriple.length>1){
+                        let before = getBeforeTriplesTokens(singleTriple);
+                        let content = getContent(acc.length,before);
+                        let after = getTripleTokens(singleTriple);
+                        let subTriples = getTriples(acc.length,after);
+
+                        let cardinality = content.cardinality;
+                        //If there is a inlineShape the cardinality comes after it
+                        if(after.length>0){
+                            let possibleCardinality = getCardinalityIfExist(singleTriple);
+                            if(cardinality)cardinality=possibleCardinality;
+                        }
+              
+                        if(content.type != undefined){//Needed when last triple of an inlineShape ends with ';'
+                            let triple = new Triple(acc.length,content.type,content.constraint,content.facets,content.shapeRef,cardinality,subTriples);
+                            references.push({entity:triple,ref:content.ref});
+                            acc.push(triple);
+                        }
+                }
                 singleTriple = [];
-           }
+            }
 
-          if(token.string=='{'){
-               open++;
-               start = true;
-               finish = false;
-           }
-            
-
-          if(token.string=='}'){
-               open--;
-            
-           }
-
-           if(open==0 && start)finish=true;
+            if(token.string=='{'){
+                open++;
+                start = true;
+                finish = false;
+            }
+                
+            if(token.string=='}') open--;
+            if(open==0 && start)finish=true;
      
-            
             return acc;
         },[])
 }
 
-function getContent(id,tokens,entityId) {   
+
+/**
+* Checks if it's the finish of the triple
+* @param {List} Tokens
+* @param {Object} Token
+* @param {Integer} Index of token
+* @param {Boolean} Finish -> Has the inlineShape finished?
+* */
+function isFinishOfTriple(tokens,token,index,finish){
+    return (token.string == ';' && finish) || index == tokens.length-1;
+}
+
+/**
+* Returns the cardinality after a inlineShapeIfExist 
+* @param {List} TripleTokens
+* @return {Cardinality}
+ */
+function getCardinalityIfExist(tokens){
+    return getCardiTokens(tokens).reduce((acc,t)=>{
+        if(t.type=='cardinality')acc=getCardinality(t.string);
+        return acc;
+    },null)
+}
+
+/**
+* Gets the tokens after the inlineShape
+* @param {List} Tokens
+* @param {List} Tokens after inlineShape
+* */
+function getCardiTokens(tokens){
+    let start=false;
+    let open = 0;
+    return tokens.reduce((acc,t)=>{
+        if(t.string=='{'){
+            open++;
+            start=true;
+        }
+
+        if(t.string=='}'){
+            open--;
+        }
+
+        if(open == 0 && start==true)acc.push(t);
+        return acc;
+    },[])
+}
+
+
+/**
+* Gets the features of a Shape/Triple except the possible inlineShape
+* @param {Integer} id
+* @param {List} Tokens
+*
+*/
+function getContent(id,tokens) {   
     let type;
     let constraint;
     let valueSet = [];
     let facets = [];
-    let cardinality= new TypesFactory().createType('');
+    let cardinality= new CardinalityFactory().createCardinality();
     let shapeRef = new ShapeRef();
     let ref;
-
     //I am using a for loop just because of the facets (see line 233)
     for(let i=0;i<tokens.length;i++){
         let token = tokens[i];
@@ -246,24 +274,9 @@ function getContent(id,tokens,entityId) {
           cardinality=getCardinality(token.string);
         }
         
-        if( token.type != 'string-2' && 
-            token.type != 'variable-3' &&
-            token.type != 'shape' &&
-            token.type != 'constraint' && 
-            token.type != 'constraintKeyword' && 
-            token.type != 'valueSet' && 
-            token.type != 'shapeRef' && 
-            token.type != 'facet' && 
-            token.type != 'cardinality' && 
-            token.type != 'punc' &&
-            token.type !='comment'){
-
-            Codemirror.signal(Editor.getYashe(),'forceError');
-        }
-
-       
+        if(isNotAllowed(token))Codemirror.signal(Editor.getYashe(),'forceError');
+        
         // Force errors in case to find one of the following tokens
-
         if(token.string == '~'){
             Codemirror.signal(Editor.getYashe(),'forceError','EXCLUSION_ERR');
         }
@@ -287,28 +300,13 @@ function getContent(id,tokens,entityId) {
 */
 function getBeforeTriplesTokens(tokens){
     let start=true;
-    return tokens.reduce((acc,t)=>{
-        if(t.string=='{')start=false;
+    return tokens.reduce((acc,t,index)=>{
+        if(t.string=='{' || index == tokens.length-1)start=false;
         if(start)acc.push(t);
         return acc;
     },[])
 }
 
-function getBTriplesTokens(tokens){
-    let start=true;
-    let isSimple = false;
-    let btokens = tokens.reduce((acc,t)=>{
-        if(t.string==';'){
-            isSimple=true;
-            start = false;
-        }
-        if(t.string=='{')start=false;
-        if(start)acc.push(t);
-        return acc;
-    },[])
-
-    return {tokens:btokens,isSimple:isSimple}
-}
 
 /**
 *   Get the triple tokens. We start collecting the tokens after find '{' token until find the correspondig '}'
@@ -335,24 +333,6 @@ function getTripleTokens(tokens){
     },[])
 }
 
-function getTTokens(tokens){
-    let start=false;
-    let open = 0;
-    return tokens.reduce((acc,t)=>{
-        if(start)acc.push(t);
-        if(t.string=='{'){
-            open++;
-            start=true;
-        }
-
-        if(t.string=='}'){
-            open--;
-        }
-
-        if(open == 0 && start==true)start=false;
-        return acc;
-    },[])
-}
 
 /**
  * Returns true in case the token represent the end of a Triple
@@ -475,6 +455,28 @@ function isPrimitive(value) {
 }
 
 /**
+* Returns true if the token is not allowed in the assistant. False otherwise
+* @param {Object} Token
+* @return {Boolean} 
+*/
+function isNotAllowed(token){
+    return token.type != 'string-2' && 
+            token.type != 'variable-3' &&
+            token.type != 'shape' &&
+            token.type != 'constraint' && 
+            token.type != 'constraintKeyword' && 
+            token.type != 'valueSet' && 
+            token.type != 'shapeRef' && 
+            token.type != 'facet' && 
+            token.type != 'cardinality' && 
+            token.type != 'punc' &&
+            (token.type != 'keyword' && token.string.toLowerCase()=='prefix') &&
+            token.type != 'prefixDelcAlias' &&
+            token.type != 'prefixDelcIRI' &&
+            token.type !='comment' ;
+}
+
+/**
  * Returns the name of the shapeRef. It just remove the @
  * @param {String} ShapeRef
  * @return {String} ShapeName
@@ -495,6 +497,11 @@ function getNonWsTokens(tokens){
         return obj.type != 'ws';
     })
 }
+
+//HAY QUE METER TODOS (Update... igual no hace falta...)
+const PRIMITIVES = ['string','integer','date','boolean'];
+
+
 
 const tokenUtils = {
     getTokens:getTokens,

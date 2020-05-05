@@ -45,9 +45,8 @@ class Triple extends Node{
         let shapeRef = this.shapeRef;
         let cardinality = this.cardinality;
         separators = this.checkPrettyOptions(separators);
-        let tripleSeparator = separators.triple; 
-        let constSeparator = separators.constraint; 
-        let refSeparator = separators.ref;
+        let tripleSeparator = separators.type; 
+        let bodySeparator = separators.body;
         let cardSeparator = separators.card;
  
         if(type.value!=''){
@@ -58,14 +57,9 @@ class Triple extends Node{
                     str+=' '+f+' ';
                 })
             }
-            if(constraint.value=='' && DEFAULTS.pretty!='pretty3' ){
-                constSeparator='';
-                refSeparator+=' ';
-            }
-            str+=constSeparator+shapeRef
-                +refSeparator;
-       
 
+            str+=shapeRef+bodySeparator;
+    
             if(this.triples.length>0){
                 str+=' {';
                 this.triples.forEach(subTriple => {
@@ -74,8 +68,7 @@ class Triple extends Node{
                 str+='} ';
             }
 
-            str+=cardinality
-                +cardSeparator+';\n';
+            str+=cardinality+cardSeparator+';\n';
 
         }
 
@@ -84,68 +77,18 @@ class Triple extends Node{
     }
 
 
-    getLongestElement(element){
-      let size=0;
-      this.triples.forEach(triple => {
-          let value = triple[element].toString().length;
-          if(value>size)size = value;
-      });
-      return size;
-    }
 
-    /**
-    * Get the longest Constraint+ShapeRef
-    * */
-    getLongestCR(){
-      let size=0;
-      this.triples.forEach(triple => {
-          let cValue = triple.constraint.toString().length;
-          let rValue = triple.shapeRef.toString().length;
-          let value = cValue+rValue;
-          if(value>size)size = value;
-      });
-      return size;
-    }
-
-
-
-
-    getSeparators(tripleSize,constraintSize,refSize,cardSize,CRefSize){
-      return{
-        triple:this.getSeparator(tripleSize),
-        constraint:this.getSeparator(constraintSize),
-        ref:this.getSeparator(refSize),
-        card:this.getSeparator(cardSize),
-        CRef:this.getSeparator(CRefSize),
-      }
-    }
-
-    getSeparator(size){
-      let space = ' ';
-      let separator = ' ';
-      for(let i=0;i<size;i++){
-        separator+=space;
-      }
-      return separator;
-    }
 
     checkPrettyOptions(separators){
 
         if(DEFAULTS.pretty=='none'){
-            separators.triple=' ';
-            separators.constraint=' ';
-            separators.ref=' ';
+            separators.type=' ';
+            separators.body=' ';
         }
         if(DEFAULTS.pretty=='pretty1'){
-            separators.constraint=' ';
-            separators.ref=' ';
+            separators.body=' ';
         }
-        if(DEFAULTS.pretty=='pretty2'){
-            separators.constraint=' ';
-            separators.ref=separators.CRef;
-        }
-        
-        //default pretty3
+        //default pretty2
         return separators;
     }
 
