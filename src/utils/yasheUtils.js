@@ -12,11 +12,7 @@ function getShapes(){
 
   tokenUtils.updateShapeRefs(newShapes);
 
-  
-
-  console.log(newShapes)
   return newShapes; 
-
 }
 
 function getPrefixes(){
@@ -28,16 +24,15 @@ function getPrefixes(){
   },[]);
 }
 
-function draw(yashe,shapes,prefixes){
-    let newContent=prefixes;
-    if(!prefixes)newContent = getPrefixesStr(yashe);
-  
-    yashe.setValue(shapes.reduce((acc,s) => {
-        return acc+=s.toString();
-    },newContent));
+function draw(shapes,prefixes){
+  let yashe = Editor.getInstance().getYashe();
+  yashe.setValue(shapes.reduce((acc,s) => {
+      return acc+=s.toString();
+  },getPrefixesStr(yashe,prefixes)));
 }
 
-function getPrefixesStr(yashe){
+function getPrefixesStr(yashe,prefixes){
+    if(prefixes!=undefined)return prefixes;
     let defP = yashe.getDefinedPrefixes();
     return Object.keys(defP).reduce((acc,p)=>{
       return acc+='PREFIX '+p+':    <'+defP[p]+'>\n';

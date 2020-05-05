@@ -46,7 +46,7 @@ function EditorComp() {
 
             
             y.on('humanEvent', function(shapes,width) {
-                yasheUtils.draw(y,shapes);
+                yasheUtils.draw(shapes);
                 y.isComplex=false;
                 y.oldShapes = shapes;
                 let data={size:{width:width}};
@@ -110,10 +110,9 @@ function EditorComp() {
             });
 
             y.on('prefixChange', function(prefixes,width) {
-                console.log(prefixes)
-               /*  yasheUtils.draw(yashe,y.oldShapes,prefixes);
-                let data={size:{width:width}};
-                context.handleResize(null,data); */
+                yasheUtils.draw(y.oldShapes,prefixes);
+               // let data={size:{width:width}};
+               // context.handleResize(null,data); */
             });
 
             y.on('forceError', function(prefixes) {
