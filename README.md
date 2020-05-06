@@ -3,5 +3,5 @@ ShExAuthor is a  [Shape Expressions (ShEx)](http://shex.io/) graphic assistant w
 In combination with [YASHE](https://github.com/weso/YASHE) editor, ShExAuthor allows you to use the editor and the assistant at the same time.
 
 <p align="center">
-  <img src="./public/cShape.gif"  alt="ShExAuthor GIF"/>
+  <img src="./public/shape.gif"  alt="ShExAuthor GIF"/>
 </p>
