@@ -2,6 +2,13 @@
 ShExAuthor is a  [Shape Expressions (ShEx)](http://shex.io/) graphic assistant where users can create their Shapes in a much more visual way.
 In combination with [YASHE](https://github.com/weso/YASHE) editor, ShExAuthor allows you to use the editor and the assistant at the same time.
 
+## Create a Shape using the assistant
+
 <p align="center">
-  <img src="./public/shape.gif"  alt="ShExAuthor GIF"/>
+  <img src="./public/finalCreateShape.gif"  alt="ShExAuthor GIF"/>
+</p>
+
+## Visualize a Shape in the assistant
+<p align="center">
+  <img src="./public/finalShapeRecognition.gif"  alt="ShExAuthor GIF"/>
 </p>
