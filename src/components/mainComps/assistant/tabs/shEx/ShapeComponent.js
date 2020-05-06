@@ -35,6 +35,8 @@ function ShapeComponent (props) {
         setTriples([...triples,triple]);
         
         shape.addTriple(triple);
+        //A ShapeRef cannot coexist with a inlineShape
+        shape.shapeRef.shape = null;
         context.emit();       
     }
 

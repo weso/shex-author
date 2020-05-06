@@ -16,7 +16,11 @@ class Shape extends Node{
     toString(){
       let str='\n';
       if(this.type.value!=''){
-        str+=this.type;
+        str+=this.type+' '+this.checkConstraint();
+        str+=this.facets?.reduce((acc,f)=>{
+                return acc+=' '+f+' ';
+        },'');
+        str+=this.shapeRef;
         if(this.checkContent()){
           str+=' {\n';
           str+= this.getTriplesString();
@@ -45,6 +49,25 @@ class Shape extends Node{
         return isContent;
      }
 
+
+     checkConstraint(){
+    
+        // If there is no constraint
+        if(this.constraint.getTypeName()=='primitive' 
+                && this.constraint.value=='none'){
+        
+            // If there are facets don't print the '.'
+            if(this.facets.length>0)return '';
+            // If there is a shapeRef don't print the '.'
+            if(this.shapeRef.shape != null) return '';    
+            // If there is a inline shape don't print the '.'
+            if(this.triples.length>0)return '';
+        
+        }
+
+
+        return this.constraint+' ';
+    }
 
 
     getEntityName(){
