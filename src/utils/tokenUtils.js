@@ -151,7 +151,7 @@ function getTriples(shapeId,tokens) {
                         //If there is a inlineShape the cardinality comes after it
                         if(after.length>0){
                             let possibleCardinality = getCardinalityIfExist(singleTriple);
-                            if(cardinality)cardinality=possibleCardinality;
+                            if(possibleCardinality)cardinality=possibleCardinality;
                         }
               
                         if(content.type != undefined){//Needed when last triple of an inlineShape ends with ';'

@@ -3,7 +3,7 @@ export function getSeparators(triple,longest){
     let constLength = triple.constraint.toString().length;
     let facetLength = getFacetsString(triple.facets).length;
     let refLength = triple.shapeRef.toString().length;
-    let cardLength = triple.cardinality.toString().length;
+    let cardLength = triple.cardinality?.toString().length;
     let bodyLength = constLength+facetLength+refLength;
     if(triple.constraint.toString()=='.')bodyLength-=2;
 
@@ -38,7 +38,7 @@ export function getLongestElements(triples){
 function getLongestElement(triples,element){
       let size=0;
       triples.forEach(triple => {
-          let value = triple[element].toString().length;
+          let value = triple[element]?.toString().length;
           if(value>size)size = value;
       });
       return size;

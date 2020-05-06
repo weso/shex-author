@@ -7,6 +7,7 @@ import Primitive from './types/concreteTypes/primitive';
 import ShapeRef from './others/shapeRef';
 import Prefix from './others/prefix';
 import {DEFAULTS} from '../../conf/config.js';
+import {getLongestElements,getSeparators} from '../../utils/printUtils';
 
 class Triple extends Node{
 
@@ -62,9 +63,9 @@ class Triple extends Node{
     
             if(this.triples.length>0){
                 str+=' {\n';
-                this.triples.forEach(subTriple => {
-                    str+='    '+subTriple.subString();
-                });
+                str+=this.triples.reduce((acc,t) => {
+                    return acc+='    '+t.toString(getSeparators(t,getLongestElements(this.triples)));
+                },'');
                 str+='  }';
             }
 
