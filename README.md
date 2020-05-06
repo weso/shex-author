@@ -4,6 +4,3 @@ In combination with [YASHE](https://github.com/weso/YASHE) editor, ShExAuthor al
 
 ![shex-author](./public/author.png)
 
-
-* http://www.weso.es/shex-author/
-* http://shex.io/webapps/shex-author/ (old version)
