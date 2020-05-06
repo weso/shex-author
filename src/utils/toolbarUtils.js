@@ -43,6 +43,7 @@ export function downloadFile(){
     downloadLink.click();
 }
 
+//Sorry about this
 export function changeTheme(){
     let yashe = Editor.getYashe();
     var themeValue = 'author-dark'

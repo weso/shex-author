@@ -1,4 +1,4 @@
-export const defaultExample = 
+/* export const defaultExample = 
 
 'PREFIX :       <http://example.org/>\n'+
 'PREFIX schema: <http://schema.org/>\n'+
@@ -10,6 +10,19 @@ export const defaultExample =
 '  schema:birthPlace    xsd:string + ;\n'+
 '  schema:knows         @:User     *  \n'+
 '}\n';
+ */
+ export const defaultExample = 
+`PREFIX :    <http://example.org/>
+PREFIX schema:    <http://schema.org/>
+PREFIX xsd:    <http://www.w3.org/2001/XMLSchema#>
+
+:User {
+  schema:name xsd:string {schema:asdas xsd:string  * ;schema:a     xsd:string  ? ;schema:a     xsd:string  + ;}+;
+  schema:birthDate  xsd:date    ? ;
+  schema:birthPlace xsd:string  + ;
+  schema:knows      @:User      * ;
+}
+`
 
 /* export const defaultExample = 
 `
