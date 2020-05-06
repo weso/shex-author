@@ -1,4 +1,4 @@
-/* export const defaultExample = 
+export const defaultExample = 
 
 'PREFIX :       <http://example.org/>\n'+
 'PREFIX schema: <http://schema.org/>\n'+
@@ -10,45 +10,8 @@
 '  schema:birthPlace    xsd:string + ;\n'+
 '  schema:knows         @:User     *  \n'+
 '}\n';
- */
- export const defaultExample = 
-`PREFIX :    <http://example.org/>
-PREFIX schema:    <http://schema.org/>
-PREFIX xsd:    <http://www.w3.org/2001/XMLSchema#>
 
-:User {
-  schema:name xsd:string {schema:asdas xsd:string  * ;schema:a     xsd:string  ? ;schema:a     xsd:string  + ;}+;
-  schema:birthDate  xsd:date    ? ;
-  schema:birthPlace xsd:string  + ;
-  schema:knows      @:User      * ;
-}
-`
+/*
 
-/* export const defaultExample = 
-`
-PREFIX :    <http://example.org/>
-PREFIX schema:    <http://schema.org/>
-PREFIX xsd:    <http://www.w3.org/2001/XMLSchema#>
-
-:User {
-   schema:0 xsd:string {schema:1 . ; schema:2 .} {2,3}
-}`
- */
-/* export const defaultExample = 
-
-'PREFIX :       <http://example.org/>\n'+
-'PREFIX schema: <http://schema.org/>\n'+
-'PREFIX xsd:    <http://www.w3.org/2001/XMLSchema#>\n\n'+
-
-':User IRI {\n'+
-'  schema:0 xsd:string {schema:1 . ; schema:2 .} +\n '+
-'}\n';
- */
-
-
-/*  :human {
-  schema:0 . + ;
-  schema:1 {schema:11 .} + ;
-  schema:2 {schema:21 . +} + ;
-  schema:3 {schema:31 {schema:311 .+} +} + ;
-} */
+`PREFIX p: <http://www.wikidata.org/prop/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> <#operating_system> { p:P275 { ps:P275 xsd:string + ; ps:P275 IRI + ; ps:P275 xsd:stringdsfsd + ; ps:P275 IRI + ; ps:P275 IRI + ; } ; p:P178 { ps:P178 IRI ; ps:P275 IRI + ; ps:P275 IRI + ; }? ; p:P176 { ps:P176 IRI ; ps:P275 IRI + ; ps:P275 IRI + ; }? ; p:P910 { ps:P910 IRI ; ps:P275 IRI + ; ps:P275 IRI + ; }? ; p:P373 { ps:P373 xsd:string * ; ps:P275 IRI + ; ps:P275 IRI + ; }? ; }
+` */

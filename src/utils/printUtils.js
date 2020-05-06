@@ -71,7 +71,7 @@ function getLongestBody(triples){
 }
 
 
-function getSeparator(size){
+export function getSeparator(size){
     let space = ' ';
     let separator = ' ';
     for(let i=0;i<size;i++){
@@ -79,3 +79,4 @@ function getSeparator(size){
     }
     return separator;
 }   
+

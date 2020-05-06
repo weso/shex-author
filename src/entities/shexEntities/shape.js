@@ -29,7 +29,7 @@ class Shape extends Node{
 
      getTriplesString(){
         return this.triples.reduce((acc,t) => {
-          return acc+=t.toString(getSeparators(t,getLongestElements(this.triples)));
+          return acc+=t.toString(getSeparators(t,getLongestElements(this.triples)),1);
         },'');
      }
 

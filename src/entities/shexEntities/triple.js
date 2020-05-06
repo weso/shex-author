@@ -7,7 +7,7 @@ import Primitive from './types/concreteTypes/primitive';
 import ShapeRef from './others/shapeRef';
 import Prefix from './others/prefix';
 import {DEFAULTS} from '../../conf/config.js';
-import {getLongestElements,getSeparators} from '../../utils/printUtils';
+import {getLongestElements,getSeparators,getSeparator} from '../../utils/printUtils';
 
 class Triple extends Node{
 
@@ -23,22 +23,7 @@ class Triple extends Node{
     }
 
 
-    subString(){
-        let str = ''+this.type+' '+this.checkConstraint()+' '+this.facets+' '+this.shapeRef+' '+this.cardinality+"";
-        if(this.triples.length>0){
-                str+=' {';
-                this.triples.forEach(subTriple => {
-                    str+=subTriple.subString();
-                });
-                str+='}';
-            }
-
-        str+=';\n';
-        return str;
-    }
-
-
-    toString(separators){
+    toString(separators,tab){
         let str='';
         let type=this.type;
         let constraint = this.constraint;
@@ -51,22 +36,22 @@ class Triple extends Node{
         let cardSeparator = separators.card;
  
         if(type.value!=''){
-            str+= '  '+type+tripleSeparator;
+            str+=getSeparator(tab);
+            str+= type+tripleSeparator;
             str+= this.checkConstraint();
-            if(facets){
-                facets.map(f=>{
-                    str+=' '+f+' ';
-                })
-            }
+            str+=facets?.reduce((acc,f)=>{
+                return acc+=' '+f+' ';
+            },'');
 
             str+=shapeRef+bodySeparator;
-    
+
             if(this.triples.length>0){
                 str+=' {\n';
+                tab++;
                 str+=this.triples.reduce((acc,t) => {
-                    return acc+='    '+t.toString(getSeparators(t,getLongestElements(this.triples)));
+                    return acc+=t.toString(getSeparators(t,getLongestElements(this.triples)),tab);
                 },'');
-                str+='  }';
+                str+=getSeparator(tab-1)+'}';
             }
 
             str+=cardinality+cardSeparator+';\n';
