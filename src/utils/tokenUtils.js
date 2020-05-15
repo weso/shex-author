@@ -237,7 +237,7 @@ function getContent(id,tokens) {
     let facets = [];
     let cardinality= new CardinalityFactory().createCardinality();
     let shapeRef = new ShapeRef();
-    let extraProperties = [];
+    let extraProperties =new ValueSet();
     let isClosed = false;
     let ref;
     //I am using a for loop just because of the facets (see line 233)

@@ -21,8 +21,7 @@ function NodeComponent (props) {
     const [allCollased,setAllCollapsed] = useState(false);
     const [colapseBtn,setColapseBtn] = useState('menu');
 
-    console.log(entity.extraProperties)
-    const [extras,setExtras] = useState([]);
+    const [extras,setExtras] = useState(entity.extraProperties.values);
 
 
     const shapeStyles = Properties.getInstance().getShapeStyle();

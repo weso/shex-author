@@ -5,10 +5,11 @@ import Prefix from './others/prefix';
 import Primitive from './types/concreteTypes/primitive';
 import ShapeRef from './others/shapeRef';
 import {getLongestElements,getSeparators} from '../../utils/printUtils';
+import ValueSet from './types/concreteTypes/valueSet';
 
 class Shape extends Node{
 
-  constructor(id,type=new PrefixedIri(new Prefix('','http:/example.org/')),constraint=new Primitive(),facets=[],shapeRef=new ShapeRef(),triples=[],extraProperties,isClosed) {
+  constructor(id,type=new PrefixedIri(new Prefix('','http:/example.org/')),constraint=new Primitive(),facets=[],shapeRef=new ShapeRef(),triples=[],extraProperties=new ValueSet(),isClosed) {
       super(id,type,constraint,facets,shapeRef,triples,extraProperties,isClosed);
     }
 
@@ -21,6 +22,13 @@ class Shape extends Node{
                 return acc+=' '+f+' ';
         },'');
         str+=this.shapeRef;
+        if(this.extraProperties.values.length>0){
+          str+='EXTRA ';
+          str+=this.extraProperties.values.reduce((acc,e)=>{
+                return acc+=' '+e+' ';
+          },'');
+        }
+        
         if(this.checkContent()){
           str+=' {\n';
           str+= this.getTriplesString();

@@ -1,4 +1,4 @@
-import React,{useState,useContext} from 'react';
+import React,{useState,useContext,useEffect} from 'react';
 import {AppContext} from '../../../../../../../App';
 import { Collapse } from 'reactstrap';
 import NumericInput from 'react-numeric-input';
@@ -30,13 +30,18 @@ function OtherComp (props) {
                 setQName(false);
               
                 if(type=='iriRef'){
-                        setIriRef(true);
+                   setIriRef(true);
                 }
 
                 if(type=='prefixedIri'){
-                        setQName(true);
+                   setQName(true);
                 }
         }
+
+
+        useEffect(() => {
+                checkCollapses();
+        });
 
         return ( 
         <div className="extraComp">
