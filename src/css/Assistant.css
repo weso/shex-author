@@ -497,14 +497,19 @@ label{
     grid-column: 3/4;
     display: grid;
     grid-template-columns: 35% 65%;
-
+    margin-top: 10px;
     width: 100% ;
 }
 
+.extraComp{
+    grid-column: 1/3;
+    display: grid;
+    grid-template-columns: 35% 65%;
+}
 
 .extraZone{
     display: grid;
-    grid-template-columns: 40% 40% 18%;
+    grid-template-columns: 80% 20%;
 }
 
 

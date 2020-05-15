@@ -36,7 +36,7 @@ function OtherContainer (props) {
                         <label className='extraLabel' style={styles.label}>Extra Properties</label>
                         <div className="extrasCont">
                                 {extras.map(e=>{
-                                        return <OtherComp extra={e} deleteExtra={deleteExtra}/>
+                                        return <OtherComp key={e.id} extra={e} deleteExtra={deleteExtra}/>
                                 })}
                                 <button className="addExtra" style={styles.add}  title="Add Property" onClick={addExtra}>+ Property</button>      
                         </div>

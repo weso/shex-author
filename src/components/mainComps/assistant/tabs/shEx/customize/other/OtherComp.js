@@ -39,17 +39,20 @@ function OtherComp (props) {
         }
 
         return ( 
-        <div>
-                  <select className="customSelector"
+        <div className="extraComp">
+                <select className="customSelector"
                         value={type}
                         onChange={handleTypeChange}>
                         <option value="iriRef">{iriStr}</option>
                         <option value="prefixedIri">QName</option>
                 </select>
                 <div className="extraZone">
+                        <InputValue type={extra.type} isOpen={isIriRef}/>
+
+                        <QNameValue type={extra.type} isOpen={isQName}/>
+
                         
-                        
-                                <button className="tripleBtns deleteValueSetBtn mdc-icon-button material-icons" 
+                        <button className="tripleBtns deleteValueSetBtn mdc-icon-button material-icons" 
                                 style={styles.delete}
                                 title="Delete property"
                                 onClick={()=>deleteExtra(extra.id)}>
