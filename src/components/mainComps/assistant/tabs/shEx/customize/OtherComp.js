@@ -10,16 +10,45 @@ function OtherComp (props) {
         const context = useContext(AppContext);
         const styles = Properties.getInstance().getOtherStyle();
 
+        const iriStr = '<...>';
+
         return ( 
-                <div className=" xs-gridBox" style={styles.body}>
-                        <label className='gridLabel' style={styles.label}>Extra Property</label>
-                        <div className="facetCont">
-                                <input  type="text" 
-                                    className="name"
-                                    placeholder="eg: :ex1"
-                                    title="Extra property"/>
-                                <button className="addFacet" style={styles.add} title="Add Facet" >+ Facet</button>      
-                            </div>      
+                <div className="xs-gridBox" style={styles.body}>
+                        <label className='extraLabel' style={styles.label}>Extra Properties</label>
+                        <div className="extrasCont">
+                                <div className="extras">
+                                        <select className="customSelector"
+                                        >
+                                        <option value="iriRef">{iriStr}</option>
+                                        <option value="prefixedIri">QName</option>
+                                        <option value="stringLiteral">String</option>
+                                        <option value="numberLiteral">Number</option>
+                                        <option value="booleanLiteral">Boolean</option>
+                                        </select>
+                                </div>
+                                <div className="extraZone">
+                                        <select className="customSelector"
+                                        >
+                                        <option value="iriRef">{iriStr}</option>
+                                        <option value="prefixedIri">QName</option>
+                                        <option value="stringLiteral">String</option>
+                                        <option value="numberLiteral">Number</option>
+                                        <option value="booleanLiteral">Boolean</option>
+                                        </select>
+                                          <input type="text" 
+                                                className="name"
+                                               
+                                                title="Property name"/>
+
+                                         <button className="tripleBtns deleteValueSetBtn mdc-icon-button material-icons" 
+                                        style={styles.delete}
+                                        title="Delete property">
+                                        delete
+                                        </button>
+                                </div>
+                                <button className="addExtra" style={styles.add}  title="Add Property" >+ Property</button>      
+                        </div>
+                        
 
                 </div>);                          
 }
