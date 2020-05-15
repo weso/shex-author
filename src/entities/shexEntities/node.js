@@ -2,7 +2,7 @@ import TypesFactory from './types/typesFactory';
 
 class Node {
 
-  constructor(id,type,constraint,facets,shapeRef,triples=[],extraConstraints,isClosed) {
+  constructor(id,type,constraint,facets,shapeRef,triples=[],extraProperties,isClosed) {
       this.id = id;
 
       this.type = type;
@@ -14,7 +14,7 @@ class Node {
       this.triplesCount = this.triples.length;
       this.factory = new TypesFactory();
 
-      this.extraConstraints = extraConstraints;
+      this.extraProperties = extraProperties;
       this.isClosed = isClosed;
     }
 

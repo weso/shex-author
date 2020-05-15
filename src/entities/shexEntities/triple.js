@@ -11,8 +11,8 @@ import {getLongestElements,getSeparators,getSeparator} from '../../utils/printUt
 
 class Triple extends Node{
 
-    constructor(id,type=new PrefixedIri(new Prefix('schema','http://schema.org/')),constraint=new Primitive(),facets=[],shapeRef=new ShapeRef(),cardinality=new CardinalitySimple(),triples=[],extraConstraints,isClosed) {
-        super(id,type,constraint,facets,shapeRef,triples,extraConstraints,isClosed);
+    constructor(id,type=new PrefixedIri(new Prefix('schema','http://schema.org/')),constraint=new Primitive(),facets=[],shapeRef=new ShapeRef(),cardinality=new CardinalitySimple(),triples=[],extraProperties,isClosed) {
+        super(id,type,constraint,facets,shapeRef,triples,extraProperties,isClosed);
         this.cardinality = cardinality;
         this.cardFactory = new CardinalityFactory();
     }
