@@ -91,7 +91,7 @@ function getShapes(defShapes){
         let triples = getTriples(id,tTokens);
 
 
-        let s = new Shape(id,content.type,content.constraint,content.facets,content.shapeRef,triples);
+        let s = new Shape(id,content.type,content.constraint,content.facets,content.shapeRef,triples,content.extraConstraints,content.isClosed);
         references.push({entity:s,ref:content.ref});
         acc.push(s);
         return acc;
@@ -155,7 +155,7 @@ function getTriples(shapeId,tokens) {
                         }
               
                         if(content.type != undefined){//Needed when last triple of an inlineShape ends with ';'
-                            let triple = new Triple(acc.length,content.type,content.constraint,content.facets,content.shapeRef,cardinality,subTriples);
+                            let triple = new Triple(acc.length,content.type,content.constraint,content.facets,content.shapeRef,cardinality,subTriples,content.extraConstraints,content.isClosed);
                             references.push({entity:triple,ref:content.ref});
                             acc.push(triple);
                         }
@@ -237,6 +237,8 @@ function getContent(id,tokens) {
     let facets = [];
     let cardinality= new CardinalityFactory().createCardinality();
     let shapeRef = new ShapeRef();
+    let extraConstraints = [];
+    let isClosed = false;
     let ref;
     //I am using a for loop just because of the facets (see line 233)
     for(let i=0;i<tokens.length;i++){
@@ -273,6 +275,19 @@ function getContent(id,tokens) {
         if(token.type == 'cardinality'){
           cardinality=getCardinality(token.string);
         }
+
+
+        if(token.type == 'keyword'){
+            if(token.string.toLowerCase()=='extra'){
+                i++
+                while(tokens[i] && tokens[i].type!='constraint'){
+                    extraConstraints.push(tokens[i].string);
+                    i++;
+                }
+            }
+            
+            if(token.string.toLowerCase()=='closed')isClosed=true;
+        }
         
         if(isNotAllowed(token))Codemirror.signal(Editor.getYashe(),'forceError');
         
@@ -288,7 +303,7 @@ function getContent(id,tokens) {
   
     }
     if(valueSet.length>0)constraint=new ValueSet(valueSet);
-    return {type:type,constraint:constraint,facets:facets,shapeRef:shapeRef,ref:ref,cardinality:cardinality};
+    return {type:type,constraint:constraint,facets:facets,shapeRef:shapeRef,ref:ref,cardinality:cardinality,extraConstraints:extraConstraints,isClosed:isClosed};
 }
 
 

@@ -8,8 +8,8 @@ import {getLongestElements,getSeparators} from '../../utils/printUtils';
 
 class Shape extends Node{
 
-  constructor(id,type=new PrefixedIri(new Prefix('','http:/example.org/')),constraint=new Primitive(),facets=[],shapeRef=new ShapeRef(),triples=[]) {
-      super(id,type,constraint,facets,shapeRef,triples);
+  constructor(id,type=new PrefixedIri(new Prefix('','http:/example.org/')),constraint=new Primitive(),facets=[],shapeRef=new ShapeRef(),triples=[],extraConstraints,isClosed) {
+      super(id,type,constraint,facets,shapeRef,triples,extraConstraints,isClosed);
     }
 
  
