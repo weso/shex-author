@@ -169,7 +169,7 @@ function NodeComponent (props) {
                     <button className='btnZone'style={facetStyles.body}
                     onClick={customizeFacet}>Facet</button>
                     <button className='btnZone'style={refStyles.body}
-                    onClick={customizeRef}>ShapeReference</button>
+                    onClick={customizeRef}>ShapeRef</button>
                     {getCardinalityIfNeeded()}
                     <button className='btnZone'style={otherStyles.body}
                     onClick={customizeOther}>Other</button>

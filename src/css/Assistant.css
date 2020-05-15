@@ -447,7 +447,7 @@ label{
 
 .zone-card{
     display: grid;
-    grid-template-columns: 12% 20% 12% 29% 20% 7%;
+    grid-template-columns:  11%  auto 11% auto auto 11% 9% ;
     background-color: white;
 }
 
