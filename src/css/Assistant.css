@@ -438,9 +438,10 @@ label{
 
 
 
+
 .zone{
     display: grid;
-    grid-template-columns: 15% 20% 12% 29% 24%;
+    grid-template-columns: 15% 20% 12% 29% 12% 12%;
     background-color: white;
 }
 

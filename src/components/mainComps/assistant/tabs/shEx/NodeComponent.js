@@ -6,6 +6,7 @@ import ConstraintComp from './customize/ConstraintComp';
 import ShapeRefComp from './customize/ShapeRefComp';
 import FacetContainer from './customize/FacetContainer';
 import CardinalityComp from './customize/CardinalityComp';
+import OtherComp from './customize/OtherComp';
 import Properties from '../../../../../conf/properties';
 
 function NodeComponent (props) {
@@ -16,6 +17,7 @@ function NodeComponent (props) {
     const [isRefOpen,setRefOpen] = useState(false);
     const [isFacetOpen,setFacetOpen] = useState(false);
     const [isCardinalityOpen,setCardinalityOpen] = useState(false);
+    const [isOtherOpen,setrOtherOpen] = useState(false);
     const [allCollased,setAllCollapsed] = useState(false);
     const [colapseBtn,setColapseBtn] = useState('menu');
 
@@ -26,6 +28,7 @@ function NodeComponent (props) {
     const facetStyles = Properties.getInstance().getFacetStyle();
     const refStyles = Properties.getInstance().getShapeRefStyle();
     const cardStyles = Properties.getInstance().getCardinalityStyle();
+    const otherStyles = Properties.getInstance().getOtherStyle();
 
     const customizeTriple = function(){
         collapseAll(false);
@@ -84,6 +87,18 @@ function NodeComponent (props) {
         
     }
 
+     const customizeOther = function(){
+        collapseAll(false);
+        setrOtherOpen(!isOtherOpen);
+        setAllCollapsed(false);
+
+        if(allCollased){
+            setrOtherOpen(true);
+            changeCollapseBtn();
+        } 
+        
+    }
+
 
     const collapseAll = function(collapse){
         setTripleCustomOpen(collapse);
@@ -91,6 +106,7 @@ function NodeComponent (props) {
         setRefOpen(collapse);
         setFacetOpen(collapse);
         setCardinalityOpen(collapse);
+        setrOtherOpen(collapse);
     }
 
     const collapseToggle = function(){
@@ -155,6 +171,8 @@ function NodeComponent (props) {
                     <button className='btnZone'style={refStyles.body}
                     onClick={customizeRef}>ShapeReference</button>
                     {getCardinalityIfNeeded()}
+                    <button className='btnZone'style={otherStyles.body}
+                    onClick={customizeOther}>Other</button>
                     <button className="collapseBtn-triple mdc-icon-button material-icons" 
                     style={getEntityStyle().collapse}
                     onClick={collapseToggle}
@@ -181,6 +199,10 @@ function NodeComponent (props) {
                 </Collapse> 
                 
                 {getCardinalityCompIfNeeded()}
+
+                 <Collapse  isOpen={isOtherOpen}>
+                    <OtherComp  entity={entity} />           
+                </Collapse> 
 
             </Collapse>  );                          
 }

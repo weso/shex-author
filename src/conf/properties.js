@@ -7,6 +7,7 @@ import {SHAPE_COLORS,
         FACET_COLORS,
         SHAPEREF_COLORS,
         CARDINALITY_COLORS,
+        OTHER_COLORS,
         PREFIX_COLORS} from './colors';
 
 import {DEFAULTS} from './config'       ;
@@ -164,6 +165,13 @@ const Properties = (()=> {
             return {
                 label:{color:CARDINALITY_COLORS.label},
                 body:{background:CARDINALITY_COLORS.body}
+            };  
+        }
+
+        this.getOtherStyle = function(){
+            return {
+                label:{color:OTHER_COLORS.label},
+                body:{background:OTHER_COLORS.body}
             };  
         }
 
