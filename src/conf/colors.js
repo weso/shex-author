@@ -76,6 +76,8 @@ export const CARDINALITY_COLORS = {
 export const OTHER_COLORS = {
         label:'#222',
         body:'#ffff',
+        delete:'#222',
+        deleteFill:'#ffff',
 };
 
 export const PREFIX_COLORS = {

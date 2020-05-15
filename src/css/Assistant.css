@@ -501,15 +501,10 @@ label{
     width: 100% ;
 }
 
-.extras{
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: 100%;
-}
 
 .extraZone{
     display: grid;
-    grid-template-columns: 40% 40% 20%;
+    grid-template-columns: 40% 40% 18%;
 }
 
 
@@ -523,6 +518,10 @@ label{
 
 .addExtra:focus{
     outline: none;
+}
+
+.closedCheck{
+    grid-column: 3/4;
 }
 
 

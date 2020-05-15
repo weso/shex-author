@@ -1,8 +1,9 @@
 import TypesFactory from './types/typesFactory';
+import ValueSet from './types/concreteTypes/valueSet';
 
 class Node {
 
-  constructor(id,type,constraint,facets,shapeRef,triples=[],extraProperties,isClosed) {
+  constructor(id,type,constraint,facets,shapeRef,triples=[],extraProperties=new ValueSet(),isClosed) {
       this.id = id;
 
       this.type = type;

@@ -6,7 +6,7 @@ import ConstraintComp from './customize/ConstraintComp';
 import ShapeRefComp from './customize/ShapeRefComp';
 import FacetContainer from './customize/FacetContainer';
 import CardinalityComp from './customize/CardinalityComp';
-import OtherComp from './customize/OtherComp';
+import OtherContainer from './customize/OtherContainer';
 import Properties from '../../../../../conf/properties';
 
 function NodeComponent (props) {
@@ -20,6 +20,9 @@ function NodeComponent (props) {
     const [isOtherOpen,setrOtherOpen] = useState(false);
     const [allCollased,setAllCollapsed] = useState(false);
     const [colapseBtn,setColapseBtn] = useState('menu');
+
+    console.log(entity.extraProperties)
+    const [extras,setExtras] = useState([]);
 
 
     const shapeStyles = Properties.getInstance().getShapeStyle();
@@ -201,7 +204,7 @@ function NodeComponent (props) {
                 {getCardinalityCompIfNeeded()}
 
                  <Collapse  isOpen={isOtherOpen}>
-                    <OtherComp  entity={entity} />           
+                    <OtherContainer  entity={entity} extras={extras} setExtras={setExtras} />           
                 </Collapse> 
 
             </Collapse>  );                          

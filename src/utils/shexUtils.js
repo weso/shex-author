@@ -8,6 +8,7 @@ import ValueSetValue from '../entities/shexEntities/others/valueSetValue';
 let shapesCount = 0;
 let facetsCount = 0;
 let valuesCount = 0;
+let extraPropsCount=0;
 
 function addShape(shapes,width){
 
@@ -82,6 +83,11 @@ function addValueSetValue(values){
     return new ValueSetValue(id);    
 }
 
+function addExtraProperty(properties){
+    const id = properties.length + extraPropsCount++;
+    return new ValueSetValue(id);    
+}
+
 
 function addFacet(facets){
     const id = facets.length + facetsCount++;
@@ -98,7 +104,8 @@ const shexUtils = {
     getTripleById:getTripleById,
     emit:emit,
     addFacet:addFacet,
-    addValueSetValue:addValueSetValue
+    addValueSetValue:addValueSetValue,
+    addExtraProperty:addExtraProperty
 }
 
 export default shexUtils;

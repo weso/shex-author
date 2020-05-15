@@ -171,7 +171,11 @@ const Properties = (()=> {
         this.getOtherStyle = function(){
             return {
                 label:{color:OTHER_COLORS.label},
-                body:{background:OTHER_COLORS.body}
+                body:{background:OTHER_COLORS.body},
+                delete:{
+                        color:OTHER_COLORS.deleteFill,
+                        background:OTHER_COLORS.delete
+                },
             };  
         }
 
