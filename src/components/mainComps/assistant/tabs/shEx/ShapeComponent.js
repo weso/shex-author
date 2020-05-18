@@ -9,6 +9,8 @@ import Properties from '../../../../../conf/properties';
 
 import CustomZone from './CustomZone';
 
+import Triples from './Triples';
+
 export const ShapeContext = React.createContext();
 
 function ShapeComponent (props) {
@@ -65,7 +67,11 @@ function ShapeComponent (props) {
 
     const collapseTriples = function(){
         setCustomOpen(false);
-        setTriplesOpen(!isTriplesOpen);
+        forceTriples(!isTriplesOpen);
+    }
+
+    const forceTriples = function(open){
+        setTriplesOpen(open);
         
         if(colapseBtn=='menu'){
             setColapseBtn('menu_open');
@@ -81,32 +87,17 @@ function ShapeComponent (props) {
                 <ShapeHeader shape={shape} 
                             customizeShape={customizeShape} 
                             collapseTriples={collapseTriples} 
-                            colapseBtn={colapseBtn}/>
+                            colapseBtn={colapseBtn}
+                            forceTriples={forceTriples}/>
 
 
                 <CustomZone entity={shape} 
                             isCustomOpen={isCustomOpen} 
                             customClass={'customShape'}/> 
 
-                <Collapse  isOpen={isTriplesOpen}>
-                     <div className="triples" style={styles.body}>
-                        {triples.map(triple =>
-                            <TripleComponent key={triple.id}
-                                            triple={triple}
-                                            deleteTriple={deleteTriple}
-                                            styles={tripleStyles}/> 
-                        )}
-                    
-                        <button className="xs-addTripleButton"
-                                style={styles.addTriple} 
-                                onClick={addTriple} 
-                                disabled={disabled}
-                                title="Add Triple">
-                                + Triple Constraint
-                        </button>        
-                    
-                        </div>
-                </Collapse> 
+    
+                <Triples  shape={shape} isTriplesOpen={isTriplesOpen}></Triples> 
+
 
 
             </div>

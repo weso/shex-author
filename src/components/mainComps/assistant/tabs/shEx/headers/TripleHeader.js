@@ -45,7 +45,7 @@ function TripleHeader (props) {
                     onClick={customize}
                     disabled={disabled} 
                     title="Customize Triple Constraint">
-                    build
+                    settings
             </button>
 
             

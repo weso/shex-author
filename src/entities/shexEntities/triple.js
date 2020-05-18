@@ -45,6 +45,15 @@ class Triple extends Node{
 
             str+=shapeRef+bodySeparator;
 
+            if(this.extraProperties.values.length>0){
+                str+='EXTRA ';
+                str+=this.extraProperties.values.reduce((acc,e)=>{
+                        return acc+=' '+e+' ';
+                },'');
+            }
+
+            if(this.isClosed)str+='CLOSED '
+
             if(this.triples.length>0){
                 str+=' {\n';
                 tab++;

@@ -38,7 +38,7 @@ function OtherContainer (props) {
 
 
         return ( 
-                <div className="xs-gridBox" style={styles.body}>
+                <div className="xs-gridBox otherss" style={styles.body}>
                         <label className='extraLabel' style={styles.label}>Extra Properties</label>
                         <div className="extrasCont">
                                 {extras.map(e=>{

@@ -2,12 +2,13 @@
     padding:5px;
     padding-right: 10px;
     color: black;
-    border-top: 1px solid #acaaaa;
     text-align: left;
     display: grid;
     grid-template-columns: 70% 9% 9% 9%;
     gap: 8px;
-    /*background-color: #ffd0ca !important;*/
+    background-color: #fff6e6 !important;
+    border-top:1px solid #acaaaa;
+    background-color: #fcebdf !important;
 }
 
 .tripleHeader{

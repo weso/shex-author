@@ -21,7 +21,7 @@ class Shape extends Node{
         str+=this.facets?.reduce((acc,f)=>{
                 return acc+=' '+f+' ';
         },'');
-        str+=this.shapeRef;
+        str+=this.shapeRef+' ';
         if(this.extraProperties.values.length>0){
           str+='EXTRA ';
           str+=this.extraProperties.values.reduce((acc,e)=>{
