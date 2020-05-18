@@ -10,6 +10,7 @@ import CardinalityComp from './customize/CardinalityComp';
 import Properties from '../../../../../conf/properties';
 import CustomZone from './CustomZone';
 import Triple from '../../../../../entities/shexEntities/triple';
+import Triples from './Triples';
 
 function TripleComponent (props) {
     
@@ -73,24 +74,13 @@ function TripleComponent (props) {
                         isCustomOpen={isCustomOpen} 
                         customClass={'customTriple'} /> 
            
-            <Collapse  isOpen={isTriplesOpen}>
-                     <div className="subTriples" style={styles.body}>
-                        {triples.map(subTriple =>
-                            <TripleComponent key={subTriple.id}
-                                            triple={subTriple}
-                                            deleteTriple={subDeleteTriple}
-                                            styles={subTripleStyles}/> 
-                        )}
-                    
-                        <button className="xs-addSubTripleButton"
-                                style={styles.addSubTriple} 
-                                onClick={addTriple} 
-                                title="Add Triple">
-                                + Triple Constraint
-                        </button>        
-                    
-                        </div>
-                </Collapse> 
+            <Triples  entity={triple} 
+                      isTriplesOpen={isTriplesOpen}
+                      styles={subTripleStyles}
+                      container="subTriples"
+                      header="subSlotHeader"
+                      body="subTripleSlot"
+                      addClass="xs-addSubTripleButton"></Triples> 
 
 
         </div>);                          

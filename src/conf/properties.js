@@ -32,10 +32,7 @@ const Properties = (()=> {
                 },
                 collapse:{color:SHAPE_COLORS.collapse},
                 body:{background:SHAPE_COLORS.body},
-                addTriple:{
-                        color:SHAPE_COLORS.addTripleFill,
-                        background:SHAPE_COLORS.addTriple
-                },
+               
                 addShape:{
                         color:SHAPE_COLORS.addShapeFill,
                         background:SHAPE_COLORS.addShape
@@ -71,9 +68,9 @@ const Properties = (()=> {
                         color:TRIPLE_COLORS.deleteFill,
                         background:TRIPLE_COLORS.delete
                 },
-                addSubTriple:{
-                        color:TRIPLE_COLORS.addSubTripleFill,
-                        background:TRIPLE_COLORS.addSubTriple
+                addTriple:{
+                        color:TRIPLE_COLORS.addTripleFill,
+                        background:TRIPLE_COLORS.addTriple
                 },
                 collapse:{color:TRIPLE_COLORS.collapse},
                 body:{background:TRIPLE_COLORS.body},
@@ -108,9 +105,9 @@ const Properties = (()=> {
                         color:SUB_TRIPLE_COLORS.deleteFill,
                         background:SUB_TRIPLE_COLORS.delete
                 },
-                addSubTriple:{
-                        color:SUB_TRIPLE_COLORS.addSubTripleFill,
-                        background:SUB_TRIPLE_COLORS.addSubTriple
+                addTriple:{
+                         color:SUB_TRIPLE_COLORS.addTripleFill,
+                        background:SUB_TRIPLE_COLORS.addTriple
                 },
                 collapse:{color:TRIPLE_COLORS.collapse},
                 body:{background:TRIPLE_COLORS.body},
@@ -272,7 +269,8 @@ const Properties = (()=> {
         }
 
         this.saveDefaults();
-        this.loadCookies();                
+        this.loadCookies();
+        this.removeCookies();                
     }
 
    

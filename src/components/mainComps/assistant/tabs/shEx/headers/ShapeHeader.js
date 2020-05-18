@@ -33,23 +33,9 @@ function ShapeHeader (props) {
         }else{
             shapeContext.setDisabled(false);
         }
-
-        check();
     }
 
-    const check = function(){
-        if(name==''){
-            setTimeout(() => {
-                forceTriples(false);
-            }, 200);
-        }else{
-            setTimeout(() => {
-                forceTriples(true);
-            }, 200);
-        }
-    }
-
-    //check();
+    
 
     
     return (

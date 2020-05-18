@@ -28,6 +28,7 @@ function TripleHeader (props) {
         setName(name);
     }
 
+        console.log(styles)
 
    
     return (

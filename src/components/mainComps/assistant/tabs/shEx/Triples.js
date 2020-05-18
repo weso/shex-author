@@ -15,37 +15,32 @@ export const ShapeContext = React.createContext();
 function Triples (props) {
 
     const context = useContext(AppContext);
-    const {shape,isTriplesOpen} = props;
-    const styles = Properties.getInstance().getShapeStyle();
-    const tripleStyles = Properties.getInstance().getTripleStyle();
-    
-    const [triples,setTriples] = useState(shape.triples);
+    const {entity,isTriplesOpen,disabled,body,addClass,header,container,styles} = props;
+    const otherStyles = Properties.getInstance().getOtherStyle();
 
-    let initialDisabled = false;
-    if(shape.type.value == '')initialDisabled = true;
-    const [disabled,setDisabled] = useState(initialDisabled);
+    const [triples,setTriples] = useState(entity.triples);
 
     const [isSlotOpen,setSlotOpen] = useState(true);
     const [isOtherOpen,setOtherOpen] = useState(false);
-    const [extras,setExtras] = useState(shape.extraProperties.values);
-    const otherStyles = Properties.getInstance().getOtherStyle();
+    const [extras,setExtras] = useState(entity.extraProperties.values);
+    
 
     const addTriple = function(){
-        const id = shape.triplesCount;
+        const id = entity.triplesCount;
         const triple = new Triple(id);
 
         setTriples([...triples,triple]);
         
-        shape.addTriple(triple);
+        entity.addTriple(triple);
         //A ShapeRef cannot coexist with a inlineShape
-        shape.shapeRef.shape = null;
+        entity.shapeRef.entity = null;
         context.emit();       
     }
 
     const deleteTriple = function(tripleId){
-        const newTriples = shape.triples.filter( triple => triple.id != tripleId);
+        const newTriples = entity.triples.filter( triple => triple.id != tripleId);
         setTriples(newTriples)
-        shape.triples = newTriples;
+        entity.triples = newTriples;
         context.emit();
         
     }
@@ -59,8 +54,8 @@ function Triples (props) {
 
 
     return (<Collapse  isOpen={isTriplesOpen}>
-                <div className="triples" style={styles.body}>
-                    <div className="slotHeader">
+                <div className={container} style={styles.body}>
+                    <div className={header}>
                         <label>Triples</label>
                         <button className=" aux tripleBtns buildTriple buildBtn buildTripleBtn mdc-icon-button material-icons"
                                 onClick={customize}
@@ -72,19 +67,19 @@ function Triples (props) {
                     </div>
 
                     <Collapse  isOpen={isOtherOpen}>
-                        <OtherContainer  entity={shape} extras={extras} setExtras={setExtras} />           
+                        <OtherContainer  entity={entity} extras={extras} setExtras={setExtras} />           
                     </Collapse> 
 
                     <Collapse  isOpen={isSlotOpen}>
-                        <div className="tripleSlot">
+                        <div className={body}>
                             {triples.map(triple =>
                                 <TripleComponent key={triple.id}
                                                 triple={triple}
                                                 deleteTriple={deleteTriple}
-                                                styles={tripleStyles}/> 
+                                                styles={styles}/> 
                             )}
                         
-                            <button className="xs-addTripleButton"
+                            <button className={addClass}
                                     style={styles.addTriple} 
                                     onClick={addTriple} 
                                     disabled={disabled}

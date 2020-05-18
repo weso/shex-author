@@ -114,6 +114,11 @@ label{
     padding: 10px;
 }
 
+.subTriples{
+    padding: 10px;
+    background-color: #fff6e6 !important;
+}
+
 .slotHeader{
 
     color: black;
@@ -128,6 +133,9 @@ label{
 
     background-color: #fff6e6;
 }
+
+
+
 
 .tripleSlot{
     color: black;
@@ -155,16 +163,34 @@ label{
     background-color: #f8d79f !important;
     color:white !important;
 }
-.subTriples{
+.subTripleSlot{
     color: black;
     text-align: left;
-    border-radius: 10px;
+    border-radius: 0px 0px 10px 10px ;
     display: grid;
     grid-template-columns: 100%; 
-    padding-left: 10px;
-    padding-right: 10px;
-    /*background-color: #ffd0ca !important;*/
 
+    border-left: 1px solid #acaaaa;
+    border-right: 1px solid #acaaaa;
+    border-bottom: 1px solid #acaaaa;
+    background-color: #ffe5e2 !important;
+
+}
+
+
+.subSlotHeader{
+
+    color: black;
+    border-top: 1px solid #acaaaa;
+    border-left: 1px solid #acaaaa;
+    border-right: 1px solid #acaaaa;
+    border-radius: 10px 10px 0px 0px;
+    text-align: left;
+    display: grid;
+    grid-template-columns: 15% 9%  ;
+    gap: 8px;
+
+    background-color: #ffe5e2 !important;
 }
 
 /*

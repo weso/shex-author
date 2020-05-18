@@ -96,7 +96,14 @@ function ShapeComponent (props) {
                             customClass={'customShape'}/> 
 
     
-                <Triples  shape={shape} isTriplesOpen={isTriplesOpen}></Triples> 
+                 <Triples   entity={shape} 
+                            isTriplesOpen={isTriplesOpen}
+                            disabled={disabled}
+                            styles={tripleStyles}
+                            container="triples"
+                            header="slotHeader"
+                            body="tripleSlot"
+                            addClass="xs-addTripleButton"></Triples> 
 
 
 
