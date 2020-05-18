@@ -282,7 +282,7 @@ function getProperties(id,tokens) {
             if(token.string.toLowerCase()=='extra'){
                 i++// we want the next token
                 while(tokens[i] && (tokens[i].type=='string-2' || tokens[i].type=='variable-3')){
-                    extraProperties.push(tokens[i].string);
+                    extraProperties.addValue(new Value(extraProperties.values.length,getType(tokens[i].string)));
                     i++;
                 }
             }
@@ -293,6 +293,7 @@ function getProperties(id,tokens) {
         checkValidity(token);
         
     }
+
     if(valueSet.length>0)constraint=new ValueSet(valueSet);
     return {type:type,constraint:constraint,facets:facets,shapeRef:shapeRef,ref:ref,cardinality:cardinality,extraProperties:extraProperties,isClosed:isClosed};
 }

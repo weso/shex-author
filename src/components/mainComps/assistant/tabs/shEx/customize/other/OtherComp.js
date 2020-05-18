@@ -43,6 +43,7 @@ function OtherComp (props) {
                 checkCollapses();
         });
 
+
         return ( 
         <div className="extraComp">
                 <select className="customSelector"

@@ -24,7 +24,10 @@ function TripleComponent (props) {
     const subTripleStyles = Properties.getInstance().getSubTripleStyle();
 
     const customize  = function(){
+        setTriplesOpen(false);
         setCustomOpen(!isCustomOpen);
+
+
     }
 
     const addTriple = function(){

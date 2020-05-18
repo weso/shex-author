@@ -32,7 +32,7 @@ const Properties = (()=> {
                 },
                 collapse:{color:SHAPE_COLORS.collapse},
                 body:{background:SHAPE_COLORS.body},
-               
+                zone:{background:SHAPE_COLORS.zone},
                 addShape:{
                         color:SHAPE_COLORS.addShapeFill,
                         background:SHAPE_COLORS.addShape
@@ -72,8 +72,12 @@ const Properties = (()=> {
                         color:TRIPLE_COLORS.addTripleFill,
                         background:TRIPLE_COLORS.addTriple
                 },
-                collapse:{color:TRIPLE_COLORS.collapse},
+                collapse:{
+                    color:TRIPLE_COLORS.collapse,
+                    background:TRIPLE_COLORS.zone
+                },
                 body:{background:TRIPLE_COLORS.body},
+                zone:{background:TRIPLE_COLORS.zone},
             }
         }
 
@@ -269,8 +273,7 @@ const Properties = (()=> {
         }
 
         this.saveDefaults();
-        this.loadCookies();
-        this.removeCookies();                
+        this.loadCookies();             
     }
 
    

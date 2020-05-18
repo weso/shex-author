@@ -9,6 +9,7 @@ export const SHAPE_COLORS = {
         body:'#EBF4FF',
         addShape:'#ddeafa',
         addShapeFill:'#222',
+        zone:'#EBF4FF'
 };
 
 export const TRIPLE_COLORS = {
@@ -30,6 +31,7 @@ export const TRIPLE_COLORS = {
         body:'#EBF4FF',
         addTriple:'#EFDECD',
         addTripleFill:'#222',
+        zone:'#fcebdf'
 };
 
 export const SUB_TRIPLE_COLORS = {

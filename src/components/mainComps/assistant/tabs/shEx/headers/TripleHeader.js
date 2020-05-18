@@ -28,8 +28,6 @@ function TripleHeader (props) {
         setName(name);
     }
 
-        console.log(styles)
-
    
     return (
         <div className="xs-tripleHeader" style={styles.header}>            

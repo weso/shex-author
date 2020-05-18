@@ -4,7 +4,7 @@
     color: black;
     text-align: left;
     display: grid;
-    grid-template-columns: 70% 9% 9% 9%;
+    grid-template-columns: 70% 9% 9% 7%;
     gap: 8px;
     border-top:1px solid #acaaaa;
 }

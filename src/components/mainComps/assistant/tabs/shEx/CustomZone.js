@@ -149,7 +149,7 @@ function NodeComponent (props) {
             <Collapse  isOpen={isCustomOpen}> 
 
                 <div className={getCardinalityStyleIfNeeded()} style={getEntityStyle().body}>
-                    <button className='btnZone'style={getEntityStyle().body}
+                    <button className='btnZone'style={getEntityStyle().zone}
                     onClick={customizeTriple}>{entity.getEntityName()}</button>
                    <button className='btnZone'style={constStyles.body}
                     onClick={customizeContraints}>Constraint</button>

@@ -16,6 +16,7 @@ function OtherContainer (props) {
         const iriStr = '<...>';
         const [isIriRef,setIriRef]=useState(true);
         const [isQName,setQName]=useState(false);
+        const [isClosed,setClosed]=useState(entity.isClosed);
 
         const deleteExtra= function(id){
                 const newExtras = extras.filter(e => e.id != id);
@@ -32,6 +33,7 @@ function OtherContainer (props) {
         }
 
         const handleClosedChange = function(e){
+                setClosed(!isClosed);
                 entity.isClosed = e.target.checked;
                 context.emit(); 
         }
@@ -48,7 +50,7 @@ function OtherContainer (props) {
                         </div>
 
                         <label className='extraLabel' style={styles.label}>Closed</label>
-                        <input type="checkbox" className="closedCheck" name="closed" value="closed" onChange={(e)=>handleClosedChange(e)}/>
+                        <input type="checkbox" className="closedCheck" name="closed" value="closed" checked={isClosed} onChange={(e)=>handleClosedChange(e)}/>
                       
                 </div>);                          
 }
