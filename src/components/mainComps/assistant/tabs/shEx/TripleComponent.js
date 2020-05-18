@@ -8,7 +8,7 @@ import ShapeRefComp from './customize/ShapeRefComp';
 import FacetContainer from './customize/FacetContainer';
 import CardinalityComp from './customize/CardinalityComp';
 import Properties from '../../../../../conf/properties';
-import NodeComponent from './NodeComponent';
+import CustomZone from './CustomZone';
 import Triple from '../../../../../entities/shexEntities/triple';
 
 function TripleComponent (props) {
@@ -69,7 +69,9 @@ function TripleComponent (props) {
                           colapseBtn={colapseBtn}
                           styles={styles}/>
 
-            <NodeComponent entity={triple} isCustomOpen={isCustomOpen} customClass={'customTriple'} /> 
+            <CustomZone entity={triple} 
+                        isCustomOpen={isCustomOpen} 
+                        customClass={'customTriple'} /> 
            
             <Collapse  isOpen={isTriplesOpen}>
                      <div className="subTriples" style={styles.body}>

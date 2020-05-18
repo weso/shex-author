@@ -3,7 +3,7 @@ import Editor from '../entities/editor';
 import Shape from '../entities/shexEntities/shape';
 import Facet from '../entities/shexEntities/others/facet';
 import {addPrefix} from './prefixUtils';
-import ValueSetValue from '../entities/shexEntities/others/valueSetValue';
+import Value from '../entities/shexEntities/others/value';
 
 let shapesCount = 0;
 let facetsCount = 0;
@@ -80,12 +80,12 @@ function hasPrefix(prefix){
 
 function addValueSetValue(values){
     const id = values.length + valuesCount++;
-    return new ValueSetValue(id);    
+    return new Value(id);    
 }
 
 function addExtraProperty(properties){
     const id = properties.length + extraPropsCount++;
-    return new ValueSetValue(id);    
+    return new Value(id);    
 }
 
 

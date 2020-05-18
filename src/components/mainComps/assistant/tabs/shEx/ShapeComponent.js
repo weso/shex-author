@@ -7,7 +7,7 @@ import TripleComponent from './TripleComponent';
 import Triple from '../../../../../entities/shexEntities/triple';
 import Properties from '../../../../../conf/properties';
 
-import NodeComponent from './NodeComponent';
+import CustomZone from './CustomZone';
 
 export const ShapeContext = React.createContext();
 
@@ -84,7 +84,9 @@ function ShapeComponent (props) {
                             colapseBtn={colapseBtn}/>
 
 
-                <NodeComponent  entity={shape} isCustomOpen={isCustomOpen} customClass={'customShape'}/> 
+                <CustomZone entity={shape} 
+                            isCustomOpen={isCustomOpen} 
+                            customClass={'customShape'}/> 
 
                 <Collapse  isOpen={isTriplesOpen}>
                      <div className="triples" style={styles.body}>

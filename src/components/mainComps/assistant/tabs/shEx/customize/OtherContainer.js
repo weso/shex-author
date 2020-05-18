@@ -20,14 +20,19 @@ function OtherContainer (props) {
         const deleteExtra= function(id){
                 const newExtras = extras.filter(e => e.id != id);
                 setExtras(newExtras);
-               // entity.extraProperties.setValues(newExtras);
-               // context.emit(); 
+                entity.extraProperties.setValues(newExtras);
+                context.emit(); 
         }
 
         const addExtra = function(){
                 const newExtras = shexUtils.addExtraProperty(extras);
                 setExtras([...extras,newExtras]);
                 entity.extraProperties.addValue(newExtras);
+                context.emit(); 
+        }
+
+        const handleClosedChange = function(e){
+                entity.isClosed = e.target.checked;
                 context.emit(); 
         }
 
@@ -43,7 +48,7 @@ function OtherContainer (props) {
                         </div>
 
                         <label className='extraLabel' style={styles.label}>Closed</label>
-                        <input type="checkbox" className="closedCheck" name="closed" value="closed"/>
+                        <input type="checkbox" className="closedCheck" name="closed" value="closed" onChange={(e)=>handleClosedChange(e)}/>
                       
                 </div>);                          
 }

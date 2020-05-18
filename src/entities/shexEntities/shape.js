@@ -28,6 +28,8 @@ class Shape extends Node{
                 return acc+=' '+e+' ';
           },'');
         }
+
+        if(this.isClosed)str+='CLOSED '
         
         if(this.checkContent()){
           str+=' {\n';

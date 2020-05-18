@@ -22,7 +22,8 @@ import StringLiteral from '../entities/shexEntities/types/concreteTypes/literal/
 import BooleanLiteral from '../entities/shexEntities/types/concreteTypes/literal/booleanLiteral';
 import Prefix from '../entities/shexEntities/others/prefix';
 import ShapeRef from '../entities/shexEntities/others/shapeRef';
-import ValueSetValue from '../entities/shexEntities/others/valueSetValue';
+import Value from '../entities/shexEntities/others/value';
+import ExtraSet from '../entities/shexEntities/others/extraSet';
 
 
 let references;
@@ -85,7 +86,7 @@ function getShapes(defShapes){
         let id  = acc.length;
         let shapeDef = shape[0].string;
         let sTokens = getBeforeTriplesTokens(shape);
-        let content =  getContent(id,sTokens);
+        let content =  getProperties(id,sTokens);
 
         let tTokens = getTripleTokens(shape);
         let triples = getTriples(id,tTokens);
@@ -143,7 +144,7 @@ function getTriples(shapeId,tokens) {
             if(isFinishOfTriple(tokens,token,index,finish)){
                 if(singleTriple.length>1){
                         let before = getBeforeTriplesTokens(singleTriple);
-                        let content = getContent(acc.length,before);
+                        let content = getProperties(acc.length,before);
                         let after = getTripleTokens(singleTriple);
                         let subTriples = getTriples(acc.length,after);
 
@@ -189,7 +190,7 @@ function isFinishOfTriple(tokens,token,index,finish){
 }
 
 /**
-* Returns the cardinality after a inlineShapeIfExist 
+* Returns the cardinality after a inlineShape If Exists
 * @param {List} TripleTokens
 * @return {Cardinality}
  */
@@ -225,19 +226,19 @@ function getCardiTokens(tokens){
 
 
 /**
-* Gets the features of a Shape/Triple except the possible inlineShape
+* Gets the features of a Shape/Triple except a possible inlineShape
 * @param {Integer} id
 * @param {List} Tokens
 *
 */
-function getContent(id,tokens) {   
+function getProperties(id,tokens) {   
     let type;
     let constraint;
     let valueSet = [];
     let facets = [];
     let cardinality= new CardinalityFactory().createCardinality();
     let shapeRef = new ShapeRef();
-    let extraProperties =new ValueSet();
+    let extraProperties = new ExtraSet();
     let isClosed = false;
     let ref;
     //I am using a for loop just because of the facets (see line 233)
@@ -255,7 +256,7 @@ function getContent(id,tokens) {
             if(token.string.startsWith('@')){// LANTAG NOT SUPPORTED AT THE MOMENT
                 Codemirror.signal(Editor.getYashe(),'forceError','LANTAG_ERR');
             }else{
-                 valueSet.push(new ValueSetValue(valueSet.length,getValueSetValue(token.string)));
+                 valueSet.push(new Value(valueSet.length,getValueSetValue(token.string)));
             }
         }
 
@@ -289,18 +290,8 @@ function getContent(id,tokens) {
             if(tokens[i]?.string.toLowerCase()=='closed')isClosed=true;
         }
         
-        if(isNotAllowed(token))Codemirror.signal(Editor.getYashe(),'forceError');
+        checkValidity(token);
         
-        // Force errors in case to find one of the following tokens
-        if(token.string == '~'){
-            Codemirror.signal(Editor.getYashe(),'forceError','EXCLUSION_ERR');
-        }
-
-        if(token.string == '('){
-            Codemirror.signal(Editor.getYashe(),'forceError','PARENTHESIS_ERR');
-        }
-            
-  
     }
     if(valueSet.length>0)constraint=new ValueSet(valueSet);
     return {type:type,constraint:constraint,facets:facets,shapeRef:shapeRef,ref:ref,cardinality:cardinality,extraProperties:extraProperties,isClosed:isClosed};
@@ -339,10 +330,8 @@ function getTripleTokens(tokens){
             start=true;
         }
 
-        if(t.string=='}'){
-            open--;
-        }
-
+        if(t.string=='}')open--;
+        
         if(open == 0 && start==true)start=false;
         return acc;
     },[])
@@ -416,9 +405,9 @@ function getCardinality(card){
 
 
 /**
-* Get the type of a valueSetValue
+* Get the type of a value
 * @param {String} Token
-* @return {Type} ValueSetValue
+* @return {Type} Value
 *
  */
 function getValueSetValue(def) {
@@ -470,12 +459,21 @@ function isPrimitive(value) {
 }
 
 /**
-* Returns true if the token is not allowed in the assistant. False otherwise
+* Checks if the token is allowed and sends a signal to YASHE if not
 * @param {Object} Token
-* @return {Boolean} 
 */
-function isNotAllowed(token){
-    return token.type != 'string-2' && 
+function checkValidity(token){
+
+       // Force errors in case to find one of the following tokens
+    if(token.string == '~'){
+        Codemirror.signal(Editor.getYashe(),'forceError','EXCLUSION_ERR');
+    }
+
+    if(token.string == '('){
+        Codemirror.signal(Editor.getYashe(),'forceError','PARENTHESIS_ERR');
+    }
+            
+    if(     token.type != 'string-2' && 
             token.type != 'variable-3' &&
             token.type != 'shape' &&
             token.type != 'constraint' && 
@@ -488,7 +486,10 @@ function isNotAllowed(token){
             (token.type != 'keyword' && token.string.toLowerCase()=='prefix') &&
             token.type != 'prefixDelcAlias' &&
             token.type != 'prefixDelcIRI' &&
-            token.type !='comment' ;
+            token.type !='comment' ){
+
+        Codemirror.signal(Editor.getYashe(),'forceError');
+    }
 }
 
 /**
