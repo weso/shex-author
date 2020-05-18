@@ -57,7 +57,7 @@ function Triples (props) {
                 <div className={container} style={styles.body}>
                     <div className={header}>
                         <label>Triples</label>
-                        <button className=" aux tripleBtns buildTriple buildBtn buildTripleBtn mdc-icon-button material-icons"
+                        <button className="slotBtn tripleBtns buildTriple buildBtn buildTripleBtn mdc-icon-button material-icons"
                                 onClick={customize}
                                 style={styles.custom}
                                 title="Customize Triple Constraint">

@@ -153,16 +153,13 @@ label{
    
 }
 
-.aux{
+.slotBtn{
     margin-top: 8px;
     margin-bottom: 8px;
     color:#f7e7c9 !important;
 }
 
-.aux2{
-    background-color: #f8d79f !important;
-    color:white !important;
-}
+
 .subTripleSlot{
     color: black;
     text-align: left;
