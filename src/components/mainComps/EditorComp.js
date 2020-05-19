@@ -18,7 +18,7 @@ import '../../css/themes/author.css';
 import '../../css/themes/author-dark.css';
 
 const ERROR_EDITOR_MSG = 'Ops... There are some errors in the editor';
-const COMPLEX_SHAPE_MSG = 'Sorry that Shape is too complex for me';
+const COMPLEX_SHAPE_MSG = 'Sorry this Shape is too complex for me';
 
 function EditorComp() {
 

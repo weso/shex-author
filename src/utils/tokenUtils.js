@@ -26,6 +26,11 @@ import Value from '../entities/shexEntities/others/value';
 import ExtraSet from '../entities/shexEntities/others/extraSet';
 
 
+import AndExpr from '../entities/shexEntities/logic/andExpr';
+import OrExpr from '../entities/shexEntities/logic/orExpr';
+import LogicFactory from '../entities/shexEntities/logic/logicFactory';
+
+
 let references;
 /**
 *   Obtains all the current tokens in the editor
@@ -89,6 +94,10 @@ function getShapes(defShapes){
         let content =  getProperties(id,sTokens);
 
         let tTokens = getTripleTokens(shape);
+        let aux = getTripleTokens2(shape);
+
+        console.log(aux)
+
         let triples = getTriples(id,tTokens);
 
 
@@ -334,10 +343,43 @@ function getTripleTokens(tokens){
         if(t.string=='}')open--;
         
         if(open == 0 && start==true)start=false;
+
         return acc;
     },[])
 }
 
+
+function getTripleTokens2(tokens){
+    let start=false;
+    let open = 0;
+    let aux = [];
+    let type = 'default';
+    let factory = new LogicFactory();
+    return tokens.reduce((acc,t)=>{
+        if(start)aux.push(t);
+         
+        if((t.string.toLowerCase()=='and'|| t.string.toLowerCase()=='or') 
+            && !start){
+                type = t.string.toLowerCase();
+        }
+
+        if(t.string=='{'){
+            open++;
+            start=true;
+        }
+
+        if(t.string=='}')open--;
+        
+        if(open == 0 && start==true){
+            start=false;
+            acc.push(factory.createType(type,aux))
+            //acc.push({type:type,tokens:Object.assign([],aux)});
+            aux=[];
+        }
+
+        return acc;
+    },[])
+}
 
 /**
  * Returns true in case the token represent the end of a Triple

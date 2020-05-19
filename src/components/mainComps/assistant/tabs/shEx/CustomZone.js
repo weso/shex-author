@@ -9,7 +9,7 @@ import CardinalityComp from './customize/CardinalityComp';
 
 import Properties from '../../../../../conf/properties';
 
-function NodeComponent (props) {
+function CustomZone (props) {
     
     const {entity,isCustomOpen,customClass} = props;
     const [isTripleCustomOpen,setTripleCustomOpen] = useState(false);
@@ -190,4 +190,4 @@ function NodeComponent (props) {
 }
 
 
-export default NodeComponent;
+export default CustomZone;

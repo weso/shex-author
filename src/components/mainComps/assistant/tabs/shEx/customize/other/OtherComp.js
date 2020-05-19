@@ -3,8 +3,8 @@ import {AppContext} from '../../../../../../../App';
 import { Collapse } from 'reactstrap';
 import NumericInput from 'react-numeric-input';
 import Properties from '../../../../../../../conf/properties';
-import QNameValue from '../constraint/valueSetValues/QNameValue';
-import InputValue from '../constraint/valueSetValues/InputValue';
+import QNameValue from '../valueSet/valueSetValues/QNameValue';
+import InputValue from '../valueSet/valueSetValues/InputValue';
 
 function OtherComp (props) {
     
