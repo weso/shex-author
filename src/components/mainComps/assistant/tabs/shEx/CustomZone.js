@@ -149,28 +149,16 @@ function CustomZone (props) {
             <Collapse  isOpen={isCustomOpen}> 
 
                 <div className={getCardinalityStyleIfNeeded()} style={getEntityStyle().body}>
-                    <button className='btnZone'style={getEntityStyle().zone}
-                    onClick={customizeTriple}>{entity.getEntityName()}</button>
                    <button className='btnZone'style={constStyles.body}
                     onClick={customizeContraints}>Constraint</button>
                     <button className='btnZone'style={facetStyles.body}
                     onClick={customizeFacet}>Facet</button>
                     <button className='btnZone'style={refStyles.body}
-                    onClick={customizeRef}>ShapeRef</button>
+                    onClick={customizeRef}>ShapeOrRef</button>
                     {getCardinalityIfNeeded()}
              
-                    <button className="collapseBtn-triple mdc-icon-button material-icons" 
-                    style={getEntityStyle().collapse}
-                    onClick={collapseToggle}
-                    title="ShowAll">
-                    {colapseBtn}
-                    </button>
+                 
                 </div> 
-
-                <CustomComp  entity={entity} 
-                        isCustomOpen={isTripleCustomOpen}
-                        bnode={false}
-                        customClass={customClass}/>
 
                 <Collapse   isOpen={isConstraintsOpen}>
                     <ConstraintComp  entity={entity} />           

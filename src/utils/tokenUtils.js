@@ -94,11 +94,18 @@ function getShapes(defShapes){
         let content =  getProperties(id,sTokens);
 
         let tTokens = getTripleTokens(shape);
+      
+
+        //console.log(aux)
+        //let triples = getTriples(id,tTokens);
         let aux = getTripleTokens2(shape);
+        let factory = new LogicFactory();
+        let triples = [];
+        aux.forEach(e => {
+            triples.push(factory.createType(e.type,getTriples(id,e.tokens)))
+        });
 
-        console.log(aux)
-
-        let triples = getTriples(id,tTokens);
+        console.log(triples)
 
 
         let s = new Shape(id,content.type,content.constraint,content.facets,content.shapeRef,triples,content.extraProperties,content.isClosed);
@@ -354,7 +361,6 @@ function getTripleTokens2(tokens){
     let open = 0;
     let aux = [];
     let type = 'default';
-    let factory = new LogicFactory();
     return tokens.reduce((acc,t)=>{
         if(start)aux.push(t);
          
@@ -372,8 +378,7 @@ function getTripleTokens2(tokens){
         
         if(open == 0 && start==true){
             start=false;
-            acc.push(factory.createType(type,aux))
-            //acc.push({type:type,tokens:Object.assign([],aux)});
+            acc.push({type:type,tokens:Object.assign([],aux)});
             aux=[];
         }
 

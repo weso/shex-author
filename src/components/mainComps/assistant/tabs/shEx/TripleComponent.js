@@ -76,6 +76,27 @@ function TripleComponent (props) {
             <CustomZone entity={triple} 
                         isCustomOpen={isCustomOpen} 
                         customClass={'customTriple'} /> 
+                        <CustomZone entity={triple} 
+                        isCustomOpen={isCustomOpen} 
+                        customClass={'customTriple'} /> 
+                         <CustomZone entity={triple} 
+                        isCustomOpen={isCustomOpen} 
+                        customClass={'customTriple'} /> 
+                         <CustomZone entity={triple} 
+                        isCustomOpen={isCustomOpen} 
+                        customClass={'customTriple'} /> 
+                           <CustomZone entity={triple} 
+                        isCustomOpen={isCustomOpen} 
+                        customClass={'customTriple'} /> 
+                           <CustomZone entity={triple} 
+                        isCustomOpen={isCustomOpen} 
+                        customClass={'customTriple'} /> 
+                           <CustomZone entity={triple} 
+                        isCustomOpen={isCustomOpen} 
+                        customClass={'customTriple'} /> 
+                           <CustomZone entity={triple} 
+                        isCustomOpen={isCustomOpen} 
+                        customClass={'customTriple'} /> 
            
             <Triples  entity={triple} 
                       isTriplesOpen={isTriplesOpen}

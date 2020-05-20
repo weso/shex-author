@@ -11,6 +11,7 @@ function getShapes(){
   let newShapes = tokenUtils.getShapes(defShapes);
 
   tokenUtils.updateShapeRefs(newShapes);
+  console.log(newShapes)
   return newShapes; 
 }
 

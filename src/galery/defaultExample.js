@@ -1,4 +1,4 @@
-/*  export const defaultExample = 
+ export const defaultExample = 
 `PREFIX :       <http://example.org/>
 PREFIX schema: <http://schema.org/>
 PREFIX xsd:    <http://www.w3.org/2001/XMLSchema#>
@@ -13,9 +13,9 @@ PREFIX xsd:    <http://www.w3.org/2001/XMLSchema#>
 
 
 
- */
 
- export const defaultExample = 
+
+/*  export const defaultExample = 
 `PREFIX :       <http://example.org/>
 PREFIX schema: <http://schema.org/>
 PREFIX xsd:    <http://www.w3.org/2001/XMLSchema#>
@@ -35,4 +35,4 @@ OR{
   schema:dd          xsd:string   ;
   schema:dd          xsd:string   ;
   schema:dd          xsd:string   ;
-}`
+}` */

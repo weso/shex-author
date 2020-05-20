@@ -30,27 +30,6 @@ function ShapeComponent (props) {
     const [disabled,setDisabled] = useState(initialDisabled);
 
 
-    const addTriple = function(){
-        const id = shape.triplesCount;
-        const triple = new Triple(id);
-
-        setTriples([...triples,triple]);
-        
-        shape.addTriple(triple);
-        //A ShapeRef cannot coexist with a inlineShape
-        shape.shapeRef.shape = null;
-        context.emit();       
-    }
-
-    const deleteTriple = function(tripleId){
-        const newTriples = shape.triples.filter( triple => triple.id != tripleId);
-        setTriples(newTriples)
-        shape.triples = newTriples;
-        context.emit();
-        
-    }
-
-
     const customizeShape = function(){
         //Completly collapsed shape open just customShape
         if(!isCustomOpen && !isTriplesOpen ){
@@ -90,20 +69,18 @@ function ShapeComponent (props) {
                             colapseBtn={colapseBtn}
                             forceTriples={forceTriples}/>
 
+                <CustomComp  entity={shape} 
+                             isCustomOpen={isCustomOpen}
+                             bnode={false}
+                             customClass="customShape"/>
 
                 <CustomZone entity={shape} 
-                            isCustomOpen={isCustomOpen} 
-                            customClass={'customShape'}/> 
-
-    
-                 <Triples   entity={shape} 
-                            isTriplesOpen={isTriplesOpen}
-                            disabled={disabled}
-                            styles={tripleStyles}
-                            container="triples"
-                            header="slotHeader"
-                            body="tripleSlot"
-                            addClass="xs-addTripleButton"></Triples> 
+                            isCustomOpen={isTriplesOpen} 
+                            customClass='customShape'/> 
+  <CustomZone entity={shape} 
+                            isCustomOpen={isTriplesOpen} 
+                            customClass='customShape'/> 
+            
 
 
 

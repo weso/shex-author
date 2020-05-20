@@ -128,7 +128,7 @@ label{
     border-radius: 10px 10px 0px 0px;
     text-align: left;
     display: grid;
-    grid-template-columns: 15% 9%  ;
+    grid-template-columns: 25% 9%  ;
     gap: 8px;
 
     background-color: #fff6e6;
@@ -184,7 +184,7 @@ label{
     border-radius: 10px 10px 0px 0px;
     text-align: left;
     display: grid;
-    grid-template-columns: 15% 9%  ;
+    grid-template-columns: 25% 9%  ;
     gap: 8px;
 
     background-color: #ffe5e2 !important;
@@ -500,13 +500,13 @@ label{
 
 .zone{
     display: grid;
-    grid-template-columns: 15% 20% 12% 29% 24%;
+    grid-template-columns: auto auto auto ;
     background-color: white;
 }
 
 .zone-card{
     display: grid;
-    grid-template-columns:  12%  auto 13% auto auto  8% ;
+    grid-template-columns:   auto auto auto auto  ;
     background-color: white;
 }
 

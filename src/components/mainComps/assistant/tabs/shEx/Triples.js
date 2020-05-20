@@ -22,7 +22,7 @@ function Triples (props) {
 
     const [isSlotOpen,setSlotOpen] = useState(true);
     const [isOtherOpen,setOtherOpen] = useState(false);
-    const [extras,setExtras] = useState(entity.extraProperties.values);
+    const [extras,setExtras] = useState(entity.extraProperties?.values);
     
 
     const addTriple = function(){
@@ -33,7 +33,7 @@ function Triples (props) {
         
         entity.addTriple(triple);
         //A ShapeRef cannot coexist with a inlineShape
-        entity.shapeRef.entity = null;
+        //entity.shapeRef.entity = null;
         context.emit();       
     }
 
@@ -56,7 +56,7 @@ function Triples (props) {
     return (<Collapse  isOpen={isTriplesOpen}>
                 <div className={container} style={styles.body}>
                     <div className={header}>
-                        <label>Triples</label>
+                        <label>ShapeOrRef</label>
                         <button className="slotBtn tripleBtns buildTriple buildBtn buildTripleBtn mdc-icon-button material-icons"
                                 onClick={customize}
                                 style={styles.custom}
@@ -66,13 +66,12 @@ function Triples (props) {
 
                     </div>
 
-                    <Collapse  isOpen={isOtherOpen}>
-                        <OtherContainer  entity={entity} extras={extras} setExtras={setExtras} />           
-                    </Collapse> 
+                   
 
                     <Collapse  isOpen={isSlotOpen}>
                         <div className={body}>
-                            {triples.map(triple =>
+                            {triples[0]?.triples.map(triple =>
+                            
                                 <TripleComponent key={triple.id}
                                                 triple={triple}
                                                 deleteTriple={deleteTriple}

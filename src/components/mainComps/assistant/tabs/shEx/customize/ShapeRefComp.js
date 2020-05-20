@@ -3,12 +3,14 @@ import {AppContext} from '../../../../../../App';
 import { Collapse } from 'reactstrap';
 import shexUtils from '../../../../../../utils/shexUtils';
 import Properties from '../../../../../../conf/properties';
+import Triples from '../Triples';
 
 function ShapeRefComp (props) {
     
     const {entity} = props;
     const context = useContext(AppContext);
     const styles = Properties.getInstance().getShapeRefStyle();
+    const tripleStyles = Properties.getInstance().getTripleStyle();
 
     let refValue = '';
     let refOpen = false;
@@ -38,9 +40,26 @@ function ShapeRefComp (props) {
         context.emit();
         setShapeRef(refSelector);
     }
+
+  
      
     return ( 
-            <div className="xs-gridBox" style={styles.body}>
+        <Triples                key={entity.id}
+                                            entity={entity} 
+                                            isTriplesOpen={true}
+                                            styles={tripleStyles}
+                                            container="triples"
+                                            header="slotHeader"
+                                            body="tripleSlot"
+                                            addClass="xs-addTripleButton"></Triples>
+      );                          
+}
+
+
+
+export default ShapeRefComp;
+
+/*       <div className="xs-gridBox" style={styles.body}>
                    <label className='gridLabel' style={styles.label}>Shape <br/>Reference</label>
                     <select className="customSelector refSelector"
                             value={shapeRef}
@@ -54,10 +73,4 @@ function ShapeRefComp (props) {
                     }
                     </select>  
                  
-            </div>);                          
-}
-
-
-
-export default ShapeRefComp;
-
+            </div> */
