@@ -111,13 +111,14 @@ label{
 
 
 .triples{
-    padding: 10px;
+    background-color: #fcebdf !important;
 }
 
 .subTriples{
     padding: 10px;
     background-color: #fff6e6 !important;
 }
+
 
 .slotHeader{
 
@@ -144,10 +145,10 @@ label{
     display: grid;
     grid-template-columns: 100%; 
 
-    background-color: #fff6e6;
-    border-left: 1px solid #acaaaa;
-    border-right: 1px solid #acaaaa;
-    border-bottom: 1px solid #acaaaa;
+    background-color: #dfeffc !important;
+   
+  
+    padding: 10px;
 
   
    
@@ -500,13 +501,13 @@ label{
 
 .zone{
     display: grid;
-    grid-template-columns: auto auto auto ;
+    grid-template-columns: auto auto auto 10%;
     background-color: white;
 }
 
 .zone-card{
     display: grid;
-    grid-template-columns:   auto auto auto auto  ;
+    grid-template-columns:   auto auto auto auto 10% ;
     background-color: white;
 }
 
@@ -544,7 +545,7 @@ label{
 .btnZone{
     background-color: transparent;
     border:none;
-    border-radius: 0px 4px 4px 0px;
+    border-radius: 0px 4px 0px 0px;
     border-right: 1px double gray;
     border-top: 1px double gray;
     

@@ -53,10 +53,12 @@ function Triples (props) {
 
 
 
-    return (<Collapse  isOpen={isTriplesOpen}>
-                <div className={container} style={styles.body}>
-                    <div className={header}>
-                        <label>ShapeOrRef</label>
+    return (
+
+                    <Collapse  isOpen={isSlotOpen}>
+                        <div className={body}>
+                            <div className={header}>
+                        <label>ShapeAtom</label>
                         <button className="slotBtn tripleBtns buildTriple buildBtn buildTripleBtn mdc-icon-button material-icons"
                                 onClick={customize}
                                 style={styles.custom}
@@ -65,11 +67,6 @@ function Triples (props) {
                         </button>
 
                     </div>
-
-                   
-
-                    <Collapse  isOpen={isSlotOpen}>
-                        <div className={body}>
                             {triples[0]?.triples.map(triple =>
                             
                                 <TripleComponent key={triple.id}
@@ -87,9 +84,7 @@ function Triples (props) {
                             </button>        
                         </div>
                     </Collapse> 
-                </div>
-                        
-        </Collapse> 
+             
     );
                                    
     

@@ -65,7 +65,7 @@ export const FACET_COLORS = {
 
 export const SHAPEREF_COLORS = {
         label:'#222',
-        body:'#f5fac8',
+        body:'#fcebdf',
 };
 
 export const CARDINALITY_COLORS = {

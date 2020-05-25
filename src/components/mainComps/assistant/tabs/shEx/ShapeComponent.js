@@ -9,6 +9,8 @@ import Properties from '../../../../../conf/properties';
 
 import CustomZone from './CustomZone';
 
+import ShapeRefComp from './customize/ShapeRefComp';
+
 import Triples from './Triples';
 
 export const ShapeContext = React.createContext();
@@ -69,19 +71,9 @@ function ShapeComponent (props) {
                             colapseBtn={colapseBtn}
                             forceTriples={forceTriples}/>
 
-                <CustomComp  entity={shape} 
-                             isCustomOpen={isCustomOpen}
-                             bnode={false}
-                             customClass="customShape"/>
 
-                <CustomZone entity={shape} 
-                            isCustomOpen={isTriplesOpen} 
-                            customClass='customShape'/> 
-  <CustomZone entity={shape} 
-                            isCustomOpen={isTriplesOpen} 
-                            customClass='customShape'/> 
-            
-
+          <ShapeRefComp entity={shape}/>      
+            <ShapeRefComp entity={shape}/>      
 
 
             </div>

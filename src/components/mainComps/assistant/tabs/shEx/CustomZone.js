@@ -13,8 +13,8 @@ function CustomZone (props) {
     
     const {entity,isCustomOpen,customClass} = props;
     const [isTripleCustomOpen,setTripleCustomOpen] = useState(false);
-    const [isConstraintsOpen,setConstraintsOpen] = useState(true);
-    const [isRefOpen,setRefOpen] = useState(false);
+    const [isConstraintsOpen,setConstraintsOpen] = useState(false);
+    const [isRefOpen,setRefOpen] = useState(true);
     const [isFacetOpen,setFacetOpen] = useState(false);
     const [isCardinalityOpen,setCardinalityOpen] = useState(false);
     const [allCollased,setAllCollapsed] = useState(false);
@@ -149,14 +149,16 @@ function CustomZone (props) {
             <Collapse  isOpen={isCustomOpen}> 
 
                 <div className={getCardinalityStyleIfNeeded()} style={getEntityStyle().body}>
-                   <button className='btnZone'style={constStyles.body}
+                    <button className='btnZone'style={refStyles.body}
+                    onClick={customizeRef}>ShapeOrRef</button><button className='btnZone'style={constStyles.body}
                     onClick={customizeContraints}>Constraint</button>
                     <button className='btnZone'style={facetStyles.body}
                     onClick={customizeFacet}>Facet</button>
-                    <button className='btnZone'style={refStyles.body}
-                    onClick={customizeRef}>ShapeOrRef</button>
+                   
                     {getCardinalityIfNeeded()}
-             
+              <button className="btnZone  mdc-icon-button material-icons">
+                    delete
+            </button>
                  
                 </div> 
 

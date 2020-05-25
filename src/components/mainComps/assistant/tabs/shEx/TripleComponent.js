@@ -73,38 +73,18 @@ function TripleComponent (props) {
                           colapseBtn={colapseBtn}
                           styles={styles}/>
 
-            <CustomZone entity={triple} 
-                        isCustomOpen={isCustomOpen} 
-                        customClass={'customTriple'} /> 
-                        <CustomZone entity={triple} 
-                        isCustomOpen={isCustomOpen} 
-                        customClass={'customTriple'} /> 
-                         <CustomZone entity={triple} 
-                        isCustomOpen={isCustomOpen} 
-                        customClass={'customTriple'} /> 
-                         <CustomZone entity={triple} 
-                        isCustomOpen={isCustomOpen} 
-                        customClass={'customTriple'} /> 
-                           <CustomZone entity={triple} 
-                        isCustomOpen={isCustomOpen} 
-                        customClass={'customTriple'} /> 
-                           <CustomZone entity={triple} 
-                        isCustomOpen={isCustomOpen} 
-                        customClass={'customTriple'} /> 
-                           <CustomZone entity={triple} 
-                        isCustomOpen={isCustomOpen} 
-                        customClass={'customTriple'} /> 
-                           <CustomZone entity={triple} 
-                        isCustomOpen={isCustomOpen} 
-                        customClass={'customTriple'} /> 
            
-            <Triples  entity={triple} 
-                      isTriplesOpen={isTriplesOpen}
-                      styles={subTripleStyles}
-                      container="subTriples"
-                      header="subSlotHeader"
-                      body="subTripleSlot"
-                      addClass="xs-addSubTripleButton"></Triples> 
+             <CustomZone
+                        entity={triple}
+                        isCustomOpen={isCustomOpen}
+                        customClass="customShape"
+                     /> 
+
+                     <CustomZone
+                        entity={triple}
+                        isCustomOpen={isCustomOpen}
+                        customClass="customShape"
+                     /> 
 
 
         </div>);                          
