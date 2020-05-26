@@ -123,16 +123,13 @@ label{
 .slotHeader{
 
     color: black;
-    border-top: 1px solid #acaaaa;
-    border-left: 1px solid #acaaaa;
-    border-right: 1px solid #acaaaa;
-    border-radius: 10px 10px 0px 0px;
     text-align: left;
     display: grid;
     grid-template-columns: 25% 9%  ;
     gap: 8px;
 
     background-color: #fff6e6;
+    border-radius: 10px 10px 0px 0px;
 }
 
 
@@ -146,12 +143,23 @@ label{
     grid-template-columns: 100%; 
 
     background-color: #dfeffc !important;
-   
-  
-    padding: 10px;
+    padding: 20px;
 
-  
    
+}
+
+.tCont{
+    border: 1px solid  #acaaaa;    
+    background-color: #fff6e6;
+    border-radius: 10px;
+    display: grid;
+}
+
+.subtCont{
+    border: 1px solid  #acaaaa;    
+    background-color: #fff6e6;
+    border-radius: 10px;
+    display: grid;
 }
 
 .slotBtn{
@@ -171,7 +179,7 @@ label{
     border-left: 1px solid #acaaaa;
     border-right: 1px solid #acaaaa;
     border-bottom: 1px solid #acaaaa;
-    background-color: #ffe5e2 !important;
+    background-color: #ffede2 !important;
 
 }
 
@@ -330,6 +338,7 @@ label{
     margin-bottom: 3px;
     -webkit-transition: margin 0.3s ease-in-out;
     transition: margin 0.3s ease-in-out;
+    background-color: #f8e9dc !important;
 }
 
 .xs-addTripleButton:hover{

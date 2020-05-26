@@ -61,6 +61,14 @@ function ShapeComponent (props) {
         }
     }
 
+       const [isSlotOpen,setSlotOpen] = useState(true);
+    const [isOtherOpen,setOtherOpen] = useState(false);
+      const customize2 = function(){
+        setSlotOpen(!isSlotOpen);
+        setOtherOpen(!isOtherOpen);
+
+    }
+
     return (
 
         <ShapeContext.Provider value={{disabled:disabled,setDisabled:setDisabled}}>
@@ -71,9 +79,32 @@ function ShapeComponent (props) {
                             colapseBtn={colapseBtn}
                             forceTriples={forceTriples}/>
 
-
-          <ShapeRefComp entity={shape}/>      
-            <ShapeRefComp entity={shape}/>      
+                <Triples     
+                            isSlotOpen={isSlotOpen}
+                            isOtherOpen={isOtherOpen}
+                            entity={shape}
+                            customize2={customize2} 
+                            is={false}
+                            isTriplesOpen={true}
+                            styles={tripleStyles}
+                            container="triples"
+                            header="slotHeader"
+                            body="tCont"
+                            addClass="xs-addTripleButton">
+                </Triples> 
+                   <Triples     
+                            isSlotOpen={isSlotOpen}
+                            isOtherOpen={isOtherOpen}
+                            entity={shape}
+                            customize2={customize2} 
+                            is={false}
+                            isTriplesOpen={true}
+                            styles={tripleStyles}
+                            container="triples"
+                            header="slotHeader"
+                            body="tCont"
+                            addClass="xs-addTripleButton">
+                </Triples>     
 
 
             </div>

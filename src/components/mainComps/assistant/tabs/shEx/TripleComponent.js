@@ -21,12 +21,22 @@ function TripleComponent (props) {
     const [colapseBtn,setColapseBtn] = useState('menu_open');
     const [triples,setTriples] = useState(triple.triples);
 
+
+    const [isSlotOpen,setSlotOpen] = useState(false);
+    const [isOtherOpen,setOtherOpen] = useState(false);
+
     const subTripleStyles = Properties.getInstance().getSubTripleStyle();
 
     const customize  = function(){
-        setTriplesOpen(false);
-        setCustomOpen(!isCustomOpen);
+       
 
+ setSlotOpen(!isSlotOpen);
+    }
+
+
+    const customize2 = function(){
+        
+        setOtherOpen(!isOtherOpen);
 
     }
 
@@ -74,17 +84,11 @@ function TripleComponent (props) {
                           styles={styles}/>
 
            
-             <CustomZone
-                        entity={triple}
-                        isCustomOpen={isCustomOpen}
-                        customClass="customShape"
-                     /> 
+              <CustomZone isFirst={true} entity={triple} isCustomOpen={isSlotOpen}
+              customClass="customTriple"/>
+               <CustomZone entity={triple} isCustomOpen={isSlotOpen}
+              customClass="customTriple"/>
 
-                     <CustomZone
-                        entity={triple}
-                        isCustomOpen={isCustomOpen}
-                        customClass="customShape"
-                     /> 
 
 
         </div>);                          

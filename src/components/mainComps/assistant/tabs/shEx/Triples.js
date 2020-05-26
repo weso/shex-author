@@ -15,13 +15,12 @@ export const ShapeContext = React.createContext();
 function Triples (props) {
 
     const context = useContext(AppContext);
-    const {entity,isTriplesOpen,disabled,body,addClass,header,container,styles} = props;
+    const {entity,isSlotOpen,isOtherOpen,customize2,isTriplesOpen,disabled,body,addClass,header,container,styles} = props;
     const otherStyles = Properties.getInstance().getOtherStyle();
 
     const [triples,setTriples] = useState(entity.triples);
 
-    const [isSlotOpen,setSlotOpen] = useState(true);
-    const [isOtherOpen,setOtherOpen] = useState(false);
+   
     const [extras,setExtras] = useState(entity.extraProperties?.values);
     
 
@@ -45,43 +44,40 @@ function Triples (props) {
         
     }
 
-    const customize = function(){
-        setSlotOpen(!isSlotOpen);
-        setOtherOpen(!isOtherOpen);
-
-    }
 
 
 
     return (
 
-                    <Collapse  isOpen={isSlotOpen}>
-                        <div className={body}>
-                            <div className={header}>
-                        <label>ShapeAtom</label>
-                        <button className="slotBtn tripleBtns buildTriple buildBtn buildTripleBtn mdc-icon-button material-icons"
-                                onClick={customize}
-                                style={styles.custom}
-                                title="Customize Triple Constraint">
-                                settings
-                        </button>
+                    <Collapse  isOpen={isSlotOpen} >
+                        <div className="tripleSlot">
+                            <div className={body}>
+                                <div className={header}>
+                                    <label>ShapeAtom</label>
+                                    <button className="slotBtn tripleBtns buildTriple buildBtn buildTripleBtn mdc-icon-button material-icons"
+                                            onClick={customize2}
+                                            style={styles.custom}
+                                            title="Customize Triple Constraint">
+                                            settings
+                                    </button>
 
-                    </div>
-                            {triples[0]?.triples.map(triple =>
+                                </div>
+                                {triples[0]?.triples.map(triple =>
+                                
+                                    <TripleComponent key={triple.id}
+                                                    triple={triple}
+                                                    deleteTriple={deleteTriple}
+                                                    styles={styles}/> 
+                                )}
                             
-                                <TripleComponent key={triple.id}
-                                                triple={triple}
-                                                deleteTriple={deleteTriple}
-                                                styles={styles}/> 
-                            )}
-                        
-                            <button className={addClass}
-                                    style={styles.addTriple} 
-                                    onClick={addTriple} 
-                                    disabled={disabled}
-                                    title="Add Triple">
-                                    + Triple Constraint
-                            </button>        
+                                <button className={addClass}
+                                        style={styles.addTriple} 
+                                        onClick={addTriple} 
+                                        disabled={disabled}
+                                        title="Add Triple">
+                                        + Triple Constraint
+                                </button>   
+                             </div>     
                         </div>
                     </Collapse> 
              

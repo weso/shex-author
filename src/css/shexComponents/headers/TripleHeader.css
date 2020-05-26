@@ -6,9 +6,7 @@
     display: grid;
     grid-template-columns: 70% 9% 9% 7%;
     gap: 8px;
-    border-left: 1px solid #acaaaa;
-    border-right: 1px solid #acaaaa;
-    border-bottom: 1px solid #acaaaa;
+    border-top: 1px solid #acaaaa;
 }
 
 .tripleHeader{

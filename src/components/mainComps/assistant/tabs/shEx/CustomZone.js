@@ -11,7 +11,7 @@ import Properties from '../../../../../conf/properties';
 
 function CustomZone (props) {
     
-    const {entity,isCustomOpen,customClass} = props;
+    const {entity,isFirst,isCustomOpen,customClass} = props;
     const [isTripleCustomOpen,setTripleCustomOpen] = useState(false);
     const [isConstraintsOpen,setConstraintsOpen] = useState(false);
     const [isRefOpen,setRefOpen] = useState(true);
@@ -143,6 +143,11 @@ function CustomZone (props) {
         }
         return shapeStyles;
     }
+
+    const getBtn = function(){
+        if(!isFirst)return 'delete';
+        return 'add';
+    }
     
 
     return ( 
@@ -156,8 +161,10 @@ function CustomZone (props) {
                     onClick={customizeFacet}>Facet</button>
                    
                     {getCardinalityIfNeeded()}
+
+                   
               <button className="btnZone  mdc-icon-button material-icons">
-                    delete
+                     {getBtn()}
             </button>
                  
                 </div> 
