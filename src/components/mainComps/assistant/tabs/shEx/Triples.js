@@ -49,19 +49,10 @@ function Triples (props) {
 
     return (
 
-                    <Collapse  isOpen={isSlotOpen} >
+                  
                         <div className="tripleSlot">
                             <div className={body}>
-                                <div className={header}>
-                                    <label>ShapeAtom</label>
-                                    <button className="slotBtn tripleBtns buildTriple buildBtn buildTripleBtn mdc-icon-button material-icons"
-                                            onClick={customize2}
-                                            style={styles.custom}
-                                            title="Customize Triple Constraint">
-                                            settings
-                                    </button>
-
-                                </div>
+                                
                                 {triples[0]?.triples.map(triple =>
                                 
                                     <TripleComponent key={triple.id}
@@ -70,16 +61,10 @@ function Triples (props) {
                                                     styles={styles}/> 
                                 )}
                             
-                                <button className={addClass}
-                                        style={styles.addTriple} 
-                                        onClick={addTriple} 
-                                        disabled={disabled}
-                                        title="Add Triple">
-                                        + Triple Constraint
-                                </button>   
+                               
                              </div>     
                         </div>
-                    </Collapse> 
+                   
              
     );
                                    

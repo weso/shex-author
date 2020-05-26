@@ -45,14 +45,14 @@ function ShapeRefComp (props) {
      
     return ( 
         <Triples                key={entity.id}
-                                            is={true}
-                                            entity={entity} 
-                                            isTriplesOpen={true}
-                                            styles={tripleStyles}
-                                            container="triples"
-                                            header="slotHeader"
-                                            body="tripleSlot"
-                                            addClass="xs-addTripleButton"></Triples>
+                                is={true}
+                                entity={entity} 
+                                isTriplesOpen={true}
+                                styles={tripleStyles}
+                                container="triples"
+                                header="slotHeader"
+                                body="tripleSlot"
+                                addClass="xs-addTripleButton"></Triples>
       );                          
 }
 

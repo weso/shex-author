@@ -79,32 +79,9 @@ function ShapeComponent (props) {
                             colapseBtn={colapseBtn}
                             forceTriples={forceTriples}/>
 
-                <Triples     
-                            isSlotOpen={isSlotOpen}
-                            isOtherOpen={isOtherOpen}
-                            entity={shape}
-                            customize2={customize2} 
-                            is={false}
-                            isTriplesOpen={true}
-                            styles={tripleStyles}
-                            container="triples"
-                            header="slotHeader"
-                            body="tCont"
-                            addClass="xs-addTripleButton">
-                </Triples> 
-                   <Triples     
-                            isSlotOpen={isSlotOpen}
-                            isOtherOpen={isOtherOpen}
-                            entity={shape}
-                            customize2={customize2} 
-                            is={false}
-                            isTriplesOpen={true}
-                            styles={tripleStyles}
-                            container="triples"
-                            header="slotHeader"
-                            body="tCont"
-                            addClass="xs-addTripleButton">
-                </Triples>     
+               <CustomZone isFirst={true} entity={shape} isCustomOpen={isSlotOpen}
+              customClass="customShape"/>
+           
 
 
             </div>
