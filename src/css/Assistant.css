@@ -138,6 +138,13 @@ label{
     background-color: #fff2e6 !important;
 }
 
+.sRef{
+    background-color: #f1f8ff !important;
+}
+
+.last{
+    background-color: #fff2e6 !important;
+}
 
 
 .customCont{
@@ -523,13 +530,13 @@ label{
 
 .zone{
     display: grid;
-    grid-template-columns: auto auto auto 10%;
+    grid-template-columns: auto auto auto auto auto 10%;
     background-color: white;
 }
 
 .zone-card{
     display: grid;
-    grid-template-columns:   auto auto auto auto 10% ;
+    grid-template-columns: auto auto auto auto auto auto 10%;
     background-color: white;
 }
 

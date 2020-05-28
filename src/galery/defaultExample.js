@@ -3,13 +3,11 @@
 PREFIX schema: <http://schema.org/>
 PREFIX xsd:    <http://www.w3.org/2001/XMLSchema#>
 
-:User IRI{
-  schema:before          xsd:string   ;
-    schema:before          xsd:string   ;
-      schema:before          xsd:string   ;
-        schema:before          xsd:string   ;
-
-
+:User IRI {
+  schema:name          xsd:string  ;
+  schema:birthDate     xsd:date?  ;
+  schema:gender        [ schema:Male schema:Female ]  ;
+  schema:knows         IRI @:User* 
 }`
 
 

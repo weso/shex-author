@@ -17,9 +17,10 @@ function CustomZone (props) {
     const [isRefOpen,setRefOpen] = useState(true);
     const [isFacetOpen,setFacetOpen] = useState(false);
     const [isCardinalityOpen,setCardinalityOpen] = useState(false);
+    const [isOtherOpen,setrOtherOpen] = useState(false);
     const [allCollased,setAllCollapsed] = useState(false);
     const [colapseBtn,setColapseBtn] = useState('menu');
-
+    
 
     const shapeStyles = Properties.getInstance().getShapeStyle();
     const tripleStyles = Properties.getInstance().getTripleStyle();
@@ -27,6 +28,7 @@ function CustomZone (props) {
     const facetStyles = Properties.getInstance().getFacetStyle();
     const refStyles = Properties.getInstance().getShapeRefStyle();
     const cardStyles = Properties.getInstance().getCardinalityStyle();
+    const otherStyles = Properties.getInstance().getOtherStyle();
 
     const customizeTriple = function(){
         collapseAll(false);
@@ -43,10 +45,14 @@ function CustomZone (props) {
     const customizeContraints = function(){
         collapseAll(false);
         setConstraintsOpen(!isConstraintsOpen);
+        setFacetOpen(!isFacetOpen);
+        setCardinalityOpen(!isCardinalityOpen);
         setAllCollapsed(false);
 
         if(allCollased){
             setConstraintsOpen(true);
+            setFacetOpen(true);
+           setCardinalityOpen(true);
             changeCollapseBtn();
         }
     }
@@ -80,6 +86,18 @@ function CustomZone (props) {
 
         if(allCollased){
             setCardinalityOpen(true);
+            changeCollapseBtn();
+        } 
+        
+    }
+
+  const customizeOther = function(){
+        collapseAll(false);
+        setrOtherOpen(!isOtherOpen);
+        setAllCollapsed(false);
+
+        if(allCollased){
+            setrOtherOpen(true);
             changeCollapseBtn();
         } 
         
@@ -151,7 +169,12 @@ function CustomZone (props) {
 
     const getRef = function(){
         if(customClass=='customTriple')return "tRef";
-        return "sRef";
+        return 'sRef';
+    }
+
+
+    const getLastStyle = function(){
+        if(customClass=='customTriple')return "last";
     }
     
 
@@ -159,16 +182,20 @@ function CustomZone (props) {
             <Collapse  isOpen={isCustomOpen} className="customCont"> 
 
                 <div className={getCardinalityStyleIfNeeded()} style={getEntityStyle().body}>
-                    <button className={'btnZone '+getRef()} style={refStyles.body}
-                    onClick={customizeRef}>ShapeOrRef</button><button className='btnZone'style={constStyles.body}
+                    <button className={'btnZone '+getRef()} 
+                    onClick={customizeRef}>Triples</button>
+                    <button className='btnZone'style={constStyles.body}
                     onClick={customizeContraints}>Constraint</button>
-                    <button className='btnZone'style={facetStyles.body}
-                    onClick={customizeFacet}>Facet</button>
+                  
                    
-                    {getCardinalityIfNeeded()}
+
+                  
+                    <button className='btnZone'style={otherStyles.body}
+                    onClick={customizeOther}>Other</button>
+                    
 
                    
-                    <button className="btnZone  mdc-icon-button material-icons">
+                    <button className={getLastStyle()+" btnZone  mdc-icon-button material-icons"}>
                             {getBtn()}
                     </button>
                         

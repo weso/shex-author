@@ -50,7 +50,6 @@ function Triples (props) {
     return (
                 
                         <div className={body}>
-                   
                                 {triples[0]?.triples.map(triple =>
                                 
                                     <TripleComponent key={triple.id}

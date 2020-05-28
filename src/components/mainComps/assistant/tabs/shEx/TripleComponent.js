@@ -89,7 +89,7 @@ function TripleComponent (props) {
     
 
 
-
+          
 
         </div>);                          
 }
