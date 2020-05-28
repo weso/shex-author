@@ -120,6 +120,7 @@ function CustomZone (props) {
 
 
     const collapseAll = function(collapse){
+        setTriplesOpen(collapse);
         setTripleCustomOpen(collapse);
         setConstraintsOpen(collapse);
         setRefOpen(collapse);
