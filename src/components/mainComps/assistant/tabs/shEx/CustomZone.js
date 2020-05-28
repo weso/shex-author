@@ -6,6 +6,7 @@ import ConstraintComp from './customize/ConstraintComp';
 import ShapeRefComp from './customize/ShapeRefComp';
 import FacetContainer from './customize/FacetContainer';
 import CardinalityComp from './customize/CardinalityComp';
+import OtherContainer from './customize/OtherContainer';
 
 import Properties from '../../../../../conf/properties';
 
@@ -20,7 +21,7 @@ function CustomZone (props) {
     const [isOtherOpen,setrOtherOpen] = useState(false);
     const [allCollased,setAllCollapsed] = useState(false);
     const [colapseBtn,setColapseBtn] = useState('menu');
-    
+    const [extras,setExtras] = useState(entity.extraProperties.values);
 
     const shapeStyles = Properties.getInstance().getShapeStyle();
     const tripleStyles = Properties.getInstance().getTripleStyle();
@@ -110,6 +111,7 @@ function CustomZone (props) {
         setRefOpen(collapse);
         setFacetOpen(collapse);
         setCardinalityOpen(collapse);
+        setrOtherOpen(collapse);
     }
 
     const collapseToggle = function(){
@@ -211,6 +213,10 @@ function CustomZone (props) {
 
                 <Collapse  isOpen={isRefOpen}>
                     <ShapeRefComp entity={entity} customClass={customClass}/>      
+                </Collapse> 
+
+                <Collapse  isOpen={isOtherOpen}>
+                    <OtherContainer  entity={entity} extras={extras} setExtras={setExtras} />           
                 </Collapse> 
                 
                 {getCardinalityCompIfNeeded()}
