@@ -7,7 +7,7 @@ import Triples from '../Triples';
 
 function ShapeRefComp (props) {
     
-    const {entity} = props;
+    const {entity,customClass} = props;
     const context = useContext(AppContext);
     const styles = Properties.getInstance().getShapeRefStyle();
     const tripleStyles = Properties.getInstance().getTripleStyle();
@@ -41,6 +41,11 @@ function ShapeRefComp (props) {
         setShapeRef(refSelector);
     }
 
+    const getBody = function(){
+        if(customClass=='customTriple')return "subTripleSlot";
+        return "tripleSlot";
+    }
+
   
      
     return ( 
@@ -51,7 +56,7 @@ function ShapeRefComp (props) {
                                 styles={tripleStyles}
                                 container="triples"
                                 header="slotHeader"
-                                body="tripleSlot"
+                                body={getBody()}
                                 addClass="xs-addTripleButton"></Triples>
       );                          
 }

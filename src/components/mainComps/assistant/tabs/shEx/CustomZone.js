@@ -148,13 +148,18 @@ function CustomZone (props) {
         if(!isFirst)return 'delete';
         return 'add';
     }
+
+    const getRef = function(){
+        if(customClass=='customTriple')return "tRef";
+        return "sRef";
+    }
     
 
     return ( 
             <Collapse  isOpen={isCustomOpen} className="customCont"> 
 
                 <div className={getCardinalityStyleIfNeeded()} style={getEntityStyle().body}>
-                    <button className='btnZone'style={refStyles.body}
+                    <button className={'btnZone '+getRef()} style={refStyles.body}
                     onClick={customizeRef}>ShapeOrRef</button><button className='btnZone'style={constStyles.body}
                     onClick={customizeContraints}>Constraint</button>
                     <button className='btnZone'style={facetStyles.body}
@@ -178,7 +183,7 @@ function CustomZone (props) {
                 </Collapse> 
 
                 <Collapse  isOpen={isRefOpen}>
-                    <ShapeRefComp entity={entity}/>      
+                    <ShapeRefComp entity={entity} customClass={customClass}/>      
                 </Collapse> 
                 
                 {getCardinalityCompIfNeeded()}
