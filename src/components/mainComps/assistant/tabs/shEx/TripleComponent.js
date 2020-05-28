@@ -75,7 +75,7 @@ function TripleComponent (props) {
 
 
     return ( 
-        <div>
+        <div className="test">
             <TripleHeader triple={triple} 
                           deleteTriple={deleteTriple}
                           customize={customize}
@@ -84,9 +84,13 @@ function TripleComponent (props) {
                           styles={styles}/>
 
            
-              <CustomZone isFirst={true} entity={triple} isCustomOpen={isSlotOpen}
+             <CustomZone isFirst={true} entity={triple} isCustomOpen={isSlotOpen}
               customClass="customTriple"/>
-            
+    
+  <CustomZone isFirst={true} entity={triple} isCustomOpen={isSlotOpen}
+              customClass="customTriple"/>
+                         
+
 
 
 
@@ -95,3 +99,7 @@ function TripleComponent (props) {
 
 
 export default TripleComponent;
+
+
+/* <CustomZone isFirst={true} entity={triple} isCustomOpen={isSlotOpen}
+              customClass="customTriple"/>*/

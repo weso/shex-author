@@ -6,7 +6,12 @@
     display: grid;
     grid-template-columns: 70% 9% 9% 7%;
     gap: 8px;
-    border-top: 1px solid #acaaaa;
+
+    background-color: #fceadc !important;
+   
+   
+    border-radius: 10px ;
+ 
 }
 
 .tripleHeader{

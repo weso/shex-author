@@ -47,7 +47,7 @@ function ShapeRefComp (props) {
         <Triples                key={entity.id}
                                 is={true}
                                 entity={entity} 
-                                isTriplesOpen={true}
+                                isSlotOpen={true}
                                 styles={tripleStyles}
                                 container="triples"
                                 header="slotHeader"

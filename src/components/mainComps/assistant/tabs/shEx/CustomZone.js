@@ -151,7 +151,7 @@ function CustomZone (props) {
     
 
     return ( 
-            <Collapse  isOpen={isCustomOpen}> 
+            <Collapse  isOpen={isCustomOpen} className="customCont"> 
 
                 <div className={getCardinalityStyleIfNeeded()} style={getEntityStyle().body}>
                     <button className='btnZone'style={refStyles.body}
@@ -163,10 +163,10 @@ function CustomZone (props) {
                     {getCardinalityIfNeeded()}
 
                    
-              <button className="btnZone  mdc-icon-button material-icons">
-                     {getBtn()}
-            </button>
-                 
+                    <button className="btnZone  mdc-icon-button material-icons">
+                            {getBtn()}
+                    </button>
+                        
                 </div> 
 
                 <Collapse   isOpen={isConstraintsOpen}>

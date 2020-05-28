@@ -111,7 +111,8 @@ label{
 
 
 .triples{
-    background-color: #fcebdf !important;
+    background-color: #fcdfeb !important;
+    
 }
 
 .subTriples{
@@ -130,9 +131,15 @@ label{
 
     background-color: #fff6e6;
     border-radius: 10px 10px 0px 0px;
+    
 }
 
-
+.customCont{
+   
+    border-radius: 10px;
+    padding: 1px;
+    background-color: white;
+}
 
 
 .tripleSlot{
@@ -142,10 +149,21 @@ label{
     display: grid;
     grid-template-columns: 100%; 
 
-    background-color: #dfeffc !important;
- 
+    background-color: #f1f8ff !important;
+  /*fcebdf*/
+    padding: 10px;
+}
 
-   
+.subTtripleSlot{
+    color: black;
+    text-align: left;
+    border-radius: 0px 0px 10px 10px ;
+    display: grid;
+    grid-template-columns: 100%; 
+
+    background-color: #fcf0df !important;
+
+    padding: 10px;
 }
 
 .tCont{
@@ -153,6 +171,7 @@ label{
     background-color: #fff6e6;
     border-radius: 10px;
     display: grid;
+  
 }
 
 .subtCont{
@@ -551,12 +570,16 @@ label{
     height: 15px;
 }
 
+
+.test{
+    border: 1px solid #acaaaa;
+    border-radius: 10px;
+}
+
 .btnZone{
     background-color: transparent;
     border:none;
     border-radius: 0px 4px 0px 0px;
-    border-right: 1px double gray;
-    border-top: 1px double gray;
     
     
 }
@@ -616,6 +639,7 @@ label{
 .closedCheck{
     grid-column: 3/4;
 }
+
 
 
 
