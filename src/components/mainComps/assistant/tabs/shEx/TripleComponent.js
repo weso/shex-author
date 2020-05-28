@@ -86,7 +86,8 @@ function TripleComponent (props) {
            
              <CustomZone isFirst={true} entity={triple} isCustomOpen={isSlotOpen}
               customClass="customTriple"/>
-    
+      <CustomZone isFirst={false} entity={triple} isCustomOpen={isSlotOpen}
+              customClass="customTriple"/>
 
 
           

@@ -7,15 +7,17 @@ import ShapeRefComp from './customize/ShapeRefComp';
 import FacetContainer from './customize/FacetContainer';
 import CardinalityComp from './customize/CardinalityComp';
 import OtherContainer from './customize/OtherContainer';
+import Triples from './Triples';
 
 import Properties from '../../../../../conf/properties';
 
 function CustomZone (props) {
     
     const {entity,isFirst,isCustomOpen,customClass} = props;
+    const [isTriplesOpen,setTriplesOpen] = useState(true);
     const [isTripleCustomOpen,setTripleCustomOpen] = useState(false);
     const [isConstraintsOpen,setConstraintsOpen] = useState(false);
-    const [isRefOpen,setRefOpen] = useState(true);
+    const [isRefOpen,setRefOpen] = useState(false);
     const [isFacetOpen,setFacetOpen] = useState(false);
     const [isCardinalityOpen,setCardinalityOpen] = useState(false);
     const [isOtherOpen,setrOtherOpen] = useState(false);
@@ -38,6 +40,18 @@ function CustomZone (props) {
 
         if(allCollased){
             setTripleCustomOpen(true);
+            changeCollapseBtn();
+        }
+
+    }
+
+    const customizeTriples = function(){
+        collapseAll(false);
+        setTriplesOpen(!isTriplesOpen);
+        setAllCollapsed(false);
+
+        if(allCollased){
+            setTriplesOpen(true);
             changeCollapseBtn();
         }
 
@@ -176,6 +190,11 @@ function CustomZone (props) {
     const getLastStyle = function(){
         if(customClass=='customTriple')return "last";
     }
+
+     const getBody = function(){
+        if(customClass=='customTriple')return "subTripleSlot";
+        return "tripleSlot";
+    }
     
 
     return ( 
@@ -183,7 +202,7 @@ function CustomZone (props) {
 
                 <div className={getCardinalityStyleIfNeeded()} style={getEntityStyle().body}>
                     <button className={'btnZone '+getRef()} 
-                    onClick={customizeRef}>Triples</button>
+                    onClick={customizeTriples}>Triples</button>
                     <button className='btnZone'style={constStyles.body}
                     onClick={customizeContraints}>Constraint</button>
                     <button className='btnZone'style={refStyles.body}
@@ -203,6 +222,18 @@ function CustomZone (props) {
                         
                 </div> 
 
+
+                 <Collapse   isOpen={isTriplesOpen}>
+                    <Triples
+                                    is={true}
+                                    entity={entity} 
+                                    isSlotOpen={true}
+                                    styles={tripleStyles}
+                                    container="triples"
+                                    header="slotHeader"
+                                    body={getBody()}
+                                    addClass="xs-addTripleButton"></Triples>
+                </Collapse> 
                 <Collapse   isOpen={isConstraintsOpen}>
                     <ConstraintComp  entity={entity} />           
                 </Collapse> 

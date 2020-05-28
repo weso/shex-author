@@ -41,23 +41,26 @@ function ShapeRefComp (props) {
         setShapeRef(refSelector);
     }
 
-    const getBody = function(){
-        if(customClass=='customTriple')return "subTripleSlot";
-        return "tripleSlot";
-    }
+   
 
   
      
     return ( 
-        <Triples                key={entity.id}
-                                is={true}
-                                entity={entity} 
-                                isSlotOpen={true}
-                                styles={tripleStyles}
-                                container="triples"
-                                header="slotHeader"
-                                body={getBody()}
-                                addClass="xs-addTripleButton"></Triples>
+          <div className="xs-gridBox" style={styles.body}>
+                   <label className='gridLabel' style={styles.label}>Shape <br/>Reference</label>
+                    <select className="customSelector refSelector"
+                            value={shapeRef}
+                            onChange={handleShapeRefChange}>
+                    <option value=''>none</option>
+                
+                    { 
+                    context.shapes.map(shape =>{
+                        return <option key={shape.id} value={shape.id}>{'@'+shape.type}</option>
+                        })
+                    }
+                    </select>  
+                 
+            </div>
       );                          
 }
 
