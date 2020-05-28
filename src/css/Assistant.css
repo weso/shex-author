@@ -530,13 +530,13 @@ label{
 
 .zone{
     display: grid;
-    grid-template-columns: auto auto auto auto auto 10%;
+    grid-template-columns: auto auto auto auto 10%;
     background-color: white;
 }
 
 .zone-card{
     display: grid;
-    grid-template-columns: auto auto auto auto auto auto 10%;
+    grid-template-columns: auto auto auto auto auto 10%;
     background-color: white;
 }
 

@@ -46,13 +46,11 @@ function CustomZone (props) {
         collapseAll(false);
         setConstraintsOpen(!isConstraintsOpen);
         setFacetOpen(!isFacetOpen);
-        setCardinalityOpen(!isCardinalityOpen);
         setAllCollapsed(false);
 
         if(allCollased){
             setConstraintsOpen(true);
             setFacetOpen(true);
-           setCardinalityOpen(true);
             changeCollapseBtn();
         }
     }
@@ -186,10 +184,12 @@ function CustomZone (props) {
                     onClick={customizeRef}>Triples</button>
                     <button className='btnZone'style={constStyles.body}
                     onClick={customizeContraints}>Constraint</button>
-                  
+                    <button className='btnZone'style={refStyles.body}
+                    onClick={customizeRef}>ShapeRef</button>
                    
 
-                  
+                    {getCardinalityIfNeeded()}
+
                     <button className='btnZone'style={otherStyles.body}
                     onClick={customizeOther}>Other</button>
                     
