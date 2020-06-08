@@ -2,7 +2,7 @@ import TypesFactory from '../types/typesFactory';
 import PrefixedIri from '../types/concreteTypes/prefixedIri';
 import Prefix from './prefix';
 
-class Value {
+class ValueSetValue {
 
      constructor(id,type=new PrefixedIri(new Prefix('schema','http://schema.org/'))){
         this.id = id;
@@ -20,4 +20,4 @@ class Value {
 
 }
 
-export default Value;
+export default ValueSetValue;

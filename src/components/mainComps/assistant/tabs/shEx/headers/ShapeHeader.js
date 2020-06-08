@@ -13,7 +13,7 @@ function ShapeHeader (props) {
     const disabled = shapeContext ? shapeContext.disabled : false;
     const styles = Properties.getInstance().getShapeStyle();
     
-    const {shape,customizeShape,collapseTriples,colapseBtn,forceTriples} = props;
+    const {shape,customizeShape,collapseTriples,colapseBtn} = props;
     const [name,setName] = useState(shape.type.value);
 
     let initialRegExp = new RegExp("^" +PN_LOCAL);
@@ -29,13 +29,10 @@ function ShapeHeader (props) {
     const handleKeyUp = function(e){
         if(e.target.value==''){
             shapeContext.setDisabled(true);
-          
         }else{
             shapeContext.setDisabled(false);
         }
     }
-
-    
 
     
     return (
@@ -63,7 +60,7 @@ function ShapeHeader (props) {
                     onClick={customizeShape}
                     disabled={disabled}
                     title="Customize Shape">
-                    settings
+                    build
             </button>
            
             <button className="deleteShapeBtn mdc-icon-button material-icons" 

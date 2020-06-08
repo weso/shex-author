@@ -3,12 +3,11 @@ import Editor from '../entities/editor';
 import Shape from '../entities/shexEntities/shape';
 import Facet from '../entities/shexEntities/others/facet';
 import {addPrefix} from './prefixUtils';
-import Value from '../entities/shexEntities/others/value';
+import ValueSetValue from '../entities/shexEntities/others/valueSetValue';
 
 let shapesCount = 0;
 let facetsCount = 0;
 let valuesCount = 0;
-let extraPropsCount=0;
 
 function addShape(shapes,width){
 
@@ -80,12 +79,7 @@ function hasPrefix(prefix){
 
 function addValueSetValue(values){
     const id = values.length + valuesCount++;
-    return new Value(id);    
-}
-
-function addExtraProperty(properties){
-    const id = properties.length + extraPropsCount++;
-    return new Value(id);    
+    return new ValueSetValue(id);    
 }
 
 
@@ -104,8 +98,7 @@ const shexUtils = {
     getTripleById:getTripleById,
     emit:emit,
     addFacet:addFacet,
-    addValueSetValue:addValueSetValue,
-    addExtraProperty:addExtraProperty
+    addValueSetValue:addValueSetValue
 }
 
 export default shexUtils;

@@ -28,6 +28,7 @@ function TripleHeader (props) {
         setName(name);
     }
 
+
    
     return (
         <div className="xs-tripleHeader" style={styles.header}>            
@@ -44,7 +45,7 @@ function TripleHeader (props) {
                     onClick={customize}
                     disabled={disabled} 
                     title="Customize Triple Constraint">
-                    settings
+                    build
             </button>
 
             
