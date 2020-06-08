@@ -1,6 +1,7 @@
 
 import React, {useState,useEffect,useContext} from 'react';
 import axios from 'axios';
+import Codemirror from 'codemirror';
 import { CookiesProvider } from 'react-cookie';
 import Nav from './components/Nav';
 import MainContainer from './components/MainContainer';
@@ -12,10 +13,9 @@ import yasheUtils from './utils/yasheUtils';
 import Editor from './entities/editor';
 import {addPrefixComp,deletePrefixComp} from './utils/prefixUtils';
 import {ShepherdTour, ShepherdTourContext} from 'react-shepherd'
+import {defaultExample} from './galery/defaultExample';
 import './css/App.css';
 import 'shepherd.js/dist/css/shepherd.css';
-
-
 
 
 export const AppContext = React.createContext();
@@ -160,6 +160,14 @@ function App() {
             text: 'Next'
           }
         ],
+        beforeShowPromise: function() {
+          return new Promise(function(resolve) {
+            let yashe = Editor.getYashe();
+            yashe.setValue(defaultExample);
+            Codemirror.signal(yashe,'forceReplacement');
+            resolve();
+          });
+        },
         
       },
       {
@@ -187,8 +195,9 @@ function App() {
         beforeShowPromise: function() {
           return new Promise(function(resolve) {
             setShapes([shexUtils.addShape(shapes,width)]);
+             Editor.getYashe().setValue("");
             resolve();
-          });
+          },500);
         },
       }];
 
