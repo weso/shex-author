@@ -143,8 +143,10 @@ label{
     margin-bottom: 10px;
 }*/
 
-
-
+.shepherd-modal-overlay-container {
+    background-color: red;
+    padding:  10 !important;
+  }
 
 .hidden{
     display: none;

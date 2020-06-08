@@ -38,9 +38,9 @@ function ShapeHeader (props) {
     return (
         <div className='xs-header' style={styles.header}>            
             <label style={styles.label}>Shape</label>
-            <Textbox 
+            <Textbox
                     attributesInput={{ 
-                        id: 'Name',
+                        id: 'shapeNameInput',
                         name: 'Name',
                         type: 'text',
                         placeholder: 'eg: User',

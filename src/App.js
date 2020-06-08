@@ -147,7 +147,7 @@ function App() {
           </p>
           `
         ],
-        attachTo: { element: '.assistCollapse', on: 'left' },
+        attachTo: { element: '.assistantContainer', on: 'left' },
         classes: 'shepherd shepherd-welcome',
         buttons: [
           {
@@ -171,7 +171,7 @@ function App() {
         
       },
       {
-        id: 'shape',
+        id: 'createShape',
         text: [
           `
           <p>
@@ -179,7 +179,66 @@ function App() {
           </p>
           `
         ],
+        attachTo: { element: '.xs-addShapeButton', on: 'bottom' },
+        classes: 'shepherd shepherd-welcome',
+        buttons: [
+          {
+            type: 'back',
+            classes: 'shepherd-button-secondary',
+            text: 'Back'
+          },
+          {
+            type: 'next',
+            text: 'Next'
+          }
+        ],
+        beforeShowPromise: function() {
+          return new Promise(function(resolve) {
+            setShapes([]);
+            resolve();
+          },500);
+        },
+      },
+      {
+        id: 'shape',
+        text: [
+          `
+          <p>
+         This is a new Shape
+          </p>
+          `
+        ],
         attachTo: { element: '.shape', on: 'bottom' },
+        classes: 'shepherd shepherd-welcome',
+        buttons: [
+          {
+            type: 'back',
+            classes: 'shepherd-button-secondary',
+            text: 'Back'
+          },
+          {
+            type: 'next',
+            text: 'Next'
+          }
+        ],
+        beforeShowPromise: function() {
+          return new Promise(function(resolve) {
+            setShapes([shexUtils.addShape(shapes,width)]);
+             Editor.getYashe().setValue("");
+            resolve();
+          },500);
+        },
+      },
+      {
+        id: 'shapeName',
+        text: [
+          `
+          <p>
+         Give it a name
+          </p>
+          `
+        ],
+        attachTo: { element: '#shapeNameInput', on: 'bottom' },
         classes: 'shepherd shepherd-welcome',
         buttons: [
           {
