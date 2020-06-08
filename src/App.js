@@ -1,5 +1,5 @@
 
-import React, {useState,useEffect} from 'react';
+import React, {useState,useEffect,useContext} from 'react';
 import axios from 'axios';
 import { CookiesProvider } from 'react-cookie';
 import Nav from './components/Nav';
@@ -11,7 +11,12 @@ import {makeItResponsive,checkShapeName} from './utils/cssUtils';
 import yasheUtils from './utils/yasheUtils';
 import Editor from './entities/editor';
 import {addPrefixComp,deletePrefixComp} from './utils/prefixUtils';
+import {ShepherdTour, ShepherdTourContext} from 'react-shepherd'
 import './css/App.css';
+import 'shepherd.js/dist/css/shepherd.css';
+
+
+
 
 export const AppContext = React.createContext();
 
@@ -121,6 +126,83 @@ function App() {
     })
 
 
+    const tourOptions = {
+      defaultStepOptions: {
+        cancelIcon: {
+          enabled: true
+        }
+      },
+      useModalOverlay: true,
+      classes: 'shadow-md bg-purple-dark',
+      scrollTo: true,
+    };
+
+    const newSteps =  [
+      {
+        id: 'welcome',
+        text: [
+          `
+          <p>
+          ShExAuthor is a ShEx Assistant
+          </p>
+          `
+        ],
+        attachTo: { element: '.assistCollapse', on: 'left' },
+        classes: 'shepherd shepherd-welcome',
+        buttons: [
+          {
+            type: 'cancel',
+            classes: 'shepherd-button-secondary',
+            text: 'Exit'
+          },
+          {
+            type: 'next',
+            text: 'Next'
+          }
+        ],
+        
+      },
+      {
+        id: 'shape',
+        text: [
+          `
+          <p>
+         Create a new Shape
+          </p>
+          `
+        ],
+        attachTo: { element: '.shape', on: 'bottom' },
+        classes: 'shepherd shepherd-welcome',
+        buttons: [
+          {
+            type: 'back',
+            classes: 'shepherd-button-secondary',
+            text: 'Back'
+          },
+          {
+            type: 'next',
+            text: 'Next'
+          }
+        ],
+        beforeShowPromise: function() {
+          return new Promise(function(resolve) {
+            setShapes([shexUtils.addShape(shapes,width)]);
+            resolve();
+          });
+        },
+      }];
+
+ function Button() {
+  const tour = useContext(ShepherdTourContext);
+
+  return (
+    <button className="button dark" onClick={tour.start}>
+      Start Tour
+    </button>
+  );
+}
+
+
     return (
       <CookiesProvider>
           <AppContext.Provider
@@ -147,10 +229,14 @@ function App() {
                   }
                 }>
 
+
+            <ShepherdTour steps={newSteps} tourOptions={tourOptions}>
+             <Button />
               <Nav colapseAll={colapseAll}/>
               <MainContainer/>
               <Visualizer svg={svg} isVisualizeOpen={isVisualizeOpen}/>
-                                                  
+            </ShepherdTour>        
+
           </AppContext.Provider>
       </CookiesProvider>);
 
