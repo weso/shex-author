@@ -15,6 +15,7 @@ import {addPrefixComp,deletePrefixComp} from './utils/prefixUtils';
 import {ShepherdTour, ShepherdTourContext} from 'react-shepherd'
 import {defaultExample} from './galery/defaultExample';
 import './css/App.css';
+import './css/tour/tour.css';
 import 'shepherd.js/dist/css/shepherd.css';
 
 
@@ -147,7 +148,7 @@ function App() {
           </p>
           `
         ],
-        attachTo: { element: '.assistantContainer', on: 'left' },
+        attachTo: { element: '.cm-shape', on: 'bottom' },
         classes: 'shepherd shepherd-welcome',
         buttons: [
           {
@@ -209,7 +210,7 @@ function App() {
           </p>
           `
         ],
-        attachTo: { element: '.shape', on: 'bottom' },
+        attachTo: { element: '.shape', on: 'left' },
         classes: 'shepherd shepherd-welcome',
         buttons: [
           {
