@@ -1,6 +1,7 @@
 
 import React, {useState,useEffect,useContext} from 'react';
 import axios from 'axios';
+import Codemirror from 'codemirror';
 import { CookiesProvider } from 'react-cookie';
 import Nav from './components/Nav';
 import MainContainer from './components/MainContainer';
@@ -70,9 +71,10 @@ function App() {
     const replaceShapes = (newShapes) =>{
       //This allows to render all the shapes when a property is updated.
       //Best Glitch Ever
-      //In fact... I would like to render just the property component...
+      //In fact... I would like to render just the suitable component...
       setShapes([]); 
-      
+
+
       setShapes(newShapes);
       visualize();
     }
@@ -121,7 +123,8 @@ function App() {
     
     useEffect(() => {
       makeItResponsive(width);
-    })
+    },[width])
+
 
 
     return (
@@ -144,6 +147,7 @@ function App() {
                   isAssistantOpen:isAssistantOpen,
                   isVisualizeOpen:isVisualizeOpen,
                   assistantToggle:assistantToggle,
+                  setAssistantOpen:setAssistantOpen,
                   visualizeToggle:visualizeToggle,
                   handleResize:handleResize,
                   width:width

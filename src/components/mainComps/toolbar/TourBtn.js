@@ -23,16 +23,17 @@ function TourBtn () {
     };
 
      const newSteps =  [
-      {
+       {
         id: 'welcome',
         text: [
           `
           <p>
-          ShExAuthor is a ShEx Assistant
+          Welcome to ShEx Author <br> 
+          Create your Shapes leaning on the ShEx Assistant
           </p>
           `
         ],
-        attachTo: { element: '.cm-shape', on: 'bottom' },
+       
         classes: 'shepherd shepherd-welcome',
         buttons: [
           {
@@ -42,15 +43,50 @@ function TourBtn () {
           },
           {
             type: 'next',
-            text: 'Next'
+            text: 'Start'
+          }
+        ]
+        
+      },
+      {
+        id: 'welcome',
+        text: [
+          `
+          <p>
+          This is the ShEx Assistant
+          </p>
+          `
+        ],
+        attachTo: { element: '.assistCollapse', on: 'right' },
+        classes: 'shepherd shepherd-welcome',
+        buttons: [
+          {
+            type: 'cancel',
+            classes: 'shepherd-button-secondary',
+            text: 'Exit'
+          },
+          {
+            type: 'next',
+            text: 'Start'
           }
         ],
         beforeShowPromise: function() {
           return new Promise(function(resolve) {
+            
             let yashe = Editor.getYashe();
             yashe.setValue(defaultExample);
             Codemirror.signal(yashe,'forceReplacement');
-            resolve();
+
+            let wait = 0;
+            if(!context.isAssistantOpen){
+              wait = 500;// if the assist is closed we need to wait before create the modal
+              context.setAssistantOpen(true);
+            }
+
+            setTimeout(() => {
+              resolve();  
+            }, wait);
+            
           });
         },
         
@@ -77,13 +113,18 @@ function TourBtn () {
             text: 'Next'
           }
         ],
-        beforeShowPromise: function() {
-          return new Promise(function(resolve) {
+        when: {
+          show: () => {
+            console.log('show step');
             context.replaceShapes([]);
-            Editor.getYashe().setValue("");
-            resolve();
-          },500);
-        },
+           // Editor.getYashe().setValue("");
+          },
+          hide: () => {
+            console.log('hide step');
+            console.table(context.shapes.triples)
+            context.addShape();
+          }
+        }
       },
       {
         id: 'shape',
@@ -106,13 +147,7 @@ function TourBtn () {
             type: 'next',
             text: 'Next'
           }
-        ],
-        beforeShowPromise: function() {
-          return new Promise(function(resolve) {
-            context.replaceShapes([shexUtils.addShape(context.shapes,context.width)]);
-            resolve();
-          },500);
-        },
+        ]
       },
       {
         id: 'shapeName',
@@ -135,7 +170,13 @@ function TourBtn () {
             type: 'next',
             text: 'Next'
           }
-        ]
+        ],
+        beforeShowPromise: function() {
+          return new Promise(function(resolve) {
+            console.table(context.shapes)
+            resolve();
+          });
+        },
       }];
 
 

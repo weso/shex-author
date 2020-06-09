@@ -10,6 +10,7 @@ let facetsCount = 0;
 let valuesCount = 0;
 
 function addShape(shapes,width){
+    //console.log(shapes)
 
     const id = shapes.length + shapesCount++;
     const newShape = new Shape(id);
@@ -18,7 +19,7 @@ function addShape(shapes,width){
     newShapes = Object.assign(newShapes, shapes);
     newShapes.push(newShape);
     checkPrefixes();
-    emit(newShapes,width);
+    //emit(newShapes,width);
     return newShape;    
 }
 
