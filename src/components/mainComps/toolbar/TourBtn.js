@@ -11,6 +11,7 @@ import '../../../css/tour/tour.css';
 function TourBtn () {
 
     const context = useContext(AppContext);
+
     const tourOptions = {
       defaultStepOptions: {
         cancelIcon: {
@@ -116,14 +117,11 @@ function TourBtn () {
         ],
         when: {
           show: () => {
-            console.log('show step');
             context.replaceShapes([]);
-           // Editor.getYashe().setValue("");
+            Editor.getYashe().setValue("");
           },
           hide: () => {
-            console.log('hide step');
-            console.table(context.shapes.triples)
-            context.addShape();
+            context.replaceShapes([shexUtils.addShape(context.shapes,context.width)]);
           }
         }
       },

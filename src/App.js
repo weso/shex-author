@@ -40,6 +40,7 @@ function App() {
 
     const addShape = () =>{
       let shape = shexUtils.addShape(shapes,width);
+      console.table(shape)
       setShapes([...shapes,shape]);
       checkShapeName(shape)
       visualize();
@@ -73,7 +74,6 @@ function App() {
       //Best Glitch Ever
       //In fact... I would like to render just the suitable component...
       setShapes([]); 
-
 
       setShapes(newShapes);
       visualize();
@@ -125,6 +125,8 @@ function App() {
       makeItResponsive(width);
     },[width])
 
+
+  
 
 
     return (
