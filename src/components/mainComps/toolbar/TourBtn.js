@@ -28,8 +28,9 @@ function TourBtn () {
         text: [
           `
           <p>
-          Welcome to ShEx Author <br> 
-          Create your Shapes leaning on the ShEx Assistant
+          Welcome to ShExAuthor, a playground where 
+          you can create Shapes in a much more visual way <br>
+          
           </p>
           `
         ],
@@ -43,7 +44,7 @@ function TourBtn () {
           },
           {
             type: 'next',
-            text: 'Start'
+            text: 'Start Tutorial'
           }
         ]
         
@@ -61,9 +62,9 @@ function TourBtn () {
         classes: 'shepherd shepherd-welcome',
         buttons: [
           {
-            type: 'cancel',
+            type: 'back',
             classes: 'shepherd-button-secondary',
-            text: 'Exit'
+            text: 'Back'
           },
           {
             type: 'next',
@@ -170,13 +171,30 @@ function TourBtn () {
             type: 'next',
             text: 'Next'
           }
+        ]
+      },
+      {
+        id: 'shapeName',
+        text: [
+          `
+          <p>
+          Check the new Shape in the Editor
+          </p>
+          `
         ],
-        beforeShowPromise: function() {
-          return new Promise(function(resolve) {
-            console.table(context.shapes)
-            resolve();
-          });
-        },
+        attachTo: { element: '.cm-shape', on: 'left' },
+        classes: 'shepherd shepherd-welcome',
+        buttons: [
+          {
+            type: 'back',
+            classes: 'shepherd-button-secondary',
+            text: 'Back'
+          },
+          {
+            type: 'next',
+            text: 'Next'
+          }
+        ]
       }];
 
 
