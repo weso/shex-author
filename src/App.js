@@ -195,6 +195,7 @@ function App() {
         beforeShowPromise: function() {
           return new Promise(function(resolve) {
             setShapes([]);
+            Editor.getYashe().setValue("");
             resolve();
           },500);
         },
@@ -224,7 +225,6 @@ function App() {
         beforeShowPromise: function() {
           return new Promise(function(resolve) {
             setShapes([shexUtils.addShape(shapes,width)]);
-             Editor.getYashe().setValue("");
             resolve();
           },500);
         },
@@ -250,14 +250,7 @@ function App() {
             type: 'next',
             text: 'Next'
           }
-        ],
-        beforeShowPromise: function() {
-          return new Promise(function(resolve) {
-            setShapes([shexUtils.addShape(shapes,width)]);
-             Editor.getYashe().setValue("");
-            resolve();
-          },500);
-        },
+        ]
       }];
 
  function Button() {
