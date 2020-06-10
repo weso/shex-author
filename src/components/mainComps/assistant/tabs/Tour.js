@@ -14,32 +14,7 @@ function Tour () {
 
     
      const newSteps =  [
-       {
-        id: 'welcome',
-        text: [
-          `
-          <p>
-          Welcome to ShExAuthor, a playground where 
-          you can create Shapes in a much more visual way <br>
-          
-          </p>
-          `
-        ],
-       
-        classes: 'shepherd shepherd-welcome',
-        buttons: [
-          {
-            type: 'cancel',
-            classes: 'shepherd-button-secondary',
-            text: 'Exit'
-          },
-          {
-            type: 'next',
-            text: 'Start Tutorial'
-          }
-        ]
-        
-      },
+      
       {
         id: 'assistant',
         text: [
@@ -227,9 +202,7 @@ function Button() {
 }
 
 
-    return (
-      
-        <Button/> );
+    return (<Button/>);
     
 }
 

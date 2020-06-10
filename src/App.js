@@ -133,8 +133,7 @@ function App() {
       classes: 'shadow-md bg-purple-dark',
       scrollTo: true,
     };
-
-       
+  
     return (
       <CookiesProvider>
         <ShepherdTour steps={[]} tourOptions={tourOptions}>
