@@ -47,7 +47,6 @@ function EditorComp() {
 
             
             y.on('humanEvent', function(shapes,width) {
-                console.log('w')
                 yasheUtils.draw(shapes);
                 y.isComplex=false;
                 y.oldShapes = shapes;
@@ -56,8 +55,6 @@ function EditorComp() {
             });
 
             y.on('forceReplacement', function() {
-                console.log("eo")
-            
                 replaceShapes();
             });
 

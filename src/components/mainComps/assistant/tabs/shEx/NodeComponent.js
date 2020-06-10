@@ -11,8 +11,8 @@ import Properties from '../../../../../conf/properties';
 function NodeComponent (props) {
     
     const {entity,isCustomOpen,customClass} = props;
-    const [isTripleCustomOpen,setTripleCustomOpen] = useState(false);
-    const [isConstraintsOpen,setConstraintsOpen] = useState(true);
+    const [isTypeOpen,setTypeOpen] = useState(true);
+    const [isConstraintsOpen,setConstraintsOpen] = useState(false);
     const [isRefOpen,setRefOpen] = useState(false);
     const [isFacetOpen,setFacetOpen] = useState(false);
     const [isCardinalityOpen,setCardinalityOpen] = useState(false);
@@ -27,13 +27,13 @@ function NodeComponent (props) {
     const refStyles = Properties.getInstance().getShapeRefStyle();
     const cardStyles = Properties.getInstance().getCardinalityStyle();
 
-    const customizeTriple = function(){
+    const customizeType = function(){
         collapseAll(false);
-        setTripleCustomOpen(!isTripleCustomOpen);
+        setTypeOpen(!isTypeOpen);
         setAllCollapsed(false);
 
         if(allCollased){
-            setTripleCustomOpen(true);
+            setTypeOpen(true);
             changeCollapseBtn();
         }
 
@@ -86,7 +86,7 @@ function NodeComponent (props) {
 
 
     const collapseAll = function(collapse){
-        setTripleCustomOpen(collapse);
+        setTypeOpen(collapse);
         setConstraintsOpen(collapse);
         setRefOpen(collapse);
         setFacetOpen(collapse);
@@ -147,7 +147,7 @@ function NodeComponent (props) {
 
                 <div className={getCardinalityStyleIfNeeded()} style={getEntityStyle().body}>
                     <button className='btnZone'style={getEntityStyle().body}
-                    onClick={customizeTriple}>{entity.getEntityName()}</button>
+                    onClick={customizeType}>Type</button>
                    <button className='btnZone'style={constStyles.body}
                     onClick={customizeContraints}>Constraint</button>
                     <button className='btnZone'style={facetStyles.body}
@@ -164,7 +164,7 @@ function NodeComponent (props) {
                 </div> 
 
                 <CustomComp  entity={entity} 
-                        isCustomOpen={isTripleCustomOpen}
+                        isCustomOpen={isTypeOpen}
                         bnode={false}
                         customClass={customClass}/>
 

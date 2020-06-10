@@ -47,7 +47,7 @@ function AssistTitle (props) {
                         onClick={(e)=>handleShapes(e)}>
                         ShEx Assistant
                 </button>
-                <button className="tablink" 
+                <button className="tablink prefixTab" 
                         title="Prefixes" 
                         onClick={(e)=>handlePrefixes(e)}>
                         Prefixes 

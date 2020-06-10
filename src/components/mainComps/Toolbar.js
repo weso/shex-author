@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import { Collapse } from 'reactstrap';
 import {AppContext} from '../../App'; 
 import AssistBtn from './toolbar/AssistBtn';
-import TourBtn from './toolbar/TourBtn';
+import VisualizeBtn from './toolbar/VisualizeBtn';
 import UndoBtn from './toolbar/UndoBtn';
 import RedoBtn from './toolbar/RedoBtn';
 import UploadBtn from './toolbar/UploadBtn';
@@ -24,7 +24,7 @@ function Toolbar () {
         <div className='toolbar'>
                 <div className='toolbarTop'>                    
                     <AssistBtn/>
-                    <TourBtn/>
+                    <VisualizeBtn/>
                     <UndoBtn/>
                     <RedoBtn/>
                     <UploadBtn/>

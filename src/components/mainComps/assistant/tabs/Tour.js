@@ -8,7 +8,7 @@ import {defaultExample} from '../../../galery/defaultExample';
 import 'shepherd.js/dist/css/shepherd.css';
 import '../../../css/tour/tour.css';
 
-function TourBtn () {
+function Tour () {
 
     const context = useContext(AppContext);
 
@@ -98,7 +98,7 @@ function TourBtn () {
         text: [
           `
           <p>
-         Create a new Shape
+         Let's create a new Shape
           </p>
           `
         ],
@@ -121,7 +121,9 @@ function TourBtn () {
             Editor.getYashe().setValue("");
           },
           hide: () => {
-            context.replaceShapes([shexUtils.addShape(context.shapes,context.width)]);
+            let shape = shexUtils.addShape(context.shapes,context.width);
+            context.replaceShapes([shape]);
+            Codemirror.signal(Editor.getYashe(),'humanEvent',[shape],context.width);
           }
         }
       },
@@ -130,7 +132,7 @@ function TourBtn () {
         text: [
           `
           <p>
-         This is a new Shape
+         This is your new Shape. A shape defines the constraints that a node must satisfy
           </p>
           `
         ],
@@ -153,7 +155,7 @@ function TourBtn () {
         text: [
           `
           <p>
-         Give it a name
+         Let's give it a name
           </p>
           `
         ],
@@ -169,18 +171,33 @@ function TourBtn () {
             type: 'next',
             text: 'Next'
           }
-        ]
+        ],
+        when: {
+          show: () => {
+           
+          },
+          hide: () => {
+            let shape = shexUtils.addShape(context.shapes,context.width);
+            shape.type.value = 'User';
+            context.replaceShapes([shape]);
+            Codemirror.signal(Editor.getYashe(),'humanEvent',[shape],context.width);
+          }
+        }
       },
       {
         id: 'shapeName',
         text: [
           `
           <p>
-          Check the new Shape in the Editor
+          Check your new Shape in the Editor. <br>
+          A Shape must be an <a href='https://en.wikipedia.org/wiki/Internationalized_Resource_Identifier'>IRI.</a>
+          (string of characters that unambiguously identifies a particular resource)<br> 
+          There is two ways of represent IRIs in ShEx. As a Qname setting the IRI betwen '<...>' or
+          using a prefix previously defined.
           </p>
           `
         ],
-        attachTo: { element: '.cm-shape', on: 'left' },
+        attachTo: { element: '.cm-shape', on: 'bottom' },
         classes: 'shepherd shepherd-welcome',
         buttons: [
           {
@@ -193,6 +210,34 @@ function TourBtn () {
             text: 'Next'
           }
         ]
+      },
+      {
+        id: 'prefixes',
+        text: [
+          `
+          <p>
+          Click in the Prefixes tab in order to define a new prefix. 
+          </p>
+          `
+        ],
+        attachTo: { element: '.prefixTab', on: 'bottom' },
+        classes: 'shepherd shepherd-welcome',
+        buttons: [
+          {
+            type: 'back',
+            classes: 'shepherd-button-secondary',
+            text: 'Back'
+          },
+          {
+            type: 'next',
+            text: 'Next'
+          }
+        ],
+         when: {
+          hide: () => {
+            
+          }
+        }
       }];
 
 
@@ -218,6 +263,6 @@ function Button() {
 }
 
 
-export default TourBtn;
+export default Tour;
 
 
