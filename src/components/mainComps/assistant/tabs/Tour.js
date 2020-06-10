@@ -10,11 +10,44 @@ import '../../../../css/tour/tour.css';
 
 function Tour () {
 
-    const context = useContext(AppContext);
-
     
-     const newSteps =  [
-      
+function Button() {
+  const tour = useContext(ShepherdTourContext);
+  const context = useContext(AppContext);
+
+    const newSteps =  [
+       {
+        id: 'welcome',
+        text: [
+          `
+          <p>
+          Welcome to ShExAuthor, a playground where 
+          you can create Shapes in a much more visual way <br>
+          
+          </p>
+          `
+        ],
+       
+        classes: 'shepherd shepherd-welcome',
+        buttons: [
+          {
+            action: () => {
+               tour.cancel();
+            },
+            type: 'cancel',
+            classes: 'shepherd-button-secondary',
+            text: 'Exit'
+          },
+          {
+            action: () => {
+               tour.next();
+            },
+            type: 'next',
+            text: 'Start Tutorial'
+          }
+        ]
+        
+      },
       {
         id: 'assistant',
         text: [
@@ -184,13 +217,8 @@ function Tour () {
           }
         }
       }];
-
-
-function Button() {
-  const tour = useContext(ShepherdTourContext);
   tour.addSteps(newSteps);
-  console.log(tour.steps)
-
+ 
   return (
    <button className="tablink material-icons " 
               
