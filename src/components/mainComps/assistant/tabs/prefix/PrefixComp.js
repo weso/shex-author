@@ -28,7 +28,7 @@ function PrefixComp (props) {
                 <div className='xs-prefixHeader' style={styles.header}>            
                     <input  type="text" 
                             className="prefixName prefixInput"
-                            placeholder="eg: schema"
+                            placeholder="alias"
                             value={name}
                             onChange={(e)=>handleAlias(e,prefix)}
                             title="Alias"/>

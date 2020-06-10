@@ -1,6 +1,7 @@
 import React,{useContext} from 'react';
 import Codemirror from 'codemirror';
 import {AppContext} from '../../../../App';
+import {AssistContext} from '../../Assistant';
 import {ShepherdTour, ShepherdTourContext} from 'react-shepherd';
 import Editor from '../../../../entities/editor';
 import shexUtils from '../../../../utils/shexUtils';
@@ -10,10 +11,9 @@ import '../../../../css/tour/tour.css';
 
 function Tour () {
 
-    
-function Button() {
-  const tour = useContext(ShepherdTourContext);
-  const context = useContext(AppContext);
+    const context = useContext(AppContext);
+    const assistContext = useContext(AssistContext);
+    const tour = useContext(ShepherdTourContext);
 
     const newSteps =  [
        {
@@ -23,7 +23,6 @@ function Button() {
           <p>
           Welcome to ShExAuthor, a playground where 
           you can create Shapes in a much more visual way <br>
-          
           </p>
           `
         ],
@@ -49,7 +48,7 @@ function Button() {
         
       },
       {
-        id: 'welcome',
+        id: 'assistant',
         text: [
           `
           <p>
@@ -57,6 +56,7 @@ function Button() {
           </p>
           `
         ],
+        canClickTarget:false,
         attachTo: { element: '.assistCollapse', on: 'right' },
         classes: 'shepherd shepherd-welcome',
         buttons: [
@@ -83,15 +83,12 @@ function Button() {
             yashe.setValue(defaultExample);
             Codemirror.signal(yashe,'forceReplacement');
 
-            let wait = 0;
-            if(!context.isAssistantOpen){
-              wait = 500;// if the assist is closed we need to wait before create the modal
-              context.setAssistantOpen(true);
-            }
+            assistContext.closeAll();
 
             setTimeout(() => {
+              assistContext.setAssistOpen(true);
               resolve();  
-            }, wait);
+            }, 550);
             
           });
         },
@@ -106,6 +103,7 @@ function Button() {
           </p>
           `
         ],
+        canClickTarget:false,
         attachTo: { element: '.xs-addShapeButton', on: 'bottom' },
         classes: 'shepherd shepherd-welcome',
         buttons: [
@@ -146,6 +144,7 @@ function Button() {
           </p>
           `
         ],
+        canClickTarget:false,
         attachTo: { element: '.shape', on: 'left' },
         classes: 'shepherd shepherd-welcome',
         buttons: [
@@ -175,6 +174,7 @@ function Button() {
           </p>
           `
         ],
+        canClickTarget:false,
         attachTo: { element: '#shapeNameInput', on: 'bottom' },
         classes: 'shepherd shepherd-welcome',
         buttons: [
@@ -195,9 +195,6 @@ function Button() {
           }
         ],
         when: {
-          show: () => {
-           
-          },
           hide: () => {
             let shape = shexUtils.addShape(context.shapes,context.width);
             shape.type.value = 'User';
@@ -219,6 +216,7 @@ function Button() {
           </p>
           `
         ],
+        canClickTarget:false,
         attachTo: { element: '.cm-shape', on: 'bottom' },
         classes: 'shepherd shepherd-welcome',
         buttons: [
@@ -248,6 +246,7 @@ function Button() {
           </p>
           `
         ],
+        canClickTarget:false,
         attachTo: { element: '.prefixTab', on: 'bottom' },
         classes: 'shepherd shepherd-welcome',
         buttons: [
@@ -266,13 +265,95 @@ function Button() {
             type: 'next',
             text: 'Next'
           }
+        ]
+      },
+      {
+        id: 'addPrefix',
+        text: [
+          `
+          <p>
+         Press this button in order to define a new Prefix 
+          </p>
+          `
         ],
-         when: {
-          hide: () => {
-            
+        canClickTarget:false,
+        attachTo: { element: '.xs-prefixHeader:last-of-type', on: 'bottom' },
+        classes: 'shepherd shepherd-welcome',
+        buttons: [
+          {
+            action: () => {
+               tour.back();
+            },
+            type: 'back',
+            classes: 'shepherd-button-secondary',
+            text: 'Back'
+          },
+          {
+            action: () => {
+               tour.next();
+            },
+            type: 'next',
+            text: 'Next'
           }
+        ],
+        beforeShowPromise: function() {
+          return new Promise(function(resolve) {
+            assistContext.setAssistOpen(false);
+            assistContext.setPrefixesOpen(true);
+
+            setTimeout(() => {
+              resolve();  
+            }, 300);
+            
+          });
+        },
+        when:{
+            hide: () => {
+               context.addPrefix();
+            },
+        }
+      },
+      {
+        id: 'prefixHeader',
+        text: [
+          `
+          <p>
+         Check prefix
+          </p>
+          `
+        ],
+        canClickTarget:false,
+        attachTo: { element: '.xs-prefixHeader:last-of-type', on: 'bottom' },
+        classes: 'shepherd shepherd-welcome',
+        buttons: [
+          {
+            action: () => {
+               tour.back();
+            },
+            type: 'back',
+            classes: 'shepherd-button-secondary',
+            text: 'Back'
+          },
+          {
+            action: () => {
+               tour.next();
+            },
+            type: 'next',
+            text: 'Next'
+          }
+        ],
+      
+        beforeShowPromise: function() {
+          return new Promise(function(resolve) {
+            setTimeout(() => {
+              resolve();  
+            }, 300);
+            
+          });
         }
       }];
+
+      
   tour.addSteps(newSteps);
  
   return (
@@ -283,11 +364,6 @@ function Button() {
                 tour
         </button>
   );
-}
-
-
-    return (<Button/>);
-    
 }
 
 

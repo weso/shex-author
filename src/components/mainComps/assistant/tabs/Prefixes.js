@@ -9,7 +9,7 @@ function Prefixes (props) {
         const context = useContext(AppContext);
         const styles = Properties.getInstance().getPrefixStyle();
         return (
-                <div>
+                <div className="prefixContainer">
                         {context.prefixes.map(prefix =>{
                                 return(<PrefixComp key={prefix.id} prefix={prefix}/>)
                         })}

@@ -24,6 +24,14 @@ function Assistant (props) {
             NAMESPACE[element] = color;
         }
 
+        const closeAll = function(){
+            setAssistOpen(false);
+            setPrefixesOpen(false);
+            setColorsOpen(false);
+            setConfigOpen(false);  
+        }
+
+
         return (
                 <AssistContext.Provider
                 value={
@@ -36,7 +44,8 @@ function Assistant (props) {
                         setPrefixesOpen:setPrefixesOpen,
                         setColorsOpen:setColorsOpen,
                         setConfigOpen:setConfigOpen,
-                        handleChange:handleChange
+                        handleChange:handleChange,
+                        closeAll:closeAll
                         }
                 }>
                         <Collapse isOpen={context.isAssistantOpen} className='assistCollapse'>
