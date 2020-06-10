@@ -2,6 +2,7 @@ import React,{useContext} from 'react';
 import {AppContext} from '../../../App';
 import {AssistContext} from '../Assistant';
 import {activeTab} from '../../../utils/cssUtils';
+import Tour from './tabs/Tour';
 
 function AssistTitle (props) {
 
@@ -52,6 +53,9 @@ function AssistTitle (props) {
                         onClick={(e)=>handlePrefixes(e)}>
                         Prefixes 
                 </button>
+                
+                <Tour/>
+
                 <button className="tablink material-icons" 
                         title="Colors" 
                         onClick={(e)=>handleColors(e)}>

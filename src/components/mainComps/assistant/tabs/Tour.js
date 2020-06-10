@@ -1,28 +1,18 @@
 import React,{useContext} from 'react';
 import Codemirror from 'codemirror';
-import {AppContext} from '../../../App';
+import {AppContext} from '../../../../App';
 import {ShepherdTour, ShepherdTourContext} from 'react-shepherd';
-import Editor from '../../../entities/editor';
-import shexUtils from '../../../utils/shexUtils';
-import {defaultExample} from '../../../galery/defaultExample';
+import Editor from '../../../../entities/editor';
+import shexUtils from '../../../../utils/shexUtils';
+import {defaultExample} from '../../../../galery/defaultExample';
 import 'shepherd.js/dist/css/shepherd.css';
-import '../../../css/tour/tour.css';
+import '../../../../css/tour/tour.css';
 
 function Tour () {
 
     const context = useContext(AppContext);
 
-    const tourOptions = {
-      defaultStepOptions: {
-        cancelIcon: {
-          enabled: true
-        }
-      },
-      useModalOverlay: true,
-      classes: 'shadow-md bg-purple-dark',
-      scrollTo: true,
-    };
-
+    
      const newSteps =  [
        {
         id: 'welcome',
@@ -51,7 +41,7 @@ function Tour () {
         
       },
       {
-        id: 'welcome',
+        id: 'assistant',
         text: [
           `
           <p>
@@ -71,27 +61,7 @@ function Tour () {
             type: 'next',
             text: 'Start'
           }
-        ],
-        beforeShowPromise: function() {
-          return new Promise(function(resolve) {
-            
-            let yashe = Editor.getYashe();
-            yashe.setValue(defaultExample);
-            Codemirror.signal(yashe,'forceReplacement');
-
-            let wait = 0;
-            if(!context.isAssistantOpen){
-              wait = 500;// if the assist is closed we need to wait before create the modal
-              context.setAssistantOpen(true);
-            }
-
-            setTimeout(() => {
-              resolve();  
-            }, wait);
-            
-          });
-        },
-        
+        ]
       },
       {
         id: 'createShape',
@@ -243,10 +213,12 @@ function Tour () {
 
 function Button() {
   const tour = useContext(ShepherdTourContext);
+  tour.addSteps(newSteps);
+  console.log(tour.steps)
 
   return (
-   <button className="mdc-icon-button material-icons btns" 
-                type="button" 
+   <button className="tablink material-icons " 
+              
                 title="Tour"
                 onClick={tour.start}>
                 tour
@@ -256,9 +228,8 @@ function Button() {
 
 
     return (
-        <ShepherdTour steps={newSteps} tourOptions={tourOptions}>
-        <Button/> 
-      </ShepherdTour>  );  
+      
+        <Button/> );
     
 }
 

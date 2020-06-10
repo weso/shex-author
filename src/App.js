@@ -13,9 +13,7 @@ import yasheUtils from './utils/yasheUtils';
 import Editor from './entities/editor';
 import {addPrefixComp,deletePrefixComp} from './utils/prefixUtils';
 import './css/App.css';
-
-
-
+import {ShepherdTour} from 'react-shepherd';
 
 export const AppContext = React.createContext();
 
@@ -40,7 +38,6 @@ function App() {
 
     const addShape = () =>{
       let shape = shexUtils.addShape(shapes,width);
-      console.table(shape)
       setShapes([...shapes,shape]);
       checkShapeName(shape)
       visualize();
@@ -126,11 +123,21 @@ function App() {
     },[width])
 
 
-  
+    const tourOptions = {
+      defaultStepOptions: {
+        cancelIcon: {
+          enabled: true
+        }
+      },
+      useModalOverlay: true,
+      classes: 'shadow-md bg-purple-dark',
+      scrollTo: true,
+    };
 
-
+       
     return (
       <CookiesProvider>
+        <ShepherdTour steps={[]} tourOptions={tourOptions}>
           <AppContext.Provider
                 value={
                   {
@@ -162,6 +169,7 @@ function App() {
               
 
           </AppContext.Provider>
+        </ShepherdTour>
       </CookiesProvider>);
 
 }  
