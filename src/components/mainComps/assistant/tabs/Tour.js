@@ -49,7 +49,7 @@ function Button() {
         
       },
       {
-        id: 'assistant',
+        id: 'welcome',
         text: [
           `
           <p>
@@ -61,15 +61,41 @@ function Button() {
         classes: 'shepherd shepherd-welcome',
         buttons: [
           {
+            action: () => {
+               tour.back();
+            },
             type: 'back',
             classes: 'shepherd-button-secondary',
             text: 'Back'
           },
           {
+            action: () => {
+               tour.next();
+            },
             type: 'next',
-            text: 'Start'
+            text: 'Next'
           }
-        ]
+        ],
+        beforeShowPromise: function() {
+          return new Promise(function(resolve) {
+            
+            let yashe = Editor.getYashe();
+            yashe.setValue(defaultExample);
+            Codemirror.signal(yashe,'forceReplacement');
+
+            let wait = 0;
+            if(!context.isAssistantOpen){
+              wait = 500;// if the assist is closed we need to wait before create the modal
+              context.setAssistantOpen(true);
+            }
+
+            setTimeout(() => {
+              resolve();  
+            }, wait);
+            
+          });
+        },
+        
       },
       {
         id: 'createShape',
@@ -84,11 +110,17 @@ function Button() {
         classes: 'shepherd shepherd-welcome',
         buttons: [
           {
+            action: () => {
+               tour.back();
+            },
             type: 'back',
             classes: 'shepherd-button-secondary',
             text: 'Back'
           },
           {
+            action: () => {
+               tour.next();
+            },
             type: 'next',
             text: 'Next'
           }
@@ -118,11 +150,17 @@ function Button() {
         classes: 'shepherd shepherd-welcome',
         buttons: [
           {
+            action: () => {
+               tour.back();
+            },
             type: 'back',
             classes: 'shepherd-button-secondary',
             text: 'Back'
           },
           {
+            action: () => {
+               tour.next();
+            },
             type: 'next',
             text: 'Next'
           }
@@ -141,11 +179,17 @@ function Button() {
         classes: 'shepherd shepherd-welcome',
         buttons: [
           {
+            action: () => {
+               tour.back();
+            },
             type: 'back',
             classes: 'shepherd-button-secondary',
             text: 'Back'
           },
           {
+            action: () => {
+               tour.next();
+            },
             type: 'next',
             text: 'Next'
           }
@@ -179,11 +223,17 @@ function Button() {
         classes: 'shepherd shepherd-welcome',
         buttons: [
           {
+            action: () => {
+               tour.back();
+            },
             type: 'back',
             classes: 'shepherd-button-secondary',
             text: 'Back'
           },
           {
+            action: () => {
+               tour.next();
+            },
             type: 'next',
             text: 'Next'
           }
@@ -202,11 +252,17 @@ function Button() {
         classes: 'shepherd shepherd-welcome',
         buttons: [
           {
+            action: () => {
+               tour.back();
+            },
             type: 'back',
             classes: 'shepherd-button-secondary',
             text: 'Back'
           },
           {
+            action: () => {
+               tour.next();
+            },
             type: 'next',
             text: 'Next'
           }
