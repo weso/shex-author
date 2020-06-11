@@ -34,6 +34,14 @@ function ShapeHeader (props) {
         }
     }
 
+    //This is a very special case needed just for the tour tutorial
+    //in order to enable the buttons when the input shape is changed
+    const handleFocus = function(e){
+        if(document.getElementById("shapeNameInput").value.length>0){
+            shapeContext.setDisabled(false);
+        }
+    }
+
     
     return (
         <div className='xs-header' style={styles.header}>            
@@ -48,6 +56,7 @@ function ShapeHeader (props) {
                     value={name} 
                     onChange={(e)=>handleChange(e)}
                     onKeyUp={(e)=>handleKeyUp(e)}
+                    onFocus={(e)=>handleFocus(e)}
                     validationOption={{
                         reg: regExp, 
                         regMsg: 'Invalid name'

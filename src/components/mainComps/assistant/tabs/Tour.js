@@ -580,19 +580,17 @@ function Tour () {
             text: 'Next'
           }
         ],
-        when:{
-          show:()=>{
-            document.getElementById("shapeNameInput").value += "MyFirstShape"; 
-          }
-        },
+       
       beforeShowPromise: function() {
           return new Promise(function(resolve) {
             assistContext.setAssistOpen(true);
             assistContext.setPrefixesOpen(false);
             
             setTimeout(() => {
+              document.getElementById("shapeNameInput").value += "MyFirstShape"; 
+              document.getElementById("shapeNameInput").focus();
               resolve();  
-            }, 300);
+            }, 500);
             
           });
         }
@@ -658,7 +656,11 @@ function Tour () {
         ],
          beforeShowPromise: function() {
           return new Promise(function(resolve) {
-             
+             /* 
+            console.log(document.getElementsByClassName("buildBtn")[0].disabled)
+            document.getElementsByClassName("buildBtn")[0].disabled = false;
+            console.log(document.getElementsByClassName("buildBtn")[0].disabled) */
+            document.getElementsByClassName("buildBtn")[0].disabled = false;
             document.getElementsByClassName("buildBtn")[0].click();
 
             setTimeout(() => {
