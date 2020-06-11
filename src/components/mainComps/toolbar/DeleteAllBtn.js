@@ -23,13 +23,33 @@ function DeleteAllBtn () {
         }
     }
 
+    const deleteNoConfirm = function(){
+        //Needed for visualize
+        setTimeout(() => {
+            context.replaceShapes([]);    
+        }, 10);
+        // We can't do emit() because it takes 
+        // like another call to change shapes state
+        // I don't know exactly the reason...
+        // It's something about react state
+        let yashe = Editor.getYashe();
+        yashe.setValue('');
+        Codemirror.signal(yashe,'delete');
+    }
 
-    return (
-         <button className="mdc-icon-button material-icons btns" 
+
+    return (<div>
+         <button 
+                 className="mdc-icon-button material-icons btns" 
                  title="Delete all"
                  onClick={deleteShapes}>
                  delete_outline
-            </button>  );
+            </button>
+            
+            <button className="deleteAllBtn"
+                 onClick={deleteNoConfirm}>
+            </button> 
+            </div> );
     
   
 }

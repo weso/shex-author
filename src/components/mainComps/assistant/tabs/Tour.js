@@ -9,6 +9,7 @@ import {defaultExample} from '../../../../galery/defaultExample';
 import 'shepherd.js/dist/css/shepherd.css';
 import '../../../../css/tour/tour.css';
 import {addPrefixComp} from '../../../../utils/prefixUtils';
+import $ from 'jquery';
 
 function Tour () {
 
@@ -77,17 +78,21 @@ function Tour () {
             text: 'Next'
           }
         ],
+        
         beforeShowPromise: function() {
           return new Promise(function(resolve) {
             
-            let yashe = Editor.getYashe();
+           /*  let yashe = Editor.getYashe();
             yashe.setValue(defaultExample);
             Codemirror.signal(yashe,'forceReplacement');
 
-            assistContext.closeAll();
+            assistContext.closeAll(); */
+
+            $('.deleteAllBtn').click();
+            $('.shapesTab').click();
 
             setTimeout(() => {
-              assistContext.setAssistOpen(true);
+             // assistContext.setAssistOpen(true);
               resolve();  
             }, 550);
             
@@ -123,8 +128,8 @@ function Tour () {
             type: 'next',
             text: 'Next'
           }
-        ],
-        when: {
+        ]
+       /*  when: {
           show: () => {
             context.replaceShapes([]);
             Editor.getYashe().setValue("");
@@ -134,7 +139,7 @@ function Tour () {
             context.replaceShapes([shape]);
             Codemirror.signal(Editor.getYashe(),'humanEvent',[shape],context.width);
           }
-        }
+        } */
       },
       {
         id: 'shape',
@@ -151,7 +156,8 @@ function Tour () {
         buttons: [
           {
             action: () => {
-               tour.back();
+              $('.deleteAllBtn').click();
+              tour.back();
             },
             type: 'back',
             classes: 'shepherd-button-secondary',
@@ -164,7 +170,18 @@ function Tour () {
             type: 'next',
             text: 'Next'
           }
-        ]
+        ],
+
+         beforeShowPromise: function() {
+          return new Promise(function(resolve) {
+            $('.xs-addShapeButton').click();
+            setTimeout(() => {
+             // assistContext.setAssistOpen(true);
+              resolve();  
+            }, 100);
+            
+          });
+        },
       },
       {
         id: 'shapeName',
@@ -498,7 +515,7 @@ function Tour () {
           `
         ],
         canClickTarget:false,
-        attachTo: { element: '.cm-shape', on: 'bottom' },
+        attachTo: { element: '.shape', on: 'bottom' },
         classes: 'shepherd shepherd-welcome',
         buttons: [
           {
@@ -559,6 +576,47 @@ function Tour () {
             text: 'Next'
           }
         ]
+      },
+      {
+        id: 'prefixCustom',
+        text: [
+          `
+          <p>
+         Change prefix
+          </p>
+          `
+        ],
+        canClickTarget:false,
+        attachTo: { element: '.buildBtn', on: 'top' },
+        classes: 'shepherd shepherd-welcome',
+        buttons: [
+          {
+            action: () => {
+               tour.back();
+            },
+            type: 'back',
+            classes: 'shepherd-button-secondary',
+            text: 'Back'
+          },
+          {
+            action: () => {
+               tour.next();
+            },
+            type: 'next',
+            text: 'Next'
+          }
+        ],
+         beforeShowPromise: function() {
+          return new Promise(function(resolve) {
+             
+             $('.buildBtn').click();
+
+            setTimeout(() => {
+              resolve();  
+            }, 300);
+            
+          });
+        }
       }];
 
   tour.addSteps(newSteps);

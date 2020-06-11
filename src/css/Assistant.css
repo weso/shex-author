@@ -30,6 +30,10 @@
     
 }
 
+.deleteAllBtn{
+    display: none;
+}
+
 .assistantContainer{
     height: 94% !important;
 }
