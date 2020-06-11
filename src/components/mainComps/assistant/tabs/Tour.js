@@ -212,7 +212,8 @@ function Tour () {
                   i++;
                   setTimeout(typeWriter, speed);
                 }
-              }                 
+              }
+              
 
           }
         }
@@ -312,13 +313,10 @@ function Tour () {
         ],
         beforeShowPromise: function() {
           return new Promise(function(resolve) {
-            assistContext.setAssistOpen(false);
-            assistContext.setPrefixesOpen(true);
-
-            setTimeout(() => {
-              resolve();  
-            }, 300);
-            
+            $('.prefixTab').click();
+            setTimeout(()=>{
+              resolve();   
+            },500)
           });
         }
       },
@@ -353,8 +351,11 @@ function Tour () {
         ],
          beforeShowPromise: function() {
           return new Promise(function(resolve) {
-            context.addPrefix();
-            resolve();  
+            $('.addPrefixBtn').click();
+            drawShape();
+            setTimeout(()=>{
+              resolve();   
+            },100)
             
           });
          }
@@ -391,15 +392,39 @@ function Tour () {
           }
         ],
         when:{
-          hide:() =>{
-            let prefs = context.prefixes;
-            let p = addPrefixComp(context.prefixes,context.width);
-            p.prefixName = "myprefix";
-            prefs.push(p);
-            context.replacePrefixes(prefs);
-            context.emitPref();
-           
+
+          show: () => {
+              let yashe = Editor.getYashe();
+              document.getElementById("alias4").value = ""; //reset
+              document.getElementById("iri4").value = ""; //reset
+
+              console.log(yashe.getLine(3))
+              yashe.replaceRange("PREFIX : <>\n",{line:3,ch:0},{line:4,ch:0});
+
+              var i = 0;
+              var txt = 'myprefix'; /* The text */
+              var speed = 80; /* The speed/duration of the effect in milliseconds */
+              
+              
+              setTimeout(typeWriter,200)
+             
+              function typeWriter() {
+                if (i < txt.length) {
+                  document.getElementById("alias4").value += txt.charAt(i);
+                  let space = i < txt.length - 1 ? " ": "";
+                  yashe.replaceRange(txt.charAt(i)+space,{line:3,ch:7+i},{line:3,ch:8+i});
+                  i++;
+                  setTimeout(typeWriter, speed);
+                }else{
+                  yashe.replaceRange(": ",{line:3,ch:7+i},{line:3,ch:8+i});
+                  yashe.setValue(yashe.getValue()+'\n');//Needed. If not, yashe shows an error 
+                                                        //( I've tried with refresh() but it doesn't work)
+                }
+              }
+              
+
           }
+         
         }
       },
       {
@@ -412,7 +437,7 @@ function Tour () {
           `
         ],
         canClickTarget:false,
-        attachTo: { element: '#iri5', on: 'bottom' },
+        attachTo: { element: '#iri4', on: 'bottom' },
         classes: 'shepherd shepherd-welcome',
         buttons: [
           {
@@ -432,13 +457,36 @@ function Tour () {
           }
         ],
         when:{
-          hide:() =>{
-            context.prefixes[3].prefixValue = 'http://www.myprefix.com/';
-            context.replacePrefixes(context.prefixes);
-            context.emitPref();
-            console.log( context.prefixes)
-            //console.log(context.prefixes)
+
+          show: () => {
+              document.getElementById("iri4").value = ""; //reset
+
+              var i = 0;
+              var txt = 'http://myprefix.com/'; /* The text */
+              var speed = 20; /* The speed/duration of the effect in milliseconds */
+              let yashe = Editor.getYashe();
+              
+              setTimeout(typeWriter,200)
+             
+             yashe.replaceRange("< ",{line:3,ch:17},{line:3,ch:18});
+              function typeWriter() {
+                if (i < txt.length) {
+                  document.getElementById("iri4").value += txt.charAt(i);
+                  let space = i < txt.length - 1 ? " ": "";
+                  yashe.replaceRange(txt.charAt(i)+space,{line:3,ch:18+i},{line:3,ch:19+i});
+                  i++;
+                  setTimeout(typeWriter, speed);
+                }else{
+                  yashe.setValue(yashe.getValue()+'\n');//Needed. If not, yashe shows an error 
+                                                        //( I've tried with refresh() but it doesn't work)
+                }
+              }
+
+              yashe.refresh();
+              
+
           }
+         
         }
       },
        {
@@ -616,6 +664,11 @@ function Tour () {
       }];
 
   tour.addSteps(newSteps);
+
+  const drawShape = function(){
+    let yashe = Editor.getYashe();
+    yashe.setValue(yashe.getValue()+'\n\n:MyFirtsShape');
+  }
  
   return (
    <button className="tablink material-icons " 
