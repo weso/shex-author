@@ -43,7 +43,7 @@ function AssistTitle (props) {
     
    
     return (<div className="xs-tabs">
-                <button className="tablink activeTab" 
+                <button className="tablink shapesTab activeTab" 
                         title="ShEx Assistant" 
                         onClick={(e)=>handleShapes(e)}>
                         ShEx Assistant
