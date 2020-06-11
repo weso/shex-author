@@ -54,9 +54,6 @@ function EditorComp() {
                 context.handleResize(null,data);
             });
 
-            y.on('forceReplacement', function() {
-                replaceShapes();
-            });
 
             y.on('convert',function(){
                 if(!y.hasErrors(y)){

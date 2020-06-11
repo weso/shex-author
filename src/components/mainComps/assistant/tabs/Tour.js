@@ -81,18 +81,9 @@ function Tour () {
         
         beforeShowPromise: function() {
           return new Promise(function(resolve) {
-            
-           /*  let yashe = Editor.getYashe();
-            yashe.setValue(defaultExample);
-            Codemirror.signal(yashe,'forceReplacement');
-
-            assistContext.closeAll(); */
-
             $('.deleteAllBtn').click();
             $('.shapesTab').click();
-
             setTimeout(() => {
-             // assistContext.setAssistOpen(true);
               resolve();  
             }, 550);
             
@@ -129,17 +120,6 @@ function Tour () {
             text: 'Next'
           }
         ]
-       /*  when: {
-          show: () => {
-            context.replaceShapes([]);
-            Editor.getYashe().setValue("");
-          },
-          hide: () => {
-            let shape = shexUtils.addShape(context.shapes,context.width);
-            context.replaceShapes([shape]);
-            Codemirror.signal(Editor.getYashe(),'humanEvent',[shape],context.width);
-          }
-        } */
       },
       {
         id: 'shape',
@@ -213,11 +193,27 @@ function Tour () {
           }
         ],
         when: {
-          hide: () => {
-            let shape = shexUtils.addShape(context.shapes,context.width);
-            shape.type.value = 'User';
-            context.replaceShapes([shape]);
-            Codemirror.signal(Editor.getYashe(),'humanEvent',[shape],context.width);
+     
+          show: () => {
+              var i = 0;
+              var txt = 'MyFirstShape'; /* The text */
+              var speed = 80; /* The speed/duration of the effect in milliseconds */
+              let yashe = Editor.getYashe();
+              yashe.setValue(yashe.getValue()+'\n\n:');
+
+              setTimeout(()=>{
+                typeWriter();
+              },200)
+
+              function typeWriter() {
+                if (i < txt.length) {
+                  document.getElementById("shapeNameInput").value += txt.charAt(i);
+                  yashe.setValue(yashe.getValue()+txt.charAt(i));
+                  i++;
+                  setTimeout(typeWriter, speed);
+                }
+              }                 
+
           }
         }
       },
