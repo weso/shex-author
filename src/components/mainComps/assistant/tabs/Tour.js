@@ -87,11 +87,6 @@ function Tour () {
             }, 300);
             
           });
-        },
-        when:{
-            hide: () => {
-               context.addPrefix();
-            },
         }
       },
       {
@@ -123,7 +118,16 @@ function Tour () {
             text: 'Next'
           }
         ],
-      
+         beforeShowPromise: function() {
+          return new Promise(function(resolve) {
+            context.addPrefix();
+            setTimeout(() => {
+              resolve();  
+            }, 300);
+            
+          });
+         }
+        
       }
       ,
       {
@@ -159,7 +163,7 @@ function Tour () {
           hide:() =>{
             let prefs = context.prefixes;
             let p = addPrefixComp(context.prefixes,context.width);
-            p.prefixName = "example";
+            p.prefixName = "myprefix";
             prefs.push(p);
             context.replacePrefixes(prefs);
             context.emitPref();
@@ -205,6 +209,51 @@ function Tour () {
             //console.log(context.prefixes)
           }
         }
+      },
+       {
+        id: 'prefixEditor',
+        text: [
+          `
+          <p>
+         Check your new prefix in the editor
+          </p>
+          `
+        ],
+        canClickTarget:false,
+        attachTo: { element: 'div[style="position: relative;"]:nth-child(4)', on: 'bottom' },
+        classes: 'shepherd shepherd-welcome',
+        buttons: [
+          {
+            action: () => {
+               tour.back();
+            },
+            type: 'back',
+            classes: 'shepherd-button-secondary',
+            text: 'Back'
+          },
+          {
+            action: () => {
+               tour.next();
+            },
+            type: 'next',
+            text: 'Next'
+          }
+        ]
+         /* beforeShowPromise: function() {
+          return new Promise(function(resolve) {
+          
+           let pref = context.prefixes;
+           let p = pref.pop();
+           pref.unshift(p);
+           context.replacePrefixes(pref);
+           context.emitPref();
+            setTimeout(() => {
+              resolve();  
+            }, 100);
+            
+          });
+        } */
+        
       }];
 
       
