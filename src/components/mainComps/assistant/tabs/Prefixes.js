@@ -11,7 +11,7 @@ function Prefixes (props) {
         return (
                 <div className="prefixContainer">
                         {context.prefixes.map(prefix =>{
-                                return(<PrefixComp key={prefix.id} prefix={prefix}/>)
+                                return(<PrefixComp  key={prefix.id} prefix={prefix}/>)
                         })}
                         <div className="addCont">
                         <button className="addPrefixBtn"

@@ -25,8 +25,9 @@ function PrefixComp (props) {
         }
       
         return (
-                <div className='xs-prefixHeader' style={styles.header}>            
-                    <input  type="text" 
+                <div id={"pheader"+prefix.id} className='xs-prefixHeader' style={styles.header}>            
+                    <input  type="text"
+                            id={"alias"+prefix.id} 
                             className="prefixName prefixInput"
                             placeholder="alias"
                             value={name}
@@ -34,7 +35,8 @@ function PrefixComp (props) {
                             title="Alias"/>
                     <label  className="prefixLabel" style={styles.label}>:</label>
                     <label  className="prefixLabel" style={styles.label}>{open}</label>
-                    <input  type="text" 
+                    <input  type="text"
+                            id={"iri"+prefix.id}  
                             className="prefixInput"
                             value={value}
                             placeholder="eg: http://schema.org/"
