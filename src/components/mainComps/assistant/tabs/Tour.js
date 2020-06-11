@@ -9,7 +9,7 @@ import {defaultExample} from '../../../../galery/defaultExample';
 import 'shepherd.js/dist/css/shepherd.css';
 import '../../../../css/tour/tour.css';
 import {addPrefixComp} from '../../../../utils/prefixUtils';
-import $ from 'jquery';
+
 
 function Tour () {
 
@@ -81,8 +81,10 @@ function Tour () {
         
         beforeShowPromise: function() {
           return new Promise(function(resolve) {
-            $('.deleteAllBtn').click();
-            $('.shapesTab').click();
+
+            document.getElementsByClassName("deleteAllBtn")[0].click();
+            document.getElementsByClassName("shapesTab")[0].click();
+
             setTimeout(() => {
               resolve();  
             }, 550);
@@ -136,7 +138,7 @@ function Tour () {
         buttons: [
           {
             action: () => {
-              $('.deleteAllBtn').click();
+              document.getElementsByClassName("deleteAllBtn")[0].click();
               tour.back();
             },
             type: 'back',
@@ -154,7 +156,7 @@ function Tour () {
 
          beforeShowPromise: function() {
           return new Promise(function(resolve) {
-            $('.xs-addShapeButton').click();
+            document.getElementsByClassName("xs-addShapeButton")[0].click();
             setTimeout(() => {
              // assistContext.setAssistOpen(true);
               resolve();  
@@ -313,7 +315,7 @@ function Tour () {
         ],
         beforeShowPromise: function() {
           return new Promise(function(resolve) {
-            $('.prefixTab').click();
+            document.getElementsByClassName("prefixTab")[0].click();
             setTimeout(()=>{
               resolve();   
             },500)
@@ -351,7 +353,7 @@ function Tour () {
         ],
          beforeShowPromise: function() {
           return new Promise(function(resolve) {
-            $('.addPrefixBtn').click();
+            document.getElementsByClassName("addPrefixBtn")[0].click();
             drawShape();
             setTimeout(()=>{
               resolve();   
@@ -398,7 +400,6 @@ function Tour () {
               document.getElementById("alias4").value = ""; //reset
               document.getElementById("iri4").value = ""; //reset
 
-              console.log(yashe.getLine(3))
               yashe.replaceRange("PREFIX : <>\n",{line:3,ch:0},{line:4,ch:0});
 
               var i = 0;
@@ -518,6 +519,7 @@ function Tour () {
             text: 'Next'
           }
         ]
+        
       },
        {
         id: 'shexTab',
@@ -578,12 +580,16 @@ function Tour () {
             text: 'Next'
           }
         ],
-
+        when:{
+          show:()=>{
+            document.getElementById("shapeNameInput").value += "MyFirstShape"; 
+          }
+        },
       beforeShowPromise: function() {
           return new Promise(function(resolve) {
             assistContext.setAssistOpen(true);
             assistContext.setPrefixesOpen(false);
-
+            
             setTimeout(() => {
               resolve();  
             }, 300);
@@ -653,7 +659,7 @@ function Tour () {
          beforeShowPromise: function() {
           return new Promise(function(resolve) {
              
-             $('.buildBtn').click();
+            document.getElementsByClassName("buildBtn")[0].click();
 
             setTimeout(() => {
               resolve();  
