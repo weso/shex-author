@@ -228,7 +228,7 @@ function Tour () {
           Check your new Shape in the Editor. <br>
           A Shape must be an <a href='https://en.wikipedia.org/wiki/Internationalized_Resource_Identifier'>IRI.</a>
           (string of characters that unambiguously identifies a particular resource)<br> 
-          There is two ways of represent IRIs in ShEx. As a Qname setting the IRI betwen '<...>' or
+          There is two ways of represent IRIs in ShEx. Setting the IRI betwen '<...>' or
           using a prefix previously defined. By default, new shapes use the example prefix
           </p>
           `
@@ -589,6 +589,7 @@ function Tour () {
             setTimeout(() => {
               document.getElementById("shapeNameInput").value += "MyFirstShape"; 
               document.getElementById("shapeNameInput").focus();
+              document.getElementById("shapeNameInput").value += "MyFirstShape"; //It's weird but is needed
               resolve();  
             }, 500);
             
@@ -626,16 +627,16 @@ function Tour () {
         ]
       },
       {
-        id: 'prefixCustom',
+        id: 'customZone',
         text: [
           `
           <p>
-         Change prefix
+         This is the custom zone 
           </p>
           `
         ],
         canClickTarget:false,
-        attachTo: { element: '.buildBtn', on: 'top' },
+        attachTo: { element: '#customContainer', on: 'bottom' },
         classes: 'shepherd shepherd-welcome',
         buttons: [
           {
@@ -656,13 +657,8 @@ function Tour () {
         ],
          beforeShowPromise: function() {
           return new Promise(function(resolve) {
-             /* 
-            console.log(document.getElementsByClassName("buildBtn")[0].disabled)
-            document.getElementsByClassName("buildBtn")[0].disabled = false;
-            console.log(document.getElementsByClassName("buildBtn")[0].disabled) */
-            document.getElementsByClassName("buildBtn")[0].disabled = false;
             document.getElementsByClassName("buildBtn")[0].click();
-
+            document.getElementById("shapeNameInput").value += "MyFirstShape";
             setTimeout(() => {
               resolve();  
             }, 300);

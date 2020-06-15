@@ -95,13 +95,3 @@ function ShapeHeader (props) {
 
 
 export default ShapeHeader;
-
-/*
-
-<input  type="text" 
-                    className={"sName"+shape.id+" name"}
-                    value={name}
-                    onChange={handleChange}
-                    placeholder="eg: User"
-                    title="Shape Name"/>
-*/

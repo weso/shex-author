@@ -36,7 +36,7 @@ function TypeConfig (props) {
             <label className="customLabel" style={styles.label}>Type </label>
             <select className="customSelector" value={type} onChange={handleTypeChange}>
                 <option value="iriRef">{iri}</option>
-                <option value="prefixedIri">QName</option>
+                <option value="prefixedIri">Prefixed</option>
                 <Bnode isBnode={bnode}/>
             </select>
         </div>

@@ -143,7 +143,7 @@ function NodeComponent (props) {
     
 
     return ( 
-            <Collapse  isOpen={isCustomOpen}> 
+            <Collapse  isOpen={isCustomOpen} id="customContainer"> 
 
                 <div className={getCardinalityStyleIfNeeded()} style={getEntityStyle().body}>
                     <button className='btnZone'style={getEntityStyle().body}
