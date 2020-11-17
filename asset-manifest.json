@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/shex-author/static/css/main.40ebe12c.chunk.css",
-    "main.js": "/shex-author/static/js/main.74004251.chunk.js",
-    "main.js.map": "/shex-author/static/js/main.74004251.chunk.js.map",
+    "main.js": "/shex-author/static/js/main.cabc3eba.chunk.js",
+    "main.js.map": "/shex-author/static/js/main.cabc3eba.chunk.js.map",
     "runtime-main.js": "/shex-author/static/js/runtime-main.dd7f7d21.js",
     "runtime-main.js.map": "/shex-author/static/js/runtime-main.dd7f7d21.js.map",
     "static/css/2.df69e59a.chunk.css": "/shex-author/static/css/2.df69e59a.chunk.css",
-    "static/js/2.3a8d1a0f.chunk.js": "/shex-author/static/js/2.3a8d1a0f.chunk.js",
-    "static/js/2.3a8d1a0f.chunk.js.map": "/shex-author/static/js/2.3a8d1a0f.chunk.js.map",
+    "static/js/2.3d366563.chunk.js": "/shex-author/static/js/2.3d366563.chunk.js",
+    "static/js/2.3d366563.chunk.js.map": "/shex-author/static/js/2.3d366563.chunk.js.map",
     "index.html": "/shex-author/index.html",
-    "precache-manifest.0efb30b3b7462b6cb9c17e5f4ff0ad39.js": "/shex-author/precache-manifest.0efb30b3b7462b6cb9c17e5f4ff0ad39.js",
+    "precache-manifest.11150493cfc530ca9e051d81e89b02ae.js": "/shex-author/precache-manifest.11150493cfc530ca9e051d81e89b02ae.js",
     "service-worker.js": "/shex-author/service-worker.js",
     "static/css/2.df69e59a.chunk.css.map": "/shex-author/static/css/2.df69e59a.chunk.css.map",
     "static/css/main.40ebe12c.chunk.css.map": "/shex-author/static/css/main.40ebe12c.chunk.css.map",
-    "static/js/2.3a8d1a0f.chunk.js.LICENSE.txt": "/shex-author/static/js/2.3a8d1a0f.chunk.js.LICENSE.txt"
+    "static/js/2.3d366563.chunk.js.LICENSE.txt": "/shex-author/static/js/2.3d366563.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.dd7f7d21.js",
     "static/css/2.df69e59a.chunk.css",
-    "static/js/2.3a8d1a0f.chunk.js",
+    "static/js/2.3d366563.chunk.js",
     "static/css/main.40ebe12c.chunk.css",
-    "static/js/main.74004251.chunk.js"
+    "static/js/main.cabc3eba.chunk.js"
   ]
 }

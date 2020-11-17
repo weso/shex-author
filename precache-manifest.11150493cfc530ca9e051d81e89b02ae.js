@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "9fe8d95a59c4062a8d8b4732f340c364",
+    "revision": "3483dc841d80dd03d1375ccbbd36c023",
     "url": "/shex-author/index.html"
   },
   {
-    "revision": "68e87286fdea4d4056f6",
+    "revision": "d6e46c7d57cbfb39a673",
     "url": "/shex-author/static/css/2.df69e59a.chunk.css"
   },
   {
-    "revision": "096bd34a3095d3ec0694",
+    "revision": "58612352cfb020c7023c",
     "url": "/shex-author/static/css/main.40ebe12c.chunk.css"
   },
   {
-    "revision": "68e87286fdea4d4056f6",
-    "url": "/shex-author/static/js/2.3a8d1a0f.chunk.js"
+    "revision": "d6e46c7d57cbfb39a673",
+    "url": "/shex-author/static/js/2.3d366563.chunk.js"
   },
   {
     "revision": "b54d56968b28667426d2d4f5303128d2",
-    "url": "/shex-author/static/js/2.3a8d1a0f.chunk.js.LICENSE.txt"
+    "url": "/shex-author/static/js/2.3d366563.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "096bd34a3095d3ec0694",
-    "url": "/shex-author/static/js/main.74004251.chunk.js"
+    "revision": "58612352cfb020c7023c",
+    "url": "/shex-author/static/js/main.cabc3eba.chunk.js"
   },
   {
     "revision": "c409adf3430a1486ab62",
