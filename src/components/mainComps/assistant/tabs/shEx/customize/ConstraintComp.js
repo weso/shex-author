@@ -5,7 +5,7 @@ import {getPrefix} from '../../../../../../utils/prefixUtils';
 import shexUtils from '../../../../../../utils/shexUtils';
 import yasheUtils from '../../../../../../utils/yasheUtils';
 import PrefixConfig from './config/PrefixConfig';
-import ValueSetContainer from './valueSet/ValueSetContainer';
+import ValueSetContainer from './constraint/ValueSetContainer';
 import Properties from '../../../../../../conf/properties';
 
 const primitives = ['String','Integer','Date','Boolean'];

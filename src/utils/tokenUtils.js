@@ -22,13 +22,7 @@ import StringLiteral from '../entities/shexEntities/types/concreteTypes/literal/
 import BooleanLiteral from '../entities/shexEntities/types/concreteTypes/literal/booleanLiteral';
 import Prefix from '../entities/shexEntities/others/prefix';
 import ShapeRef from '../entities/shexEntities/others/shapeRef';
-import Value from '../entities/shexEntities/others/value';
-import ExtraSet from '../entities/shexEntities/others/extraSet';
-
-
-import AndExpr from '../entities/shexEntities/logic/andExpr';
-import OrExpr from '../entities/shexEntities/logic/orExpr';
-import LogicFactory from '../entities/shexEntities/logic/logicFactory';
+import ValueSetValue from '../entities/shexEntities/others/valueSetValue';
 
 
 let references;
@@ -91,24 +85,13 @@ function getShapes(defShapes){
         let id  = acc.length;
         let shapeDef = shape[0].string;
         let sTokens = getBeforeTriplesTokens(shape);
-        let content =  getProperties(id,sTokens);
+        let content =  getContent(id,sTokens);
 
         let tTokens = getTripleTokens(shape);
-      
-
-        //console.log(aux)
-        //let triples = getTriples(id,tTokens);
-        let aux = getTripleTokens2(shape);
-        let factory = new LogicFactory();
-        let triples = [];
-        aux.forEach(e => {
-            triples.push(factory.createType(e.type,getTriples(id,e.tokens)))
-        });
-
-        console.log(triples)
+        let triples = getTriples(id,tTokens);
 
 
-        let s = new Shape(id,content.type,content.constraint,content.facets,content.shapeRef,triples,content.extraProperties,content.isClosed);
+        let s = new Shape(id,content.type,content.constraint,content.facets,content.shapeRef,triples);
         references.push({entity:s,ref:content.ref});
         acc.push(s);
         return acc;
@@ -160,7 +143,7 @@ function getTriples(shapeId,tokens) {
             if(isFinishOfTriple(tokens,token,index,finish)){
                 if(singleTriple.length>1){
                         let before = getBeforeTriplesTokens(singleTriple);
-                        let content = getProperties(acc.length,before);
+                        let content = getContent(acc.length,before);
                         let after = getTripleTokens(singleTriple);
                         let subTriples = getTriples(acc.length,after);
 
@@ -172,7 +155,7 @@ function getTriples(shapeId,tokens) {
                         }
               
                         if(content.type != undefined){//Needed when last triple of an inlineShape ends with ';'
-                            let triple = new Triple(acc.length,content.type,content.constraint,content.facets,content.shapeRef,cardinality,subTriples,content.extraProperties,content.isClosed);
+                            let triple = new Triple(acc.length,content.type,content.constraint,content.facets,content.shapeRef,cardinality,subTriples);
                             references.push({entity:triple,ref:content.ref});
                             acc.push(triple);
                         }
@@ -206,7 +189,7 @@ function isFinishOfTriple(tokens,token,index,finish){
 }
 
 /**
-* Returns the cardinality after a inlineShape If Exists
+* Returns the cardinality after a inlineShapeIfExist 
 * @param {List} TripleTokens
 * @return {Cardinality}
  */
@@ -242,20 +225,18 @@ function getCardiTokens(tokens){
 
 
 /**
-* Gets the features of a Shape/Triple except a possible inlineShape
+* Gets the features of a Shape/Triple except the possible inlineShape
 * @param {Integer} id
 * @param {List} Tokens
 *
 */
-function getProperties(id,tokens) {   
+function getContent(id,tokens) {   
     let type;
     let constraint;
     let valueSet = [];
     let facets = [];
     let cardinality= new CardinalityFactory().createCardinality();
     let shapeRef = new ShapeRef();
-    let extraProperties = new ExtraSet();
-    let isClosed = false;
     let ref;
     //I am using a for loop just because of the facets (see line 233)
     for(let i=0;i<tokens.length;i++){
@@ -272,7 +253,7 @@ function getProperties(id,tokens) {
             if(token.string.startsWith('@')){// LANTAG NOT SUPPORTED AT THE MOMENT
                 Codemirror.signal(Editor.getYashe(),'forceError','LANTAG_ERR');
             }else{
-                 valueSet.push(new Value(valueSet.length,getValueSetValue(token.string)));
+                 valueSet.push(new ValueSetValue(valueSet.length,getValueSetValue(token.string)));
             }
         }
 
@@ -292,26 +273,22 @@ function getProperties(id,tokens) {
         if(token.type == 'cardinality'){
           cardinality=getCardinality(token.string);
         }
-
-
-        if(token.type == 'keyword'){
-            if(token.string.toLowerCase()=='extra'){
-                i++// we want the next token
-                while(tokens[i] && (tokens[i].type=='string-2' || tokens[i].type=='variable-3')){
-                    extraProperties.addValue(new Value(extraProperties.values.length,getType(tokens[i].string)));
-                    i++;
-                }
-            }
-            
-            if(tokens[i]?.string.toLowerCase()=='closed')isClosed=true;
+        
+        if(isNotAllowed(token))Codemirror.signal(Editor.getYashe(),'forceError');
+        
+        // Force errors in case to find one of the following tokens
+        if(token.string == '~'){
+            Codemirror.signal(Editor.getYashe(),'forceError','EXCLUSION_ERR');
         }
-        
-        checkValidity(token);
-        
-    }
 
+        if(token.string == '('){
+            Codemirror.signal(Editor.getYashe(),'forceError','PARENTHESIS_ERR');
+        }
+            
+  
+    }
     if(valueSet.length>0)constraint=new ValueSet(valueSet);
-    return {type:type,constraint:constraint,facets:facets,shapeRef:shapeRef,ref:ref,cardinality:cardinality,extraProperties:extraProperties,isClosed:isClosed};
+    return {type:type,constraint:constraint,facets:facets,shapeRef:shapeRef,ref:ref,cardinality:cardinality};
 }
 
 
@@ -347,44 +324,15 @@ function getTripleTokens(tokens){
             start=true;
         }
 
-        if(t.string=='}')open--;
-        
+        if(t.string=='}'){
+            open--;
+        }
+
         if(open == 0 && start==true)start=false;
-
         return acc;
     },[])
 }
 
-
-function getTripleTokens2(tokens){
-    let start=false;
-    let open = 0;
-    let aux = [];
-    let type = 'default';
-    return tokens.reduce((acc,t)=>{
-        if(start)aux.push(t);
-         
-        if((t.string.toLowerCase()=='and'|| t.string.toLowerCase()=='or') 
-            && !start){
-                type = t.string.toLowerCase();
-        }
-
-        if(t.string=='{'){
-            open++;
-            start=true;
-        }
-
-        if(t.string=='}')open--;
-        
-        if(open == 0 && start==true){
-            start=false;
-            acc.push({type:type,tokens:Object.assign([],aux)});
-            aux=[];
-        }
-
-        return acc;
-    },[])
-}
 
 /**
  * Returns true in case the token represent the end of a Triple
@@ -453,9 +401,9 @@ function getCardinality(card){
 
 
 /**
-* Get the type of a value
+* Get the type of a valueSetValue
 * @param {String} Token
-* @return {Type} Value
+* @return {Type} ValueSetValue
 *
  */
 function getValueSetValue(def) {
@@ -507,21 +455,12 @@ function isPrimitive(value) {
 }
 
 /**
-* Checks if the token is allowed and sends a signal to YASHE if not
+* Returns true if the token is not allowed in the assistant. False otherwise
 * @param {Object} Token
+* @return {Boolean} 
 */
-function checkValidity(token){
-
-       // Force errors in case to find one of the following tokens
-    if(token.string == '~'){
-        Codemirror.signal(Editor.getYashe(),'forceError','EXCLUSION_ERR');
-    }
-
-    if(token.string == '('){
-        Codemirror.signal(Editor.getYashe(),'forceError','PARENTHESIS_ERR');
-    }
-            
-    if(     token.type != 'string-2' && 
+function isNotAllowed(token){
+    return token.type != 'string-2' && 
             token.type != 'variable-3' &&
             token.type != 'shape' &&
             token.type != 'constraint' && 
@@ -534,10 +473,7 @@ function checkValidity(token){
             (token.type != 'keyword' && token.string.toLowerCase()=='prefix') &&
             token.type != 'prefixDelcAlias' &&
             token.type != 'prefixDelcIRI' &&
-            token.type !='comment' ){
-
-        Codemirror.signal(Editor.getYashe(),'forceError');
-    }
+            token.type !='comment' ;
 }
 
 /**
