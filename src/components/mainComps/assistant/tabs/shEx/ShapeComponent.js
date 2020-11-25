@@ -7,11 +7,7 @@ import TripleComponent from './TripleComponent';
 import Triple from '../../../../../entities/shexEntities/triple';
 import Properties from '../../../../../conf/properties';
 
-import CustomZone from './CustomZone';
-
-import ShapeRefComp from './customize/ShapeRefComp';
-
-import Triples from './Triples';
+import NodeComponent from './NodeComponent';
 
 export const ShapeContext = React.createContext();
 
@@ -32,6 +28,27 @@ function ShapeComponent (props) {
     const [disabled,setDisabled] = useState(initialDisabled);
 
 
+    const addTriple = function(){
+        const id = shape.triplesCount;
+        const triple = new Triple(id);
+
+        setTriples([...triples,triple]);
+        
+        shape.addTriple(triple);
+        //A ShapeRef cannot coexist with a inlineShape
+        shape.shapeRef.shape = null;
+        context.emit();       
+    }
+
+    const deleteTriple = function(tripleId){
+        const newTriples = shape.triples.filter( triple => triple.id != tripleId);
+        setTriples(newTriples)
+        shape.triples = newTriples;
+        context.emit();
+        
+    }
+
+
     const customizeShape = function(){
         //Completly collapsed shape open just customShape
         if(!isCustomOpen && !isTriplesOpen ){
@@ -48,25 +65,13 @@ function ShapeComponent (props) {
 
     const collapseTriples = function(){
         setCustomOpen(false);
-        forceTriples(!isTriplesOpen);
-    }
-
-    const forceTriples = function(open){
-        setTriplesOpen(open);
+        setTriplesOpen(!isTriplesOpen);
         
         if(colapseBtn=='menu'){
             setColapseBtn('menu_open');
         }else{
             setColapseBtn('menu');
         }
-    }
-
-       const [isSlotOpen,setSlotOpen] = useState(true);
-    const [isOtherOpen,setOtherOpen] = useState(false);
-      const customize2 = function(){
-        setSlotOpen(!isSlotOpen);
-        setOtherOpen(!isOtherOpen);
-
     }
 
     return (
@@ -76,12 +81,30 @@ function ShapeComponent (props) {
                 <ShapeHeader shape={shape} 
                             customizeShape={customizeShape} 
                             collapseTriples={collapseTriples} 
-                            colapseBtn={colapseBtn}
-                            forceTriples={forceTriples}/>
+                            colapseBtn={colapseBtn}/>
 
 
-                       <CustomZone isFirst={true} entity={shape} isCustomOpen={isSlotOpen}
-                        customClass="customShape"/>
+                <NodeComponent  entity={shape} isCustomOpen={isCustomOpen} customClass={'customShape'}/> 
+
+                <Collapse  isOpen={isTriplesOpen}>
+                     <div className="triples" style={styles.body}>
+                        {triples.map(triple =>
+                            <TripleComponent key={triple.id}
+                                            triple={triple}
+                                            deleteTriple={deleteTriple}
+                                            styles={tripleStyles}/> 
+                        )}
+                    
+                        <button className="xs-addTripleButton"
+                                style={styles.addTriple} 
+                                onClick={addTriple} 
+                                disabled={disabled}
+                                title="Add Triple">
+                                + Triple Constraint
+                        </button>        
+                    
+                        </div>
+                </Collapse> 
 
 
             </div>
@@ -93,34 +116,3 @@ function ShapeComponent (props) {
 
 
 export default ShapeComponent;
-/*
-
-  <CustomZone isFirst={true} entity={shape} isCustomOpen={isSlotOpen}
-              customClass="customShape"/>*/
-
-              /* <Triples     
-                            isSlotOpen={isSlotOpen}
-                            isOtherOpen={isOtherOpen}
-                            entity={shape}
-                            customize2={customize2} 
-                            is={false}
-                            isTriplesOpen={true}
-                            styles={tripleStyles}
-                            container="triples"
-                            header="slotHeader"
-                            body="tCont"
-                            addClass="xs-addTripleButton">
-                </Triples> 
-                   <Triples     
-                            isSlotOpen={isSlotOpen}
-                            isOtherOpen={isOtherOpen}
-                            entity={shape}
-                            customize2={customize2} 
-                            is={false}
-                            isTriplesOpen={true}
-                            styles={tripleStyles}
-                            container="triples"
-                            header="slotHeader"
-                            body="tCont"
-                            addClass="xs-addTripleButton">
-                </Triples>     */

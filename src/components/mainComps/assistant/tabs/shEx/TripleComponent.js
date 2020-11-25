@@ -8,9 +8,8 @@ import ShapeRefComp from './customize/ShapeRefComp';
 import FacetContainer from './customize/FacetContainer';
 import CardinalityComp from './customize/CardinalityComp';
 import Properties from '../../../../../conf/properties';
-import CustomZone from './CustomZone';
+import NodeComponent from './NodeComponent';
 import Triple from '../../../../../entities/shexEntities/triple';
-import Triples from './Triples';
 
 function TripleComponent (props) {
     
@@ -21,23 +20,10 @@ function TripleComponent (props) {
     const [colapseBtn,setColapseBtn] = useState('menu_open');
     const [triples,setTriples] = useState(triple.triples);
 
-
-    const [isSlotOpen,setSlotOpen] = useState(false);
-    const [isOtherOpen,setOtherOpen] = useState(false);
-
     const subTripleStyles = Properties.getInstance().getSubTripleStyle();
 
     const customize  = function(){
-       
-
- setSlotOpen(!isSlotOpen);
-    }
-
-
-    const customize2 = function(){
-        
-        setOtherOpen(!isOtherOpen);
-
+        setCustomOpen(!isCustomOpen);
     }
 
     const addTriple = function(){
@@ -75,7 +61,7 @@ function TripleComponent (props) {
 
 
     return ( 
-        <div className="test">
+        <div>
             <TripleHeader triple={triple} 
                           deleteTriple={deleteTriple}
                           customize={customize}
@@ -83,21 +69,30 @@ function TripleComponent (props) {
                           colapseBtn={colapseBtn}
                           styles={styles}/>
 
+            <NodeComponent entity={triple} isCustomOpen={isCustomOpen} customClass={'customTriple'} /> 
            
-             <CustomZone isFirst={true} entity={triple} isCustomOpen={isSlotOpen}
-              customClass="customTriple"/>
-      <CustomZone isFirst={false} entity={triple} isCustomOpen={isSlotOpen}
-              customClass="customTriple"/>
+            <Collapse  isOpen={isTriplesOpen}>
+                     <div className="subTriples" style={styles.body}>
+                        {triples.map(subTriple =>
+                            <TripleComponent key={subTriple.id}
+                                            triple={subTriple}
+                                            deleteTriple={subDeleteTriple}
+                                            styles={subTripleStyles}/> 
+                        )}
+                    
+                        <button className="xs-addSubTripleButton"
+                                style={styles.addSubTriple} 
+                                onClick={addTriple} 
+                                title="Add Triple">
+                                + Triple Constraint
+                        </button>        
+                    
+                        </div>
+                </Collapse> 
 
-
-          
 
         </div>);                          
 }
 
 
 export default TripleComponent;
-
-
-/* <CustomZone isFirst={true} entity={triple} isCustomOpen={isSlotOpen}
-              customClass="customTriple"/>*/

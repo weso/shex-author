@@ -111,112 +111,24 @@ label{
 
 
 .triples{
-    background-color: #fcdfeb !important;
-    
+    color: black;
+    text-align: left;
+    border-radius: 0px 0px 10px 10px ;
+    display: grid;
+    grid-template-columns: 100%; 
+
 }
 
 .subTriples{
-    padding: 10px;
-    background-color: #fff6e6 !important;
-}
-
-
-.slotHeader{
-
     color: black;
     text-align: left;
-    display: grid;
-    grid-template-columns: 25% 9%  ;
-    gap: 8px;
-
-    background-color: #fff6e6;
-    border-radius: 10px 10px 0px 0px;
-    
-}
-
-.tRef{
-    background-color: #fff2e6 !important;
-}
-
-.sRef{
-    background-color: #f1f8ff !important;
-}
-
-.last{
-    background-color: #fff2e6 !important;
-}
-
-
-.customCont{
-   
     border-radius: 10px;
-    padding: 1px;
-    background-color: white;
-}
-
-
-.tripleSlot{
-    color: black;
-    text-align: left;
-    border-radius: 0px 0px 10px 10px ;
     display: grid;
     grid-template-columns: 100%; 
-
-    background-color: #f1f8ff !important;
-  /*fcebdf*/
-    padding: 10px;
-}
-
-.subTripleSlot{
-    color: black;
-    text-align: left;
-    border-radius: 0px 0px 10px 10px ;
-    display: grid;
-    grid-template-columns: 100%; 
-
-    background-color: #fff2e6 !important;
-
-    padding: 10px;
-}
-
-.tCont{
-    border: 1px solid  #acaaaa;    
-    background-color: #fff6e6;
-    border-radius: 10px;
-    display: grid;
-  
-}
-
-.subtCont{
-    border: 1px solid  #acaaaa;    
-    background-color: #fff6e6;
-    border-radius: 10px;
-    display: grid;
-}
-
-.slotBtn{
-    margin-top: 8px;
-    margin-bottom: 8px;
-    color:#f7e7c9 !important;
-}
+    padding-left: 10px;
+    padding-right: 10px;
 
 
-
-
-
-.subSlotHeader{
-
-    color: black;
-    border-top: 1px solid #acaaaa;
-    border-left: 1px solid #acaaaa;
-    border-right: 1px solid #acaaaa;
-    border-radius: 10px 10px 0px 0px;
-    text-align: left;
-    display: grid;
-    grid-template-columns: 25% 9%  ;
-    gap: 8px;
-
-    background-color: #ffe5e2 !important;
 }
 
 /*
@@ -331,6 +243,7 @@ label{
     font-weight: bold;
     -webkit-transition: margin 0.2s ease-in-out;
     transition: margin 0.2s ease-in-out;
+    border: 1px solid #acaaaa;
 }
 
 .xs-addShapeButton:hover{
@@ -358,7 +271,7 @@ label{
     margin-bottom: 3px;
     -webkit-transition: margin 0.3s ease-in-out;
     transition: margin 0.3s ease-in-out;
-    background-color: #f8e9dc !important;
+    border: 1px solid #acaaaa;
 }
 
 .xs-addTripleButton:hover{
@@ -527,29 +440,16 @@ label{
 
 
 
-
 .zone{
     display: grid;
-    grid-template-columns: auto auto auto auto 10%;
+    grid-template-columns: 15% 20% 12% 29% 24%;
     background-color: white;
 }
 
 .zone-card{
     display: grid;
-    grid-template-columns: auto auto auto auto auto 10%;
+    grid-template-columns: 12% 20% 12% 29% 20% 7%;
     background-color: white;
-}
-
-.zone-triples{
-    display: grid;
-    grid-template-columns: 15% 20% 12% 29% 24%;
-    background-color: white;
-
-}
-
-.otherss{
-    border-radius: 0px 0px 10px 10px;
-    background-color: #ffffff !important;
 }
 
 
@@ -569,16 +469,12 @@ label{
     height: 15px;
 }
 
-
-.test{
-    border: 1px solid #acaaaa;
-    border-radius: 10px;
-}
-
 .btnZone{
     background-color: transparent;
     border:none;
-    border-radius: 0px 4px 0px 0px;
+    border-radius: 0px 4px 4px 0px;
+    border-right: 1px double gray;
+    border-top: 1px double gray;
     
     
 }
@@ -597,50 +493,6 @@ label{
 .collapseBtn-triple:focus{
     outline: none;
 }
-
-.extrasCont{
-    grid-column: 3/4;
-    display: grid;
-    grid-template-columns: 35% 65%;
-    margin-top: 10px;
-    padding-top: 4px;
-    width: 100% ;
-    gap: px;
-    
-}
-
-.extraComp{
-    grid-column: 1/3;
-    display: grid;
-    grid-template-columns: 35% 65%;
-    gap: 1px;
-}
-
-.extraZone{
-    display: grid;
-    grid-template-columns: 80% 20%;
-    gap: 1px;
-}
-
-
-.addExtra{ 
-    grid-column: 1/3;
-    background:white;
-    color: #222;
-    border-radius: 10px;
-    margin-top:8px;
-}
-
-.addExtra:focus{
-    outline: none;
-}
-
-.closedCheck{
-    grid-column: 3/4;
-}
-
-
-
 
 /*
 

@@ -9,11 +9,11 @@ import Properties from '../../../../../../../conf/properties';
 
 function ValueSetComp (props) {
     
-    const {value,deleteValue} = props;
+    const {valueSetValue,deleteValue} = props;
     const context = useContext(AppContext);
     const styles = Properties.getInstance().getConstraintStyle();
     const iriStr = '<...>';
-    const [type,setType]=useState(value.type.getTypeName());
+    const [type,setType]=useState(valueSetValue.type.getTypeName());
     const [isIriRef,setIriRef]=useState(true);
     const [isQName,setQName]=useState(false);
     const [isString,setString]=useState(false);
@@ -23,7 +23,7 @@ function ValueSetComp (props) {
     const handleTypeChange = function(e){
         let newType = e.target.value;
         setType(newType);
-        value.setType(newType);
+        valueSetValue.setType(newType);
         context.emit();
         checkCollapses();
     }
@@ -76,20 +76,20 @@ function ValueSetComp (props) {
                 </select>
 
                 <div>
-                    <InputValue type={value.type} isOpen={isIriRef}/>
+                    <InputValue type={valueSetValue.type} isOpen={isIriRef}/>
 
-                    <QNameValue type={value.type} isOpen={isQName}/>
+                    <QNameValue type={valueSetValue.type} isOpen={isQName}/>
 
-                    <InputValue type={value.type} isOpen={isString}/>
+                    <InputValue type={valueSetValue.type} isOpen={isString}/>
 
-                    <NumberValue type={value.type} isOpen={isNumber}/>
+                    <NumberValue type={valueSetValue.type} isOpen={isNumber}/>
 
-                    <BooleanValue type={value.type} isOpen={isBoolean}/>
+                    <BooleanValue type={valueSetValue.type} isOpen={isBoolean}/>
                 </div>
                 
                 <button className="tripleBtns deleteValueSetBtn mdc-icon-button material-icons" 
                     style={styles.delete}
-                    onClick={()=>deleteValue(value.id)}
+                    onClick={()=>deleteValue(valueSetValue.id)}
                     title="Delete Value">
                     delete
                 </button>
