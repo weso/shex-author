@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/shex-author/precache-manifest.11150493cfc530ca9e051d81e89b02ae.js"
+  "/shex-author/precache-manifest.e4df3f0d0e5a90374cde2b07a045394f.js"
 );
 
 self.addEventListener('message', (event) => {
