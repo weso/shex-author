@@ -20,7 +20,7 @@ export function getRequestOptions(){
     return(
     {
         method: 'post',
-        url: 'https://rdfshape.weso.es:8080/api/schema/visualize',
+        url: 'http://rdfshape.weso.es:8080/api/schema/visualize',
         data: getBodyFormData(),
         config: { headers: {'Content-Type': 'multipart/form-data' }}
     });

@@ -7,15 +7,14 @@ export const SHAPE_COLORS = {
         deleteFill:'#FFFFFF',
         collapse:'#222',
         body:'#EBF4FF',
-        addTriple:'#EFDECD',
-        addTripleFill:'#222',
         addShape:'#ddeafa',
         addShapeFill:'#222',
+        zone:'#EBF4FF'
 };
 
 export const TRIPLE_COLORS = {
         label:'#222',
-        header:'#EFDECD',
+        header:'#fcebdf',
         custom:'#3d3d3d',
         customFill:'#f8a252',
         constraint:'#3d3d3d',
@@ -29,19 +28,20 @@ export const TRIPLE_COLORS = {
         delete:'#f8a252',
         deleteFill:'#ffff',
         collapse:'#222',
-        body:'#EFE8E1',
-        addSubTriple:'#ffd0ca',
-        addSubTripleFill:'#222'
+        body:'#EBF4FF',
+        addTriple:'#EFDECD',
+        addTripleFill:'#222',
+        zone:'#fcebdf'
 };
 
 export const SUB_TRIPLE_COLORS = {
-        header:'#ffd0ca',
+        header:'#ffe5e2',
         custom:'#3d3d3d',
         customFill:'#F48D81',
         delete:'#F48D81',
         deleteFill:'#ffff',
-        addSubTriple:'#ffd0ca',
-        addSubTripleFill:'#222'
+        addTriple:'#ffd0ca',
+        addTripleFill:'#222'
 };
 
 
@@ -71,6 +71,13 @@ export const SHAPEREF_COLORS = {
 export const CARDINALITY_COLORS = {
         label:'#222',
         body:'#fae2f8',
+};
+
+export const OTHER_COLORS = {
+        label:'#222',
+        body:'#ffff',
+        delete:'#222',
+        deleteFill:'#ffff',
 };
 
 export const PREFIX_COLORS = {

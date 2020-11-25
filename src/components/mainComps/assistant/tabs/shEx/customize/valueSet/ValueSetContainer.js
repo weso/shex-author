@@ -29,7 +29,7 @@ function ValueSetContainer (props) {
                     {valueSet.map(v =>{                                        
                             return (<ValueSetComp 
                                     key={v.id}
-                                    valueSetValue={v}
+                                    value={v}
                                     deleteValue={deleteValue} 
                                     />)
                     })}

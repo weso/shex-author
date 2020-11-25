@@ -11,8 +11,8 @@ import {getLongestElements,getSeparators,getSeparator} from '../../utils/printUt
 
 class Triple extends Node{
 
-    constructor(id,type=new PrefixedIri(new Prefix('schema','http://schema.org/')),constraint=new Primitive(),facets=[],shapeRef=new ShapeRef(),cardinality=new CardinalitySimple(),triples=[]) {
-        super(id,type,constraint,facets,shapeRef,triples);
+    constructor(id,type=new PrefixedIri(new Prefix('schema','http://schema.org/')),constraint=new Primitive(),facets=[],shapeRef=new ShapeRef(),cardinality=new CardinalitySimple(),triples=[],extraProperties,isClosed) {
+        super(id,type,constraint,facets,shapeRef,triples,extraProperties,isClosed);
         this.cardinality = cardinality;
         this.cardFactory = new CardinalityFactory();
     }
@@ -44,6 +44,15 @@ class Triple extends Node{
             },'');
 
             str+=shapeRef+bodySeparator;
+
+            if(this.extraProperties.values.length>0){
+                str+='EXTRA ';
+                str+=this.extraProperties.values.reduce((acc,e)=>{
+                        return acc+=' '+e+' ';
+                },'');
+            }
+
+            if(this.isClosed)str+='CLOSED '
 
             if(this.triples.length>0){
                 str+=' {\n';

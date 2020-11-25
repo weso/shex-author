@@ -7,6 +7,7 @@ import {SHAPE_COLORS,
         FACET_COLORS,
         SHAPEREF_COLORS,
         CARDINALITY_COLORS,
+        OTHER_COLORS,
         PREFIX_COLORS} from './colors';
 
 import {DEFAULTS} from './config'       ;
@@ -31,10 +32,7 @@ const Properties = (()=> {
                 },
                 collapse:{color:SHAPE_COLORS.collapse},
                 body:{background:SHAPE_COLORS.body},
-                addTriple:{
-                        color:SHAPE_COLORS.addTripleFill,
-                        background:SHAPE_COLORS.addTriple
-                },
+                zone:{background:SHAPE_COLORS.zone},
                 addShape:{
                         color:SHAPE_COLORS.addShapeFill,
                         background:SHAPE_COLORS.addShape
@@ -70,12 +68,16 @@ const Properties = (()=> {
                         color:TRIPLE_COLORS.deleteFill,
                         background:TRIPLE_COLORS.delete
                 },
-                addSubTriple:{
-                        color:TRIPLE_COLORS.addSubTripleFill,
-                        background:TRIPLE_COLORS.addSubTriple
+                addTriple:{
+                        color:TRIPLE_COLORS.addTripleFill,
+                        background:TRIPLE_COLORS.addTriple
                 },
-                collapse:{color:TRIPLE_COLORS.collapse},
+                collapse:{
+                    color:TRIPLE_COLORS.collapse,
+                    background:TRIPLE_COLORS.zone
+                },
                 body:{background:TRIPLE_COLORS.body},
+                zone:{background:TRIPLE_COLORS.zone},
             }
         }
 
@@ -107,9 +109,9 @@ const Properties = (()=> {
                         color:SUB_TRIPLE_COLORS.deleteFill,
                         background:SUB_TRIPLE_COLORS.delete
                 },
-                addSubTriple:{
-                        color:SUB_TRIPLE_COLORS.addSubTripleFill,
-                        background:SUB_TRIPLE_COLORS.addSubTriple
+                addTriple:{
+                         color:SUB_TRIPLE_COLORS.addTripleFill,
+                        background:SUB_TRIPLE_COLORS.addTriple
                 },
                 collapse:{color:TRIPLE_COLORS.collapse},
                 body:{background:TRIPLE_COLORS.body},
@@ -164,6 +166,17 @@ const Properties = (()=> {
             return {
                 label:{color:CARDINALITY_COLORS.label},
                 body:{background:CARDINALITY_COLORS.body}
+            };  
+        }
+
+        this.getOtherStyle = function(){
+            return {
+                label:{color:OTHER_COLORS.label},
+                body:{background:OTHER_COLORS.body},
+                delete:{
+                        color:OTHER_COLORS.deleteFill,
+                        background:OTHER_COLORS.delete
+                },
             };  
         }
 
@@ -260,7 +273,7 @@ const Properties = (()=> {
         }
 
         this.saveDefaults();
-        this.loadCookies();                
+        this.loadCookies();             
     }
 
    

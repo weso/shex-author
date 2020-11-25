@@ -6,19 +6,24 @@ import ConstraintComp from './customize/ConstraintComp';
 import ShapeRefComp from './customize/ShapeRefComp';
 import FacetContainer from './customize/FacetContainer';
 import CardinalityComp from './customize/CardinalityComp';
+import OtherContainer from './customize/OtherContainer';
+import Triples from './Triples';
+
 import Properties from '../../../../../conf/properties';
 
-function NodeComponent (props) {
+function CustomZone (props) {
     
-    const {entity,isCustomOpen,customClass} = props;
+    const {entity,isFirst,isCustomOpen,customClass} = props;
+    const [isTriplesOpen,setTriplesOpen] = useState(true);
     const [isTripleCustomOpen,setTripleCustomOpen] = useState(false);
-    const [isConstraintsOpen,setConstraintsOpen] = useState(true);
+    const [isConstraintsOpen,setConstraintsOpen] = useState(false);
     const [isRefOpen,setRefOpen] = useState(false);
     const [isFacetOpen,setFacetOpen] = useState(false);
     const [isCardinalityOpen,setCardinalityOpen] = useState(false);
+    const [isOtherOpen,setrOtherOpen] = useState(false);
     const [allCollased,setAllCollapsed] = useState(false);
     const [colapseBtn,setColapseBtn] = useState('menu');
-
+    const [extras,setExtras] = useState(entity.extraProperties.values);
 
     const shapeStyles = Properties.getInstance().getShapeStyle();
     const tripleStyles = Properties.getInstance().getTripleStyle();
@@ -26,6 +31,7 @@ function NodeComponent (props) {
     const facetStyles = Properties.getInstance().getFacetStyle();
     const refStyles = Properties.getInstance().getShapeRefStyle();
     const cardStyles = Properties.getInstance().getCardinalityStyle();
+    const otherStyles = Properties.getInstance().getOtherStyle();
 
     const customizeTriple = function(){
         collapseAll(false);
@@ -39,13 +45,27 @@ function NodeComponent (props) {
 
     }
 
+    const customizeTriples = function(){
+        collapseAll(false);
+        setTriplesOpen(!isTriplesOpen);
+        setAllCollapsed(false);
+
+        if(allCollased){
+            setTriplesOpen(true);
+            changeCollapseBtn();
+        }
+
+    }
+
     const customizeContraints = function(){
         collapseAll(false);
         setConstraintsOpen(!isConstraintsOpen);
+        setFacetOpen(!isFacetOpen);
         setAllCollapsed(false);
 
         if(allCollased){
             setConstraintsOpen(true);
+            setFacetOpen(true);
             changeCollapseBtn();
         }
     }
@@ -84,13 +104,29 @@ function NodeComponent (props) {
         
     }
 
+  const customizeOther = function(){
+        collapseAll(false);
+        setrOtherOpen(!isOtherOpen);
+        setAllCollapsed(false);
+
+        if(allCollased){
+            setrOtherOpen(true);
+            changeCollapseBtn();
+        } 
+        
+    }
+
+
+
 
     const collapseAll = function(collapse){
+        setTriplesOpen(collapse);
         setTripleCustomOpen(collapse);
         setConstraintsOpen(collapse);
         setRefOpen(collapse);
         setFacetOpen(collapse);
         setCardinalityOpen(collapse);
+        setrOtherOpen(collapse);
     }
 
     const collapseToggle = function(){
@@ -140,34 +176,65 @@ function NodeComponent (props) {
         }
         return shapeStyles;
     }
+
+    const getBtn = function(){
+        if(!isFirst)return 'delete';
+        return 'add';
+    }
+
+    const getRef = function(){
+        if(customClass=='customTriple')return "tRef";
+        return 'sRef';
+    }
+
+
+    const getLastStyle = function(){
+        if(customClass=='customTriple')return "last";
+    }
+
+     const getBody = function(){
+        if(customClass=='customTriple')return "subTripleSlot";
+        return "tripleSlot";
+    }
     
 
     return ( 
-            <Collapse  isOpen={isCustomOpen}> 
+            <Collapse  isOpen={isCustomOpen} className="customCont"> 
 
                 <div className={getCardinalityStyleIfNeeded()} style={getEntityStyle().body}>
-                    <button className='btnZone'style={getEntityStyle().body}
-                    onClick={customizeTriple}>{entity.getEntityName()}</button>
-                   <button className='btnZone'style={constStyles.body}
+                    <button className={'btnZone '+getRef()} 
+                    onClick={customizeTriples}>Triples</button>
+                    <button className='btnZone'style={constStyles.body}
                     onClick={customizeContraints}>Constraint</button>
-                    <button className='btnZone'style={facetStyles.body}
-                    onClick={customizeFacet}>Facet</button>
                     <button className='btnZone'style={refStyles.body}
-                    onClick={customizeRef}>ShapeReference</button>
+                    onClick={customizeRef}>ShapeRef</button>
+                   
+
                     {getCardinalityIfNeeded()}
-                    <button className="collapseBtn-triple mdc-icon-button material-icons" 
-                    style={getEntityStyle().collapse}
-                    onClick={collapseToggle}
-                    title="ShowAll">
-                    {colapseBtn}
+
+                    <button className='btnZone'style={otherStyles.body}
+                    onClick={customizeOther}>Other</button>
+                    
+
+                   
+                    <button className={getLastStyle()+" btnZone  mdc-icon-button material-icons"}>
+                            {getBtn()}
                     </button>
+                        
                 </div> 
 
-                <CustomComp  entity={entity} 
-                        isCustomOpen={isTripleCustomOpen}
-                        bnode={false}
-                        customClass={customClass}/>
 
+                 <Collapse   isOpen={isTriplesOpen}>
+                    <Triples
+                                    is={true}
+                                    entity={entity} 
+                                    isSlotOpen={true}
+                                    styles={tripleStyles}
+                                    container="triples"
+                                    header="slotHeader"
+                                    body={getBody()}
+                                    addClass="xs-addTripleButton"></Triples>
+                </Collapse> 
                 <Collapse   isOpen={isConstraintsOpen}>
                     <ConstraintComp  entity={entity} />           
                 </Collapse> 
@@ -177,7 +244,11 @@ function NodeComponent (props) {
                 </Collapse> 
 
                 <Collapse  isOpen={isRefOpen}>
-                    <ShapeRefComp entity={entity}/>      
+                    <ShapeRefComp entity={entity} customClass={customClass}/>      
+                </Collapse> 
+
+                <Collapse  isOpen={isOtherOpen}>
+                    <OtherContainer  entity={entity} extras={extras} setExtras={setExtras} />           
                 </Collapse> 
                 
                 {getCardinalityCompIfNeeded()}
@@ -186,4 +257,4 @@ function NodeComponent (props) {
 }
 
 
-export default NodeComponent;
+export default CustomZone;
